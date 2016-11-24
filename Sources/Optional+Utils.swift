@@ -1,5 +1,5 @@
 //
-//  Optional+Common.swift
+//  Optional+Utils.swift
 //  Mechanica
 //
 //  Copyright © 2016 Tinrobots.
