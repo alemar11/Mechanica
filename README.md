@@ -1,4 +1,6 @@
-# Mechanica
+![Mechanica: Swift Utils](https://raw.githubusercontent.com/tinrobots/Mechanica/assets/mechanica.png)
+
+<br/>
 [![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift) 
 ![Platform iOS 10](https://img.shields.io/badge/Platform-iOS%2010%2B-blue.svg) 
 ![Platform macOS 10.12+](https://img.shields.io/badge/Platform-macOS%2010.12%2B-blue.svg) 
