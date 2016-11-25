@@ -26,7 +26,7 @@ import CoreData
 
 //MARK: - Local Deletion
 
-fileprivate let markedForDeletionKey = "markedForDeletion"
+fileprivate let markedForDeletionKey = "markedForDeletionAsOf"
 /// Objects marked for local deletion more than this time (in seconds) ago will get permanently deleted.
 fileprivate let timeBeforePermanentlyDeletingObjects = TimeInterval(120)
 
@@ -45,8 +45,8 @@ public protocol DelayedDeletable: class {
   ///
   /// Protocol `DelayedDeletable`.
   ///
-  /// Deletion date.
-  var markedForDeletion: Date? { get set }
+  /// This object can be deleted starting from this particular date.
+  var markedForDeletionAsOf: Date? { get set }
   
   /// **Mechanica**
   ///
@@ -79,8 +79,8 @@ extension DelayedDeletable where Self: NSManagedObject {
   }
   
   public func markForLocalDeletion() {
-    guard isFault || markedForDeletion == nil else { return }
-    markedForDeletion = Date()
+    guard isFault || markedForDeletionAsOf == nil else { return }
+    markedForDeletionAsOf = Date()
   }
   
 }
@@ -102,7 +102,7 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
 
 //MARK: Remote Deletion
 
-fileprivate let MarkedForRemoteDeletionKey = "markedForRemoteDeletion"
+fileprivate let MarkedForRemoteDeletionKey = "isMarkedForRemoteDeletion"
 
 /// **Mechanica**
 ///
@@ -121,7 +121,7 @@ public protocol RemoteDeletable: class {
   /// Protocol `RemoteDeletable`.
   ///
   /// Returns `true` if the object is marked to be deleted remotely.
-  var markedForRemoteDeletion: Bool { get set }
+  var isMarkedForRemoteDeletion: Bool { get set }
   
   /// **Mechanica**
   ///
@@ -160,7 +160,7 @@ extension RemoteDeletable {
   ///
   /// Marks an object to be deleted remotely.
   public func markForRemoteDeletion() {
-    markedForRemoteDeletion = true
+    isMarkedForRemoteDeletion = true
   }
   
 }
