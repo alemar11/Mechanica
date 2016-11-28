@@ -60,6 +60,9 @@
 		D262EF271DA54AD10061AB10 /* Sequence+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D262EF251DA54AD10061AB10 /* Sequence+Utils.swift */; };
 		D262EF281DA54AD10061AB10 /* Sequence+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D262EF251DA54AD10061AB10 /* Sequence+Utils.swift */; };
 		D262EF291DA54AD10061AB10 /* Sequence+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D262EF251DA54AD10061AB10 /* Sequence+Utils.swift */; };
+		D26C6C2A1DEC83B800B7D26A /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C6C291DEC83B800B7D26A /* Storyboard.swift */; };
+		D26C6C2C1DEC83B800B7D26A /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C6C291DEC83B800B7D26A /* Storyboard.swift */; };
+		D26C6C2D1DEC83B800B7D26A /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C6C291DEC83B800B7D26A /* Storyboard.swift */; };
 		D273A5951DD5C5BA0007796F /* SequenceUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273A5941DD5C5BA0007796F /* SequenceUtilsTests.swift */; };
 		D273A5961DD5C5BA0007796F /* SequenceUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273A5941DD5C5BA0007796F /* SequenceUtilsTests.swift */; };
 		D273A5971DD5C5BA0007796F /* SequenceUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273A5941DD5C5BA0007796F /* SequenceUtilsTests.swift */; };
@@ -152,6 +155,7 @@
 		D23748811DD362990064EA22 /* BundleInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleInfoTests.swift; sourceTree = "<group>"; };
 		D262EF1D1DA5487F0061AB10 /* ModelVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelVersion.swift; sourceTree = "<group>"; };
 		D262EF251DA54AD10061AB10 /* Sequence+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Utils.swift"; sourceTree = "<group>"; };
+		D26C6C291DEC83B800B7D26A /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		D273A5941DD5C5BA0007796F /* SequenceUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceUtilsTests.swift; sourceTree = "<group>"; };
 		D273A5991DD5FB8B0007796F /* Mechanica.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mechanica.swift; sourceTree = "<group>"; };
 		D289ACFC1DC0A678003DA7B8 /* StringUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtilsTests.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D26C6C291DEC83B800B7D26A /* Storyboard.swift */,
 				129BDFFF1DE4AB9600191F96 /* Keyboard.swift */,
 				D2CAF3371DA2A6ED00E6E843 /* CoreData */,
 				12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */,
@@ -658,6 +663,7 @@
 				D2CAF3481DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift in Sources */,
 				D2B9655E1DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
 				129BE0001DE4AB9600191F96 /* Keyboard.swift in Sources */,
+				D26C6C2A1DEC83B800B7D26A /* Storyboard.swift in Sources */,
 				D273A59A1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				D262EF1E1DA5487F0061AB10 /* ModelVersion.swift in Sources */,
 				D20544FA1DDC508B007DCE97 /* Configuration.swift in Sources */,
@@ -713,6 +719,7 @@
 				D2CAF33E1DA2A71300E6E843 /* NSFetchRequest+Utils.swift in Sources */,
 				12B956411D8820CA00F75DD5 /* String+Validation.swift in Sources */,
 				D262EF281DA54AD10061AB10 /* Sequence+Utils.swift in Sources */,
+				D26C6C2C1DEC83B800B7D26A /* Storyboard.swift in Sources */,
 				D2CAF3461DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -737,6 +744,7 @@
 				D2B965661DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift in Sources */,
 				D2CAF33F1DA2A71300E6E843 /* NSFetchRequest+Utils.swift in Sources */,
 				D2B965611DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
+				D26C6C2D1DEC83B800B7D26A /* Storyboard.swift in Sources */,
 				12B956421D8820CA00F75DD5 /* String+Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
