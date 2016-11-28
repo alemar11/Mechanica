@@ -42,7 +42,7 @@ public protocol PropertyListConfiguration {
 
 /// **Mechanica**
 ///
-/// Property List Configuration struct.
+/// `Configuration` is a Property List reader.
 public struct Configuration: PropertyListConfiguration {
   
   public let propertyList: NSDictionary
