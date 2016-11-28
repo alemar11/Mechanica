@@ -76,7 +76,7 @@ public struct Configuration: PropertyListConfiguration {
 /// **Mechanica**
 ///
 /// Types adopting the `BoolMappable` protocol can be used to construct key path to `Bool` values avoiding stringly typed API.
-public protocol BoolMappable{
+public protocol BoolMappable {
   associatedtype BoolKey : RawRepresentable
 }
 
