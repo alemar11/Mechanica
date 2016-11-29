@@ -64,7 +64,7 @@ extension StoryboardMappable where StoryboardName.RawValue == String {
    ```
    
   */
-  public static func storyboard(key: StoryboardName, bundle: Bundle? = nil) -> Storyboard {
+  public static func storyboard(forKey key: StoryboardName, bundle: Bundle? = nil) -> Storyboard {
     return Storyboard(storyboard: key, bundle: bundle)
   }
   
