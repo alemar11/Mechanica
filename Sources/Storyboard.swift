@@ -165,7 +165,7 @@ extension Storyboard {
    **Mechanica**
    
    Instantiates and returns a UIViewController conforming to `StoryboardIdentifiable`.
-   - note: In Xcode, set as "Storyboard Id" the UIViewController class name.
+   - note: In Xcode, set as "Storyboard ID" the UIViewController class name.
    
    ```
    let vc = myStoryboard.instantiateViewController() as TestViewController
@@ -185,7 +185,7 @@ extension Storyboard {
    **Mechanica**
    
    Instantiates and returns a NSViewController conforming to `StoryboardIdentifiable`.
-   - note: In Xcode, set as "Storyboard Id" the NSViewController class name.
+   - note: In Xcode, set as "Storyboard ID" the NSViewController class name.
    
    ```
    let vc = myStoryboard.instantiateViewController() as TestViewController
@@ -202,7 +202,7 @@ extension Storyboard {
    **Mechanica**
    
    Instantiates and returns a NSWindowController conforming to `StoryboardIdentifiable`.
-   - note: In Xcode, set as "Storyboard Id" the NSWindowController class name.
+   - note: In Xcode, set as "Storyboard ID" the NSWindowController class name.
    
    ```
    let wc = myStoryboard.instantiateViewController() as TestViewController
