@@ -164,6 +164,8 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s8.capitalizedFirst() == s8)
     let s9 = "h e l l o w o r l d"
     XCTAssertTrue(s9.capitalizedFirst() == "H e l l o w o r l d")
+    let s10 = "\u{200B}hello\u{200B}"
+    XCTAssertTrue(s10.capitalizedFirst() == s10)
   }
   
   func test_prefix() {
