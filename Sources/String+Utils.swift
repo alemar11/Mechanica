@@ -65,13 +65,13 @@ extension String {
   ///  Checks if a `String` contains a given pattern.
   ///
   /// - Parameters:
-  ///   - parameter pattern:       Pattern to match.
-  ///   - parameter caseSensitive: true (default) for case-sensitive search.
+  ///   -  pattern:       Pattern to match.
+  ///   - caseSensitive:  Search option: *true* for case-sensitive, *false* for case-insensitive. (if true this function is equivalent to `self.contains(...)`)
   ///
   ///  - returns: true if contains match, otherwise false.
-  public func contains(_ pattern: String, caseSensitive: Bool = true) -> Bool {
+  public func contains(_ pattern: String, caseSensitive: Bool) -> Bool {
     if (caseSensitive) {
-      return (self.range(of: pattern) != nil)
+      return self.contains(pattern) //(self.range(of: pattern) != nil)
     } else {
       return (self.range(of: pattern, options: .caseInsensitive) != nil)
     }
@@ -134,6 +134,17 @@ extension String {
       return self[startIndex..<range.upperBound]
     }
     return ""
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
+  public func capitalizedFirst() -> String {
+    guard (!self.isEmpty) else { return self }
+    let capitalizedFirstCharacher = String(self[startIndex]).capitalized
+    let result = capitalizedFirstCharacher + String(self.characters.dropFirst())
+    return result
+    
   }
   
   /// **Mechanica**

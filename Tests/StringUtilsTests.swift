@@ -63,13 +63,6 @@ class StringUtilsTests: XCTestCase {
     XCTAssertFalse("Hello".starts(with:"helloo", caseSensitive: false))
   }
   
-  func test_capitalized() {
-    XCTAssertTrue("a".capitalized == "A")
-    XCTAssertTrue("aa".capitalized == "Aa")
-    XCTAssertTrue("aba".capitalized == "Aba")
-    XCTAssertTrue("🤔aa".capitalized == "🤔Aa")
-  }
-  
   func test_reversed() {
     XCTAssertTrue("a".reversed() == "a")
     XCTAssertTrue("aa".reversed() == "aa")
@@ -77,24 +70,25 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("🤔aa".reversed() == "aa🤔")
   }
   
-  func test_contains() {
-    XCTAssertTrue("AaBbCc".contains("a"))
-    XCTAssertTrue("AaBbCc".contains("Aa"))
+  func test_contains_caseSensitive() {
+    XCTAssertTrue("AaBbCc".contains("a", caseSensitive: true))
+    XCTAssertTrue("AaBbCc".contains("Aa", caseSensitive: true))
     
-    XCTAssertFalse("AaBbCc".contains("aa")) //case sensitive
+    XCTAssertFalse("AaBbCc".contains("aa", caseSensitive: true)) //case sensitive
     XCTAssertTrue("AaBbCc".contains("aa", caseSensitive: false)) //case insensitive
     XCTAssertTrue("AaBbCc".contains("Aa", caseSensitive: true)) //case sensitive
     XCTAssertFalse("AaBbCc".contains("aa", caseSensitive: true)) //case sensitive
     
-    XCTAssertFalse("HELLO world".contains("hello")) //case sensitive
+    XCTAssertFalse("HELLO world".contains("hello", caseSensitive: true)) //case sensitive
     XCTAssertTrue("HELLO world".contains("hello", caseSensitive: false)) //case insensitive
     
-    XCTAssertTrue("AaB🤔bCc".contains("🤔"))
-    XCTAssertFalse("AaB🤔bCc".contains("🤔🤔"))
-    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("ta"))
-    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("\u{200B}"))
-    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("🇮🇹"))
-    XCTAssertFalse("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("{20"))
+    XCTAssertTrue("AaB🤔bCc".contains("🤔", caseSensitive: true))
+    XCTAssertFalse("AaB🤔bCc".contains("🤔🤔", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("ta", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("\u{200B}", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("🇮🇹", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("🇮🇹", caseSensitive: false))
+    XCTAssertFalse("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("{20", caseSensitive: true))
   }
   
   func test_replace() {
@@ -149,6 +143,27 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s5.trimmedLeft(characterSet: NSCharacterSet.alphanumerics) == "  abcdefg  ")
     XCTAssertTrue(s5.trimmed() == "abcdefg")
     
+  }
+  
+  func test_capitalizedFirst() {
+    let s1 = "   hello world   "
+    XCTAssertTrue(s1.capitalizedFirst() == s1)
+    let s2 = "hello world   "
+    XCTAssertTrue(s2.capitalizedFirst() == "Hello world   ")
+    let s3 = "1 hello world   "
+    XCTAssertTrue(s3.capitalizedFirst() == s3)
+    let s4 = "🇮🇹 hello world   "
+    XCTAssertTrue(s4.capitalizedFirst() == s4)
+    let s5 = "🇮🇹🇮🇹 hello world   "
+    XCTAssertTrue(s5.capitalizedFirst() == s5)
+    let s6 = "Hello world   "
+    XCTAssertTrue(s6.capitalizedFirst() == s6)
+    let s7 = "\na"
+    XCTAssertTrue(s7.capitalizedFirst() == s7)
+    let s8 = ""
+    XCTAssertTrue(s8.capitalizedFirst() == s8)
+    let s9 = "h e l l o w o r l d"
+    XCTAssertTrue(s9.capitalizedFirst() == "H e l l o w o r l d")
   }
   
   func test_prefix() {
