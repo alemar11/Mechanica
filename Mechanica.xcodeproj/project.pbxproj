@@ -77,6 +77,17 @@
 		D273A59B1DD5FB8B0007796F /* Mechanica.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273A5991DD5FB8B0007796F /* Mechanica.swift */; };
 		D273A59C1DD5FB8B0007796F /* Mechanica.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273A5991DD5FB8B0007796F /* Mechanica.swift */; };
 		D273A59D1DD5FB8B0007796F /* Mechanica.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273A5991DD5FB8B0007796F /* Mechanica.swift */; };
+		D278BD961DEF1061006FAD83 /* Color+Flat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD941DEF1061006FAD83 /* Color+Flat.swift */; };
+		D278BD971DEF1061006FAD83 /* Color+Flat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD941DEF1061006FAD83 /* Color+Flat.swift */; };
+		D278BD981DEF1061006FAD83 /* Color+Flat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD941DEF1061006FAD83 /* Color+Flat.swift */; };
+		D278BD991DEF1061006FAD83 /* Color+Flat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD941DEF1061006FAD83 /* Color+Flat.swift */; };
+		D278BD9A1DEF1061006FAD83 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD951DEF1061006FAD83 /* Color+Utils.swift */; };
+		D278BD9B1DEF1061006FAD83 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD951DEF1061006FAD83 /* Color+Utils.swift */; };
+		D278BD9C1DEF1061006FAD83 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD951DEF1061006FAD83 /* Color+Utils.swift */; };
+		D278BD9D1DEF1061006FAD83 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD951DEF1061006FAD83 /* Color+Utils.swift */; };
+		D278BDA31DEF139F006FAD83 /* ColorUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD9E1DEF1336006FAD83 /* ColorUtilsTests.swift */; };
+		D278BDA41DEF139F006FAD83 /* ColorUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD9E1DEF1336006FAD83 /* ColorUtilsTests.swift */; };
+		D278BDA51DEF13A0006FAD83 /* ColorUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D278BD9E1DEF1336006FAD83 /* ColorUtilsTests.swift */; };
 		D289ACFD1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289ACFC1DC0A678003DA7B8 /* StringUtilsTests.swift */; };
 		D289ACFE1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289ACFC1DC0A678003DA7B8 /* StringUtilsTests.swift */; };
 		D289ACFF1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289ACFC1DC0A678003DA7B8 /* StringUtilsTests.swift */; };
@@ -167,6 +178,9 @@
 		D26C6C291DEC83B800B7D26A /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		D273A5941DD5C5BA0007796F /* SequenceUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceUtilsTests.swift; sourceTree = "<group>"; };
 		D273A5991DD5FB8B0007796F /* Mechanica.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mechanica.swift; sourceTree = "<group>"; };
+		D278BD941DEF1061006FAD83 /* Color+Flat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Flat.swift"; sourceTree = "<group>"; };
+		D278BD951DEF1061006FAD83 /* Color+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Utils.swift"; sourceTree = "<group>"; };
+		D278BD9E1DEF1336006FAD83 /* ColorUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtilsTests.swift; sourceTree = "<group>"; };
 		D289ACFC1DC0A678003DA7B8 /* StringUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtilsTests.swift; sourceTree = "<group>"; };
 		D289AD011DC0B463003DA7B8 /* StringValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringValidationTests.swift; sourceTree = "<group>"; };
 		D2B9655D1DD0C26E000C71C1 /* Collection+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+CoreData.swift"; sourceTree = "<group>"; };
@@ -269,6 +283,7 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D278BD931DEF102A006FAD83 /* Color */,
 				D26C6C291DEC83B800B7D26A /* Storyboard.swift */,
 				129BDFFF1DE4AB9600191F96 /* Keyboard.swift */,
 				D2CAF3371DA2A6ED00E6E843 /* CoreData */,
@@ -291,6 +306,7 @@
 				D23748811DD362990064EA22 /* BundleInfoTests.swift */,
 				D273A5941DD5C5BA0007796F /* SequenceUtilsTests.swift */,
 				12F0E67B1DE5A6F3002A3A43 /* Configuration Tests */,
+				D278BD9E1DEF1336006FAD83 /* ColorUtilsTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -323,6 +339,15 @@
 				D20545021DDC5274007DCE97 /* ConfigurationDemo.plist */,
 			);
 			name = "Configuration Tests";
+			sourceTree = "<group>";
+		};
+		D278BD931DEF102A006FAD83 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				D278BD941DEF1061006FAD83 /* Color+Flat.swift */,
+				D278BD951DEF1061006FAD83 /* Color+Utils.swift */,
+			);
+			name = Color;
 			sourceTree = "<group>";
 		};
 		D289AD051DC0B54D003DA7B8 /* String Tests */ = {
@@ -671,6 +696,7 @@
 				D2C149951DCCE04000376031 /* NSManagedObject+Deletable.swift in Sources */,
 				12B9563A1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				12431A5F1DCE2F5A00594940 /* NSManagedObjectConfigurable.swift in Sources */,
+				D278BD9A1DEF1061006FAD83 /* Color+Utils.swift in Sources */,
 				D2CAF3481DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift in Sources */,
 				D2B9655E1DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
 				129BE0001DE4AB9600191F96 /* Keyboard.swift in Sources */,
@@ -678,6 +704,7 @@
 				D273A59A1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				D262EF1E1DA5487F0061AB10 /* ModelVersion.swift in Sources */,
 				D20544FA1DDC508B007DCE97 /* Configuration.swift in Sources */,
+				D278BD961DEF1061006FAD83 /* Color+Flat.swift in Sources */,
 				D21A31F01DEDC9DA00E4A609 /* String+Conversions.swift in Sources */,
 				D2B965631DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift in Sources */,
 				D2CAF33C1DA2A71300E6E843 /* NSFetchRequest+Utils.swift in Sources */,
@@ -702,6 +729,7 @@
 				D2B9655F1DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
 				D273A59B1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				D21A31F11DEDC9DA00E4A609 /* String+Conversions.swift in Sources */,
+				D278BD9B1DEF1061006FAD83 /* Color+Utils.swift in Sources */,
 				D262EF1F1DA5487F0061AB10 /* ModelVersion.swift in Sources */,
 				D20544FB1DDC508B007DCE97 /* Configuration.swift in Sources */,
 				D2B965641DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift in Sources */,
@@ -709,6 +737,7 @@
 				12B956401D8820CA00F75DD5 /* String+Validation.swift in Sources */,
 				D262EF271DA54AD10061AB10 /* Sequence+Utils.swift in Sources */,
 				D2CAF3451DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift in Sources */,
+				D278BD971DEF1061006FAD83 /* Color+Flat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,6 +757,7 @@
 				D2B965601DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
 				D273A59C1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				D262EF201DA5487F0061AB10 /* ModelVersion.swift in Sources */,
+				D278BD981DEF1061006FAD83 /* Color+Flat.swift in Sources */,
 				D20544FC1DDC508B007DCE97 /* Configuration.swift in Sources */,
 				D2B965651DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift in Sources */,
 				D2CAF33E1DA2A71300E6E843 /* NSFetchRequest+Utils.swift in Sources */,
@@ -735,6 +765,7 @@
 				D262EF281DA54AD10061AB10 /* Sequence+Utils.swift in Sources */,
 				D26C6C2C1DEC83B800B7D26A /* Storyboard.swift in Sources */,
 				D2CAF3461DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift in Sources */,
+				D278BD9C1DEF1061006FAD83 /* Color+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +785,7 @@
 				12B956301D880B3B00F75DD5 /* Optional+Utils.swift in Sources */,
 				12B9563D1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				D20544FD1DDC508B007DCE97 /* Configuration.swift in Sources */,
+				D278BD991DEF1061006FAD83 /* Color+Flat.swift in Sources */,
 				D2CAF3431DA2A71300E6E843 /* NSManagedObject+Utils.swift in Sources */,
 				D2C149981DCCE04000376031 /* NSManagedObject+Deletable.swift in Sources */,
 				D2B965661DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift in Sources */,
@@ -761,6 +793,7 @@
 				D2B965611DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
 				D26C6C2D1DEC83B800B7D26A /* Storyboard.swift in Sources */,
 				12B956421D8820CA00F75DD5 /* String+Validation.swift in Sources */,
+				D278BD9D1DEF1061006FAD83 /* Color+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,6 +805,7 @@
 				D289ACFD1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
 				D21A31F51DEDD0BE00E4A609 /* StringConversionsTests.swift in Sources */,
 				D289AD021DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
+				D278BDA31DEF139F006FAD83 /* ColorUtilsTests.swift in Sources */,
 				D23748821DD362990064EA22 /* BundleInfoTests.swift in Sources */,
 				D20544FF1DDC51F8007DCE97 /* ConfigurationTests.swift in Sources */,
 			);
@@ -785,6 +819,7 @@
 				D289ACFE1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
 				D21A31F61DEDD0BE00E4A609 /* StringConversionsTests.swift in Sources */,
 				D289AD031DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
+				D278BDA41DEF139F006FAD83 /* ColorUtilsTests.swift in Sources */,
 				D23748831DD362990064EA22 /* BundleInfoTests.swift in Sources */,
 				D20545001DDC51F8007DCE97 /* ConfigurationTests.swift in Sources */,
 			);
@@ -798,6 +833,7 @@
 				D289ACFF1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
 				D21A31F71DEDD0BE00E4A609 /* StringConversionsTests.swift in Sources */,
 				D289AD041DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
+				D278BDA51DEF13A0006FAD83 /* ColorUtilsTests.swift in Sources */,
 				D23748841DD362990064EA22 /* BundleInfoTests.swift in Sources */,
 				D20545011DDC51F8007DCE97 /* ConfigurationTests.swift in Sources */,
 			);
@@ -1175,7 +1211,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1192,7 +1228,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
