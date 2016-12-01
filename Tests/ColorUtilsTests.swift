@@ -62,7 +62,7 @@ class ColorUtilsTests: XCTestCase {
     #if os(iOS) || os(tvOS) || os(watchOS)
       let orange = Color(red: 255/255, green: 165/255, blue: 0, alpha: 1)
     #elseif os(OSX)
-      let orange = Color(calibratedRed: 255/255, green: 165/255, blue: 0, alpha: 1)
+      let orange = Color(red: 255/255, green: 165/255, blue: 0, alpha: 1)
     #endif
     XCTAssertNotNil(orange.rgba)
     let (r,g,b,a) = orange.rgba!

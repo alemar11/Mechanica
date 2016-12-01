@@ -95,24 +95,17 @@ import Foundation
         return alpha
     }
     
-     private final var hex: [UInt8] {
-      var red   : CGFloat = 0
-      var green : CGFloat = 0
-      var blue  : CGFloat = 0
-      self.getRed(&red, green: &green, blue: &blue, alpha: nil)
-      return [UInt8(red * 255), UInt8(green * 255), UInt8(blue * 255)]
-    }
     
-     private convenience init (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
-      assert(r >= 0 && r <= 255, "Invalid red component")
-      assert(g >= 0 && g <= 255, "Invalid green component")
-      assert(b >= 0 && b <= 255, "Invalid blue component")
-      self.init(red: r / 255, green: g / 255, blue: b / 255, alpha: a)
-    }
-    
-     private convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
-      self.init(r: r, g: g, b: b, a: 1)
-    }
+//     private convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
+//      self.init(r: r, g: g, b: b, a: 1)
+//    }
+//    
+//    private convenience init (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+//      assert(r >= 0 && r <= 255, "Invalid red component")
+//      assert(g >= 0 && g <= 255, "Invalid green component")
+//      assert(b >= 0 && b <= 255, "Invalid blue component")
+//      self.init(red: r / 255, green: g / 255, blue: b / 255, alpha: a)
+//    }
     
     /// **Mechanica**
     ///
@@ -145,8 +138,9 @@ import Foundation
     /// Returns the components that make up the color in the RGB color space.
     public final var rgba: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8)? {
       
-      guard let color = self.usingColorSpaceName(NSCalibratedRGBColorSpace) else { return nil } // Could not be converted
-      
+      let spacedColor = (self.colorSpaceName != NSCalibratedRGBColorSpace) ? self.usingColorSpace(NSColorSpace.sRGB) : self
+      guard let color = spacedColor else { return nil } // Could not be converted
+        
       let r = color.redComponent
       let g = color.greenComponent
       let b = color.blueComponent
@@ -154,10 +148,8 @@ import Foundation
       
       return (red: UInt8(r * 255), green: UInt8(g * 255), blue: UInt8(b * 255), alpha: UInt8(a * 255))
     }
-  
     
   }
-  
   
 #endif
 
@@ -179,7 +171,7 @@ extension Color {
     #if os(iOS) || os(tvOS) || os(watchOS)
       self.init(red: red, green: green, blue: blue, alpha: alpha)
     #else
-      self.init(calibratedRed: red, green: green, blue: blue, alpha: alpha)
+      self.init(red: red, green: green, blue: blue, alpha: alpha)
     #endif
   }
   
@@ -190,29 +182,57 @@ extension Color {
   /// - Parameters:
   ///   - hexString: The hex color string, e.g.: "#551a8b" or "551a8b" or "551A8B".
   public convenience init?(hexString: String, alpha: CGFloat = 1) {
+    
     guard !hexString.isBlank else { return nil }
-    var hex = hexString.hasPrefix("#") ? String(hexString.characters.dropFirst()) : hexString
     
-    guard hex.length == 6 || hex.length == 3 else { return nil }
+    var formattedHexString = hexString.hasPrefix("#") ? String(hexString.characters.dropFirst()) : hexString
     
-    if (hex.length == 3) {
-      switch(hex.lowercased()){
-        case "0ff": hex = "00ffff"  //acqua
-        case "000": hex = "000000"  //black
-        case "00f": hex = "0000ff"  //blue
-        case "f0f": hex = "ff00ff"  //fuchsia
-        case "0f0": hex = "00ff00"  //lime
-        case "f00": hex = "ff0000"  //red
-        case "fff": hex = "ffffff"  //white
-        case "ff0": hex = "ffff00"  //yellow
-      default:
-        return nil
-      }
+    guard formattedHexString.length == 6 || formattedHexString.length == 3 else { return nil }
+    
+    //shortcut hex color, i.e. f0f becomes f0ff0f
+    if (formattedHexString.length == 3) {
+        let newHexString = formattedHexString[0]!*2 + formattedHexString[1]!*2 + formattedHexString[2]!*2
+        formattedHexString = newHexString
     }
     
     var hexEquivalent: UInt32 = 0
-    Scanner(string: hex).scanHexInt32(&hexEquivalent)
+    Scanner(string: formattedHexString).scanHexInt32(&hexEquivalent)
     self.init(hex: hexEquivalent, alpha: alpha)
   }
+  
+  /// **Mechanica**
+  ///
+  /// Returns the hexadecimal string representation of the color.
+  public final var hexString: String {
+    return String(format:"#%06x", rgbUInt32)
+  }
+  
+  //A UInt32 that represents the RGB color.
+  private final var rgbUInt32: UInt32 {
+    let (r, g, b, _) = self.rgba!
+    return (UInt32(r) << 16) | (UInt32(g) << 8) | UInt32(b)
+  }
+  
+  //A UInt32 that represents the RGBA color.
+  private final var rgbaUInt32: UInt32 {
+    let (r, g, b, a) = self.rgba!
+    return (UInt32(r) << 32) | (UInt32(g) << 16) | UInt32(b) << 8 | UInt32(a)
+  }
+  
+  //    /**
+  //     Returns the color representation as a 32-bit integer.
+  //     - returns: A UInt32 that represents the hexadecimal color.
+  //     */
+  //    public final var hex: UInt32 {
+  //      let (r, g, b, _) = self.rgba
+  //      return Model.rgb(r * 255, g * 255, b * 255).hex
+  //    }
+  //
+  //    /// Converts RGB to UInt32
+  //    private func convert(rgb r: CGFloat, _ g: CGFloat, _ b: CGFloat) -> UInt32 {
+  //      return (UInt32(r) << 16) | (UInt32(g) << 8) | UInt32(b)
+  //    }
+  
+
 }
 
