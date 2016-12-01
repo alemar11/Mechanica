@@ -165,12 +165,12 @@ extension Color {
     
     /// **Mechanica**
     ///
-    /// Carrot color.
+    /// Pumpkin color.
     ///
     /// `#d35400`
     ///
     /// `rgba(211, 84, 0, 1.0)`
-    public static let  carrot       : Color = #colorLiteral(red: 0.8274509804, green: 0.3294117647, blue: 0, alpha: 1)
+    public static let  pumpkin       : Color = #colorLiteral(red: 0.8274509804, green: 0.3294117647, blue: 0, alpha: 1)
     
     // MARK: -
     
