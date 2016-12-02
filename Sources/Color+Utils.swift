@@ -49,6 +49,8 @@ import Foundation
     /// Returns the components that make up the color in the RGB color space.
     public final var rgba: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8)? {
       
+      //guard let colorSpace = self.cgColor.colorSpace, colorSpace.name! == CGColorSpace.sRGB else { return nil }
+      
       var r : CGFloat = 0
       var g : CGFloat = 0
       var b : CGFloat = 0
@@ -56,45 +58,46 @@ import Foundation
       
       guard self.getRed(&r, green: &g, blue: &b, alpha: &a)  else { return nil } // Could not be converted
       
+      guard (0.0...1.0 ~= r && 0.0...1.0 ~= g && 0.0...1.0 ~= b && 0.0...1.0 ~= a) else { return nil }
+      
       return (red: UInt8(r * 255), green: UInt8(g * 255), blue: UInt8(b * 255), alpha: UInt8(a * 255))
     }
     
-    /// **Mechanica**
-    ///
-    /// The red component value of the color.
-    public final var redComponent: CGFloat {
-      var r: CGFloat = 0
-      getRed(&r, green: nil, blue: nil, alpha: nil)
-      return r
-    }
-    
-    /// **Mechanica**
-    ///
-    /// The green component value of the color.
-    public final var greenComponent: CGFloat {
-      var g: CGFloat = 0
-      getRed(nil, green: &g, blue: nil, alpha: nil)
-      return g
-    }
-    
-    /// **Mechanica**
-    ///
-    /// The blue component value of the color.
-    public final var blueComponent: CGFloat {
-      var b: CGFloat = 0
-      getRed(nil, green: nil, blue: &b, alpha: nil)
-      return b
-    }
-    
-    /// **Mechanica**
-    ///
-    /// The alpha component value of the color.
-    public final var alphaComponent: CGFloat {
-        var alpha: CGFloat = 0
-        getRed(nil, green: nil, blue: nil, alpha: &alpha)
-        return alpha
-    }
-    
+//    /// **Mechanica**
+//    ///
+//    /// The red component value of the color.
+//    public final var redComponent: CGFloat {
+//      var r: CGFloat = 0
+//      getRed(&r, green: nil, blue: nil, alpha: nil)
+//      return r
+//    }
+//    
+//    /// **Mechanica**
+//    ///
+//    /// The green component value of the color.
+//    public final var greenComponent: CGFloat {
+//      var g: CGFloat = 0
+//      getRed(nil, green: &g, blue: nil, alpha: nil)
+//      return g
+//    }
+//    
+//    /// **Mechanica**
+//    ///
+//    /// The blue component value of the color.
+//    public final var blueComponent: CGFloat {
+//      var b: CGFloat = 0
+//      getRed(nil, green: nil, blue: &b, alpha: nil)
+//      return b
+//    }
+//    
+//    /// **Mechanica**
+//    ///
+//    /// The alpha component value of the color.
+//    public final var alphaComponent: CGFloat {
+//        var alpha: CGFloat = 0
+//        getRed(nil, green: nil, blue: nil, alpha: &alpha)
+//        return alpha
+//    }
     
 //     private convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
 //      self.init(r: r, g: g, b: b, a: 1)
@@ -218,21 +221,6 @@ extension Color {
     let (r, g, b, a) = self.rgba!
     return (UInt32(r) << 32) | (UInt32(g) << 16) | UInt32(b) << 8 | UInt32(a)
   }
-  
-  //    /**
-  //     Returns the color representation as a 32-bit integer.
-  //     - returns: A UInt32 that represents the hexadecimal color.
-  //     */
-  //    public final var hex: UInt32 {
-  //      let (r, g, b, _) = self.rgba
-  //      return Model.rgb(r * 255, g * 255, b * 255).hex
-  //    }
-  //
-  //    /// Converts RGB to UInt32
-  //    private func convert(rgb r: CGFloat, _ g: CGFloat, _ b: CGFloat) -> UInt32 {
-  //      return (UInt32(r) << 16) | (UInt32(g) << 8) | UInt32(b)
-  //    }
-  
-
+    
 }
 

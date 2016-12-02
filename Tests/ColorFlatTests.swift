@@ -60,4 +60,49 @@ class ColorFlatTests: XCTestCase {
     
   }
   
+  func test_demo() {
+    
+      //P3{234,51,35}
+      let redP3 = Color(displayP3Red: 234/255, green: 51/255, blue: 35/255, alpha: 255/255)
+      let redRGBA = Color(red: 255/255, green: 0/255, blue: 0/255, alpha: 255/255)
+      
+      XCTAssert(redP3.rgbaExtended! == redRGBA.rgba!)
+      
+    
+    
+       let peterRiverP3 = Color(displayP3Red: 0.322, green: 0.588, blue: 0.835, alpha: 1.0)
+      let peterRiverRGBA = Color(red: 52/255, green: 152/255, blue: 219/255, alpha: 255/255)
+        //Color.Flat.peterRiver
+      //rgba(52, 152, 219, 255)
+  
+     XCTAssert(peterRiverP3.rgbaExtended! == peterRiverRGBA.rgba!)
+    
+    
+      //(142, 68, 173, 1.0)
+      let wisteriaP3 = Color(displayP3Red: 132/255, green: 72/255, blue: 167/255, alpha: 255/255)
+      let wisteriaRGBA = Color(red: 142/255, green: 68/255, blue: 173/255, alpha: 255/255)
+      
+         XCTAssert(wisteriaP3.rgbaExtended! == wisteriaRGBA.rgba!)
+
+    
+
+    
+  }
+  
 }
+  extension Color {
+  public final var rgbaExtended: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8)? {
+    
+    let color = self.cgColor.converted(to: CGColorSpace(name: CGColorSpace.sRGB)!, intent: CGColorRenderingIntent.defaultIntent, options: nil)!
+    
+    let r : CGFloat = color.components![0]
+    let g : CGFloat = color.components![1]
+    let b : CGFloat = color.components![2]
+    let a : CGFloat = color.components![3]
+    
+    return (red: UInt8(round(r * 255)), green: UInt8(round(g * 255)), blue: UInt8(round(b * 255)), alpha: UInt8(round(a * 255)))
+  }
+    
+    
+  }
+
