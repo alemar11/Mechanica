@@ -189,6 +189,7 @@ public final class Keyboard {
   /// - Returns: `Self` for chaining purpose.
   @discardableResult
   public func on(event: Event, do callback: Callback?) -> Self {
+    //if you use a typealias for a function type in a function declaration, that parameter is always considered escaping
     callbacks[event] = callback
     return self
   }
