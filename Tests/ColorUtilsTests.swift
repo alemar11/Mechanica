@@ -59,17 +59,33 @@ class ColorUtilsTests: XCTestCase {
   
   func test_color_components() {
     //orange (255,165,0)
-    #if os(iOS) || os(tvOS) || os(watchOS)
-      let orange = Color(red: 255/255, green: 165/255, blue: 0, alpha: 1)
-    #elseif os(OSX)
-      let orange = Color(red: 255/255, green: 165/255, blue: 0, alpha: 1)
-    #endif
-    XCTAssertNotNil(orange.rgba)
-    let (r,g,b,a) = orange.rgba!
-    XCTAssert(r == 255, "")
-    XCTAssert(g == 165, "")
-    XCTAssert(b == 0, "")
-    XCTAssert(a == 255, "")
+    do {
+      #if os(iOS) || os(tvOS) || os(watchOS)
+        let orange = Color(red: 255/255, green: 165/255, blue: 0, alpha: 1)
+      #elseif os(OSX)
+        let orange = Color(srgbRed: 255/255, green: 165/255, blue: 0, alpha: 1)
+      #endif
+      XCTAssertNotNil(orange.rgba)
+      let (r,g,b,a) = orange.rgba!
+      XCTAssert(r == 255, "")
+      XCTAssert(g == 165, "")
+      XCTAssert(b == 0, "")
+      XCTAssert(a == 255, "")
+    }
+    
+    do{
+      #if os(OSX)
+        let orange_custom = Color(red: 255/255, green: 165/255, blue: 0, alpha: 1)
+        let orange_calibrated = Color(calibratedRed: 255/255, green: 165/255, blue: 0, alpha: 1)
+        let orange_device = Color(deviceRed: 255/255, green: 165/255, blue: 0, alpha: 1)
+        XCTAssertNotNil(orange_custom.rgba)
+        XCTAssertNotNil(orange_calibrated.rgba)
+        XCTAssertNotNil(orange_device.rgba)
+        XCTAssert(orange_custom.rgba! == (255,165,0,255))
+        XCTAssert(orange_calibrated.rgba! == (255,165,0,255))
+        XCTAssert(orange_device.rgba! == (255,165,0,255))
+      #endif
+    }
   }
   
   func test_hex() {
