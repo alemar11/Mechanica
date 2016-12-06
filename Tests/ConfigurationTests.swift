@@ -105,15 +105,6 @@ class ConfigurationTests: XCTestCase {
     return Bundle(for: type(of: self)).path(forResource: "ConfigurationDemo", ofType: "plist")!
   }()
   
-  override func setUp() {
-    super.setUp()
-  }
-  
-  override func tearDown() {
-    super.tearDown()
-  }
-  
-  
   func test_configuration() {
     
     guard let config = Configuration(plistPath: plistPath) else {

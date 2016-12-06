@@ -26,15 +26,7 @@ import XCTest
 @testable import Mechanica
 
 class StringUtilsTests: XCTestCase {
-  
-  override func setUp() {
-    super.setUp()
-  }
-  
-  override func tearDown() {
-    super.tearDown()
-  }
-  
+    
   func test_length() {
     XCTAssertTrue("".length == 0)
     XCTAssertTrue(" ".length == 1)

@@ -26,15 +26,7 @@ import XCTest
 @testable import Mechanica
 
 class StringConversionsTests: XCTestCase {
-  
-  override func setUp() {
-    super.setUp()
-  }
-  
-  override func tearDown() {
-    super.tearDown()
-  }
-  
+    
   func test_bool() {
     guard let n = "1".bool, n == true else {
       XCTAssert(false, "Couldn't get the correct Bool value.")

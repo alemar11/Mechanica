@@ -26,15 +26,7 @@ import XCTest
 @testable import Mechanica
 
 class StringValidationTests: XCTestCase {
-  
-  override func setUp() {
-    super.setUp()
-  }
-  
-  override func tearDown() {
-    super.tearDown()
-  }
-  
+    
   func test_hasLetters() {
     XCTAssertTrue("a".hasLetters)
     XCTAssertTrue("11f5644+fadsdsf4".hasLetters)

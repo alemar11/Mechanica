@@ -26,15 +26,7 @@ import XCTest
 @testable import Mechanica
 
 class ColorUtilsTests: XCTestCase {
-  
-  override func setUp() {
-    super.setUp()
-  }
-  
-  override func tearDown() {
-    super.tearDown()
-  }
-  
+    
   func test_rgba() {
     do {
       let red = Color.red // 1.0, 0.0, 0.0

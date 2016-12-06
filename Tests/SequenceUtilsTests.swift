@@ -57,15 +57,7 @@ class SequenceUtilsTests: XCTestCase {
                        Demo(value1: "demo1",value2: 1),
                        Demo(value1: "demo1",value2: 1),
                        Demo(value1: "demo1",value2: 1)]
-  
-  override func setUp() {
-    super.setUp()
-  }
-  
-  override func tearDown() {
-    super.tearDown()
-  }
-  
+    
   func test_findFirstOccurrence() {
     
     let occurrence1 = list.findFirstOccurence(matching: {$0.value2 == 3})

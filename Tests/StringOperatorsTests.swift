@@ -10,14 +10,6 @@ import XCTest
 @testable import Mechanica
 
 class StringOperatorsTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
   
   func test_multiply() {
     XCTAssert("a"*2 == "aa")

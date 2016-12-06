@@ -26,15 +26,7 @@ import XCTest
 @testable import Mechanica
 
 class BundleInfoTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
+        
     func test_bundle() {
       let bundle = Bundle(identifier: mechanicaBundleIdentifier)
       XCTAssertTrue(bundle?.version != nil)
