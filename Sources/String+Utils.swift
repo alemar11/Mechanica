@@ -139,7 +139,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
-  public func capitalizedFirst() -> String {
+  public func capitalizedFirstCharacter() -> String {
     guard (!self.isEmpty) else { return self }
     let capitalizedFirstCharacher = String(self[startIndex]).capitalized
     let result = capitalizedFirstCharacher + String(self.characters.dropFirst())

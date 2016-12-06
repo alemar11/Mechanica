@@ -137,27 +137,27 @@ class StringUtilsTests: XCTestCase {
     
   }
   
-  func test_capitalizedFirst() {
+  func test_capitalizedFirstCharacter() {
     let s1 = "   hello world   "
-    XCTAssertTrue(s1.capitalizedFirst() == s1)
+    XCTAssertTrue(s1.capitalizedFirstCharacter() == s1)
     let s2 = "hello world   "
-    XCTAssertTrue(s2.capitalizedFirst() == "Hello world   ")
+    XCTAssertTrue(s2.capitalizedFirstCharacter() == "Hello world   ")
     let s3 = "1 hello world   "
-    XCTAssertTrue(s3.capitalizedFirst() == s3)
+    XCTAssertTrue(s3.capitalizedFirstCharacter() == s3)
     let s4 = "🇮🇹 hello world   "
-    XCTAssertTrue(s4.capitalizedFirst() == s4)
+    XCTAssertTrue(s4.capitalizedFirstCharacter() == s4)
     let s5 = "🇮🇹🇮🇹 hello world   "
-    XCTAssertTrue(s5.capitalizedFirst() == s5)
+    XCTAssertTrue(s5.capitalizedFirstCharacter() == s5)
     let s6 = "Hello world   "
-    XCTAssertTrue(s6.capitalizedFirst() == s6)
+    XCTAssertTrue(s6.capitalizedFirstCharacter() == s6)
     let s7 = "\na"
-    XCTAssertTrue(s7.capitalizedFirst() == s7)
+    XCTAssertTrue(s7.capitalizedFirstCharacter() == s7)
     let s8 = ""
-    XCTAssertTrue(s8.capitalizedFirst() == s8)
+    XCTAssertTrue(s8.capitalizedFirstCharacter() == s8)
     let s9 = "h e l l o w o r l d"
-    XCTAssertTrue(s9.capitalizedFirst() == "H e l l o w o r l d")
+    XCTAssertTrue(s9.capitalizedFirstCharacter() == "H e l l o w o r l d")
     let s10 = "\u{200B}hello\u{200B}"
-    XCTAssertTrue(s10.capitalizedFirst() == s10)
+    XCTAssertTrue(s10.capitalizedFirstCharacter() == s10)
   }
   
   func test_prefix() {
