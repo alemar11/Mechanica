@@ -24,7 +24,7 @@
 
 import CoreData
 
-//MARK: - Local Deletion
+// MARK: - Local Deletion
 
 fileprivate let markedForDeletionKey = "markedForDeletionAsOf"
 /// Objects marked for local deletion more than this time (in seconds) ago will get permanently deleted.
@@ -57,7 +57,7 @@ public protocol DelayedDeletable: class {
   
 }
 
-//MARK: DelayedDeletable Extension
+// MARK: - DelayedDeletable Extension
 
 extension DelayedDeletable {
   
@@ -100,7 +100,7 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
   
 }
 
-//MARK: Remote Deletion
+// MARK: - Remote Deletion
 
 fileprivate let MarkedForRemoteDeletionKey = "isMarkedForRemoteDeletion"
 
@@ -132,7 +132,7 @@ public protocol RemoteDeletable: class {
   
 }
 
-//MARK: RemoteDeletable Extension
+// MARK: - RemoteDeletable Extension
 
 extension RemoteDeletable {
   

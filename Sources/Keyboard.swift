@@ -59,7 +59,7 @@ public final class Keyboard {
   /// A `Keyboard` callback.
   public typealias Callback = (Options) -> ()
   
-  //MARK: - Keyboard Options
+  // MARK: - Keyboard Options
   
   /// **Mechanica**
   ///
@@ -81,7 +81,7 @@ public final class Keyboard {
     /// Identifies the duration of the keyboard animation in seconds.
     public let animationDuration: Double
     
-    //MARK: - Factory
+    // MARK: - Factory
     
     /// Creates a new `Keyboard.Options` struct for an `info` dicionary.
     fileprivate static func makeOptions(fromInfo info: [AnyHashable : Any]) -> Options {
@@ -117,7 +117,7 @@ public final class Keyboard {
     
   }
   
-  //MARK: - Keyboard Events
+  // MARK: - Keyboard Events
   
   /// **Mechanica**
   ///
@@ -283,7 +283,7 @@ public final class Keyboard {
   
 }
 
-//MARK: - Selectors
+// MARK: - Selectors
 
 fileprivate extension Selector {
   static let willShow = #selector(Keyboard.keyboardWillShow(_:))

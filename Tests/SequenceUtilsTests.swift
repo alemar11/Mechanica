@@ -92,7 +92,7 @@ class SequenceUtilsTests: XCTestCase {
     XCTAssertFalse(list.hasAllOccurrences{$0.value1 == "demo12"})
   }
   
-  //MARK: - AnyObject
+  // MARK: - AnyObject
   
   func test_contatinsObjectIdentical() {
     

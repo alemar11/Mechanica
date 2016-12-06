@@ -91,7 +91,7 @@ extension String {
   }
   
   
-  //MARK: - Trimming Methods
+  // MARK: - Trimming Methods
   
   /// **Mechanica**
   ///

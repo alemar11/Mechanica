@@ -38,7 +38,7 @@ public protocol PropertyListConfiguration {
   
 }
 
-//MARK: - -Configuration
+// MARK: - Configuration
 
 /**
  **Mechanica**
@@ -95,7 +95,7 @@ public struct Configuration: PropertyListConfiguration {
   
 }
 
-//MARK: - Bool
+// MARK: - Bool
 
 /// **Mechanica**
 ///
@@ -117,7 +117,7 @@ extension BoolMappable where BoolKey.RawValue == String, Self: PropertyListConfi
   
 }
 
-//MARK: - String
+// MARK: - String
 
 /// **Mechanica**
 ///
@@ -139,7 +139,7 @@ extension StringMappable where StringKey.RawValue == String, Self: PropertyListC
   
 }
 
-//MARK: - URL
+// MARK: - URL
 
 /// **Mechanica**
 ///
@@ -160,7 +160,7 @@ extension URLMappable where URLKey.RawValue == String, Self: PropertyListConfigu
   
 }
 
-//MARK: - NSNumber
+// MARK: - NSNumber
 
 /// **Mechanica**
 ///
@@ -182,7 +182,7 @@ extension NumberMappable where NumberKey.RawValue == String, Self: PropertyListC
   
 }
 
-//MARK: - Date
+// MARK: - Date
 
 /// **Mechanica**
 ///
@@ -204,7 +204,7 @@ extension DateMappable where DateKey.RawValue == String, Self: PropertyListConfi
   
 }
 
-//MARK: - Data
+// MARK: - Data
 
 /// **Mechanica**
 ///
@@ -226,7 +226,7 @@ extension DataMappable where DataKey.RawValue == String, Self: PropertyListConfi
   
 }
 
-//MARK: - Array
+// MARK: - Array
 
 /// **Mechanica**
 ///
@@ -248,7 +248,7 @@ extension ArrayMappable where ArrayKey.RawValue == String, Self: PropertyListCon
   
 }
 
-//MARK: - Dictionary
+// MARK: - Dictionary
 
 /// **Mechanica**
 ///

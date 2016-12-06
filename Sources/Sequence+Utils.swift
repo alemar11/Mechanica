@@ -52,7 +52,7 @@ extension Sequence {
   
 }
 
-//MARK: - AnyObject
+// MARK: - AnyObject
 
 extension Sequence where Iterator.Element: AnyObject {
   

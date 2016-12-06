@@ -345,7 +345,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertNotNil(string["😗"])
     
     
-    //MARK: Range
+    // MARK: Range
     
     XCTAssertTrue(string[Range(0..<3)] == "∆Te")
     XCTAssertTrue(string[Range(3..<3)] == "")
@@ -370,7 +370,7 @@ class StringUtilsTests: XCTestCase {
     
     XCTAssertNil(string[Range(string.length+10 ..< string.length+10)])
     
-    //MARK: NSRange
+    // MARK: NSRange
     
     let nsrange = NSRange(location: 0, length: 1)
     XCTAssertTrue(string[nsrange] == "∆")
