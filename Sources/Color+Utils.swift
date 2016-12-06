@@ -58,7 +58,6 @@ import Foundation
       var g : CGFloat = 0
       var b : CGFloat = 0
       var a : CGFloat = 0
-      
       guard color.getRed(&r, green: &g, blue: &b, alpha: &a)  else { return nil } // could not be converted
       
       //guard (0.0...1.0 ~= r && 0.0...1.0 ~= g && 0.0...1.0 ~= b && 0.0...1.0 ~= a) else { return nil } // invalid sRGB color
@@ -108,7 +107,7 @@ extension Color {
   
   /// **Mechanica**
   ///
-  /// Converts the color in an sRGB compatible color.
+  /// Creates a `new` color in the **sRGB** color space that matches (or *closely approximates*) the current color.
   /// - Note: [WWDC 2016 - 712](https://developer.apple.com/videos/play/wwdc2016/712/?time=2368)
   public final func convertingToCompatibleSRGBColor() -> Color? {
   
@@ -210,9 +209,11 @@ extension Color {
     return (UInt32(r) << 32) | (UInt32(g) << 16) | UInt32(b) << 8 | UInt32(a)
   }
   
-  //TODO: UInt32 -> RGB
+  //TODO: UInt32 to RGB
   
-  //TODO: UInt32 -> RGBA
+  //TODO: UInt32 to RGBA
+  
   
 }
+
 

@@ -162,7 +162,93 @@ class ColorUtilsTests: XCTestCase {
       XCTAssertNil(wrongColor4)
       let wrongColor5 = Color(hexString: "ff  ", alpha: 1)
       XCTAssertNil(wrongColor5)
+      let wrongColor6 = Color(hexString: "", alpha: 1)
+      XCTAssertNil(wrongColor6)
     }
+    
+  }
+  
+  func test_convertingToCompatibleSRGBColor() {
+    
+    /// RGB{255, 0, 0} P3{234, 51, 35}
+    let redP3 = Color(displayP3Red: 234/255, green: 51/255, blue: 35/255, alpha: 255/255)
+    let redRGBA = Color.red //Color(red: 255/255, green: 0/255, blue: 0/255, alpha: 255/255)
+    let redExtended = Color(red: 1.358, green: -0.074, blue:  -0.012, alpha: 255/255)
+    
+    XCTAssert(redP3.rgba! == redRGBA.rgba!)
+    XCTAssert(redExtended.rgba! == redRGBA.rgba!)
+    
+    do {
+      /// RGBA{153, 102, 51}
+      let brownRGBA = Color.brown
+      /// P3{145, 104, 60}
+      let brownP3 = Color(displayP3Red: 145/255, green: 104/255, blue: 60/255, alpha: 255/255)
+      
+      
+      /// RGBA_FROM_P3{152, 101, 51, 255}
+      
+      let (r_p3, g_p3, b_p3, a_p3) = brownP3.rgba!
+      let (r, g, b, a) = brownRGBA.rgba!
+      
+      XCTAssertTrue(r-1...r+1 ~= r_p3)
+      XCTAssertTrue(g-1...g+1 ~= g_p3)
+      XCTAssertTrue(b-1...b+1 ~= b_p3)
+      XCTAssertTrue(a == a_p3)
+    }
+    
+    do {
+      /// RGB(52, 152, 219)
+      let peterRiverRGBA = Color(red: 52/255, green: 152/255, blue: 219/255, alpha: 255/255)
+      /// P3{82, 150, 213)
+      let peterRiverP3 = Color(displayP3Red: 82/255, green: 150/255, blue: 213/255, alpha: 255/255)
+      //let peterRiverP3 = Color(displayP3Red: 0.3210, green: 0.5880, blue: 0.8370, alpha: 255/255)
+      //Color.Flat.peterRiver
+      
+      /// RGBA_FROM_P3{52, 152, 218, 255}
+      
+      let (r_p3, g_p3, b_p3, a_p3) = peterRiverP3.rgba!
+      let (r, g, b, a) = peterRiverRGBA.rgba!
+      
+      XCTAssertTrue(r-1...r+1 ~= r_p3)
+      XCTAssertTrue(g-1...g+1 ~= g_p3)
+      XCTAssertTrue(b-1...b+1 ~= b_p3)
+      XCTAssertTrue(a == a_p3)
+    }
+    
+    
+    do {
+      /// RGB(142, 68, 173)
+      let wisteriaRGBA = Color(red: 142/255, green: 68/255, blue: 173/255, alpha: 255/255)
+      /// P3{132,72,168,255}}
+      let wisteriaP3 = Color(displayP3Red: 132/255, green: 72/255, blue: 168/255, alpha: 255/255)
+      
+      
+      /// RGBA_FROM_P3{141, 68, 173, 255}
+      
+      let (r_p3, g_p3, b_p3, a_p3) = wisteriaP3.rgba!
+      let (r, g, b, a) = wisteriaRGBA.rgba!
+      
+      XCTAssertTrue(r-1...r+1 ~= r_p3)
+      XCTAssertTrue(g-1...g+1 ~= g_p3)
+      XCTAssertTrue(b-1...b+1 ~= b_p3)
+      XCTAssertTrue(a == a_p3)
+      
+    }
+  }
+  
+  func test_randomColor() {
+    
+    let randomColor = Color.random()
+    let colorSpace = randomColor.cgColor.colorSpace
+    XCTAssertNotNil(colorSpace)
+    let colorSpaceName = colorSpace!.name
+    XCTAssertNotNil(colorSpaceName)
+    
+    #if os(iOS) || os(tvOS) || os(watchOS)
+      XCTAssert(colorSpaceName! == CGColorSpace.extendedSRGB)
+    #else
+      XCTAssert(colorSpaceName! == CGColorSpace.sRGB)
+    #endif
     
   }
   
