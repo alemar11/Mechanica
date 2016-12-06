@@ -170,6 +170,8 @@ class ColorUtilsTests: XCTestCase {
     XCTAssert(redP3.rgba! == redRGBA.rgba!)
     XCTAssert(redExtended.rgba! == redRGBA.rgba!)
     
+    /// Converting a color from an extended sRGB space to sRGB, involves an approximation in the new RGBA values.
+    
     do {
       /// RGBA{153, 102, 51}
       let brownRGBA = Color.brown
