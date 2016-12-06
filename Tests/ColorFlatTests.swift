@@ -95,10 +95,21 @@ class ColorFlatTests: XCTestCase {
     let wisteriaRGBA = Color(red: 142/255, green: 68/255, blue: 173/255, alpha: 255/255)
     
     //XCTAssert(wisteriaP3.rgbaCompatible! == wisteriaRGBA.rgba!)
+  
+  }
+  
+  func test_randomColor() {
+    let randomColor = Color.random()
+    let colorSpace = randomColor.cgColor.colorSpace
+    XCTAssertNotNil(colorSpace)
+    let colorSpaceName = colorSpace!.name
+    XCTAssertNotNil(colorSpaceName)
     
-    
-    
-    
+    #if os(iOS) || os(tvOS) || os(watchOS)
+      XCTAssert(colorSpaceName! == CGColorSpace.extendedSRGB)
+    #else
+      XCTAssert(colorSpaceName! == CGColorSpace.sRGB)
+    #endif
   }
   
 }

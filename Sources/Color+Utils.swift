@@ -66,17 +66,6 @@ import Foundation
       return (red: UInt8(r * 255), green: UInt8(g * 255), blue: UInt8(b * 255), alpha: UInt8(a * 255))
     }
     
-    /// **Mechanica**
-    ///
-    /// Initializes and returns a **random** color object in the sRGB space.
-    private final func random() -> Color {
-      //drand48() generates a random number between 0 to 1
-      let red = CGFloat(drand48())
-      let green = CGFloat(drand48())
-      let blue = CGFloat(drand48())
-      return Color(red: red, green: green, blue: blue, alpha: 1)
-    }
-    
   }
   
   
@@ -133,10 +122,28 @@ extension Color {
     #endif
 
   }
-    
+  
   /// **Mechanica**
   ///
-  /// Returns a sRGB color from an hexidecimal integer.
+  /// Initializes and returns a **random** color object in the sRGB space.
+  public static func random() -> Color {
+    //drand48() generates a random number between 0 to 1
+    let red = CGFloat(drand48())
+    let green = CGFloat(drand48())
+    let blue = CGFloat(drand48())
+    let alpha = CGFloat(drand48())
+    
+    #if os(iOS) || os(tvOS) || os(watchOS)
+      return Color(red: red, green: green, blue: blue, alpha: alpha)
+    #else
+      return Color(srgbRed: red, green: green, blue: blue, alpha: alpha)
+    #endif
+  }
+
+  
+  /// **Mechanica**
+  ///
+  /// Returns a sRGB color from a hexadecimal integer.
   ///
   /// - Parameters:
   ///   - hex: The hex component of the color object, specified as a value from 0x000000 to 0xFFFFFF
@@ -189,7 +196,7 @@ extension Color {
   
   /// **Mechanica**
   ///
-  /// Returns A UInt32 that represents the sRGB color without alpha channel.
+  /// Returns an UInt32 representation of `self` in the sRGB space without alpha channel.
   private final var rgbUInt32: UInt32 {
     guard let (r, g, b, _) = self.rgba else { fatalError("Couldn't calculate RGBA values") }
     return (UInt32(r) << 16) | (UInt32(g) << 8) | UInt32(b)
@@ -197,7 +204,7 @@ extension Color {
   
   /// **Mechanica**
   ///
-  /// Returns A UInt32 that represents the sRGB color with alpha channel.
+  /// Returns an UInt32 representation of `self` in the sRGB space with alpha channel.
   private final var rgbaUInt32: UInt32 {
     guard let (r, g, b, a) = self.rgba else { fatalError("Couldn't calculate RGBA values") }
     return (UInt32(r) << 32) | (UInt32(g) << 16) | UInt32(b) << 8 | UInt32(a)
