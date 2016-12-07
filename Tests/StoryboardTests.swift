@@ -2,34 +2,69 @@
 //  StoryboardTests.swift
 //  Mechanica
 //
-//  Created by Alessandro Marzoli on 07/12/16.
-//  Copyright © 2016 Tinrobots. All rights reserved.
+//  Copyright © 2016 Tinrobots.
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
 
 import XCTest
+@testable import Mechanica
+
+extension Storyboard: StoryboardKeyCodable {
+  
+  public enum StoryboardName : String {
+    #if os(iOS)
+    case iOS    = "iOS_StoryboardDemo"
+     #elseif os(tvOS)
+    case tvOS    = "tvOS_StoryboardDemo"
+    #elseif os(macOS)
+    case macOS  = "macOS_StoryboardDemo"
+    #endif
+  }
+}
+
 
 class StoryboardTests: XCTestCase {
+  
+  func test_instantiateViewController() {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+    #if os(iOS) || os(tvOS)
+      
+      let iOS_storyboard = Storyboard.storyboard(forKey: .iOS, bundle: Bundle(for: type(of: self)))
+      let iOS_ViewController_1 = iOS_storyboard.instantiateViewController() as iOS_StoryboardDemo_ViewController_1
+      XCTAssertNotNil(iOS_ViewController_1)
+      
+    #elseif os(tvOS)
+      let tvOS_storyboard = Storyboard.storyboard(forKey: .tvOS, bundle: Bundle(for: type(of: self)))
+      let tvOS_ViewController_1 = tvOS_storyboard.instantiateViewController() as tvOS_StoryboardDemo_ViewController_1
+      
+      XCTAssertNotNil(tvOS_ViewController_1)
+      
+    #elseif os(macOS)
+      
+      let macOS_storyboard = Storyboard.storyboard(forKey: .macOS, bundle: Bundle(for: type(of: self)))
+      let macOS_ViewController_1 = iOS_storyboard.instantiateViewController() as macOS_StoryboardDemo_ViewController_1
+      let macOS_WindowCcontroller_1 = iOS_storyboard.instantiateViewController() as macOS_StoryboardDemo_WindowController_1
+      XCTAssertNotNil(macOS_ViewController_1)
+      XCTAssertNotNil(macOS_WindowCcontroller_1)
+      
+    #endif
+  }
+  
 }
