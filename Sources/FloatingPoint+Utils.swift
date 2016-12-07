@@ -57,12 +57,12 @@ extension FloatingPoint {
     guard places >= 0 else { return self }
     var divisor: Self = 1
     for _ in 0..<places { divisor.multiply(by: 10) }
-    return floor(self * divisor) / divisor
+    return floor(self * divisor) / divisor //equals to (self * divisor).rounded(.down) / divisor
   }
   
   /// Floors `self` to specified number of decimal `places`.
   public mutating func floorToDecimalPlaces(_ places: Int) {
-    self = ceiledToDecimalPlaces(places)
+    self = flooredToDecimalPlaces(places)
   }
   
 }
