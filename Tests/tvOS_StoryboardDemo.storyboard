@@ -12,7 +12,7 @@
         <!--TvOS Storyboard Demo View Controller1-->
         <scene sceneID="AkF-4g-8H0">
             <objects>
-                <viewController storyboardIdentifier="tvOS_StoryboardDemo_ViewController_1" id="T6L-7L-s64" customClass="tvOS_StoryboardDemo_ViewController_1" customModule="Mechanica_iOS_Tests" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tvOS_StoryboardDemo_ViewController_1" id="T6L-7L-s64" customClass="tvOS_StoryboardDemo_ViewController_1" customModule="Mechanica_tvOS_Tests" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O9i-cY-eqh"/>
                         <viewControllerLayoutGuide type="bottom" id="pt7-LX-0I4"/>
