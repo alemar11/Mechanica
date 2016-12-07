@@ -26,11 +26,11 @@ import XCTest
 @testable import Mechanica
 
 class BundleInfoTests: XCTestCase {
-        
+
     func test_bundle() {
       let bundle = Bundle(identifier: mechanicaBundleIdentifier)
       XCTAssertTrue(bundle?.version != nil)
       XCTAssertTrue(bundle?.shortVersionString != nil)
     }
-  
+
 }

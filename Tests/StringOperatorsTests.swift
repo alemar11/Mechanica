@@ -10,7 +10,7 @@ import XCTest
 @testable import Mechanica
 
 class StringOperatorsTests: XCTestCase {
-  
+
   func test_multiply() {
     XCTAssert("a"*2 == "aa")
     XCTAssert("aA"*2 == "aAaA")
@@ -18,5 +18,5 @@ class StringOperatorsTests: XCTestCase {
     XCTAssert("🇮🇹"*3 == "🇮🇹🇮🇹🇮🇹")
   }
 
-    
+
 }

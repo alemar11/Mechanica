@@ -26,9 +26,9 @@ import XCTest
 @testable import Mechanica
 
 class ColorFlatTests: XCTestCase {
-  
+
   func test_flatColors() {
-    
+
     XCTAssert(Color.black.hexString == "#000000")
     XCTAssert(Color.Flat.turquoise.hexString == "#1abc9c")
     XCTAssert(Color.Flat.greenSea.hexString == "#16a085")
@@ -50,9 +50,9 @@ class ColorFlatTests: XCTestCase {
     XCTAssert(Color.Flat.silver.hexString == "#bdc3c7")
     XCTAssert(Color.Flat.concrete.hexString == "#95a5a6")
     XCTAssert(Color.Flat.asbestos.hexString == "#7f8c8d")
-    
+
   }
-  
+
 }
 
 

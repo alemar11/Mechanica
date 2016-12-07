@@ -26,7 +26,7 @@ import XCTest
 @testable import Mechanica
 
 class StringConversionsTests: XCTestCase {
-    
+
   func test_bool() {
     guard let n = "1".bool, n == true else {
       XCTAssert(false, "Couldn't get the correct Bool value.")
@@ -44,18 +44,18 @@ class StringConversionsTests: XCTestCase {
     XCTAssertNil("yess".bool, "Couldn't get the correct Bool value.")
     XCTAssertNil("01".bool, "Couldn't get the correct Bool value.")
   }
-  
+
   func test_base64Decoded() {
     XCTAssertNil("123".base64Decoded, "Couldn't get the correct Base64 decoded value.")
     XCTAssert("SGVsbG8gV29ybGQh".base64Decoded == "Hello World!", "Couldn't get the correct Base64 decoded value.")
     XCTAssert("SGVsbG8gUm9ib3RzIfCfpJbwn6SW".base64Decoded ==  "Hello Robots!🤖🤖", "Couldn't get the correct Base64 decoded value.")
   }
-  
+
   func test_base64Encoded() {
     XCTAssert("Hello World!".base64Encoded == "SGVsbG8gV29ybGQh", "Couldn't get the correct Base64 encoded value.")
     XCTAssert("Hello Robots!🤖🤖".base64Encoded == "SGVsbG8gUm9ib3RzIfCfpJbwn6SW", "Couldn't get the correct Base64 encoded value.")
   }
-  
+
   func test_double() {
     guard let n = "11".double, n == 11 else {
       XCTAssert(false, "Couldn't get correct Double value.")
@@ -72,9 +72,9 @@ class StringConversionsTests: XCTestCase {
     XCTAssertNil("11t".double, "Couldn't get correct Double value.")
     XCTAssertNil("11,04".double, "Couldn't get correct Double value.")
   }
-  
+
   func test_float() {
-    
+
     /// Float
     do {
       guard let n = "11".float, n == 11 else {
@@ -90,7 +90,7 @@ class StringConversionsTests: XCTestCase {
         return
       }
     }
-    
+
     /// Float 32
     do {
       guard let n = "11.0483".float32, n == 11.0483 else {
@@ -103,7 +103,7 @@ class StringConversionsTests: XCTestCase {
       }
 
     }
-    
+
     /// Float 64
     do {
 
@@ -111,47 +111,47 @@ class StringConversionsTests: XCTestCase {
         XCTAssert(false, "Couldn't get correct Float 64 value.")
         return
       }
-      
+
     }
-    
+
     XCTAssertNil("11t".float, "Couldn't get correct Float value.")
     XCTAssertNil("11,04830483048304830483048304830483".float64, "Couldn't get correct Float 64 value.")
   }
-  
+
   func test_int() {
-    
+
     /// Int
     do {
       guard let n = "11".int, n == 11 else {
         XCTAssert(false, "Couldn't get correct Int value.")
         return
       }
-      
+
       guard let n2 = "04".int, n2 == 4 else {
         XCTAssert(false, "Couldn't get correct Int value.")
         return
       }
     }
-    
+
     /// Int 8
     do {
       guard let n = "-128".int8, n == -128 else {
         XCTAssert(false, "Couldn't get correct Float value.")
         return
       }
-      
+
       guard let n2 = "127".int8, n2 == 127 else {
         XCTAssert(false, "Couldn't get correct Float value.")
         return
       }
-      
+
       guard let n3 = "00000011".int8, n3 == 11 else {
         XCTAssert(false, "Couldn't get correct Float value.")
         return
       }
-      
+
     }
-    
+
     /// Int 16
     do {
       guard let n = "-32768".int16, n == -32768 else {
@@ -159,7 +159,7 @@ class StringConversionsTests: XCTestCase {
         return
       }
     }
-    
+
     /// Int 32
     do {
       guard let n = "2147483647".int32, n == 2147483647 else {
@@ -167,20 +167,20 @@ class StringConversionsTests: XCTestCase {
         return
       }
     }
-    
+
     /// Int 64
     do {
       guard let n = "9223372036854775807".int64, n == 9223372036854775807 else {
         XCTAssert(false, "Couldn't get correct Int 64 value.")
         return
       }
-      
+
       guard let n2 = "-09223372036854775807".int64, n2 == -9223372036854775807 else {
         XCTAssert(false, "Couldn't get correct Int 64 value.")
         return
       }
     }
-    
+
     XCTAssertNil("0t".int, "Couldn't get correct Int value.")
     XCTAssertNil("11,04".int, "Couldn't get correct Int value.")
     XCTAssertNil("11.04".int, "Couldn't get correct Int value.")
@@ -192,12 +192,12 @@ class StringConversionsTests: XCTestCase {
     XCTAssertNotNil("-42768".int, "Couldn't get correct Int value.")
     XCTAssertNil("9223372036854775808".int64, "Couldn't get correct Int 64 value.")
   }
-  
+
   func test_URL() {
     XCTAssertNotNil("tinrobots.org".url, "Couldn't get correct URL value.")
     XCTAssertNil("tin🤖🤖.org".url, "Couldn't get correct URL value.")
     XCTAssertNil("".url, "Couldn't get correct URL value.")
     XCTAssertNotNil("a///c".url, "Couldn't get correct URL value.")
   }
-  
+
 }

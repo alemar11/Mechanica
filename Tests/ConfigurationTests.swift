@@ -26,109 +26,109 @@ import XCTest
 @testable import Mechanica
 
 extension Configuration: BoolKeyCodable {
-  
+
   public enum BoolKey: String {
     case boolItem = "BoolItem"
     //case wrongBoolItem  = "DateItem"
   }
-  
+
 }
 
 extension Configuration: StringKeyCodable {
-  
+
   public enum StringKey: String {
     case stringItem   = "StringItem"
     case stringItem3  = "DictionaryItem.DictionaryItem2.StringItem3"
     case stringItem4  = "DictionaryItem.DictionaryItem2.StringItem4"
     //case wrongStringItem  = "DictionaryItem11.StringItem4"
   }
-  
+
 }
 
 extension Configuration: DateKeyCodable {
-  
+
   public enum DateKey: String {
     case dateItem   = "DateItem"
     case dateItem2  = "DictionaryItem.DateItem2"
   }
-  
+
 }
 
 extension Configuration: NumberKeyCodable {
-  
+
   public enum NumberKey: String {
     case numberItem   = "NumberItem"
     case numberItem2  = "DictionaryItem.NumberItem2"
     case numberItem3  = "DictionaryItem.NumberItem3"
   }
-  
+
 }
 
 extension Configuration: DataKeyCodable {
-  
+
   public enum DataKey: String {
     case dataItem = "DataItem"
   }
-  
+
 }
 
 extension Configuration: URLKeyCodable{
-  
+
   public enum URLKey: String {
     case urlItem  = "URLItem"
     case urlItem2 = "URLItem2"
     case wrongURL = "WrongURLItem"
   }
-  
+
 }
 
 extension Configuration: ArrayKeyCodable {
-  
+
   public enum ArrayKey: String {
     case arrayItem = "ArrayItem"
   }
-  
+
 }
 
 extension Configuration: DictionaryKeyCodable {
-  
+
   public enum DictionaryKey: String {
     case dictionaryItem   = "DictionaryItem"
     case dictionaryItem2  = "DictionaryItem.DictionaryItem2"
   }
-  
+
 }
 
 class ConfigurationTests: XCTestCase {
-  
+
   private lazy var plistPath: String = {
     return Bundle(for: type(of: self)).path(forResource: "ConfigurationDemo", ofType: "plist")!
   }()
-  
+
   func test_configuration() {
-    
+
     guard let config = Configuration(plistPath: plistPath) else {
       XCTAssert(true, "Invalid plist file.")
       return
     }
-    
+
     let config2 = config
     XCTAssert(config.propertyList === config2.propertyList)
-    
+
     /// Bool
     XCTAssert(config.bool(forKey: .boolItem))
-    
+
     /// String
     XCTAssert(config.string(forKey: .stringItem) == "Hello World")
     XCTAssert(config.string(forKey: .stringItem3) == "Hello World 3")
     XCTAssert(config.string(forKey: .stringItem4).isEmpty)
-    
+
     /// NSNumber
     XCTAssert(config.number(forKey: .numberItem).intValue == 1)
     XCTAssert(config.number(forKey: .numberItem2).doubleValue == Double.pi)
     XCTAssert(config.number(forKey: .numberItem3).doubleValue == 11.145)
     XCTAssertTrue(config.date(forKey: .dateItem).timeIntervalSince1970 == Date(timeIntervalSince1970: 0).timeIntervalSince1970)
-    
+
     /// Date
     let date = config.date(forKey: .dateItem2)
     let calendar = NSCalendar.current
@@ -136,24 +136,24 @@ class ConfigurationTests: XCTestCase {
     XCTAssertTrue(components.year == 2016)
     XCTAssertTrue(components.month == 11)
     XCTAssertTrue(components.day == 16)
-    
+
     /// URL
     XCTAssert(config.url(forKey: .urlItem)?.absoluteString == "http://www.tinrobots.org")
     XCTAssert(config.url(forKey: .urlItem2)?.absoluteString == "tinrobots.org")
     XCTAssertNil(config.url(forKey: .wrongURL))
-    
+
     /// Data
     XCTAssertNotNil(config.data(forKey: .dataItem))
-    
+
     /// Array
     XCTAssert(config.array(forKey: .arrayItem).count == 3)
-    
+
     /// Dictionary
     XCTAssertNotNil(config.dictionary(forKey: .dictionaryItem))
     XCTAssertNotNil(config.dictionary(forKey: .dictionaryItem2))
-    
+
   }
-  
-  
-  
+
+
+
 }

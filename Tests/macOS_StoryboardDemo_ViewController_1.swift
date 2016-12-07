@@ -29,5 +29,5 @@ class macOS_StoryboardDemo_ViewController_1: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
 }
