@@ -139,6 +139,16 @@
 		D2CAF3491DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAF33B1DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift */; };
 		D2CAF34A1DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAF33B1DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift */; };
 		D2CAF34B1DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CAF33B1DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift */; };
+		D2ED4A5F1DF82B5E0042F012 /* iOS_StoryboardDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2ED4A5E1DF82B5E0042F012 /* iOS_StoryboardDemo.storyboard */; };
+		D2ED4A611DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED4A601DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift */; };
+		D2ED4A631DF82C400042F012 /* StoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED4A621DF82C400042F012 /* StoryboardTests.swift */; };
+		D2ED4A641DF82F970042F012 /* iOS_StoryboardDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2ED4A5E1DF82B5E0042F012 /* iOS_StoryboardDemo.storyboard */; };
+		D2ED4A651DF82F9B0042F012 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED4A601DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift */; };
+		D2ED4A681DF8303C0042F012 /* tvOS_StoryboardDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2ED4A661DF8303C0042F012 /* tvOS_StoryboardDemo.storyboard */; };
+		D2ED4A6B1DF8307A0042F012 /* tvOS_StoryboardDemo_ViewController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED4A691DF8307A0042F012 /* tvOS_StoryboardDemo_ViewController_1.swift */; };
+		D2ED4A6D1DF831380042F012 /* macOS_StoryboardDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2ED4A6C1DF831380042F012 /* macOS_StoryboardDemo.storyboard */; };
+		D2ED4A711DF831B30042F012 /* macOS_StoryboardDemo_WindowController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED4A701DF831B30042F012 /* macOS_StoryboardDemo_WindowController_1.swift */; };
+		D2ED4A731DF831E40042F012 /* macOS_StoryboardDemo_ViewController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED4A721DF831E40042F012 /* macOS_StoryboardDemo_ViewController_1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +222,14 @@
 		D2CAF3391DA2A71300E6E843 /* NSManagedObject+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Utils.swift"; sourceTree = "<group>"; };
 		D2CAF33A1DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Utils.swift"; sourceTree = "<group>"; };
 		D2CAF33B1DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPersistentStoreCoordinator+Utils.swift"; sourceTree = "<group>"; };
+		D2ED4A5E1DF82B5E0042F012 /* iOS_StoryboardDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iOS_StoryboardDemo.storyboard; sourceTree = "<group>"; };
+		D2ED4A601DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_StoryboardDemo_ViewController_1.swift; sourceTree = "<group>"; };
+		D2ED4A621DF82C400042F012 /* StoryboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardTests.swift; sourceTree = "<group>"; };
+		D2ED4A661DF8303C0042F012 /* tvOS_StoryboardDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = tvOS_StoryboardDemo.storyboard; sourceTree = "<group>"; };
+		D2ED4A691DF8307A0042F012 /* tvOS_StoryboardDemo_ViewController_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tvOS_StoryboardDemo_ViewController_1.swift; sourceTree = "<group>"; };
+		D2ED4A6C1DF831380042F012 /* macOS_StoryboardDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = macOS_StoryboardDemo.storyboard; sourceTree = "<group>"; };
+		D2ED4A701DF831B30042F012 /* macOS_StoryboardDemo_WindowController_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = macOS_StoryboardDemo_WindowController_1.swift; sourceTree = "<group>"; };
+		D2ED4A721DF831E40042F012 /* macOS_StoryboardDemo_ViewController_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = macOS_StoryboardDemo_ViewController_1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +342,7 @@
 		12B536EE1D33ED6A005C52A7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D2ED4A5D1DF82B040042F012 /* Storyboard Tests */,
 				D289AD051DC0B54D003DA7B8 /* String Tests */,
 				12A90BBE1D33FF5B00834DC0 /* Supporting Files */,
 				D23748811DD362990064EA22 /* BundleInfoTests.swift */,
@@ -425,6 +444,21 @@
 				D2B9655D1DD0C26E000C71C1 /* Collection+CoreData.swift */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		D2ED4A5D1DF82B040042F012 /* Storyboard Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D2ED4A5E1DF82B5E0042F012 /* iOS_StoryboardDemo.storyboard */,
+				D2ED4A601DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift */,
+				D2ED4A621DF82C400042F012 /* StoryboardTests.swift */,
+				D2ED4A661DF8303C0042F012 /* tvOS_StoryboardDemo.storyboard */,
+				D2ED4A691DF8307A0042F012 /* tvOS_StoryboardDemo_ViewController_1.swift */,
+				D2ED4A6C1DF831380042F012 /* macOS_StoryboardDemo.storyboard */,
+				D2ED4A701DF831B30042F012 /* macOS_StoryboardDemo_WindowController_1.swift */,
+				D2ED4A721DF831E40042F012 /* macOS_StoryboardDemo_ViewController_1.swift */,
+			);
+			name = "Storyboard Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -697,6 +731,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2ED4A5F1DF82B5E0042F012 /* iOS_StoryboardDemo.storyboard in Resources */,
 				D20545031DDC5274007DCE97 /* ConfigurationDemo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,6 +740,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2ED4A641DF82F970042F012 /* iOS_StoryboardDemo.storyboard in Resources */,
+				D2ED4A681DF8303C0042F012 /* tvOS_StoryboardDemo.storyboard in Resources */,
 				D20545041DDC5274007DCE97 /* ConfigurationDemo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -713,6 +750,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2ED4A6D1DF831380042F012 /* macOS_StoryboardDemo.storyboard in Resources */,
 				D20545051DDC5274007DCE97 /* ConfigurationDemo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -844,11 +882,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2ED4A631DF82C400042F012 /* StoryboardTests.swift in Sources */,
 				D205B0651DF6F8BB002D78EF /* FloatingPointUtilsTests.swift in Sources */,
 				D208D17E1DF045C6009687BB /* ColorFlatTests.swift in Sources */,
 				D273A5951DD5C5BA0007796F /* SequenceUtilsTests.swift in Sources */,
 				D208D1871DF071C6009687BB /* StringOperatorsTests.swift in Sources */,
 				D289ACFD1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
+				D2ED4A611DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */,
 				D21A31F51DEDD0BE00E4A609 /* StringConversionsTests.swift in Sources */,
 				D289AD021DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
 				D278BDA31DEF139F006FAD83 /* ColorUtilsTests.swift in Sources */,
@@ -865,7 +905,9 @@
 				D208D17F1DF045C6009687BB /* ColorFlatTests.swift in Sources */,
 				D273A5961DD5C5BA0007796F /* SequenceUtilsTests.swift in Sources */,
 				D208D1881DF071C6009687BB /* StringOperatorsTests.swift in Sources */,
+				D2ED4A6B1DF8307A0042F012 /* tvOS_StoryboardDemo_ViewController_1.swift in Sources */,
 				D289ACFE1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
+				D2ED4A651DF82F9B0042F012 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */,
 				D21A31F61DEDD0BE00E4A609 /* StringConversionsTests.swift in Sources */,
 				D289AD031DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
 				D278BDA41DEF139F006FAD83 /* ColorUtilsTests.swift in Sources */,
@@ -882,6 +924,8 @@
 				D208D1801DF045C6009687BB /* ColorFlatTests.swift in Sources */,
 				D273A5971DD5C5BA0007796F /* SequenceUtilsTests.swift in Sources */,
 				D208D1891DF071C6009687BB /* StringOperatorsTests.swift in Sources */,
+				D2ED4A731DF831E40042F012 /* macOS_StoryboardDemo_ViewController_1.swift in Sources */,
+				D2ED4A711DF831B30042F012 /* macOS_StoryboardDemo_WindowController_1.swift in Sources */,
 				D289ACFF1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
 				D21A31F71DEDD0BE00E4A609 /* StringConversionsTests.swift in Sources */,
 				D289AD041DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
