@@ -40,11 +40,11 @@ import Foundation
 
 //MARKME: - Storyboard
 
-public protocol StoryboardMappable {
+public protocol StoryboardKeyCodable {
   associatedtype StoryboardName: RawRepresentable
 }
 
-extension StoryboardMappable where StoryboardName.RawValue == String {
+extension StoryboardKeyCodable where StoryboardName.RawValue == String {
   
   /**
    **Mechanica**
@@ -53,7 +53,7 @@ extension StoryboardMappable where StoryboardName.RawValue == String {
    
    i.e.
    ```
-   extension Storyboard: StoryboardMappable {
+   extension Storyboard: StoryboardKeyCodable {
    enum StoryboardName : String {
    case main = "MainStoryboard"
    case detail = "DetailStoryboard"
