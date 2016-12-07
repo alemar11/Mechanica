@@ -40,6 +40,9 @@ import Foundation
 
 // MARK: - Storyboard
 
+/// **Mechanica**
+///
+/// Types adopting the `StoryboardKeyCodable` protocol can be used to define Storyboard names.
 public protocol StoryboardKeyCodable {
   associatedtype StoryboardName: RawRepresentable
 }
@@ -125,6 +128,9 @@ extension Storyboard {
 
 // MARK: - ViewController
 
+/// **Mechanica**
+///
+/// Types adopting the `StoryboardIdentifiable` protocol have a unique Storyboard ID.
 public protocol StoryboardIdentifiable {
   static var storyboardIdentifier: String { get }
 }

@@ -99,7 +99,7 @@ public struct Configuration: PropertyListConfiguration {
 
 /// **Mechanica**
 ///
-/// Types adopting the `BoolKeyCodable` protocol can be used to construct key path to `Bool` values avoiding *stringly typed* APIs.
+/// Types adopting the `BoolKeyCodable` protocol can be used to construct key path to `Bool` values.
 public protocol BoolKeyCodable {
   associatedtype BoolKey : RawRepresentable
 }
@@ -121,7 +121,7 @@ extension BoolKeyCodable where BoolKey.RawValue == String, Self: PropertyListCon
 
 /// **Mechanica**
 ///
-/// Types adopting the `StringKeyCodable` protocol can be used to construct key path to `String` values avoiding *stringly typed* APIs.
+/// Types adopting the `StringKeyCodable` protocol can be used to construct key path to `String` values.
 public protocol StringKeyCodable {
   associatedtype StringKey : RawRepresentable
 }
@@ -143,7 +143,7 @@ extension StringKeyCodable where StringKey.RawValue == String, Self: PropertyLis
 
 /// **Mechanica**
 ///
-/// Types adopting the `URLKeyCodable` protocol can be used to construct key path to `URL` values avoiding *stringly typed* APIs.
+/// Types adopting the `URLKeyCodable` protocol can be used to construct key path to `URL` values.
 public protocol URLKeyCodable {
   associatedtype URLKey : RawRepresentable
 }
@@ -164,7 +164,7 @@ extension URLKeyCodable where URLKey.RawValue == String, Self: PropertyListConfi
 
 /// **Mechanica**
 ///
-/// Types adopting the `NumberKeyCodable` protocol can be used to construct key path to `NSNumber` objects avoiding *stringly typed* APIs.
+/// Types adopting the `NumberKeyCodable` protocol can be used to construct key path to `NSNumber` objects.
 public protocol NumberKeyCodable {
   associatedtype NumberKey : RawRepresentable
 }
@@ -186,7 +186,7 @@ extension NumberKeyCodable where NumberKey.RawValue == String, Self: PropertyLis
 
 /// **Mechanica**
 ///
-/// Types adopting the `Date` protocol can be used to construct key path to `Date` values avoiding *stringly typed* APIs.
+/// Types adopting the `Date` protocol can be used to construct key path to `Date` values.
 public protocol DateKeyCodable {
   associatedtype DateKey : RawRepresentable
 }
@@ -208,7 +208,7 @@ extension DateKeyCodable where DateKey.RawValue == String, Self: PropertyListCon
 
 /// **Mechanica**
 ///
-/// Types adopting the `DataKeyCodable` protocol can be used to construct key path to `Data` values avoiding *stringly typed* APIs.
+/// Types adopting the `DataKeyCodable` protocol can be used to construct key path to `Data` values.
 public protocol DataKeyCodable {
   associatedtype DataKey : RawRepresentable
 }
@@ -230,7 +230,7 @@ extension DataKeyCodable where DataKey.RawValue == String, Self: PropertyListCon
 
 /// **Mechanica**
 ///
-/// Types adopting the `ArrayKeyCodable` protocol can be used to construct key path to `Array` values avoiding *stringly typed* APIs.
+/// Types adopting the `ArrayKeyCodable` protocol can be used to construct key path to `Array` values.
 public protocol ArrayKeyCodable {
   associatedtype ArrayKey : RawRepresentable
 }
@@ -252,7 +252,7 @@ extension ArrayKeyCodable where ArrayKey.RawValue == String, Self: PropertyListC
 
 /// **Mechanica**
 ///
-/// Types adopting the `DictionaryKeyCodable` protocol can be used to construct key path to `Dictionary` values avoiding *stringly typed* APIs.
+/// Types adopting the `DictionaryKeyCodable` protocol can be used to construct key path to `Dictionary` values.
 public protocol DictionaryKeyCodable {
   associatedtype DictionaryKey : RawRepresentable
 }
