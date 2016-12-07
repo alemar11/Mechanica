@@ -171,6 +171,7 @@ class ColorUtilsTests: XCTestCase {
     XCTAssert(redExtended.rgba! == redRGBA.rgba!)
     
     /// Converting a color from an extended sRGB space to sRGB, involves an approximation in the new RGBA values.
+    /// (usingColorSpace(_:) documentation: "Although the new color might have different component values, it looks the same as the original.")
     
     do {
       /// RGBA{153, 102, 51}
