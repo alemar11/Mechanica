@@ -286,11 +286,11 @@ public final class KeyboardObserver {
 // MARK: - Selectors
 
 fileprivate extension Selector {
-  static let willShow = #selector(Keyboard.keyboardWillShow(_:))
-  static let didShow = #selector(Keyboard.keyboardDidShow(_:))
-  static let willHide = #selector(Keyboard.keyboardWillHide(_:))
-  static let didHide = #selector(Keyboard.keyboardDidHide(_:))
-  static let willChangeFrame = #selector(Keyboard.keyboardWillChangeFrame(_:))
-  static let didChangeFrame = #selector(Keyboard.keyboardDidChangeFrame(_:))
+  static let willShow = #selector(KeyboardObserver.keyboardWillShow(_:))
+  static let didShow = #selector(KeyboardObserver.keyboardDidShow(_:))
+  static let willHide = #selector(KeyboardObserver.keyboardWillHide(_:))
+  static let didHide = #selector(KeyboardObserver.keyboardDidHide(_:))
+  static let willChangeFrame = #selector(KeyboardObserver.keyboardWillChangeFrame(_:))
+  static let didChangeFrame = #selector(KeyboardObserver.keyboardDidChangeFrame(_:))
 }
 
