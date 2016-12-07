@@ -44,17 +44,17 @@ public protocol PropertyListConfiguration {
  **Mechanica**
  
  `Configuration` is a Property List reader.
- Extends this struct with `StringMappable`, `BoolMappable`, `URLMappable,`NumberMappable`, `DateMappable`, `DataMappable`, `ArrayMappable`, `DictionaryMappable` to avoid *stringly typed* APIs.
+ Extends this struct with `StringKeyCodable`, `BoolKeyCodable`, `URLKeyCodable,`NumberKeyCodable`, `DateKeyCodable`, `DataKeyCodable`, `ArrayKeyCodable`, `DictionaryKeyCodable` to avoid *stringly typed* APIs.
  
  ```
- extension Configuration: StringMappable {
+ extension Configuration: StringKeyCodable {
   public enum StringKey: String {
     case value1  = "path.to.value1"
     case value2  = "path.to.value2"
   }
  }
  
- extension Configuration: BoolMappable {
+ extension Configuration: BoolKeyCodable {
   public enum StringKey: String {
     case value3  = "path.to.value3"
     case value4  = "path.to.value4"
@@ -99,12 +99,12 @@ public struct Configuration: PropertyListConfiguration {
 
 /// **Mechanica**
 ///
-/// Types adopting the `BoolMappable` protocol can be used to construct key path to `Bool` values avoiding *stringly typed* APIs.
-public protocol BoolMappable {
+/// Types adopting the `BoolKeyCodable` protocol can be used to construct key path to `Bool` values avoiding *stringly typed* APIs.
+public protocol BoolKeyCodable {
   associatedtype BoolKey : RawRepresentable
 }
 
-extension BoolMappable where BoolKey.RawValue == String, Self: PropertyListConfiguration {
+extension BoolKeyCodable where BoolKey.RawValue == String, Self: PropertyListConfiguration {
   
   /// **Mechanica**
   ///
@@ -121,12 +121,12 @@ extension BoolMappable where BoolKey.RawValue == String, Self: PropertyListConfi
 
 /// **Mechanica**
 ///
-/// Types adopting the `StringMappable` protocol can be used to construct key path to `String` values avoiding *stringly typed* APIs.
-public protocol StringMappable {
+/// Types adopting the `StringKeyCodable` protocol can be used to construct key path to `String` values avoiding *stringly typed* APIs.
+public protocol StringKeyCodable {
   associatedtype StringKey : RawRepresentable
 }
 
-extension StringMappable where StringKey.RawValue == String, Self: PropertyListConfiguration {
+extension StringKeyCodable where StringKey.RawValue == String, Self: PropertyListConfiguration {
   
   /// **Mechanica**
   ///
@@ -143,12 +143,12 @@ extension StringMappable where StringKey.RawValue == String, Self: PropertyListC
 
 /// **Mechanica**
 ///
-/// Types adopting the `URLMappable` protocol can be used to construct key path to `URL` values avoiding *stringly typed* APIs.
-public protocol URLMappable {
+/// Types adopting the `URLKeyCodable` protocol can be used to construct key path to `URL` values avoiding *stringly typed* APIs.
+public protocol URLKeyCodable {
   associatedtype URLKey : RawRepresentable
 }
 
-extension URLMappable where URLKey.RawValue == String, Self: PropertyListConfiguration {
+extension URLKeyCodable where URLKey.RawValue == String, Self: PropertyListConfiguration {
   
   /// **Mechanica**
   ///
@@ -164,12 +164,12 @@ extension URLMappable where URLKey.RawValue == String, Self: PropertyListConfigu
 
 /// **Mechanica**
 ///
-/// Types adopting the `NumberMappable` protocol can be used to construct key path to `NSNumber` objects avoiding *stringly typed* APIs.
-public protocol NumberMappable {
+/// Types adopting the `NumberKeyCodable` protocol can be used to construct key path to `NSNumber` objects avoiding *stringly typed* APIs.
+public protocol NumberKeyCodable {
   associatedtype NumberKey : RawRepresentable
 }
 
-extension NumberMappable where NumberKey.RawValue == String, Self: PropertyListConfiguration {
+extension NumberKeyCodable where NumberKey.RawValue == String, Self: PropertyListConfiguration {
   
   /// **Mechanica**
   ///
@@ -187,11 +187,11 @@ extension NumberMappable where NumberKey.RawValue == String, Self: PropertyListC
 /// **Mechanica**
 ///
 /// Types adopting the `Date` protocol can be used to construct key path to `Date` values avoiding *stringly typed* APIs.
-public protocol DateMappable {
+public protocol DateKeyCodable {
   associatedtype DateKey : RawRepresentable
 }
 
-extension DateMappable where DateKey.RawValue == String, Self: PropertyListConfiguration {
+extension DateKeyCodable where DateKey.RawValue == String, Self: PropertyListConfiguration {
   
   /// **Mechanica**
   ///
@@ -208,12 +208,12 @@ extension DateMappable where DateKey.RawValue == String, Self: PropertyListConfi
 
 /// **Mechanica**
 ///
-/// Types adopting the `DataMappable` protocol can be used to construct key path to `Data` values avoiding *stringly typed* APIs.
-public protocol DataMappable {
+/// Types adopting the `DataKeyCodable` protocol can be used to construct key path to `Data` values avoiding *stringly typed* APIs.
+public protocol DataKeyCodable {
   associatedtype DataKey : RawRepresentable
 }
 
-extension DataMappable where DataKey.RawValue == String, Self: PropertyListConfiguration {
+extension DataKeyCodable where DataKey.RawValue == String, Self: PropertyListConfiguration {
   
   /// **Mechanica**
   ///
@@ -230,12 +230,12 @@ extension DataMappable where DataKey.RawValue == String, Self: PropertyListConfi
 
 /// **Mechanica**
 ///
-/// Types adopting the `ArrayMappable` protocol can be used to construct key path to `Array` values avoiding *stringly typed* APIs.
-public protocol ArrayMappable {
+/// Types adopting the `ArrayKeyCodable` protocol can be used to construct key path to `Array` values avoiding *stringly typed* APIs.
+public protocol ArrayKeyCodable {
   associatedtype ArrayKey : RawRepresentable
 }
 
-extension ArrayMappable where ArrayKey.RawValue == String, Self: PropertyListConfiguration {
+extension ArrayKeyCodable where ArrayKey.RawValue == String, Self: PropertyListConfiguration {
   
   /// **Mechanica**
   ///
@@ -252,12 +252,12 @@ extension ArrayMappable where ArrayKey.RawValue == String, Self: PropertyListCon
 
 /// **Mechanica**
 ///
-/// Types adopting the `DictionaryMappable` protocol can be used to construct key path to `Dictionary` values avoiding *stringly typed* APIs.
-public protocol DictionaryMappable {
+/// Types adopting the `DictionaryKeyCodable` protocol can be used to construct key path to `Dictionary` values avoiding *stringly typed* APIs.
+public protocol DictionaryKeyCodable {
   associatedtype DictionaryKey : RawRepresentable
 }
 
-extension DictionaryMappable where DictionaryKey.RawValue == String, Self: PropertyListConfiguration {
+extension DictionaryKeyCodable where DictionaryKey.RawValue == String, Self: PropertyListConfiguration {
   
   /// **Mechanica**
   ///

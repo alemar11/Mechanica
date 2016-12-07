@@ -25,7 +25,7 @@
 import XCTest
 @testable import Mechanica
 
-extension Configuration: BoolMappable {
+extension Configuration: BoolKeyCodable {
   
   public enum BoolKey: String {
     case boolItem = "BoolItem"
@@ -34,7 +34,7 @@ extension Configuration: BoolMappable {
   
 }
 
-extension Configuration: StringMappable {
+extension Configuration: StringKeyCodable {
   
   public enum StringKey: String {
     case stringItem   = "StringItem"
@@ -45,7 +45,7 @@ extension Configuration: StringMappable {
   
 }
 
-extension Configuration: DateMappable {
+extension Configuration: DateKeyCodable {
   
   public enum DateKey: String {
     case dateItem   = "DateItem"
@@ -54,7 +54,7 @@ extension Configuration: DateMappable {
   
 }
 
-extension Configuration: NumberMappable {
+extension Configuration: NumberKeyCodable {
   
   public enum NumberKey: String {
     case numberItem   = "NumberItem"
@@ -64,7 +64,7 @@ extension Configuration: NumberMappable {
   
 }
 
-extension Configuration: DataMappable {
+extension Configuration: DataKeyCodable {
   
   public enum DataKey: String {
     case dataItem = "DataItem"
@@ -72,7 +72,7 @@ extension Configuration: DataMappable {
   
 }
 
-extension Configuration: URLMappable{
+extension Configuration: URLKeyCodable{
   
   public enum URLKey: String {
     case urlItem  = "URLItem"
@@ -82,7 +82,7 @@ extension Configuration: URLMappable{
   
 }
 
-extension Configuration: ArrayMappable {
+extension Configuration: ArrayKeyCodable {
   
   public enum ArrayKey: String {
     case arrayItem = "ArrayItem"
@@ -90,7 +90,7 @@ extension Configuration: ArrayMappable {
   
 }
 
-extension Configuration: DictionaryMappable {
+extension Configuration: DictionaryKeyCodable {
   
   public enum DictionaryKey: String {
     case dictionaryItem   = "DictionaryItem"
