@@ -32,20 +32,20 @@ class ColorUtilsTests: XCTestCase {
       let red = Color.red // 1.0, 0.0, 0.0
       XCTAssertNotNil(red.rgba)
       let (r,g,b,a) = red.rgba!
-      XCTAssert(r == 255, "")
-      XCTAssert(g == 0, "")
-      XCTAssert(b == 0, "")
-      XCTAssert(a == 255, "")
+      XCTAssert(r == 255)
+      XCTAssert(g == 0)
+      XCTAssert(b == 0)
+      XCTAssert(a == 255)
     }
     
     do {
       let black = Color.black // 0.0, 0.0, 0.0
       XCTAssertNotNil(black.rgba)
       let (r,g,b,a) = black.rgba!
-      XCTAssert(r == 0, "")
-      XCTAssert(g == 0, "")
-      XCTAssert(b == 0, "")
-      XCTAssert(a == 255, "")
+      XCTAssert(r == 0)
+      XCTAssert(g == 0)
+      XCTAssert(b == 0)
+      XCTAssert(a == 255)
     }
   }
   
@@ -59,10 +59,10 @@ class ColorUtilsTests: XCTestCase {
       #endif
       XCTAssertNotNil(orange.rgba)
       let (r,g,b,a) = orange.rgba!
-      XCTAssert(r == 255, "")
-      XCTAssert(g == 165, "")
-      XCTAssert(b == 0, "")
-      XCTAssert(a == 255, "")
+      XCTAssert(r == 255)
+      XCTAssert(g == 165)
+      XCTAssert(b == 0)
+      XCTAssert(a == 255)
     }
     
     do{
@@ -86,10 +86,10 @@ class ColorUtilsTests: XCTestCase {
       let purple = Color(hexString: "#551a8b", alpha: 1)
       XCTAssertNotNil(purple)
       let (r,g,b,a) = purple!.rgba!
-      XCTAssert(r == 85, "")
-      XCTAssert(g == 26, "")
-      XCTAssert(b == 139, "")
-      XCTAssert(a == 255, "")
+      XCTAssert(r == 85)
+      XCTAssert(g == 26)
+      XCTAssert(b == 139)
+      XCTAssert(a == 255)
     }
     
     do {
@@ -97,10 +97,10 @@ class ColorUtilsTests: XCTestCase {
       let purple = Color(hexString: "#551A8B", alpha: 1)
       XCTAssertNotNil(purple)
       let (r,g,b,a) = purple!.rgba!
-      XCTAssert(r == 85, "")
-      XCTAssert(g == 26, "")
-      XCTAssert(b == 139, "")
-      XCTAssert(a == 255, "")
+      XCTAssert(r == 85)
+      XCTAssert(g == 26)
+      XCTAssert(b == 139)
+      XCTAssert(a == 255)
     }
     
     do {
@@ -108,10 +108,10 @@ class ColorUtilsTests: XCTestCase {
       let green = Color(hexString: "#008000", alpha: 1)
       XCTAssertNotNil(green)
       let (r,g,b,a) = green!.rgba!
-      XCTAssert(r == 0, "")
-      XCTAssert(g == 128, "")
-      XCTAssert(b == 0, "")
-      XCTAssert(a == 255, "")
+      XCTAssert(r == 0)
+      XCTAssert(g == 128)
+      XCTAssert(b == 0)
+      XCTAssert(a == 255)
     }
     
     do {
