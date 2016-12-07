@@ -1,5 +1,5 @@
 //
-//  Keyboard.swift
+//  KeyboardObserver.swift
 //  Mechanica
 //
 //  Copyright © 2016 Tinrobots.
@@ -28,12 +28,12 @@ import UIKit
 /**
  **Mechanica**
  
- `Keyboard` is an UIKit keyboard's behavior observer (for iOS apps) without Notification Center.
+ `KeyboardObserver` is an UIKit keyboard's behavior observer (for iOS apps) without Notification Center.
  
  Declare what should happen on what event and `register()`.
  
  ```
- let keyboard = Keyboard()
+ let keyboard = KeyboardObserver()
  
  keyboard
  .on(event: .didShow) { (options) in
@@ -52,11 +52,11 @@ import UIKit
  
  To remove all event callbacks, call `clear()`.
  */
-public final class Keyboard {
+public final class KeyboardObserver {
   
   /// **Mechanica**
   ///
-  /// A `Keyboard` callback.
+  /// A `KeyboardObserver` callback.
   public typealias Callback = (Options) -> ()
   
   // MARK: - Keyboard Options
@@ -179,13 +179,13 @@ public final class Keyboard {
   
   /// **Mechanica**
   ///
-  /// Defines `Keyboard` behaviours.
+  /// Defines `KeyboardObserver` behaviours.
   /// - warning: Without calling `register()` none of the closures will be executed.
   /// - warning: If more closures are declared on the same event, only the latter will be executed.
   ///
   /// - Parameters:
-  ///   - event: `Keyboard` event on which callback should be executed.
-  ///   - callback: Closure of code which will be executed on `Keyboard`.
+  ///   - event: `KeyboardObserver` event on which callback should be executed.
+  ///   - callback: Closure of code which will be executed on `KeyboardObserver`.
   /// - Returns: `Self` for chaining purpose.
   @discardableResult
   public func on(event: Event, do callback: Callback?) -> Self {
@@ -196,12 +196,12 @@ public final class Keyboard {
   
   /// **Mechanica**
   ///
-  /// Initializes a new instance of `Keyboard`.
+  /// Initializes a new instance of `KeyboardObserver`.
   public init(){}
   
   /// **Mechanica**
   ///
-  /// Registers for `Keyboard` events and starts calling corresponding event handlers.
+  /// Registers for `KeyboardObserver` events and starts calling corresponding event handlers.
   public func register() {
     let defaultCenter = NotificationCenter.default
     
@@ -219,7 +219,7 @@ public final class Keyboard {
   
   /// **Mechanica**
   ///
-  /// Unregister from `Keyboard` events.
+  /// Unregister from `KeyboardObserver` events.
   /// - warning: callbacks themselves won't be dismissed.
   public func unregister() {
     let defaultCenter = NotificationCenter.default

@@ -11,7 +11,7 @@
 		12431A601DCE2F5A00594940 /* NSManagedObjectConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12431A5E1DCE2F5A00594940 /* NSManagedObjectConfigurable.swift */; };
 		12431A611DCE2F5A00594940 /* NSManagedObjectConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12431A5E1DCE2F5A00594940 /* NSManagedObjectConfigurable.swift */; };
 		12431A621DCE2F5A00594940 /* NSManagedObjectConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12431A5E1DCE2F5A00594940 /* NSManagedObjectConfigurable.swift */; };
-		129BE0001DE4AB9600191F96 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129BDFFF1DE4AB9600191F96 /* Keyboard.swift */; };
+		129BE0001DE4AB9600191F96 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */; };
 		12B536F71D33ED6A005C52A7 /* Mechanica.h in Headers */ = {isa = PBXBuildFile; fileRef = 12B536ED1D33ED6A005C52A7 /* Mechanica.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12B536F81D33ED6A005C52A7 /* Mechanica.h in Headers */ = {isa = PBXBuildFile; fileRef = 12B536ED1D33ED6A005C52A7 /* Mechanica.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12B536F91D33ED6A005C52A7 /* Mechanica.h in Headers */ = {isa = PBXBuildFile; fileRef = 12B536ED1D33ED6A005C52A7 /* Mechanica.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -167,7 +167,7 @@
 
 /* Begin PBXFileReference section */
 		12431A5E1DCE2F5A00594940 /* NSManagedObjectConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectConfigurable.swift; sourceTree = "<group>"; };
-		129BDFFF1DE4AB9600191F96 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		12B536B21D33ECEC005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536BF1D33ECFB005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536D51D33ED1C005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,7 +307,7 @@
 			children = (
 				D278BD931DEF102A006FAD83 /* Color */,
 				D26C6C291DEC83B800B7D26A /* Storyboard.swift */,
-				129BDFFF1DE4AB9600191F96 /* Keyboard.swift */,
+				129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */,
 				D2CAF3371DA2A6ED00E6E843 /* CoreData */,
 				12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */,
 				12B956431D8824AB00F75DD5 /* String */,
@@ -736,7 +736,7 @@
 				D2CAF3481DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift in Sources */,
 				D2B9655E1DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
 				D208D1821DF07103009687BB /* String+Operators.swift in Sources */,
-				129BE0001DE4AB9600191F96 /* Keyboard.swift in Sources */,
+				129BE0001DE4AB9600191F96 /* KeyboardObserver.swift in Sources */,
 				D26C6C2A1DEC83B800B7D26A /* Storyboard.swift in Sources */,
 				D273A59A1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				D262EF1E1DA5487F0061AB10 /* ModelVersion.swift in Sources */,
