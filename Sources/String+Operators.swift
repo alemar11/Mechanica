@@ -30,3 +30,8 @@ infix operator *: MultiplicationPrecedence
 public func *(left: String, right: Int) -> String {
   return  String(repeating: left, count: right)
 }
+
+/// Creates a `new` string representing the given string repeated the specified number of times.
+public func *(left: Int, right: String) -> String {
+  return  String(repeating: right, count: left)
+}

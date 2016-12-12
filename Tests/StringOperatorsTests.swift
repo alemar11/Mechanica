@@ -16,6 +16,10 @@ class StringOperatorsTests: XCTestCase {
     XCTAssert("aA"*2 == "aAaA")
     XCTAssert("Hello World "+"!"*2 == "Hello World !!")
     XCTAssert("🇮🇹"*3 == "🇮🇹🇮🇹🇮🇹")
+    XCTAssert(2*"a" == "aa")
+    XCTAssert(2*"aA" == "aAaA")
+    XCTAssert(2*"Hello World "+"!" == "Hello World Hello World !")
+    XCTAssert(3*"🇮🇹" == "🇮🇹🇮🇹🇮🇹")
   }
 
 
