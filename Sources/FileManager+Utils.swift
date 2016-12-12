@@ -26,26 +26,34 @@ import Foundation
 
 extension FileManager {
   
+  // MARK: - URL
+  
   /// **Mechanica**
   ///
-  /// Returns the location of the document directory.
+  /// Returns the location of the document directory (*Documents*).
   public class var documentDirectory: URL {
     return try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
-
+  
   /// **Mechanica**
   ///
-  /// Returns the location of discardable cache files (Library/Caches).
+  /// Returns the location of discardable cache files (*Library/Caches*).
   public class var cachesDirectory: URL {
     return try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
   
   /// **Mechanica**
   ///
-  /// Returns always a `new` directory in Library/Caches for discardable cache files (temporary).
+  /// Returns the location of the temporary directory (*tmp*).
   public class var temporaryDirectory: URL {
-    var url = FileManager.cachesDirectory
-    url.appendPathComponent(UUID().uuidString)
+    return URL(fileURLWithPath: NSTemporaryDirectory())
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Returns always a `new` directory in Library/Caches for discardable cache files (temporary).
+  public class var makeNewTemporaryCacheDirectory: URL {
+    let url = FileManager.cachesDirectory.appendingPathComponent(UUID().uuidString)
     if (!FileManager.default.fileExists(atPath: url.absoluteString)){
       try! FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
     }
@@ -59,4 +67,46 @@ extension FileManager {
     return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
   }
   
+  // MARK: - Delete
+  
+  func clearDirectoryAtPath(_ path: String) throws {
+    let contents = try contentsOfDirectory(atPath: path)
+    for file in contents {
+      try removeItem(atPath: path.pathByAppendingPathComponent(file))
+    }
+  }
+  
+  public class func clearDirectoryAtPath(_ path: String) throws {
+    try FileManager.default.clearDirectoryAtPath(path)
+  }
+  
+  public class func clearTemporaryDirectory() throws {
+    try FileManager.default.clearDirectoryAtPath(FileManager.temporaryDirectory.path)
+  }
+  
+  public class func clearDocumentDirectory() throws {
+    try FileManager.default.clearDirectoryAtPath(FileManager.documentDirectory.path)
+  }
+  
+  public class func clearCachesDirectory() throws {
+    try FileManager.default.clearDirectoryAtPath(FileManager.cachesDirectory.path)
+  }
+  
+}
+
+extension String {
+
+  /// **Mechanica**
+  ///
+  /// - Parameters:
+  ///   - pathComponent: The path component to add.
+  ///   - isDirectory: If true, then a trailing / is added to the resulting path. (default false)
+  /// - Returns: Returns a path constructed by appending the given path component to `self`. If you know in advance that the path component is a directory or not, then set *isDirectory* to true.
+  public func pathByAppendingPathComponent(_ pathComponent: String, isDirectory: Bool = false) -> String {
+    if (isDirectory){
+      return URL(fileURLWithPath: self).appendingPathComponent(pathComponent, isDirectory: true).path
+    } else {
+       return URL(fileURLWithPath: self).appendingPathComponent(pathComponent).path
+    }
+  }
 }
