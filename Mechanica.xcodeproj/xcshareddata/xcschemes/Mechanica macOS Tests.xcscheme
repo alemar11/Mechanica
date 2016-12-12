@@ -23,6 +23,14 @@
                BlueprintName = "Mechanica macOS Tests"
                ReferencedContainer = "container:Mechanica.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "FileManagerUtilsTests/test_cachesDirectory()">
+               </Test>
+               <Test
+                  Identifier = "FileManagerUtilsTests/test_documentDirectory()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <AdditionalOptions>
