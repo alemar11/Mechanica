@@ -44,6 +44,13 @@ extension FileManager {
   
   /// **Mechanica**
   ///
+  /// Returns the location of discardable cache files (*Library/Application Support*).
+  public class var applicationSupportDirectory: URL {
+    return try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+  }
+  
+  /// **Mechanica**
+  ///
   /// Returns the location of the temporary directory (*tmp*).
   public class var temporaryDirectory: URL {
     return URL(fileURLWithPath: NSTemporaryDirectory())
