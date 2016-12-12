@@ -46,7 +46,21 @@ extension FileManager {
   ///
   /// Returns the location of discardable cache files (*Library/Application Support*).
   public class var applicationSupportDirectory: URL {
-    return try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    //https://developer.apple.com/library/content/documentation/Security/Conceptual/AppSandboxDesignGuide/MigratingALegacyApp/MigratingAnAppToASandbox.html
+    var url = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    
+    #if os(OSX)
+      if ProcessInfo.processInfo.environment["APP_SANDBOX_CONTAINER_ID"] == nil {
+        var identifier = Bundle.main.bundleIdentifier
+        if identifier?.length == 0 {
+          identifier = Bundle.main.executableURL?.lastPathComponent
+        }
+        url = url.appendingPathComponent(identifier ?? "", isDirectory: true)
+      }
+      return url
+    #else
+    return url
+    #endif
   }
   
   /// **Mechanica**
