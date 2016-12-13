@@ -44,7 +44,7 @@ extension String {
   
   /// **Mechanica**
   ///
-  /// Return a `new` reversed `String`.
+  /// Returns a `new` reversed `String`.
   /// Shorthand for *self.characters.reverse()*.
   public func reversed() -> String {
     return String(self.characters.reversed())
@@ -52,12 +52,22 @@ extension String {
   
   /// **Mechanica**
   ///
-  /// Return true if string starts with substring.
+  /// Returns true if `self` starts with a given prefix.
   public func starts(with prefix: String, caseSensitive: Bool = true) -> Bool {
     if !caseSensitive {
       return lowercased().hasPrefix(prefix.lowercased())
     }
     return hasPrefix(prefix)
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Returns true if `self` ends with a given suffix.
+  public func ends(with suffix: String, caseSensitive: Bool = true) -> Bool {
+    if !caseSensitive {
+      return lowercased().hasSuffix(suffix.lowercased())
+    }
+    return hasSuffix(suffix)
   }
   
   /// **Mechanica**

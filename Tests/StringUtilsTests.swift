@@ -54,6 +54,22 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("Hello".starts(with:"hello", caseSensitive: false))
     XCTAssertFalse("Hello".starts(with:"helloo", caseSensitive: false))
   }
+  
+  func test_ends() {
+    //case sensitive
+    XCTAssertTrue("a".ends(with:"a"))
+    XCTAssertFalse("a".ends(with:"A"))
+    XCTAssertTrue("a1🤔".ends(with:"🤔"))
+    XCTAssertTrue("a1🖖🏽".ends(with:"🖖🏽"))
+    XCTAssertTrue(" 🖖🏽🇮🇹🇮🇹".ends(with:"🇮🇹"))
+    
+    //case insensitive
+    XCTAssertTrue(" 🖖🏽🇮🇹🇮🇹".ends(with:"🇮🇹", caseSensitive: false))
+    XCTAssertTrue("a".ends(with:"A", caseSensitive: false))
+    XCTAssertTrue("Hello".ends(with:"hello", caseSensitive: false))
+    XCTAssertFalse("Hello".ends(with:"helloo", caseSensitive: false))
+
+  }
 
   func test_reversed() {
     XCTAssertTrue("a".reversed() == "a")
