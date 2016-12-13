@@ -26,7 +26,7 @@ import XCTest
 @testable import Mechanica
 
 class ProcessInfoUtilsTests: XCTestCase {
-  
+
   #if os(OSX)
   func test_isSandboxed() {
     XCTAssertFalse(ProcessInfo.isSandboxed)

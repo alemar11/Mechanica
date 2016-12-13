@@ -26,20 +26,20 @@ import XCTest
 @testable import Mechanica
 
 class FileManagerUtilsTests: XCTestCase {
-  
+
   func test_clearOrDestroyDirectory() {
-    
+
     let directoryURL = FileManager.documentDirectory
-    
+
     let containerURL                = directoryURL.appendingPathComponent("org.tinrobots.tests", isDirectory: true)
-    
+
     let baseDemoURL                 = containerURL.appendingPathComponent("demo", isDirectory: true)          // org.tinrobots.tests/demo/
     let fakeBaseDirectoryURL        = containerURL.appendingPathComponent("fakeDemo", isDirectory: true)      // org.tinrobots.tests/fakeDemo/
     let fakeBaseDirectorAsFileyURL  = containerURL.appendingPathComponent("fakeDemoFile", isDirectory: false) // org.tinrobots.tests/fakeDemoFile
-    
+
     let testURL                     = baseDemoURL.appendingPathComponent("test", isDirectory: true)           // org.tinrobots.tests/demo/test/
     let testFileURL                 = testURL.appendingPathComponent("file", isDirectory: false)              // org.tinrobots.tests/demo/test/file
-    
+
     // creation
     do {
       try FileManager.default.createDirectory(at: testURL, withIntermediateDirectories: true, attributes: nil)
@@ -49,7 +49,7 @@ class FileManagerUtilsTests: XCTestCase {
     } catch {
       XCTAssertTrue(false, error.localizedDescription)
     }
-    
+
     // cleaning
     do {
       try FileManager.clearDirectory(atPath: baseDemoURL.path)
@@ -63,7 +63,7 @@ class FileManagerUtilsTests: XCTestCase {
     } catch {
       XCTAssertTrue(false, error.localizedDescription)
     }
-    
+
   }
-  
+
 }
