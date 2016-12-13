@@ -27,7 +27,7 @@ import XCTest
 
 class FileManagerUtilsTests: XCTestCase {
   
-  func test_documentDirectory() {
+  func test_clearOrDestroyDirectory() {
     
     let directoryURL = FileManager.documentDirectory
     
@@ -52,15 +52,14 @@ class FileManagerUtilsTests: XCTestCase {
     
     // cleaning
     do {
-      
-      try FileManager.clearDirectoryAtPath(baseDemoURL.path)
-      try FileManager.clearDirectoryAtPath(fakeBaseDirectoryURL.path)
-      try FileManager.clearDirectoryAtPath(fakeBaseDirectorAsFileyURL.path)
+      try FileManager.clearDirectory(atPath: baseDemoURL.path)
+      try FileManager.clearDirectory(atPath: fakeBaseDirectoryURL.path)
+      try FileManager.clearDirectory(atPath: fakeBaseDirectorAsFileyURL.path)
       XCTAssertTrue(FileManager.default.fileExists(atPath: baseDemoURL.path), "The directory at path \(baseDemoURL.path) should exists.")
       XCTAssertTrue(try FileManager.default.contentsOfDirectory(atPath: baseDemoURL.path).count == 0, "The directory at path \(baseDemoURL.path) should be empty.")
       XCTAssertTrue(FileManager.default.fileExists(atPath: fakeBaseDirectorAsFileyURL.path), "The file at path \(fakeBaseDirectorAsFileyURL.path) should exists")
       XCTAssertTrue(!FileManager.default.fileExists(atPath: testURL.path), "The directory at path \(testURL.path) shouldn't exists")
-      try FileManager.default.destroyFileOrDirectoryAtPath(containerURL.path)
+      try FileManager.default.destroyFileOrDirectory(atPath: containerURL.path)
     } catch {
       XCTAssertTrue(false, error.localizedDescription)
     }

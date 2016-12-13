@@ -133,11 +133,11 @@ extension FileManager {
   /// Clears all contents in a directory `path`; throws an error in cases of failure.
   ///
   /// - Parameter path: **directory** path (if it's not a directory path, nothing is done).
-  public class func clearDirectoryAtPath(_ path: String) throws {
-    try FileManager.default.clearDirectoryAtPath(path)
+  public class func clearDirectory(atPath path: String) throws {
+    try FileManager.default.clearDirectory(atPath: path)
   }
   
-  internal func clearDirectoryAtPath(_ path: String) throws {
+  internal func clearDirectory(atPath path: String) throws {
     var isDirectory: ObjCBool = false
     guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
     guard isDirectory.boolValue == true else { return }
@@ -154,11 +154,11 @@ extension FileManager {
   /// Destroy a file or a directory at a given `path`; throws an error in cases of failure.
   ///
   /// - Parameter path: directory or file path.
-  public class func destroyFileOrDirectoryAtPath(_ path: String) throws {
-    try FileManager.default.destroyFileOrDirectoryAtPath(path)
+  public class func destroyFileOrDirectory(atPath path: String) throws {
+    try FileManager.default.destroyFileOrDirectory(atPath: path)
   }
   
-  internal func destroyFileOrDirectoryAtPath(_ path: String) throws {
+  internal func destroyFileOrDirectory(atPath path: String) throws {
     guard fileExists(atPath: path) == true else { return }
     try removeItem(atPath: path)
   }
