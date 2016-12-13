@@ -1,5 +1,5 @@
 //
-//  ProcessInfo+Info.swift
+//  ProcessInfoUtilsTests.swift
 //  Mechanica
 //
 //  Copyright © 2016 Tinrobots.
@@ -25,7 +25,7 @@
 import XCTest
 @testable import Mechanica
 
-class ProcessInfo_Info: XCTestCase {
+class ProcessInfoUtilsTests: XCTestCase {
   
   #if os(OSX)
   func test_isSandboxed() {

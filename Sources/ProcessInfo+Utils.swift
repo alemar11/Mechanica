@@ -1,5 +1,5 @@
 //
-//  ProcessInfo+Info.swift
+//  ProcessInfo+Utils.swift
 //  Mechanica
 //
 //  Copyright © 2016 Tinrobots.
