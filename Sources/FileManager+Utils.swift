@@ -56,7 +56,7 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the location of discardable cache files (*Library/Caches/*).
-  /// - note: Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file. 
+  /// - note: Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file.
   ///
   /// Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance. Examples of cache data include (but are not limited to) database cache files and transient, downloadable content.
   ///
@@ -77,21 +77,25 @@ extension FileManager {
   /// The contents of the *Library/Application Support/* are **backed up by iTunes and iCloud**.
   /// - important: macOS apps that are sandboxed have all their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
   public class var applicationSupportDirectory: URL {
-
-    var url = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    
+    let url = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     
     #if os(OSX)
-      if ProcessInfo.processInfo.environment["APP_SANDBOX_CONTAINER_ID"] == nil {
-        var identifier = Bundle.main.bundleIdentifier
-        if identifier?.length == 0 {
-          identifier = Bundle.main.executableURL?.lastPathComponent
-        }
-        url = url.appendingPathComponent(identifier ?? "", isDirectory: true)
-      }
-      return url
+      // If the macOS app isn't running in a sandbox, a subdirectory based on the *bundle identifier* (or on the app *exectubale file name*) is needed to avoid accidentally sharing files between applications.
+      guard (!ProcessInfo.isSandboxed) else { return url }
+      return url.appendingPathComponent(appIdentifier ?? "", isDirectory: true)
     #else
       return url
     #endif
+  }
+  
+  public static var appIdentifier: String? {
+    if let identifier = Bundle.main.bundleIdentifier, !identifier.isBlank { //i.e. org.tinrobots.App
+      return identifier
+    } else if let identifier = Bundle.main.executableFileName, !identifier.isBlank { //i.e. AppExecutableName
+      return identifier
+    }
+    return nil
   }
   
   /// **Mechanica**
