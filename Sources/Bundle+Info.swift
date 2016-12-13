@@ -49,4 +49,11 @@ extension Bundle {
     return infoDictionary?["CFBundleVersion"] as? String
   }
   
+  /// **Mechanica**
+  ///
+  /// Returns the receiver's executable file name.
+  public var executableFileName: String? {
+    return executableURL?.lastPathComponent
+  }
+  
 }
