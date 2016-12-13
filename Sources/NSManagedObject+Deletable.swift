@@ -74,11 +74,11 @@ extension DelayedDeletable {
 
 extension DelayedDeletable where Self: NSManagedObject {
   
-  public var hasChangedForDelayedDeletion: Bool {
+  public final var hasChangedForDelayedDeletion: Bool {
     return changedValues()[markedForDeletionKey] as? Date != nil
   }
   
-  public func markForLocalDeletion() {
+  public final func markForLocalDeletion() {
     guard isFault || markedForDeletionAsOf == nil else { return }
     markedForDeletionAsOf = Date()
   }
@@ -159,7 +159,7 @@ extension RemoteDeletable {
   /// Protocol `RemoteDeletable`.
   ///
   /// Marks an object to be deleted remotely.
-  public func markForRemoteDeletion() {
+  public final func markForRemoteDeletion() {
     isMarkedForRemoteDeletion = true
   }
   
@@ -168,7 +168,7 @@ extension RemoteDeletable {
 
 extension RemoteDeletable where Self: NSManagedObject {
   
-  public var hasChangedForRemoteDeletion: Bool {
+  public final var hasChangedForRemoteDeletion: Bool {
     return changedValues()[MarkedForRemoteDeletionKey] as? Bool == true
   }
   
