@@ -48,7 +48,7 @@ extension FileManager {
   ///
   /// You typically put files in one of several standard subdirectories. iOS apps commonly use the *Application Support* and *Caches subdirectories*; however, you can create custom subdirectories.
   ///
-  /// The contents of the *Library* directory (with the exception of the *Caches subdirectory*) are **backed up by iTunes and iCloud**.
+  /// The contents of the *Library* directory are **backed up by iTunes and iCloud** (with the exception of the *Caches subdirectory*).
   public class var libraryDirectory: URL {
     return try! FileManager.default.url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
@@ -60,10 +60,11 @@ extension FileManager {
   ///
   /// Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance. Examples of cache data include (but are not limited to) database cache files and transient, downloadable content.
   ///
-  /// Note that the system may delete the Caches/ directory to free up disk space, so your app must be able to re-create or download these files as needed.
   /// The contents of the *Library/Caches* are **not backed up by iTunes and iCloud**.
   ///
-  /// - important: macOS apps that are sandboxed have all their *Cache* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
+  /// Note that the system may delete the Caches/ directory to free up disk space, so your app must be able to re-create or download these files as needed.
+  ///
+  /// - important: Sandboxed *macOS* apps have all their *Caches* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
   public class var cachesDirectory: URL {
     return try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
@@ -73,31 +74,24 @@ extension FileManager {
   /// Returns the location of discardable cache files (*Library/Application Support/*).
   /// - note: Put app-created support files in the *Library/Application support/* directory. In general, this directory includes files that the app uses to run but that should remain hidden from the user. This directory can also include data files, configuration files, templates and modified versions of resources loaded from the app bundle.
   ///
-  /// On macOS all content in this directory should be placed in a custom subdirectory whose name is that of your app’s bundle identifier or your company.
   /// The contents of the *Library/Application Support/* are **backed up by iTunes and iCloud**.
-  /// - important: macOS apps that are sandboxed have all their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
+  ///
+  /// - warning: On *macOS* all content in this directory should be placed in a custom subdirectory whose name is that of your app’s bundle identifier or your company.
+  ///
+  /// - important: Sandboxed *macOS* apps have all their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
   public class var applicationSupportDirectory: URL {
     
     let url = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     
     #if os(OSX)
-      // If the macOS app isn't running in a sandbox, a subdirectory based on the *bundle identifier* (or on the app *exectubale file name*) is needed to avoid accidentally sharing files between applications.
+      // If the *macOS* app isn't running in a sandbox, a subdirectory based on the *bundle identifier* (or on the app *exectubale file name*) is needed to avoid accidentally sharing files between applications.
       guard (!ProcessInfo.isSandboxed) else { return url }
-      return url.appendingPathComponent(appIdentifier ?? "", isDirectory: true)
+      return url.appendingPathComponent(App.identifier ?? "", isDirectory: true)
     #else
       return url
     #endif
   }
-  
-  public static var appIdentifier: String? {
-    if let identifier = Bundle.main.bundleIdentifier, !identifier.isBlank { //i.e. org.tinrobots.App
-      return identifier
-    } else if let identifier = Bundle.main.executableFileName, !identifier.isBlank { //i.e. AppExecutableName
-      return identifier
-    }
-    return nil
-  }
-  
+    
   /// **Mechanica**
   ///
   /// Returns the location of the temporary directory (*tmp*).
@@ -107,7 +101,7 @@ extension FileManager {
   ///
   /// The contents of *tmp* directory are **not backed up by iTunes or iCloud**.
   ///
-  /// - important: macOS apps that are sandboxed have all their *temporary* directory located at a system-defined path.
+  /// - important: Sandboxed *macOS* apps have all their *temporary* directory located at a system-defined path.
   public class var temporaryDirectory: URL {
     return URL(fileURLWithPath: NSTemporaryDirectory())
   }
@@ -155,7 +149,7 @@ extension FileManager {
   
   /// **Mechanica**
   ///
-  /// Destroy a file or a directory at a given `path`; throws an error in cases of failure.
+  /// Destroys a file or a directory at a given `path`; throws an error in cases of failure.
   ///
   /// - Parameter path: directory or file path.
   public class func destroyFileOrDirectory(atPath path: String) throws {
