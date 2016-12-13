@@ -1,5 +1,5 @@
 //
-//  Colors.swift
+//  Color+Flat.swift
 //  Mechanica
 //
 //  Copyright © 2016 Tinrobots.
