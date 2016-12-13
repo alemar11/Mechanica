@@ -30,65 +30,39 @@ class FileManagerUtilsTests: XCTestCase {
   func test_documentDirectory() {
     
     let directoryURL = FileManager.documentDirectory
-    let demoURL = directoryURL.appendingPathComponent("demo", isDirectory: true)
     
+    let containerURL                = directoryURL.appendingPathComponent("org.tinrobots.tests", isDirectory: true)
+    
+    let baseDemoURL                 = containerURL.appendingPathComponent("demo", isDirectory: true)          // org.tinrobots.tests/demo/
+    let fakeBaseDirectoryURL        = containerURL.appendingPathComponent("fakeDemo", isDirectory: true)      // org.tinrobots.tests/fakeDemo/
+    let fakeBaseDirectorAsFileyURL  = containerURL.appendingPathComponent("fakeDemoFile", isDirectory: false) // org.tinrobots.tests/fakeDemoFile
+    
+    let testURL                     = baseDemoURL.appendingPathComponent("test", isDirectory: true)           // org.tinrobots.tests/demo/test/
+    let testFileURL                 = testURL.appendingPathComponent("file", isDirectory: false)              // org.tinrobots.tests/demo/test/file
+    
+    // creation
     do {
-      try FileManager.default.createDirectory(at: demoURL, withIntermediateDirectories: true, attributes: nil)
-      XCTAssertTrue(FileManager.default.fileExists(atPath: directoryURL.path))
-    } catch {
-       XCTAssertTrue(false, error.localizedDescription)
-    }
-    
-    //cleaning
-    do {
-      try FileManager.clearDocumentDirectory()
-      XCTAssertTrue(!FileManager.default.fileExists(atPath: demoURL.path))
-    } catch {
-       XCTAssertTrue(false, error.localizedDescription)
-    }
-    
-  }
-  
-  func test_cachesDirectory() {
-    
-    let directoryURL = FileManager.cachesDirectory
-    let demoURL = directoryURL.appendingPathComponent("demo", isDirectory: true)
-   
-    do {
-      try FileManager.default.createDirectory(at: demoURL, withIntermediateDirectories: true, attributes: nil)
-      XCTAssertTrue(FileManager.default.fileExists(atPath: directoryURL.path))
-    } catch {
-      XCTAssertTrue(false)
-    }
-    
-    //cleaning
-    do {
-      try FileManager.clearCachesDirectory()
-      XCTAssertTrue(!FileManager.default.fileExists(atPath: demoURL.path))
+      try FileManager.default.createDirectory(at: testURL, withIntermediateDirectories: true, attributes: nil)
+      XCTAssertTrue(FileManager.default.fileExists(atPath: containerURL.path))
+      FileManager.default.createFile(atPath: testFileURL.path, contents: Data(), attributes: nil)
+      FileManager.default.createFile(atPath: fakeBaseDirectorAsFileyURL.path, contents: Data(), attributes: nil)
     } catch {
       XCTAssertTrue(false, error.localizedDescription)
     }
     
-  }
-  
-  func test_temporaryDirectory() {
-    
-    let directoryURL = FileManager.temporaryDirectory
-    let demoURL = directoryURL.appendingPathComponent("demo", isDirectory: true)
-    
+    // cleaning
     do {
-      try FileManager.default.createDirectory(at: demoURL, withIntermediateDirectories: true, attributes: nil)
-      XCTAssertTrue(FileManager.default.fileExists(atPath: directoryURL.path))
+      
+      try FileManager.clearDirectoryAtPath(baseDemoURL.path)
+      try FileManager.clearDirectoryAtPath(fakeBaseDirectoryURL.path)
+      try FileManager.clearDirectoryAtPath(fakeBaseDirectorAsFileyURL.path)
+      XCTAssertTrue(FileManager.default.fileExists(atPath: baseDemoURL.path), "The directory at path \(baseDemoURL.path) should exists.")
+      XCTAssertTrue(try FileManager.default.contentsOfDirectory(atPath: baseDemoURL.path).count == 0, "The directory at path \(baseDemoURL.path) should be empty.")
+      XCTAssertTrue(FileManager.default.fileExists(atPath: fakeBaseDirectorAsFileyURL.path), "The file at path \(fakeBaseDirectorAsFileyURL.path) should exists")
+      XCTAssertTrue(!FileManager.default.fileExists(atPath: testURL.path), "The directory at path \(testURL.path) shouldn't exists")
+      try FileManager.default.destroyFileOrDirectoryAtPath(containerURL.path)
     } catch {
-      XCTAssertTrue(false)
-    }
-    
-    //cleaning
-    do {
-      try FileManager.clearTemporaryDirectory()
-      XCTAssertTrue(!FileManager.default.fileExists(atPath: demoURL.path))
-    } catch {
-       XCTAssertTrue(false, error.localizedDescription)
+      XCTAssertTrue(false, error.localizedDescription)
     }
     
   }

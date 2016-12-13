@@ -22,6 +22,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// File System Basics: https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html
+// Migrating an App to a Sandbox: https://developer.apple.com/library/content/documentation/Security/Conceptual/AppSandboxDesignGuide/MigratingALegacyApp/MigratingAnAppToASandbox.html
+
 import Foundation
 
 extension FileManager {
@@ -30,23 +33,51 @@ extension FileManager {
   
   /// **Mechanica**
   ///
-  /// Returns the location of the document directory (*Documents*).
+  /// Returns the location of the document directory (*Documents/*).
+  /// - note: Use this directory to store user-generated content. The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.
+  ///
+  /// The contents of *Documents* directory are **backed up by iTunes and iCloud**.
   public class var documentDirectory: URL {
     return try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
   
   /// **Mechanica**
   ///
-  /// Returns the location of discardable cache files (*Library/Caches*).
+  /// Returns the location of the library directory (*Library/*).
+  /// - note: Use the Library subdirectories for any files you don’t want exposed to the user. Your app should not use these directories for user data files.
+  ///
+  /// You typically put files in one of several standard subdirectories. iOS apps commonly use the *Application Support* and *Caches subdirectories*; however, you can create custom subdirectories.
+  ///
+  /// The contents of the *Library* directory (with the exception of the *Caches subdirectory*) are **backed up by iTunes and iCloud**.
+  public class var libraryDirectory: URL {
+    return try! FileManager.default.url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Returns the location of discardable cache files (*Library/Caches/*).
+  /// - note: Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file. 
+  ///
+  /// Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance. Examples of cache data include (but are not limited to) database cache files and transient, downloadable content.
+  ///
+  /// Note that the system may delete the Caches/ directory to free up disk space, so your app must be able to re-create or download these files as needed.
+  /// The contents of the *Library/Caches* are **not backed up by iTunes and iCloud**.
+  ///
+  /// - important: macOS apps that are sandboxed have all their *Cache* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
   public class var cachesDirectory: URL {
     return try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
   
   /// **Mechanica**
   ///
-  /// Returns the location of discardable cache files (*Library/Application Support*).
+  /// Returns the location of discardable cache files (*Library/Application Support/*).
+  /// - note: Put app-created support files in the *Library/Application support/* directory. In general, this directory includes files that the app uses to run but that should remain hidden from the user. This directory can also include data files, configuration files, templates and modified versions of resources loaded from the app bundle.
+  ///
+  /// On macOS all content in this directory should be placed in a custom subdirectory whose name is that of your app’s bundle identifier or your company.
+  /// The contents of the *Library/Application Support/* are **backed up by iTunes and iCloud**.
+  /// - important: macOS apps that are sandboxed have all their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
   public class var applicationSupportDirectory: URL {
-    //https://developer.apple.com/library/content/documentation/Security/Conceptual/AppSandboxDesignGuide/MigratingALegacyApp/MigratingAnAppToASandbox.html
+
     var url = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     
     #if os(OSX)
@@ -59,21 +90,28 @@ extension FileManager {
       }
       return url
     #else
-    return url
+      return url
     #endif
   }
   
   /// **Mechanica**
   ///
   /// Returns the location of the temporary directory (*tmp*).
+  /// - note: Use this directory to write temporary files that do not need to persist between launches of your app.
+  ///
+  /// Your app should remove files from this directory when they are no longer needed; however, the system may purge this directory when your app is not running.
+  ///
+  /// The contents of *tmp* directory are **not backed up by iTunes or iCloud**.
+  ///
+  /// - important: macOS apps that are sandboxed have all their *temporary* directory located at a system-defined path.
   public class var temporaryDirectory: URL {
     return URL(fileURLWithPath: NSTemporaryDirectory())
   }
   
   /// **Mechanica**
   ///
-  /// Returns always a `new` directory in Library/Caches for discardable cache files (temporary).
-  public class var makeNewTemporaryCacheDirectory: URL {
+  /// Returns always a `new` directory in Library/Caches for discardable cache files.
+  public class var makeNewCachesSubDirectory: URL {
     let url = FileManager.cachesDirectory.appendingPathComponent(UUID().uuidString)
     if (!FileManager.default.fileExists(atPath: url.absoluteString)){
       try! FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
@@ -90,44 +128,40 @@ extension FileManager {
   
   // MARK: - Delete
   
-  func clearDirectoryAtPath(_ path: String) throws {
-    let contents = try contentsOfDirectory(atPath: path)
-    for file in contents {
-      try removeItem(atPath: path.pathByAppendingPathComponent(file))
-    }
-  }
-  
+  /// **Mechanica**
+  ///
+  /// Clears all contents in a directory `path`; throws an error in cases of failure.
+  ///
+  /// - Parameter path: **directory** path (if it's not a directory path, nothing is done).
   public class func clearDirectoryAtPath(_ path: String) throws {
     try FileManager.default.clearDirectoryAtPath(path)
   }
   
-  public class func clearTemporaryDirectory() throws {
-    try FileManager.default.clearDirectoryAtPath(FileManager.temporaryDirectory.path)
-  }
-  
-  public class func clearDocumentDirectory() throws {
-    try FileManager.default.clearDirectoryAtPath(FileManager.documentDirectory.path)
-  }
-  
-  public class func clearCachesDirectory() throws {
-    try FileManager.default.clearDirectoryAtPath(FileManager.cachesDirectory.path)
-  }
-  
-}
-
-extension String {
-
-  /// **Mechanica**
-  ///
-  /// - Parameters:
-  ///   - pathComponent: The path component to add.
-  ///   - isDirectory: If true, then a trailing / is added to the resulting path. (default false)
-  /// - Returns: Returns a path constructed by appending the given path component to `self`. If you know in advance that the path component is a directory or not, then set *isDirectory* to true.
-  public func pathByAppendingPathComponent(_ pathComponent: String, isDirectory: Bool = false) -> String {
-    if (isDirectory){
-      return URL(fileURLWithPath: self).appendingPathComponent(pathComponent, isDirectory: true).path
-    } else {
-       return URL(fileURLWithPath: self).appendingPathComponent(pathComponent).path
+  internal func clearDirectoryAtPath(_ path: String) throws {
+    var isDirectory: ObjCBool = false
+    guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
+    guard isDirectory.boolValue == true else { return }
+    
+    let contents = try contentsOfDirectory(atPath: path)
+    for file in contents {
+      let path = URL(fileURLWithPath: path).appendingPathComponent(file).path
+      try removeItem(atPath: path)
     }
   }
+  
+  /// **Mechanica**
+  ///
+  /// Destroy a file or a directory at a given `path`; throws an error in cases of failure.
+  ///
+  /// - Parameter path: directory or file path.
+  public class func destroyFileOrDirectoryAtPath(_ path: String) throws {
+    try FileManager.default.destroyFileOrDirectoryAtPath(path)
+  }
+  
+  internal func destroyFileOrDirectoryAtPath(_ path: String) throws {
+    guard fileExists(atPath: path) == true else { return }
+    try removeItem(atPath: path)
+  }
+  
 }
+
