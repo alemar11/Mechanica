@@ -24,7 +24,7 @@
 
 import Foundation
 
-struct App {
+public struct App {
   
   #if os(OSX)
   /// **Mechanica**
@@ -39,7 +39,7 @@ struct App {
   ///
   /// Returns true if the current app is running Unit Tests.
   public static var isRunningUnitTests: Bool {
-    return ProcessInfo.isRunningUITests
+    return ProcessInfo.isRunningUnitTests
   }
 
   /// **Mechanica**
