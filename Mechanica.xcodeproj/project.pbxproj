@@ -181,6 +181,7 @@
 		D2E63C021E01521D00ED4385 /* OptionalUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E63C011E01521D00ED4385 /* OptionalUtilsTests.swift */; };
 		D2E63C031E01521D00ED4385 /* OptionalUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E63C011E01521D00ED4385 /* OptionalUtilsTests.swift */; };
 		D2E63C041E01521D00ED4385 /* OptionalUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E63C011E01521D00ED4385 /* OptionalUtilsTests.swift */; };
+		D2E63C091E015ED400ED4385 /* KeyboardObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E63C081E015ED400ED4385 /* KeyboardObserverTests.swift */; };
 		D2ED4A5F1DF82B5E0042F012 /* iOS_StoryboardDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2ED4A5E1DF82B5E0042F012 /* iOS_StoryboardDemo.storyboard */; };
 		D2ED4A611DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED4A601DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift */; };
 		D2ED4A631DF82C400042F012 /* StoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED4A621DF82C400042F012 /* StoryboardTests.swift */; };
@@ -272,6 +273,7 @@
 		D2CAF33B1DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPersistentStoreCoordinator+Utils.swift"; sourceTree = "<group>"; };
 		D2E63BFD1E014AFC00ED4385 /* StringNSStringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringNSStringTests.swift; sourceTree = "<group>"; };
 		D2E63C011E01521D00ED4385 /* OptionalUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalUtilsTests.swift; sourceTree = "<group>"; };
+		D2E63C081E015ED400ED4385 /* KeyboardObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserverTests.swift; sourceTree = "<group>"; };
 		D2ED4A5E1DF82B5E0042F012 /* iOS_StoryboardDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iOS_StoryboardDemo.storyboard; sourceTree = "<group>"; };
 		D2ED4A601DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_StoryboardDemo_ViewController_1.swift; sourceTree = "<group>"; };
 		D2ED4A621DF82C400042F012 /* StoryboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardTests.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		12B536EE1D33ED6A005C52A7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D2E63C081E015ED400ED4385 /* KeyboardObserverTests.swift */,
 				D2ED4A5D1DF82B040042F012 /* Storyboard Tests */,
 				D289AD051DC0B54D003DA7B8 /* String Tests */,
 				12A90BBE1D33FF5B00834DC0 /* Supporting Files */,
@@ -989,6 +992,7 @@
 				D2ABD00C1E005173006859B9 /* AppTests.swift in Sources */,
 				D208D1871DF071C6009687BB /* StringOperatorsTests.swift in Sources */,
 				D289ACFD1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
+				D2E63C091E015ED400ED4385 /* KeyboardObserverTests.swift in Sources */,
 				D2ED4A611DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */,
 				D21A31F51DEDD0BE00E4A609 /* StringConversionsTests.swift in Sources */,
 				D289AD021DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
