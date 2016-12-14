@@ -71,6 +71,22 @@ class StringUtilsTests: XCTestCase {
 
   }
 
+  func test_reverse() {
+    var a = "a"
+    a.reverse()
+    XCTAssertTrue(a == "a")
+    var aa = "aa"
+    aa.reverse()
+    XCTAssertTrue(aa == "aa")
+    var abc = "abc"
+    abc.reverse()
+    XCTAssertTrue(abc == "cba")
+    var 🤔aa = "🤔aa"
+    🤔aa.reverse()
+    XCTAssertTrue(🤔aa == "aa🤔")
+  }
+
+  
   func test_reversed() {
     XCTAssertTrue("a".reversed() == "a")
     XCTAssertTrue("aa".reversed() == "aa")
@@ -89,6 +105,7 @@ class StringUtilsTests: XCTestCase {
 
     XCTAssertFalse("HELLO world".contains("hello", caseSensitive: true)) //case sensitive
     XCTAssertTrue("HELLO world".contains("hello", caseSensitive: false)) //case insensitive
+    XCTAssertFalse("HELLO world".contains("abc", caseSensitive: false)) //case insensitive
 
     XCTAssertTrue("AaB🤔bCc".contains("🤔", caseSensitive: true))
     XCTAssertFalse("AaB🤔bCc".contains("🤔🤔", caseSensitive: true))

@@ -31,6 +31,8 @@ class BundleInfoTests: XCTestCase {
       let bundle = Bundle(identifier: mechanicaBundleIdentifier)
       XCTAssertTrue(bundle?.version != nil)
       XCTAssertTrue(bundle?.shortVersionString != nil)
+      XCTAssertTrue(bundle?.displayName == nil)
+      XCTAssertTrue(bundle?.executableFileName == "Mechanica")
     }
 
 }

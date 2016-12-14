@@ -65,6 +65,8 @@ class StoryboardTests: XCTestCase {
       XCTAssertNotNil(macOS_WindowCcontroller_1)
 
     #endif
+    
+    XCTAssert(Storyboard.mainStoryboard == nil)
   }
 
 }
