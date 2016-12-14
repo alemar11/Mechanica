@@ -66,7 +66,7 @@ extension StoryboardKeyCodable where StoryboardName.RawValue == String {
    let mainStoryboard = Storyboard.storyboard(key:.main)
    ```
    
-  */
+   */
   public static func storyboard(forKey key: StoryboardName, bundle: Bundle? = nil) -> Storyboard {
     return Storyboard(storyboard: key, bundle: bundle)
   }
@@ -92,7 +92,7 @@ extension Storyboard {
    let mainStoryboard = Storyboard(storyboard: Storyboard.StoryboardName.main)
    ```
    
-  */
+   */
   fileprivate convenience init<T: RawRepresentable>(storyboard: T, bundle: Bundle? = nil) where T.RawValue == String {
     self.init(name: storyboard.rawValue, bundle: bundle)
   }
@@ -117,7 +117,7 @@ extension Storyboard {
     #endif
     
     guard let mainStoryboardName = Bundle.main.infoDictionary?[mainStoryboardFileName] as? String else {
-      assertionFailure("\(mainStoryboardFileName) not found in main Bundle.")
+      //assertionFailure("\(mainStoryboardFileName) not found in main Bundle.")
       return nil
     }
     return Storyboard(name: mainStoryboardName, bundle: Bundle.main)
@@ -198,10 +198,10 @@ extension Storyboard {
    ```
    */
   public func instantiateViewController<T: NSViewController>() -> T where T: StoryboardIdentifiable {
-  guard let viewController = self.instantiateController(withIdentifier: T.storyboardIdentifier) as? T else {
-  fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
-  }
-  return viewController
+    guard let viewController = self.instantiateController(withIdentifier: T.storyboardIdentifier) as? T else {
+      fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
+    }
+    return viewController
   }
   
   /**
@@ -215,10 +215,10 @@ extension Storyboard {
    ```
    */
   public func instantiateWindowController<T: NSWindowController>() -> T where T: StoryboardIdentifiable {
-  guard let windowController = self.instantiateController(withIdentifier: T.storyboardIdentifier) as? T else {
-  fatalError("Couldn't instantiate a Window Controller with identifier \(T.storyboardIdentifier) ")
-  }
-  return windowController
+    guard let windowController = self.instantiateController(withIdentifier: T.storyboardIdentifier) as? T else {
+      fatalError("Couldn't instantiate a Window Controller with identifier \(T.storyboardIdentifier) ")
+    }
+    return windowController
   }
   
   #endif

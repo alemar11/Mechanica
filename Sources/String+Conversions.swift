@@ -26,6 +26,8 @@ import Foundation
 
 extension String {
   
+  /// **Mechanica**
+  ///
   /// Return a Bool value by parsing `self`.
   public var bool: Bool? {
     let string = self.trimmed().lowercased()
@@ -104,18 +106,9 @@ extension String {
   
   /// **Mechanica**
   ///
-  /// Returns an URL initialized with `self.
+  /// Returns an URL initialized with `self`.
   public var url: URL? {
     return URL(string: self)
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Returns a date representation of `self` using a given `format`.
-  public func date(withFormat format: String) -> Date? {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = format
-    return dateFormatter.date(from: self)
   }
   
   /// **Mechanica**
