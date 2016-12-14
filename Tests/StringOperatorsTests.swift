@@ -22,5 +22,13 @@ class StringOperatorsTests: XCTestCase {
     XCTAssert(3*"🇮🇹" == "🇮🇹🇮🇹🇮🇹")
   }
 
+  func test_OptionalStringCoalescingOperator() {
+    let someValue: Int? = 10
+    let stringValue = "\(someValue ??? "unknown")"
+    XCTAssert(stringValue == "10")
+    let someValue2: Int? = nil
+    let stringValue2 = "\(someValue2 ??? "unknown")"
+    XCTAssert(stringValue2 == "unknown")
+  }
 
 }

@@ -39,3 +39,17 @@ public func *(left: String, right: Int) -> String {
 public func *(left: Int, right: String) -> String {
   return  String(repeating: right, count: left)
 }
+
+infix operator ???: NilCoalescingPrecedence
+
+/// **Mechanica**
+///
+/// Optional-string-coalescing operator.
+///
+/// The ??? operator takes any `optional` on its left side and a `default` string value on the right, returning a string.
+/// If the optional value is non-nil, it unwraps it and returns its string description, otherwise it returns the default value.
+///
+/// [Credits](https://oleb.net/blog/2016/12/optionals-string-interpolation/)
+public func ???<T>(optional: T?, defaultValue: @autoclosure () -> String) -> String {
+  return optional.map { String(describing: $0) } ?? defaultValue()
+}
