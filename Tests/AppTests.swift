@@ -1,5 +1,5 @@
 //
-//  ProcessInfoUtilsTests.swift
+//  App.swift
 //  Mechanica
 //
 //  Copyright © 2016 Tinrobots.
@@ -25,16 +25,20 @@
 import XCTest
 @testable import Mechanica
 
-class ProcessInfoUtilsTests: XCTestCase {
+class AppTests: XCTestCase {
 
   #if os(OSX)
   func test_isSandboxed() {
-    XCTAssertFalse(ProcessInfo.isSandboxed)
+    XCTAssertFalse(App.isSandboxed)
   }
   #endif
 
   func test_isRunningUnitTests() {
-    XCTAssertTrue(ProcessInfo.isRunningUnitTests)
+    XCTAssertTrue(App.isRunningUnitTests)
+  }
+  
+  func test_identifier() {
+    XCTAssert(App.identifier == "xctest")
   }
 
 }
