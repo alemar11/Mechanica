@@ -36,7 +36,7 @@ class AppTests: XCTestCase {
   func test_isRunningUnitTests() {
     XCTAssertTrue(App.isRunningUnitTests)
   }
-  
+
   func test_identifier() {
     XCTAssert(App.identifier == "xctest")
   }

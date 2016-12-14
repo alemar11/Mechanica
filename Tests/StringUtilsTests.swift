@@ -68,7 +68,6 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("a".ends(with:"A", caseSensitive: false))
     XCTAssertTrue("Hello".ends(with:"hello", caseSensitive: false))
     XCTAssertFalse("Hello".ends(with:"helloo", caseSensitive: false))
-
   }
 
   func test_reverse() {
@@ -86,7 +85,6 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(🤔aa == "aa🤔")
   }
 
-  
   func test_reversed() {
     XCTAssertTrue("a".reversed() == "a")
     XCTAssertTrue("aa".reversed() == "aa")
@@ -134,8 +132,6 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("AaBbCc".replace("a", with: "a", caseSensitive: false) == "aaBbCc")
     XCTAssertTrue("AaBbCc".replace("a", with: "A", caseSensitive: false) == "AABbCc")
     XCTAssertTrue("AaBbCc".replace("", with: "A", caseSensitive: false) == "AaBbCc")
-
-
   }
 
   func test_trim() {
@@ -167,7 +163,6 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s5.trimmedRight(characterSet: NSCharacterSet.alphanumerics) == "  abcdefg  ")
     XCTAssertTrue(s5.trimmedLeft(characterSet: NSCharacterSet.alphanumerics) == "  abcdefg  ")
     XCTAssertTrue(s5.trimmed() == "abcdefg")
-
   }
 
   func test_capitalizedFirstCharacter() {
@@ -260,11 +255,8 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.removingPrefix(upToPosition: 5) == "")
     XCTAssertTrue(s.removingPrefix(upToPosition: 100) == "")
     XCTAssertTrue(s.removingPrefix(upToPosition: -1) == "")
-
     XCTAssertTrue("".removingPrefix(upToPosition: 1) == "")
-
   }
-
 
   func test_removingSuffix() {
 
@@ -276,9 +268,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.removingSuffix(fromPosition: 5) == "")
     XCTAssertTrue(s.removingSuffix(fromPosition: 100) == "")
     XCTAssertTrue(s.removingSuffix(fromPosition: -1) == "")
-
     XCTAssertTrue("".removingSuffix(fromPosition: 1) == "")
-
   }
 
   func test_truncate() {
@@ -348,7 +338,6 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s9.truncate(at: 3) == "🇮🇹​🇮🇹…")
     XCTAssertTrue(s9.truncate(at: 4) == "🇮🇹​🇮🇹​…")
     XCTAssertTrue(s9.truncate(at: 5) == "🇮🇹​🇮🇹​🇮🇹")
-
   }
 
   func test_subscript() {
@@ -439,7 +428,6 @@ class StringUtilsTests: XCTestCase {
       let newString2 = s.replacingCharacters(in: countableClosedRange, with: "1")
       XCTAssertTrue(newString2 == "1")
     }
-
   }
 
 }

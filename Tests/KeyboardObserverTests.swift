@@ -26,16 +26,16 @@ import XCTest
 @testable import Mechanica
 
 class KeyboardObserverTests: XCTestCase {
-  
+
   let keyboardObserver = KeyboardObserver()
-  
+
   var willChangeFrameOptions: KeyboardObserver.Options?
   var didChangeFrameOptions: KeyboardObserver.Options?
   var willHideOptions: KeyboardObserver.Options?
   var didHideOptions: KeyboardObserver.Options?
   var willShowOptions: KeyboardObserver.Options?
   var didShowOptions: KeyboardObserver.Options?
-  
+
   override func setUp() {
     keyboardObserver.on(event: KeyboardObserver.Event.willChangeFrame) { [weak self] in self?.willChangeFrameOptions = $0 }
     keyboardObserver.on(event: KeyboardObserver.Event.didChangeFrame) { [weak self] in self?.didChangeFrameOptions = $0 }
@@ -44,11 +44,11 @@ class KeyboardObserverTests: XCTestCase {
     keyboardObserver.on(event: KeyboardObserver.Event.willShow) { [weak self] in self?.willShowOptions = $0 }
     keyboardObserver.on(event: KeyboardObserver.Event.didShow) { [weak self] in self?.didShowOptions = $0 }
   }
-  
+
   override func tearDown() {
     keyboardObserver.clear()
     keyboardObserver.unregister()
-    
+
     willChangeFrameOptions  = nil
     didChangeFrameOptions   = nil
     willHideOptions         = nil
@@ -56,16 +56,16 @@ class KeyboardObserverTests: XCTestCase {
     willShowOptions         = nil
     didShowOptions          = nil
   }
-  
+
   func test_register() {
     keyboardObserver.register()
     executeRegistedTests()
   }
-  
+
   func test_clear() {
     keyboardObserver.register()
     keyboardObserver.clear() // Callbacks will be dismissed.
-    
+
     //willShow
     do {
       let startFrame        = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -73,12 +73,12 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.easeOut
       let animationDuration = 1.1
       let currentApp        = true
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo: userInfo)
       XCTAssertNil(willShowOptions)
     }
-    
+
     //didShow
     do {
       let startFrame        = CGRect(x: 10, y: 10, width: 100, height: 100)
@@ -86,12 +86,12 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.easeOut
       let animationDuration = 1.2
       let currentApp        = true
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardDidShow, object: nil, userInfo: userInfo)
       XCTAssertNil(didShowOptions)
     }
-    
+
     //willHide
     do {
       let startFrame        = CGRect(x: 5, y: 0, width: 100, height: 100)
@@ -99,12 +99,12 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.easeIn
       let animationDuration = 0.0
       let currentApp        = false
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillHide, object: nil, userInfo: userInfo)
       XCTAssertNil(willHideOptions)
     }
-    
+
     //didHide
     do {
       let startFrame        = CGRect(x: 100, y: 100, width: 100, height: 100)
@@ -112,12 +112,12 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.linear
       let animationDuration = 1.11
       let currentApp        = false
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardDidHide, object: nil, userInfo: userInfo)
       XCTAssertNil(didHideOptions)
     }
-    
+
     //willChangeFrame
     do {
       let startFrame        = CGRect(x: 0, y: 10, width: 10, height: 10)
@@ -125,12 +125,12 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.easeOut
       let animationDuration = 1.1
       let currentApp        = true
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil, userInfo: userInfo)
       XCTAssertNil(willChangeFrameOptions)
     }
-    
+
     //didChangeFrame
     do {
       let startFrame        = CGRect(x: 10, y: 0, width: 100, height: 10)
@@ -138,62 +138,62 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.easeInOut
       let animationDuration = 2.1
       let currentApp        = true
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil, userInfo: userInfo)
       XCTAssertNil(didChangeFrameOptions)
     }
-    
+
   }
-  
+
   func test_unregister() {
     keyboardObserver.register()
     keyboardObserver.unregister() // Callbacks won’t be dismissed.
-    
+
     //willShow
     do {
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo: nil)
       XCTAssertNil(willShowOptions)
     }
-    
+
     //didShow
     do {
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardDidShow, object: nil, userInfo: nil)
       XCTAssertNil(didShowOptions)
     }
-    
+
     //willHide
     do {
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillHide, object: nil, userInfo: nil)
       XCTAssertNil(willHideOptions)
     }
-    
+
     //didHide
     do {
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardDidHide, object: nil, userInfo: nil)
       XCTAssertNil(didHideOptions)
     }
-    
+
     //willChangeFrame
     do {
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil, userInfo: nil)
       XCTAssertNil(willChangeFrameOptions)
     }
-    
+
     //didChangeFrame
     do {
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil, userInfo: nil)
       XCTAssertNil(didChangeFrameOptions)
     }
-    
+
     keyboardObserver.register()
     executeRegistedTests()
-    
+
   }
-  
-  
+
+
   func executeRegistedTests() {
-    
+
     //willShow
     do {
       let startFrame        = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -201,7 +201,7 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.easeOut
       let animationDuration = 1.1
       let currentApp        = true
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo: userInfo)
       XCTAssertNotNil(willShowOptions)
@@ -211,7 +211,7 @@ class KeyboardObserverTests: XCTestCase {
       XCTAssert(willShowOptions?.animationCurve == UIViewAnimationCurve.easeOut)
       XCTAssert(willShowOptions?.animationDuration == animationDuration)
     }
-    
+
     //didShow
     do {
       let startFrame        = CGRect(x: 10, y: 10, width: 100, height: 100)
@@ -219,7 +219,7 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.easeOut
       let animationDuration = 1.2
       let currentApp        = true
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardDidShow, object: nil, userInfo: userInfo)
       XCTAssertNotNil(didShowOptions)
@@ -229,7 +229,7 @@ class KeyboardObserverTests: XCTestCase {
       XCTAssert(didShowOptions?.animationCurve == UIViewAnimationCurve.easeOut)
       XCTAssert(didShowOptions?.animationDuration == animationDuration)
     }
-    
+
     //willHide
     do {
       let startFrame        = CGRect(x: 5, y: 0, width: 100, height: 100)
@@ -237,7 +237,7 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.easeIn
       let animationDuration = 0.0
       let currentApp        = false
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillHide, object: nil, userInfo: userInfo)
       XCTAssertNotNil(willHideOptions)
@@ -247,7 +247,7 @@ class KeyboardObserverTests: XCTestCase {
       XCTAssert(willHideOptions?.animationCurve == animationCurve)
       XCTAssert(willHideOptions?.animationDuration == animationDuration)
     }
-    
+
     //didHide
     do {
       let startFrame        = CGRect(x: 100, y: 100, width: 100, height: 100)
@@ -255,7 +255,7 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.linear
       let animationDuration = 1.11
       let currentApp        = false
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardDidHide, object: nil, userInfo: userInfo)
       XCTAssertNotNil(didHideOptions)
@@ -265,7 +265,7 @@ class KeyboardObserverTests: XCTestCase {
       XCTAssert(didHideOptions?.animationCurve == animationCurve)
       XCTAssert(didHideOptions?.animationDuration == animationDuration)
     }
-    
+
     //willChangeFrame
     do {
       let startFrame        = CGRect(x: 0, y: 10, width: 10, height: 10)
@@ -273,7 +273,7 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.easeOut
       let animationDuration = 1.1
       let currentApp        = true
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil, userInfo: userInfo)
       XCTAssertNotNil(willChangeFrameOptions)
@@ -283,7 +283,7 @@ class KeyboardObserverTests: XCTestCase {
       XCTAssert(willChangeFrameOptions?.animationCurve == animationCurve)
       XCTAssert(willChangeFrameOptions?.animationDuration == animationDuration)
     }
-    
+
     //didChangeFrame
     do {
       let startFrame        = CGRect(x: 10, y: 0, width: 100, height: 10)
@@ -291,7 +291,7 @@ class KeyboardObserverTests: XCTestCase {
       let animationCurve    = UIViewAnimationCurve.easeInOut
       let animationDuration = 2.1
       let currentApp        = true
-      
+
       let userInfo = makeUserInfoWith(startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration, currentApp: currentApp)
       NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil, userInfo: userInfo)
       XCTAssertNotNil(didChangeFrameOptions)
@@ -301,14 +301,14 @@ class KeyboardObserverTests: XCTestCase {
       XCTAssert(didChangeFrameOptions?.animationCurve == animationCurve)
       XCTAssert(didChangeFrameOptions?.animationDuration == animationDuration)
     }
-    
+
   }
-  
-  
+
+
 }
 
 fileprivate extension KeyboardObserverTests {
-  
+
   func makeUserInfoWith(startFrame: CGRect, endFrame: CGRect, animationCurve: UIViewAnimationCurve, animationDuration: Double, currentApp: Bool) -> [AnyHashable : Any] {
     var userInfo = [AnyHashable : Any]()
     userInfo[UIKeyboardIsLocalUserInfoKey] = currentApp
@@ -318,5 +318,5 @@ fileprivate extension KeyboardObserverTests {
     userInfo[UIKeyboardAnimationDurationUserInfoKey] = animationDuration
     return userInfo
   }
-  
+
 }
