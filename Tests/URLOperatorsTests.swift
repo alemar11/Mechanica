@@ -26,14 +26,14 @@ import XCTest
 @testable import Mechanica
 
 class URLOperatorsTests: XCTestCase {
-  
+
   func test_Addition() {
-    
+
     let url   = URL(fileURLWithPath: "")
     let url2  = URL(fileURLWithPath: "tinrobots")
     let url3  = URL(fileURLWithPath: "www.tinrobots.org/demo")
     let url4  = URL(fileURLWithPath: "http://www.tinrobots.org/demo")
-    
+
     do {
       let additionalPath = "test"
       let newURL = url + additionalPath
@@ -49,7 +49,7 @@ class URLOperatorsTests: XCTestCase {
       XCTAssertTrue(newURL4.lastPathComponent == "test")
       XCTAssertTrue(newURL4.pathExtension == "")
     }
-    
+
     do {
       let additionalPath = "test.png"
       let newURL = url + additionalPath
@@ -65,7 +65,7 @@ class URLOperatorsTests: XCTestCase {
       XCTAssertTrue(newURL4.lastPathComponent == "test.png")
       XCTAssertTrue(newURL4.pathExtension == "png")
     }
-    
+
     do {
       let additionalPath = "/demo/test.png"
       let newURL = url + additionalPath
@@ -81,7 +81,7 @@ class URLOperatorsTests: XCTestCase {
       XCTAssertTrue(newURL4.lastPathComponent == "test.png")
       XCTAssertTrue(newURL4.pathExtension == "png")
     }
-    
+
     do {
       let additionalPath = ""
       let newURL = url + additionalPath
@@ -99,5 +99,5 @@ class URLOperatorsTests: XCTestCase {
     }
 
   }
-  
+
 }

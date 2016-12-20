@@ -304,7 +304,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s4.truncate(at: 2) == "a🇮🇹…")
     XCTAssertTrue(s4.truncate(at: 3) == "a🇮🇹b…")
     XCTAssertTrue(s4.truncate(at: 4) == "a🇮🇹bb…")
-    
+
     /// Currently, Swift counts multiple flags following each other as a single Character, and it seems this will still be “correct” in Unicode 9
     /// Multiple emoji flags are counted as 1 character: "🇮🇹🇮🇹".characters.count is 1
     /// Swift can't understand them without a separation character.

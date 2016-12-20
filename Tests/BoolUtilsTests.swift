@@ -26,17 +26,17 @@ import XCTest
 @testable import Mechanica
 
 class BoolUtilsTests: XCTestCase {
-  
+
   func test_int() {
     XCTAssert(true.int == 1)
     XCTAssert(false.int == 0)
   }
-  
+
   func test_string() {
     XCTAssert(true.string == "true")
     XCTAssert(false.string == "false")
   }
-  
+
   func test_random() {
     let b = Bool.random()
     switch b {
@@ -47,5 +47,5 @@ class BoolUtilsTests: XCTestCase {
       XCTAssert(true)
     }
   }
-  
+
 }
