@@ -304,9 +304,12 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s4.truncate(at: 2) == "a🇮🇹…")
     XCTAssertTrue(s4.truncate(at: 3) == "a🇮🇹b…")
     XCTAssertTrue(s4.truncate(at: 4) == "a🇮🇹bb…")
-    //Multiple emoji flags are counted as 1 character: "🇮🇹🇮🇹".characters.count is 1
-    //Swift can't understand them without a separation character.
-    //(http://stackoverflow.com/questions/26862282/swift-countelements-return-incorrect-value-when-count-flag-emoji)
+    
+    /// Currently, Swift counts multiple flags following each other as a single Character, and it seems this will still be “correct” in Unicode 9
+    /// Multiple emoji flags are counted as 1 character: "🇮🇹🇮🇹".characters.count is 1
+    /// Swift can't understand them without a separation character.
+    /// http://stackoverflow.com/questions/26862282/swift-countelements-return-incorrect-value-when-count-flag-emoji
+    /// https://oleb.net/blog/2016/12/emoji-4-0/
     XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹🇮🇹…")
     XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹c…")
 
