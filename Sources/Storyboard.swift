@@ -63,7 +63,7 @@ extension StoryboardKeyCodable where StoryboardName.RawValue == String {
    }
    }
    
-   let mainStoryboard = Storyboard.storyboard(key:.main)
+   let mainStoryboard = Storyboard.storyboard(forKey: .main)
    ```
    - note: If the bundle parameter is nil, the main bundle is used.
    */
