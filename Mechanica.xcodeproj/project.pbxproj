@@ -37,6 +37,11 @@
 		12B537051D33F16E005C52A7 /* Mechanica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12B536B21D33ECEC005C52A7 /* Mechanica.framework */; };
 		12B537141D33F186005C52A7 /* Mechanica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12B536D51D33ED1C005C52A7 /* Mechanica.framework */; };
 		12B537231D33F192005C52A7 /* Mechanica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12B536E21D33ED29005C52A7 /* Mechanica.framework */; };
+		12B6B1B31E0D58310057FE5F /* NibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B21E0D58310057FE5F /* NibTests.swift */; };
+		12B6B1B41E0D5A2F0057FE5F /* iOS_NibDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B6B1AE1E0D57A90057FE5F /* iOS_NibDemo.xib */; };
+		12B6B1B51E0D5A3B0057FE5F /* iOS_NibDemo_View_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B01E0D580A0057FE5F /* iOS_NibDemo_View_1.swift */; };
+		12B6B1B71E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B61E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift */; };
+		12B6B1B91E0D5D180057FE5F /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B81E0D5D180057FE5F /* Nib.swift */; };
 		12B9562D1D880B3B00F75DD5 /* Optional+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */; };
 		12B9562E1D880B3B00F75DD5 /* Optional+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */; };
 		12B9562F1D880B3B00F75DD5 /* Optional+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */; };
@@ -247,6 +252,11 @@
 		12B5370F1D33F186005C52A7 /* Mechanica tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mechanica tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B5371E1D33F192005C52A7 /* Mechanica macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mechanica macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B537291D33F1D3005C52A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12B6B1AE1E0D57A90057FE5F /* iOS_NibDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iOS_NibDemo.xib; sourceTree = "<group>"; };
+		12B6B1B01E0D580A0057FE5F /* iOS_NibDemo_View_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_NibDemo_View_1.swift; sourceTree = "<group>"; };
+		12B6B1B21E0D58310057FE5F /* NibTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTests.swift; sourceTree = "<group>"; };
+		12B6B1B61E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_NibDemo_View_2.swift; sourceTree = "<group>"; };
+		12B6B1B81E0D5D180057FE5F /* Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Utils.swift"; sourceTree = "<group>"; };
 		12B9562B1D880B3B00F75DD5 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		12B956391D880B5200F75DD5 /* FileManager+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Utils.swift"; sourceTree = "<group>"; };
@@ -393,6 +403,7 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				12B6B1B81E0D5D180057FE5F /* Nib.swift */,
 				D278BD931DEF102A006FAD83 /* Color */,
 				D26C6C291DEC83B800B7D26A /* Storyboard.swift */,
 				129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */,
@@ -416,6 +427,7 @@
 		12B536EE1D33ED6A005C52A7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				12B6B1AD1E0D576A0057FE5F /* Nib Tests */,
 				D2E63C081E015ED400ED4385 /* KeyboardObserverTests.swift */,
 				D2ED4A5D1DF82B040042F012 /* Storyboard Tests */,
 				D289AD051DC0B54D003DA7B8 /* String Tests */,
@@ -443,6 +455,17 @@
 			);
 			name = "Supporting Files";
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		12B6B1AD1E0D576A0057FE5F /* Nib Tests */ = {
+			isa = PBXGroup;
+			children = (
+				12B6B1AE1E0D57A90057FE5F /* iOS_NibDemo.xib */,
+				12B6B1B01E0D580A0057FE5F /* iOS_NibDemo_View_1.swift */,
+				12B6B1B21E0D58310057FE5F /* NibTests.swift */,
+				12B6B1B61E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift */,
+			);
+			name = "Nib Tests";
 			sourceTree = "<group>";
 		};
 		12B956431D8824AB00F75DD5 /* String */ = {
@@ -820,6 +843,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12B6B1B41E0D5A2F0057FE5F /* iOS_NibDemo.xib in Resources */,
 				D2ED4A5F1DF82B5E0042F012 /* iOS_StoryboardDemo.storyboard in Resources */,
 				D20545031DDC5274007DCE97 /* ConfigurationDemo.plist in Resources */,
 			);
@@ -890,6 +914,7 @@
 				D273A59A1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				D262EF1E1DA5487F0061AB10 /* ModelVersion.swift in Sources */,
 				D20544FA1DDC508B007DCE97 /* Configuration.swift in Sources */,
+				12B6B1B91E0D5D180057FE5F /* Nib.swift in Sources */,
 				D278BD961DEF1061006FAD83 /* Color+Flat.swift in Sources */,
 				12D9DEFD1E085B6A000799C6 /* Bool+Utils.swift in Sources */,
 				D21A31F01DEDC9DA00E4A609 /* String+Conversions.swift in Sources */,
@@ -1022,6 +1047,7 @@
 				D2ABD00C1E005173006859B9 /* AppTests.swift in Sources */,
 				D208D1871DF071C6009687BB /* StringOperatorsTests.swift in Sources */,
 				12D9DF021E085BD3000799C6 /* BoolUtilsTests.swift in Sources */,
+				12B6B1B51E0D5A3B0057FE5F /* iOS_NibDemo_View_1.swift in Sources */,
 				D289ACFD1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
 				D2E63C091E015ED400ED4385 /* KeyboardObserverTests.swift in Sources */,
 				D2ED4A611DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */,
@@ -1029,7 +1055,9 @@
 				D22081921E07FFB400BE4268 /* URLOperatorsTests.swift in Sources */,
 				D289AD021DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
 				D278BDA31DEF139F006FAD83 /* ColorUtilsTests.swift in Sources */,
+				12B6B1B31E0D58310057FE5F /* NibTests.swift in Sources */,
 				D23748821DD362990064EA22 /* BundleInfoTests.swift in Sources */,
+				12B6B1B71E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift in Sources */,
 				D20544FF1DDC51F8007DCE97 /* ConfigurationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
