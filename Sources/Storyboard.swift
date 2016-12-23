@@ -65,7 +65,7 @@ extension StoryboardKeyCodable where StoryboardName.RawValue == String {
    
    let mainStoryboard = Storyboard.storyboard(key:.main)
    ```
-   
+   - note: If the bundle parameter is nil, the main bundle is used.
    */
   public static func storyboard(forKey key: StoryboardName, bundle: Bundle? = nil) -> Storyboard {
     return Storyboard(storyboard: key, bundle: bundle)
@@ -130,7 +130,7 @@ extension Storyboard {
 
 /// **Mechanica**
 ///
-/// Types adopting the `StoryboardIdentifiable` protocol have a unique Storyboard ID.
+/// Types adopting the `StoryboardIdentifiable` protocol have an unique Storyboard ID.
 public protocol StoryboardIdentifiable {
   static var storyboardIdentifier: String { get }
 }
