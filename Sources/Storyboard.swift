@@ -38,7 +38,7 @@ import Foundation
   public typealias Storyboard = NSStoryboard
 #endif
 
-// MARK: - Storyboard
+// MARK: - StoryboardKeyCodable
 
 /// **Mechanica**
 ///
@@ -126,40 +126,30 @@ extension Storyboard {
 }
 
 
-// MARK: - ViewController
+// MARK: - StoryboardIdentifiable
 
 /// **Mechanica**
 ///
 /// Types adopting the `StoryboardIdentifiable` protocol have an unique Storyboard ID.
-public protocol StoryboardIdentifiable {
+public protocol StoryboardIdentifiable: class {
   static var storyboardIdentifier: String { get }
 }
 
-#if os(iOS) || os(tvOS)
-  
-  public extension StoryboardIdentifiable where Self: UIViewController {
-    public static var storyboardIdentifier: String {
-      return String(describing: self)
-    }
+extension StoryboardIdentifiable {
+  /// By default the *storyboardIdentifier* (Storyboard ID) is the same name as the name of the class.
+  public static var storyboardIdentifier: String {
+    return String(describing: self)
   }
+}
+
+#if os(iOS) || os(tvOS)
   
   extension UIViewController : StoryboardIdentifiable {}
   
 #elseif os(macOS)
   
-  public extension StoryboardIdentifiable where Self: NSViewController {
-    public static var storyboardIdentifier: String {
-      return String(describing: self)
-    }
-  }
-  
-  extension StoryboardIdentifiable where Self: NSWindowController {
-    public static var storyboardIdentifier: String {
-      return String(describing: self)
-    }
-  }
-  
   extension NSViewController : StoryboardIdentifiable {}
+  extension NSWindowController : StoryboardIdentifiable {}
   
 #endif
 
