@@ -58,8 +58,8 @@ extension StoryboardKeyCodable where StoryboardName.RawValue == String {
    ```
    extension Storyboard: StoryboardKeyCodable {
    enum StoryboardName : String {
-   case main = "MainStoryboard"
-   case detail = "DetailStoryboard"
+   case main    = "MainStoryboard"
+   case detail  = "DetailStoryboard"
    }
    }
    

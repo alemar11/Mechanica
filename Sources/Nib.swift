@@ -54,8 +54,8 @@ extension NibKeyCodable where NibName.RawValue == String {
    ```
    extension Nib: NibKeyCodable {
    enum NibName : String {
-   case first = "first"
-   case second = "second"
+   case first   = "first"
+   case second  = "second"
    }
    }
    
