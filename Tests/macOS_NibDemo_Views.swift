@@ -31,15 +31,15 @@ class macOS_NibDemo_View_1: NSView {
 
         // Drawing code here.
     }
-    
+
 }
 
 class macOS_NibDemo_View_2: NSView {
-  
+
   override func draw(_ dirtyRect: NSRect) {
     super.draw(dirtyRect)
-    
+
     // Drawing code here.
   }
-  
+
 }
