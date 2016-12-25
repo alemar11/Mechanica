@@ -43,8 +43,7 @@
 		12B537231D33F192005C52A7 /* Mechanica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12B536E21D33ED29005C52A7 /* Mechanica.framework */; };
 		12B6B1B31E0D58310057FE5F /* NibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B21E0D58310057FE5F /* NibTests.swift */; };
 		12B6B1B41E0D5A2F0057FE5F /* iOS_NibDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12B6B1AE1E0D57A90057FE5F /* iOS_NibDemo.xib */; };
-		12B6B1B51E0D5A3B0057FE5F /* iOS_NibDemo_View_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B01E0D580A0057FE5F /* iOS_NibDemo_View_1.swift */; };
-		12B6B1B71E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B61E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift */; };
+		12B6B1B51E0D5A3B0057FE5F /* iOS_NibDemo_Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B01E0D580A0057FE5F /* iOS_NibDemo_Views.swift */; };
 		12B6B1B91E0D5D180057FE5F /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B81E0D5D180057FE5F /* Nib.swift */; };
 		12B9562D1D880B3B00F75DD5 /* Optional+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */; };
 		12B9562E1D880B3B00F75DD5 /* Optional+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */; };
@@ -259,9 +258,8 @@
 		12B5371E1D33F192005C52A7 /* Mechanica macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mechanica macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B537291D33F1D3005C52A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12B6B1AE1E0D57A90057FE5F /* iOS_NibDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iOS_NibDemo.xib; sourceTree = "<group>"; };
-		12B6B1B01E0D580A0057FE5F /* iOS_NibDemo_View_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_NibDemo_View_1.swift; sourceTree = "<group>"; };
+		12B6B1B01E0D580A0057FE5F /* iOS_NibDemo_Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_NibDemo_Views.swift; sourceTree = "<group>"; };
 		12B6B1B21E0D58310057FE5F /* NibTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTests.swift; sourceTree = "<group>"; };
-		12B6B1B61E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_NibDemo_View_2.swift; sourceTree = "<group>"; };
 		12B6B1B81E0D5D180057FE5F /* Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Utils.swift"; sourceTree = "<group>"; };
 		12B9562B1D880B3B00F75DD5 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
@@ -467,9 +465,8 @@
 			isa = PBXGroup;
 			children = (
 				12B6B1AE1E0D57A90057FE5F /* iOS_NibDemo.xib */,
-				12B6B1B01E0D580A0057FE5F /* iOS_NibDemo_View_1.swift */,
+				12B6B1B01E0D580A0057FE5F /* iOS_NibDemo_Views.swift */,
 				12B6B1B21E0D58310057FE5F /* NibTests.swift */,
-				12B6B1B61E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift */,
 				1230E3DC1E0FDABC00DACC7E /* macOS_NibDemo.xib */,
 				1230E3DF1E0FDFF800DACC7E /* macOS_NibDemo_Views.swift */,
 			);
@@ -1057,7 +1054,7 @@
 				D2ABD00C1E005173006859B9 /* AppTests.swift in Sources */,
 				D208D1871DF071C6009687BB /* StringOperatorsTests.swift in Sources */,
 				12D9DF021E085BD3000799C6 /* BoolUtilsTests.swift in Sources */,
-				12B6B1B51E0D5A3B0057FE5F /* iOS_NibDemo_View_1.swift in Sources */,
+				12B6B1B51E0D5A3B0057FE5F /* iOS_NibDemo_Views.swift in Sources */,
 				D289ACFD1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
 				D2E63C091E015ED400ED4385 /* KeyboardObserverTests.swift in Sources */,
 				D2ED4A611DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */,
@@ -1067,7 +1064,6 @@
 				D278BDA31DEF139F006FAD83 /* ColorUtilsTests.swift in Sources */,
 				12B6B1B31E0D58310057FE5F /* NibTests.swift in Sources */,
 				D23748821DD362990064EA22 /* BundleInfoTests.swift in Sources */,
-				12B6B1B71E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift in Sources */,
 				D20544FF1DDC51F8007DCE97 /* ConfigurationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

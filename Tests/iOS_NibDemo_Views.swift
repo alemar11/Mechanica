@@ -1,5 +1,5 @@
 //
-//  iOS_NibDemo_View_2.swift
+//  iOS_NibDemo_Views.swift
 //  Mechanica
 //
 //  Copyright © 2016 Tinrobots.
@@ -24,14 +24,6 @@
 
 import UIKit
 
-class iOS_NibDemo_View_2: UIView {
+class iOS_NibDemo_View_1: UIView {}
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
-}
+class iOS_NibDemo_View_2: UIView {}
