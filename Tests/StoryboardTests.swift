@@ -27,7 +27,7 @@ import XCTest
 @testable import Mechanica
 
 extension Storyboard: StoryboardKeyCodable {
-  
+
   public enum StoryboardName : String {
     #if os(iOS)
     case iOS    = "iOS_StoryboardDemo"
@@ -37,41 +37,61 @@ extension Storyboard: StoryboardKeyCodable {
     case macOS  = "macOS_StoryboardDemo"
     #endif
   }
-  
+
 }
 
 
 class StoryboardTests: XCTestCase {
-  
+
   func test_instantiate() {
-    
+
     #if os(iOS) || os(tvOS)
-      
+
       let iOS_storyboard = Storyboard.storyboard(forKey: .iOS, bundle: Bundle(for: type(of: self)))
       XCTAssertNotNil(iOS_storyboard)
-      let iOS_ViewController_1 = iOS_storyboard.instantiateViewController() as iOS_StoryboardDemo_ViewController_1
-      XCTAssertNotNil(iOS_ViewController_1)
-      
+      do {
+        let iOS_ViewController_1 = iOS_storyboard.instantiateViewController() as iOS_StoryboardDemo_ViewController_1
+        XCTAssertNotNil(iOS_ViewController_1)
+      }
+      do {
+        let iOS_ViewController_1: iOS_StoryboardDemo_ViewController_1 = iOS_storyboard.instantiateViewController()
+        XCTAssertNotNil(iOS_ViewController_1)
+      }
+
     #elseif os(tvOS)
-      
+
       let tvOS_storyboard = Storyboard.storyboard(forKey: .tvOS, bundle: Bundle(for: type(of: self)))
       XCTAssertNotNil(tvOS_storyboard)
-      let tvOS_ViewController_1 = tvOS_storyboard.instantiateViewController() as tvOS_StoryboardDemo_ViewController_1
-      
-      XCTAssertNotNil(tvOS_ViewController_1)
-      
+      do {
+        let tvOS_ViewController_1 = tvOS_storyboard.instantiateViewController() as tvOS_StoryboardDemo_ViewController_1
+        XCTAssertNotNil(tvOS_ViewController_1)
+      }
+      do {
+        let tvOS_ViewController_1: tvOS_StoryboardDemo_ViewController_1 = tvOS_storyboard.instantiateViewController()
+        XCTAssertNotNil(tvOS_ViewController_1)
+      }
     #elseif os(macOS)
-      
+
       let macOS_storyboard = Storyboard.storyboard(forKey: .macOS, bundle: Bundle(for: type(of: self)))
       XCTAssertNotNil(macOS_storyboard)
-      let macOS_ViewController_1 = iOS_storyboard.instantiateViewController() as macOS_StoryboardDemo_ViewController_1
-      XCTAssertNotNil(macOS_ViewController_1)
+      do {
+        let macOS_ViewController_1 = iOS_storyboard.instantiateViewController() as macOS_StoryboardDemo_ViewController_1
+        XCTAssertNotNil(macOS_ViewController_1)
+      }
+      do{
+        let macOS_ViewController_1: macOS_StoryboardDemo_ViewController_1 = iOS_storyboard.instantiateViewController()
+        XCTAssertNotNil(macOS_ViewController_1)
+      }
       let macOS_WindowCcontroller_1 = iOS_storyboard.instantiateViewController() as macOS_StoryboardDemo_WindowController_1
       XCTAssertNotNil(macOS_WindowCcontroller_1)
-      
+      do{
+        let macOS_WindowCcontroller_1: macOS_StoryboardDemo_WindowController_1 = iOS_storyboard.instantiateViewController() {
+        XCTAssertNotNil(macOS_WindowCcontroller_1)
+      }
+
     #endif
-    
+
     XCTAssert(Storyboard.mainStoryboard == nil)
   }
-  
+
 }

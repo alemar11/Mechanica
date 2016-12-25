@@ -26,13 +26,13 @@ import XCTest
 @testable import Mechanica
 
 extension Nib: NibKeyCodable {
-  
+
   public enum NibName : String {
     case iOS    = "iOS_NibDemo"
-    case macOS  = "macOS_NibDemo"
     case tvOS   = "tvOS_NibDemo"
+    case macOS  = "macOS_NibDemo"
   }
-  
+
 }
 
 #if os(iOS)
@@ -45,40 +45,102 @@ extension Nib: NibKeyCodable {
 #endif
 
 class NibTests: XCTestCase {
-  
+
   func test_instantiate() {
-    
+
     #if os(iOS)
+
       let nib = Nib.nib(forKey: .iOS, bundle: Bundle(for: type(of: self)))
       XCTAssertNotNil(nib)
-      let view1 = nib.instantiate() as iOS_NibDemo_View_1
-      XCTAssertNotNil(view1)
-      let view2 = nib.instantiate() as iOS_NibDemo_View_2
-      XCTAssertNotNil(view2)
-      let gesture = nib.instantiate() as UILongPressGestureRecognizer
-      XCTAssertNotNil(gesture)
+      do {
+        let view1 = nib.instantiate() as iOS_NibDemo_View_1
+        XCTAssertNotNil(view1)
+      }
+      do {
+        let view1: iOS_NibDemo_View_1 = nib.instantiate()
+        XCTAssertNotNil(view1)
+      }
+      do {
+        let view2 = nib.instantiate() as iOS_NibDemo_View_2
+        XCTAssertNotNil(view2)
+      }
+      do {
+        let view2: iOS_NibDemo_View_2 = nib.instantiate()
+        XCTAssertNotNil(view2)
+      }
+      do {
+        let gesture = nib.instantiate() as UILongPressGestureRecognizer
+        XCTAssertNotNil(gesture)
+      }
+      do {
+        let gesture: UILongPressGestureRecognizer = nib.instantiate()
+        XCTAssertNotNil(gesture)
+      }
+
     #elseif os(tvOS)
+
       let nib = Nib.nib(forKey: .iOS, bundle: Bundle(for: type(of: self)))
       XCTAssertNotNil(nib)
-      let view1 = nib.instantiate() as tvOS_NibDemo_View_1
-      XCTAssertNotNil(view1)
-      let view2 = nib.instantiate() as tvOS_NibDemo_View_2
-      XCTAssertNotNil(view2)
-      let gesture = nib.instantiate() as UIRotationGestureRecognizer
-      XCTAssertNotNil(gesture)
+      do {
+        let view1 = nib.instantiate() as tvOS_NibDemo_View_1
+        XCTAssertNotNil(view1)
+      }
+      do {
+        let view1: tvOS_NibDemo_View_1 = nib.instantiate()
+        XCTAssertNotNil(view1)
+      }
+      do {
+        let view2 = nib.instantiate() as tvOS_NibDemo_View_2
+        XCTAssertNotNil(view2)
+      }
+      do {
+        let view2: tvOS_NibDemo_View_2 = nib.instantiate()
+        XCTAssertNotNil(view2)
+      }
+      do {
+        let gesture = nib.instantiate() as UIRotationGestureRecognizer
+        XCTAssertNotNil(gesture)
+      }
+      do {
+        let gesture: UIRotationGestureRecognizer = nib.instantiate()
+        XCTAssertNotNil(gesture)
+      }
+
     #elseif os(macOS)
+
       let nib = Nib.nib(forKey: .macOS, bundle: Bundle(for: type(of: self)))
       XCTAssertNotNil(nib)
-      let view1 = nib.instantiate() as macOS_NibDemo_View_1
-      XCTAssertNotNil(view1)
-      let view2 = nib.instantiate() as macOS_NibDemo_View_2
-      XCTAssertNotNil(view2)
-      if #available(OSX 10.12.2, *) {
-        let touchBar = nib.instantiate() as NSTouchBar
-        XCTAssertNotNil(touchBar)
+      do {
+        let view1 = nib.instantiate() as macOS_NibDemo_View_1
+        XCTAssertNotNil(view1)
       }
+      do {
+        let view1: macOS_NibDemo_View_1 = nib.instantiate()
+        XCTAssertNotNil(view1)
+      }
+      do {
+        let view2 = nib.instantiate() as macOS_NibDemo_View_2
+        XCTAssertNotNil(view2)
+      }
+      do {
+        let view2: macOS_NibDemo_View_2 = nib.instantiate()
+        XCTAssertNotNil(view2)
+      }
+      do{
+        if #available(OSX 10.12.2, *) {
+          let touchBar = nib.instantiate() as NSTouchBar
+          XCTAssertNotNil(touchBar)
+        }
+      }
+      do{
+        if #available(OSX 10.12.2, *) {
+          let touchBar: NSTouchBar = nib.instantiate()
+          XCTAssertNotNil(touchBar)
+        }
+      }
+
     #endif
-    
+
   }
-  
+
 }
