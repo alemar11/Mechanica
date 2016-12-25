@@ -130,12 +130,12 @@ public protocol NibIdentifiable: class {
 
 public extension NibIdentifiable {
   
-  /// By default the *nibIdentifier* is the same name as the name of the class.
+  /// By default the *nibIdentifier* is the name of the class.
   static var nibIdentifier: String {
     return String(describing: self)
   }
   
-  /// By default, use the nib which is named as the name of the class and it's located in the bundle of that class.
+  /// By default, uses the nib which is named as the name of the class and it's located in the bundle of that class.
   static var nib: Nib {
     #if os(iOS) || os(tvOS)
     return Nib(nibName: nibIdentifier, bundle: Bundle(for: self))
