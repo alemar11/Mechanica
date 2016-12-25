@@ -136,6 +136,9 @@ public protocol StoryboardIdentifiable: class {
 }
 
 extension StoryboardIdentifiable {
+  
+  /// **Mechanica**
+  ///
   /// By default the *storyboardIdentifier* (Storyboard ID) is the same name as the name of the class.
   public static var storyboardIdentifier: String {
     return String(describing: self)
