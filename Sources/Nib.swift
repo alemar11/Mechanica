@@ -36,6 +36,8 @@
   public typealias Nib = NSNib
 #endif
 
+// MARK: - NibKeyCodable
+
 /// **Mechanica**
 ///
 /// Types adopting the `NibKeyCodable` protocol can be used to define Nib names.
@@ -59,7 +61,7 @@ extension NibKeyCodable where NibName.RawValue == String {
    }
    }
    
-   let firstNib = Nib.nib(forKey: main)
+   let firstNib = Nib.nib(forKey: .first)
    ```
    - note: If the bundle parameter is nil, the main bundle is used.
    */
@@ -72,6 +74,8 @@ extension NibKeyCodable where NibName.RawValue == String {
   }
   
 }
+
+// MARK: - NibLoadable
 
 /// **Mechanica**
 ///
@@ -112,3 +116,32 @@ extension Nib {
   }
   
 }
+
+// MARK: - NibIdentifiable
+
+/// **Mechanica**
+///
+/// Objects adopting the `NibIdentifiable` protocol are nib based and are the XIB root object.
+public protocol NibIdentifiable: class {
+  static var nibIdentifier: String { get }
+}
+
+// MARK: Default implementation
+
+public extension NibIdentifiable {
+  
+  /// By default the *nibIdentifier* is the same name as the name of the class.
+  static var nibIdentifier: String {
+    return String(describing: self)
+  }
+  
+  /// By default, use the nib which is named as the name of the class and it's located in the bundle of that class.
+  static var nib: Nib {
+    #if os(iOS) || os(tvOS)
+    return Nib(nibName: nibIdentifier, bundle: Bundle(for: self))
+    #elseif os(macOS)
+    return Nib(nibNamed: nibIdentifier, bundle: Bundle(for: self))!
+    #endif
+  }
+}
+
