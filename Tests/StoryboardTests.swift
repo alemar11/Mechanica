@@ -32,7 +32,7 @@ extension Storyboard: StoryboardKeyCodable {
     #if os(iOS)
     case iOS    = "iOS_StoryboardDemo"
     #elseif os(tvOS)
-    case tvOS    = "tvOS_StoryboardDemo"
+    case tvOS   = "tvOS_StoryboardDemo"
     #elseif os(macOS)
     case macOS  = "macOS_StoryboardDemo"
     #endif
@@ -45,7 +45,7 @@ class StoryboardTests: XCTestCase {
 
   func test_instantiate() {
 
-    #if os(iOS) || os(tvOS)
+    #if os(iOS)
 
       let iOS_storyboard = Storyboard.storyboard(forKey: .iOS, bundle: Bundle(for: type(of: self)))
       XCTAssertNotNil(iOS_storyboard)
@@ -70,6 +70,7 @@ class StoryboardTests: XCTestCase {
         let tvOS_ViewController_1: tvOS_StoryboardDemo_ViewController_1 = tvOS_storyboard.instantiateViewController()
         XCTAssertNotNil(tvOS_ViewController_1)
       }
+      
     #elseif os(macOS)
 
       let macOS_storyboard = Storyboard.storyboard(forKey: .macOS, bundle: Bundle(for: type(of: self)))
@@ -78,14 +79,16 @@ class StoryboardTests: XCTestCase {
         let macOS_ViewController_1 = iOS_storyboard.instantiateViewController() as macOS_StoryboardDemo_ViewController_1
         XCTAssertNotNil(macOS_ViewController_1)
       }
-      do{
+      do {
         let macOS_ViewController_1: macOS_StoryboardDemo_ViewController_1 = iOS_storyboard.instantiateViewController()
         XCTAssertNotNil(macOS_ViewController_1)
       }
+      do {
       let macOS_WindowCcontroller_1 = iOS_storyboard.instantiateViewController() as macOS_StoryboardDemo_WindowController_1
       XCTAssertNotNil(macOS_WindowCcontroller_1)
-      do{
-        let macOS_WindowCcontroller_1: macOS_StoryboardDemo_WindowController_1 = iOS_storyboard.instantiateViewController() {
+      }
+      do {
+        let macOS_WindowCcontroller_1: macOS_StoryboardDemo_WindowController_1 = iOS_storyboard.instantiateViewController()
         XCTAssertNotNil(macOS_WindowCcontroller_1)
       }
 
