@@ -130,7 +130,7 @@ extension Storyboard {
 
 /// **Mechanica**
 ///
-/// Types adopting the `StoryboardIdentifiable` protocol have an unique Storyboard ID.
+/// Objects adopting the `StoryboardIdentifiable` protocol have an unique Storyboard ID.
 public protocol StoryboardIdentifiable: class {
   static var storyboardIdentifier: String { get }
 }
