@@ -25,6 +25,10 @@
 		1230C2D71DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230C2D51DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift */; };
 		1230C2D81DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230C2D51DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift */; };
 		1230C2D91DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230C2D51DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift */; };
+		1230E3DD1E0FDABC00DACC7E /* macOS_NibDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1230E3DC1E0FDABC00DACC7E /* macOS_NibDemo.xib */; };
+		1230E3DE1E0FDAE500DACC7E /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B81E0D5D180057FE5F /* Nib.swift */; };
+		1230E3E01E0FDFF800DACC7E /* macOS_NibDemo_Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1230E3DF1E0FDFF800DACC7E /* macOS_NibDemo_Views.swift */; };
+		1230E3E11E0FE10000DACC7E /* NibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B6B1B21E0D58310057FE5F /* NibTests.swift */; };
 		12431A5F1DCE2F5A00594940 /* NSManagedObjectConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12431A5E1DCE2F5A00594940 /* NSManagedObjectConfigurable.swift */; };
 		12431A601DCE2F5A00594940 /* NSManagedObjectConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12431A5E1DCE2F5A00594940 /* NSManagedObjectConfigurable.swift */; };
 		12431A611DCE2F5A00594940 /* NSManagedObjectConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12431A5E1DCE2F5A00594940 /* NSManagedObjectConfigurable.swift */; };
@@ -239,6 +243,8 @@
 
 /* Begin PBXFileReference section */
 		1230C2D51DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+UpdateTimestampable.swift"; sourceTree = "<group>"; };
+		1230E3DC1E0FDABC00DACC7E /* macOS_NibDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = macOS_NibDemo.xib; sourceTree = "<group>"; };
+		1230E3DF1E0FDFF800DACC7E /* macOS_NibDemo_Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = macOS_NibDemo_Views.swift; sourceTree = "<group>"; };
 		12431A5E1DCE2F5A00594940 /* NSManagedObjectConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectConfigurable.swift; sourceTree = "<group>"; };
 		129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		12B536B21D33ECEC005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -464,6 +470,8 @@
 				12B6B1B01E0D580A0057FE5F /* iOS_NibDemo_View_1.swift */,
 				12B6B1B21E0D58310057FE5F /* NibTests.swift */,
 				12B6B1B61E0D5AC20057FE5F /* iOS_NibDemo_View_2.swift */,
+				1230E3DC1E0FDABC00DACC7E /* macOS_NibDemo.xib */,
+				1230E3DF1E0FDFF800DACC7E /* macOS_NibDemo_Views.swift */,
 			);
 			name = "Nib Tests";
 			sourceTree = "<group>";
@@ -865,6 +873,7 @@
 			files = (
 				D2ED4A6D1DF831380042F012 /* macOS_StoryboardDemo.storyboard in Resources */,
 				D20545051DDC5274007DCE97 /* ConfigurationDemo.plist in Resources */,
+				1230E3DD1E0FDABC00DACC7E /* macOS_NibDemo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,6 +1011,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D208D1851DF07103009687BB /* String+Operators.swift in Sources */,
+				1230E3DE1E0FDAE500DACC7E /* Nib.swift in Sources */,
 				D21A31F31DEDC9DA00E4A609 /* String+Conversions.swift in Sources */,
 				D214026F1D5379AE00BCF2E7 /* Bundle+Info.swift in Sources */,
 				D2CAF3471DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift in Sources */,
@@ -1099,6 +1109,7 @@
 				D208D1891DF071C6009687BB /* StringOperatorsTests.swift in Sources */,
 				D28D38241DFEC3AB00888BD0 /* FileManagerUtilsTests.swift in Sources */,
 				D22081941E07FFB400BE4268 /* URLOperatorsTests.swift in Sources */,
+				1230E3E01E0FDFF800DACC7E /* macOS_NibDemo_Views.swift in Sources */,
 				D2E63C001E014AFC00ED4385 /* StringNSStringTests.swift in Sources */,
 				D2ABD00E1E005173006859B9 /* AppTests.swift in Sources */,
 				D2ED4A731DF831E40042F012 /* macOS_StoryboardDemo_ViewController_1.swift in Sources */,
@@ -1107,6 +1118,7 @@
 				D21A31F71DEDD0BE00E4A609 /* StringConversionsTests.swift in Sources */,
 				D289AD041DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
 				D278BDA51DEF13A0006FAD83 /* ColorUtilsTests.swift in Sources */,
+				1230E3E11E0FE10000DACC7E /* NibTests.swift in Sources */,
 				D23748841DD362990064EA22 /* BundleInfoTests.swift in Sources */,
 				D20545011DDC51F8007DCE97 /* ConfigurationTests.swift in Sources */,
 			);

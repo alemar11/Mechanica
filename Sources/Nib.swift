@@ -22,7 +22,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import UIKit
+#if os(iOS) || os(tvOS)
+  import UIKit
+  /// **Mechanica**
+  ///
+  /// Alias for UINib.
+  public typealias Nib = UINib
+#elseif os(macOS)
+  import Cocoa
+  /// **Mechanica**
+  ///
+  /// Alias for NSNib.
+  public typealias Nib = NSNib
+#endif
 
 /// **Mechanica**
 ///
@@ -51,8 +63,12 @@ extension NibKeyCodable where NibName.RawValue == String {
    ```
    - note: If the bundle parameter is nil, the main bundle is used.
    */
-  public static func nib(forKey key: NibName, bundle: Bundle? = nil) -> UINib {
-    return  UINib(nibName: key.rawValue, bundle: bundle)
+  public static func nib(forKey key: NibName, bundle: Bundle? = nil) -> Nib {
+    #if os(iOS) || os(tvOS)
+      return  UINib(nibName: key.rawValue, bundle: bundle)
+    #elseif os(macOS)
+      return NSNib(nibNamed: key.rawValue, bundle: bundle)!
+    #endif
   }
   
 }
@@ -62,16 +78,29 @@ extension NibKeyCodable where NibName.RawValue == String {
 /// Types adopting the `NibLoadable` protocol can be loaded from a Nib.
 public protocol NibLoadable {}
 
-extension UIView : NibLoadable {}
+#if os(iOS) || os(tvOS)
+  extension UIView : NibLoadable {}
+#elseif os(macOS)
+  extension NSView : NibLoadable {}
+#endif
 
-extension UINib {
+
+extension Nib {
   
   /// **Mechanica**
   ///
   /// Instantiates and returns an obejct conforming to `NibLoadable` from a Nib.
   public func instantiate<T>(withOwner owner: Any? = nil, options: [AnyHashable : Any]? = nil) -> T where T: NibLoadable {
+    #if os(iOS) || os(tvOS)
+      let contents = self.instantiate(withOwner: owner, options: options).filter { $0 is T }
+    #elseif os(macOS)
+      var array = NSArray()
+      guard (self.instantiate(withOwner: owner, topLevelObjects: &array)) else {
+        fatalError("\(String(describing: self)) could not be instantiated.")
+      }
+      let contents = (array as! Array<Any>).filter { $0 is T }
+    #endif
     
-    let contents = self.instantiate(withOwner: owner, options: options).filter { return $0 is T }
     switch (contents.count) {
     case 0:
       fatalError("\(String(describing: T.self)) could not be found in \(String(describing: self)).")
