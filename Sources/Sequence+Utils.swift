@@ -25,11 +25,12 @@
 import Foundation
 
 extension Sequence {
+  typealias Element = Iterator.Element
   
   /// **Mechanica**
   ///
   /// Returns the first element (if any) `matching` the condition.
-  public func findFirstOccurence(matching condition: (Iterator.Element) -> Bool) -> Iterator.Element? {
+  public func findFirstOccurence(matching condition: (Element) -> Bool) -> Element? {
     for element in self where condition(element) {
       return element
     }
@@ -39,17 +40,31 @@ extension Sequence {
   /// **Mechanica**
   ///
   /// Returns true if there is at least one element `matching` the condition.
-  public func hasSomeOccurrences(matching condition: (Iterator.Element) -> Bool) -> Bool {
+  public func hasSomeOccurrences(matching condition: (Element) -> Bool) -> Bool {
     return findFirstOccurence(matching: condition) != nil
   }
   
   /// **Mechanica**
   ///
   /// Returns true if all the elements `match` the condition.
-  public func hasAllOccurrences(matching condition: (Iterator.Element) -> Bool) -> Bool {
+  public func hasAllOccurrences(matching condition: (Element) -> Bool) -> Bool {
     return findFirstOccurence { !condition($0) } == nil
   }
   
+  /// **Mechanica**
+  ///
+  ///  Returns a grouped dictionary by the closure.
+  public func grouped<Key: Hashable>(by key: (Element) -> (Key)) -> [Key : [Element]] {
+    var dictionary: [Key : [Element]] = [:]
+    for element in self {
+      let key = key(element)
+      var array = dictionary.removeValue(forKey: key) ?? []
+      array.append(element)
+      dictionary.updateValue(array, forKey: key)
+    }
+    return dictionary
+  }
+
 }
 
 // MARK: - AnyObject
@@ -64,3 +79,4 @@ extension Sequence where Iterator.Element: AnyObject {
   }
   
 }
+
