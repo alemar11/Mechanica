@@ -81,7 +81,7 @@ extension NSManagedObjectContext {
   
   /// **Mechanica**
   ///
-  ///Asynchronously attempts to commit unsaved changes or rollbacks if any error occurs.
+  /// Asynchronously attempts to commit unsaved changes or rollbacks if any error occurs.
   public func performSaveOrRollback() {
     perform {
       self.saveOrRollback()
@@ -90,7 +90,7 @@ extension NSManagedObjectContext {
   
   /// **Mechanica**
   ///
-  ///Asynchronously performs changes and then saves them or rollbacks if any error occurs.
+  /// Asynchronously performs changes and then saves them or rollbacks if any error occurs.
   public func performChanges(block: @escaping () -> ()) {
     perform {
       block()
@@ -100,9 +100,21 @@ extension NSManagedObjectContext {
   
   /// **Mechanica**
   ///
-  ///Attempts to commit unsaved changes to registered objects to the receiver’s parent store or rollbacks if any error occurs.
+  /// Synchronously performs changes and then saves them or rollbacks if any error occurs.
+  /// - returns: true if the save succeeds, otherwise false.
+  func performChangesAndWait(block: @escaping () -> ()) -> Bool {
+    performAndWait {
+      block()
+    }
+    return saveOrRollback()
+  }
+  
+  /// **Mechanica**
   ///
-  ///The rollback operation removes everything from the undo stack, discards all insertions and deletions, and restores updated objects to their last committed values.
+  /// Attempts to commit unsaved changes to registered objects to the receiver’s parent store or rollbacks if any error occurs.
+  ///
+  /// The rollback operation removes everything from the undo stack, discards all insertions and deletions, and restores updated objects to their last committed values.
+  /// - returns: true if the save succeeds, otherwise false.
   @discardableResult
   public func saveOrRollback() -> Bool {
     do {
