@@ -102,5 +102,42 @@ class SequenceUtilsTests: XCTestCase {
     XCTAssertTrue(list.contains(objectIdenticalTo: demoObject))
 
   }
+  
+  func test_groupedBy() {
+    
+    let array = ["1", "1", "2", "3", "3", "1", "4"]
+    let groupedDictionary = array.grouped(by: { return $0 } ) //[ "1" : ["1", "1", "1"], "2" : ["2"], "3" : ["3", "3"], "4" : ["4"] ]
+    XCTAssertNotNil(groupedDictionary)
+    XCTAssertTrue(groupedDictionary.keys.count == 4)
+    XCTAssertNotNil(groupedDictionary["1"])
+    XCTAssertNotNil(groupedDictionary["1"]! == ["1", "1", "1"])
+    XCTAssertNotNil(groupedDictionary["2"])
+    XCTAssertNotNil(groupedDictionary["2"]! == ["2"])
+    XCTAssertNotNil(groupedDictionary["3"])
+    XCTAssertNotNil(groupedDictionary["3"]! == ["3", "3"])
+    XCTAssertNotNil(groupedDictionary["4"])
+    XCTAssertNotNil(groupedDictionary["4"]! == ["4"])
+    
+    let array2 = ["aaa", "aab", "1", "ccc", "ccb"]
+    let groupedDictionary2 = array2.grouped(by: { return $0.first } ) //[ "a" : ["aaa", "aab"], "1" : ["1"], "c" : ["ccc", "ccb"] ]
+    XCTAssertNotNil(groupedDictionary2)
+    XCTAssertTrue(groupedDictionary2.keys.count == 3)
+    XCTAssertNotNil(groupedDictionary2["a"])
+    XCTAssertTrue(groupedDictionary2["a"]! == ["aaa", "aab"])
+    XCTAssertNotNil(groupedDictionary2["1"])
+    XCTAssertTrue(groupedDictionary2["1"]! == ["1"])
+    XCTAssertNotNil(groupedDictionary2["c"])
+    XCTAssertTrue(groupedDictionary2["c"]! == ["ccc", "ccb"])
+    
+    let array3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    let groupedDictionary3 = array3.grouped(by: {return ($0 % 2 == 0) ? "even" : "odd"})
+    XCTAssertNotNil(groupedDictionary3)
+    XCTAssertTrue(groupedDictionary3.keys.count == 2)
+    XCTAssertNotNil(groupedDictionary3["even"])
+    XCTAssertTrue(groupedDictionary3["even"]! == [0, 2, 4, 6, 8, 10])
+    XCTAssertNotNil(groupedDictionary3["odd"])
+    XCTAssertTrue(groupedDictionary3["odd"]! == [1, 3, 5, 7, 9])
+    
+  }
 
 }
