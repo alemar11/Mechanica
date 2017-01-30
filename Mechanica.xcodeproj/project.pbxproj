@@ -106,6 +106,9 @@
 		D214026D1D5379AE00BCF2E7 /* Bundle+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */; };
 		D214026E1D5379AE00BCF2E7 /* Bundle+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */; };
 		D214026F1D5379AE00BCF2E7 /* Bundle+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */; };
+		D214D5F01E3F51CC003F8E06 /* IntUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D214D5EF1E3F51CC003F8E06 /* IntUtilsTests.swift */; };
+		D214D5F11E3F51CC003F8E06 /* IntUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D214D5EF1E3F51CC003F8E06 /* IntUtilsTests.swift */; };
+		D214D5F21E3F51CC003F8E06 /* IntUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D214D5EF1E3F51CC003F8E06 /* IntUtilsTests.swift */; };
 		D21A31F01DEDC9DA00E4A609 /* String+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A31EF1DEDC9DA00E4A609 /* String+Conversions.swift */; };
 		D21A31F11DEDC9DA00E4A609 /* String+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A31EF1DEDC9DA00E4A609 /* String+Conversions.swift */; };
 		D21A31F21DEDC9DA00E4A609 /* String+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A31EF1DEDC9DA00E4A609 /* String+Conversions.swift */; };
@@ -286,6 +289,7 @@
 		D208D1811DF07103009687BB /* String+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Operators.swift"; sourceTree = "<group>"; };
 		D208D1861DF071C6009687BB /* StringOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringOperatorsTests.swift; sourceTree = "<group>"; };
 		D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Info.swift"; sourceTree = "<group>"; };
+		D214D5EF1E3F51CC003F8E06 /* IntUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntUtilsTests.swift; sourceTree = "<group>"; };
 		D21A31EF1DEDC9DA00E4A609 /* String+Conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Conversions.swift"; sourceTree = "<group>"; };
 		D21A31F41DEDD0BE00E4A609 /* StringConversionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConversionsTests.swift; sourceTree = "<group>"; };
 		D220818C1E07FEB700BE4268 /* URL+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Operators.swift"; sourceTree = "<group>"; };
@@ -457,6 +461,7 @@
 				D2E63C011E01521D00ED4385 /* OptionalUtilsTests.swift */,
 				D22081911E07FFB400BE4268 /* URLOperatorsTests.swift */,
 				12D9DF011E085BD3000799C6 /* BoolUtilsTests.swift */,
+				D214D5EF1E3F51CC003F8E06 /* IntUtilsTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1084,6 +1089,7 @@
 				12B6B1B31E0D58310057FE5F /* NibTests.swift in Sources */,
 				D23748821DD362990064EA22 /* BundleInfoTests.swift in Sources */,
 				D20544FF1DDC51F8007DCE97 /* ConfigurationTests.swift in Sources */,
+				D214D5F01E3F51CC003F8E06 /* IntUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,6 +1102,7 @@
 				D205B0661DF6F8BB002D78EF /* FloatingPointUtilsTests.swift in Sources */,
 				D208D17F1DF045C6009687BB /* ColorFlatTests.swift in Sources */,
 				D273A5961DD5C5BA0007796F /* SequenceUtilsTests.swift in Sources */,
+				D214D5F11E3F51CC003F8E06 /* IntUtilsTests.swift in Sources */,
 				1230E3E51E10134300DACC7E /* tvOS_NibDemo_Views.swift in Sources */,
 				D208D1881DF071C6009687BB /* StringOperatorsTests.swift in Sources */,
 				D28D38231DFEC3AB00888BD0 /* FileManagerUtilsTests.swift in Sources */,
@@ -1128,6 +1135,7 @@
 				1230E3E01E0FDFF800DACC7E /* macOS_NibDemo_Views.swift in Sources */,
 				D2E63C001E014AFC00ED4385 /* StringNSStringTests.swift in Sources */,
 				D2ABD00E1E005173006859B9 /* AppTests.swift in Sources */,
+				D214D5F21E3F51CC003F8E06 /* IntUtilsTests.swift in Sources */,
 				D2ED4A731DF831E40042F012 /* macOS_StoryboardDemo_ViewController_1.swift in Sources */,
 				D2ED4A711DF831B30042F012 /* macOS_StoryboardDemo_WindowController_1.swift in Sources */,
 				D289ACFF1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
