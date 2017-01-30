@@ -65,7 +65,6 @@ extension Int {
   ///
   /// Returns a random Int between the given range.
   public static func random(min: Int, max: Int) -> Int {
-    //return min + Int(arc4random_uniform(UInt32(max - min + 1)))
     return random(min...max)
   }
   
