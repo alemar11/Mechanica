@@ -91,9 +91,9 @@ extension NSManagedObjectContext {
   /// **Mechanica**
   ///
   /// Asynchronously performs changes and then saves them or rollbacks if any error occurs.
-  public func performChanges(block: @escaping () -> ()) {
+  public func performChanges(changes: @escaping () -> ()) {
     perform {
-      block()
+      changes()
       self.saveOrRollback()
     }
   }
@@ -102,11 +102,11 @@ extension NSManagedObjectContext {
   ///
   /// Synchronously performs changes and then saves them or rollbacks if any error occurs.
   /// - returns: true if the save succeeds, otherwise false.
-  func performChangesAndWait(block: @escaping () -> ()) -> Bool {
+  public func performChangesAndWait(changes: @escaping () -> ()) -> Bool {
     var result = false
     performAndWait {
       [unowned self] in
-      block()
+      changes()
       result = self.saveOrRollback()
     }
     return result
