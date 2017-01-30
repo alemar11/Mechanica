@@ -100,6 +100,18 @@ extension String {
     return self.replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
   }
   
+  /// **Mechanica**
+  ///
+  /// Generates a `new` random alphanumeric string of a given length (default 8).
+  public static func random(length: Int = 8) -> String {
+    let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    var randomString: String = ""
+    for _ in 0..<length {
+      let randomValue = arc4random_uniform(UInt32(base.characters.count))
+      randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
+    }
+    return randomString
+  }
   
   // MARK: - Trimming Methods
   
