@@ -25,7 +25,7 @@
 import CoreData
 
 extension NSPersistentStoreCoordinator {
-  
+
   /// **Mechanica**
   ///
   /// Destroys a Persistent Store located at `url`.
@@ -37,7 +37,7 @@ extension NSPersistentStoreCoordinator {
       print("Failed to destroy persistent store at \(url).", error)
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Replaces a Persistent Store located at `targetURL` with one at `sourceURL`.
@@ -45,6 +45,6 @@ extension NSPersistentStoreCoordinator {
     let psc = self.init(managedObjectModel: NSManagedObjectModel())
     try psc.replacePersistentStore(at: targetURL, destinationOptions: nil, withPersistentStoreFrom: sourceURL, sourceOptions: nil, ofType: NSSQLiteStoreType)
   }
-  
+
 }
 

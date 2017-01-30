@@ -25,19 +25,19 @@
 import Foundation
 
 extension ProcessInfo {
-  
+
   #if os(OSX)
   public static var isSandboxed: Bool {
     return processInfo.environment["APP_SANDBOX_CONTAINER_ID"].hasValue
   }
   #endif
-  
+
   public static var isRunningUnitTests: Bool {
     return processInfo.environment["XCTestConfigurationFilePath"].hasValue
   }
-  
+
   internal static var isRunningUITests: Bool {
     return processInfo.arguments.contains("-ui_testing")
   }
-  
+
 }

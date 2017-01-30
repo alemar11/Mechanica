@@ -25,23 +25,23 @@
 import Foundation
 
 extension String {
-  
+
   // MARK: - Helper Methods
-  
+
   /// **Mechanica**
   ///
   /// Returns the length of the `String`.
   public var length: Int {
     return self.characters.count
   }
-  
+
   /// **Mechanica**
   ///
   /// Reverse `self`.
   public mutating func reverse() {
     self = String(self.characters.reversed())
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` reversed `String`.
@@ -49,7 +49,7 @@ extension String {
   public func reversed() -> String {
     return String(self.characters.reversed())
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns true if `self` starts with a given prefix.
@@ -59,7 +59,7 @@ extension String {
     }
     return hasPrefix(prefix)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns true if `self` ends with a given suffix.
@@ -69,7 +69,7 @@ extension String {
     }
     return hasSuffix(suffix)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Checks if a `String` contains a given pattern.
@@ -86,7 +86,7 @@ extension String {
       return (self.range(of: pattern, options: .caseInsensitive) != nil)
     }
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a `new` string in which all occurrences of a target are replaced by another given string.
@@ -99,7 +99,7 @@ extension String {
     let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
     return self.replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
   }
-  
+
   /// **Mechanica**
   ///
   /// Generates a `new` random alphanumeric string of a given length (default 8).
@@ -112,16 +112,16 @@ extension String {
     }
     return randomString
   }
-  
+
   // MARK: - Trimming Methods
-  
+
   /// **Mechanica**
   ///
   /// Removes spaces and new lines from both ends of `self.
   public mutating func trim() {
     self = trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a `new` String made by removing spaces and new lines from both ends.
@@ -129,7 +129,7 @@ extension String {
     //return trimmedLeft().trimmedRight()
     return self.trimmingCharacters(in: .whitespacesAndNewlines)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Strips the specified characters from the beginning of `self`.
@@ -143,7 +143,7 @@ extension String {
     }
     return ""
   }
-  
+
   /// **Mechanica**
   ///
   ///  Strips the specified characters from the end of `self`.
@@ -157,7 +157,7 @@ extension String {
     }
     return ""
   }
-  
+
   /// **Mechanica**
   ///
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
@@ -166,9 +166,9 @@ extension String {
     let capitalizedFirstCharacher = String(self[startIndex]).capitalized
     let result = capitalizedFirstCharacher + String(self.characters.dropFirst())
     return result
-    
+
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string containing the first character of the `String`.
@@ -176,7 +176,7 @@ extension String {
     let last = self.substring(to: self.index(after: self.startIndex))
     return last
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string containing the last character of the `String`.
@@ -184,7 +184,7 @@ extension String {
     let last = self.substring(from: self.index(before: self.endIndex))
     return last
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a substring, up to maxLength in length, containing the initial elements of the `String`.
@@ -198,7 +198,7 @@ extension String {
     }
     return String(self.characters.prefix(maxLength))
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a slice, up to maxLength in length, containing the final elements of `String`.
@@ -211,7 +211,7 @@ extension String {
     }
     return String(self.characters.suffix(maxLength))
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a new `String` containing the characters of the String from the one at a given position to the end.
@@ -221,11 +221,11 @@ extension String {
     guard (upToPosition >= 0 && upToPosition <= self.length) else {
       return ""
     }
-    
+
     let startIndex = self.index(self.startIndex, offsetBy: upToPosition)
     return self.substring(from: startIndex)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a new `String` containing the characters of the String up to, but not including, the one at a given position.
@@ -238,7 +238,7 @@ extension String {
     let startIndex = self.index(self.endIndex, offsetBy: -fromPosition)
     return self.substring(to: startIndex)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Truncates the `String` to the given length (number of characters) and appends optional trailing string if longer.
@@ -247,7 +247,7 @@ extension String {
   ///  - parameter trailing: optional trailing string
   ///
   public func truncate(at length: Int, withTrailing trailing: String? = "…") -> String {
-    
+
     switch length {
     case 0..<self.length:
       //return self.substringToIndex(self.startIndex.advancedBy(length)) + (trailing ?? "")
@@ -257,9 +257,9 @@ extension String {
     default:
       return ""
     }
-    
+
   }
-  
+
   /// **Mechanica**
   ///
   ///  Condenses all white spaces repetitions in a single white space.
@@ -276,7 +276,7 @@ extension String {
     let filtered = components.filter({!$0.isEmpty})
     return filtered.joined(separator: " ")
   }
-  
+
   /// **Mechanica**
   ///
   ///  Condenses all white spaces and new lines repetitions in a single white space.
@@ -288,9 +288,9 @@ extension String {
     let filtered = components.filter({!$0.isBlank})
     return filtered.joined(separator: " ")
   }
-  
+
   // MARK: Subscript Methods
-  
+
   /// **Mechanica**
   ///
   ///  Gets the character at the specified index as String.
@@ -299,14 +299,14 @@ extension String {
   ///
   ///  - returns: Character as String or nil if the index is out of bounds
   public subscript (index: Int) -> String? {
-    
+
     guard (0..<self.characters.count ~= index) else {
       return nil
     }
     return String(Array(self.characters)[index])
-    
+
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string in which the characters in a specified `CountableClosedRange` range of the String are replaced by a given string.
@@ -315,7 +315,7 @@ extension String {
     let end   = characters.index(start, offsetBy: range.count)
     return self.replacingCharacters(in: start ..< end, with: replacement)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string in which the characters in a specified `CountableRange` range of the String are replaced by a given string.
@@ -324,7 +324,7 @@ extension String {
     let end   = characters.index(start, offsetBy: range.count)
     return self.replacingCharacters(in: start ..< end, with: replacement)
   }
-  
+
   /// **Mechanica**
   ///
   ///   Returns the substring in the given range
@@ -333,21 +333,21 @@ extension String {
   ///
   ///  - returns: Substring in range or nil.
   public subscript (range: Range<Int>) -> String? {
-    
+
     guard (0...self.self.length ~= range.lowerBound) else {
       return nil
     }
-    
+
     guard (0...self.self.length ~= range.upperBound) else {
       return nil
     }
-    
+
     let start = self.index(self.startIndex, offsetBy: range.lowerBound)
     let end = self.index(self.startIndex, offsetBy: range.upperBound)
     return substring(with: Range(uncheckedBounds: (lower: start, upper: end)))
-    
+
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns the substring in the given `NSRange`
@@ -359,7 +359,7 @@ extension String {
     let end = range.location + range.length
     return self[Range(uncheckedBounds: (lower: range.location, upper: end))]
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns the range of the first occurrence of a given string in the `String`.
@@ -371,6 +371,6 @@ extension String {
     let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
-  
-  
+
+
 }

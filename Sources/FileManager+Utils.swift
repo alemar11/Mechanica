@@ -28,9 +28,9 @@
 import Foundation
 
 extension FileManager {
-  
+
   // MARK: - URL
-  
+
   /// **Mechanica**
   ///
   /// Returns the location of the document directory (*Documents/*).
@@ -40,7 +40,7 @@ extension FileManager {
   public class var documentDirectory: URL {
     return try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the location of the library directory (*Library/*).
@@ -52,7 +52,7 @@ extension FileManager {
   public class var libraryDirectory: URL {
     return try! FileManager.default.url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the location of discardable cache files (*Library/Caches/*).
@@ -68,7 +68,7 @@ extension FileManager {
   public class var cachesDirectory: URL {
     return try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the location of discardable cache files (*Library/Application Support/*).
@@ -80,9 +80,9 @@ extension FileManager {
   ///
   /// - important: Sandboxed *macOS* apps have all their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
   public class var applicationSupportDirectory: URL {
-    
+
     let url = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    
+
     #if os(OSX)
       // If the *macOS* app isn't running in a sandbox, a subdirectory based on the *bundle identifier* (or on the app *exectubale file name*) is needed to avoid accidentally sharing files between applications.
       guard (!ProcessInfo.isSandboxed) else { return url }
@@ -91,7 +91,7 @@ extension FileManager {
       return url
     #endif
   }
-    
+
   /// **Mechanica**
   ///
   /// Returns the location of the temporary directory (*tmp*).
@@ -105,7 +105,7 @@ extension FileManager {
   public class var temporaryDirectory: URL {
     return URL(fileURLWithPath: NSTemporaryDirectory())
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns always a `new` directory in Library/Caches for discardable cache files.
@@ -116,16 +116,16 @@ extension FileManager {
     }
     return url
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the container directory associated with the specified security application group Identifier.
   public class func container(for groupIdentifier: String) -> URL? {
     return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
   }
-  
+
   // MARK: - Delete
-  
+
   /// **Mechanica**
   ///
   /// Clears all contents in a directory `path`; throws an error in cases of failure.
@@ -134,19 +134,19 @@ extension FileManager {
   public class func clearDirectory(atPath path: String) throws {
     try FileManager.default.clearDirectory(atPath: path)
   }
-  
+
   internal func clearDirectory(atPath path: String) throws {
     var isDirectory: ObjCBool = false
     guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
     guard isDirectory.boolValue == true else { return }
-    
+
     let contents = try contentsOfDirectory(atPath: path)
     for file in contents {
       let path = URL(fileURLWithPath: path).appendingPathComponent(file).path
       try removeItem(atPath: path)
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Destroys a file or a directory at a given `path`; throws an error in cases of failure.
@@ -155,11 +155,11 @@ extension FileManager {
   public class func destroyFileOrDirectory(atPath path: String) throws {
     try FileManager.default.destroyFileOrDirectory(atPath: path)
   }
-  
+
   internal func destroyFileOrDirectory(atPath path: String) throws {
     guard fileExists(atPath: path) == true else { return }
     try removeItem(atPath: path)
   }
-  
+
 }
 

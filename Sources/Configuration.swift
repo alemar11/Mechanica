@@ -28,24 +28,24 @@ import Foundation
 ///
 /// Types conforming to `PropertyListConfiguration` can be used to create a Property List configuration element.
 public protocol PropertyListConfiguration {
-  
+
   /// **Mechanica**
   ///
   /// Protocol `PropertyListConfiguration`.
   ///
   /// Propery List dictionary.
   var propertyList: NSDictionary { get }
-  
+
 }
 
 // MARK: - Configuration
 
 /**
  **Mechanica**
- 
+
  `Configuration` is a Property List reader.
  Extends this struct with `StringKeyCodable`, `BoolKeyCodable`, `URLKeyCodable,`NumberKeyCodable`, `DateKeyCodable`, `DataKeyCodable`, `ArrayKeyCodable`, `DictionaryKeyCodable` to avoid *stringly typed* APIs.
- 
+
  ```
  extension Configuration: StringKeyCodable {
   public enum StringKey: String {
@@ -53,24 +53,24 @@ public protocol PropertyListConfiguration {
     case value2  = "path.to.value2"
   }
  }
- 
+
  extension Configuration: BoolKeyCodable {
   public enum StringKey: String {
     case value3  = "path.to.value3"
     case value4  = "path.to.value4"
   }
  }
- 
+
  let cfg: Configuration = ...
- 
+
  let stringValue1 = cfg.string(forKey: .value3)
  let boolValue3   = cfg.bool(forKey: .value3)
  ```
 */
 public struct Configuration: PropertyListConfiguration {
-  
+
   public let propertyList: NSDictionary
-  
+
   /// **Mechanica**
   ///
   /// Initializes a `new` Configuration using a .plist file found at a given path.
@@ -81,7 +81,7 @@ public struct Configuration: PropertyListConfiguration {
     }
     propertyList = plist
   }
-  
+
   /// **Mechanica**
   ///
   /// Initializes a `new` Configuration using a .plist file found at a given URL.
@@ -92,7 +92,7 @@ public struct Configuration: PropertyListConfiguration {
     }
     propertyList = plist
   }
-  
+
 }
 
 // MARK: - Bool
@@ -105,7 +105,7 @@ public protocol BoolKeyCodable {
 }
 
 extension BoolKeyCodable where BoolKey.RawValue == String, Self: PropertyListConfiguration {
-  
+
   /// **Mechanica**
   ///
   /// Returns a `Bool` value for a `BoolKey`.
@@ -114,7 +114,7 @@ extension BoolKeyCodable where BoolKey.RawValue == String, Self: PropertyListCon
     assert(value.hasValue, "No Bool value found for key path: \(key.rawValue)")
     return value!
   }
-  
+
 }
 
 // MARK: - String
@@ -127,7 +127,7 @@ public protocol StringKeyCodable {
 }
 
 extension StringKeyCodable where StringKey.RawValue == String, Self: PropertyListConfiguration {
-  
+
   /// **Mechanica**
   ///
   /// Returns a `String` value for a `StringKey`.
@@ -136,7 +136,7 @@ extension StringKeyCodable where StringKey.RawValue == String, Self: PropertyLis
     assert(value.hasValue, "No String value found for key path: \(key.rawValue)")
     return value!
   }
-  
+
 }
 
 // MARK: - URL
@@ -149,7 +149,7 @@ public protocol URLKeyCodable {
 }
 
 extension URLKeyCodable where URLKey.RawValue == String, Self: PropertyListConfiguration {
-  
+
   /// **Mechanica**
   ///
   /// Returns an `URL` value (if any) for an `URLKey`.
@@ -157,7 +157,7 @@ extension URLKeyCodable where URLKey.RawValue == String, Self: PropertyListConfi
     guard let url = propertyList.value(forKeyPath: key.rawValue) as? String else { return nil }
     return URL(string: url)
   }
-  
+
 }
 
 // MARK: - NSNumber
@@ -170,7 +170,7 @@ public protocol NumberKeyCodable {
 }
 
 extension NumberKeyCodable where NumberKey.RawValue == String, Self: PropertyListConfiguration {
-  
+
   /// **Mechanica**
   ///
   /// Returns a `NSNumber` object for a `NumberKey`.
@@ -179,7 +179,7 @@ extension NumberKeyCodable where NumberKey.RawValue == String, Self: PropertyLis
     assert(value.hasValue, "No NSNumber value found for key path: \(key.rawValue)")
     return value!
   }
-  
+
 }
 
 // MARK: - Date
@@ -192,7 +192,7 @@ public protocol DateKeyCodable {
 }
 
 extension DateKeyCodable where DateKey.RawValue == String, Self: PropertyListConfiguration {
-  
+
   /// **Mechanica**
   ///
   /// Returns a `Date` value for a `DateKey`.
@@ -201,7 +201,7 @@ extension DateKeyCodable where DateKey.RawValue == String, Self: PropertyListCon
     assert(value.hasValue, "No Date value found for key path: \(key.rawValue)")
     return value!
   }
-  
+
 }
 
 // MARK: - Data
@@ -214,7 +214,7 @@ public protocol DataKeyCodable {
 }
 
 extension DataKeyCodable where DataKey.RawValue == String, Self: PropertyListConfiguration {
-  
+
   /// **Mechanica**
   ///
   /// Returns a `Data` value for a `DataKey`.
@@ -223,7 +223,7 @@ extension DataKeyCodable where DataKey.RawValue == String, Self: PropertyListCon
     assert(value.hasValue, "No Bool value found for key path: \(key.rawValue)")
     return value!
   }
-  
+
 }
 
 // MARK: - Array
@@ -236,7 +236,7 @@ public protocol ArrayKeyCodable {
 }
 
 extension ArrayKeyCodable where ArrayKey.RawValue == String, Self: PropertyListConfiguration {
-  
+
   /// **Mechanica**
   ///
   /// Returns an `Array` value for an `ArrayKey`.
@@ -245,7 +245,7 @@ extension ArrayKeyCodable where ArrayKey.RawValue == String, Self: PropertyListC
     assert(value.hasValue, "No Array found for key path: \(key.rawValue)")
     return value!
   }
-  
+
 }
 
 // MARK: - Dictionary
@@ -258,7 +258,7 @@ public protocol DictionaryKeyCodable {
 }
 
 extension DictionaryKeyCodable where DictionaryKey.RawValue == String, Self: PropertyListConfiguration {
-  
+
   /// **Mechanica**
   ///
   /// Returns a `Dictionary` value for a `DictionaryKey`.
@@ -267,6 +267,6 @@ extension DictionaryKeyCodable where DictionaryKey.RawValue == String, Self: Pro
     assert(value.hasValue, "No Array found for key path: \(key.rawValue)")
     return value!
   }
-  
+
 }
 

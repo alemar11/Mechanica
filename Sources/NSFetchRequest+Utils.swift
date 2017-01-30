@@ -25,7 +25,7 @@
 import CoreData
 
 extension NSFetchRequest {
-  
+
   /// **Mechanica**
   ///
   /// Creates a NSFetchRequest.
@@ -41,6 +41,6 @@ extension NSFetchRequest {
     self.predicate = predicate
     self.fetchBatchSize = batchSize
   }
-  
+
 }
 

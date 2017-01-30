@@ -27,33 +27,33 @@
 import Foundation
 
 extension Bundle {
-  
+
   /// **Mechanica**
   ///
   /// Returns the user-visible name of the `Bundle`; used by Siri and visible on the Home screen in iOS.
   public final var displayName: String? {
     return infoDictionary?["CFBundleDisplayName"] as? String
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the release-version-number string for the `Bundle`.
   public final var shortVersionString: String? {
     return infoDictionary?["CFBundleShortVersionString"] as? String
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the build-version-number string for the `Bundle`.
   public final var version: String? {
     return infoDictionary?["CFBundleVersion"] as? String
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the receiver's executable file name.
   public final var executableFileName: String? {
     return executableURL?.lastPathComponent
   }
-  
+
 }

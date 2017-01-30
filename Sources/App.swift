@@ -25,7 +25,7 @@
 import Foundation
 
 public struct App {
-  
+
   #if os(OSX)
   /// **Mechanica**
   ///
@@ -34,7 +34,7 @@ public struct App {
     return ProcessInfo.isSandboxed
   }
   #endif
-  
+
   /// **Mechanica**
   ///
   /// Returns true if the current app is running Unit Tests.
@@ -53,5 +53,5 @@ public struct App {
     }
     return nil
   }
-  
+
 }

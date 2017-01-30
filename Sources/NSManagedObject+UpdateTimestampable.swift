@@ -34,7 +34,7 @@ public protocol UpdateTimestampable: class {
 }
 
 extension UpdateTimestampable where Self: NSManagedObject {
-  
+
   /// **Mechanica**
   ///
   /// Protocol `UpdateTimestampable`.
@@ -46,5 +46,5 @@ extension UpdateTimestampable where Self: NSManagedObject {
     }
     updatedAt = Date()
   }
-  
+
 }

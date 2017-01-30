@@ -46,12 +46,12 @@ public protocol NibKeyCodable {
 }
 
 extension NibKeyCodable where NibName.RawValue == String {
-  
+
   /**
    **Mechanica**
-   
+
    Creates and returns a Nib object for a specified nib enum case.
-   
+
    i.e.
    ```
    extension Nib: NibKeyCodable {
@@ -60,7 +60,7 @@ extension NibKeyCodable where NibName.RawValue == String {
    case second  = "second"
    }
    }
-   
+
    let firstNib = Nib.nib(forKey: .first)
    ```
    - note: If the bundle parameter is nil, the main bundle is used.
@@ -72,7 +72,7 @@ extension NibKeyCodable where NibName.RawValue == String {
       return NSNib(nibNamed: key.rawValue, bundle: bundle)!
     #endif
   }
-  
+
 }
 
 // MARK: - NibLoadable
@@ -90,7 +90,7 @@ public protocol NibLoadable {}
 
 
 extension Nib {
-  
+
   /// **Mechanica**
   ///
   /// Instantiates and returns an obejct conforming to `NibLoadable` from a Nib.
@@ -104,7 +104,7 @@ extension Nib {
       }
       let contents = (array as! Array<Any>).filter { $0 is T }
     #endif
-    
+
     switch (contents.count) {
     case 0:
       fatalError("\(String(describing: T.self)) could not be found in \(String(describing: self)).")
@@ -114,7 +114,7 @@ extension Nib {
       fatalError("More than one \(String(describing: T.self)) has been found in \(String(describing: self)).")
     }
   }
-  
+
 }
 
 // MARK: - NibIdentifiable
@@ -129,12 +129,12 @@ public protocol NibIdentifiable: class {
 // MARK: Default implementation
 
 public extension NibIdentifiable {
-  
+
   /// By default the *nibIdentifier* is the name of the class.
   static var nibIdentifier: String {
     return String(describing: self)
   }
-  
+
   /// By default, uses the nib which is named as the name of the class and it's located in the bundle of that class.
   static var nib: Nib {
     #if os(iOS) || os(tvOS)

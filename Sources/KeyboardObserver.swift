@@ -27,14 +27,14 @@ import UIKit
 
 /**
  **Mechanica**
- 
+
  `KeyboardObserver` is an UIKit keyboard's behavior observer (for iOS apps) without Notification Center.
- 
+
  Declare what should happen on what event and `register()`.
- 
+
  ```
  let keyboard = KeyboardObserver()
- 
+
  keyboard
  .on(event: .didShow) { (options) in
     print("didShow")
@@ -45,80 +45,80 @@ import UIKit
  .register()
  }
  ```
- 
+
  You *must* call `register()` for callbacks to be triggered.
- 
+
  Calling `unregister()` will stop callbacks from triggering (UIKit's notifications won't be observed anymore), but callbacks themselves won't be dismissed; you can resume event callbacks by calling `register()` again.
- 
+
  To remove all event callbacks, call `clear()`.
  */
 public final class KeyboardObserver {
-  
+
   /// **Mechanica**
   ///
   /// A `KeyboardObserver` callback.
   public typealias Callback = (Options) -> ()
-  
+
   // MARK: - Keyboard Options
-  
+
   /// **Mechanica**
   ///
   /// Struct containing all data that a keyboard has at the event of happening.
   public struct Options {
-    
+
     /// Identifies whether the keyboard belongs to the current app.
     public let belongsToCurrentApp: Bool
-    
+
     /// Identifies the start frame of the keyboard in screen coordinates.
     public let startFrame: CGRect
-    
+
     /// Identifies the end frame of the keyboard in screen coordinates.
     public let endFrame: CGRect
-    
+
     /// Defines how the keyboard will be animated onto or off the screen.
     public let animationCurve: UIViewAnimationCurve
-    
+
     /// Identifies the duration of the keyboard animation in seconds.
     public let animationDuration: Double
-    
+
     // MARK: - Factory
-    
+
     /// Creates a new `Keyboard.Options` struct for an `info` dicionary.
     fileprivate static func makeOptions(fromInfo info: [AnyHashable : Any]) -> Options {
-      
+
       var belongsToCurrentApp: Bool = true
       if let value = (info[UIKeyboardIsLocalUserInfoKey] as? NSNumber)?.boolValue {
         belongsToCurrentApp = value
       }
-      
+
       var startFrame = CGRect()
       if let value = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
         startFrame = value
       }
-      
+
       var endFrame = CGRect()
       if let value = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
         endFrame = value
       }
-      
+
       var animationCurve = UIViewAnimationCurve.linear
       if let index = (info[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
         let value = UIViewAnimationCurve(rawValue:index) {
         animationCurve = value
       }
-      
+
       var animationDuration: Double = 0.0
       if let value = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
         animationDuration = value
       }
-      
+
       return Options(belongsToCurrentApp: belongsToCurrentApp, startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration)
     }
-    
+
   }
-  
+
   // MARK: - Keyboard Events
-  
+
   /// **Mechanica**
   ///
   /// Keyboard events that can happen. Translates directly to `UIKeyboard` notifications from UIKit.
@@ -135,7 +135,7 @@ public final class KeyboardObserver {
     case willChangeFrame
     /// Event raised by UIKit's `.UIKeyboardDidChangeFrame`.
     case didChangeFrame
-    
+
     /// Event `NSNotification.Name`.
     fileprivate var notificationName: NSNotification.Name {
       switch self {
@@ -153,7 +153,7 @@ public final class KeyboardObserver {
         return .UIKeyboardDidChangeFrame
       }
     }
-    
+
     fileprivate var selector: Selector {
       switch self {
       case .willShow:
@@ -170,13 +170,13 @@ public final class KeyboardObserver {
         return Selector.didChangeFrame
       }
     }
-    
+
   }
 
   private var callbacks: [Event : Callback] = [:]
-  
+
   // MARK: Public functions
-  
+
   /// **Mechanica**
   ///
   /// Defines `KeyboardObserver` behaviours.
@@ -193,30 +193,30 @@ public final class KeyboardObserver {
     callbacks[event] = callback
     return self
   }
-  
+
   /// **Mechanica**
   ///
   /// Initializes a new instance of `KeyboardObserver`.
   public init(){}
-  
+
   /// **Mechanica**
   ///
   /// Registers for `KeyboardObserver` events and starts calling corresponding event handlers.
   public func register() {
     let defaultCenter = NotificationCenter.default
-    
+
     for event in callbacks.keys {
       defaultCenter.addObserver(self, selector: event.selector, name: event.notificationName, object: nil)
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Remove all event callbacks.
   public func clear() {
     callbacks.removeAll()
   }
-  
+
   /// **Mechanica**
   ///
   /// Unregister from `KeyboardObserver` events.
@@ -225,9 +225,9 @@ public final class KeyboardObserver {
     let defaultCenter = NotificationCenter.default
     defaultCenter.removeObserver(self)
   }
-  
+
   // MARK: Private functions
-  
+
   /// Handler for `UIKeyboardWillShow` Notification.
   ///
   /// - parameter notification: keyboard notification
@@ -236,7 +236,7 @@ public final class KeyboardObserver {
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)
   }
-  
+
   /// Handler for `UIKeyboardDidShow` Notification.
   ///
   /// - parameter notification: keyboard notification
@@ -244,7 +244,7 @@ public final class KeyboardObserver {
     guard let callback = callbacks[.didShow] else { return }
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)  }
-  
+
   /// Handler for `UIKeyboardWillHide` Notification.
   ///
   /// - parameter notification: keyboard notification
@@ -253,7 +253,7 @@ public final class KeyboardObserver {
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)
   }
-  
+
   /// Handler for `UIKeyboardDidHide` Notification.
   ///
   /// - parameter notification: keyboard notification
@@ -262,7 +262,7 @@ public final class KeyboardObserver {
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)
   }
-  
+
   /// Handler for `UIKeyboardWillChangeFrame` Notification.
   ///
   /// - parameter notification: keyboard notification
@@ -271,7 +271,7 @@ public final class KeyboardObserver {
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)
   }
-  
+
   /// Handler for `UIKeyboardDidChangeFrame` Notification.
   ///
   /// - parameter notification: keyboard notification
@@ -280,7 +280,7 @@ public final class KeyboardObserver {
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)
   }
-  
+
 }
 
 // MARK: - Selectors

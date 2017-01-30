@@ -37,5 +37,5 @@ extension Optional {
       return true
     }
   }
-  
+
 }

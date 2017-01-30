@@ -25,47 +25,47 @@
 import Foundation
 
 extension Int {
-  
+
   /// **Mechanica**
   ///
   /// Determine if self is even (equivalent to `self % 2 == 0`).
   public var isEven: Bool {
     return (self % 2 == 0)
   }
-  
+
   /// **Mechanica**
   ///
   /// Determine if self is odd (equivalent to `self % 2 != 0`).
   public var isOdd: Bool {
     return (self % 2 != 0)
   }
-  
+
   /// **Mechanica**
   ///
   /// Determine if self is positive (equivalent to `self > 0`).
   public var isPositive: Bool {
     return (self > 0)
   }
-  
+
   /// **Mechanica**
   ///
   /// Determine if self is negative (equivalent to `self < 0`).
   public var isNegative: Bool {
     return (self < 0)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a random Int bounded by a closed interval range.
   public static func random(_ range: ClosedRange<Int>) -> Int {
     return range.lowerBound + Int(arc4random_uniform(UInt32(range.upperBound - range.lowerBound + 1)))
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a random Int between the given range.
   public static func random(min: Int, max: Int) -> Int {
     return random(min...max)
   }
-  
+
 }

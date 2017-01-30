@@ -25,7 +25,7 @@
 import CoreData
 
 extension NSManagedObjectContext {
-  
+
   /// **Mechanica**
   ///
   /// The persistent stores associated with the receiver.
@@ -34,7 +34,7 @@ extension NSManagedObjectContext {
     let stores = psc.persistentStores
     return stores
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a dictionary that contains the metadata currently stored or to-be-stored in a given persistent store.
@@ -42,7 +42,7 @@ extension NSManagedObjectContext {
     guard let psc = persistentStoreCoordinator else { fatalError("Must have Persistent Store Coordinator.") }
     return psc.metadata(for: store)
   }
-  
+
   /// **Mechanica**
   ///
   /// Adds an `object` to the store's metadata and saves it asynchronously.
@@ -59,7 +59,7 @@ extension NSManagedObjectContext {
       psc.setMetadata(md, for: store)
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the entity with the specified name from the managed object model associated with the specified managed object context’s persistent store coordinator.
@@ -69,7 +69,7 @@ extension NSManagedObjectContext {
     //guard let entity = NSEntityDescription.entity(forEntityName: name, in: self) else { fatalError("Entity \(name) not found") }
     return entity
   }
-  
+
   /// **Mechanica**
   ///
   /// Creates a new background `NSManagedObjectContext`.
@@ -78,7 +78,7 @@ extension NSManagedObjectContext {
     context.persistentStoreCoordinator = persistentStoreCoordinator
     return context
   }
-  
+
   /// **Mechanica**
   ///
   /// Asynchronously attempts to commit unsaved changes or rollbacks if any error occurs.
@@ -87,7 +87,7 @@ extension NSManagedObjectContext {
       self.saveOrRollback()
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Asynchronously performs changes and then saves them or rollbacks if any error occurs.
@@ -97,7 +97,7 @@ extension NSManagedObjectContext {
       self.saveOrRollback()
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Synchronously performs changes and then saves them or rollbacks if any error occurs.
@@ -111,7 +111,7 @@ extension NSManagedObjectContext {
     }
     return result
   }
-  
+
   /// **Mechanica**
   ///
   /// Attempts to commit unsaved changes to registered objects to the receiver’s parent store or rollbacks if any error occurs.
@@ -131,7 +131,7 @@ extension NSManagedObjectContext {
       return false
     }
   }
-  
+
 }
 
 

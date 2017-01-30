@@ -26,47 +26,47 @@ import CoreData
 
 /// Objects adopting the `ManagedObjectConfigurable` support a variety of Core Data helper functionalities.
 public protocol ManagedObjectConfigurable: class {
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ManagedObjectConfigurable`.
   ///
   /// Entity name.
   static var entityName: String { get }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ManagedObjectConfigurable`.
   ///
   /// Default sort descriptors.
   static var defaultSortDescriptors: [NSSortDescriptor] { get }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ManagedObjectConfigurable`.
   ///
   /// Default predicate.
   static var defaultPredicate: NSPredicate { get }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ManagedObjectConfigurable`.
   ///
   /// ManagedObject context.
   var managedObjectContext: NSManagedObjectContext? { get }
-  
+
 }
 
 // MARK: - Predicates and SortDescriptors
 
 extension ManagedObjectConfigurable {
-  
+
   public static var entityName: String { return String(describing: self) }
-  
+
   public static var defaultPredicate: NSPredicate { return NSPredicate(value: true) }
-  
+
   public static var defaultSortDescriptors: [NSSortDescriptor] { return [] }
-  
+
   /// **Mechanica**
   ///
   /// Fetch Request with the `defaultPredicate` and the default `defaultSortDescriptors`.
@@ -76,7 +76,7 @@ extension ManagedObjectConfigurable {
     request.predicate = defaultPredicate
     return request
   }
-  
+
   /// **Mechanica**
   ///
   /// Creates a `new` sorted fetch request using `sortedFetchRequest` *AND* `predicate`.
@@ -86,7 +86,7 @@ extension ManagedObjectConfigurable {
     request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [existingPredicate, predicate])
     return request
   }
-  
+
   /// **Mechanica**
   ///
   /// Creates a `new` sorted fetch request using `sortedFetchRequest` and `predicate` by substituting the values in an argument list into a format string.
@@ -94,7 +94,7 @@ extension ManagedObjectConfigurable {
     let predicate = withVaList(args) { NSPredicate(format: format, arguments: $0) }
     return makeSortedFetchRequestWithPredicate(predicate)
   }
-  
+
   /// **Mechanica**
   ///
   /// Creates a `new` predicate using the `defaultPredicate` *AND* a `predicate` by substituting the values in an argument list into a format string.
@@ -102,27 +102,27 @@ extension ManagedObjectConfigurable {
     let predicate = withVaList(args) { NSPredicate(format: format, arguments: $0) }
     return makeDefaultPredicateWithPredicate(predicate)
   }
-  
+
   /// **Mechanica**
   ///
   /// Creates a `new` predicate using the `defaultPredicate` *AND* a given `predicate`.
   public static func makeDefaultPredicateWithPredicate(_ predicate: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(andPredicateWithSubpredicates: [defaultPredicate, predicate])
   }
-  
+
 }
 
 // MARK: - Fetch
 
 extension ManagedObjectConfigurable where Self: NSManagedObject {
-  
+
   /// **Mechanica**
   ///
   /// Creates a `new` NSFetchRequest for `Self`.
   public static func fetchRequest() -> NSFetchRequest<Self> {
     return NSFetchRequest<Self>(entityName: entityName);
   }
-  
+
   /// **Mechanica**
   ///
   /// Attempts to find an object matching a predicate or creates a new one and configures it.
@@ -140,7 +140,7 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
     }
     return object
   }
-  
+
   /// **Mechanica**
   ///
   /// Tries to: find an existing object in the context (memory) matching a predicate and if doesn’t find the object in the context, tries to load it using a fetch request.
@@ -161,7 +161,7 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
     }
     return object
   }
-  
+
   /// **Mechanica**
   ///
   /// Performs a configurable fetch request in a context.
@@ -171,7 +171,7 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
     guard let result = try? moc.fetch(request) else { fatalError("Fetched objects have wrong type.") }
     return result
   }
-  
+
   /// **Mechanica**
   ///
   /// Counts the results of a configurable fetch request in a context.
@@ -186,7 +186,7 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
       fatalError("Failed to execute fetch request: \(error).")
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Iterates over the context’s registeredObjects set (which contains all managed objects the context currently knows about) until it finds one that is not a fault matching a given predicate.
@@ -198,13 +198,13 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
     }
     return nil
   }
-  
+
 }
 
 // MARK: - Cache
 
 extension ManagedObjectConfigurable where Self: NSManagedObject {
-  
+
   /// **Mechanica**
   ///
   /// Tries to retrieve an object from the cache; if there’s nothing in the cache executes the fetch request and caches the result (if a single object is found).
@@ -221,7 +221,7 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
     }
     return cached
   }
-  
+
   /// Executes a fetch request where only a single object is expected as result.
   private static func fetchSingleObject(inManagedObjectContext moc: NSManagedObjectContext, configure: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
     let result = fetch(inManagedObjectContext: moc) { request in
@@ -234,7 +234,7 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
     default: fatalError("Returned multiple objects, expected max 1.")
     }
   }
-  
+
 }
 
 

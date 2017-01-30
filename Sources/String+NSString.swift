@@ -26,7 +26,7 @@
 import Foundation
 
 extension String {
-  
+
   /// **Mechanica**
   ///
   /// Returns the last path component of the receiver.
@@ -34,7 +34,7 @@ extension String {
   var lastPathComponent: String {
     return (self as NSString).lastPathComponent
   }
-  
+
   /// **Mechanica**
   ///
   /// Return the path extension, if any, of the string as interpreted as a path.
@@ -42,7 +42,7 @@ extension String {
   var pathExtension: String {
     return (self as NSString).pathExtension
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string made by deleting the last path component from the receiver, along with any final path separator.
@@ -50,21 +50,21 @@ extension String {
   var deletingLastPathComponent: String {
     return (self as NSString).deletingLastPathComponent
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string made by deleting the extension (if any, and only the last) from the receiver.
   var deletingPathExtension: String {
     return (self as NSString).deletingPathExtension
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the file-system path components of the receiver.
   var pathComponents: [String] {
     return (self as NSString).pathComponents
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a new string made by appending to the receiver a given string.
@@ -72,7 +72,7 @@ extension String {
     let nsString = self as NSString
     return nsString.appendingPathComponent(path)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a new string made by appending to the receiver an extension separator followed by a given extension.
@@ -80,5 +80,5 @@ extension String {
     let nsString = self as NSString
     return nsString.appendingPathExtension(ext)
   }
-  
+
 }

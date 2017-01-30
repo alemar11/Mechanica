@@ -25,7 +25,7 @@
 import CoreData
 
 extension NSManagedObject {
-  
+
   /// **Mechanica**
   ///
   /// Updates the persistent properties of a managed object to use the latest values from the persistent store.

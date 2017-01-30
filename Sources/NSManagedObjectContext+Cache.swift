@@ -30,7 +30,7 @@ fileprivate let SingleObjectCacheKey = "\(mechanicaBundleIdentifier).CoreData.Ca
 fileprivate typealias SingleObjectCache = [String:NSManagedObject]
 
 extension NSManagedObjectContext {
-  
+
   /// **Mechanica**
   ///
   /// Caches an `object` for a `key` in this context.
@@ -39,7 +39,7 @@ extension NSManagedObjectContext {
     cache[key] = object
     userInfo[SingleObjectCacheKey] = cache
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a cached object in this context for a given `key`.
@@ -47,7 +47,7 @@ extension NSManagedObjectContext {
     guard let cache = userInfo[SingleObjectCacheKey] as? [String:NSManagedObject] else { return nil }
     return cache[key]
   }
-  
+
   /// **Mechanica**
   ///
   /// Clears all cached object in this context.
@@ -57,5 +57,5 @@ extension NSManagedObjectContext {
       cache = nil
     }
   }
-  
+
 }

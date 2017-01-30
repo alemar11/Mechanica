@@ -26,7 +26,7 @@ import Foundation
 
 extension Sequence {
   typealias Element = Iterator.Element
-  
+
   /// **Mechanica**
   ///
   /// Returns the first element (if any) `matching` the condition.
@@ -36,21 +36,21 @@ extension Sequence {
     }
     return nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns true if there is at least one element `matching` the condition.
   public func hasSomeOccurrences(matching condition: (Element) -> Bool) -> Bool {
     return findFirstOccurence(matching: condition) != nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns true if all the elements `match` the condition.
   public func hasAllOccurrences(matching condition: (Element) -> Bool) -> Bool {
     return findFirstOccurence { !condition($0) } == nil
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a grouped dictionary by the closure.
@@ -70,13 +70,13 @@ extension Sequence {
 // MARK: - AnyObject
 
 extension Sequence where Iterator.Element: AnyObject {
-  
+
   /// **Mechanica**
   ///
   /// Returns true if the `Sequence` contains an element identical (referential equality) to an `object`.
   public func contains(objectIdenticalTo object: AnyObject) -> Bool {
     return contains { $0 === object }
   }
-  
+
 }
 

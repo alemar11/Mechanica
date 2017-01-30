@@ -25,7 +25,7 @@
 import Foundation
 
 extension FloatingPoint {
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` rounded `FloatingPoint` to specified number of decimal `places`.
@@ -35,14 +35,14 @@ extension FloatingPoint {
     for _ in 0..<places { divisor.multiply(by: 10) }
     return (self * divisor).rounded() / divisor
   }
-  
+
   /// **Mechanica**
   ///
   /// Rounds `self` to specified number of decimal `places`.
   public mutating func roundToDecimalPlaces(_ places: Int) {
     self = roundedToDecimalPlaces(places)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` ceiled `FloatingPoint` to specified number of decimal `places`.
@@ -52,14 +52,14 @@ extension FloatingPoint {
     for _ in 0..<places { divisor.multiply(by: 10) }
     return ceil(self * divisor) / divisor //equals to (self * divisor).rounded(.up) / divisor
   }
-  
+
   /// **Mechanica**
   ///
   /// Ceils `self` to specified number of decimal `places`.
   public mutating func ceilToDecimalPlaces(_ places: Int) {
     self = ceiledToDecimalPlaces(places)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` floored `FloatingPoint` to specified number of decimal `places`.
@@ -69,12 +69,12 @@ extension FloatingPoint {
     for _ in 0..<places { divisor.multiply(by: 10) }
     return floor(self * divisor) / divisor //equals to (self * divisor).rounded(.down) / divisor
   }
-  
+
   /// **Mechanica**
   ///
   /// Floors `self` to specified number of decimal `places`.
   public mutating func floorToDecimalPlaces(_ places: Int) {
     self = flooredToDecimalPlaces(places)
   }
-  
+
 }

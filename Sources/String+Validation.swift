@@ -25,51 +25,51 @@
 import Foundation
 
 public extension String {
-  
+
   // MARK: - Validation Methods
-  
+
   /// **Mechanica**
   ///
   /// Return true if the `String` contains one or more letters.
   public var hasLetters: Bool {
     return !isEmpty && rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Return true if the `String` contains one or more numbers.
   public var hasNumbers: Bool {
     return !isEmpty && rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Return true if the `String` contains only letters.
   public var isAlphabetic: Bool {
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Checks if the `String` contains only numbers.
   public var isNumeric : Bool {
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Return true if the `String` contains at least one letter and one number.
   public var isAlphaNumeric: Bool {
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Check if the `String` is **blank** (a string that is either empty or contains only space/newline characters).
   public var isBlank: Bool {
     return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
   }
-  
+
   /// **Mechanica**
   ///
   /// Checks if all of the characters in a string are all the same.
@@ -81,7 +81,7 @@ public extension String {
     }
     return true
   }
-  
+
   /// **Mechanica**
   ///
   /// Return true if the `String` is a valid email format.
@@ -92,5 +92,5 @@ public extension String {
     guard matches.count == 1 else { return false }
     return matches[0].url?.absoluteString == "mailto:\(self)"
   }
-    
+
 }

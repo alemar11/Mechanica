@@ -32,64 +32,64 @@ fileprivate enum ModelVersionKey {
 
 /// Types adopting the `ModelVersion` protocol can be used to describe a Core Data Model and its versioning.
 public protocol ModelVersion: Equatable {
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ModelVersion`.
   ///
   /// List with all versions until now.
   static var allVersions: [Self] { get }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ModelVersion`.
   ///
   /// Current model version.
   static var currentVersion: Self { get }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ModelVersion`.
   ///
   /// Version name.
   var versionName: String { get }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ModelVersion`.
   ///
   /// The next `ModelVersion` in the progressive migration.
   var successor: Self? { get }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ModelVersion`.
   ///
   /// NSBundle object containing the model file.
   var modelBundle: Bundle { get }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ModelVersion`.
   ///
   /// Model name.
   var modelName: String { get }
-  
+
 }
 
 extension ModelVersion {
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ModelVersion`.
   ///
   /// Model file name.
   var momd: String { return "\(modelName).\(ModelVersionKey.momd)" }
-  
+
 }
 
 extension ModelVersion {
-  
+
   /// **Mechanica**
   ///
   /// Protocol `ModelVersion`.
@@ -106,7 +106,7 @@ extension ModelVersion {
 }
 
 extension ModelVersion {
-  
+
   public var successor: Self? { return nil }
-  
+
 }

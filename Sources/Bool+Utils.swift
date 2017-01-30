@@ -33,19 +33,19 @@ extension Bool {
   public var int: Int {
     return self ? 1 : 0
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns `true` if true, or `false` if false.
   public var string: String {
     return description
   }
-    
+
   /// **Mechanica**
   ///
   /// Returns `true` or `false` randomly.
   static public func random() -> Bool {
     return arc4random_uniform(2) == 0
   }
-  
+
 }

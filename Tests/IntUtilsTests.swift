@@ -26,48 +26,48 @@ import XCTest
 @testable import Mechanica
 
 class IntUtilsTests: XCTestCase {
-  
+
   func test_isEven() {
     XCTAssertTrue(2.isEven)
     XCTAssertTrue(22.isEven)
     XCTAssertTrue(202220.isEven)
-    
+
     XCTAssertFalse(3.isEven)
     XCTAssertFalse(27.isEven)
     XCTAssertFalse(202221.isEven)
   }
-  
+
   func test_isOdd() {
     XCTAssertTrue(1.isOdd)
     XCTAssertTrue(11.isOdd)
     XCTAssertTrue(171717.isOdd)
-    
+
     XCTAssertFalse(2.isOdd)
     XCTAssertFalse(22.isOdd)
     XCTAssertFalse(202220.isOdd)
   }
-  
+
   func test_isPositive() {
     XCTAssertTrue(2.isPositive)
     XCTAssertTrue(21.isPositive)
     XCTAssertTrue(202220.isPositive)
-    
+
     XCTAssertFalse((-2).isPositive)
     XCTAssertFalse((-21).isPositive)
     XCTAssertFalse((-202220).isPositive)
   }
-  
+
   func test_isNegative() {
     XCTAssertTrue((-2).isNegative)
     XCTAssertTrue((-21).isNegative)
     XCTAssertTrue((-202220).isNegative)
-    
+
     XCTAssertFalse(2.isNegative)
     XCTAssertFalse(21.isNegative)
     XCTAssertFalse(202220.isNegative)
-    
+
   }
-  
+
   func test_random() {
     XCTAssertTrue(Int.random(1...1) == 1)
     XCTAssertTrue(Int.random(min: 1, max: 1) == 1)
@@ -84,5 +84,5 @@ class IntUtilsTests: XCTestCase {
     XCTAssertFalse(Int.random(min: 50, max: 100) > 100)
     XCTAssertFalse(Int.random(min: 40, max: 50) < 40)
   }
-  
+
 }

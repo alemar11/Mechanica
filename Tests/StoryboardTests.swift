@@ -70,7 +70,7 @@ class StoryboardTests: XCTestCase {
         let tvOS_ViewController_1: tvOS_StoryboardDemo_ViewController_1 = tvOS_storyboard.instantiateViewController()
         XCTAssertNotNil(tvOS_ViewController_1)
       }
-      
+
     #elseif os(macOS)
 
       let macOS_storyboard = Storyboard.storyboard(forKey: .macOS, bundle: Bundle(for: type(of: self)))
