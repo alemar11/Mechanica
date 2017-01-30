@@ -30,7 +30,26 @@
       codeCoverageEnabled = "YES"
       enableAddressSanitizer = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "12B5371D1D33F192005C52A7"
+               BuildableName = "Mechanica macOS Tests.xctest"
+               BlueprintName = "Mechanica macOS Tests"
+               ReferencedContainer = "container:Mechanica.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "12B536E11D33ED29005C52A7"
+            BuildableName = "Mechanica.framework"
+            BlueprintName = "Mechanica macOS"
+            ReferencedContainer = "container:Mechanica.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
