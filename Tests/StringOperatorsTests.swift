@@ -3,7 +3,7 @@
 //  Mechanica
 //
 //  Created by Alessandro Marzoli on 01/12/16.
-//  Copyright © 2016 Tinrobots. All rights reserved.
+//  Copyright © 2016-2017 Tinrobots. All rights reserved.
 //
 
 import XCTest

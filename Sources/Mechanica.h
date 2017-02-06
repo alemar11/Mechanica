@@ -2,7 +2,7 @@
 //  Mechanica.h
 //  Mechanica
 //
-//  Copyright © 2016 Tinrobots. All rights reserved.
+//  Copyright © 2016-2017 Tinrobots. All rights reserved.
 //
 
 @import Foundation;
