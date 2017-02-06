@@ -47,5 +47,13 @@ class BoolUtilsTests: XCTestCase {
       XCTAssert(true)
     }
   }
-
+  
+  func test_toggle() {
+    let b1 = true
+    XCTAssertTrue(b1.toggled == false)
+    var b2 = false
+    b2.toggle()
+    XCTAssertTrue(b2)
+  }
+  
 }

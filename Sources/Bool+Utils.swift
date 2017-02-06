@@ -58,7 +58,6 @@ extension Bool {
   /// **Mechanica**
   ///
   /// Inverts the value of `self`.
-  @discardableResult
   public mutating func toggle() {
     self = !self
   }
