@@ -47,5 +47,22 @@ extension Bool {
   static public func random() -> Bool {
     return arc4random_uniform(2) == 0
   }
-
+  
+  /// **Mechanica**
+  ///
+  /// Returns a `new` Bool with the inverted value of `self`.
+  public var toggled: Bool {
+    return !self
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Inverts the value of `self`.
+  @discardableResult
+  public mutating func toggle() {
+    self = !self
+  }
+  
 }
+
+
