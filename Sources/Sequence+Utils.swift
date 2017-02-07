@@ -25,7 +25,7 @@
 import Foundation
 
 extension Sequence {
-  typealias Element = Iterator.Element
+  public typealias Element = Iterator.Element
 
   /// **Mechanica**
   ///
