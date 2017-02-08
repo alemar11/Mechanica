@@ -26,6 +26,9 @@ import Foundation
 
 extension NSMutableAttributedString {
   
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left NSMutableAttributedString.
   static public func + (lhs: NSMutableAttributedString, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
     let a = lhs.mutableCopy() as! NSMutableAttributedString
     let b = rhs.mutableCopy() as! NSMutableAttributedString
@@ -33,33 +36,58 @@ extension NSMutableAttributedString {
     return a
   }
   
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSMutableAttributedString appending the right NSAttributedString to the left NSMutableAttributedString.
   static public func + (lhs: NSMutableAttributedString, rhs: NSAttributedString) -> NSMutableAttributedString {
     let a = lhs.mutableCopy() as! NSMutableAttributedString
     a.append(rhs)
     return a
   }
   
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left NSAttributedString.
   static public func + (lhs: NSAttributedString, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
     let a = NSMutableAttributedString(attributedString: lhs)
     return a + rhs
   }
   
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSMutableAttributedString appending the right String to the left NSMutableAttributedString.
   static public func + (lhs: NSMutableAttributedString, rhs: String) -> NSMutableAttributedString {
     let a = lhs.mutableCopy() as! NSMutableAttributedString
     let b = NSMutableAttributedString(string: rhs)
     return a + b
   }
   
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left String.
   static public func + (lhs: String, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
     let a = NSMutableAttributedString(string: lhs)
     let b = rhs.mutableCopy() as! NSMutableAttributedString
     return a + b
   }
   
+  /// **Mechanica**
+  ///
+  /// Appends the right NSMutableAttributedString to the left NSMutableAttributedString.
+  static public func += (lhs: NSMutableAttributedString, rhs: NSMutableAttributedString) {
+    lhs.append(rhs)
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Appends the right NSAttributedString to the left NSMutableAttributedString.
   static public func += (lhs: NSMutableAttributedString, rhs: NSAttributedString) {
     lhs.append(rhs)
   }
   
+  /// **Mechanica**
+  ///
+  /// Appends the right String to the left NSMutableAttributedString.
   static func += (lhs: NSMutableAttributedString, rhs: String) {
     lhs.append(NSAttributedString(string: rhs))
   }

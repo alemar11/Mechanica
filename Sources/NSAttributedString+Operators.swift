@@ -25,21 +25,28 @@
 import Foundation
 
 extension NSAttributedString {
-  
-  //TODO: test copy method
-  
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left NSAttributedString.
   static public func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
     let a = lhs.mutableCopy() as! NSMutableAttributedString
     return (a + rhs).copy() as! NSAttributedString
   }
   
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSAttributedString appending the right String to the left NSAttributedString.
   static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
     let a = lhs.mutableCopy() as! NSMutableAttributedString
     return (a + rhs).copy() as! NSAttributedString
   }
   
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left String.
   static public func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
-    let a = lhs.mutableCopy() as! NSMutableAttributedString
+    let a = NSMutableAttributedString(string: lhs)
     return (a + rhs).copy() as! NSAttributedString  }
   
 }
