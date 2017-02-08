@@ -24,11 +24,13 @@
 
 import Foundation
 
-infix operator +: AdditionPrecedence
-
-/// **Mechanica**
-///
-/// Creates a `new` URL constructed by appending the *rhs* path to the *lhs* URL.
-public func +(lhs: URL, rhs: String) -> URL {
-  return lhs.appendingPathComponent(rhs)
+extension URL {
+  
+  /// **Mechanica**
+  ///
+  /// Creates a `new` URL constructed by appending the *rhs* path to the *lhs* URL.
+  static public func +(lhs: URL, rhs: String) -> URL {
+    return lhs.appendingPathComponent(rhs)
+  }
+  
 }

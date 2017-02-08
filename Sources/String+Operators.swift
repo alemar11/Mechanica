@@ -24,20 +24,22 @@
 
 import Foundation
 
-infix operator *: MultiplicationPrecedence
-
-/// **Mechanica**
-///
-/// Creates a `new` string representing the given string repeated the specified number of times.
-public func *(left: String, right: Int) -> String {
-  return  String(repeating: left, count: right)
-}
-
-/// **Mechanica**
-///
-/// Creates a `new` string representing the given string repeated the specified number of times.
-public func *(left: Int, right: String) -> String {
-  return  String(repeating: right, count: left)
+extension String {
+  
+  /// **Mechanica**
+  ///
+  /// Creates a `new` string representing the given string repeated the specified number of times.
+  static public func * (left: String, right: Int) -> String {
+    return  String(repeating: left, count: right)
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Creates a `new` string representing the given string repeated the specified number of times.
+  static public func * (left: Int, right: String) -> String {
+    return  String(repeating: right, count: left)
+  }
+  
 }
 
 infix operator ???: NilCoalescingPrecedence
@@ -50,6 +52,8 @@ infix operator ???: NilCoalescingPrecedence
 /// If the optional value is non-nil, it unwraps it and returns its string description, otherwise it returns the default value.
 ///
 /// [Credits](https://oleb.net/blog/2016/12/optionals-string-interpolation/)
-public func ???<T>(optional: T?, defaultValue: @autoclosure () -> String) -> String {
+public func ??? <T>(optional: T?, defaultValue: @autoclosure () -> String) -> String {
   return optional.map { String(describing: $0) } ?? defaultValue()
 }
+
+
