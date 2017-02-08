@@ -24,12 +24,6 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit
-#elseif os(OSX)
-  import Cocoa
-#endif
-
 extension NSMutableAttributedString {
   
   static public func + (lhs: NSMutableAttributedString, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
@@ -72,39 +66,3 @@ extension NSMutableAttributedString {
   
 }
 
-extension NSAttributedString {
-  
-  //TODO: test copy method
-  
-  static public func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
-    let a = lhs.mutableCopy() as! NSMutableAttributedString
-    return (a + rhs).copy() as! NSAttributedString
-  }
-  
-  static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
-    let a = lhs.mutableCopy() as! NSMutableAttributedString
-    return (a + rhs).copy() as! NSAttributedString
-  }
-  
-   static public func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
-    let a = lhs.mutableCopy() as! NSMutableAttributedString
-    return (a + rhs).copy() as! NSAttributedString  }
-  
-}
-
-extension NSAttributedString {
-  
-  /// **Mechanica**
-  ///
-  /// Initializes and returns a `new` NSAttributedString object from the `html` contained in the given string.
-  /// - Parameters:
-  ///   - html: an HTML string.
-  /// - note: The HTML import mechanism is meant for implementing something like markdown (that is, text styles, colors, and so on), not for general HTML import.
-  /// [Apple Doc](https://developer.apple.com/reference/foundation/nsattributedstring/1524613-init)
-  /// - warning: Using the HTML importer (NSHTMLTextDocumentType) is only possible on the main thread.
-  public convenience init?(html: String) {
-    guard let data = html.data(using: String.Encoding.utf8, allowLossyConversion: false) else { return nil }
-    try? self.init(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-  }
-  
-}
