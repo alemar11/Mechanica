@@ -92,6 +92,8 @@
 		23949C691E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C681E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift */; };
 		23949C6A1E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C681E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift */; };
 		23949C6B1E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C681E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift */; };
+		23949C6C1E4BB9CD00BD9EC8 /* StoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED4A621DF82C400042F012 /* StoryboardTests.swift */; };
+		23949C6D1E4BB9CE00BD9EC8 /* StoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED4A621DF82C400042F012 /* StoryboardTests.swift */; };
 		D20544FA1DDC508B007DCE97 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20544F91DDC508B007DCE97 /* Configuration.swift */; };
 		D20544FB1DDC508B007DCE97 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20544F91DDC508B007DCE97 /* Configuration.swift */; };
 		D20544FC1DDC508B007DCE97 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20544F91DDC508B007DCE97 /* Configuration.swift */; };
@@ -448,25 +450,25 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				12B6B1B81E0D5D180057FE5F /* Nib.swift */,
-				D278BD931DEF102A006FAD83 /* Color */,
-				D26C6C291DEC83B800B7D26A /* Storyboard.swift */,
-				129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */,
-				D2CAF3371DA2A6ED00E6E843 /* CoreData */,
-				12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */,
-				12B956431D8824AB00F75DD5 /* String */,
-				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
-				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
-				D262EF251DA54AD10061AB10 /* Sequence+Utils.swift */,
-				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
-				D20544F91DDC508B007DCE97 /* Configuration.swift */,
-				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
-				D2ABD0061E004F8D006859B9 /* ProcessInfo+Utils.swift */,
 				12CAB72D1E00707D00CFE42C /* App.swift */,
-				D220818C1E07FEB700BE4268 /* URL+Operators.swift */,
 				12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */,
+				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
+				D278BD931DEF102A006FAD83 /* Color */,
+				D20544F91DDC508B007DCE97 /* Configuration.swift */,
+				D2CAF3371DA2A6ED00E6E843 /* CoreData */,
+				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
+				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
 				D28CAEE51E3F2DDA008BC5B9 /* Int+Utils.swift */,
+				129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */,
+				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
+				12B6B1B81E0D5D180057FE5F /* Nib.swift */,
 				23949C5E1E4B97A500BD9EC8 /* NSAttributedString */,
+				12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */,
+				D2ABD0061E004F8D006859B9 /* ProcessInfo+Utils.swift */,
+				D262EF251DA54AD10061AB10 /* Sequence+Utils.swift */,
+				D26C6C291DEC83B800B7D26A /* Storyboard.swift */,
+				12B956431D8824AB00F75DD5 /* String */,
+				D220818C1E07FEB700BE4268 /* URL+Operators.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1173,6 +1175,7 @@
 				D208D1881DF071C6009687BB /* StringOperatorsTests.swift in Sources */,
 				D28D38231DFEC3AB00888BD0 /* FileManagerUtilsTests.swift in Sources */,
 				D22081931E07FFB400BE4268 /* URLOperatorsTests.swift in Sources */,
+				23949C6C1E4BB9CD00BD9EC8 /* StoryboardTests.swift in Sources */,
 				D2E63BFF1E014AFC00ED4385 /* StringNSStringTests.swift in Sources */,
 				D2ABD00D1E005173006859B9 /* AppTests.swift in Sources */,
 				23949C661E4BA4F600BD9EC8 /* NSAttributedStringOperatorsTests.swift in Sources */,
@@ -1202,6 +1205,7 @@
 				D28D38241DFEC3AB00888BD0 /* FileManagerUtilsTests.swift in Sources */,
 				D22081941E07FFB400BE4268 /* URLOperatorsTests.swift in Sources */,
 				1230E3E01E0FDFF800DACC7E /* macOS_NibDemo_Views.swift in Sources */,
+				23949C6D1E4BB9CE00BD9EC8 /* StoryboardTests.swift in Sources */,
 				D2E63C001E014AFC00ED4385 /* StringNSStringTests.swift in Sources */,
 				D2ABD00E1E005173006859B9 /* AppTests.swift in Sources */,
 				D214D5F21E3F51CC003F8E06 /* IntUtilsTests.swift in Sources */,
