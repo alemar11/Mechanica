@@ -89,6 +89,9 @@
 		23949C651E4BA4F600BD9EC8 /* NSAttributedStringOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C641E4BA4F600BD9EC8 /* NSAttributedStringOperatorsTests.swift */; };
 		23949C661E4BA4F600BD9EC8 /* NSAttributedStringOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C641E4BA4F600BD9EC8 /* NSAttributedStringOperatorsTests.swift */; };
 		23949C671E4BA4F600BD9EC8 /* NSAttributedStringOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C641E4BA4F600BD9EC8 /* NSAttributedStringOperatorsTests.swift */; };
+		23949C691E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C681E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift */; };
+		23949C6A1E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C681E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift */; };
+		23949C6B1E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C681E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift */; };
 		D20544FA1DDC508B007DCE97 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20544F91DDC508B007DCE97 /* Configuration.swift */; };
 		D20544FB1DDC508B007DCE97 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20544F91DDC508B007DCE97 /* Configuration.swift */; };
 		D20544FC1DDC508B007DCE97 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20544F91DDC508B007DCE97 /* Configuration.swift */; };
@@ -302,6 +305,7 @@
 		23949C591E4B979D00BD9EC8 /* NSAttributedString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Utils.swift"; sourceTree = "<group>"; };
 		23949C601E4B987D00BD9EC8 /* NSMutableAttributedStringOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringOperatorsTests.swift; sourceTree = "<group>"; };
 		23949C641E4BA4F600BD9EC8 /* NSAttributedStringOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringOperatorsTests.swift; sourceTree = "<group>"; };
+		23949C681E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringUtilsTests.swift; sourceTree = "<group>"; };
 		D20544F91DDC508B007DCE97 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		D20544FE1DDC51F8007DCE97 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
 		D20545021DDC5274007DCE97 /* ConfigurationDemo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigurationDemo.plist; sourceTree = "<group>"; };
@@ -552,6 +556,7 @@
 			children = (
 				23949C601E4B987D00BD9EC8 /* NSMutableAttributedStringOperatorsTests.swift */,
 				23949C641E4BA4F600BD9EC8 /* NSAttributedStringOperatorsTests.swift */,
+				23949C681E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift */,
 			);
 			name = "NSAttributedString Tests";
 			sourceTree = "<group>";
@@ -1140,6 +1145,7 @@
 				D2E63C091E015ED400ED4385 /* KeyboardObserverTests.swift in Sources */,
 				D2ED4A611DF82BE10042F012 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */,
 				D21A31F51DEDD0BE00E4A609 /* StringConversionsTests.swift in Sources */,
+				23949C691E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */,
 				D22081921E07FFB400BE4268 /* URLOperatorsTests.swift in Sources */,
 				D289AD021DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
 				D278BDA31DEF139F006FAD83 /* ColorUtilsTests.swift in Sources */,
@@ -1155,6 +1161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23949C6A1E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */,
 				12D9DF031E085BD3000799C6 /* BoolUtilsTests.swift in Sources */,
 				D2E63C031E01521D00ED4385 /* OptionalUtilsTests.swift in Sources */,
 				23949C621E4B987D00BD9EC8 /* NSMutableAttributedStringOperatorsTests.swift in Sources */,
@@ -1189,6 +1196,7 @@
 				D2E63C041E01521D00ED4385 /* OptionalUtilsTests.swift in Sources */,
 				D205B0671DF6F8BB002D78EF /* FloatingPointUtilsTests.swift in Sources */,
 				D208D1801DF045C6009687BB /* ColorFlatTests.swift in Sources */,
+				23949C6B1E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */,
 				D273A5971DD5C5BA0007796F /* SequenceUtilsTests.swift in Sources */,
 				D208D1891DF071C6009687BB /* StringOperatorsTests.swift in Sources */,
 				D28D38241DFEC3AB00888BD0 /* FileManagerUtilsTests.swift in Sources */,
