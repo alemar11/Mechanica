@@ -27,7 +27,7 @@ import XCTest
 
 class URLOperatorsTests: XCTestCase {
 
-  func test_Addition() {
+  func test_addition() {
 
     let url   = URL(fileURLWithPath: "")
     let url2  = URL(fileURLWithPath: "tinrobots")
