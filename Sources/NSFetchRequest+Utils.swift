@@ -42,35 +42,35 @@ extension NSFetchRequest {
     self.fetchBatchSize = batchSize
   }
   
-  func addingAndPredicate(predicate: NSPredicate) {
-    guard let currentPredicate = self.predicate else {
-      self.predicate = predicate
-      return
-    }
-    self.predicate = currentPredicate && predicate
-  }
-  
-  func addingOrPredicate(predicate: NSPredicate) {
-    guard let currentPredicate = self.predicate else {
-      self.predicate = predicate
-      return
-    }
-    self.predicate = currentPredicate || predicate
-  }
+//  func addingAndPredicate(predicate: NSPredicate) {
+//    guard let currentPredicate = self.predicate else {
+//      self.predicate = predicate
+//      return
+//    }
+//    self.predicate = currentPredicate && predicate
+//  }
+//  
+//  func addingOrPredicate(predicate: NSPredicate) {
+//    guard let currentPredicate = self.predicate else {
+//      self.predicate = predicate
+//      return
+//    }
+//    self.predicate = currentPredicate || predicate
+//  }
   
 //  func appendingSortDescriptors(descriptors: NSSortDescriptor...) -> NSFetchRequest {
 //    return appendingSortDescriptors(descriptors: descriptors)
 //  }
   
-  func appendingSortDescriptors(descriptors: [NSSortDescriptor]) -> NSFetchRequest {
-    let request = self.copy() as! NSFetchRequest
-    if request.sortDescriptors != nil {
-      request.sortDescriptors?.append(contentsOf: descriptors)
-    } else {
-      request.sortDescriptors = descriptors
-    }
-    return request
-  }
+//  func appendingSortDescriptors(descriptors: [NSSortDescriptor]) -> NSFetchRequest {
+//    let request = self.copy() as! NSFetchRequest
+//    if request.sortDescriptors != nil {
+//      request.sortDescriptors?.append(contentsOf: descriptors)
+//    } else {
+//      request.sortDescriptors = descriptors
+//    }
+//    return request
+//  }
   
 }
 
