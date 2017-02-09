@@ -65,7 +65,7 @@ extension StoryboardKeyCodable where StoryboardName.RawValue == String {
 
    let mainStoryboard = Storyboard.storyboard(forKey: .main)
    ```
-   - note: If the bundle parameter is nil, the main bundle is used.
+   - Note: If the bundle parameter is nil, the main bundle is used.
    */
   public static func storyboard(forKey key: StoryboardName, bundle: Bundle? = nil) -> Storyboard {
     return Storyboard(storyboard: key, bundle: bundle)
@@ -164,7 +164,7 @@ extension Storyboard {
    **Mechanica**
 
    Instantiates and returns a UIViewController conforming to `StoryboardIdentifiable`.
-   - note: In Xcode, set as "Storyboard ID" the UIViewController class name.
+   - Note: In Xcode, set as "Storyboard ID" the UIViewController class name.
 
    ```
    let vc = myStoryboard.instantiateViewController() as TestViewController
@@ -184,7 +184,7 @@ extension Storyboard {
    **Mechanica**
 
    Instantiates and returns a NSViewController conforming to `StoryboardIdentifiable`.
-   - note: In Xcode, set as "Storyboard ID" the NSViewController class name.
+   - Note: In Xcode, set as "Storyboard ID" the NSViewController class name.
 
    ```
    let vc = myStoryboard.instantiateViewController() as TestViewController
@@ -201,7 +201,7 @@ extension Storyboard {
    **Mechanica**
 
    Instantiates and returns a NSWindowController conforming to `StoryboardIdentifiable`.
-   - note: In Xcode, set as "Storyboard ID" the NSWindowController class name.
+   - Note: In Xcode, set as "Storyboard ID" the NSWindowController class name.
 
    ```
    let wc = myStoryboard.instantiateViewController() as TestViewController

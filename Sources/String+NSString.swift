@@ -30,7 +30,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns the last path component of the receiver.
-  /// - note: This method only works with file paths (not, for example, string representations of URLs).
+  /// - Note: This method only works with file paths (not, for example, string representations of URLs).
   var lastPathComponent: String {
     return (self as NSString).lastPathComponent
   }
@@ -38,7 +38,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Return the path extension, if any, of the string as interpreted as a path.
-  /// - note: This method only works with file paths (not, for example, string representations of URLs).
+  /// - Note: This method only works with file paths (not, for example, string representations of URLs).
   var pathExtension: String {
     return (self as NSString).pathExtension
   }
@@ -46,7 +46,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns a `new` string made by deleting the last path component from the receiver, along with any final path separator.
-  /// - note: This method only works with file paths (not, for example, string representations of URLs).
+  /// - Note: This method only works with file paths (not, for example, string representations of URLs).
   var deletingLastPathComponent: String {
     return (self as NSString).deletingLastPathComponent
   }

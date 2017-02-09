@@ -226,7 +226,7 @@ extension Color {
   /// **Mechanica**
   ///
   /// Returns a `new` Color derived from `self` varying in brightness by the given `percentage`.
-  /// - note: Brightness makes the color less or more closer to black.
+  /// - Note: Brightness makes the color less or more closer to black.
   public func modifiedBrightness(byPercentage percentage: CGFloat) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
     guard let hsba = hsba() else { return nil }
@@ -251,7 +251,7 @@ extension Color {
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` varying in saturation by the given`percentage`.
-  /// - note: Saturation makes the color less or more closer to white.
+  /// - Note: Saturation makes the color less or more closer to white.
   public func modifiedSaturation(byPercentage percentage: CGFloat) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
     guard let hsba = hsba() else { return nil }

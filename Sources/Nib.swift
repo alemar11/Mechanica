@@ -63,7 +63,7 @@ extension NibKeyCodable where NibName.RawValue == String {
 
    let firstNib = Nib.nib(forKey: .first)
    ```
-   - note: If the bundle parameter is nil, the main bundle is used.
+   - Note: If the bundle parameter is nil, the main bundle is used.
    */
   public static func nib(forKey key: NibName, bundle: Bundle? = nil) -> Nib {
     #if os(iOS) || os(tvOS)

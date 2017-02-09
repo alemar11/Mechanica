@@ -37,9 +37,9 @@ extension NSAttributedString {
   /// Initializes and returns a `new` NSAttributedString object from the `html` contained in the given string.
   /// - Parameters:
   ///   - html: an HTML string.
-  /// - note: The HTML import mechanism is meant for implementing something like markdown (that is, text styles, colors, and so on), not for general HTML import.
+  /// - Note: The HTML import mechanism is meant for implementing something like markdown (that is, text styles, colors, and so on), not for general HTML import.
   /// [Apple Documentation](https://developer.apple.com/reference/foundation/nsattributedstring/1524613-init)
-  /// - warning: Using the HTML importer (NSHTMLTextDocumentType) is only possible on the main thread.
+  /// - Warning: Using the HTML importer (NSHTMLTextDocumentType) is only possible on the main thread.
   public convenience init?(html: String) {
     guard let data = html.data(using: String.Encoding.utf8, allowLossyConversion: false) else { return nil }
     try? self.init(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)

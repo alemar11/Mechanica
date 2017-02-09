@@ -34,7 +34,7 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the location of the document directory (*Documents/*).
-  /// - note: Use this directory to store user-generated content. The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.
+  /// - Note: Use this directory to store user-generated content. The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.
   ///
   /// The contents of *Documents* directory are **backed up by iTunes and iCloud**.
   public class var documentDirectory: URL {
@@ -44,7 +44,7 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the location of the library directory (*Library/*).
-  /// - note: Use the Library subdirectories for any files you don’t want exposed to the user. Your app should not use these directories for user data files.
+  /// - Note: Use the Library subdirectories for any files you don’t want exposed to the user. Your app should not use these directories for user data files.
   ///
   /// You typically put files in one of several standard subdirectories. iOS apps commonly use the *Application Support* and *Caches subdirectories*; however, you can create custom subdirectories.
   ///
@@ -56,7 +56,7 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the location of discardable cache files (*Library/Caches/*).
-  /// - note: Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file.
+  /// - Note: Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file.
   ///
   /// Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance. Examples of cache data include (but are not limited to) database cache files and transient, downloadable content.
   ///
@@ -64,7 +64,7 @@ extension FileManager {
   ///
   /// Note that the system may delete the Caches/ directory to free up disk space, so your app must be able to re-create or download these files as needed.
   ///
-  /// - important: Sandboxed *macOS* apps have all their *Caches* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
+  /// - Important: Sandboxed *macOS* apps have all their *Caches* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
   public class var cachesDirectory: URL {
     return try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
@@ -72,13 +72,13 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the location of discardable cache files (*Library/Application Support/*).
-  /// - note: Put app-created support files in the *Library/Application support/* directory. In general, this directory includes files that the app uses to run but that should remain hidden from the user. This directory can also include data files, configuration files, templates and modified versions of resources loaded from the app bundle.
+  /// - Note: Put app-created support files in the *Library/Application support/* directory. In general, this directory includes files that the app uses to run but that should remain hidden from the user. This directory can also include data files, configuration files, templates and modified versions of resources loaded from the app bundle.
   ///
   /// The contents of the *Library/Application Support/* are **backed up by iTunes and iCloud**.
   ///
-  /// - warning: On *macOS* all content in this directory should be placed in a custom subdirectory whose name is that of your app’s bundle identifier or your company.
+  /// - Warning: On *macOS* all content in this directory should be placed in a custom subdirectory whose name is that of your app’s bundle identifier or your company.
   ///
-  /// - important: Sandboxed *macOS* apps have all their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
+  /// - Important: Sandboxed *macOS* apps have all their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
   public class var applicationSupportDirectory: URL {
 
     let url = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -95,13 +95,13 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the location of the temporary directory (*tmp*).
-  /// - note: Use this directory to write temporary files that do not need to persist between launches of your app.
+  /// - Note: Use this directory to write temporary files that do not need to persist between launches of your app.
   ///
   /// Your app should remove files from this directory when they are no longer needed; however, the system may purge this directory when your app is not running.
   ///
   /// The contents of *tmp* directory are **not backed up by iTunes or iCloud**.
   ///
-  /// - important: Sandboxed *macOS* apps have all their *temporary* directory located at a system-defined path.
+  /// - Important: Sandboxed *macOS* apps have all their *temporary* directory located at a system-defined path.
   public class var temporaryDirectory: URL {
     return URL(fileURLWithPath: NSTemporaryDirectory())
   }

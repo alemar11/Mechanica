@@ -180,8 +180,8 @@ public final class KeyboardObserver {
   /// **Mechanica**
   ///
   /// Defines `KeyboardObserver` behaviours.
-  /// - warning: Without calling `register()` none of the closures will be executed.
-  /// - warning: If more closures are declared on the same event, only the latter will be executed.
+  /// - Warning: Without calling `register()` none of the closures will be executed.
+  /// - Warning: If more closures are declared on the same event, only the latter will be executed.
   ///
   /// - Parameters:
   ///   - event: `KeyboardObserver` event on which callback should be executed.
@@ -220,7 +220,7 @@ public final class KeyboardObserver {
   /// **Mechanica**
   ///
   /// Unregister from `KeyboardObserver` events.
-  /// - warning: callbacks themselves won't be dismissed.
+  /// - Warning: callbacks themselves won't be dismissed.
   public func unregister() {
     let defaultCenter = NotificationCenter.default
     defaultCenter.removeObserver(self)
