@@ -33,7 +33,7 @@ extension Collection where Iterator.Element: NSManagedObject {
   public func fetchFaultedObjects() {
 
     guard !self.isEmpty else { return }
-    guard let context = self.first?.managedObjectContext else { fatalError("Managed object must have context.") }
+    guard let context = self.first?.managedObjectContext else { fatalError("The managed object must have a context.") }
 
     let faults = self.filter { $0.isFault }
     guard let mo = faults.first else { return }
