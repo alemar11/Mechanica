@@ -29,15 +29,15 @@ extension String {
   /// **Mechanica**
   ///
   /// Creates a `new` string representing the given string repeated the specified number of times.
-  static public func * (left: String, right: Int) -> String {
-    return  String(repeating: left, count: right)
+  static public func * (lhs: String, rhs: Int) -> String {
+    return  String(repeating: lhs, count: rhs)
   }
   
   /// **Mechanica**
   ///
   /// Creates a `new` string representing the given string repeated the specified number of times.
-  static public func * (left: Int, right: String) -> String {
-    return  String(repeating: right, count: left)
+  static public func * (lhs: Int, rhs: String) -> String {
+    return  String(repeating: rhs, count: lhs)
   }
   
 }
