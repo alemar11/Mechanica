@@ -28,19 +28,121 @@ import XCTest
 class NSPredicateOperatorsTests: XCTestCase {
     
   
-  func test_and() {
-    //let words = ["Hello", "World", "Swift", "Mechanica"]
-    let p1 = NSPredicate(format: "%K = %@", "age", "33")
-    let p2 = NSPredicate(format: "%K = %@", "age", "34")
-    let p3 = NSPredicate(format: "%K = %@", "age", "35")
+  func test_operators() {
     
-    let pp = p1.and(predicates: [p2,p3])
+    final class TestClass: NSObject {
+      let id: Int
+      let text: String
+      
+      init(id: Int, text: String) {
+        self.id = id
+        self.text = text
+      }
+      
+      override var description: String {
+        return ("\(id),\(text)")
+      }
+    }
     
-    let p4 = !p1 && p2 || p3
-    let p5 = !(p1 && p2 || p3)
-    let p6 = !(p1 && (p2 || p3))
+    let tests = [
+      TestClass(id:1, text: "one"),
+      TestClass(id:2, text: "two"),
+      TestClass(id:3, text: "three"),
+      TestClass(id:4, text: "four"),
+      TestClass(id:5, text: "five"),
+      TestClass(id:6, text: "six"),
+      TestClass(id:7, text: "seven"),
+      TestClass(id:8, text: "eight"),
+      TestClass(id:9, text: "nine"),
+      TestClass(id:10, text: "ten")
+    ]
     
-    let x = !false
+    let textEqualToOne_predicate = NSPredicate(format: "text = %@", "one");
+    let idGreaterThan5_predicate = NSPredicate(format: "id > 5")
+    let textsStartWithF_predicate = NSPredicate(format: "text BEGINSWITH[cd] 'f'")
+    let textEndsWithE_predicate = NSPredicate(format: "text ENDSWITH[cd] 'e'")
+
+    do {
+    let result = (tests as NSArray).filtered(using: textEqualToOne_predicate)
+      XCTAssert(result.count == 1)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: idGreaterThan5_predicate)
+      XCTAssert(result.count == 5)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textsStartWithF_predicate)
+      XCTAssert(result.count == 2)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textEndsWithE_predicate)
+      XCTAssert(result.count == 4)
+    }
+    
+    /// ! Operator
+    do {
+      let result = (tests as NSArray).filtered(using: !textEqualToOne_predicate)
+      XCTAssert(result.count == 9)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !idGreaterThan5_predicate)
+      XCTAssert(result.count == 5)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate)
+      XCTAssert(result.count == 8)
+    }
+    
+    
+    /// && Operator
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate && idGreaterThan5_predicate)
+      XCTAssert(result.count == 5)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate && !idGreaterThan5_predicate)
+      XCTAssert(result.count == 3)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textsStartWithF_predicate && textEndsWithE_predicate)
+      XCTAssert(result.count == 1)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textEqualToOne_predicate && idGreaterThan5_predicate)
+      XCTAssert(result.count == 0)
+    }
+    
+    /// || Operator
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate || idGreaterThan5_predicate)
+      XCTAssert(result.count == 8)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textsStartWithF_predicate || !idGreaterThan5_predicate)
+      XCTAssert(result.count == 5)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textEqualToOne_predicate || textEndsWithE_predicate)
+      XCTAssert(result.count == 4)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !textEqualToOne_predicate || textEndsWithE_predicate)
+      XCTAssert(result.count == 10)
+    }
+    
   }
     
 }
