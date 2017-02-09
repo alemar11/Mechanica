@@ -52,12 +52,12 @@ extension NSManagedObjectContext {
   ///   - key: Object key
   ///   - store: NSPersistentStore where is stored the metadata.
   public func setMetaDataObject(_ object: AnyObject?, with key: String, for store: NSPersistentStore){
-    performChanges {
+    performChanges (changes: {
       guard let psc = self.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
       var md = psc.metadata(for: store)
       md[key] = object
       psc.setMetadata(md, for: store)
-    }
+    })
   }
 
   /// **Mechanica**
@@ -91,10 +91,12 @@ extension NSManagedObjectContext {
   /// **Mechanica**
   ///
   /// Asynchronously performs changes and then saves them or rollbacks if any error occurs.
-  public func performChanges(changes: @escaping () -> ()) {
+  public func performChanges(changes: @escaping () -> (), onChangesPerformed: ( (Bool) -> () )? = nil) {
+    let queue = OperationQueue.current
     perform {
       changes()
-      self.saveOrRollback()
+      let result = self.saveOrRollback()
+      queue?.addOperation({onChangesPerformed?(result)})
     }
   }
 
@@ -121,9 +123,7 @@ extension NSManagedObjectContext {
   @discardableResult
   public func saveOrRollback() -> Bool {
     do {
-      if (hasChanges){
-        try save()
-      }
+      if (hasChanges){ try save() }
       return true
     } catch {
       print("Failure to save context: \(error).")
