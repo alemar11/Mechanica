@@ -122,13 +122,19 @@ extension NSManagedObjectContext {
   @discardableResult
   public func saveOrRollback() -> Bool {
     do {
-      if (hasChanges) { try save() }
+      try saveChanges()
       return true
     } catch {
       rollback()
       print("Failure to save context: \(error).\n A rollback has been performed.")
       return false
     }
+  }
+  
+  /// Saves the `NSManagedObjectContext` if changes are present.
+  private func saveChanges() throws {
+    guard hasChanges else { return }
+    try save()
   }
 
 }
