@@ -132,8 +132,8 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
   ///   - predicate: Matching predicate.
   ///   - configure: Configuration closure called only when creating a new object.
   /// - Returns: A matching object or a configured new one.
-  public static func findOrCreate(inManagedObjectContext moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate, configure: (Self) -> ()) -> Self {
-    guard let object = findOrFetch(inManagedObjectContext: moc, matchingPredicate: predicate) else {
+  public static func findOrCreateObject(inManagedObjectContext moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate, configure: (Self) -> ()) -> Self {
+    guard let object = findOrFetchFirstObject(inManagedObjectContext: moc, matchingPredicate: predicate) else {
       let newObject: Self = Self(context: moc) //moc.insertObject()
       configure(newObject)
       return newObject
@@ -143,15 +143,15 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
 
   /// **Mechanica**
   ///
-  /// Tries to: find an existing object in the context (memory) matching a predicate and if doesn’t find the object in the context, tries to load it using a fetch request.
+  /// Tries to find an existing object in the context (memory) matching a predicate and if doesn’t find the object in the context, tries to load it using a fetch request.
   ///
   /// - Parameters:
   ///   - moc: Searched context.
   ///   - predicate: Matching predicate.
   /// - Returns: A matching object (if any).
-  public static func findOrFetch(inManagedObjectContext moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate) -> Self? {
+  public static func findOrFetchFirstObject(inManagedObjectContext moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate) -> Self? {
     //first we should fetch an existing object in the context as a performance optimization
-    guard let object = materializedObject(inManagedObjectContext: moc, matchingPredicate: predicate) else {
+    guard let object = findMaterializedObject(inManagedObjectContext: moc, matchingPredicate: predicate) else {
       //if it's not in memory, we should execute a fetch to see if it exists
       return fetch(inManagedObjectContext: moc) { request in
         request.predicate = predicate
@@ -191,7 +191,7 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
   ///
   /// Iterates over the context’s registeredObjects set (which contains all managed objects the context currently knows about) until it finds one that is not a fault matching a given predicate.
   /// Faulted objects are not considered to to prevent Core Data to make a round trip to the persistent store.
-  public static func materializedObject(inManagedObjectContext moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate) -> Self? {
+  public static func findMaterializedObject(inManagedObjectContext moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate) -> Self? {
     for object in moc.registeredObjects where !object.isFault {
       guard let result = object as? Self, predicate.evaluate(with: result) else { continue }
       return result
