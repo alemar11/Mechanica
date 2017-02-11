@@ -78,6 +78,10 @@
 		235B5EBB1E4F663A00DBBE0D /* XCTest+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EB61E4F661000DBBE0D /* XCTest+Utils.swift */; };
 		235B5EBC1E4F663A00DBBE0D /* XCTest+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EB61E4F661000DBBE0D /* XCTest+Utils.swift */; };
 		235B5EBD1E4F663B00DBBE0D /* XCTest+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EB61E4F661000DBBE0D /* XCTest+Utils.swift */; };
+		235B5EBF1E4F68E000DBBE0D /* Font+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */; };
+		235B5EC01E4F68E000DBBE0D /* Font+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */; };
+		235B5EC11E4F68E000DBBE0D /* Font+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */; };
+		235B5EC21E4F68E000DBBE0D /* Font+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */; };
 		23949C551E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */; };
 		23949C561E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */; };
 		23949C571E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */; };
@@ -318,6 +322,7 @@
 		12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Utils.swift"; sourceTree = "<group>"; };
 		12D9DF011E085BD3000799C6 /* BoolUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolUtilsTests.swift; sourceTree = "<group>"; };
 		235B5EB61E4F661000DBBE0D /* XCTest+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTest+Utils.swift"; sourceTree = "<group>"; };
+		235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+Utils.swift"; sourceTree = "<group>"; };
 		23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Operators.swift"; sourceTree = "<group>"; };
 		23949C591E4B979D00BD9EC8 /* NSAttributedString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Utils.swift"; sourceTree = "<group>"; };
 		23949C601E4B987D00BD9EC8 /* NSMutableAttributedStringOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringOperatorsTests.swift; sourceTree = "<group>"; };
@@ -489,6 +494,7 @@
 				D220818C1E07FEB700BE4268 /* URL+Operators.swift */,
 				D24094441E4C7B3900EB4163 /* Dictionary+Validation.swift */,
 				D24094491E4C802B00EB4163 /* NSPredicate+Operators.swift */,
+				235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -994,6 +1000,7 @@
 				1230C2D61DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */,
 				12B956311D880B3B00F75DD5 /* String+Utils.swift in Sources */,
 				12B9562D1D880B3B00F75DD5 /* Optional+Utils.swift in Sources */,
+				235B5EBF1E4F68E000DBBE0D /* Font+Utils.swift in Sources */,
 				D2234A621E002D2600252551 /* String+NSString.swift in Sources */,
 				23949C5A1E4B979D00BD9EC8 /* NSAttributedString+Utils.swift in Sources */,
 				D24094451E4C7B3900EB4163 /* Dictionary+Validation.swift in Sources */,
@@ -1036,6 +1043,7 @@
 			files = (
 				D214026D1D5379AE00BCF2E7 /* Bundle+Info.swift in Sources */,
 				12B956321D880B3B00F75DD5 /* String+Utils.swift in Sources */,
+				235B5EC01E4F68E000DBBE0D /* Font+Utils.swift in Sources */,
 				D220818E1E07FEB700BE4268 /* URL+Operators.swift in Sources */,
 				12B9562E1D880B3B00F75DD5 /* Optional+Utils.swift in Sources */,
 				D2CAF3411DA2A71300E6E843 /* NSManagedObject+Utils.swift in Sources */,
@@ -1109,6 +1117,7 @@
 				D220818F1E07FEB700BE4268 /* URL+Operators.swift in Sources */,
 				D26C6C2C1DEC83B800B7D26A /* Storyboard.swift in Sources */,
 				D2ABD0091E004F8D006859B9 /* ProcessInfo+Utils.swift in Sources */,
+				235B5EC11E4F68E000DBBE0D /* Font+Utils.swift in Sources */,
 				D2CAF3461DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift in Sources */,
 				D278BD9C1DEF1061006FAD83 /* Color+Utils.swift in Sources */,
 			);
@@ -1152,6 +1161,7 @@
 				D22081901E07FEB700BE4268 /* URL+Operators.swift in Sources */,
 				D26C6C2D1DEC83B800B7D26A /* Storyboard.swift in Sources */,
 				D2ABD00A1E004F8D006859B9 /* ProcessInfo+Utils.swift in Sources */,
+				235B5EC21E4F68E000DBBE0D /* Font+Utils.swift in Sources */,
 				12B956421D8820CA00F75DD5 /* String+Validation.swift in Sources */,
 				D278BD9D1DEF1061006FAD83 /* Color+Utils.swift in Sources */,
 			);

@@ -25,12 +25,6 @@
 import XCTest
 @testable import Mechanica
 
-#if os(iOS) || os(tvOS) || os(watchOS)
-  typealias Font = UIFont
-#elseif os(OSX)
-  typealias Font = NSFont
-#endif
-
 class NSAttributedStringUtilsTests: XCTestCase {
     
   func test_initHTML(){
