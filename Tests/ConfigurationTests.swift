@@ -101,9 +101,9 @@ extension Configuration: DictionaryKeyCodable {
 
 class ConfigurationTests: XCTestCase {
 
-  private lazy var plistPath: String = {
-    return Bundle(for: type(of: self)).path(forResource: "ConfigurationDemo", ofType: "plist")!
-  }()
+  private var plistPath: String {
+    return unitTestBundle.path(forResource: "ConfigurationDemo", ofType: "plist")!
+  }
 
   func test_configuration() {
 

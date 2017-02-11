@@ -50,8 +50,9 @@ class NibTests: XCTestCase {
 
     #if os(iOS)
 
-      let nib = Nib.nib(forKey: .iOS, bundle: Bundle(for: type(of: self)))
+      let nib = Nib.nib(forKey: .iOS, bundle: unitTestBundle)
       XCTAssertNotNil(nib)
+      
       do {
         let view1 = nib.instantiate() as iOS_NibDemo_View_1
         XCTAssertNotNil(view1)
@@ -79,8 +80,9 @@ class NibTests: XCTestCase {
 
     #elseif os(tvOS)
 
-      let nib = Nib.nib(forKey: .iOS, bundle: Bundle(for: type(of: self)))
+      let nib = Nib.nib(forKey: .iOS, bundle: unitTestBundle)
       XCTAssertNotNil(nib)
+      
       do {
         let view1 = nib.instantiate() as tvOS_NibDemo_View_1
         XCTAssertNotNil(view1)
@@ -108,8 +110,9 @@ class NibTests: XCTestCase {
 
     #elseif os(macOS)
 
-      let nib = Nib.nib(forKey: .macOS, bundle: Bundle(for: type(of: self)))
+      let nib = Nib.nib(forKey: .macOS, bundle: unitTestBundle)
       XCTAssertNotNil(nib)
+      
       do {
         let view1 = nib.instantiate() as macOS_NibDemo_View_1
         XCTAssertNotNil(view1)

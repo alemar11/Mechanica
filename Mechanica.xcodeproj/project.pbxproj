@@ -75,6 +75,9 @@
 		12D9DF021E085BD3000799C6 /* BoolUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D9DF011E085BD3000799C6 /* BoolUtilsTests.swift */; };
 		12D9DF031E085BD3000799C6 /* BoolUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D9DF011E085BD3000799C6 /* BoolUtilsTests.swift */; };
 		12D9DF041E085BD3000799C6 /* BoolUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D9DF011E085BD3000799C6 /* BoolUtilsTests.swift */; };
+		235B5EBB1E4F663A00DBBE0D /* XCTest+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EB61E4F661000DBBE0D /* XCTest+Utils.swift */; };
+		235B5EBC1E4F663A00DBBE0D /* XCTest+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EB61E4F661000DBBE0D /* XCTest+Utils.swift */; };
+		235B5EBD1E4F663B00DBBE0D /* XCTest+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EB61E4F661000DBBE0D /* XCTest+Utils.swift */; };
 		23949C551E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */; };
 		23949C561E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */; };
 		23949C571E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */; };
@@ -314,6 +317,7 @@
 		12CAB72D1E00707D00CFE42C /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Utils.swift"; sourceTree = "<group>"; };
 		12D9DF011E085BD3000799C6 /* BoolUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolUtilsTests.swift; sourceTree = "<group>"; };
+		235B5EB61E4F661000DBBE0D /* XCTest+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTest+Utils.swift"; sourceTree = "<group>"; };
 		23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Operators.swift"; sourceTree = "<group>"; };
 		23949C591E4B979D00BD9EC8 /* NSAttributedString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Utils.swift"; sourceTree = "<group>"; };
 		23949C601E4B987D00BD9EC8 /* NSMutableAttributedStringOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringOperatorsTests.swift; sourceTree = "<group>"; };
@@ -510,6 +514,7 @@
 				12D9DF011E085BD3000799C6 /* BoolUtilsTests.swift */,
 				D214D5EF1E3F51CC003F8E06 /* IntUtilsTests.swift */,
 				D240944E1E4C884500EB4163 /* NSPredicateOperatorsTests.swift */,
+				235B5EB61E4F661000DBBE0D /* XCTest+Utils.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1176,6 +1181,7 @@
 				23949C691E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */,
 				D22081921E07FFB400BE4268 /* URLOperatorsTests.swift in Sources */,
 				D289AD021DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
+				235B5EBB1E4F663A00DBBE0D /* XCTest+Utils.swift in Sources */,
 				D278BDA31DEF139F006FAD83 /* ColorUtilsTests.swift in Sources */,
 				23949C651E4BA4F600BD9EC8 /* NSAttributedStringOperatorsTests.swift in Sources */,
 				12B6B1B31E0D58310057FE5F /* NibTests.swift in Sources */,
@@ -1189,6 +1195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235B5EBC1E4F663A00DBBE0D /* XCTest+Utils.swift in Sources */,
 				23949C6A1E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift in Sources */,
 				12D9DF031E085BD3000799C6 /* BoolUtilsTests.swift in Sources */,
 				D2E63C031E01521D00ED4385 /* OptionalUtilsTests.swift in Sources */,
@@ -1241,6 +1248,7 @@
 				D2ED4A711DF831B30042F012 /* macOS_StoryboardDemo_WindowController_1.swift in Sources */,
 				23949C631E4B987D00BD9EC8 /* NSMutableAttributedStringOperatorsTests.swift in Sources */,
 				D289ACFF1DC0A678003DA7B8 /* StringUtilsTests.swift in Sources */,
+				235B5EBD1E4F663B00DBBE0D /* XCTest+Utils.swift in Sources */,
 				D21A31F71DEDD0BE00E4A609 /* StringConversionsTests.swift in Sources */,
 				D289AD041DC0B463003DA7B8 /* StringValidationTests.swift in Sources */,
 				D278BDA51DEF13A0006FAD83 /* ColorUtilsTests.swift in Sources */,

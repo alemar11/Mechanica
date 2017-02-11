@@ -47,7 +47,7 @@ class StoryboardTests: XCTestCase {
     
     #if os(iOS)
       
-      let iOS_storyboard = Storyboard.storyboard(forKey: .iOS, bundle: Bundle(for: type(of: self)))
+      let iOS_storyboard = Storyboard.storyboard(forKey: .iOS, bundle: unitTestBundle)
       XCTAssertNotNil(iOS_storyboard)
       
       do {
@@ -61,7 +61,7 @@ class StoryboardTests: XCTestCase {
       
     #elseif os(tvOS)
       
-      let tvOS_storyboard = Storyboard.storyboard(forKey: .tvOS, bundle: Bundle(for: type(of: self)))
+      let tvOS_storyboard = Storyboard.storyboard(forKey: .tvOS, bundle: unitTestBundle)
       XCTAssertNotNil(tvOS_storyboard)
       
       do {
@@ -75,7 +75,7 @@ class StoryboardTests: XCTestCase {
       
     #elseif os(macOS)
       
-      let macOS_storyboard = Storyboard.storyboard(forKey: .macOS, bundle: Bundle(for: type(of: self)))
+      let macOS_storyboard = Storyboard.storyboard(forKey: .macOS, bundle: unitTestBundle)
       XCTAssertNotNil(macOS_storyboard)
       
       do {
