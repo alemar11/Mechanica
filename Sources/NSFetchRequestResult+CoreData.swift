@@ -89,7 +89,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     /// If objects have not yet been saved to a persistent store, they are simply removed from the context.
     /// - note: `NSBatchDeleteRequest` would be more efficient but requires requires a context with an `NSPersistentStoreCoordinator` directly connected (no child context).
     static private func deleteAllObjects(inManagedObjectContext moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate) {
-        Self.fetch(inManagedObjectContext: moc) { request in
+        fetch(inManagedObjectContext: moc) { request in
             request.includesPropertyValues = false
             request.includesSubentities = false
             request.predicate = predicate
