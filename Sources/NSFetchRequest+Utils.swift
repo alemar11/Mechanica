@@ -25,52 +25,51 @@
 import CoreData
 
 extension NSFetchRequest {
-
-  /// **Mechanica**
-  ///
-  /// Creates a NSFetchRequest.
-  ///
-  /// - parameter entity:    Core Data entity
-  /// - parameter predicate: Fetch request predicate
-  /// - parameter batchSize: Breaks the result set into batches
-  ///
-  /// - returns: a `new` NSFetchRequest.
-  convenience init(entity: NSEntityDescription, predicate: NSPredicate? = nil, batchSize: Int = 0) {
-    self.init()
-    self.entity = entity
-    self.predicate = predicate
-    self.fetchBatchSize = batchSize
-  }
-  
-//  func addingAndPredicate(predicate: NSPredicate) {
-//    guard let currentPredicate = self.predicate else {
-//      self.predicate = predicate
-//      return
-//    }
-//    self.predicate = currentPredicate && predicate
-//  }
-//  
-//  func addingOrPredicate(predicate: NSPredicate) {
-//    guard let currentPredicate = self.predicate else {
-//      self.predicate = predicate
-//      return
-//    }
-//    self.predicate = currentPredicate || predicate
-//  }
-  
-//  func appendingSortDescriptors(descriptors: NSSortDescriptor...) -> NSFetchRequest {
-//    return appendingSortDescriptors(descriptors: descriptors)
-//  }
-  
-//  func appendingSortDescriptors(descriptors: [NSSortDescriptor]) -> NSFetchRequest {
-//    let request = self.copy() as! NSFetchRequest
-//    if request.sortDescriptors != nil {
-//      request.sortDescriptors?.append(contentsOf: descriptors)
-//    } else {
-//      request.sortDescriptors = descriptors
-//    }
-//    return request
-//  }
-  
+    
+    /// **Mechanica**
+    ///
+    /// Creates a NSFetchRequest.
+    ///
+    /// - parameter entity:    Core Data entity
+    /// - parameter predicate: Fetch request predicate
+    /// - parameter batchSize: Breaks the result set into batches
+    ///
+    /// - Returns: a `new` NSFetchRequest.
+    public convenience init(entity: NSEntityDescription, predicate: NSPredicate? = nil, batchSize: Int = 0) {
+        self.init()
+        self.entity = entity
+        self.predicate = predicate
+        self.fetchBatchSize = batchSize
+    }
+    
+    //TODO: work in progress
+    func addingAndPredicate(predicate: NSPredicate) {
+        guard let currentPredicate = self.predicate else {
+            self.predicate = predicate
+            return
+        }
+        self.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [currentPredicate, predicate])
+    }
+    
+    //TODO: work in progress
+    func addingOrPredicate(predicate: NSPredicate) {
+        guard let currentPredicate = self.predicate else {
+            self.predicate = predicate
+            return
+        }
+        self.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [currentPredicate, predicate])
+    }
+    
+    //TODO: work in progress
+    func appendingSortDescriptors(descriptors: [NSSortDescriptor]) {
+        if self.sortDescriptors != nil {
+            self.sortDescriptors?.append(contentsOf: descriptors)
+        } else {
+            self.sortDescriptors = descriptors
+        }
+    }
+    
 }
+
+
 
