@@ -102,7 +102,7 @@ extension ManagedObjectConfigurable where Self: NSManagedObject {
 
 // MARK: - Remote Deletion
 
-fileprivate let MarkedForRemoteDeletionKey = "isMarkedForRemoteDeletion"
+fileprivate let markedForRemoteDeletionKey = "isMarkedForRemoteDeletion"
 
 /// **Mechanica**
 ///
@@ -142,7 +142,7 @@ extension RemoteDeletable {
   ///
   /// Predicate to filter for objects that aren’t marked for remote deletion.
   public static var notMarkedForRemoteDeletionPredicate: NSPredicate {
-    return NSPredicate(format: "%K == false", MarkedForRemoteDeletionKey)
+    return NSPredicate(format: "%K == false", markedForRemoteDeletionKey)
   }
 
   /// **Mechanica**
@@ -169,7 +169,7 @@ extension RemoteDeletable {
 extension RemoteDeletable where Self: NSManagedObject {
 
   public final var hasChangedForRemoteDeletion: Bool {
-    return changedValues()[MarkedForRemoteDeletionKey] as? Bool == true
+    return changedValues()[markedForRemoteDeletionKey] as? Bool == true
   }
 
 }

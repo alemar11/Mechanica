@@ -24,7 +24,7 @@
 
 import CoreData
 
-fileprivate let UpdateTimestampKey = "updatedAt"
+fileprivate let updateTimestampKey = "updatedAt"
 
 /// **Mechanica**
 ///
@@ -41,7 +41,7 @@ extension UpdateTimestampable where Self: NSManagedObject {
   ///
   /// Refreshes the update date iif the object has not unsaved update date.
   public func refreshUpdateDate() {
-    guard changedValues()[UpdateTimestampKey] == nil else {
+    guard changedValues()[updateTimestampKey] == nil else {
       return
     }
     updatedAt = Date()
