@@ -85,6 +85,20 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     
     /// **Mechanica**
     ///
+    /// Specifies objects (matching a given predicate) that should be removed from its persistent store when changes are committed.
+    /// If objects have not yet been saved to a persistent store, they are simply removed from the context.
+    /// - note: `NSBatchDeleteRequest` would be more efficient but requires requires a context with an `NSPersistentStoreCoordinator` directly connected (no child context).
+    static private func deleteAllObjects(inManagedObjectContext moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate) {
+        Self.fetch(inManagedObjectContext: moc) { request in
+            request.includesPropertyValues = false
+            request.includesSubentities = false
+            request.predicate = predicate
+            }.lazy.forEach(moc.delete(_:))
+    }
+    
+    
+    /// **Mechanica**
+    ///
     /// Counts the results of a configurable fetch request in a context.
     public static func count(inManagedObjectContext moc: NSManagedObjectContext, withRequestConfiguration configuration: (NSFetchRequest<Self>) -> () = { _ in }) -> Int {
         let request = fetchRequest() as! NSFetchRequest<Self>
@@ -109,6 +123,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
         }
         return nil
     }
+    
 }
 
 // MARK: - Cache
