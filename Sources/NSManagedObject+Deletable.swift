@@ -90,7 +90,7 @@ extension DelayedDeletable where Self: NSManagedObject {
   //TODO: work in progress
   fileprivate static func batchDeleteObjectsMarkedForDeletion(inManagedObjectContext moc: NSManagedObjectContext) {
     guard let _ = moc.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing. A NSBatchDeleteRequest instance operates directly on one or more persistent stores.") }
-    let request = fetchRequest() //NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+    let request = fetchRequest()
     let cutOff = Date(timeIntervalSinceNow: -timeBeforePermanentlyDeletingObjects)
     request.predicate = NSPredicate(format: "%K < %@", markedForDeletionKey, [cutOff])
     let batchRequest = NSBatchDeleteRequest(fetchRequest: request)
