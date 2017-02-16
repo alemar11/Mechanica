@@ -29,7 +29,7 @@ extension NSObject {
   /// **Mechanica**
   ///
   /// Couple of `Selector` where the method corresponding to the first one needs to be exchanged with the second one.
-  public typealias swizzlingSelectors = (originaleSelector: Selector, swizzledSelector: Selector)
+  public typealias SwizzlingSelectors = (originalSelector: Selector, swizzledSelector: Selector)
 
   /// **Mechanica**
   ///
@@ -41,7 +41,7 @@ extension NSObject {
   /// - Parameters:
   ///   - originalSelector: `Selector` for the original method
   ///   - swizzledSelector: `Selector` for the swizzled methos
-  /// - Note: [Credits](https://www.uraimo.com/2015/10/23/effective-method-swizzling-with-swift/)
+  /// - SeeAlso: [Credits](https://www.uraimo.com/2015/10/23/effective-method-swizzling-with-swift/)
   public class func swizzle(method originalSelector: Selector, with swizzledSelector: Selector) {
     let originalMethod = class_getInstanceMethod(self, originalSelector)
     let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
@@ -56,7 +56,8 @@ extension NSObject {
   /// **Mechanica**
   ///
   /// Exchanges the implementations of each couple of Selectors.
-  public class func swizzle(_ selectors: [swizzlingSelectors]){
+  /// - SeeAlso: `swizzle(method:with:)`
+  public class func swizzle(_ selectors: [SwizzlingSelectors]){
     selectors.forEach { swizzle(method: $0.0, with: $0.1)}
   }
 
