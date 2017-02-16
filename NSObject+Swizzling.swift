@@ -26,6 +26,8 @@ import Foundation
 
 extension NSObject {
 
+  /// **Mechanica**
+  ///
   /// Couple of `Selector` where the method corresponding to the first one needs to be exchanged with the second one.
   public typealias swizzlingSelectors = (originaleSelector: Selector, swizzledSelector: Selector)
 
