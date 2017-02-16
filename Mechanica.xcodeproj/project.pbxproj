@@ -464,7 +464,6 @@
 		12B536981D33EB6B005C52A7 = {
 			isa = PBXGroup;
 			children = (
-				239F8DD71E55DED500E3DF33 /* NSObject+Swizzling.swift */,
 				12B536A31D33EB6B005C52A7 /* Products */,
 				12B536EA1D33ED6A005C52A7 /* Sources */,
 				12B536FB1D33F14F005C52A7 /* Supporting Files */,
@@ -489,6 +488,7 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				239F8DD71E55DED500E3DF33 /* NSObject+Swizzling.swift */,
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */,
 				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
