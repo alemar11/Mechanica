@@ -25,59 +25,112 @@
 import Foundation
 
 extension Array  {
-
+  
   /// **Mechanica**
   ///
-  /// Removes the first element that matches the given condition.
+  /// Removes the first element that matches the given `condition`.
   @discardableResult
-  private mutating func removeFirst(matchingCondition condition: (Element) -> Bool) -> Element? {
+  internal mutating func removeFirst(matching condition: (Element) -> Bool) -> Element? {
     guard let idx = index(where: condition) else { return nil }
     let item = self[idx]
     remove(at: idx)
     return item
   }
-
+  
   /// **Mechanica**
   ///
-  /// Removes the first element that matches the given condition & returns a `new` array.
-  @discardableResult
-  private func removedFirst(matchingCondition condition: (Element) -> Bool) -> Array {
+  /// Removes the first element that matches the given `condition` and returns a `new` array.
+  internal func removedFirst(matching condition: (Element) -> Bool) -> Array {
     var items = self
-    items.removeFirst(matchingCondition: condition)
+    items.removeFirst(matching: condition)
     return items
   }
-
+  
+  /// **Mechanica**
+  ///
+  /// Removes the last element that matches the given `condition`.
   @discardableResult
-  private mutating func removeAll(matchingCondition handler: (Element) -> Bool) -> Element? {
-    guard let idx = index(where: handler) else { return nil }
-    let item = self[idx]
-    remove(at: idx)
+  internal mutating func removeLast(matching condition: (Element) -> Bool) -> Element? {
+    guard let idx = reversed().index(where: condition) else { return nil }
+    print(idx)
+    let item = self[idx.base-1]
+    remove(at: idx.base-1)
     return item
   }
-
-  private mutating func removeAll(matchingCondition condition: (Element) -> Bool) -> [Element] {
-    var removedElements: [Element] = []
-
+  
+  /// **Mechanica**
+  ///
+  /// Removes the last element that matches the given `condition` and returns a `new` array.
+  internal mutating func removedLast(matching condition: (Element) -> Bool) -> Array {
+    var items = self
+    items.removeLast(matching: condition)
+    return items
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Removes all the elements that matches the given `condition` and returns all the removed element (if any).
+  @discardableResult
+  internal mutating func removeAll(matching condition: (Element) -> Bool) -> [Element] {
+   //FIXME: verify the faster solution
+    var removedElements: [Element]  = []
     for index in stride(from: self.endIndex-1, through: 0, by: -1) {
-      print(index)
       let element = self[index]
-      if condition(element) {
-        remove(at: index)
-        removedElements.append(element)
-      }
+      guard condition(element) else { continue }
+      remove(at: index)
+      //removedElements.append(element)
+      removedElements.insert(element, at: 0)
     }
+    //return removedElements.reversed()
     return removedElements
   }
-
-  private func find(matchingCondition condition: (Element) -> Bool) -> [Element] {
-    var foundElements: [Element] = []
-    for x in self {
-      let t = x as Element;
-      if condition(t) {
-        foundElements.append(t)
-      }
-    }
-    return foundElements
+  
+  /// **Mechanica**
+  ///
+  /// Removes all the elements that matches the given `condition` and returns a `new` array.
+  internal mutating func removedAll(matching condition: (Element) -> Bool) -> Array {
+    var items = self
+    items.removeAll(matching: condition)
+    return items
   }
+  
+  
+}
 
+extension Array where Element: Equatable {
+  
+  /// **Mechanica**
+  /// Removes and returns the specified element from the array (if exists).
+  public mutating func remove(_ element: Element) -> Element? {
+    guard let index = index(of: element) else { return nil }
+    return remove(at: index)
+  }
+  
+  /// **Mechanica**
+  ///  Returns the last index where the specified value appears in the collection.
+  ///  After using lastIndex(of:) to find the last position of a particular element in a collection, you can use it to access the element by subscripting.
+  /// - Parameter element: The element to find the last Index
+  internal func lastIndex(of element: Element) -> Index? {
+    if let index = reversed().index(of: element) {
+      return  index.base - 1
+    }
+    return nil
+  }
+  
+  // TODO: firstIndex, removeFirstOccurrence
+  
+  /// **Mechanica**
+  /// Removes the last occurrence where the specified value appears in the collection.
+  /// - Returns: True if the last occurrence element was found and removed or false if not.
+  /// - Parameter element: The element to remove the last occurrence.
+  @discardableResult
+  internal mutating func removeLastOccurrence(of element: Element) -> Element? {
+    if let index = lastIndex(of: element) {
+      let element = self[index]
+      remove(at: index)
+      return element
+    }
+    return nil
+  }
+  
 }
