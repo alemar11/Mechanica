@@ -27,6 +27,15 @@ import Foundation
 extension Sequence {
   public typealias Element = Iterator.Element
 
+  // TODO: work in progress
+  internal func find(matching condition: (Element) -> Bool) -> [Element] {
+    var foundElements: [Element] = []
+    for element in self where condition(element) {
+        foundElements.append(element)
+    }
+    return foundElements
+  }
+  
   /// **Mechanica**
   ///
   /// Returns the first element (if any) `matching` the condition.
