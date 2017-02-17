@@ -28,7 +28,7 @@ extension Optional {
 
   /// **Mechanica**
   ///
-  /// Returns `true` if the `Optional` has a value.
+  /// Returns `true` if `self` has a value.
   public var hasValue: Bool {
     switch self {
     case .none:
