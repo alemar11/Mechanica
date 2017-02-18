@@ -25,46 +25,49 @@
 import Foundation
 
 extension Sequence {
-  public typealias Element = Iterator.Element
+  //public typealias Element = Iterator.Element
 
   // TODO: work in progress
-  internal func find(matching condition: (Element) -> Bool) -> [Element] {
-    var foundElements: [Element] = []
-    for element in self where condition(element) {
-        foundElements.append(element)
-    }
-    return foundElements
-  }
+//  internal func find(matching condition: (Element) -> Bool) -> [Element] {
+//    var foundElements: [Element] = []
+//    for element in self where condition(element) {
+//        foundElements.append(element)
+//    }
+//    return foundElements
+//  }
+  
+  // TODO: rename arguments labels (matching in where, condition in predicate)
   
   /// **Mechanica**
   ///
   /// Returns the first element (if any) `matching` the condition.
-  public func findFirstOccurence(matching condition: (Element) -> Bool) -> Element? {
-    for element in self where condition(element) {
-      return element
-    }
-    return nil
+  public func findFirstOccurence(matching condition: (Iterator.Element) -> Bool) -> Iterator.Element? {
+    return first(where: condition)
+//    for element in self where condition(element) {
+//      return element
+//    }
+//    return nil
   }
 
   /// **Mechanica**
   ///
   /// Returns true if there is at least one element `matching` the condition.
-  public func hasSomeOccurrences(matching condition: (Element) -> Bool) -> Bool {
+  public func hasSomeOccurrences(matching condition: (Iterator.Element) -> Bool) -> Bool {
     return findFirstOccurence(matching: condition) != nil
   }
 
   /// **Mechanica**
   ///
   /// Returns true if all the elements `match` the condition.
-  public func hasAllOccurrences(matching condition: (Element) -> Bool) -> Bool {
-    return findFirstOccurence { !condition($0) } == nil
+  public func hasAllOccurrences(matching condition: (Iterator.Element) -> Bool) -> Bool {
+    return findFirstOccurence { condition($0) } == nil
   }
 
   /// **Mechanica**
   ///
   ///  Returns a grouped dictionary by the closure.
-  public func grouped<Key: Hashable>(by key: (Element) -> (Key)) -> [Key : [Element]] {
-    var dictionary: [Key : [Element]] = [:]
+  public func grouped<Key: Hashable>(by key: (Iterator.Element) -> (Key)) -> [Key : [Iterator.Element]] {
+    var dictionary: [Key : [Iterator.Element]] = [:]
     for element in self {
       let key = key(element)
       var array = dictionary.removeValue(forKey: key) ?? []
