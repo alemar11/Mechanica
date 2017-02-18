@@ -83,16 +83,16 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
   }
   
   
-    func testPerformanceExample() {
-      var array = [Int]()
-      for i in stride(from: 0, to: 1_000_000, by: 1) {
-        array.append(i)
-      }
-        self.measure {
-          for _ in 1...10{
-            let _ = array.removingLast(where: {$0 == 23})
-          }
-        }
-    }
+//    func testPerformanceExample() {
+//      var array = [Int]()
+//      for i in stride(from: 0, to: 1_000_000, by: 1) {
+//        array.append(i)
+//      }
+//        self.measure {
+//          for _ in 1...10{
+//            let _ = array.removingLast(where: {$0 == 23})
+//          }
+//        }
+//    }
   
 }
