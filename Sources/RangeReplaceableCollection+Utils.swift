@@ -1,5 +1,5 @@
 //
-//  Array+Utils.swift
+//  RangeReplaceableCollection+Utils.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -24,25 +24,23 @@
 
 import Foundation
 
-extension Array  {
+extension RangeReplaceableCollection where Self.Index == Int {
   
   /// **Mechanica**
   ///
   /// Removes the first element that matches the given `condition`.
   @discardableResult
-  internal mutating func removeFirst(matching condition: (Element) -> Bool) -> Element? {
-    guard let idx = index(where: condition) else { return nil }
-    let item = self[idx]
-    remove(at: idx)
-    return item
+  public mutating func removeFirst(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
+    guard let idx = index(where: predicate) else { return nil }
+    return remove(at: idx)
   }
   
   /// **Mechanica**
   ///
-  /// Removes the first element that matches the given `condition` and returns a `new` array.
-  internal func removedFirst(matching condition: (Element) -> Bool) -> Array {
+  /// Removes the first element that matches the given `condition` and returns a `new` collection.
+  internal func removingFirst(where predicate: (Iterator.Element) -> Bool) -> Self {
     var items = self
-    items.removeFirst(matching: condition)
+    items.removeFirst(where: predicate)
     return items
   }
   
@@ -50,20 +48,17 @@ extension Array  {
   ///
   /// Removes the last element that matches the given `condition`.
   @discardableResult
-  internal mutating func removeLast(matching condition: (Element) -> Bool) -> Element? {
-    guard let idx = reversed().index(where: condition) else { return nil }
-    print(idx)
-    let item = self[idx.base-1]
-    remove(at: idx.base-1)
-    return item
+  internal mutating func removeLast(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
+    guard let idx = reversed().index(where: predicate) else { return nil }
+    return remove(at: (endIndex-1) - idx)
   }
   
   /// **Mechanica**
   ///
-  /// Removes the last element that matches the given `condition` and returns a `new` array.
-  internal mutating func removedLast(matching condition: (Element) -> Bool) -> Array {
+  /// Removes the last element that matches the given `condition` and returns a `new` collection.
+  internal func removingLast(where predicate: (Iterator.Element) -> Bool) -> Self {
     var items = self
-    items.removeLast(matching: condition)
+    items.removeLast(where: predicate)
     return items
   }
   
@@ -71,64 +66,62 @@ extension Array  {
   ///
   /// Removes all the elements that matches the given `condition` and returns all the removed element (if any).
   @discardableResult
-  internal mutating func removeAll(matching condition: (Element) -> Bool) -> [Element] {
-   //FIXME: verify the faster solution
-    var removedElements: [Element]  = []
+  internal mutating func removeAll(where predicate: (Iterator.Element) -> Bool) -> [Iterator.Element] {
+    var removedElements: [Iterator.Element]  = []
     for index in stride(from: self.endIndex-1, through: 0, by: -1) {
       let element = self[index]
-      guard condition(element) else { continue }
+      guard predicate(element) else { continue }
       remove(at: index)
-      //removedElements.append(element)
       removedElements.insert(element, at: 0)
     }
-    //return removedElements.reversed()
     return removedElements
   }
   
   /// **Mechanica**
   ///
   /// Removes all the elements that matches the given `condition` and returns a `new` array.
-  internal mutating func removedAll(matching condition: (Element) -> Bool) -> Array {
+  internal func removingAll(where predicate: (Iterator.Element) -> Bool) -> Self {
     var items = self
-    items.removeAll(matching: condition)
+    items.removeAll(where: predicate)
     return items
   }
   
-  
 }
 
-extension Array where Element: Equatable {
+extension RangeReplaceableCollection where Self.Index == Int, Iterator.Element: Equatable {
   
   /// **Mechanica**
   /// Removes and returns the specified element from the array (if exists).
-  public mutating func remove(_ element: Element) -> Element? {
-    guard let index = index(of: element) else { return nil }
-    return remove(at: index)
+  internal mutating func remove(_ element: Iterator.Element) -> Iterator.Element? {
+    guard let idx = index(of: element) else { return nil }
+    return remove(at: idx)
   }
   
-  /// **Mechanica**
-  ///  Returns the last index where the specified value appears in the collection.
-  ///  After using lastIndex(of:) to find the last position of a particular element in a collection, you can use it to access the element by subscripting.
-  /// - Parameter element: The element to find the last Index
-  internal func lastIndex(of element: Element) -> Index? {
-    if let index = reversed().index(of: element) {
-      return  index.base - 1
-    }
-    return nil
-  }
-  
-  // TODO: firstIndex, removeFirstOccurrence
+  // TODO: removeFirstOccurrence
   
   /// **Mechanica**
   /// Removes the last occurrence where the specified value appears in the collection.
   /// - Returns: True if the last occurrence element was found and removed or false if not.
   /// - Parameter element: The element to remove the last occurrence.
   @discardableResult
-  internal mutating func removeLastOccurrence(of element: Element) -> Element? {
+  internal mutating func removeLastOccurrence(of element: Iterator.Element) -> Iterator.Element? {
     if let index = lastIndex(of: element) {
-      let element = self[index]
-      remove(at: index)
-      return element
+      return remove(at: index)
+    }
+    return nil
+  }
+  
+}
+
+extension Collection where Self.Index == Int, Iterator.Element: Equatable {
+  
+  /// **Mechanica**
+  ///  Returns the last index where the specified value appears in the collection.
+  ///  After using lastIndex(of:) to find the last position of a particular element in a collection, you can use it to access the element by subscripting.
+  /// - Parameter element: The element to find the last Index
+  internal func lastIndex(of element: Iterator.Element) -> Self.Index? {
+    if let idx = reversed().index(of: element) {
+      return (endIndex-1) - idx
     }
     return nil
   }
