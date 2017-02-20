@@ -25,42 +25,33 @@
 import Foundation
 
 extension Sequence {
-  //public typealias Element = Iterator.Element
 
-  // TODO: work in progress
-//  internal func find(matching condition: (Element) -> Bool) -> [Element] {
-//    var foundElements: [Element] = []
-//    for element in self where condition(element) {
-//        foundElements.append(element)
-//    }
-//    return foundElements
-//  }
-  
-  // TODO: rename arguments labels (matching in where, condition in predicate)
-  
   /// **Mechanica**
-  ///
-  /// Returns the first element (if any) `matching` the condition.
-  public func findFirstOccurence(matching condition: (Iterator.Element) -> Bool) -> Iterator.Element? {
-    return first(where: condition)
-//    for element in self where condition(element) {
-//      return element
-//    }
-//    return nil
+  /// Returns: the first element (if any) `matching` the predicate.
+  /// - Parameters: 
+  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  /// - Note: Same as `first(where:)`.
+  /// - SeeAlso: `first(where:)`
+  public func findFirstOccurence(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
+    return first(where: predicate)
   }
 
   /// **Mechanica**
   ///
-  /// Returns true if there is at least one element `matching` the condition.
-  public func hasSomeOccurrences(matching condition: (Iterator.Element) -> Bool) -> Bool {
-    return findFirstOccurence(matching: condition) != nil
+  /// Returns true if there is at least one element `matching` the predicate.
+  /// - Parameters:
+  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  public func hasSomeOccurrences(where predicate: (Iterator.Element) -> Bool) -> Bool {
+    return findFirstOccurence(where: predicate) != nil
   }
 
   /// **Mechanica**
   ///
-  /// Returns true if all the elements `match` the condition.
-  public func hasAllOccurrences(matching condition: (Iterator.Element) -> Bool) -> Bool {
-    return findFirstOccurence { condition($0) } == nil
+  /// Returns true if all the elements `match` the predicate.
+  /// - Parameters:
+  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  public func hasAllOccurrences(matching predicate: (Iterator.Element) -> Bool) -> Bool {
+    return findFirstOccurence { !predicate($0) } == nil
   }
 
   /// **Mechanica**
