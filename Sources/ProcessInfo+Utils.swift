@@ -27,15 +27,24 @@ import Foundation
 extension ProcessInfo {
 
   #if os(OSX)
+  /// **Mechanica**
+  ///
+  ///  Returns true if the app is sandboxed.
   public static var isSandboxed: Bool {
     return processInfo.environment["APP_SANDBOX_CONTAINER_ID"].hasValue
   }
   #endif
 
+  /// **Mechanica**
+  ///
+  ///  Returns true if Unit Tests are running.
   public static var isRunningUnitTests: Bool {
     return processInfo.environment["XCTestConfigurationFilePath"].hasValue
   }
 
+  /// **Mechanica**
+  ///
+  ///  Returns true if UI Tests are running.
   internal static var isRunningUITests: Bool {
     return processInfo.arguments.contains("-ui_testing")
   }
