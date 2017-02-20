@@ -29,10 +29,16 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   func test_removeFirst() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
+
     /// removes the first even Int
     let removedElement = all.removeFirst { $0.isEven }
     XCTAssertNotNil(removedElement)
     XCTAssertTrue(removedElement! == 0)
+    XCTAssertTrue(all.count == 10)
+    XCTAssertTrue(all == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+    let removedElement2 = all.removeFirst { $0 == 11 }
+    XCTAssertNil(removedElement2)
     XCTAssertTrue(all.count == 10)
     XCTAssertTrue(all == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
   }
@@ -57,10 +63,16 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   func test_removeLast() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
+
     /// removes the first even Int
     let removedElement = all.removeLast { $0.isEven  }
     XCTAssertNotNil(removedElement)
     XCTAssertTrue(removedElement! == 10)
+    XCTAssertTrue(all.count == 10)
+    XCTAssertTrue(all == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+    let removedElement2 = all.removeLast { $0 == 11 }
+    XCTAssertNil(removedElement2)
     XCTAssertTrue(all.count == 10)
     XCTAssertTrue(all == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
   }
@@ -85,10 +97,16 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   func test_removeAll() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
+
     /// removes the first even Int
     let removedElements = all.removeAll { $0.isEven  }
     XCTAssertNotNil(removedElements)
     XCTAssertTrue(removedElements == [0, 2, 4, 6, 8, 10])
+    XCTAssertTrue(all.count == 5)
+    XCTAssertTrue(all == [1, 3, 5, 7, 9])
+
+    let removedElements2 = all.removeFirst { $0 == 11 }
+    XCTAssertNil(removedElements2)
     XCTAssertTrue(all.count == 5)
     XCTAssertTrue(all == [1, 3, 5, 7, 9])
   }
