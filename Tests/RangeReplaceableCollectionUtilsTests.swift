@@ -142,6 +142,16 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
       XCTAssertTrue(occurrence2 == "c")
       XCTAssertTrue(array == ["b", "c", "d", "e", "f", "g", "a", "a"])
     }
+    
+    do {
+      var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
+      let occurrence = array.removeFirstOccurrence(of: "k")
+      XCTAssertNil(occurrence)
+      XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"])
+      let occurrence2 = array.removeFirstOccurrence(of: "a")
+      XCTAssertTrue(occurrence2 == "a")
+      XCTAssertTrue(array == ["b", "c", "c", "d", "e", "f", "g", "a", "a"])
+    }
 
     do {
       var array = [1, 2, 3, 4, 3, 1, 1, 5, 2, 6]
@@ -167,6 +177,16 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
       XCTAssertTrue(array == ["a", "b", "c", "d", "e", "f", "g", "a"])
     }
 
+    do {
+      var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
+      let occurrence = array.removeLastOccurrence(of: "k")
+      XCTAssertNil(occurrence)
+      XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"])
+      let occurrence2 = array.removeLastOccurrence(of: "a")
+      XCTAssertTrue(occurrence2 == "a")
+      XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a"])
+    }
+    
     do {
       var array = [1, 2, 3, 4, 3, 1, 1, 5, 2, 6]
       let occurrence = array.removeLastOccurrence(of: 3)
