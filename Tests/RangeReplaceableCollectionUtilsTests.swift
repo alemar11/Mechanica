@@ -30,7 +30,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
   func test_removeFirst() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
     /// removes the first even Int
-    let removedElement = all.removeFirst { (x) -> Bool in return (x.isEven) }
+    let removedElement = all.removeFirst { $0.isEven }
     XCTAssertNotNil(removedElement)
     XCTAssertTrue(removedElement! == 0)
     XCTAssertTrue(all.count == 10)
@@ -41,14 +41,14 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     do {
-      let newAll = all.removingFirst { (x) -> Bool in return (x.isEven)}
+      let newAll = all.removingFirst { $0.isEven }
       XCTAssertTrue(newAll.count == 10)
       XCTAssertTrue(newAll == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
       XCTAssertTrue(all.count == 11)
     }
 
     do {
-      let newAll = all.removingFirst { (x) -> Bool in return (x == 11)}
+      let newAll = all.removingFirst { $0 == 11 }
       XCTAssertTrue(newAll.count == 11)
       XCTAssertTrue(newAll == newAll)
     }
@@ -58,7 +58,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
   func test_removeLast() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
     /// removes the first even Int
-    let removedElement = all.removeLast { (x) -> Bool in return (x.isEven) }
+    let removedElement = all.removeLast { $0.isEven  }
     XCTAssertNotNil(removedElement)
     XCTAssertTrue(removedElement! == 10)
     XCTAssertTrue(all.count == 10)
@@ -69,14 +69,14 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     do {
-      let newAll = all.removingLast { (x) -> Bool in return (x.isEven)}
+      let newAll = all.removingLast { $0.isEven }
       XCTAssertTrue(newAll.count == 10)
       XCTAssertTrue(newAll == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
       XCTAssertTrue(all.count == 11)
     }
 
     do {
-      let newAll = all.removingLast { (x) -> Bool in return (x == 11)}
+      let newAll = all.removingLast { $0 == 11 }
       XCTAssertTrue(newAll.count == 11)
       XCTAssertTrue(newAll == newAll)
     }
@@ -86,7 +86,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
   func test_removeAll() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
     /// removes the first even Int
-    let removedElements = all.removeAll { (x) -> Bool in return (x.isEven) }
+    let removedElements = all.removeAll { $0.isEven  }
     XCTAssertNotNil(removedElements)
     XCTAssertTrue(removedElements == [0, 2, 4, 6, 8, 10])
     XCTAssertTrue(all.count == 5)
@@ -97,13 +97,13 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     do {
-      let newAll = all.removingAll { (x) -> Bool in return (x.isEven)}
+      let newAll = all.removingAll { $0.isEven }
       XCTAssertTrue(newAll == [1, 3, 5, 7, 9])
       XCTAssertTrue(all.count == 11)
     }
 
     do {
-      let newAll = all.removingAll { (x) -> Bool in return (x == 11)}
+      let newAll = all.removingAll { $0 == 11 }
       XCTAssertTrue(newAll.count == 11)
       XCTAssertTrue(newAll == newAll)
     }
