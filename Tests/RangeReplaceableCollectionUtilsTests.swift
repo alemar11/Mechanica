@@ -39,10 +39,20 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   func test_removingFirst() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-    let newAll = all.removingFirst { (x) -> Bool in return (x.isEven)}
-    XCTAssertTrue(newAll.count == 10)
-    XCTAssertTrue(newAll == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-    XCTAssertTrue(all.count == 11)
+
+    do {
+      let newAll = all.removingFirst { (x) -> Bool in return (x.isEven)}
+      XCTAssertTrue(newAll.count == 10)
+      XCTAssertTrue(newAll == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+      XCTAssertTrue(all.count == 11)
+    }
+
+    do {
+      let newAll = all.removingFirst { (x) -> Bool in return (x == 11)}
+      XCTAssertTrue(newAll.count == 11)
+      XCTAssertTrue(newAll == newAll)
+    }
+
   }
 
   func test_removeLast() {
@@ -57,10 +67,19 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   func test_removingLast() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-    let newAll = all.removingLast { (x) -> Bool in return (x.isEven)}
-    XCTAssertTrue(newAll.count == 10)
-    XCTAssertTrue(newAll == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    XCTAssertTrue(all.count == 11)
+
+    do {
+      let newAll = all.removingLast { (x) -> Bool in return (x.isEven)}
+      XCTAssertTrue(newAll.count == 10)
+      XCTAssertTrue(newAll == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+      XCTAssertTrue(all.count == 11)
+    }
+
+    do {
+      let newAll = all.removingLast { (x) -> Bool in return (x == 11)}
+      XCTAssertTrue(newAll.count == 11)
+      XCTAssertTrue(newAll == newAll)
+    }
 
   }
 
@@ -76,9 +95,19 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   func test_removingAll() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-    let newAll = all.removingAll { (x) -> Bool in return (x.isEven)}
-    XCTAssertTrue(newAll == [1, 3, 5, 7, 9])
-    XCTAssertTrue(all.count == 11)
+
+    do {
+      let newAll = all.removingAll { (x) -> Bool in return (x.isEven)}
+      XCTAssertTrue(newAll == [1, 3, 5, 7, 9])
+      XCTAssertTrue(all.count == 11)
+    }
+
+    do {
+      let newAll = all.removingAll { (x) -> Bool in return (x == 11)}
+      XCTAssertTrue(newAll.count == 11)
+      XCTAssertTrue(newAll == newAll)
+    }
+
   }
 
 

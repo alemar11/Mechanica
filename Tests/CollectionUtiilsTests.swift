@@ -29,24 +29,31 @@ class CollectionUtiilsTests: XCTestCase {
 
   // MARK - Equatable
 
+ let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
+
   func test_firstIndex() {
-    let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
+
     let index1 = array.firstIndex(of: 1)
     XCTAssertTrue(index1 == 0)
     let index2 = array.firstIndex(of: 8)
     XCTAssertTrue(index2 == 8)
     let index3 = array.firstIndex(of: 4)
     XCTAssertTrue(index3 == 5)
+    let index4 = array.firstIndex(of: 11)
+    XCTAssertTrue(index4 == nil)
+
   }
 
   func test_lastIndex() {
-    let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
+    
     let index1 = array.lastIndex(of: 1)
     XCTAssertTrue(index1 == 2)
     let index2 = array.lastIndex(of: 8)
     XCTAssertTrue(index2 == 8)
     let index3 = array.lastIndex(of: 4)
     XCTAssertTrue(index3 == 6)
+    let index4 = array.lastIndex(of: 11)
+    XCTAssertTrue(index4 == nil)
   }
   
 }
