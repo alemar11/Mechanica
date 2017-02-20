@@ -82,16 +82,66 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
   }
 
 
-  func testPerformanceExample() {
-    var array = [Int]()
-    for i in stride(from: 0, to: 1_000_000, by: 1) {
-      array.append(i)
+  // MARK - Equatable
+
+  func test_removeFirstOccurrence() {
+
+    do {
+      var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
+      let occurrence = array.removeFirstOccurrence(of: "a")
+      XCTAssertTrue(occurrence == "a")
+      XCTAssertTrue(array == ["b", "c", "c", "d", "e", "f", "g", "a", "a"])
+      let occurrence2 = array.removeFirstOccurrence(of: "c")
+      XCTAssertTrue(occurrence2 == "c")
+      XCTAssertTrue(array == ["b", "c", "d", "e", "f", "g", "a", "a"])
     }
-    self.measure {
-      for _ in 1...10{
-        let _ = array.removingLast(where: {$0 == 23})
-      }
+
+    do {
+      var array = [1, 2, 3, 4, 3, 1, 1, 5, 2, 6]
+      let occurrence = array.removeFirstOccurrence(of: 3)
+      XCTAssertTrue(occurrence == 3)
+      XCTAssertTrue(array == [1, 2, 4, 3, 1, 1, 5, 2, 6])
+      let occurrence2 = array.removeFirstOccurrence(of: 3)
+      XCTAssertTrue(occurrence2 == 3)
+      XCTAssertTrue(array == [1, 2, 4, 1, 1, 5, 2, 6])
     }
+
   }
 
+  func test_removeLastOccurrence() {
+
+    do {
+      var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
+      let occurrence = array.removeLastOccurrence(of: "a")
+      XCTAssertTrue(occurrence == "a")
+      XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a"])
+      let occurrence2 = array.removeLastOccurrence(of: "c")
+      XCTAssertTrue(occurrence2 == "c")
+      XCTAssertTrue(array == ["a", "b", "c", "d", "e", "f", "g", "a"])
+    }
+
+    do {
+      var array = [1, 2, 3, 4, 3, 1, 1, 5, 2, 6]
+      let occurrence = array.removeLastOccurrence(of: 3)
+      XCTAssertTrue(occurrence == 3)
+      XCTAssertTrue(array == [1, 2, 3, 4, 1, 1, 5, 2, 6])
+      let occurrence2 = array.removeLastOccurrence(of: 3)
+      XCTAssertTrue(occurrence2 == 3)
+      XCTAssertTrue(array == [1, 2, 4, 1, 1, 5, 2, 6])
+    }
+
+  }
+
+  //  func testPerformanceExample() {
+  //    var array = [Int]()
+  //    for i in stride(from: 0, to: 1_000_000, by: 1) {
+  //      array.append(i)
+  //    }
+  //    self.measure {
+  //      for _ in 1...10{
+  //        let _ = array.removingLast(where: {$0 == 23})
+  //      }
+  //    }
+  //  }
+  
 }
