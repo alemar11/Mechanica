@@ -26,16 +26,16 @@ import XCTest
 @testable import Mechanica
 
 class RangeReplaceableCollectionUtilsTests: XCTestCase {
-  
-    func test_removeFirst() {
-      var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-      /// removes the first even Int
-      let removedElement = all.removeFirst { (x) -> Bool in return (x.isEven) }
-      XCTAssertNotNil(removedElement)
-      XCTAssertTrue(removedElement! == 0)
-      XCTAssertTrue(all.count == 10)
-      XCTAssertTrue(all == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-    }
+
+  func test_removeFirst() {
+    var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
+    /// removes the first even Int
+    let removedElement = all.removeFirst { (x) -> Bool in return (x.isEven) }
+    XCTAssertNotNil(removedElement)
+    XCTAssertTrue(removedElement! == 0)
+    XCTAssertTrue(all.count == 10)
+    XCTAssertTrue(all == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+  }
 
   func test_removingFirst() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
@@ -44,7 +44,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     XCTAssertTrue(newAll == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     XCTAssertTrue(all.count == 11)
   }
-  
+
   func test_removeLast() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
     /// removes the first even Int
@@ -54,7 +54,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     XCTAssertTrue(all.count == 10)
     XCTAssertTrue(all == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
   }
-  
+
   func test_removingLast() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
     let newAll = all.removingLast { (x) -> Bool in return (x.isEven)}
@@ -63,7 +63,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     XCTAssertTrue(all.count == 11)
 
   }
-  
+
   func test_removeAll() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
     /// removes the first even Int
@@ -73,26 +73,25 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     XCTAssertTrue(all.count == 5)
     XCTAssertTrue(all == [1, 3, 5, 7, 9])
   }
-  
+
   func test_removingAll() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
     let newAll = all.removingAll { (x) -> Bool in return (x.isEven)}
     XCTAssertTrue(newAll == [1, 3, 5, 7, 9])
     XCTAssertTrue(all.count == 11)
-    
   }
-  
-  
-//    func testPerformanceExample() {
-//      var array = [Int]()
-//      for i in stride(from: 0, to: 1_000_000, by: 1) {
-//        array.append(i)
-//      }
-//        self.measure {
-//          for _ in 1...10{
-//            let _ = array.removingLast(where: {$0 == 23})
-//          }
-//        }
-//    }
-  
+
+
+  func testPerformanceExample() {
+    var array = [Int]()
+    for i in stride(from: 0, to: 1_000_000, by: 1) {
+      array.append(i)
+    }
+    self.measure {
+      for _ in 1...10{
+        let _ = array.removingLast(where: {$0 == 23})
+      }
+    }
+  }
+
 }
