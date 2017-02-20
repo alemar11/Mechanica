@@ -42,7 +42,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// Removes the first element that matches the given `predicate` and returns a `new` collection.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  internal func removingFirst(where predicate: (Iterator.Element) -> Bool) -> Self {
+  public func removingFirst(where predicate: (Iterator.Element) -> Bool) -> Self {
     var items = self
     items.removeFirst(where: predicate)
     return items
@@ -54,7 +54,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   @discardableResult
-  internal mutating func removeLast(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
+  public mutating func removeLast(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
     //guard let idx = reversed().index(where: predicate) else { return nil }
     //return remove(at: (endIndex-1) - idx)
     for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
@@ -69,7 +69,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// Removes the last element that matches the given `predicate` and returns a `new` collection.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  internal func removingLast(where predicate: (Iterator.Element) -> Bool) -> Self {
+  public func removingLast(where predicate: (Iterator.Element) -> Bool) -> Self {
     var items = self
     items.removeLast(where: predicate)
     return items
@@ -81,7 +81,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   @discardableResult
-  internal mutating func removeAll(where predicate: (Iterator.Element) -> Bool) -> [Iterator.Element] {
+  public mutating func removeAll(where predicate: (Iterator.Element) -> Bool) -> [Iterator.Element] {
     var removedElements: [Iterator.Element]  = []
     for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
       let element = self[idx]
@@ -97,7 +97,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// Removes all the elements that matches the given `predicate` and returns a `new` array.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  internal func removingAll(where predicate: (Iterator.Element) -> Bool) -> Self {
+  public func removingAll(where predicate: (Iterator.Element) -> Bool) -> Self {
     var items = self
     items.removeAll(where: predicate)
     return items
@@ -112,7 +112,7 @@ extension RangeReplaceableCollection where Self.Index == Int, Iterator.Element: 
   /// - Returns: The element removed (if any).
   /// - Parameter element: The element to remove the last occurrence.
   @discardableResult
-  internal mutating func removeFirstOccurrence(of element: Iterator.Element) -> Iterator.Element? {
+  public mutating func removeFirstOccurrence(of element: Iterator.Element) -> Iterator.Element? {
     guard let idx = index(of: element) else { return nil }
     return remove(at: idx)
   }
@@ -123,7 +123,7 @@ extension RangeReplaceableCollection where Self.Index == Int, Iterator.Element: 
   /// - Returns: The element removed (if any).
   /// - Parameter element: The element to remove the collection occurrence.
   @discardableResult
-  internal mutating func removeLastOccurrence(of element: Iterator.Element) -> Iterator.Element? {
+  public mutating func removeLastOccurrence(of element: Iterator.Element) -> Iterator.Element? {
     if let idx = lastIndex(of: element) {
       return remove(at: idx)
     }
