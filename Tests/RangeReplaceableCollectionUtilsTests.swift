@@ -199,7 +199,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   }
 
-  //  func testPerformanceExample() {
+  //  func test_removingLastPerformance() {
   //    var array = [Int]()
   //    for i in stride(from: 0, to: 1_000_000, by: 1) {
   //      array.append(i)
