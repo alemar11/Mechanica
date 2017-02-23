@@ -52,19 +52,13 @@ extension NSManagedObjectContext {
   ///   - key: Object key
   ///   - store: NSPersistentStore where is stored the metadata.
   public func setMetaDataObject(_ object: AnyObject?, with key: String, for store: NSPersistentStore) {
-    performSave(afterApplyingChanges: {
+    performSave(after: {
       guard let psc = self.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
       var md = psc.metadata(for: store)
       md[key] = object
       psc.setMetadata(md, for: store)
 
     })
-    //    performSave {
-    //      guard let psc = self.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
-    //      var md = psc.metadata(for: store)
-    //      md[key] = object
-    //      psc.setMetadata(md, for: store)
-    //    }
   }
   
   /// **Mechanica**
@@ -98,19 +92,6 @@ extension NSManagedObjectContext {
 
 extension NSManagedObjectContext {
 
-  //  /// **Mechanica**
-  //  ///
-  //  /// Asynchronously attempts to commit unsaved changes or rollbacks if any error occurs.
-  //  /// - Parameters:
-  //  ///   - isRollBackEnabled: Enables rollback if any error occurs (default true).
-  //  public func performSave(orRollBack isRollBackEnabled: Bool = true) {
-  //    perform {
-  //      [unowned self] in
-  //      _ = self.saveChanges(andEnableRollBack: isRollBackEnabled)
-  //    }
-  //  }
-  
-  
   /// **Mechanica**
   ///
   /// Result of void representing `success` or an instance of `Error`.
@@ -126,78 +107,32 @@ extension NSManagedObjectContext {
   /// Asynchronously performs changes and then saves them or rollbacks if any error occurs.
   /// - Parameters:
   ///   - isRollBackEnabled: Enables rollback if any error occurs (default true).
-  ///   - changes: Changes to be applied in the current context.
+  ///   - changes: Changes to be applied in the current context before the saving operation.
   ///   - completion: Callback called on the context queue after the saving operation.
-  public func performSave(orRollBack isRollBackEnabled: Bool = true, afterApplyingChanges changes: ( () -> () )? = nil, onSavePerformed completion: ( (SaveResult) -> () )? = nil) {
+  public func performSave(orRollBack isRollBackEnabled: Bool = true, after changes: ( () -> () )? = nil, onSavePerformed completion: ( (SaveResult) -> () )? = nil) {
     perform {
       [unowned self] in
       changes?()
-      let result = self.saveChanges(andEnableRollBack: isRollBackEnabled)
+      let result = self.saveChanges(orRollBack: isRollBackEnabled)
       completion?(result)
     }
   }
-  
-  //  /// **Mechanica**
-  //  ///
-  //  /// Synchronously attempts to commit unsaved changes or rollbacks if any error occurs.
-  //  /// - Parameters:
-  //  ///   - isRollBackEnabled: Enables rollback if any error occurs (default true).
-  //  public func performSaveAndWait(orRollBack isRollBackEnabled: Bool = true) -> SaveResult {
-  //    var result = SaveResult.success
-  //    performAndWait {
-  //      [unowned self] in
-  //      result = self.saveChanges(andEnableRollBack: isRollBackEnabled)
-  //    }
-  //    return result
-  //  }
-  
+
   /// **Mechanica**
   ///
   /// Synchronously performs changes and then saves them or rollbacks if any error occurs.
   /// - Returns: a success case if the save succeeds, otherwise a failure case with an associated `Error` instance.
   @discardableResult
-  public func performSaveAndWait(orRollBack isRollBackEnabled: Bool = true, afterApplyingChanges changes: ( () -> () )? = nil ) -> SaveResult {
+  public func performSaveAndWait(orRollBack isRollBackEnabled: Bool = true, after changes: ( () -> () )? = nil ) -> SaveResult {
     var result = SaveResult.success
     performAndWait {
       [unowned self] in
       changes?()
-      result = self.saveChanges(andEnableRollBack: isRollBackEnabled)
+      result = self.saveChanges(orRollBack: isRollBackEnabled)
     }
     return result
   }
-  
-  //    /// **Mechanica**
-  //    ///
-  //    /// Attempts to commit unsaved changes to registered objects to the receiver’s parent store or rollbacks if any error occurs.
-  //    ///
-  //    /// The rollback operation removes everything from the undo stack, discards all insertions and deletions, and restores updated objects to their last committed values.
-  //    /// - Returns: a success case if the save succeeds, otherwise a failure case with an associated `Error` instance.
-  //    @discardableResult
-  //    public func saveChangesOrRollback() -> SaveResult {
-  //        do {
-  //            try saveIfNeeded()
-  //            return SaveResult.success
-  //        } catch {
-  //            rollback()
-  //            //print("Failure to save context: \(error).\n A rollback has been performed.")
-  //            return SaveResult.failure(error)
-  //        }
-  //    }
-  //
-  //    /// **Mechanica**
-  //    ///
-  //    /// Attempts to commit unsaved changes to registered objects to the receiver’s parent store.
-  //    /// - Returns: a success case if the save succeeds, otherwise a failure case with an associated `Error` instance.
-  //    @discardableResult
-  //    public func saveChanges() -> SaveResult {
-  //        do {
-  //            try saveIfNeeded()
-  //            return SaveResult.success
-  //        } catch {
-  //            return SaveResult.failure(error)
-  //        }
-  //    }
-  
+
   /// **Mechanica**
   ///
   /// Attempts to commit unsaved changes to registered objects to the receiver’s parent store or rollbacks if any error occurs.
@@ -208,16 +143,14 @@ extension NSManagedObjectContext {
   /// - Returns: a success case if the save succeeds, otherwise a failure case with an associated `Error` instance.
   /// - Throws: throws an error in cases of failure.
   @discardableResult
-  private func saveChanges(andEnableRollBack isRollBackEnabled: Bool = true) -> SaveResult {
+  private func saveChanges(orRollBack isRollBackEnabled: Bool = true) -> SaveResult {
     do {
       try saveIfNeeded()
       return SaveResult.success
     } catch {
       if (isRollBackEnabled) { rollback() }
-      //print("Failure to save context: \(error).\n A rollback has been performed.")
       return SaveResult.failure(error)
     }
-    
   }
   
   /// Saves the `NSManagedObjectContext` if changes are present.

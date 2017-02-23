@@ -54,16 +54,16 @@ extension FetchConfigurable {
 // MARK: - NSManagedObject
 
 extension FetchConfigurable where Self: NSManagedObject {
-  
-    /// **Mechanica**
-    ///
-    /// Fetch Request with the `defaultPredicate` and the default `defaultSortDescriptors`.
-    public static var sortedFetchRequest: NSFetchRequest<Self> {
-      let request = Self.fetchRequest() as! NSFetchRequest<Self>
-      request.sortDescriptors = defaultSortDescriptors
-      request.predicate       = defaultPredicate
-      return request
-    }
+
+  /// **Mechanica**
+  ///
+  /// Fetch Request with the `defaultPredicate` and the default `defaultSortDescriptors`.
+  public static var sortedFetchRequest: NSFetchRequest<Self> {
+    let request = Self.fetchRequest() as! NSFetchRequest<Self>
+    request.sortDescriptors = defaultSortDescriptors
+    request.predicate       = defaultPredicate
+    return request
+  }
 
   /// **Mechanica**
   ///

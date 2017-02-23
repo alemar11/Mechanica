@@ -40,7 +40,8 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   ///
   /// Creates a `new` NSFetchRequest for `self`.
   public static func fetchRequest() -> NSFetchRequest<Self> {
-    let fetchRequest = NSFetchRequest<Self>(entity: entity)
+    //let fetchRequest = NSFetchRequest<Self>(entity: entity)
+    let fetchRequest = NSFetchRequest<Self>(entityName: entityName)
     return fetchRequest
   }
 
@@ -86,8 +87,8 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   /// **Mechanica**
   ///
   /// Performs a configurable fetch request in a context.
-  public static func fetch(in context: NSManagedObjectContext, withRequestConfiguration configuration: (NSFetchRequest<Self>) -> () = { _ in }) -> [Self] {
-    let request = fetchRequest() as! NSFetchRequest<Self>
+  public static func fetch(in context: NSManagedObjectContext, with configuration: (NSFetchRequest<Self>) -> () = { _ in }) -> [Self] {
+    let request = NSFetchRequest<Self>(entityName: entityName)
     configuration(request)
     guard let result = try? context.fetch(request) else { fatalError("Fetched objects have wrong type.") }
     return result
@@ -110,8 +111,8 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   /// **Mechanica**
   ///
   /// Counts the results of a configurable fetch request in a context.
-  public static func count(in context: NSManagedObjectContext, withRequestConfiguration configuration: (NSFetchRequest<Self>) -> () = { _ in }) -> Int {
-    let request = fetchRequest() as! NSFetchRequest<Self>
+  public static func count(in context: NSManagedObjectContext, for configuration: (NSFetchRequest<Self>) -> () = { _ in }) -> Int {
+    let request = NSFetchRequest<Self>(entityName: entityName)
     configuration(request)
     do {
       let result = try context.count(for: request)
