@@ -77,7 +77,7 @@ extension Sequence where Iterator.Element: AnyObject {
   /// **Mechanica**
   ///
   /// Returns true if the `Sequence` contains an element identical (referential equality) to an `object`.
-  public func contains(objectIdenticalTo object: AnyObject) -> Bool {
+  public func containsObjectIdentical(to object: AnyObject) -> Bool {
     return contains { $0 === object }
   }
 

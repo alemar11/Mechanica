@@ -97,9 +97,9 @@ class SequenceUtilsTests: XCTestCase {
                  DemoObject(value1: "demo6",value2: 3)]
 
     let demoObject = DemoObject(value1: "demo1",value2: 1)
-    XCTAssertFalse(list.contains(objectIdenticalTo: demoObject))
+    XCTAssertFalse(list.containsObjectIdentical(to: demoObject))
     list.append(demoObject)
-    XCTAssertTrue(list.contains(objectIdenticalTo: demoObject))
+    XCTAssertTrue(list.containsObjectIdentical(to: demoObject))
 
   }
 
