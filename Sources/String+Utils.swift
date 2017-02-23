@@ -212,6 +212,8 @@ extension String {
     return String(self.characters.suffix(maxLength))
   }
 
+  // MARK: - Remove Methods
+
   /// **Mechanica**
   ///
   ///  Returns a new `String` containing the characters of the String from the one at a given position to the end.
@@ -241,6 +243,19 @@ extension String {
 
   /// **Mechanica**
   ///
+  ///  Returns a new `String` removing the characters in the given set.
+  public func removingCharacters(in set: CharacterSet) -> String {
+    var chars = characters
+    for idx in chars.indices.reversed() {
+      if set.contains(String(chars[idx]).unicodeScalars.first!) {
+        chars.remove(at: idx)
+      }
+    }
+    return String(chars)
+  }
+
+  /// **Mechanica**
+  ///
   ///  Truncates the `String` to the given length (number of characters) and appends optional trailing string if longer.
   ///  The default trailing is the ellipsis (…).
   ///  - parameter length:   number of characters after which the `String` is truncated
@@ -259,6 +274,8 @@ extension String {
     }
 
   }
+
+  // MARK: - Cleaning Methods
 
   /// **Mechanica**
   ///
