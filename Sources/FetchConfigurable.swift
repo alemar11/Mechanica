@@ -46,8 +46,8 @@ public protocol FetchConfigurable: class {
 // MARK: - Predicates and SortDescriptors
 
 extension FetchConfigurable {
-  public static var defaultPredicate: NSPredicate { return NSPredicate(value: true) }
   public static var defaultSortDescriptors: [NSSortDescriptor] { return [] }
+  public static var defaultPredicate: NSPredicate { return NSPredicate(value: true) }
 }
 
 
@@ -64,38 +64,30 @@ extension FetchConfigurable where Self: NSManagedObject {
       request.predicate       = defaultPredicate
       return request
     }
-  
-//    /// **Mechanica**
-//    ///
-//    /// Creates a `new` sorted fetch request using `sortedFetchRequest` *AND* `predicate`.
-//    public static func makeSortedFetchRequestWithPredicate(_ predicate: NSPredicate) -> NSFetchRequest<NSFetchRequestResult> {
-//      let request = sortedFetchRequest
-//      guard let existingPredicate = request.predicate else { fatalError("Must have a predicate.") }
-//      request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [existingPredicate, predicate])
-//      return request
-//    }
-//  
-//    /// **Mechanica**
-//    ///
-//    /// Creates a `new` sorted fetch request using `sortedFetchRequest` and `predicate` by substituting the values in an argument list into a format string.
-//    public static func makeSortedFetchRequestWithPredicate(format: String, args: CVarArg...) -> NSFetchRequest<NSFetchRequestResult> {
-//      let predicate = withVaList(args) { NSPredicate(format: format, arguments: $0) }
-//      return makeSortedFetchRequestWithPredicate(predicate)
-//    }
-  
-//    /// **Mechanica**
-//    ///
-//    /// Creates a `new` predicate using the `defaultPredicate` *AND* a `predicate` by substituting the values in an argument list into a format string.
-//    public static func makeDefaultPredicateWithPreficate(format: String, args: CVarArg...) -> NSPredicate {
-//      let predicate = withVaList(args) { NSPredicate(format: format, arguments: $0) }
-//      return makeDefaultPredicateWithPredicate(predicate)
-//    }
-//  
-//    /// **Mechanica**
-//    ///
-//    /// Creates a `new` predicate using the `defaultPredicate` *AND* a given `predicate`.
-//    public static func makeDefaultPredicateWithPredicate(_ predicate: NSPredicate) -> NSPredicate {
-//      return NSCompoundPredicate(andPredicateWithSubpredicates: [defaultPredicate, predicate])
-//    }
-  
+
+  /// **Mechanica**
+  ///
+  /// Creates a `new` sorted fetch request using `sortedFetchRequest` *AND* `predicate`.
+  public static func sortedFetchRequest(with predicate: NSPredicate) -> NSFetchRequest<Self> {
+    let request = sortedFetchRequest
+    guard let existingPredicate = request.predicate else { fatalError("Must have a predicate.") }
+    request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [existingPredicate, predicate])
+    return request
+  }
+
+  /// **Mechanica**
+  ///
+  /// Creates a `new` predicate using the `defaultPredicate` *AND* a `predicate` by substituting the values in an argument list into a format string.
+  public static func predicate(format: String, _ args: CVarArg...) -> NSPredicate {
+    let p = withVaList(args) { NSPredicate(format: format, arguments: $0) }
+    return predicate(p)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Creates a `new` predicate using the `defaultPredicate` *AND* a given `predicate`.
+  public static func predicate(_ predicate: NSPredicate) -> NSPredicate {
+    return NSCompoundPredicate(andPredicateWithSubpredicates: [defaultPredicate, predicate])
+  }
+
 }

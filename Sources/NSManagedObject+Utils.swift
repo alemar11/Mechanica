@@ -35,4 +35,19 @@ extension NSManagedObject {
     managedObjectContext?.refresh(self, mergeChanges: mergeChanges)
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns the value of a persistent property that has been changed since last fetching or saving operation.
+  public func changedValue(forKey key: String) -> Any? {
+    return changedValues()[key]
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns of the last fetched or saved value of the propery specified by the given key.
+  public func committedValue(forKey key: String) -> Any? {
+    return committedValues(forKeys: [key])[key]
+  }
+
+
 }

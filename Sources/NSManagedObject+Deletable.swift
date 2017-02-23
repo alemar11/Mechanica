@@ -75,7 +75,7 @@ extension DelayedDeletable {
 extension DelayedDeletable where Self: NSManagedObject {
   
   public final var hasChangedForDelayedDeletion: Bool {
-    return changedValues()[markedForDeletionKey] as? Date != nil
+    return changedValue(forKey: markedForDeletionKey) as? Date != nil
   }
   
   public final func markForLocalDeletion() {
@@ -169,7 +169,7 @@ extension RemoteDeletable {
 extension RemoteDeletable where Self: NSManagedObject {
   
   public final var hasChangedForRemoteDeletion: Bool {
-    return changedValues()[markedForRemoteDeletionKey] as? Bool == true
+    return changedValue(forKey: markedForRemoteDeletionKey) as? Bool == true
   }
   
 }
