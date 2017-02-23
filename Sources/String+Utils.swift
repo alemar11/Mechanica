@@ -299,7 +299,7 @@ extension String {
   ///  Condenses all white spaces and new lines repetitions in a single white space.
   ///  White space and new lines at the beginning or ending of the `String` are trimmed out.
   ///
-  ///  - returns: A `new` string where alla white spaces and new lines repetitions are replaced with a single white space.
+  ///  - returns: A `new` string where all white spaces and new lines repetitions are replaced with a single white space.
   public func condensingExcessiveSpacesAndNewlines() -> String {
     let components = self.components(separatedBy: .whitespacesAndNewlines)
     let filtered = components.filter({!$0.isBlank})
