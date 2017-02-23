@@ -60,28 +60,28 @@ class SequenceUtilsTests: XCTestCase {
 
   func test_findFirstOccurrence() {
 
-    let occurrence1 = list.findFirstOccurence(where: {$0.value2 == 3})
+    let occurrence1 = list.findFirst(where: {$0.value2 == 3})
     XCTAssertTrue(occurrence1 != nil)
     XCTAssertTrue(occurrence1!.value1 == "demo3")
 
-    let occurrence2 = list.findFirstOccurence(where: {$0.value2 == 11})
+    let occurrence2 = list.findFirst(where: {$0.value2 == 11})
     XCTAssertFalse(occurrence2 != nil)
 
   }
 
-  func test_hasSomeOccurrences() {
-    XCTAssertTrue(list.hasSomeOccurrences(where: {$0.value1 == "demo5"}))
-    XCTAssertTrue(list.hasSomeOccurrences(where: {$0.value2 == 1}))
-    XCTAssertTrue(list2.hasSomeOccurrences(where: {$0.value1 == "demo1"}))
+  func test_hasSome() {
+    XCTAssertTrue(list.hasSome(where: {$0.value1 == "demo5"}))
+    XCTAssertTrue(list.hasSome(where: {$0.value2 == 1}))
+    XCTAssertTrue(list2.hasSome(where: {$0.value1 == "demo1"}))
 
-    XCTAssertFalse(list.hasSomeOccurrences(where: {$0.value1 == "demo11"}))
-    XCTAssertFalse(list.hasSomeOccurrences(where: { $0.value1 == "demo1" && $0.value2 == 4}))
+    XCTAssertFalse(list.hasSome(where: {$0.value1 == "demo11"}))
+    XCTAssertFalse(list.hasSome(where: { $0.value1 == "demo1" && $0.value2 == 4}))
   }
 
-  func test_hasAllOccurrences() {
-    XCTAssertTrue(list2.hasAllOccurrences{$0.value1 == "demo1"})
-    XCTAssertFalse(list2.hasAllOccurrences{$0.value1 == "demo11"})
-    XCTAssertFalse(list.hasAllOccurrences{$0.value1 == "demo12"})
+  func test_hasAll() {
+    XCTAssertTrue(list2.hasAll{$0.value1 == "demo1"})
+    XCTAssertFalse(list2.hasAll{$0.value1 == "demo11"})
+    XCTAssertFalse(list.hasAll{$0.value1 == "demo12"})
   }
 
   // MARK: - AnyObject
@@ -139,5 +139,17 @@ class SequenceUtilsTests: XCTestCase {
     XCTAssertTrue(groupedDictionary3["odd"]! == [1, 3, 5, 7, 9])
 
   }
+
+//    func test_findFirstPerformance() {
+//      var array = [Int]()
+//      for i in stride(from: 0, to: 1_000_000, by: 1) {
+//        array.append(i)
+//      }
+//      self.measure {
+//        for _ in 1...100{
+//          let _ = array.findFirstOccurence(where: {$0 == 1_000})
+//        }
+//      }
+//    }
 
 }

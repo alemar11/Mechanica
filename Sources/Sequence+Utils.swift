@@ -32,8 +32,12 @@ extension Sequence {
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   /// - Note: Same as `first(where:)`.
   /// - SeeAlso: `first(where:)`
-  public func findFirstOccurence(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
-    return first(where: predicate)
+  public func findFirst(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
+    //return first(where: predicate)
+    for x in self where predicate(x) {
+      return x
+    }
+    return nil
   }
 
   /// **Mechanica**
@@ -41,8 +45,8 @@ extension Sequence {
   /// Returns true if there is at least one element `matching` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func hasSomeOccurrences(where predicate: (Iterator.Element) -> Bool) -> Bool {
-    return findFirstOccurence(where: predicate) != nil
+  public func hasSome(where predicate: (Iterator.Element) -> Bool) -> Bool {
+    return findFirst(where: predicate) != nil
   }
 
   /// **Mechanica**
@@ -50,8 +54,8 @@ extension Sequence {
   /// Returns true if all the elements `match` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func hasAllOccurrences(matching predicate: (Iterator.Element) -> Bool) -> Bool {
-    return findFirstOccurence { !predicate($0) } == nil
+  public func hasAll(where predicate: (Iterator.Element) -> Bool) -> Bool {
+    return findFirst{ !predicate($0) } == nil
   }
 
   /// **Mechanica**
