@@ -25,17 +25,17 @@ import Foundation
 import CoreData
 
 extension NSFetchRequestResult where Self: NSManagedObject {
-
+  
   /// **Mechanica**
   ///
   /// The NSEntityDescription object.
-  public static var entity: NSEntityDescription { return entity()  }
-
+  public static var entity: NSEntityDescription { return entity() }
+  
   /// **Mechanica**
   ///
   /// The entity name.
-  public static var entityName: String { return entity.name!  }
-
+  public static var entityName: String { return entity.name! }
+  
   /// **Mechanica**
   ///
   /// Creates a `new` NSFetchRequest for `self`.
@@ -44,7 +44,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     let fetchRequest = NSFetchRequest<Self>(entityName: entityName)
     return fetchRequest
   }
-
+  
   /// **Mechanica**
   ///
   /// Attempts to find an object matching a predicate or creates a new one and configures it.
@@ -52,17 +52,17 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   /// - Parameters:
   ///   - context: Searched context.
   ///   - predicate: Matching predicate.
-  ///   - configure: Configuration closure called only when creating a new object.
+  ///   - configuration: Configuration closure called only when creating a new object.
   /// - Returns: A matching object or a configured new one.
-  public static func findOrCreate(in context: NSManagedObjectContext, where predicate: NSPredicate, configure: (Self) -> ()) -> Self {
+  public static func findOrCreate(in context: NSManagedObjectContext, where predicate: NSPredicate, with configuration: (Self) -> ()) -> Self {
     guard let object = findOrFetch(in: context, where: predicate) else {
       let newObject: Self = Self(context: context) //context.insertObject()
-      configure(newObject)
+      configuration(newObject)
       return newObject
     }
     return object
   }
-
+  
   /// **Mechanica**
   ///
   /// Tries to find an existing object in the context (memory) matching a predicate and if doesn’t find the object in the context, tries to load it using a fetch request (if multiple objects are found, returns the **first** one).
@@ -83,7 +83,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     }
     return object
   }
-
+  
   /// **Mechanica**
   ///
   /// Performs a configurable fetch request in a context.
@@ -93,21 +93,21 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     guard let result = try? context.fetch(request) else { fatalError("Fetched objects have wrong type.") }
     return result
   }
-
+  
   /// **Mechanica**
   ///
   /// Specifies objects (matching a given predicate) that should be removed from its persistent store when changes are committed.
   /// If objects have not yet been saved to a persistent store, they are simply removed from the context.
   /// - note: `NSBatchDeleteRequest` would be more efficient but requires a context with an `NSPersistentStoreCoordinator` directly connected (no child context).
-  static private func deleteAll(in context: NSManagedObjectContext, where predicate: NSPredicate) {
+  private static func deleteAll(in context: NSManagedObjectContext, where predicate: NSPredicate) {
     fetch(in: context) { request in
       request.includesPropertyValues = false
       request.includesSubentities = false
       request.predicate = predicate
       }.lazy.forEach(context.delete(_:))
   }
-
-
+  
+  
   /// **Mechanica**
   ///
   /// Counts the results of a configurable fetch request in a context.
@@ -122,7 +122,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
       fatalError("Failed to execute fetch request: \(error).")
     }
   }
-
+  
   /// **Mechanica**
   ///
   /// Iterates over the context’s registeredObjects set (which contains all managed objects the context currently knows about) until it finds one that is not a fault matching a given predicate.
@@ -134,34 +134,11 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     }
     return nil
   }
-
-}
-
-// MARK: - Cache
-
-extension NSFetchRequestResult where Self: NSManagedObject {
-
-  /// **Mechanica**
-  ///
-  /// Tries to retrieve an object from the cache; if there’s nothing in the cache executes the fetch request and caches the result (if a single object is found).
-  /// - Parameters:
-  ///   - context: Searched context.
-  ///   - cacheKey: Cache key.
-  ///   - configure: Configurable fetch request.
-  /// - Returns: A cached object (if any).
-  public static func fetchCachedObject(in context: NSManagedObjectContext, forKey cacheKey: String, configure: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
-    guard let cached = context.cachedObject(forKey: cacheKey) as? Self else {
-      let result = fetchSingleObject(in: context, configure: configure)
-      context.setCachedObject(result, forKey: cacheKey)
-      return result
-    }
-    return cached
-  }
-
+  
   /// Executes a fetch request where only a single object is expected as result.
-  private static func fetchSingleObject(in context: NSManagedObjectContext, configure: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
+  fileprivate static func fetchSingleObject(in context: NSManagedObjectContext, with configuration: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
     let result = fetch(in: context) { request in
-      configure(request)
+      configuration(request)
       request.fetchLimit = 2
     }
     switch result.count {
@@ -170,5 +147,28 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     default: fatalError("Returned multiple objects, expected max 1.")
     }
   }
+  
+}
 
+// MARK: - Cache
+
+extension NSFetchRequestResult where Self: NSManagedObject {
+  
+  /// **Mechanica**
+  ///
+  /// Tries to retrieve an object from the cache; if there’s nothing in the cache executes the fetch request and caches the result (if a single object is found).
+  /// - Parameters:
+  ///   - context: Searched context.
+  ///   - cacheKey: Cache key.
+  ///   - configuration: Configurable fetch request.
+  /// - Returns: A cached object (if any).
+  public static func fetchCachedObject(in context: NSManagedObjectContext, forKey cacheKey: String, with configuration: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
+    guard let cached = context.cachedObject(forKey: cacheKey) as? Self else {
+      let result = fetchSingleObject(in: context, with: configuration)
+      context.setCachedObject(result, forKey: cacheKey)
+      return result
+    }
+    return cached
+  }
+  
 }
