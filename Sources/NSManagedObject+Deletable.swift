@@ -38,7 +38,7 @@ public protocol DelayedDeletable: class {
   ///
   /// Protocol `DelayedDeletable`.
   ///
-  /// Checks whether or not the managed object’s ``markedForDeletion` property has unsaved changes.
+  /// Checks whether or not the managed object’s `markedForDeletion` property has unsaved changes.
   var hasChangedForDelayedDeletion: Bool { get }
   
   /// **Mechanica**
@@ -86,16 +86,23 @@ extension DelayedDeletable where Self: NSManagedObject {
     guard isFault || markedForDeletionAsOf == nil else { return }
     markedForDeletionAsOf = Date()
   }
-    
+  
+  }
+
+
+// MARK: - Batch Deletion
+
+extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletable {
+  
   //TODO: work in progress
-  fileprivate static func batchDeleteObjectsMarkedForDeletion(inManagedObjectContext moc: NSManagedObjectContext) {
-    guard let _ = moc.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing. A NSBatchDeleteRequest instance operates directly on one or more persistent stores.") }
+  fileprivate static func batchDeleteObjectsMarkedForDeletion(in context: NSManagedObjectContext) {
+    guard let _ = context.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing. A NSBatchDeleteRequest instance operates directly on one or more persistent stores.") }
     let request = fetchRequest()
     let cutOff = Date(timeIntervalSinceNow: -timeBeforePermanentlyDeletingObjects)
     request.predicate = NSPredicate(format: "%K < %@", markedForDeletionKey, [cutOff])
     let batchRequest = NSBatchDeleteRequest(fetchRequest: request)
     batchRequest.resultType = .resultTypeStatusOnly
-    try! moc.execute(batchRequest)
+    try! context.execute(batchRequest)
   }
   
 }

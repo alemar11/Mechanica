@@ -34,8 +34,8 @@ extension Sequence {
   /// - SeeAlso: `first(where:)`
   public func findFirst(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
     //return first(where: predicate)
-    for x in self where predicate(x) {
-      return x
+    for element in self where predicate(element) {
+      return element
     }
     return nil
   }
