@@ -77,16 +77,16 @@ extension DelayedDeletable where Self: NSManagedObject {
   public final var hasChangedForDelayedDeletion: Bool {
     return changedValue(forKey: markedForDeletionKey) as? Date != nil
   }
-  
+
+  /// **Mechanica**
+  ///
+  /// Marks an object to be deleted at a later point in time.
+  /// An object marked for local deletion will no longer match the `notMarkedForDeletionPredicate`.
   public final func markForLocalDeletion() {
     guard isFault || markedForDeletionAsOf == nil else { return }
     markedForDeletionAsOf = Date()
   }
-  
-  //}
-  //
-  //extension NSFetchRequestResult where Self: NSManagedObject {
-  
+    
   //TODO: work in progress
   fileprivate static func batchDeleteObjectsMarkedForDeletion(inManagedObjectContext moc: NSManagedObjectContext) {
     guard let _ = moc.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing. A NSBatchDeleteRequest instance operates directly on one or more persistent stores.") }

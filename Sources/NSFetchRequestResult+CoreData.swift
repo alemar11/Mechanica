@@ -150,9 +150,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   ///   - configure: Configurable fetch request.
   /// - Returns: A cached object (if any).
   public static func fetchCachedObject(in context: NSManagedObjectContext, forKey cacheKey: String, configure: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
-    guard let cached = context.cachedObject(for: cacheKey) as? Self else {
+    guard let cached = context.cachedObject(forKey: cacheKey) as? Self else {
       let result = fetchSingleObject(in: context, configure: configure)
-      context.setCachedObject(result, for: cacheKey)
+      context.setCachedObject(result, forKey: cacheKey)
       return result
     }
     return cached
