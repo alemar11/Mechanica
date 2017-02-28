@@ -29,12 +29,12 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   /// **Mechanica**
   ///
   /// The NSEntityDescription object.
-  public static var entity: NSEntityDescription { return entity()  }
+  public static var entity: NSEntityDescription { return entity() }
 
   /// **Mechanica**
   ///
   /// The entity name.
-  public static var entityName: String { return entity.name!  }
+  public static var entityName: String { return entity.name! }
 
   /// **Mechanica**
   ///
@@ -107,6 +107,17 @@ extension NSFetchRequestResult where Self: NSManagedObject {
       }.lazy.forEach(context.delete(_:))
   }
 
+  /// **Mechanica**
+  ///
+  /// Removes all entities from within the specified `NSManagedObjectContext` excluding a given list of entities.
+  ///
+  /// - parameter context: The `NSManagedObjectContext` to remove the Entities from.
+  /// - parameter objects: An Array of `NSManagedObjects` belonging to the `NSManagedObjectContext` to exclude from deletion.
+  /// - note: `NSBatchDeleteRequest` would be more efficient but requires a context with an `NSPersistentStoreCoordinator` directly connected (no child context).
+  private static func deleteAll(in context: NSManagedObjectContext, except objects: [Self]) {
+    let predicate = NSPredicate(format: "NOT (self IN %@)", objects)
+    deleteAll(in: context, where: predicate )
+  }
 
   /// **Mechanica**
   ///
@@ -133,6 +144,21 @@ extension NSFetchRequestResult where Self: NSManagedObject {
       return result
     }
     return nil
+  }
+
+  /// **Mechanica**
+  ///
+  /// Executes a fetch request where only a single object is expected as result, otherwhile a fatal error occurs.
+  public static func fetchSingleObject(in context: NSManagedObjectContext, with configuration: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
+    let result = fetch(in: context) { request in
+      configuration(request)
+      request.fetchLimit = 2
+    }
+    switch result.count {
+    case 0: return nil
+    case 1: return result[0]
+    default: fatalError("Returned multiple objects, expected max 1.")
+    }
   }
 
 }
