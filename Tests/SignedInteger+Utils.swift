@@ -1,5 +1,5 @@
 //
-//  Bool+Utils.swift
+//  SignedInteger+Utils.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -22,22 +22,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
 
-extension Int {
-
-  /// **Mechanica**
-  ///
-  /// Returns a random Int bounded by a closed interval range.
-  public static func random(_ range: ClosedRange<Int>) -> Int {
-    return range.lowerBound + Int(arc4random_uniform(UInt32(range.upperBound - range.lowerBound + 1)))
+class SignedInteger_Utils: XCTestCase {
+    
+  func test_random() {
+    XCTAssertTrue(Int.random(1...1) == 1)
+    XCTAssertTrue(Int.random(min: 1, max: 1) == 1)
+    do {
+      let randomInt = Int.random(0...1)
+      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
+    }
+    do {
+      let randomInt = Int.random(min: 0, max: 1)
+      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
+    }
+    XCTAssertTrue(Int.random(1...100) <= 100)
+    XCTAssertTrue(Int.random(min: 1, max: 100) <= 100)
+    XCTAssertFalse(Int.random(min: 50, max: 100) > 100)
+    XCTAssertFalse(Int.random(min: 40, max: 50) < 40)
   }
-
-  /// **Mechanica**
-  ///
-  /// Returns a random Int between the given range.
-  public static func random(min: Int, max: Int) -> Int {
-    return random(min...max)
-  }
-  
+    
 }
