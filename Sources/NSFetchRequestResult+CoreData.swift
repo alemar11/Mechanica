@@ -25,25 +25,17 @@ import Foundation
 import CoreData
 
 extension NSFetchRequestResult where Self: NSManagedObject {
-  
+
   /// **Mechanica**
   ///
   /// The NSEntityDescription object.
   public static var entity: NSEntityDescription { return entity() }
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 2ff3cecf9a944ac26d3accb27401d686a12f6436
   /// **Mechanica**
   ///
   /// The entity name.
   public static var entityName: String { return entity.name! }
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 2ff3cecf9a944ac26d3accb27401d686a12f6436
   /// **Mechanica**
   ///
   /// Creates a `new` NSFetchRequest for `self`.
@@ -52,7 +44,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     let fetchRequest = NSFetchRequest<Self>(entityName: entityName)
     return fetchRequest
   }
-  
+
   /// **Mechanica**
   ///
   /// Attempts to find an object matching a predicate or creates a new one and configures it.
@@ -70,7 +62,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     }
     return object
   }
-  
+
   /// **Mechanica**
   ///
   /// Tries to find an existing object in the context (memory) matching a predicate and if doesn’t find the object in the context, tries to load it using a fetch request (if multiple objects are found, returns the **first** one).
@@ -91,7 +83,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     }
     return object
   }
-  
+
   /// **Mechanica**
   ///
   /// Performs a configurable fetch request in a context.
@@ -101,7 +93,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     guard let result = try? context.fetch(request) else { fatalError("Fetched objects have wrong type.") }
     return result
   }
-  
+
   /// **Mechanica**
   ///
   /// Specifies objects (matching a given predicate) that should be removed from its persistent store when changes are committed.
@@ -114,7 +106,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
       request.predicate = predicate
       }.lazy.forEach(context.delete(_:))
   }
-<<<<<<< HEAD
+
 
   /// **Mechanica**
   ///
@@ -128,10 +120,6 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     deleteAll(in: context, where: predicate )
   }
 
-=======
-  
-  
->>>>>>> 2ff3cecf9a944ac26d3accb27401d686a12f6436
   /// **Mechanica**
   ///
   /// Counts the results of a configurable fetch request in a context.
@@ -146,7 +134,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
       fatalError("Failed to execute fetch request: \(error).")
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Iterates over the context’s registeredObjects set (which contains all managed objects the context currently knows about) until it finds one that is not a fault matching a given predicate.
@@ -158,17 +146,12 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     }
     return nil
   }
-<<<<<<< HEAD
+
 
   /// **Mechanica**
   ///
   /// Executes a fetch request where only a single object is expected as result, otherwhile a fatal error occurs.
   public static func fetchSingleObject(in context: NSManagedObjectContext, with configuration: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
-=======
-  
-  /// Executes a fetch request where only a single object is expected as result.
-  fileprivate static func fetchSingleObject(in context: NSManagedObjectContext, with configuration: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
->>>>>>> 2ff3cecf9a944ac26d3accb27401d686a12f6436
     let result = fetch(in: context) { request in
       configuration(request)
       request.fetchLimit = 2
@@ -179,17 +162,13 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     default: fatalError("Returned multiple objects, expected max 1.")
     }
   }
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 2ff3cecf9a944ac26d3accb27401d686a12f6436
 }
 
 // MARK: - Cache
 
 extension NSFetchRequestResult where Self: NSManagedObject {
-  
+
   /// **Mechanica**
   ///
   /// Tries to retrieve an object from the cache; if there’s nothing in the cache executes the fetch request and caches the result (if a single object is found).
