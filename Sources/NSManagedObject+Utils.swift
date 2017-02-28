@@ -28,23 +28,13 @@ extension NSManagedObject {
 
   /// **Mechanica**
   ///
-  /// Updates the persistent properties of a managed object to use the latest values from the persistent store.
-  /// To ensure that reference cycles are broken, when you are finished with an object, you can use this method to turn the `self` into a fault.
+  /// If `flag` is `true` (default), the object won't turn into a fault; instead, it’ll update the unchanged properties from the row cache, preserving any unsaved changes; if `flag` is `false`, the object will be forced to turn into a fault without merging and unsaved changes will be lost (which also causes other related managed objects to be released, so you can use this method to trim the portion of your object graph you want to hold in memory)
   ///
-  /// - parameter flag: only matters if the object has unsaved changes. In this case, a `true` value won’t turn the object into a fault; instead, it’ll update the unchanged properties from the row cache, preserving any unsaved changes. That’s almost always what you want to do (and what *refreshAllObjects()* does as well). If `mergeChanges` is set to `false` , the object will be forced to turn into a fault, and unsaved changes will be lost.
-  /// - note:  If `flag` is `true`, this method does not affect any transient properties; if `flag` is `false`, transient properties are disposed of. Turning object into a fault means that strong references to related managed objects (that is, those to which object has a reference) are broken, so you can also use this method to trim a portion of your object graph you want to constrain memory usage.
+  /// - parameter flag: only matters if the object has unsaved changes. In this case, a `true` value won’t turn the object into a fault; instead, it’ll update the unchanged properties from the row cache, preserving any unsaved changes. If `flag` is set to `false`, the object will be forced to turn into a fault, and unsaved changes will be lost.
+  /// - note: Turning object into a fault means that strong references to related managed objects (that is, those to which object has a reference) are broken, so you can also use this method to trim a portion of your object graph you want to constrain memory usage.
   public func refresh(mergeChanges flag: Bool = true) {
     managedObjectContext?.refresh(self, mergeChanges: flag)
   }
-
-/*
-   To break such a cycle, we have to refresh at least one of the involved objects. Using the context’s refresh(_ object:mergeChanges:) method, the object will remain valid, but its data will be gone from the context.
-   
-   If `flag` is false, then object is turned into a fault and any pending changes are lost. The object remains a fault until it is accessed again
-   If `flag` is true, then object is turned into a fault and object’s property values are reloaded from the values from the store or the last cached state then any changes that were made (in the local context) are re-applied over those (now newly updated) values.
-   
-
- */
 
   /// **Mechanica**
   ///
