@@ -165,12 +165,12 @@ class StringUtilsTests: XCTestCase {
 
 
     let s4 = "abcdefg"
-    XCTAssertTrue(s4.trimmedRight(characterSet: NSCharacterSet.alphanumerics) == "")
-    XCTAssertTrue(s4.trimmedLeft(characterSet: NSCharacterSet.alphanumerics) == "")
+    XCTAssertTrue(s4.trimmedRight(characterSet: .alphanumerics) == "")
+    XCTAssertTrue(s4.trimmedLeft(characterSet: .alphanumerics) == "")
 
     let s5 = "  abcdefg  "
-    XCTAssertTrue(s5.trimmedRight(characterSet: NSCharacterSet.alphanumerics) == "  abcdefg  ")
-    XCTAssertTrue(s5.trimmedLeft(characterSet: NSCharacterSet.alphanumerics) == "  abcdefg  ")
+    XCTAssertTrue(s5.trimmedRight(characterSet: .alphanumerics) == "  abcdefg  ")
+    XCTAssertTrue(s5.trimmedLeft(characterSet: .alphanumerics) == "  abcdefg  ")
     XCTAssertTrue(s5.trimmed() == "abcdefg")
   }
 
@@ -308,11 +308,11 @@ class StringUtilsTests: XCTestCase {
       let s = "123Hello45 !World..5"
       let result1 = s.removingCharacters(in: CharacterSet.letters.inverted)
       XCTAssertTrue(result1 == "HelloWorld")
-      let result2 = s.removingCharacters(in: CharacterSet.letters)
+      let result2 = s.removingCharacters(in: .letters)
       XCTAssertTrue(result2 == "12345 !..5")
       /// CharacterSet.capitalizedLetters returns a character set containing the characters in Unicode General Category Lt aka "Letter, titlecase". 
       /// That are "Ligatures containing uppercase followed by lowercase letters (e.g., ǅ, ǈ, ǋ, and ǲ)"
-      let result4 = s.removingCharacters(in: CharacterSet.capitalizedLetters)
+      let result4 = s.removingCharacters(in: .capitalizedLetters)
       XCTAssertTrue(result4 == "123Hello45 !World..5")
     }
 
@@ -320,7 +320,7 @@ class StringUtilsTests: XCTestCase {
       let s = "H ello"
       let result1 = s.removingCharacters(in: CharacterSet.letters.inverted)
       XCTAssertTrue(result1 == "Hello")
-      let result2 = s.removingCharacters(in: CharacterSet.decimalDigits)
+      let result2 = s.removingCharacters(in: .decimalDigits)
       XCTAssertTrue(s == result2)
     }
 
