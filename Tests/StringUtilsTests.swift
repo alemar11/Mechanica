@@ -114,6 +114,15 @@ class StringUtilsTests: XCTestCase {
     XCTAssertFalse("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("{20", caseSensitive: true))
   }
 
+  func test_containsCharacters() {
+    XCTAssertFalse("".containsCharacters(in: .letters))
+    XCTAssertTrue("AaBbCc".containsCharacters(in: .letters))
+    XCTAssertFalse("A1aBbCc".containsCharacters(in: .letters))
+    XCTAssertTrue("AaB bCc".containsCharacters(in: CharacterSet.letters.union(CharacterSet.whitespaces)))
+    XCTAssertFalse("A1a BbCc".containsCharacters(in: .letters))
+    XCTAssertTrue("123".containsCharacters(in: .decimalDigits))
+  }
+  
   func test_replace() {
     XCTAssertTrue("AaBbCc".replace("a", with: "Z") == "AZBbCc")
     XCTAssertTrue("AaBbCc".replace("a", with: "a") == "AaBbCc")
@@ -186,6 +195,29 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s9.capitalizedFirstCharacter() == "H e l l o w o r l d")
     let s10 = "\u{200B}hello\u{200B}"
     XCTAssertTrue(s10.capitalizedFirstCharacter() == s10)
+  }
+  
+  func test_decapitalizedFirstCharacter() {
+    let s1 = "   hello world   "
+    XCTAssertTrue(s1.decapitalizedFirstCharacter() == s1)
+    let s2 = "Hello world   "
+    XCTAssertTrue(s2.decapitalizedFirstCharacter() == "hello world   ")
+    let s3 = "1 hello world   "
+    XCTAssertTrue(s3.decapitalizedFirstCharacter() == s3)
+    let s4 = "🇮🇹 hello world   "
+    XCTAssertTrue(s4.decapitalizedFirstCharacter() == s4)
+    let s5 = "🇮🇹🇮🇹 hello world   "
+    XCTAssertTrue(s5.decapitalizedFirstCharacter() == s5)
+    let s6 = "hello world   "
+    XCTAssertTrue(s6.decapitalizedFirstCharacter() == s6)
+    let s7 = "\na"
+    XCTAssertTrue(s7.decapitalizedFirstCharacter() == s7)
+    let s8 = ""
+    XCTAssertTrue(s8.decapitalizedFirstCharacter() == s8)
+    let s9 = "H e l l o w o r l d"
+    XCTAssertTrue(s9.decapitalizedFirstCharacter() == "h e l l o w o r l d")
+    let s10 = "\u{200B}hello\u{200B}"
+    XCTAssertTrue(s10.decapitalizedFirstCharacter() == s10)
   }
 
   func test_prefix() {
@@ -385,7 +417,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertNotNil(string["😗"])
 
 
-    // MARK: Range
+    // MARK: - Range
 
     XCTAssertTrue(string[Range(0..<3)] == "∆Te")
     XCTAssertTrue(string[Range(3..<3)] == "")
@@ -410,7 +442,7 @@ class StringUtilsTests: XCTestCase {
 
     XCTAssertNil(string[Range(string.length+10 ..< string.length+10)])
 
-    // MARK: NSRange
+    // MARK: - NSRange
 
     let nsrange = NSRange(location: 0, length: 1)
     XCTAssertTrue(string[nsrange] == "∆")
@@ -476,6 +508,70 @@ class StringUtilsTests: XCTestCase {
       XCTAssertTrue(randomString.isAlphaNumeric)
     }
     
+  }
+  
+  // MARK: - Case Operators
+  
+  func test_camelCased() {
+    XCTAssertEqual("Hello World".camelCased(), "helloWorld")
+    XCTAssertEqual("  Hello World".camelCased(), "helloWorld")
+    XCTAssertEqual("HelloWorld".camelCased(), "helloWorld")
+    XCTAssertEqual("-Hello_World-".camelCased(), "helloWorld")
+    XCTAssertEqual("-Hello_ World-".camelCased(), "helloWorld")
+    XCTAssertEqual("Hell0W0rld".camelCased(), "hell0W0rld")
+    XCTAssertEqual("helloWorld".camelCased(), "helloWorld")
+  }
+  
+  func test_decapitalized() {
+    // TODO: Decapitalized needs to be fixed to work with multiple words.
+  }
+  
+  
+  func test_kebabCased() {
+    XCTAssertEqual("Hello World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("Hello_World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("_Hello_World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("_Hello_  World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("-HeLL0_W0rld-".kebabCased(), "-hell0-w0rld-")
+    XCTAssertEqual("HelloWorld".kebabCased(), "-helloworld-")
+  }
+  
+  func test_pascalCased() {
+    XCTAssertEqual("Hello World".pascalCased(), "HelloWorld")
+    XCTAssertEqual("HelloWorld".pascalCased(), "HelloWorld")
+    XCTAssertEqual("HelloWorld ".pascalCased(), "HelloWorld")
+    XCTAssertEqual("-Hello_World-".pascalCased(), "HelloWorld")
+    XCTAssertEqual("-Hello_ World-".pascalCased(), "HelloWorld")
+    XCTAssertEqual("Hell0W0rld".pascalCased(), "Hell0W0rld")
+  }
+  
+  func test_slugCased() {
+    XCTAssertEqual("Hello World".slugCased(), "hello-world")
+    XCTAssertEqual("Hello_World".slugCased(), "hello-world")
+    XCTAssertEqual("Hello-World".slugCased(), "hello-world")
+    XCTAssertEqual("Hello- World".slugCased(), "hello-world")
+    XCTAssertEqual("-Hello- World".slugCased(), "hello-world")
+    XCTAssertEqual("HeLL0 W0rld".slugCased(), "hell0-w0rld")
+    XCTAssertEqual("HelloWorld".slugCased(), "helloworld")
+  }
+  
+  func test_snakeCased() {
+    XCTAssertEqual("Hello World".snakeCased(), "Hello_World")
+    XCTAssertEqual("hello world".snakeCased(), "hello_world")
+    XCTAssertEqual("hello_world".snakeCased(), "hello_world")
+    XCTAssertEqual("hello__world".snakeCased(), "hello_world")
+    XCTAssertEqual("hello__ world".snakeCased(), "hello_world")
+    XCTAssertEqual(" hello_world".snakeCased(), "hello_world")
+    XCTAssertEqual("Hell0W0rld".snakeCased(), "Hell0W0rld")
+    XCTAssertEqual("HelloWorld".snakeCased(), "HelloWorld")
+  }
+  
+  func test_swapCased() {
+    XCTAssertEqual("Hello World".swapCased(), "hELLO wORLD")
+    XCTAssertEqual("hELLO wORLD".swapCased(), "Hello World")
+    XCTAssertEqual("HelloWorld".swapCased(), "hELLOwORLD")
+    XCTAssertEqual("-Hello_World-".swapCased(), "-hELLO_wORLD-")
+    XCTAssertEqual("Hell0W0rld".swapCased(), "hELL0w0RLD")
   }
   
 }

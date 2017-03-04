@@ -27,24 +27,24 @@ import Foundation
 public extension String {
 
   // MARK: - Validation Methods
-
+  
   /// **Mechanica**
   ///
-  /// Return true if the `String` contains one or more letters.
+  /// Returns true if the `String` contains one or more letters.
   public var hasLetters: Bool {
     return !isEmpty && rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
   }
 
   /// **Mechanica**
   ///
-  /// Return true if the `String` contains one or more numbers.
+  /// Returns true if the `String` contains one or more numbers.
   public var hasNumbers: Bool {
     return !isEmpty && rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
   }
 
   /// **Mechanica**
   ///
-  /// Return true if the `String` contains only letters.
+  /// Returns true if the `String` contains only letters.
   public var isAlphabetic: Bool {
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
   }
@@ -58,14 +58,28 @@ public extension String {
 
   /// **Mechanica**
   ///
-  /// Return true if the `String` contains at least one letter and one number.
+  /// Returns true if the `String` contains at least one letter and one number.
   public var isAlphaNumeric: Bool {
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Returns true if all the characters are lowercased.
+  public var isLowercased: Bool {
+    return self == lowercased()
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Returns true, if all characters are uppercased. Otherwise, false.
+  public var isUppercased: Bool {
+    return self == uppercased()
   }
 
   /// **Mechanica**
   ///
-  /// Check if the `String` is **blank** (a string that is either empty or contains only space/newline characters).
+  /// Checks if the `String` is **blank** (a string that is either empty or contains only space/newline characters).
   public var isBlank: Bool {
     return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
   }
@@ -84,7 +98,7 @@ public extension String {
 
   /// **Mechanica**
   ///
-  /// Return true if the `String` is a valid email format.
+  /// Returns true if the `String` is a valid email format.
   public var isValidEmail: Bool {
     guard !self.lowercased().hasPrefix("mailto:") else { return false }
     guard let emailDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return false }
