@@ -52,7 +52,7 @@ extension String {
   
   /// **Mechanica**
   ///
-  /// Returns true if `self` starts with a given prefix.
+  /// Returns *true* if `self` starts with a given prefix.
   public func starts(with prefix: String, caseSensitive: Bool = true) -> Bool {
     if !caseSensitive {
       return lowercased().hasPrefix(prefix.lowercased())
@@ -62,7 +62,7 @@ extension String {
   
   /// **Mechanica**
   ///
-  /// Returns true if `self` ends with a given suffix.
+  /// Returns *true* if `self` ends with a given suffix.
   public func ends(with suffix: String, caseSensitive: Bool = true) -> Bool {
     if !caseSensitive {
       return lowercased().hasSuffix(suffix.lowercased())
@@ -76,9 +76,9 @@ extension String {
   ///
   /// - Parameters:
   ///   -  pattern:       Pattern to match.
-  ///   - caseSensitive:  Search option: *true* for case-sensitive, *false* for case-insensitive. (if true this function is equivalent to `self.contains(...)`)
+  ///   - caseSensitive:  Search option: *true* for case-sensitive, false for case-insensitive. (if *true* this function is equivalent to `self.contains(...)`)
   ///
-  ///  - Returns: true if contains match, otherwise false.
+  ///  - Returns: *true* if contains match, otherwise false.
   public func contains(_ pattern: String, caseSensitive: Bool) -> Bool {
     if (caseSensitive) {
       return self.contains(pattern) //(self.range(of: pattern) != nil)
@@ -92,7 +92,7 @@ extension String {
   /// Checks if if all the characters in the string belong to a specific `CharacterSet`.
   ///
   /// - Parameter characterSet: The `CharacterSet` used to test the string.
-  /// - Returns: true if all the characters in the string belong to the `CharacterSet`, otherwise, false.
+  /// - Returns: *true* if all the characters in the string belong to the `CharacterSet`, otherwise false.
   public func containsCharacters(in characterSet: CharacterSet) -> Bool {
     guard !isEmpty else { return false }
     for scalar in unicodeScalars {
@@ -108,7 +108,7 @@ extension String {
   /// - Parameters:
   ///   - target:         target string
   ///   - replacement:    replacement string
-  ///   - caseSensitive:  `true` (default) for a case-sensitive replacemente
+  ///   - caseSensitive:  `*true*` (default) for a case-sensitive replacemente
   public func replace(_ target: String, with replacement: String, caseSensitive: Bool = true) -> String {
     let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
     return self.replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
