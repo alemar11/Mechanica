@@ -32,7 +32,8 @@ extension Dictionary {
   public init?(json: String) {
     if
       let jsonData = json.data(using: .utf8, allowLossyConversion: true),
-      let jsonDictionary = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? Dictionary {
+      let jsonDictionary = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? Dictionary
+    {
       self = jsonDictionary
     } else {
       return nil
