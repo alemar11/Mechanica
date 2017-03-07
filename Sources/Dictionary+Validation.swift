@@ -32,5 +32,45 @@ public extension Dictionary {
   public func hasKey(_ key: Key) -> Bool {
     return index(forKey: key) != nil
   }
+
+  // MARK: - JSON
+
+  /// **Mechanica**
+  ///
+  /// Returns a JSON Data from dictionary.
+  ///
+  /// - Parameter prettify: *true* to prettify data (default is *false*).
+  /// - Returns: optional JSON Data.
+  public func jsonData(prettify: Bool = false) -> Data? {
+    guard JSONSerialization.isValidJSONObject(self) else { return nil }
+    let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
+    return try? JSONSerialization.data(withJSONObject: self, options: options)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a JSON String from dictionary.
+  ///
+  /// - Parameter prettify: *true* to prettify string (default is *false*).
+  /// - Returns: optional JSON String.
+  public func jsonString(prettify: Bool = false) -> String? {
+    guard let jsonData = jsonData(prettify: prettify) else { return nil }
+    return String(data: jsonData, encoding: .utf8)
+  }
+  
+}
+
+public extension Dictionary where Key: ExpressibleByStringLiteral {
+
+  /// **Mechanica**
+  ///
+  /// Lowercase all keys in dictionary.
+  public mutating func lowercaseAllKeys() {
+    for key in keys {
+      if let lowercaseKey = String(describing: key).lowercased() as? Key {
+        self[lowercaseKey] = removeValue(forKey: key)
+      }
+    }
+  }
   
 }
