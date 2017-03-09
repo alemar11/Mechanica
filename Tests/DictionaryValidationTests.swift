@@ -1,5 +1,5 @@
 //
-//  Dictionary+Validation.swift
+//  DictionaryValidationTests.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -22,16 +22,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import Mechanica
 
-public extension Dictionary {
-  
-  /// **Mechanica**
-  ///
-  /// Returns true if the `key` exists in the dictionary.
-  public func hasKey(_ key: Key) -> Bool {
-    return index(forKey: key) != nil
+class DictionaryValidationTests: XCTestCase {
+
+  func test_hasKey() {
+
+    do {
+      let dictionary: [String:Int] = [:]
+      XCTAssertFalse(dictionary.hasKey(""))
+      XCTAssertFalse(dictionary.hasKey("robot"))
+    }
+
+    do {
+      let dictionary: [String:Int] = ["robot":1, "robot2":2]
+      XCTAssertFalse(dictionary.hasKey(""))
+      XCTAssertTrue(dictionary.hasKey("robot"))
+    }
+    
   }
 
 }
-

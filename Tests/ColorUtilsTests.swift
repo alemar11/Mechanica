@@ -83,7 +83,7 @@ class ColorUtilsTests: XCTestCase {
   func test_hex() {
     do {
       //purple (85,26,139) "#551a8b"
-      let purple = Color(hexString: "#551a8b", alpha: 1)
+      let purple = Color(hexString: "#551a8b" )
       XCTAssertNotNil(purple)
       let (r,g,b,a) = purple!.rgba!
       XCTAssert(r == 85)
@@ -94,7 +94,7 @@ class ColorUtilsTests: XCTestCase {
 
     do {
       //purple (85,26,139) "#551a8b"
-      let purple = Color(hexString: "#551A8B", alpha: 1)
+      let purple = Color(hexString: "#551A8B" )
       XCTAssertNotNil(purple)
       let (r,g,b,a) = purple!.rgba!
       XCTAssert(r == 85)
@@ -105,7 +105,7 @@ class ColorUtilsTests: XCTestCase {
 
     do {
       //green (0,128,0) "#008000"
-      let green = Color(hexString: "#008000", alpha: 1)
+      let green = Color(hexString: "#008000" )
       XCTAssertNotNil(green)
       let (r,g,b,a) = green!.rgba!
       XCTAssert(r == 0)
@@ -115,46 +115,46 @@ class ColorUtilsTests: XCTestCase {
     }
 
     do {
-      let aqua = Color(hexString: "#0ff", alpha: 1)
+      let aqua = Color(hexString: "#0ff" )
       XCTAssertNotNil(aqua)
 
-      let black = Color(hexString: "#000", alpha: 1)
+      let black = Color(hexString: "#000" )
       XCTAssertNotNil(black)
 
-      let blue = Color(hexString: "#00f", alpha: 1)
+      let blue = Color(hexString: "#00f" )
       XCTAssertNotNil(blue)
 
-      let fuchsia = Color(hexString: "#f0f", alpha: 1)
+      let fuchsia = Color(hexString: "#f0f" )
       XCTAssertNotNil(fuchsia)
 
-      let lime = Color(hexString: "0f0", alpha: 1)
+      let lime = Color(hexString: "0f0" )
       XCTAssertNotNil(lime)
 
-      let red = Color(hexString: "f00", alpha: 1)
+      let red = Color(hexString: "f00" )
       XCTAssertNotNil(red)
       XCTAssert(red!.rgba! == Color.red.rgba!)
 
-      let white = Color(hexString: "fff", alpha: 1)
+      let white = Color(hexString: "fff" )
       XCTAssertNotNil(white)
       XCTAssert(white!.rgba! == Color.white.rgba!)
 
-      let yellow = Color(hexString: "ff0", alpha: 1)
+      let yellow = Color(hexString: "ff0" )
       XCTAssertNotNil(yellow)
       XCTAssert(yellow!.rgba! == Color.yellow.rgba!)
     }
 
     do {
-      let wrongColor = Color(hexString: "#551A8B1", alpha: 1)
+      let wrongColor = Color(hexString: "#551A8B1" )
       XCTAssertNil(wrongColor)
-      let wrongColor2 = Color(hexString: "#551A8", alpha: 1)
+      let wrongColor2 = Color(hexString: "#551A8" )
       XCTAssertNil(wrongColor2)
-      let wrongColor3 = Color(hexString: "#", alpha: 1)
+      let wrongColor3 = Color(hexString: "#" )
       XCTAssertNil(wrongColor3)
-      let wrongColor4 = Color(hexString: " #551A8B", alpha: 1)
+      let wrongColor4 = Color(hexString: " #551A8B" )
       XCTAssertNil(wrongColor4)
-      let wrongColor5 = Color(hexString: "ff  ", alpha: 1)
+      let wrongColor5 = Color(hexString: "ff  " )
       XCTAssertNil(wrongColor5)
-      let wrongColor6 = Color(hexString: "", alpha: 1)
+      let wrongColor6 = Color(hexString: "" )
       XCTAssertNil(wrongColor6)
     }
 
