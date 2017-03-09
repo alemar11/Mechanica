@@ -123,6 +123,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertTrue("test.test.test@tinrobots.org".isValidEmail)
     XCTAssertTrue("testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobots.org".isValidEmail)
     XCTAssertTrue("testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobotstinrobotstinrobotstinrobots.org".isValidEmail)
+    XCTAssertTrue("tEsT@tinrobots.xyz".isValidEmail)
     XCTAssertTrue("test@tinrobots.xyz".isValidEmail)
     XCTAssertTrue("test@tin.robots.org".isValidEmail)
 
