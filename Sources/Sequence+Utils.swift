@@ -57,14 +57,15 @@ extension Sequence {
   public func hasAll(where predicate: (Iterator.Element) -> Bool) -> Bool {
     return findFirst{ !predicate($0) } == nil
   }
-
+  
   /// **Mechanica**
   ///
-  ///  Returns a grouped dictionary by the closure.
-  public func grouped<Key: Hashable>(by key: (Iterator.Element) -> (Key)) -> [Key : [Iterator.Element]] {
+  /// - Parameter criteria: The criteria closure takes an `Iterator.Element` and returns its classification.
+  /// - Returns: Returns a grouped dictionary with the keys that the criteria function returns.
+  public func grouped<Key: Hashable>(by criteria: (Iterator.Element) -> (Key)) -> [Key : [Iterator.Element]] {
     var dictionary: [Key : [Iterator.Element]] = [:]
     for element in self {
-      let key = key(element)
+      let key = criteria(element)
       var array = dictionary.removeValue(forKey: key) ?? []
       array.append(element)
       dictionary.updateValue(array, forKey: key)
