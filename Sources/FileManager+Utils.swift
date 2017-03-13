@@ -37,8 +37,8 @@ extension FileManager {
   /// - Note: Use this directory to store user-generated content. The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.
   ///
   /// The contents of *Documents* directory are **backed up by iTunes and iCloud**.
-  public class var documentDirectory: URL {
-    return try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+  public var documentDirectory: URL {
+    return try! url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
   
   /// **Mechanica**
@@ -49,8 +49,8 @@ extension FileManager {
   /// You typically put files in one of several standard subdirectories. iOS apps commonly use the *Application Support* and *Caches subdirectories*; however, you can create custom subdirectories.
   ///
   /// The contents of the *Library* directory are **backed up by iTunes and iCloud** (with the exception of the *Caches subdirectory*).
-  public class var libraryDirectory: URL {
-    return try! FileManager.default.url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+  public var libraryDirectory: URL {
+    return try! url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
   
   /// **Mechanica**
@@ -65,8 +65,8 @@ extension FileManager {
   /// Note that the system may delete the Caches/ directory to free up disk space, so your app must be able to re-create or download these files as needed.
   ///
   /// - Important: Sandboxed *macOS* apps have all their *Caches* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
-  public class var cachesDirectory: URL {
-    return try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+  public var cachesDirectory: URL {
+    return try! url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
   
   /// **Mechanica**
@@ -79,44 +79,36 @@ extension FileManager {
   /// - Warning: On *macOS* all content in this directory should be placed in a **custom subdirectory** whose name is that of your app’s bundle identifier or your company.
   ///
   /// - Important: Sandboxed *macOS* apps have all their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
-  /// - SeeAlso: For macOS see `applicationSupportSubDirectory`.
-  public class var applicationSupportDirectory: URL {
-    return try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+  public var applicationSupportDirectory: URL {
+    return try! url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
   
-  #if os(OSX)
-  /// **Mechanica**
-  ///
-  /// Returns the location of a subdirectory inside Application Support folder (*Library/Application Support/*) whose name is that of your app's bundle identifier or of your app's executable file name. (i.e. *Library/Application Support/org.tinrobots.app01*)
-  public class var applicationSupportSubDirectory: URL {
-    let url = applicationSupportDirectory
-    guard (!ProcessInfo.isSandboxed) else { return url }
-   // TODO: create the directory if not exists
-    return url.appendingPathComponent(App.identifier ?? "", isDirectory: true)
-  }
-  #endif
-  
-  /// **Mechanica**
-  ///
-  /// Returns the location of the temporary directory (*tmp*).
-  /// - Note: Use this directory to write temporary files that do not need to persist between launches of your app.
-  ///
-  /// Your app should remove files from this directory when they are no longer needed; however, the system may purge this directory when your app is not running.
-  ///
-  /// The contents of *tmp* directory are **not backed up by iTunes or iCloud**.
-  ///
-  /// - Important: Sandboxed *macOS* apps have all their *temporary* directory located at a system-defined path.
-  public class var temporaryDirectory: URL {
-    return URL(fileURLWithPath: NSTemporaryDirectory())
-  }
+//  #if os(OSX)
+//  
+//  /// **Mechanica**
+//  ///
+//  /// On non-sanboxed *macOS* apps returns the location of a subdirectory inside Application Support folder (*Library/Application Support/*) whose name is that of your app's bundle identifier or of your app's executable file name. (i.e. *Library/Application Support/org.tinrobots.app01*).
+//  ///
+//  /// On sandboxed *macOS* apps returns their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
+//  public var applicationSupportSubDirectory: URL {
+//    var url = applicationSupportDirectory
+//    guard (!ProcessInfo.isSandboxed) else { return url }
+//    url.appendPathComponent(App.identifier ?? "", isDirectory: true)
+//    if (!fileExists(atPath: url.path)) {
+//      try! createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+//    }
+//    return url
+//  }
+//  
+//  #endif
   
   /// **Mechanica**
   ///
   /// Creates and returns always a `new` directory in Library/Caches for discardable cache files.
-  public class var makeNewCachesSubDirectory: URL {
-    let url = FileManager.cachesDirectory.appendingPathComponent(UUID().uuidString)
-    if (!FileManager.default.fileExists(atPath: url.absoluteString)){
-      try! FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+  public var makeNewCachesSubDirectory: URL {
+    let url = cachesDirectory.appendingPathComponent(UUID().uuidString)
+    if (!fileExists(atPath: url.path)){
+      try! createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
     }
     return url
   }
@@ -124,8 +116,8 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the container directory associated with the specified security application group Identifier.
-  public class func container(for groupIdentifier: String) -> URL? {
-    return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
+  public func containerDirectory(for groupIdentifier: String) -> URL? {
+    return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
   }
   
   // MARK: - Delete
@@ -135,11 +127,7 @@ extension FileManager {
   /// Clears all contents in a directory `path`; throws an error in cases of failure.
   ///
   /// - Parameter path: **directory** path (if it's not a directory path, nothing is done).
-  public class func clearDirectory(atPath path: String) throws {
-    try FileManager.default.clearDirectory(atPath: path)
-  }
-  
-  internal func clearDirectory(atPath path: String) throws {
+  public func clearDirectory(atPath path: String) throws {
     var isDirectory: ObjCBool = false
     guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
     guard isDirectory.boolValue == true else { return }
@@ -150,17 +138,13 @@ extension FileManager {
       try removeItem(atPath: path)
     }
   }
-  
+    
   /// **Mechanica**
   ///
   /// Destroys a file or a directory at a given `path`; throws an error in cases of failure.
   ///
   /// - Parameter path: directory or file path.
-  public class func destroyFileOrDirectory(atPath path: String) throws {
-    try FileManager.default.destroyFileOrDirectory(atPath: path)
-  }
-  
-  internal func destroyFileOrDirectory(atPath path: String) throws {
+  public func destroyFileOrDirectory(atPath path: String) throws {
     guard fileExists(atPath: path) == true else { return }
     try removeItem(atPath: path)
   }
