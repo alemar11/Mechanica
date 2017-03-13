@@ -91,6 +91,7 @@ extension FileManager {
   public class var applicationSupportSubDirectory: URL {
     let url = applicationSupportDirectory
     guard (!ProcessInfo.isSandboxed) else { return url }
+   // TODO: create the directory if not exists
     return url.appendingPathComponent(App.identifier ?? "", isDirectory: true)
   }
   #endif
@@ -111,7 +112,7 @@ extension FileManager {
   
   /// **Mechanica**
   ///
-  /// Returns always a `new` directory in Library/Caches for discardable cache files.
+  /// Creates and returns always a `new` directory in Library/Caches for discardable cache files.
   public class var makeNewCachesSubDirectory: URL {
     let url = FileManager.cachesDirectory.appendingPathComponent(UUID().uuidString)
     if (!FileManager.default.fileExists(atPath: url.absoluteString)){
