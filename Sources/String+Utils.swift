@@ -198,8 +198,8 @@ extension String {
   ///
   /// Returns a `new` string containing the first character of the `String`.
   public var first: String {
-    let last = self.substring(to: self.index(after: self.startIndex))
-    return last
+    let first = self.substring(to: self.index(after: self.startIndex))
+    return first
   }
   
   /// **Mechanica**
