@@ -44,8 +44,6 @@ class DictionaryUtilsTests: XCTestCase {
       let dictionary = Dictionary<String, Any?>(json: string)
       XCTAssertNotNil(dictionary)
       XCTAssertTrue(dictionary!["val"]! == nil)
-      dump(dictionary)
-      dump(dictionary!["val"]!)
     }
 
     do {
