@@ -28,9 +28,9 @@ import XCTest
 class DictionaryUtilsTests: XCTestCase {
 
   func test_initFromJSON() {
-    let string = "{\"foo\":\"bar\",\"val\":1}"
 
     do {
+      let string = "{\"foo\":\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
       XCTAssertNotNil(dictionary)
       let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
@@ -41,6 +41,7 @@ class DictionaryUtilsTests: XCTestCase {
     }
 
     do {
+      let string = "{\"foo\":\"bar\",\"val\":null}"
       let dictionary = Dictionary<String, Any?>(json: string)
       XCTAssertNotNil(dictionary)
       XCTAssertTrue(dictionary!["val"]! == nil)
