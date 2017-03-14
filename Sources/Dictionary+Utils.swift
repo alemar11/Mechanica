@@ -28,6 +28,8 @@ import Foundation
 
 extension Dictionary {
 
+  /// **Mechanica**
+  ///
   /// Returns a Dictionary from a given JSON String.
   public init?(json: String) {
     if
