@@ -28,15 +28,25 @@ import XCTest
 class DictionaryUtilsTests: XCTestCase {
 
   func test_initFromJSON() {
-    
     let string = "{\"foo\":\"bar\",\"val\":1}"
-    let dictionary = Dictionary<String, Any>(json: string)
-    XCTAssertNotNil(dictionary)
-    let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
-    let expectedDictionary2: Dictionary<String, Any> = ["foo": "bar", "val": Date()]
 
-    XCTAssertTrue(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary))
-    XCTAssertFalse(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary2))
+    do {
+      let dictionary = Dictionary<String, Any>(json: string)
+      XCTAssertNotNil(dictionary)
+      let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
+      let expectedDictionary2: Dictionary<String, Any> = ["foo": "bar", "val": Date()]
+
+      XCTAssertTrue(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary))
+      XCTAssertFalse(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary2))
+    }
+
+    do {
+      let dictionary = Dictionary<String, Any?>(json: string)
+      XCTAssertNotNil(dictionary)
+      XCTAssertTrue(dictionary!["val"]! == nil)
+      dump(dictionary)
+      dump(dictionary!["val"]!)
+    }
 
     do {
       let invalidJSON = "tinrobots"
@@ -87,7 +97,7 @@ class DictionaryUtilsTests: XCTestCase {
       let dictionary: [String: Any?] = ["key1":"val1", "key2": nil]
       XCTAssertNotNil(dictionary.jsonData())
     }
-    
+
   }
 
   func test_lowercaseAllKeys() {
