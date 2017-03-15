@@ -46,7 +46,6 @@ extension Color {
   /// Returns the color's RGBA components.
   internal final func rgbaComponents() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
     var r : CGFloat = .nan, g : CGFloat = .nan, b : CGFloat = .nan, a : CGFloat = .nan
-
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard let space = cgColor.colorSpace, let colorSpaceName = space.name else { return nil }
       let compatibleSRGBColor = (colorSpaceName == CGColorSpace.sRGB) ? self: self.convertingToCompatibleSRGBColor()
@@ -58,7 +57,7 @@ extension Color {
       guard let color = compatibleSRGBColor else { return nil } // Could not be converted
       color.getRed(&r, green: &g, blue: &b, alpha: &a)
     #endif
-      return (r, g, b, a)
+    return (r, g, b, a)
   }
 
 
@@ -75,7 +74,6 @@ extension Color {
   /// Creates a `new` color in the **sRGB** color space that matches (or *closely approximates*) the current color.
   /// - Note: [WWDC 2016 - 712](https://developer.apple.com/videos/play/wwdc2016/712/?time=2368)
   public final func convertingToCompatibleSRGBColor() -> Color? {
-
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) else { return nil }
       let compatibleSRGBColor = self.cgColor.converted(to: colorSpace, intent: CGColorRenderingIntent.defaultIntent, options: nil)!
@@ -84,7 +82,6 @@ extension Color {
       let compatibleSRGBColor = (self.colorSpaceName != NSCalibratedRGBColorSpace) ? self.usingColorSpace(NSColorSpace.sRGB) : self
       return compatibleSRGBColor
     #endif
-
   }
 
   /// **Mechanica**
@@ -96,7 +93,6 @@ extension Color {
     let green = CGFloat(drand48())
     let blue = CGFloat(drand48())
     let alpha = CGFloat(drand48())
-
     #if os(iOS) || os(tvOS) || os(watchOS)
       return Color(red: red, green: green, blue: blue, alpha: alpha)
     #else
@@ -113,11 +109,9 @@ extension Color {
   ///   - hex: The hex component of the color object, specified as a value from 0x000000 to 0xFFFFFF
   ///   - alpha: The opacity component of the color object, specified as a value from 0.0 to 1.0 (optional).
   public convenience init(hex: UInt32, alpha: CGFloat = 1) {
-
     let red   = CGFloat((hex & 0xFF0000) >> 16) / 255
     let green = CGFloat((hex & 0x00FF00) >> 8) / 255
     let blue  = CGFloat(hex & 0x0000FF) / 255
-
     #if os(iOS) || os(tvOS) || os(watchOS)
       self.init(red: red, green: green, blue: blue, alpha: alpha)
     #else
@@ -132,21 +126,21 @@ extension Color {
   /// - Parameters:
   ///   - hexString: The hex color string **#RRGGBB** (e.g.: "#551a8b", "551a8b", "551A8B", #FFF).
   ///   - alpha: The opacity value for the color (default = 1.0)
-//  private convenience init?(hexString: String, alpha: CGFloat = 1) {
-//    guard !hexString.isBlank else { return nil }
-//    var formattedHexString = hexString.hasPrefix("#") ? String(hexString.characters.dropFirst()) : hexString
-//    guard formattedHexString.length == 6 || formattedHexString.length == 3 else { return nil }
-//
-//    //shortcut hex color, i.e. f0f becomes f0ff0f
-//    if (formattedHexString.length == 3) {
-//      let newHexString = formattedHexString[0]!*2 + formattedHexString[1]!*2 + formattedHexString[2]!*2
-//      formattedHexString = newHexString
-//    }
-//
-//    var hexEquivalent: UInt32 = 0
-//    guard Scanner(string: formattedHexString).scanHexInt32(&hexEquivalent) == true else { return nil }
-//    self.init(hex: hexEquivalent, alpha: alpha)
-//  }
+  //  private convenience init?(hexString: String, alpha: CGFloat = 1) {
+  //    guard !hexString.isBlank else { return nil }
+  //    var formattedHexString = hexString.hasPrefix("#") ? String(hexString.characters.dropFirst()) : hexString
+  //    guard formattedHexString.length == 6 || formattedHexString.length == 3 else { return nil }
+  //
+  //    //shortcut hex color, i.e. f0f becomes f0ff0f
+  //    if (formattedHexString.length == 3) {
+  //      let newHexString = formattedHexString[0]!*2 + formattedHexString[1]!*2 + formattedHexString[2]!*2
+  //      formattedHexString = newHexString
+  //    }
+  //
+  //    var hexEquivalent: UInt32 = 0
+  //    guard Scanner(string: formattedHexString).scanHexInt32(&hexEquivalent) == true else { return nil }
+  //    self.init(hex: hexEquivalent, alpha: alpha)
+  //  }
 
   /// **Mechanica**
   ///
@@ -198,7 +192,7 @@ extension Color {
   ///
   /// Returns an UInt32 representation of `self` in the sRGB space with alpha channel.
   private final var rgbaUInt32: UInt32 {
-    guard let (r, g, b, a) = self.rgba else { fatalError("Couldn't calculate RGBA values") }
+    guard let (r, g, b, a) = self.rgba else { fatalError("Couldn't calculate RGBA values.") }
     return (UInt32(r) << 32) | (UInt32(g) << 16) | UInt32(b) << 8 | UInt32(a)
   }
 
@@ -225,7 +219,7 @@ extension Color {
   ///
   /// Returns a `new` Color derived from `self` varying in brightness by the given `percentage`.
   /// - Note: Brightness makes the color less or more closer to black.
-  public func modifiedBrightness(byPercentage percentage: CGFloat) -> Color? {
+  public func modifiedBrightness(by percentage: CGFloat) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
     guard let hsba = hsba() else { return nil }
     let newBrightness = hsba.brightness + percentage
@@ -235,22 +229,22 @@ extension Color {
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` lightened by the given percentage.
-  public func lightened(byPercentage percentage: CGFloat = 0.1) -> Color? {
-    return modifiedBrightness(byPercentage: percentage)
+  public func lightened(by percentage: CGFloat = 0.1) -> Color? {
+    return modifiedBrightness(by: percentage)
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` darkened by the given percentage.
-  public func darkened(byPercentage percentage: CGFloat = 0.1) -> Color? {
-    return modifiedBrightness(byPercentage: -percentage)
+  public func darkened(by percentage: CGFloat = 0.1) -> Color? {
+    return modifiedBrightness(by: -percentage)
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` varying in saturation by the given`percentage`.
   /// - Note: Saturation makes the color less or more closer to white.
-  public func modifiedSaturation(byPercentage percentage: CGFloat) -> Color? {
+  public func modifiedSaturation(by percentage: CGFloat) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
     guard let hsba = hsba() else { return nil }
     let newSaturation = hsba.saturation + percentage
@@ -260,15 +254,15 @@ extension Color {
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` saturating the hue by a `percentage`, making it more intense and darker .
-  public func shaded(byPercentage percentage: CGFloat = 0.1) -> Color? {
-    return modifiedSaturation(byPercentage: percentage)
+  public func shaded(by percentage: CGFloat = 0.1) -> Color? {
+    return modifiedSaturation(by: percentage)
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` desaturating the hue by a `percentage`, making it less intense.
-  public func tinted(byPercentage percentage: CGFloat = 0.1) -> Color? {
-    return modifiedSaturation(byPercentage: -percentage)
+  public func tinted(by percentage: CGFloat = 0.1) -> Color? {
+    return modifiedSaturation(by: -percentage)
   }
   
 }
