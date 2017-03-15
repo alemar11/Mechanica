@@ -41,32 +41,42 @@ import Foundation
 
 extension Color {
 
+  /// **Mechanica**
+  ///
+  /// Alias for RGBA color space components
+  public typealias RGBA = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+  
+  /// **Mechanica**
+  ///
+  /// Alias for HSBA color space components
+  public typealias HSBA = (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat)
+  
   // MARK: - sRGBA
 
   /// Returns the color's RGBA components.
-  internal final func rgbaComponents() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
-    var r : CGFloat = .nan, g : CGFloat = .nan, b : CGFloat = .nan, a : CGFloat = .nan
+  private final var rgba: RGBA? {
+    var red : CGFloat = .nan, green : CGFloat = .nan, blue : CGFloat = .nan, alpha : CGFloat = .nan
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard let space = cgColor.colorSpace, let colorSpaceName = space.name else { return nil }
       let compatibleSRGBColor = (colorSpaceName == CGColorSpace.sRGB) ? self: self.convertingToCompatibleSRGBColor()
       guard let color = compatibleSRGBColor else { return nil }
-      guard color.getRed(&r, green: &g, blue: &b, alpha: &a)  else { return nil } // could not be converted
+      guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)  else { return nil } // could not be converted
     #elseif os(OSX)
       let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
       let compatibleSRGBColor = (rgbColorSpaces.contains(self.colorSpace)) ? self : self.usingColorSpace(.sRGB)
       guard let color = compatibleSRGBColor else { return nil } // Could not be converted
-      color.getRed(&r, green: &g, blue: &b, alpha: &a)
+      color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
     #endif
-    return (r, g, b, a)
+    return (red, green, blue, alpha)
   }
 
 
   /// **Mechanica**
   ///
-  /// Returns the components that make up the color in the sRGB color space.
-  public final var rgba: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8)? {
-    guard let (r, g, b, a) = rgbaComponents() else { return nil }
-    return (red: UInt8(r * 255), green: UInt8(g * 255), blue: UInt8(b * 255), alpha: UInt8(a * 255))
+  /// Returns the components (in 8 bit) that make up the color in the sRGB color space.
+  public final var rgba8Bit: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8)? {
+    guard let components = rgba else { return nil }
+    return (red: UInt8(components.red * 255), green: UInt8(components.green * 255), blue: UInt8(components.blue * 255), alpha: UInt8(components.alpha * 255))
   }
 
   /// **Mechanica**
@@ -89,10 +99,7 @@ extension Color {
   /// Initializes and returns a **random** color object in the sRGB space.
   public static func random() -> Color {
     //drand48() generates a random number between 0 to 1
-    let red = CGFloat(drand48())
-    let green = CGFloat(drand48())
-    let blue = CGFloat(drand48())
-    let alpha = CGFloat(drand48())
+    let red = CGFloat(drand48()), green = CGFloat(drand48()), blue = CGFloat(drand48()), alpha = CGFloat(drand48())
     #if os(iOS) || os(tvOS) || os(watchOS)
       return Color(red: red, green: green, blue: blue, alpha: alpha)
     #else
@@ -100,6 +107,7 @@ extension Color {
     #endif
   }
 
+  // MARK: - Initializers
 
   /// **Mechanica**
   ///
@@ -118,29 +126,6 @@ extension Color {
       self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
     #endif
   }
-
-  /// **Mechanica**
-  ///
-  /// Returns a color from a given hex color string.
-  ///
-  /// - Parameters:
-  ///   - hexString: The hex color string **#RRGGBB** (e.g.: "#551a8b", "551a8b", "551A8B", #FFF).
-  ///   - alpha: The opacity value for the color (default = 1.0)
-  //  private convenience init?(hexString: String, alpha: CGFloat = 1) {
-  //    guard !hexString.isBlank else { return nil }
-  //    var formattedHexString = hexString.hasPrefix("#") ? String(hexString.characters.dropFirst()) : hexString
-  //    guard formattedHexString.length == 6 || formattedHexString.length == 3 else { return nil }
-  //
-  //    //shortcut hex color, i.e. f0f becomes f0ff0f
-  //    if (formattedHexString.length == 3) {
-  //      let newHexString = formattedHexString[0]!*2 + formattedHexString[1]!*2 + formattedHexString[2]!*2
-  //      formattedHexString = newHexString
-  //    }
-  //
-  //    var hexEquivalent: UInt32 = 0
-  //    guard Scanner(string: formattedHexString).scanHexInt32(&hexEquivalent) == true else { return nil }
-  //    self.init(hex: hexEquivalent, alpha: alpha)
-  //  }
 
   /// **Mechanica**
   ///
@@ -184,16 +169,16 @@ extension Color {
   ///
   /// Returns an UInt32 representation of `self` in the sRGB space without alpha channel.
   private final var rgbUInt32: UInt32 {
-    guard let (r, g, b, _) = self.rgba else { fatalError("Couldn't calculate RGBA values") }
-    return (UInt32(r) << 16) | (UInt32(g) << 8) | UInt32(b)
+    guard let components = rgba8Bit else { fatalError("Couldn't calculate RGBA values") }
+    return (UInt32(components.red) << 16) | (UInt32(components.green) << 8) | UInt32(components.blue)
   }
 
   /// **Mechanica**
   ///
   /// Returns an UInt32 representation of `self` in the sRGB space with alpha channel.
   private final var rgbaUInt32: UInt32 {
-    guard let (r, g, b, a) = self.rgba else { fatalError("Couldn't calculate RGBA values.") }
-    return (UInt32(r) << 32) | (UInt32(g) << 16) | UInt32(b) << 8 | UInt32(a)
+    guard let components = rgba8Bit else { fatalError("Couldn't calculate RGBA values.") }
+    return (UInt32(components.red) << 32) | (UInt32(components.green) << 16) | UInt32(components.blue) << 8 | UInt32(components.alpha)
   }
 
   // TODO: UInt32 to RGB
@@ -205,7 +190,7 @@ extension Color {
   /// **Mechanica**
   ///
   /// Returns the components that make up the color in the HSBA color space.
-  public func hsba() -> (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat)? {
+  public final var hsba: HSBA? {
     var hue: CGFloat = .nan, saturation: CGFloat = .nan, brightness: CGFloat = .nan, alpha: CGFloat = .nan
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) else { return nil }
@@ -221,9 +206,28 @@ extension Color {
   /// - Note: Brightness makes the color less or more closer to black.
   public func modifiedBrightness(by percentage: CGFloat) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
-    guard let hsba = hsba() else { return nil }
-    let newBrightness = hsba.brightness + percentage
-    return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: newBrightness, alpha: hsba.alpha)
+    guard let components = hsba else { return nil }
+    let newBrightness = components.brightness + percentage
+    return Color(hue: components.hue, saturation: components.saturation, brightness: newBrightness, alpha: components.alpha)
+  }
+  
+  // TODO: - wip
+  private func _modifiedBrightness(by percentage: CGFloat) -> Color? {
+    if percentage == 0 { return self.copy() as? Color }
+    return applying{ ($0.hue, $0.saturation, $0.brightness + percentage, $0.alpha) }
+  }
+  
+  // TODO: - wip
+  private func _modifiedSaturation(by percentage: CGFloat) -> Color? {
+    if percentage == 0 { return self.copy() as? Color }
+    return applying{ ($0.hue, $0.saturation + percentage, $0.brightness, $0.alpha) }
+  }
+  
+  // TODO: - wip
+  private func applying(changes: ((HSBA) -> (HSBA)?)) -> Color? {
+    guard let _components = hsba else { return nil }
+    guard let components = changes(_components) else { return nil }
+    return Color(hue: components.hue, saturation: components.saturation, brightness: components.brightness, alpha: components.alpha)
   }
 
   /// **Mechanica**
@@ -246,9 +250,9 @@ extension Color {
   /// - Note: Saturation makes the color less or more closer to white.
   public func modifiedSaturation(by percentage: CGFloat) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
-    guard let hsba = hsba() else { return nil }
-    let newSaturation = hsba.saturation + percentage
-    return Color(hue: hsba.hue, saturation: newSaturation, brightness: hsba.brightness, alpha: hsba.alpha)
+    guard let components = hsba else { return nil }
+    let newSaturation = components.saturation + percentage
+    return Color(hue: components.hue, saturation: newSaturation, brightness: components.brightness, alpha: components.alpha)
   }
 
   /// **Mechanica**
@@ -267,4 +271,13 @@ extension Color {
   
 }
 
+// TODO: - wip
+//extension Color {
+//
+//    private func isEqual(to color: UIColor, withTolerance tolerance: CGFloat = 0.0) -> Bool{
+//      guard let (r1, g1, b1, a1) = rgba, let (r2, g2, b2, a2) = color.rgba else { return false }
+//      return fabs(r1 - r2) <= tolerance && fabs(g1 - g2) <= tolerance && fabs(b1 - b2) <= tolerance && fabs(a1 - a2) <= tolerance
+//    }
+//  
+//}
 
