@@ -38,67 +38,37 @@ import Foundation
   public typealias Color = NSColor
 #endif
 
-// MARK: - iOS, tvOS, watchOS
-
-#if os(iOS) || os(tvOS) || os(watchOS)
-
-  extension Color {
-
-    /// **Mechanica**
-    ///
-    /// Returns the components that make up the color in the sRGB color space.
-    public final var rgba: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8)? {
-
-      guard let space = self.cgColor.colorSpace, let colorSpaceName = space.name else { return nil}
-
-      let compatibleSRGBColor = (colorSpaceName == CGColorSpace.sRGB) ? self: self.convertingToCompatibleSRGBColor()
-      guard let color = compatibleSRGBColor else { return nil }
-
-      var r : CGFloat = .nan, g : CGFloat = .nan, b : CGFloat = .nan, a : CGFloat = .nan
-      guard color.getRed(&r, green: &g, blue: &b, alpha: &a)  else { return nil } // could not be converted
-
-      //guard (0.0...1.0 ~= r && 0.0...1.0 ~= g && 0.0...1.0 ~= b && 0.0...1.0 ~= a) else { return nil } // invalid sRGB color
-
-      return (red: UInt8(r * 255), green: UInt8(g * 255), blue: UInt8(b * 255), alpha: UInt8(a * 255))
-    }
-
-  }
-
-#endif
-
-// MARK: - macOS
-
-#if os(OSX)
-
-  extension Color {
-
-    /// **Mechanica**
-    ///
-    /// Returns the components that make up the color in the sRGB color space.
-    public final var rgba: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8)? {
-
-      let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
-      let compatibleSRGBColor = (rgbColorSpaces.contains(self.colorSpace)) ? self : self.usingColorSpace(.sRGB)
-
-      guard let color = compatibleSRGBColor else { return nil } // Could not be converted
-
-      var r : CGFloat = .nan, g : CGFloat = .nan, b : CGFloat = .nan, a : CGFloat = .nan
-      color.getRed(&r, green: &g, blue: &b, alpha: &a)
-
-      //guard (0.0...1.0 ~= r && 0.0...1.0 ~= g && 0.0...1.0 ~= b && 0.0...1.0 ~= a) else { return nil } // invalid sRGB color
-
-      return (red: UInt8(r * 255), green: UInt8(g * 255), blue: UInt8(b * 255), alpha: UInt8(a * 255))
-    }
-
-  }
-
-#endif
-
-// MARK: - Universal
 
 extension Color {
 
   // MARK: - sRGBA
+
+  /// Returns the color's RGBA components.
+  internal final func rgbaComponents() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
+    var r : CGFloat = .nan, g : CGFloat = .nan, b : CGFloat = .nan, a : CGFloat = .nan
+
+    #if os(iOS) || os(tvOS) || os(watchOS)
+      guard let space = cgColor.colorSpace, let colorSpaceName = space.name else { return nil }
+      let compatibleSRGBColor = (colorSpaceName == CGColorSpace.sRGB) ? self: self.convertingToCompatibleSRGBColor()
+      guard let color = compatibleSRGBColor else { return nil }
+      guard color.getRed(&r, green: &g, blue: &b, alpha: &a)  else { return nil } // could not be converted
+    #elseif os(OSX)
+      let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
+      let compatibleSRGBColor = (rgbColorSpaces.contains(self.colorSpace)) ? self : self.usingColorSpace(.sRGB)
+      guard let color = compatibleSRGBColor else { return nil } // Could not be converted
+      color.getRed(&r, green: &g, blue: &b, alpha: &a)
+    #endif
+      return (r, g, b, a)
+  }
+
+
+  /// **Mechanica**
+  ///
+  /// Returns the components that make up the color in the sRGB color space.
+  public final var rgba: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8)? {
+    guard let (r, g, b, a) = rgbaComponents() else { return nil }
+    return (red: UInt8(r * 255), green: UInt8(g * 255), blue: UInt8(b * 255), alpha: UInt8(a * 255))
+  }
 
   /// **Mechanica**
   ///
