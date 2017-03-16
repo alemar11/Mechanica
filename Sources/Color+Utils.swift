@@ -60,7 +60,7 @@ extension Color {
       guard let space = cgColor.colorSpace, let colorSpaceName = space.name else { return nil }
       let compatibleSRGBColor = (colorSpaceName == CGColorSpace.sRGB) ? self: self.convertingToCompatibleSRGBColor()
       guard let color = compatibleSRGBColor else { return nil }
-      guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)  else { return nil } // could not be converted
+      guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else { return nil } // could not be converted
     #elseif os(OSX)
       let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
       let compatibleSRGBColor = (rgbColorSpaces.contains(self.colorSpace)) ? self : self.usingColorSpace(.sRGB)
