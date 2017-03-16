@@ -94,7 +94,7 @@ extension Nib {
   /// **Mechanica**
   ///
   /// Instantiates and returns an obejct conforming to `NibLoadable` from a Nib.
-  public func instantiate<T>(withOwner owner: Any? = nil, options: [AnyHashable : Any]? = nil) -> T where T: NibLoadable {
+  public final func instantiate<T>(withOwner owner: Any? = nil, options: [AnyHashable : Any]? = nil) -> T where T: NibLoadable {
     #if os(iOS) || os(tvOS)
       let contents = self.instantiate(withOwner: owner, options: options).filter { $0 is T }
     #elseif os(macOS)

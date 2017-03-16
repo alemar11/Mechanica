@@ -34,7 +34,7 @@ extension NSManagedObjectContext {
   /// **Mechanica**
   ///
   /// Caches an `object` for a `key` in this context.
-  public func setCachedObject(_ object: NSManagedObject?, forKey key: String) {
+  public final func setCachedObject(_ object: NSManagedObject?, forKey key: String) {
     var cache = userInfo[SingleObjectCacheKey] as? SingleObjectCache ?? [:]
     cache[key] = object
     userInfo[SingleObjectCacheKey] = cache
@@ -43,7 +43,7 @@ extension NSManagedObjectContext {
   /// **Mechanica**
   ///
   /// Returns a cached object in this context for a given `key`.
-  public func cachedObject(forKey key: String) -> NSManagedObject? {
+  public final func cachedObject(forKey key: String) -> NSManagedObject? {
     guard let cache = userInfo[SingleObjectCacheKey] as? [String:NSManagedObject] else { return nil }
     return cache[key]
   }
@@ -51,7 +51,7 @@ extension NSManagedObjectContext {
   /// **Mechanica**
   ///
   /// Clears all cached object in this context.
-  public func clearCachedObjects() -> Void {
+  public final func clearCachedObjects() -> Void {
     var cache = userInfo[SingleObjectCacheKey]
     if (cache as? SingleObjectCache) != nil {
       cache = nil

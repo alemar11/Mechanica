@@ -116,7 +116,7 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the container directory associated with the specified security application group Identifier.
-  public func containerDirectory(for groupIdentifier: String) -> URL? {
+  public final func containerDirectory(for groupIdentifier: String) -> URL? {
     return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
   }
   
@@ -127,7 +127,7 @@ extension FileManager {
   /// Clears all contents in a directory `path`; throws an error in cases of failure.
   ///
   /// - Parameter path: **directory** path (if it's not a directory path, nothing is done).
-  public func clearDirectory(atPath path: String) throws {
+  public final func clearDirectory(atPath path: String) throws {
     var isDirectory: ObjCBool = false
     guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
     guard isDirectory.boolValue == true else { return }
@@ -144,7 +144,7 @@ extension FileManager {
   /// Destroys a file or a directory at a given `path`; throws an error in cases of failure.
   ///
   /// - Parameter path: directory or file path.
-  public func destroyFileOrDirectory(atPath path: String) throws {
+  public final func destroyFileOrDirectory(atPath path: String) throws {
     guard fileExists(atPath: path) == true else { return }
     try removeItem(atPath: path)
   }

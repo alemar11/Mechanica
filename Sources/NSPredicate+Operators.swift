@@ -25,39 +25,7 @@
 import Foundation
 
 extension NSPredicate {
-  
-//  /// Returns a `new` predicate formed by NOT-ing `self`.
-//  public var not: NSPredicate {
-//    return !self
-//  }
-//  
-//  /// Returns a `new` predicate formed by **AND-ing** `self` with the predicates in a given array.
-//  public func and(predicates: [NSPredicate]) -> NSPredicate {
-//    return predicates.reduce(self){$0 && $1}
-//  }
-//  
-//  /// Returns a `new` predicate formed by **AND-ing** `self` with the given predicates.
-//  public func and(predicates: NSPredicate...) -> NSPredicate {
-//    return and(predicates: predicates)
-//  }
-//  
-//  /// Returns a `new` predicate formed by AND-ing `self` with a predicate by obtained substituting the values in a given array into a format string and parsing the result.
-//  public func and(format: String, arguments: [Any]? = nil) -> NSPredicate {
-//    return and(predicates: [NSPredicate(format: format, argumentArray: arguments)])
-//  }
-//  
-//  /// Returns a `new` predicate formed by **OR-ing** `self` with the predicates in a given array.
-//  public func or(predicates: [NSPredicate]) -> NSPredicate {
-//    return predicates.reduce(self){$0 || $1}
-//  }
-  
-//  /// **Mechanica**
-//  ///
-//  /// Returns a `new` predicate formed by **OR-ing** `self` with the given predicates.
-//  public func or(predicates: NSPredicate...) -> NSPredicate {
-//    return or(predicates: predicates)
-//  }
-  
+    
   /// **Mechanica**
   ///
   /// Returns a `new` predicate formed by **AND-ing** the two predicates.

@@ -29,7 +29,7 @@ extension NSManagedObjectContext {
   /// **Mechanica**
   ///
   /// The persistent stores associated with the receiver.
-  private var stores: [NSPersistentStore] {
+  private final var stores: [NSPersistentStore] {
     guard let psc = persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
     let stores = psc.persistentStores
     return stores
@@ -38,7 +38,7 @@ extension NSManagedObjectContext {
   /// **Mechanica**
   ///
   /// Returns a dictionary that contains the metadata currently stored or to-be-stored in a given persistent store.
-  public func metaData(for store: NSPersistentStore) -> [String: Any] {
+  public final func metaData(for store: NSPersistentStore) -> [String: Any] {
     guard let psc = persistentStoreCoordinator else { fatalError("Must have Persistent Store Coordinator.") }
     return psc.metadata(for: store)
   }
@@ -51,7 +51,7 @@ extension NSManagedObjectContext {
   ///   - object: Object to be added to the medata dictionary.
   ///   - key: Object key
   ///   - store: NSPersistentStore where is stored the metadata.
-  public func setMetaDataObject(_ object: AnyObject?, with key: String, for store: NSPersistentStore) {
+  public final func setMetaDataObject(_ object: AnyObject?, with key: String, for store: NSPersistentStore) {
     performSave(after: {
       guard let psc = self.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
       var md = psc.metadata(for: store)
@@ -64,7 +64,7 @@ extension NSManagedObjectContext {
   /// **Mechanica**
   ///
   /// Returns the entity with the specified name from the managed object model associated with the specified managed object context’s persistent store coordinator.
-  public func entity(forEntityName name: String) -> NSEntityDescription {
+  public final func entity(forEntityName name: String) -> NSEntityDescription {
     guard let psc = persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
     guard let entity = psc.managedObjectModel.entitiesByName[name] else { fatalError("Entity \(name) not found.") }
     //guard let entity = NSEntityDescription.entity(forEntityName: name, in: self) else { fatalError("Entity \(name) not found") }
@@ -76,7 +76,7 @@ extension NSManagedObjectContext {
   /// - Returns: a `new` background `NSManagedObjectContext`.
   /// - Parameters:
   ///   - asChildContext: Specifies if this new context is a child context of the current context (default *false*).
-  public func newBackgroundContext(asChildContext isChildContext: Bool = false) -> NSManagedObjectContext {
+  public final func newBackgroundContext(asChildContext isChildContext: Bool = false) -> NSManagedObjectContext {
     let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
     if (isChildContext) {
       context.parent = self
@@ -97,7 +97,7 @@ extension NSManagedObjectContext {
   /// Asynchronously performs changes and then saves them or **rollbacks** if any error occurs.
   /// - Parameters:
   ///   - changes: Changes to be applied in the current context before the saving operation.
-  public func performSave(after changes: @escaping () -> ()) {
+  public final func performSave(after changes: @escaping () -> ()) {
     perform {
       [unowned unownoedSelf = self] in
       changes()
@@ -109,7 +109,7 @@ extension NSManagedObjectContext {
   ///
   /// Synchronously performs changes and then saves them or **rollbacks** if any error occurs.
   /// - Throws: throws an error in cases of a saving operation failure.
-  public func performSaveAndWait(after changes: @escaping () -> ()) throws {
+  public final func performSaveAndWait(after changes: @escaping () -> ()) throws {
     var saveError: Error? = nil
     performAndWait {
       [unowned unownoedSelf = self] in
@@ -125,7 +125,7 @@ extension NSManagedObjectContext {
   
   
   /// Saves the `NSManagedObjectContext` if changes are present or **rollbacks** if any error occurs.
-  private func saveOrRollBack() throws {
+  private final func saveOrRollBack() throws {
     guard hasChanges else { return }
     do {
       try save()

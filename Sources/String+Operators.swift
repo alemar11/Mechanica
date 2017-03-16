@@ -29,14 +29,14 @@ extension String {
   /// **Mechanica**
   ///
   /// Creates a `new` string representing the given string repeated the specified number of times.
-  static public func * (lhs: String, rhs: Int) -> String {
+  public static func * (lhs: String, rhs: Int) -> String {
     return  String(repeating: lhs, count: rhs)
   }
   
   /// **Mechanica**
   ///
   /// Creates a `new` string representing the given string repeated the specified number of times.
-  static public func * (lhs: Int, rhs: String) -> String {
+  public static func * (lhs: Int, rhs: String) -> String {
     return  String(repeating: rhs, count: lhs)
   }
   

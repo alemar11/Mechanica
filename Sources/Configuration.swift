@@ -109,7 +109,7 @@ extension BoolKeyCodable where BoolKey.RawValue == String, Self: PropertyListCon
   /// **Mechanica**
   ///
   /// Returns a `Bool` value for a `BoolKey`.
-  public func bool(forKey key: BoolKey) -> Bool {
+  public final func bool(forKey key: BoolKey) -> Bool {
     let value = propertyList.value(forKeyPath: key.rawValue) as? Bool
     assert(value.hasValue, "No Bool value found for key path: \(key.rawValue)")
     return value!
@@ -131,7 +131,7 @@ extension StringKeyCodable where StringKey.RawValue == String, Self: PropertyLis
   /// **Mechanica**
   ///
   /// Returns a `String` value for a `StringKey`.
-  public func string(forKey key: StringKey) -> String {
+  public final func string(forKey key: StringKey) -> String {
     let value = propertyList.value(forKeyPath: key.rawValue) as? String
     assert(value.hasValue, "No String value found for key path: \(key.rawValue)")
     return value!
@@ -153,7 +153,7 @@ extension URLKeyCodable where URLKey.RawValue == String, Self: PropertyListConfi
   /// **Mechanica**
   ///
   /// Returns an `URL` value (if any) for an `URLKey`.
-  public func url(forKey key: URLKey) -> URL? {
+  public final func url(forKey key: URLKey) -> URL? {
     guard let url = propertyList.value(forKeyPath: key.rawValue) as? String else { return nil }
     return URL(string: url)
   }
@@ -174,7 +174,7 @@ extension NumberKeyCodable where NumberKey.RawValue == String, Self: PropertyLis
   /// **Mechanica**
   ///
   /// Returns a `NSNumber` object for a `NumberKey`.
-  public func number(forKey key: NumberKey) -> NSNumber {
+  public final func number(forKey key: NumberKey) -> NSNumber {
     let value = propertyList.value(forKeyPath: key.rawValue) as? NSNumber
     assert(value.hasValue, "No NSNumber value found for key path: \(key.rawValue)")
     return value!
@@ -196,7 +196,7 @@ extension DateKeyCodable where DateKey.RawValue == String, Self: PropertyListCon
   /// **Mechanica**
   ///
   /// Returns a `Date` value for a `DateKey`.
-  public func date(forKey key: DateKey) -> Date {
+  public final func date(forKey key: DateKey) -> Date {
     let value = propertyList.value(forKeyPath: key.rawValue) as? Date
     assert(value.hasValue, "No Date value found for key path: \(key.rawValue)")
     return value!
@@ -218,7 +218,7 @@ extension DataKeyCodable where DataKey.RawValue == String, Self: PropertyListCon
   /// **Mechanica**
   ///
   /// Returns a `Data` value for a `DataKey`.
-  public func data(forKey key: DataKey) -> Data {
+  public final func data(forKey key: DataKey) -> Data {
     let value = propertyList.value(forKeyPath: key.rawValue) as? Data
     assert(value.hasValue, "No Bool value found for key path: \(key.rawValue)")
     return value!
@@ -240,7 +240,7 @@ extension ArrayKeyCodable where ArrayKey.RawValue == String, Self: PropertyListC
   /// **Mechanica**
   ///
   /// Returns an `Array` value for an `ArrayKey`.
-  public func array(forKey key: ArrayKey) -> Array<Any> {
+  public final func array(forKey key: ArrayKey) -> Array<Any> {
     let value = propertyList.value(forKeyPath: key.rawValue) as? Array<Any>
     assert(value.hasValue, "No Array found for key path: \(key.rawValue)")
     return value!
@@ -262,7 +262,7 @@ extension DictionaryKeyCodable where DictionaryKey.RawValue == String, Self: Pro
   /// **Mechanica**
   ///
   /// Returns a `Dictionary` value for a `DictionaryKey`.
-  public func dictionary(forKey key: DictionaryKey) -> Dictionary<String, Any> {
+  public final func dictionary(forKey key: DictionaryKey) -> Dictionary<String, Any> {
     let value = propertyList.value(forKeyPath: key.rawValue) as? Dictionary<String, Any>
     assert(value.hasValue, "No Array found for key path: \(key.rawValue)")
     return value!

@@ -188,7 +188,7 @@ public final class KeyboardObserver {
   ///   - callback: Closure of code which will be executed on `KeyboardObserver`.
   /// - Returns: `Self` for chaining purpose.
   @discardableResult
-  public func on(event: Event, do callback: Callback?) -> Self {
+  public final func on(event: Event, do callback: Callback?) -> Self {
     //if you use a typealias for a function type in a function declaration, that parameter is always considered escaping
     callbacks[event] = callback
     return self
@@ -202,7 +202,7 @@ public final class KeyboardObserver {
   /// **Mechanica**
   ///
   /// Registers for `KeyboardObserver` events and starts calling corresponding event handlers.
-  public func register() {
+  public final func register() {
     let defaultCenter = NotificationCenter.default
 
     for event in callbacks.keys {
@@ -213,7 +213,7 @@ public final class KeyboardObserver {
   /// **Mechanica**
   ///
   /// Remove all event callbacks.
-  public func clear() {
+  public final func clear() {
     callbacks.removeAll()
   }
 
@@ -221,7 +221,7 @@ public final class KeyboardObserver {
   ///
   /// Unregister from `KeyboardObserver` events.
   /// - Warning: callbacks themselves won't be dismissed.
-  public func unregister() {
+  public final func unregister() {
     let defaultCenter = NotificationCenter.default
     defaultCenter.removeObserver(self)
   }

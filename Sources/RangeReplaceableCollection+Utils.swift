@@ -42,7 +42,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// Removes the first element that matches the given `predicate` and returns a `new` collection.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func removingFirst(where predicate: (Iterator.Element) -> Bool) -> Self {
+  public final func removingFirst(where predicate: (Iterator.Element) -> Bool) -> Self {
     var items = self
     items.removeFirst(where: predicate)
     return items
@@ -69,7 +69,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// Removes the last element that matches the given `predicate` and returns a `new` collection.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func removingLast(where predicate: (Iterator.Element) -> Bool) -> Self {
+  public final func removingLast(where predicate: (Iterator.Element) -> Bool) -> Self {
     var items = self
     items.removeLast(where: predicate)
     return items
@@ -97,7 +97,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// Removes all the elements that matches the given `predicate` and returns a `new` array.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func removingAll(where predicate: (Iterator.Element) -> Bool) -> Self {
+  public final func removingAll(where predicate: (Iterator.Element) -> Bool) -> Self {
     var items = self
     items.removeAll(where: predicate)
     return items
@@ -116,7 +116,7 @@ extension RangeReplaceableCollection where Self.Index == Int, Iterator.Element: 
     guard let idx = index(of: element) else { return nil }
     return remove(at: idx)
   }
-
+  
   /// **Mechanica**
   ///
   /// Removes the last specified element from the array (if exists).

@@ -32,21 +32,21 @@ extension NSManagedObject {
   ///
   /// - parameter flag: only matters if the object has unsaved changes. In this case, a `true` value won’t turn the object into a fault; instead, it’ll update the unchanged properties from the row cache, preserving any unsaved changes. If `flag` is set to `false`, the object will be forced to turn into a fault, and unsaved changes will be lost.
   /// - note: Turning object into a fault means that strong references to related managed objects (that is, those to which object has a reference) are broken, so you can also use this method to trim a portion of your object graph you want to constrain memory usage.
-  public func refresh(mergeChanges flag: Bool = true) {
+  public final func refresh(mergeChanges flag: Bool = true) {
     managedObjectContext?.refresh(self, mergeChanges: flag)
   }
 
   /// **Mechanica**
   ///
   /// Returns the value of a persistent property that has been changed since last fetching or saving operation.
-  public func changedValue(forKey key: String) -> Any? {
+  public final func changedValue(forKey key: String) -> Any? {
     return changedValues()[key]
   }
 
   /// **Mechanica**
   ///
   /// Returns of the last fetched or saved value of the propery specified by the given key.
-  public func committedValue(forKey key: String) -> Any? {
+  public final func committedValue(forKey key: String) -> Any? {
     return committedValues(forKeys: [key])[key]
   }
 

@@ -262,7 +262,7 @@ extension Color {
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` darkened by the given percentage in the HSB color space.
-  public func darkenedHSBA(by percentage: CGFloat = 0.1) -> Color? {
+  public final func darkenedHSBA(by percentage: CGFloat = 0.1) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
     let converter: ColorConverter = {
       guard let hsba = $0.hsba else { return nil }

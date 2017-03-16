@@ -30,7 +30,7 @@ extension Collection where Iterator.Element: NSManagedObject {
   ///
   /// Fetches all faulted object in one batch executing a single fetch request for all objects that we’re interested in.
   /// - Note: Materializing all objects in one batch is faster than triggering the fault for each object on its own.
-  public func fetchFaultedObjects() {
+  public final func fetchFaultedObjects() {
     guard !self.isEmpty else { return }
     guard let context = self.first?.managedObjectContext else { fatalError("The managed object must have a context.") }
     let faults = self.filter { $0.isFault }

@@ -29,7 +29,7 @@ extension FloatingPoint {
   /// **Mechanica**
   ///
   /// Returns a `new` rounded `FloatingPoint` to specified number of decimal `places`.
-  public func rounded(to decimalPlaces: Int) -> Self {
+  public final func rounded(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
     for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
@@ -46,7 +46,7 @@ extension FloatingPoint {
   /// **Mechanica**
   ///
   /// Returns a `new` ceiled `FloatingPoint` to specified number of decimal `places`.
-  public func ceiled(to decimalPlaces: Int) -> Self {
+  public final func ceiled(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
     for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
@@ -63,7 +63,7 @@ extension FloatingPoint {
   /// **Mechanica**
   ///
   /// Returns a `new` floored `FloatingPoint` to specified number of decimal `places`.
-  public func floored(to decimalPlaces: Int) -> Self {
+  public final func floored(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
     for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
