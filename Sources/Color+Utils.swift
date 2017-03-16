@@ -29,13 +29,13 @@ import Foundation
   /// **Mechanica**
   ///
   /// Alias for UIColor.
-  public typealias Color = UIColor
+  public typealias Color = UIKit.UIColor
 #elseif os(OSX)
   import Cocoa
   /// **Mechanica**
   ///
   /// Alias for NSColor.
-  public typealias Color = NSColor
+  public typealias Color = AppKit.NSColor
 #endif
 
 

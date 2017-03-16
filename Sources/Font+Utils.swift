@@ -29,13 +29,13 @@ import Foundation
   /// **Mechanica**
   ///
   /// Alias for UIFont.
-  public typealias Font = UIFont
+  public typealias Font = UIKit.UIFont
 #elseif os(OSX)
   import Cocoa
   /// **Mechanica**
   ///
   /// Alias for NSFont.
-  public typealias Font = NSFont
+  public typealias Font = AppKit.NSFont
 #endif
 
 

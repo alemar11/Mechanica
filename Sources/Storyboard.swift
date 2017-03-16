@@ -29,13 +29,13 @@ import Foundation
   /// **Mechanica**
   ///
   /// Alias for UIStoryboard.
-  public typealias Storyboard = UIStoryboard
+  public typealias Storyboard = UIKit.UIStoryboard
 #elseif os(macOS)
   import Cocoa
   /// **Mechanica**
   ///
   /// Alias for NSStoryboard.
-  public typealias Storyboard = NSStoryboard
+  public typealias Storyboard = AppKit.NSStoryboard
 #endif
 
 // MARK: - StoryboardKeyCodable

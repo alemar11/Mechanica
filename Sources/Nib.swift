@@ -27,13 +27,13 @@
   /// **Mechanica**
   ///
   /// Alias for UINib.
-  public typealias Nib = UINib
+  public typealias Nib = UIKit.UINib
 #elseif os(macOS)
   import Cocoa
   /// **Mechanica**
   ///
   /// Alias for NSNib.
-  public typealias Nib = NSNib
+  public typealias Nib = AppKit.NSNib
 #endif
 
 // MARK: - NibKeyCodable
