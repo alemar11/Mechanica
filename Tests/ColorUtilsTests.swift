@@ -28,6 +28,7 @@ import XCTest
 class ColorUtilsTests: XCTestCase {
 
   func test_rgba8bit() {
+    
     do {
       let red = Color.red // 1.0, 0.0, 0.0
       XCTAssertNotNil(red.rgba8Bit)
@@ -47,9 +48,10 @@ class ColorUtilsTests: XCTestCase {
       XCTAssert(b == 0)
       XCTAssert(a == 255)
     }
+    
   }
 
-  func test_color_components() {
+  func test_colorRgbaComponents() {
     //orange (255,165,0)
     do {
       #if os(iOS) || os(tvOS) || os(watchOS)
@@ -65,8 +67,8 @@ class ColorUtilsTests: XCTestCase {
       XCTAssert(a == 255)
     }
 
-    do{
-      #if os(OSX)
+    #if os(OSX)
+    do {
         let orange_custom = Color(red: 255/255, green: 165/255, blue: 0, alpha: 1)
         let orange_calibrated = Color(calibratedRed: 255/255, green: 165/255, blue: 0, alpha: 1)
         let orange_device = Color(deviceRed: 255/255, green: 165/255, blue: 0, alpha: 1)
@@ -76,8 +78,9 @@ class ColorUtilsTests: XCTestCase {
         XCTAssert(orange_custom.rgba8Bit! == (255,165,0,255))
         XCTAssert(orange_calibrated.rgba8Bit! == (255,165,0,255))
         XCTAssert(orange_device.rgba8Bit! == (255,165,0,255))
-      #endif
     }
+    #endif
+
   }
 
   func test_hex() {
@@ -217,9 +220,7 @@ class ColorUtilsTests: XCTestCase {
       /// P3{132,72,168,255}}
       let wisteriaP3 = Color(displayP3Red: 132/255, green: 72/255, blue: 168/255, alpha: 255/255)
 
-
       /// RGBA_FROM_P3{141, 68, 173, 255}
-
       let (r_p3, g_p3, b_p3, a_p3) = wisteriaP3.rgba8Bit!
       let (r, g, b, a) = wisteriaRGBA.rgba8Bit!
 
@@ -227,8 +228,8 @@ class ColorUtilsTests: XCTestCase {
       XCTAssertTrue(g-1...g+1 ~= g_p3)
       XCTAssertTrue(b-1...b+1 ~= b_p3)
       XCTAssertTrue(a == a_p3)
-
     }
+    
   }
 
   func test_randomColor() {
