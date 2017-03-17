@@ -24,34 +24,58 @@
 
 import Foundation
 
-extension SignedInteger {
+extension Integer {
 
   /// **Mechanica**
   ///
   /// Determine if self is even (equivalent to `self % 2 == 0`).
-  public var isEven: Bool {
+  public final var isEven: Bool {
     return (self % 2 == 0)
   }
 
   /// **Mechanica**
   ///
   /// Determine if self is odd (equivalent to `self % 2 != 0`).
-  public var isOdd: Bool {
+  public final var isOdd: Bool {
     return (self % 2 != 0)
   }
 
   /// **Mechanica**
   ///
   /// Determine if self is positive (equivalent to `self > 0`).
-  public var isPositive: Bool {
+  public final var isPositive: Bool {
     return (self > 0)
   }
 
   /// **Mechanica**
   ///
   /// Determine if self is negative (equivalent to `self < 0`).
-  public var isNegative: Bool {
+  public final var isNegative: Bool {
     return (self < 0)
+  }
+
+}
+
+extension SignedInteger {
+
+  /// **Mechanica**
+  ///
+  /// Creates a string representing the given value in the binary base.
+  ///
+  /// `255.binaryString` //"11111111"
+  ///
+  public final func binaryString() -> String {
+    return String(self, radix: 2)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Creates a string representing the given value in the hexadecimal base.
+  ///
+  /// `255.hexadecimalString` //"ff"
+  ///
+  public final func hexadecimalString(uppercase: Bool = true) -> String {
+    return String(self, radix: 16, uppercase: false)
   }
   
 }
