@@ -1,5 +1,5 @@
 //
-//  SignedInteger+Utils.swift
+//  Integer+Utils.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -24,26 +24,34 @@
 
 import Foundation
 
-extension SignedInteger {
+extension Integer {
 
   /// **Mechanica**
   ///
-  /// Creates a string representing the given value in the binary base.
-  ///
-  /// `255.binaryString` //"11111111"
-  ///
-  public final func binaryString() -> String {
-    return String(self, radix: 2)
+  /// Determine if self is even (equivalent to `self % 2 == 0`).
+  public final var isEven: Bool {
+    return (self % 2 == 0)
   }
 
   /// **Mechanica**
   ///
-  /// Creates a string representing the given value in the hexadecimal base.
+  /// Determine if self is odd (equivalent to `self % 2 != 0`).
+  public final var isOdd: Bool {
+    return (self % 2 != 0)
+  }
+
+  /// **Mechanica**
   ///
-  /// `255.hexadecimalString` //"ff"
+  /// Determine if self is positive (equivalent to `self > 0`).
+  public final var isPositive: Bool {
+    return (self > 0)
+  }
+
+  /// **Mechanica**
   ///
-  public final func hexadecimalString(uppercase: Bool = true) -> String {
-    return String(self, radix: 16, uppercase: false)
+  /// Determine if self is negative (equivalent to `self < 0`).
+  public final var isNegative: Bool {
+    return (self < 0)
   }
   
 }
