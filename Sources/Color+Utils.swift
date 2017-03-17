@@ -40,19 +40,45 @@ import Foundation
 
 
 extension Color {
-  
+
+  fileprivate typealias ColorConverter = (Color) -> Color?
+
+  fileprivate final func processingColor(using converter: ColorConverter) -> Color? { return converter(self) }
+
+  /// **Mechanica**
+  ///
+  /// Returns the hexadecimal string representation of `self` in the sRGB space.
+  public final var hexString: String {
+    return String(format:"#%06x", rgb32Bit)
+  }
+
+  // MARK: - Miscellanea
+
+  /// **Mechanica**
+  ///
+  /// Initializes and returns a **random** color object in the sRGB space.
+  public static func random() -> Color {
+    //drand48() generates a random number between 0 to 1
+    let red = CGFloat(drand48()), green = CGFloat(drand48()), blue = CGFloat(drand48()), alpha = CGFloat(drand48())
+    #if os(iOS) || os(tvOS) || os(watchOS)
+      return Color(red: red, green: green, blue: blue, alpha: alpha)
+    #else
+      return Color(srgbRed: red, green: green, blue: blue, alpha: alpha)
+    #endif
+  }
+
+}
+
+
+// MARK: - sRGBA
+
+extension Color {
+
   /// **Mechanica**
   ///
   /// Alias for RGBA color space components
   public typealias RGBA = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
-  
-  /// **Mechanica**
-  ///
-  /// Alias for HSBA color space components
-  public typealias HSBA = (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat)
-  
-  // MARK: - sRGBA
-  
+
   /// Returns the color's RGBA components.
   public final var rgba: RGBA? {
     var red : CGFloat = .nan, green : CGFloat = .nan, blue : CGFloat = .nan, alpha : CGFloat = .nan
@@ -69,32 +95,32 @@ extension Color {
     #endif
     return (red, green, blue, alpha)
   }
-  
-  
+
+
   /// **Mechanica**
   ///
   /// Returns the components (in 8 bit) that make up the color in the sRGB color space.
-  public final var rgba8Bit: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8)? {
-    guard let components = rgba else { return nil }
+  public final var rgba8Bit: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8) {
+    guard let components = rgba else { fatalError("Couldn't calculate RGBA values") }
     return (red: UInt8(components.red * 255), green: UInt8(components.green * 255), blue: UInt8(components.blue * 255), alpha: UInt8(components.alpha * 255))
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns an UInt32 representation of `self` in the sRGB space without alpha channel.
-  private final var rgb32Bit: UInt32 {
-    guard let components = rgba8Bit else { fatalError("Couldn't calculate RGBA values") }
+  public final var rgb32Bit: UInt32 {
+    let components = rgba8Bit
     return (UInt32(components.red) << 16) | (UInt32(components.green) << 8) | UInt32(components.blue)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns an UInt32 representation of `self` in the sRGB space with alpha channel.
-  private final var rgba32Bit: UInt32 {
-    guard let components = rgba8Bit else { fatalError("Couldn't calculate RGBA values.") }
+  public final var rgba32Bit: UInt32 {
+    let components = rgba8Bit
     return (UInt32(components.red) << 32) | (UInt32(components.green) << 16) | UInt32(components.blue) << 8 | UInt32(components.alpha)
   }
-  
+
   /// **Mechanica**
   ///
   /// Creates a `new` color in the **sRGB** color space that matches (or *closely approximates*) the current color.
@@ -109,9 +135,48 @@ extension Color {
       return compatibleSRGBColor
     #endif
   }
-  
-  // MARK: - Initializers
-  
+
+  /// **Mechanica**
+  ///
+  /// Mixes the given color object with the receiver. Specifically, takes the average of each of the RGB components, optionally weighted by the given percentage.
+  ///
+  /// - Parameters:
+  ///   - color: color to be mixed.
+  ///   - percentage: mixing weight. (by default (0.5) takes the average of each of the RGBA components.
+  /// - Returns: a `new color` mixing `self` with the given `color`.
+  /// - Note: See [lighter and darker color](http://stackoverflow.com/questions/11598043/get-slightly-lighter-and-darker-color-from-uicolor/23120676#23120676)
+  public final func mixing(with color: Color, by percentage: CGFloat = 0.5) -> Color? {
+    let converter: ColorConverter = {
+      guard let (r1, g1, b1, a1) = $0.rgba, let (r2, g2, b2, a2) = color.rgba else { return nil }
+      return Color(red: r1+percentage*(r2-r1), green: g1+percentage*(g2-g1), blue: b1+percentage*(b2-b1), alpha: a1+percentage*(a2-a1))
+    }
+    return processingColor(using: converter)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` color derived from `self` darkened by the given percentage in the RGBA color space.
+  public final func darkened(by percentage: CGFloat = 0.1) -> Color? {
+    //return mixing(with: .black, by: percentage)
+    guard let (r, g, b, a) = rgba else { return nil }
+    return Color(red: r - percentage, green: g - percentage, blue: b - percentage, alpha: a)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` color derived from `self` lightened by the given percentage in the RGBA color space.
+  public final func lightened(by percentage: CGFloat = 0.1) -> Color? {
+    //return mixing(with: .white, by: percentage)
+    guard let (r, g, b, a) = rgba else { return nil }
+    return Color(red: r + percentage, green: g + percentage, blue: b + percentage, alpha: a)
+  }
+}
+
+
+// MARK: - Initializers
+
+extension Color {
+
   /// **Mechanica**
   ///
   /// Returns a sRGB color from a hexadecimal integer.
@@ -129,7 +194,7 @@ extension Color {
       self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
     #endif
   }
-  
+
   /// **Mechanica**
   ///
   /// Creates and returns an Color object given an hex color string.
@@ -160,16 +225,18 @@ extension Color {
     let a = CGFloat((hexEquivalent & 0x000000FF) >> 00) / 255.0
     self.init(red: r, green: g, blue: b, alpha: a)
   }
-  
+
+}
+
+// MARK: - HSBA
+
+extension Color {
+
   /// **Mechanica**
   ///
-  /// Returns the hexadecimal string representation of `self` in the sRGB space.
-  public final var hexString: String {
-    return String(format:"#%06x", rgb32Bit)
-  }
-  
-  // MARK: - HSBA
-  
+  /// Alias for HSBA color space components
+  public typealias HSBA = (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat)
+
   /// **Mechanica**
   ///
   /// Returns the components that make up the color in the HSBA color space.
@@ -182,87 +249,26 @@ extension Color {
     #endif
     return (hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
   }
-  
-  // MARK: - Miscellanea
-  
-  /// **Mechanica**
-  ///
-  /// Initializes and returns a **random** color object in the sRGB space.
-  public static func random() -> Color {
-    //drand48() generates a random number between 0 to 1
-    let red = CGFloat(drand48()), green = CGFloat(drand48()), blue = CGFloat(drand48()), alpha = CGFloat(drand48())
-    #if os(iOS) || os(tvOS) || os(watchOS)
-      return Color(red: red, green: green, blue: blue, alpha: alpha)
-    #else
-      return Color(srgbRed: red, green: green, blue: blue, alpha: alpha)
-    #endif
-  }
-  
-  
-}
 
-// MARK: - Converters
-
-extension Color {
-  
-  private typealias ColorConverter = (Color) -> Color?
-  
-  private final func processingColor(using converter: ColorConverter) -> Color? { return converter(self) }
-  
   /// **Mechanica**
   ///
-  /// Mixes the given color object with the receiver. Specifically, takes the average of each of the RGB components, optionally weighted by the given percentage.
-  ///
-  /// - Parameters:
-  ///   - color: color to be mixed.
-  ///   - percentage: mixing weight. (by default (0.5) takes the average of each of the RGBA components.
-  /// - Returns: a `new color` mixing `self` with the given `color`.
-  /// - Note: See [lighter and darker color](http://stackoverflow.com/questions/11598043/get-slightly-lighter-and-darker-color-from-uicolor/23120676#23120676)
-  public final func mixingRGBA(with color: Color, by percentage: CGFloat = 0.5) -> Color? {
-    let converter: ColorConverter = {
-      guard let (r1, g1, b1, a1) = $0.rgba, let (r2, g2, b2, a2) = color.rgba else { return nil }
-      return Color(red: r1+percentage*(r2-r1), green: g1+percentage*(g2-g1), blue: b1+percentage*(b2-b1), alpha: a1+percentage*(a2-a1))
-    }
-    return processingColor(using: converter)
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Returns a `new` color derived from `self` darkened by the given percentage in the RGBA color space.
-  public final func darkenedRGBA(by percentage: CGFloat = 0.1) -> Color? {
-    //return mixingRGBA(with: .black, by: percentage)
-    guard let (r, g, b, a) = rgba else { return nil }
-    return Color(red: r - percentage, green: g - percentage, blue: b - percentage, alpha: a)
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Returns a `new` color derived from `self` lightened by the given percentage in the RGBA color space.
-  public final func lightenedRGBA(by percentage: CGFloat = 0.1) -> Color? {
-    //return mixingRGBA(with: .white, by: percentage)
-    guard let (r, g, b, a) = rgba else { return nil }
-    return Color(red: r + percentage, green: g + percentage, blue: b + percentage, alpha: a)
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Returns a `new` color derived from `self` lightened by the given percentage in the HSB color space.
-  public final func lightenedHSBA(by percentage: CGFloat = 0.1) -> Color? {
+  /// Returns a `new` color derived from `self` lightened increasing the brightness by a `percentage` in the HSB color space.
+  public final func lightened(byIncreasingBrightness percentage: CGFloat = 0.1) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
     let converter: ColorConverter = {
       guard let hsba = $0.hsba else { return nil }
       //let percentage: CGFloat = min(max(percentage, -1), 1)
       //let newBrightness = min(max(hsba.brightness + percentage, -1), 1)
       return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: hsba.brightness + percentage, alpha: hsba.alpha)
-      
+
     }
     return processingColor(using: converter)
   }
-  
+
   /// **Mechanica**
   ///
-  /// Returns a `new` color derived from `self` darkened by the given percentage in the HSB color space.
-  public final func darkenedHSBA(by percentage: CGFloat = 0.1) -> Color? {
+  /// Returns a `new` color derived from `self` darkened decreasing the brightness by a `percentage` in the HSB color space.
+  public final func darkened(byDecreasingBrightness percentage: CGFloat = 0.1) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
     let converter: ColorConverter = {
       guard let hsba = $0.hsba else { return nil }
@@ -270,12 +276,12 @@ extension Color {
     }
     return processingColor(using: converter)
   }
-  
+
   /// **Mechanica**
   ///
-  /// Returns a `new` color derived from `self` saturating the hue by a `percentage` n the HSB color space, making it more intense and darker .
-  /// - Note: Saturation makes the color less or more closer to white.
-  public final func shadedHSBA(by percentage: CGFloat = 0.1) -> Color? {
+  /// Returns a `new` color derived from `self` saturating the hue (increasing the saturation) by a `percentage` in the HSB color space, making it more intense and darker.
+  /// - Note: Increasing the saturation makes the color less closer to white.
+  public final func shaded(byIncreasingSaturation percentage: CGFloat = 0.1) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
     let converter: ColorConverter = {
       guard let hsba = $0.hsba else { return nil }
@@ -283,12 +289,12 @@ extension Color {
     }
     return processingColor(using: converter)
   }
-  
+
   /// **Mechanica**
   ///
-  /// Returns a `new` color derived from `self` desaturating the hue by a `percentage` in the HSB color space, making it less intense.
-  /// - Note: Saturation makes the color less or more closer to white.
-  public final func tintedHSBA(by percentage: CGFloat = 0.1) -> Color? {
+  /// Returns a `new` color derived from `self` desaturating the hue (decreasing the saturation) by a `percentage` in the HSB color space, making it less intense.
+  /// - Note: Decreasing the saturation makes the color closer to white.
+  public final func tinted(byDecreasingSaturation percentage: CGFloat = 0.1) -> Color? {
     if percentage == 0 { return self.copy() as? Color }
     let converter: ColorConverter = {
       guard let hsba = $0.hsba else { return nil }
@@ -296,16 +302,18 @@ extension Color {
     }
     return processingColor(using: converter)
   }
-  
+
 }
 
-// TODO: - wip
-//extension Color {
-//
-//    private func isEqual(to color: UIColor, withTolerance tolerance: CGFloat = 0.0) -> Bool{
-//      guard let (r1, g1, b1, a1) = rgba, let (r2, g2, b2, a2) = color.rgba else { return false }
-//      return fabs(r1 - r2) <= tolerance && fabs(g1 - g2) <= tolerance && fabs(b1 - b2) <= tolerance && fabs(a1 - a2) <= tolerance
-//    }
-//
-//}
+extension Color {
+
+  private func isEqual(to color: UIColor, withTolerance tolerance: CGFloat = 0.0) -> Bool{
+    if (self ~= color) {
+
+    }
+    guard let (r1, g1, b1, a1) = rgba, let (r2, g2, b2, a2) = color.rgba else { return false }
+    return fabs(r1 - r2) <= tolerance && fabs(g1 - g2) <= tolerance && fabs(b1 - b2) <= tolerance && fabs(a1 - a2) <= tolerance
+  }
+
+}
 
