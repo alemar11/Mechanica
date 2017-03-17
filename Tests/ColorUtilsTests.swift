@@ -32,7 +32,7 @@ class ColorUtilsTests: XCTestCase {
     do {
       let red = Color.red // 1.0, 0.0, 0.0
       XCTAssertNotNil(red.rgba8Bit)
-      let (r,g,b,a) = red.rgba8Bit!
+      let (r,g,b,a) = red.rgba8Bit
       XCTAssert(r == 255)
       XCTAssert(g == 0)
       XCTAssert(b == 0)
@@ -42,7 +42,7 @@ class ColorUtilsTests: XCTestCase {
     do {
       let black = Color.black // 0.0, 0.0, 0.0
       XCTAssertNotNil(black.rgba8Bit)
-      let (r,g,b,a) = black.rgba8Bit!
+      let (r,g,b,a) = black.rgba8Bit
       XCTAssert(r == 0)
       XCTAssert(g == 0)
       XCTAssert(b == 0)
@@ -60,7 +60,7 @@ class ColorUtilsTests: XCTestCase {
         let orange = Color(srgbRed: 255/255, green: 165/255, blue: 0, alpha: 1)
       #endif
       XCTAssertNotNil(orange.rgba8Bit)
-      let (r,g,b,a) = orange.rgba8Bit!
+      let (r,g,b,a) = orange.rgba8Bit
       XCTAssert(r == 255)
       XCTAssert(g == 165)
       XCTAssert(b == 0)
@@ -75,9 +75,9 @@ class ColorUtilsTests: XCTestCase {
         XCTAssertNotNil(orange_custom.rgba8Bit)
         XCTAssertNotNil(orange_calibrated.rgba8Bit)
         XCTAssertNotNil(orange_device.rgba8Bit)
-        XCTAssert(orange_custom.rgba8Bit! == (255,165,0,255))
-        XCTAssert(orange_calibrated.rgba8Bit! == (255,165,0,255))
-        XCTAssert(orange_device.rgba8Bit! == (255,165,0,255))
+        XCTAssert(orange_custom.rgba8Bit == (255,165,0,255))
+        XCTAssert(orange_calibrated.rgba8Bit == (255,165,0,255))
+        XCTAssert(orange_device.rgba8Bit == (255,165,0,255))
     }
     #endif
 
@@ -88,7 +88,7 @@ class ColorUtilsTests: XCTestCase {
       //purple (85,26,139) "#551a8b"
       let purple = Color(hexString: "#551a8b" )
       XCTAssertNotNil(purple)
-      let (r,g,b,a) = purple!.rgba8Bit!
+      let (r,g,b,a) = purple!.rgba8Bit
       XCTAssert(r == 85)
       XCTAssert(g == 26)
       XCTAssert(b == 139)
@@ -99,7 +99,7 @@ class ColorUtilsTests: XCTestCase {
       //purple (85,26,139) "#551a8b"
       let purple = Color(hexString: "#551A8B" )
       XCTAssertNotNil(purple)
-      let (r,g,b,a) = purple!.rgba8Bit!
+      let (r,g,b,a) = purple!.rgba8Bit
       XCTAssert(r == 85)
       XCTAssert(g == 26)
       XCTAssert(b == 139)
@@ -110,7 +110,7 @@ class ColorUtilsTests: XCTestCase {
       //green (0,128,0) "#008000"
       let green = Color(hexString: "#008000" )
       XCTAssertNotNil(green)
-      let (r,g,b,a) = green!.rgba8Bit!
+      let (r,g,b,a) = green!.rgba8Bit
       XCTAssert(r == 0)
       XCTAssert(g == 128)
       XCTAssert(b == 0)
@@ -135,15 +135,15 @@ class ColorUtilsTests: XCTestCase {
 
       let red = Color(hexString: "f00" )
       XCTAssertNotNil(red)
-      XCTAssert(red!.rgba8Bit! == Color.red.rgba8Bit!)
+      XCTAssert(red!.rgba8Bit == Color.red.rgba8Bit)
 
       let white = Color(hexString: "fff" )
       XCTAssertNotNil(white)
-      XCTAssert(white!.rgba8Bit! == Color.white.rgba8Bit!)
+      XCTAssert(white!.rgba8Bit == Color.white.rgba8Bit)
 
       let yellow = Color(hexString: "ff0" )
       XCTAssertNotNil(yellow)
-      XCTAssert(yellow!.rgba8Bit! == Color.yellow.rgba8Bit!)
+      XCTAssert(yellow!.rgba8Bit == Color.yellow.rgba8Bit)
     }
 
     do {
@@ -170,8 +170,8 @@ class ColorUtilsTests: XCTestCase {
     let redRGBA = Color.red //Color(red: 255/255, green: 0/255, blue: 0/255, alpha: 255/255)
     let redExtended = Color(red: 1.358, green: -0.074, blue:  -0.012, alpha: 255/255)
 
-    XCTAssert(redP3.rgba8Bit! == redRGBA.rgba8Bit!)
-    XCTAssert(redExtended.rgba8Bit! == redRGBA.rgba8Bit!)
+    XCTAssert(redP3.rgba8Bit == redRGBA.rgba8Bit)
+    XCTAssert(redExtended.rgba8Bit == redRGBA.rgba8Bit)
 
     /// Converting a color from an extended sRGB space to sRGB, involves an approximation in the new RGBA values.
     /// (usingColorSpace(_:) documentation: "Although the new color might have different component values, it looks the same as the original.")
@@ -185,8 +185,8 @@ class ColorUtilsTests: XCTestCase {
 
       /// RGBA_FROM_P3{152, 101, 51, 255}
 
-      let (r_p3, g_p3, b_p3, a_p3) = brownP3.rgba8Bit!
-      let (r, g, b, a) = brownRGBA.rgba8Bit!
+      let (r_p3, g_p3, b_p3, a_p3) = brownP3.rgba8Bit
+      let (r, g, b, a) = brownRGBA.rgba8Bit
 
       XCTAssertTrue(r-1...r+1 ~= r_p3)
       XCTAssertTrue(g-1...g+1 ~= g_p3)
@@ -204,8 +204,8 @@ class ColorUtilsTests: XCTestCase {
 
       /// RGBA_FROM_P3{52, 152, 218, 255}
 
-      let (r_p3, g_p3, b_p3, a_p3) = peterRiverP3.rgba8Bit!
-      let (r, g, b, a) = peterRiverRGBA.rgba8Bit!
+      let (r_p3, g_p3, b_p3, a_p3) = peterRiverP3.rgba8Bit
+      let (r, g, b, a) = peterRiverRGBA.rgba8Bit
 
       XCTAssertTrue(r-1...r+1 ~= r_p3)
       XCTAssertTrue(g-1...g+1 ~= g_p3)
@@ -221,8 +221,8 @@ class ColorUtilsTests: XCTestCase {
       let wisteriaP3 = Color(displayP3Red: 132/255, green: 72/255, blue: 168/255, alpha: 255/255)
 
       /// RGBA_FROM_P3{141, 68, 173, 255}
-      let (r_p3, g_p3, b_p3, a_p3) = wisteriaP3.rgba8Bit!
-      let (r, g, b, a) = wisteriaRGBA.rgba8Bit!
+      let (r_p3, g_p3, b_p3, a_p3) = wisteriaP3.rgba8Bit
+      let (r, g, b, a) = wisteriaRGBA.rgba8Bit
 
       XCTAssertTrue(r-1...r+1 ~= r_p3)
       XCTAssertTrue(g-1...g+1 ~= g_p3)
