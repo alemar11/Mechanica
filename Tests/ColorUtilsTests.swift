@@ -27,8 +27,14 @@ import XCTest
 
 class ColorUtilsTests: XCTestCase {
 
+  func test_rgba() {
+    XCTAssertTrue(Color.red.rgba! == (1.0, 0.0, 0.0, 1.0))
+    XCTAssertTrue(Color.yellow.rgba! == (1.0, 1.0, 0.0, 1.0))
+    XCTAssertTrue(Color.black.rgba! == (0.0, 0.0, 0.0, 1.0))
+  }
+
   func test_rgba8bit() {
-    
+
     do {
       let red = Color.red // 1.0, 0.0, 0.0
       XCTAssertNotNil(red.rgba8Bit)
@@ -48,10 +54,7 @@ class ColorUtilsTests: XCTestCase {
       XCTAssert(b == 0)
       XCTAssert(a == 255)
     }
-    
-  }
 
-  func test_colorRgbaComponents() {
     //orange (255,165,0)
     do {
       #if os(iOS) || os(tvOS) || os(watchOS)
@@ -68,7 +71,7 @@ class ColorUtilsTests: XCTestCase {
     }
 
     #if os(OSX)
-    do {
+      do {
         let orange_custom = Color(red: 255/255, green: 165/255, blue: 0, alpha: 1)
         let orange_calibrated = Color(calibratedRed: 255/255, green: 165/255, blue: 0, alpha: 1)
         let orange_device = Color(deviceRed: 255/255, green: 165/255, blue: 0, alpha: 1)
@@ -78,8 +81,32 @@ class ColorUtilsTests: XCTestCase {
         XCTAssert(orange_custom.rgba8Bit == (255,165,0,255))
         XCTAssert(orange_calibrated.rgba8Bit == (255,165,0,255))
         XCTAssert(orange_device.rgba8Bit == (255,165,0,255))
-    }
+      }
     #endif
+
+  }
+
+  func test_rgb32Bit() {
+    XCTAssertTrue(Color.red.rgb32Bit == 16711680)
+    XCTAssertTrue(Color.yellow.rgb32Bit == 16776960)
+  }
+
+  func test_rgba32Bit() {
+    do {
+      XCTAssertTrue(Color.red.rgba32Bit == 4278190335)
+      let hexString = Int(Color.red.rgba32Bit).hexadecimalString()
+      let red = Color(hexString: hexString)
+      XCTAssertNotNil(red)
+      XCTAssertEqual(red, Color.red)
+    }
+
+    do {
+      XCTAssertTrue(Color.yellow.rgba32Bit == 4294902015)
+      let hexString = Int(Color.yellow.rgba32Bit).hexadecimalString()
+      let red = Color(hexString: hexString)
+      XCTAssertNotNil(red)
+      XCTAssertEqual(red, Color.yellow)
+    }
 
   }
 
@@ -229,7 +256,7 @@ class ColorUtilsTests: XCTestCase {
       XCTAssertTrue(b-1...b+1 ~= b_p3)
       XCTAssertTrue(a == a_p3)
     }
-    
+
   }
 
   func test_randomColor() {
@@ -245,7 +272,7 @@ class ColorUtilsTests: XCTestCase {
     #else
       XCTAssert(colorSpaceName! == CGColorSpace.sRGB)
     #endif
-
+    
   }
-
+  
 }
