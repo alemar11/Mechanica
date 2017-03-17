@@ -156,6 +156,7 @@ extension Color {
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` darkened by the given percentage in the RGBA color space.
+  /// - Note: The `new` color is obtained mixing `self` with the black color.
   public final func darkened(by percentage: CGFloat = 0.1) -> Color? {
     //return mixing(with: .black, by: percentage)
     guard let (r, g, b, a) = rgba else { return nil }
@@ -165,6 +166,7 @@ extension Color {
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` lightened by the given percentage in the RGBA color space.
+  /// - Note: The `new` color is obtained mixing `self` with the white color.
   public final func lightened(by percentage: CGFloat = 0.1) -> Color? {
     //return mixing(with: .white, by: percentage)
     guard let (r, g, b, a) = rgba else { return nil }
@@ -285,7 +287,7 @@ extension Color {
     if percentage == 0 { return self.copy() as? Color }
     let converter: ColorConverter = {
       guard let hsba = $0.hsba else { return nil }
-      return Color(hue: hsba.hue, saturation: hsba.saturation + percentage, brightness: hsba.brightness - percentage, alpha: hsba.alpha)
+      return Color(hue: hsba.hue, saturation: hsba.saturation + percentage, brightness: hsba.brightness, alpha: hsba.alpha)
     }
     return processingColor(using: converter)
   }
@@ -298,7 +300,7 @@ extension Color {
     if percentage == 0 { return self.copy() as? Color }
     let converter: ColorConverter = {
       guard let hsba = $0.hsba else { return nil }
-      return Color(hue: hsba.hue, saturation: hsba.saturation - percentage, brightness: hsba.brightness - percentage, alpha: hsba.alpha)
+      return Color(hue: hsba.hue, saturation: hsba.saturation - percentage, brightness: hsba.brightness, alpha: hsba.alpha)
     }
     return processingColor(using: converter)
   }

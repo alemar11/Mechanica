@@ -27,6 +27,8 @@ import XCTest
 
 class ColorUtilsTests: XCTestCase {
 
+  // MARK - RGBA
+
   func test_rgba() {
     XCTAssertTrue(Color.red.rgba! == (1.0, 0.0, 0.0, 1.0))
     XCTAssertTrue(Color.yellow.rgba! == (1.0, 1.0, 0.0, 1.0))
@@ -92,6 +94,7 @@ class ColorUtilsTests: XCTestCase {
   }
 
   func test_rgba32Bit() {
+
     do {
       XCTAssertTrue(Color.red.rgba32Bit == 4278190335)
       let hexString = Int(Color.red.rgba32Bit).hexadecimalString()
@@ -111,6 +114,7 @@ class ColorUtilsTests: XCTestCase {
   }
 
   func test_hex() {
+
     do {
       //purple (85,26,139) "#551a8b"
       let purple = Color(hexString: "#551a8b" )
@@ -206,12 +210,11 @@ class ColorUtilsTests: XCTestCase {
     do {
       /// RGBA{153, 102, 51}
       let brownRGBA = Color.brown
+
       /// P3{145, 104, 60}
       let brownP3 = Color(displayP3Red: 145/255, green: 104/255, blue: 60/255, alpha: 255/255)
 
-
       /// RGBA_FROM_P3{152, 101, 51, 255}
-
       let (r_p3, g_p3, b_p3, a_p3) = brownP3.rgba8Bit
       let (r, g, b, a) = brownRGBA.rgba8Bit
 
@@ -259,6 +262,21 @@ class ColorUtilsTests: XCTestCase {
 
   }
 
+  func test_lightened() {
+    XCTAssertEqual(Color.gray.lightened(by: 0.5), UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1))
+    XCTAssertEqual(Color.red.lightened(by: 0.5), UIColor(red: 1.5, green: 0.5, blue: 0.5, alpha: 1))
+    XCTAssertEqual(Color.green.lightened(by: 0.5), UIColor(red: 0.5, green: 1.5, blue: 0.5, alpha: 1))
+    XCTAssertEqual(Color.blue.lightened(by: 0.5), UIColor(red: 0.5, green: 0.5, blue: 1.5, alpha: 1))
+  }
+
+  func test_darkened() {
+    XCTAssertEqual(Color.gray.darkened(by: 0.5), Color(red: 0, green: 0, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.red.darkened(by: 0.5), Color(red: 0.5, green: -0.5, blue: -0.5, alpha: 1))
+    XCTAssertEqual(Color.green.darkened(by: 0.5), Color(red: -0.5, green: 0.5, blue: -0.5, alpha: 1))
+    XCTAssertEqual(Color.blue.darkened(by: 0.5), Color(red: -0.5, green: -0.5, blue: 0.5, alpha: 1))
+  }
+
+
   func test_randomColor() {
 
     let randomColor = Color.random()
@@ -272,7 +290,82 @@ class ColorUtilsTests: XCTestCase {
     #else
       XCTAssert(colorSpaceName! == CGColorSpace.sRGB)
     #endif
-    
+
+  }
+
+  func test_mixingColor() {
+    let red = Color.red
+    let yellow = Color.yellow
+    let orange = red.mixing(with: yellow, by: 0.5) //half red and half yellow
+    XCTAssertNotNil(orange)
+    XCTAssertTrue(orange! == Color.orange)
+  }
+
+
+  // MARK - Initializers
+
+  func test_initHex() {
+    XCTAssertEqual(Color(hex: 0xFF0000), Color.red)
+    XCTAssertEqual(Color(hex: 0x00FF00), Color.green)
+    XCTAssertEqual(Color(hex: 0x0000FF), Color.blue)
+    XCTAssertEqual(Color(hex: 0xFF0000, alpha: 0.5), Color.red.withAlphaComponent(0.5))
+    XCTAssertEqual(Color(hex: 0x00FF00, alpha: 0.5), Color.green.withAlphaComponent(0.5))
+    XCTAssertEqual(Color(hex: 0x0000FF, alpha: 0.5), Color.blue.withAlphaComponent(0.5))
+  }
+
+  // MARK - HSBA
+
+  func test_hsba() {
+
+    do {
+      let hsba = Color.Flat.peterRiver.hsba
+      XCTAssertNotNil(hsba)
+      let color = Color(hue: hsba!.hue, saturation: hsba!.saturation, brightness: hsba!.brightness, alpha: hsba!.alpha)
+      XCTAssertTrue( Color.Flat.peterRiver.rgba8Bit == color.rgba8Bit)
+    }
+
+    do {
+      let hsba = Color.red.hsba
+      XCTAssertNotNil(hsba)
+      let color = Color(hue: hsba!.hue, saturation: hsba!.saturation, brightness: hsba!.brightness, alpha: hsba!.alpha)
+      XCTAssertTrue( Color.red.rgba8Bit == color.rgba8Bit)
+    }
+
+    do {
+      let hsba = Color.white.hsba
+      XCTAssertNotNil(hsba)
+      let color = Color(hue: hsba!.hue, saturation: hsba!.saturation, brightness: hsba!.brightness, alpha: hsba!.alpha)
+      XCTAssertTrue( Color.white.rgba8Bit == color.rgba8Bit)
+    }
+
+  }
+
+  func test_lightenedByIncreasingBrightness() {
+    XCTAssertEqual(Color.gray.lightened(byIncreasingBrightness: 0.5), Color(red: 1.0, green: 1.0, blue: 1.0, alpha: 1))
+    XCTAssertEqual(Color.red.lightened(byIncreasingBrightness: 0.5), Color(red: 1.5, green: 0, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.green.lightened(byIncreasingBrightness: 0.5), Color(red: 0, green: 1.5, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.blue.lightened(byIncreasingBrightness: 0.5), Color(red: 0, green: 0, blue: 1.5, alpha: 1))
+  }
+
+  func test_darkenedByDecreasingBrightness() {
+    XCTAssertEqual(Color.gray.darkened(byDecreasingBrightness: 0.5), Color(red: 0, green: 0, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.red.darkened(byDecreasingBrightness: 0.5), Color(red: 0.5, green: 0, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.green.darkened(byDecreasingBrightness: 0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.blue.darkened(byDecreasingBrightness: 0.5), Color(red: 0, green: 0, blue: 0.5, alpha: 1))
+  }
+
+  func test_shadedByIncreasingSaturation() {
+    XCTAssertEqual(Color.gray.shaded(byIncreasingSaturation: 0.5), Color(red: 0.5, green: 0.25, blue: 0.25, alpha: 1))
+    XCTAssertEqual(Color.red.shaded(byIncreasingSaturation: 0.5), Color(red: 1, green: -0.5, blue: -0.5, alpha: 1))
+    XCTAssertEqual(Color.green.shaded(byIncreasingSaturation: 0.5), Color(red: -0.5, green: 1.0, blue:-0.5, alpha: 1))
+    XCTAssertEqual(Color.blue.shaded(byIncreasingSaturation: 0.5), Color(red: -0.5, green: -0.5, blue: 1.0, alpha: 1))
+  }
+
+  func test_tintedByDecreasingSaturation() {
+    XCTAssertEqual(Color.gray.tinted(byDecreasingSaturation: 0.5), Color(red: 0.5, green: 0.75, blue: 0.75, alpha: 1))
+    XCTAssertEqual(Color.red.tinted(byDecreasingSaturation: 0.5), Color(red: 1, green: 0.5, blue: 0.5, alpha: 1))
+    XCTAssertEqual(Color.green.tinted(byDecreasingSaturation: 0.5), Color(red: 0.5, green: 1.0, blue:0.5, alpha: 1))
+    XCTAssertEqual(Color.blue.tinted(byDecreasingSaturation: 0.5), Color(red: 0.5, green: 0.5, blue: 1.0, alpha: 1))
   }
   
 }
