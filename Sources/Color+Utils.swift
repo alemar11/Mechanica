@@ -305,15 +305,12 @@ extension Color {
 
 }
 
-extension Color {
-
-  private func isEqual(to color: UIColor, withTolerance tolerance: CGFloat = 0.0) -> Bool{
-    if (self ~= color) {
-
-    }
-    guard let (r1, g1, b1, a1) = rgba, let (r2, g2, b2, a2) = color.rgba else { return false }
-    return fabs(r1 - r2) <= tolerance && fabs(g1 - g2) <= tolerance && fabs(b1 - b2) <= tolerance && fabs(a1 - a2) <= tolerance
-  }
-
-}
+//extension Color {
+//
+//  private func isEqual(to color: UIColor, withTolerance tolerance: CGFloat = 0.0) -> Bool{
+//    guard let (r1, g1, b1, a1) = rgba, let (r2, g2, b2, a2) = color.rgba else { return false }
+//    return fabs(r1 - r2) <= tolerance && fabs(g1 - g2) <= tolerance && fabs(b1 - b2) <= tolerance && fabs(a1 - a2) <= tolerance
+//  }
+//
+//}
 
