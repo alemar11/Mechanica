@@ -118,7 +118,7 @@ extension Color {
   /// Returns an UInt32 representation of `self` in the sRGB space with alpha channel.
   public final var rgba32Bit: UInt32 {
     let components = rgba8Bit
-    return (UInt32(components.red) << 32) | (UInt32(components.green) << 16) | UInt32(components.blue) << 8 | UInt32(components.alpha)
+    return (UInt32(components.red) << 24) | (UInt32(components.green) << 16) | UInt32(components.blue) << 8 | UInt32(components.alpha)
   }
 
   /// **Mechanica**
