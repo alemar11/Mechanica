@@ -534,6 +534,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertEqual("_Hello_  World".kebabCased(), "-hello-world-")
     XCTAssertEqual("-HeLL0_W0rld-".kebabCased(), "-hell0-w0rld-")
     XCTAssertEqual("HelloWorld".kebabCased(), "-helloworld-")
+    XCTAssertEqual("     HelloWorld".kebabCased(), "-helloworld-")
   }
   
   func test_pascalCased() {
