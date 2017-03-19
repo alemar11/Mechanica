@@ -53,5 +53,4 @@ script:
     fi
 
 after_success:
-  #- bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG"
   - sleep 5
