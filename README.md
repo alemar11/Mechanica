@@ -9,7 +9,7 @@
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/alemar11/Console/blob/master/LICENSE)
 
 
-|Branch|Status|
-|----|----|
-|Develop|[![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop)](https://travis-ci.org/tinrobots/Mechanica)|
-|Master|[![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=master)](https://travis-ci.org/tinrobots/Mechanica)|
+|Branch|Build Status|Code Coverage|
+|----|----|----|
+|Develop|![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop)|![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg)|
+|Master|[![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=master)](https://travis-ci.org/tinrobots/Mechanica)| ![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/master.svg)|
