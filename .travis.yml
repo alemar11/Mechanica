@@ -15,15 +15,15 @@ env:
   - WATCHOS_SDK=watchsimulator3.1
   #- EXAMPLE_SCHEME="Mechanica Example"
   matrix:
-    - DESTINATION="OS=3.1,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"  BUILD_EXAMPLE="NO"  POD_LINT="NO"  CODECOV_FLAG="watchos"
+    - DESTINATION="OS=3.1,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"  CODECOV_FLAG="watchos"
 
-    - DESTINATION="OS=10.1,name=iPhone 7 Plus"     SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"   CODECOV_FLAG="ios"
+    - DESTINATION="OS=10.1,name=iPhone 7 Plus"     SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"  CODECOV_FLAG="ios"
     #- DESTINATION="OS=10.2,name=iPhone 6"           SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO"
 
-    - DESTINATION="OS=10.1,name=Apple TV 1080p"    SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"  CODECOV_FLAG="tvos"
+    - DESTINATION="OS=10.1,name=Apple TV 1080p"    SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"  CODECOV_FLAG="tvos"
     #- DESTINATION="OS=10.0,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
 
-    - DESTINATION="arch=x86_64"                    SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="$MACOS_SDK"   RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"  CODECOV_FLAG="macos"
+    - DESTINATION="arch=x86_64"                    SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="$MACOS_SDK"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"  CODECOV_FLAG="macos"
 before_install:
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
 script:
@@ -35,6 +35,7 @@ script:
   # Build Framework in Debug and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
       xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES test | xcpretty;
+      bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG"
     else
       xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
     fi
@@ -52,5 +53,5 @@ script:
     fi
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG"
+  #- bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG"
   - sleep 5
