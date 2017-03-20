@@ -13,3 +13,11 @@
 |----|----|----|
 |Develop|![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop)|![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg)|
 |Master|[![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=master)](https://travis-ci.org/tinrobots/Mechanica)| ![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/master.svg)|
+
+## Mechanica
+
+A library of Swift utils to ease your iOS/macOS/watchOS/tvOS development.
+
+## License
+
+Mechanica is released under the MIT license. See LICENSE for details.
