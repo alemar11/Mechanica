@@ -26,33 +26,41 @@ import XCTest
 @testable import Mechanica
 
 class NSAttributedStringUtilsTests: XCTestCase {
-    
-  func test_initHTML(){
-    
-    let html = "<html><head><style type=\"text/css\">@font-face {font-family: Avenir-Roman}body {font-family: Avenir-Roman;font-size:15;margin: 0;padding: 0}</style></head><body style=\"background-color: #E6E6FA;\">"
-      + "<span style=\"background-color: #9999ff;\">Hello World</span>"
-      + "</body>"
-    let s = NSAttributedString(html: html)
-    XCTAssertNotNil(s)
-    
-    XCTAssertTrue(s!.string == "Hello World")
-    guard let font = s!.attribute(NSFontAttributeName, at: 0, effectiveRange: nil) as? Font else {
-      XCTAssert(false, "No Avenir-Roman font name found.")
-      return
-    }
-    XCTAssertTrue(font.familyName == "Avenir")
-    XCTAssertTrue(font.fontName == "Avenir-Roman")
-    XCTAssertTrue(font.pointSize == 15.00)
-    
-    guard let color = s!.attribute(NSBackgroundColorAttributeName, at: 0, effectiveRange: nil) as? Color else {
-      XCTAssert(false, "No text backgroud-color found.")
-      return
-    }
-    XCTAssertTrue(color.hexString == "#9999ff")
 
-    guard let _ = s!.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: nil) as? NSParagraphStyle else {
-      XCTAssert(false, "No NSParagraphStyle found.")
-      return
+  func test_initHTML(){
+    do {
+      let html = "<html><head><style type=\"text/css\">@font-face {font-family: Avenir-Roman}body {font-family: Avenir-Roman;font-size:15;margin: 0;padding: 0}</style></head><body style=\"background-color: #E6E6FA;\">"
+        + "<span style=\"background-color: #9999ff;\">Hello World</span>"
+        + "</body>"
+      let s = NSAttributedString(html: html)
+      XCTAssertNotNil(s)
+
+      XCTAssertTrue(s!.string == "Hello World")
+      guard let font = s!.attribute(NSFontAttributeName, at: 0, effectiveRange: nil) as? Font else {
+        XCTAssert(false, "No Avenir-Roman font name found.")
+        return
+      }
+      XCTAssertTrue(font.familyName == "Avenir")
+      XCTAssertTrue(font.fontName == "Avenir-Roman")
+      XCTAssertTrue(font.pointSize == 15.00)
+
+      guard let color = s!.attribute(NSBackgroundColorAttributeName, at: 0, effectiveRange: nil) as? Color else {
+        XCTAssert(false, "No text backgroud-color found.")
+        return
+      }
+      XCTAssertTrue(color.hexString == "#9999ff")
+
+      guard let _ = s!.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: nil) as? NSParagraphStyle else {
+        XCTAssert(false, "No NSParagraphStyle found.")
+        return
+      }
+    }
+
+    do {
+      let html = "<html 1234 </body>"
+      let s = NSAttributedString(html: html)
+      XCTAssertNotNil(s)
+      XCTAssertTrue(s!.string.isEmpty)
     }
     
   }

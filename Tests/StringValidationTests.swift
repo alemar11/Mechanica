@@ -116,6 +116,25 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("abc1".isNumeric)
   }
 
+  func test_isLowercased() {
+    XCTAssertTrue("123".isLowercased)
+    XCTAssertTrue("abcd123".isLowercased)
+    XCTAssertTrue("123!?)".isLowercased)
+
+    XCTAssertFalse("12A3".isLowercased)
+    XCTAssertFalse("abcdE123".isLowercased)
+    XCTAssertFalse("123!C?)".isLowercased)
+  }
+
+  func test_isUppercased() {
+    XCTAssertTrue("123".isUppercased)
+    XCTAssertTrue("ABC123".isUppercased)
+    XCTAssertTrue("ABC...!?".isUppercased)
+
+    XCTAssertFalse("abcdE123".isLowercased)
+    XCTAssertFalse("123A!?)".isLowercased)
+  }
+
   func test_isValideEmail() {
     //valid emails
     XCTAssertTrue("test@tinrobots.org".isValidEmail)
