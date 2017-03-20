@@ -31,7 +31,6 @@ class IntUtilsTests: XCTestCase {
     XCTAssertTrue(2.isEven)
     XCTAssertTrue(22.isEven)
     XCTAssertTrue(202220.isEven)
-
     XCTAssertFalse(3.isEven)
     XCTAssertFalse(27.isEven)
     XCTAssertFalse(202221.isEven)
@@ -51,7 +50,6 @@ class IntUtilsTests: XCTestCase {
     XCTAssertTrue(2.isPositive)
     XCTAssertTrue(21.isPositive)
     XCTAssertTrue(202220.isPositive)
-
     XCTAssertFalse((-2).isPositive)
     XCTAssertFalse((-21).isPositive)
     XCTAssertFalse((-202220).isPositive)
@@ -61,11 +59,26 @@ class IntUtilsTests: XCTestCase {
     XCTAssertTrue((-2).isNegative)
     XCTAssertTrue((-21).isNegative)
     XCTAssertTrue((-202220).isNegative)
-
     XCTAssertFalse(2.isNegative)
     XCTAssertFalse(21.isNegative)
     XCTAssertFalse(202220.isNegative)
+  }
 
+  func test_random() {
+    XCTAssertTrue(Int.random(1...1) == 1)
+    XCTAssertTrue(Int.random(min: 1, max: 1) == 1)
+    do {
+      let randomInt = Int.random(0...1)
+      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
+    }
+    do {
+      let randomInt = Int.random(min: 0, max: 1)
+      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
+    }
+    XCTAssertTrue(Int.random(1...100) <= 100)
+    XCTAssertTrue(Int.random(min: 1, max: 100) <= 100)
+    XCTAssertFalse(Int.random(min: 50, max: 100) > 100)
+    XCTAssertFalse(Int.random(min: 40, max: 50) < 40)
   }
 
 }

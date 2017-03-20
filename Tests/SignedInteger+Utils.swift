@@ -23,24 +23,30 @@
 // SOFTWARE.
 
 import XCTest
+@testable import Mechanica
 
-class SignedInteger_Utils: XCTestCase {
-    
-  func test_random() {
-    XCTAssertTrue(Int.random(1...1) == 1)
-    XCTAssertTrue(Int.random(min: 1, max: 1) == 1)
-    do {
-      let randomInt = Int.random(0...1)
-      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
-    }
-    do {
-      let randomInt = Int.random(min: 0, max: 1)
-      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
-    }
-    XCTAssertTrue(Int.random(1...100) <= 100)
-    XCTAssertTrue(Int.random(min: 1, max: 100) <= 100)
-    XCTAssertFalse(Int.random(min: 50, max: 100) > 100)
-    XCTAssertFalse(Int.random(min: 40, max: 50) < 40)
+
+class SignedIntegerTests: XCTestCase {
+
+  func test_binaryString() {
+    XCTAssertEqual(255.binaryString(), "11111111")
+    XCTAssertEqual(0.binaryString(), "0")
+    XCTAssertEqual(1.binaryString(), "1")
+    XCTAssertEqual(11.binaryString(),"1011")
+    XCTAssertEqual(111.binaryString(),"1101111")
+    XCTAssertEqual(Int.max.binaryString(),"111111111111111111111111111111111111111111111111111111111111111")
   }
-    
+
+  func test_hexadecimalString(uppercase: Bool = true) {
+    XCTAssertEqual(255.hexadecimalString(), "ff")
+    XCTAssertEqual(255.hexadecimalString(uppercase: false), "ff")
+    XCTAssertEqual(255.hexadecimalString(uppercase: true), "FF")
+    XCTAssertEqual(0.hexadecimalString(), "0")
+    XCTAssertEqual(1.hexadecimalString(), "1")
+    XCTAssertEqual(11.hexadecimalString(),"b")
+    XCTAssertEqual(111.hexadecimalString(uppercase: true),"6F")
+    XCTAssertEqual(111222.hexadecimalString(),"1B276")
+    XCTAssertEqual(Int.max.hexadecimalString(uppercase: false), "7FFFFFFFFFFFFFFF")
+  }
+
 }
