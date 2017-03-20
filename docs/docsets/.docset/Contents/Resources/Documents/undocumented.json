@@ -1,0 +1,75 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/App.swift",
+      "line": 27,
+      "symbol": "App",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/FetchConfigurable.swift",
+      "line": 49,
+      "symbol": "FetchConfigurable.defaultSortDescriptors",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/FetchConfigurable.swift",
+      "line": 50,
+      "symbol": "FetchConfigurable.defaultPredicate",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/ModelVersion.swift",
+      "line": 110,
+      "symbol": "ModelVersion.successor",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/NSManagedObject+Deletable.swift",
+      "line": 77,
+      "symbol": "DelayedDeletable.hasChangedForDelayedDeletion",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/NSManagedObject+Deletable.swift",
+      "line": 178,
+      "symbol": "RemoteDeletable.hasChangedForRemoteDeletion",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/NSManagedObject+Deletable.swift",
+      "line": 187,
+      "symbol": "RemoteDeletable.notMarkedForDeletionPredicate",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/NSManagedObject+UpdateTimestampable.swift",
+      "line": 33,
+      "symbol": "UpdateTimestampable.updatedAt",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/Nib.swift",
+      "line": 126,
+      "symbol": "NibIdentifiable.nibIdentifier",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/Storyboard.swift",
+      "line": 135,
+      "symbol": "StoryboardIdentifiable.storyboardIdentifier",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/a.marzoli/Developer/Mechanica"
+}
