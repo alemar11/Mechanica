@@ -96,25 +96,5 @@ class IntegerRandomTests: XCTestCase {
 
   }
 
-  //  func test_randomPerformance() {
-  //    measure {
-  //      for _ in 1...10000 {
-  //      Int._random(in: -100000...10000)
-  //      //Int.random(in: -100000...10000)
-  //      }
-  //    }
-  //  }
-
 }
 
-
-fileprivate extension Int {
-
-  /// **Mechanica**
-  ///
-  /// Returns a random Int bounded by a closed interval range.
-  fileprivate static func _random(in range: ClosedRange<Int>) -> Int {
-    return range.lowerBound + Int(arc4random_uniform(UInt32(range.upperBound - range.lowerBound + 1)))
-  }
-  
-}
