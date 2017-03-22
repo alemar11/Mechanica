@@ -26,18 +26,33 @@ import Foundation
 
 extension Integer {
 
+  /// **Mechanica**
+  ///
+  /// Returns a random value.
   public static func random() -> Self {
     var result: Self = 0
-    withUnsafeMutablePointer(to: &result) { resultPtr in
-      arc4random_buf(UnsafeMutablePointer(resultPtr), MemoryLayout<Self>.size)
-    }
+//    withUnsafeMutablePointer(to: &result) { resultPtr in
+//      arc4random_buf(UnsafeMutablePointer(resultPtr), MemoryLayout<Self>.size)
+//    }
+    arc4random_buf(UnsafeMutablePointer(&result), MemoryLayout<Self>.size)
     return result
   }
 
 }
 
+/// **Mechanica**
+///
+/// Types adopting the `FixedWidthInteger` protocol can be used as `Integer` with a fixed width.
 public protocol FixedWidthInteger : Integer {
+
+  /// **Mechanica**
+  ///
+  /// max value
   static var max: Self { get }
+
+  /// **Mechanica**
+  ///
+  /// min value
   static var min: Self { get }
 }
 

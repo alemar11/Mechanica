@@ -23,25 +23,88 @@
 // SOFTWARE.
 
 import XCTest
+@testable import Mechanica
 
 class IntegerRandomTests: XCTestCase {
 
-  func test_random() {
+  func test_randomInt() {
+
+    /// Int
+
     XCTAssertTrue(Int.random(in: 1...1) == 1)
     XCTAssertTrue(Int.random(min: 1, max: 1) == 1)
+
     do {
       let randomInt = Int.random(in: 0...1)
       XCTAssertTrue((randomInt == 0) || (randomInt == 1))
     }
+
     do {
       let randomInt = Int.random(min: 0, max: 1)
       XCTAssertTrue((randomInt == 0) || (randomInt == 1))
     }
+
     XCTAssertTrue(Int.random(in: 1...100) <= 100)
     XCTAssertTrue(Int.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(Int.min...Int.max ~= Int.random())
     XCTAssertFalse(Int.random(min: 50, max: 100) > 100)
     XCTAssertFalse(Int.random(min: 40, max: 50) < 40)
+
+    /// Int8
+
+    XCTAssertTrue(Int8.random(in: 1...1) == 1)
+    XCTAssertTrue(Int8.random(min: 1, max: 1) == 1)
+
+    do {
+      let randomInt = Int8.random(in: 0...1)
+      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
+    }
+
+    do {
+      let randomInt = Int8.random(min: 0, max: 1)
+      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
+    }
+
+    XCTAssertTrue(Int8.random(in: 1...100) <= 100)
+    XCTAssertTrue(Int8.min...Int8.max ~= Int8.random(in: 1...100))
+    XCTAssertTrue(Int8.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(Int8.min...Int8.max ~= Int8.random())
+    XCTAssertFalse(Int8.random(min: 50, max: 100) > 100)
+    XCTAssertFalse(Int8.random(min: 40, max: 50) < 40)
+
   }
+
+  func test_randomUInt() {
+
+    /// UInt
+
+    XCTAssertTrue(UInt.random(in: 1...255) <= 255)
+    XCTAssertTrue(UInt.min...UInt.max ~= UInt.random(in: 1...UInt.max))
+    XCTAssertTrue(UInt.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(UInt.min...UInt.max ~= UInt.random())
+    XCTAssertFalse(UInt.random(min: 50, max: 100) > 100)
+    XCTAssertFalse(UInt.random(min: 40, max: 50) < 40)
+
+    /// UInt8
+
+    XCTAssertTrue(UInt8.random(in: 1...255) <= 255)
+    XCTAssertTrue(UInt8.min...UInt8.max ~= UInt8.random(in: 1...100))
+    XCTAssertTrue(UInt8.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(UInt8.min...UInt8.max ~= UInt8.random())
+    XCTAssertFalse(UInt8.random(min: 50, max: 100) > 100)
+    XCTAssertFalse(UInt8.random(min: 40, max: 50) < 40)
+
+  }
+
+  func test_randomPerformance() {
+    measure {
+      for _ in 1...10000 {
+      Int._random(in: -100000...10000)
+      //Int.random(in: -100000...10000)
+      }
+    }
+  }
+
 
 }
 
@@ -51,15 +114,8 @@ fileprivate extension Int {
   /// **Mechanica**
   ///
   /// Returns a random Int bounded by a closed interval range.
-  fileprivate static func random(_ range: ClosedRange<Int>) -> Int {
+  fileprivate static func _random(in range: ClosedRange<Int>) -> Int {
     return range.lowerBound + Int(arc4random_uniform(UInt32(range.upperBound - range.lowerBound + 1)))
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a random FixedWidthInteger between `min` and `max` values.
-  fileprivate static func random(min: Int, max: Int) -> Int {
-    return random(min...max)
   }
 
 }
