@@ -5,15 +5,13 @@
 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/alemar11/Console/blob/master/LICENSE)
-
-
 |Branch|Build Status|Code Coverage|
 |----|----|----|
-|Develop|![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop)|![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg)|
 |Master|[![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=master)](https://travis-ci.org/tinrobots/Mechanica)| ![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/master.svg)|
+|Develop|![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop)|![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg)|
 
 ## Mechanica
+[![GitHub release](https://img.shields.io/github/release/tinrobots/Mechanica.svg)](https://github.com/tinrobots/Mechanica/releases) 
 
 A library of Swift utils to ease your iOS / macOS / watchOS / tvOS development.
 
@@ -84,5 +82,7 @@ $ git submodule add https://github.com/tinrobots/Mechanica.git
 
 
 ## License
+
+[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/alemar11/Console/blob/master/LICENSE)
 
 Mechanica is released under the MIT license. See LICENSE for details.
