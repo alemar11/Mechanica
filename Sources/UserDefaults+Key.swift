@@ -103,10 +103,16 @@ extension UserDefaults {
     set { set(newValue, forKey: key) }
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns the string associated with the specified key.
   public func string(forKey key: Key<String>) -> String? {
     return string(forKey: key.value)
   }
 
+  /// **Mechanica**
+  ///
+  /// Stores a string (or removes the value if nil is passed as the value) for the provided key.
   public func set(string: String?, forKey key: Key<String>) {
     set(string, forKey: key)
   }
