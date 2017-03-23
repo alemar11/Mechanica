@@ -44,7 +44,6 @@ public struct Key<T> {
 }
 
 
-
 public extension UserDefaults {
 
   /// **Mechanica**
@@ -56,20 +55,19 @@ public extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Removes value for `key`.
-  public func remove(_ key: String) {
-    removeObject(forKey: key)
-  }
-
-  /// **Mechanica**
-  ///
   /// Removes all keys and values from user defaults.
   /// - Note: This method only removes keys on the receiver `UserDefaults` object.
   ///         System-defined keys will still be present afterwards.
+  ///         `resetStandardUserDefaults` simply resets the in-memory user defaults object.
   public func removeAll() {
     for (key, _) in dictionaryRepresentation() {
       removeObject(forKey: key)
     }
+  }
+
+  /// Removes the contents of the specified persistent domain from the user’s defaults.
+  public func destory(bundleIdentifier: String) {
+    removePersistentDomain(forName: bundleIdentifier)
   }
 
 }
@@ -77,7 +75,7 @@ public extension UserDefaults {
 
 extension UserDefaults {
 
-  /// This function allows you to create your own custom Defaults subscript. Example: `[Int: String]`.
+  /// This function allows you to create your own custom subscript. Example: `[Int: String]`.
   public func set<T>(_ value: Any?, forKey key: Key<T>) {
     set(value, forKey: key.value)
   }
@@ -88,7 +86,7 @@ extension UserDefaults {
   }
 
   /// Removes value for `key`
-  public func remove<T>(_ key: Key<T>) {
+  public func removeObject<T>(forKey key: Key<T>) {
     removeObject(forKey: key.value)
   }
 
@@ -98,8 +96,8 @@ extension UserDefaults {
 
   //  MARK: - String
 
-  public subscript(key: Key<String?>) -> String? {
-    get { return string(forKey: key.value) }
+  public subscript(key: Key<String>) -> String? {
+    get { return string(forKey: key) }
     set { set(newValue, forKey: key) }
   }
 
@@ -119,15 +117,18 @@ extension UserDefaults {
 
   // MARK: - Object
 
-  public subscript(key: Key<Any?>) -> Any? {
-    get { return object(forKey: key.value) }
+  public subscript(key: Key<Any>) -> Any? {
+    get { return object(forKey: key) }
     set { set(newValue, forKey: key) }
   }
 
+  /// Returns the object associated with the first occurrence of the specified default.
   func object(forKey key: Key<Any>) -> Any? {
     return object(forKey: key.value)
   }
 
+  /// Sets the value of the specified default key in the standard application domain.
+  /// The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
   public func set(object: Any?, forKey key: Key<Any>) {
     set(object, forKey: key)
   }
@@ -139,25 +140,29 @@ extension UserDefaults {
     set { set(newValue, forKey: key) }
   }
 
+  /// Returns the NSNumber associated with the first occurrence of the specified default.
   public func number(forKey key: Key<NSNumber>) -> NSNumber? {
     return object(forKey: key.value) as? NSNumber
   }
 
+  /// Sets the value of the specified default key in the standard application domain.
   public func set(number: NSNumber?, forKey key: Key<NSNumber>) {
-    set(number, forKey: key.value)
+    set(number, forKey: key)
   }
 
   // MARK: - Array
 
-  public subscript(key: Key<[Any]?>) -> [Any]? {
-    get { return array(forKey: key.value) }
+  public subscript(key: Key<[Any]>) -> [Any]? {
+    get { return array(forKey: key) }
     set { set(newValue, forKey: key) }
   }
 
+  /// Returns the array associated with the specified key.
   public func array(forKey key: Key<[Any]>) -> [Any]? {
     return array(forKey: key.value)
   }
 
+  /// Sets the value of the specified default key in the standard application domain.
   public func set(array: [Any]?, forKey key: Key<[Any]>) {
     set(array, forKey: key)
   }
@@ -173,6 +178,7 @@ extension UserDefaults {
     return dictionary(forKey: key.value)
   }
 
+  /// Sets the value of the specified default key in the standard application domain.
   public func set(dictionary: [String: Any]? , forKey key: Key<[String: Any]>) {
     set(dictionary, forKey: key)
   }
@@ -189,6 +195,7 @@ extension UserDefaults {
     return object(forKey: key.value) as? Date
   }
 
+  /// Sets the value of the specified default key in the standard application domain.
   public func set(date: Date?, forKey key: Key< Date>) {
     set(date, forKey: key)
   }
@@ -200,10 +207,12 @@ extension UserDefaults {
     set { set(newValue, forKey: key) }
   }
 
+  /// Returns the data object associated with the specified key.
   public func data(forKey key: Key<Data>) -> Data? {
     return data(forKey: key.value)
   }
 
+  /// Sets the data value of the specified default key in the standard application domain.
   public func set(data:  Data? , forKey key: Key< Data>) {
     set(data, forKey: key)
   }
@@ -216,10 +225,12 @@ extension UserDefaults {
     set { set(newValue, forKey: key) }
   }
 
+  /// Returns the integer value associated with the specified key.
   public func integer(forKey key: Key<Int>) -> Int? {
     return integer(forKey: key.value)
   }
 
+  /// Sets the value of the specified default key in the standard application domain.
   public func set(integer: Int?, forKey key: Key<Int>) {
     set(integer, forKey: key)
   }
@@ -232,10 +243,12 @@ extension UserDefaults {
     set { set(newValue, forKey: key) }
   }
 
+  /// Returns the double value associated with the specified key.
   public func double(forKey key: Key<Double>) -> Double? {
     return double(forKey: key.value)
   }
 
+  /// Sets the value of the specified default key in the standard application domain.
   public func set(double: Double?, forKey key: Key<Double>) {
     set(double, forKey: key)
   }
@@ -247,10 +260,12 @@ extension UserDefaults {
     set { set(newValue, forKey: key) }
   }
 
+  /// Returns the floating-point value associated with the specified key.
   public func float(forKey key: Key<Float>) -> Float? {
     return float(forKey: key.value)
   }
 
+  /// Sets the value of the specified default key in the standard application domain.
   public func set(float: Float?, forKey key: Key<Float>) {
     set(float, forKey: key)
   }
@@ -262,10 +277,12 @@ extension UserDefaults {
     set { set(newValue, forKey: key) }
   }
 
+  /// Returns the Boolean value associated with the specified key.
   public func bool(forKey key: Key<Bool>) -> Bool? {
     return bool(forKey: key.value)
   }
 
+  /// Sets the value of the specified default key in the standard application domain.
   public func set(int: Bool?, forKey key: Key<Bool>) {
     set(int, forKey: key)
   }
@@ -278,10 +295,12 @@ extension UserDefaults {
     set { set(newValue, forKey: key) }
   }
 
+  /// Returns the URL instance associated with the specified key.
   public func url(forKey key: Key<URL>) -> URL? {
     return url(forKey: key.value)
   }
 
+  /// Sets the value of the specified default key in the standard application domain.
   public func set(url: URL?, forKey key: Key<URL>) {
     set(url, forKey: key)
   }
@@ -393,7 +412,7 @@ extension UserDefaults {
     if let value = value {
       set(value.rawValue, forKey: key)
     } else {
-      remove(key)
+      removeObject(forKey: key)
     }
   }
 
@@ -418,7 +437,7 @@ extension UserDefaults {
     if let value = value {
       set(NSKeyedArchiver.archivedData(withRootObject: value), forKey: key)
     } else {
-      remove(key)
+      removeObject(forKey: key)
     }
   }
 
