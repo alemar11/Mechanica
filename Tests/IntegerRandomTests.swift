@@ -102,48 +102,85 @@ class IntegerRandomTests: XCTestCase {
   }
 
   func test_overflow() {
-//    do {
-//      let range: CountableClosedRange<Int8> = -118...10
-//      var expectedAtLeastOnePositive = false
-//      var expectedAtLeastOneNegative = false
-//      for _ in 1...1000 {
-//        let value = Int8.random(in: range)
-//        print(value)
-//        XCTAssertTrue(range ~= value)
-//        if (value.isNegative) { expectedAtLeastOnePositive = true }
-//        if (value.isPositive ){ expectedAtLeastOneNegative = true }
-//      }
-//      XCTAssertTrue(expectedAtLeastOnePositive && expectedAtLeastOneNegative)
-//    }
-//
-//    do {
-//      let range: CountableClosedRange<Int8> = -100...100
-//      var expectedAtLeastOnePositive = false
-//      var expectedAtLeastOneNegative = false
-//      for _ in 1...1_000_000 {
-//        let value = Int8.random(in: range)
-//        print(value)
-//        XCTAssertTrue(range ~= value)
-//        if (value.isPositive) { expectedAtLeastOnePositive = true }
-//        if (value.isNegative) { expectedAtLeastOneNegative = true }
-//      }
-//      XCTAssertTrue(expectedAtLeastOnePositive && expectedAtLeastOneNegative)
-//    }
-
+    
     do {
-      // to many 127 as result...
-      let range: CountableClosedRange<Int8> = -128...127
+      let range: CountableClosedRange<Int8> = -118...10
       var expectedAtLeastOnePositive = false
       var expectedAtLeastOneNegative = false
-      for _ in 1...1_000_000 {
+      for _ in 1...100 {
         let value = Int8.random(in: range)
-        print(value)
-        XCTAssertTrue(range ~= value)
+        XCTAssertTrue(range ~= value, "\(value) should be contained in \(range)")
+        if (value.isNegative) { expectedAtLeastOnePositive = true }
+        if (value.isPositive ){ expectedAtLeastOneNegative = true }
+      }
+      XCTAssertTrue(expectedAtLeastOnePositive && expectedAtLeastOneNegative)
+    }
+
+    do {
+      let range: CountableClosedRange<Int8> = -100...100
+      var expectedAtLeastOnePositive = false
+      var expectedAtLeastOneNegative = false
+      for _ in 1...100 {
+        let value = Int8.random(in: range)
+        XCTAssertTrue(range ~= value, "\(value) should be contained in \(range)")
         if (value.isPositive) { expectedAtLeastOnePositive = true }
         if (value.isNegative) { expectedAtLeastOneNegative = true }
       }
       XCTAssertTrue(expectedAtLeastOnePositive && expectedAtLeastOneNegative)
     }
+
+    do {
+      let range: CountableClosedRange<Int8> = -128...127
+      var expectedAtLeastOnePositive = false
+      var expectedAtLeastOneNegative = false
+      for _ in 1...100 {
+        let value = Int8.random(in: range)
+        XCTAssertTrue(range ~= value, "\(value) should be contained in \(range)")
+        if (value.isPositive) { expectedAtLeastOnePositive = true }
+        if (value.isNegative) { expectedAtLeastOneNegative = true }
+      }
+      XCTAssertTrue(expectedAtLeastOnePositive && expectedAtLeastOneNegative)
+    }
+    
+    do {
+      let range: CountableClosedRange<UInt64> = 0...UInt64.max
+      var expectedAtLeastOnePositive = false
+      var expectedAtLeastOneNegative = false
+      for _ in 1...100 {
+        let value = UInt64.random(in: range)
+        XCTAssertTrue(range ~= value, "\(value) should be contained in \(range)")
+        if (value.isPositive) { expectedAtLeastOnePositive = true }
+        if (value.isNegative) { expectedAtLeastOneNegative = true }
+      }
+      XCTAssertTrue(expectedAtLeastOnePositive && !expectedAtLeastOneNegative)
+    }
+    
+    do {
+      let range: CountableClosedRange<Int64> = Int64.min...0
+      var expectedAtLeastOnePositive = false
+      var expectedAtLeastOneNegative = false
+      for _ in 1...100 {
+        let value = Int64.random(in: range)
+        XCTAssertTrue(range ~= value, "\(value) should be contained in \(range)")
+        if (value.isPositive) { expectedAtLeastOnePositive = true }
+        if (value.isNegative) { expectedAtLeastOneNegative = true }
+      }
+      XCTAssertTrue(!expectedAtLeastOnePositive && expectedAtLeastOneNegative)
+    }
+
+    do {
+      let range: CountableClosedRange<Int32> = 0...Int32.max
+      var expectedAtLeastOnePositive = false
+      var expectedAtLeastOneNegative = false
+      for _ in 1...100 {
+        let value = Int32.random(in: range)
+        XCTAssertTrue(range ~= value, "\(value) should be contained in \(range)")
+        if (value.isPositive) { expectedAtLeastOnePositive = true }
+        if (value.isNegative) { expectedAtLeastOneNegative = true }
+      }
+      XCTAssertTrue(expectedAtLeastOnePositive && !expectedAtLeastOneNegative)
+    }
+    
   }
 
   //  func test_randomPerformance() {
