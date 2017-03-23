@@ -47,6 +47,7 @@ class IntegerRandomTests: XCTestCase {
     XCTAssertTrue(Int.random(in: 1...100) <= 100)
     XCTAssertTrue(Int.random(min: 1, max: 100) <= 100)
     XCTAssertTrue(Int.min...Int.max ~= Int.random())
+    XCTAssertTrue(Int64.min...Int64.max ~= Int64.random())
     XCTAssertFalse(Int.random(min: 50, max: 100) > 100)
     XCTAssertFalse(Int.random(min: 40, max: 50) < 40)
 
@@ -76,11 +77,16 @@ class IntegerRandomTests: XCTestCase {
 
   func test_randomUInt() {
 
-    /// UInt (too slow on Travis CI)
+    /// UInt
 
     XCTAssertTrue(UInt.random(in: 1...255) <= 255)
-    XCTAssertTrue(UInt.random(min: 1, max: 100) <= 100)
+    let randomUInt = UInt.random(in: 0...UInt.max)
+    XCTAssertTrue( (UInt.min <= randomUInt) && (randomUInt <= UInt.max))
+    //let val = UInt.random(in: 1...UInt.max)
+    XCTAssertTrue(UInt.min...UInt.max ~= UInt.random(in: 1...UInt.max))
     XCTAssertTrue(UInt.min...UInt.max ~= UInt.random())
+    XCTAssertTrue(UInt.random(min: 1, max: 100) <= 100)
+    //XCTAssertTrue(UInt.min...UInt.max ~= UInt.random())
     XCTAssertFalse(UInt.random(min: 50, max: 100) > 100)
     XCTAssertFalse(UInt.random(min: 40, max: 50) < 40)
 
@@ -95,5 +101,70 @@ class IntegerRandomTests: XCTestCase {
 
   }
 
+  func test_overflow() {
+//    do {
+//      let range: CountableClosedRange<Int8> = -118...10
+//      var expectedAtLeastOnePositive = false
+//      var expectedAtLeastOneNegative = false
+//      for _ in 1...1000 {
+//        let value = Int8.random(in: range)
+//        print(value)
+//        XCTAssertTrue(range ~= value)
+//        if (value.isNegative) { expectedAtLeastOnePositive = true }
+//        if (value.isPositive ){ expectedAtLeastOneNegative = true }
+//      }
+//      XCTAssertTrue(expectedAtLeastOnePositive && expectedAtLeastOneNegative)
+//    }
+//
+//    do {
+//      let range: CountableClosedRange<Int8> = -100...100
+//      var expectedAtLeastOnePositive = false
+//      var expectedAtLeastOneNegative = false
+//      for _ in 1...1_000_000 {
+//        let value = Int8.random(in: range)
+//        print(value)
+//        XCTAssertTrue(range ~= value)
+//        if (value.isPositive) { expectedAtLeastOnePositive = true }
+//        if (value.isNegative) { expectedAtLeastOneNegative = true }
+//      }
+//      XCTAssertTrue(expectedAtLeastOnePositive && expectedAtLeastOneNegative)
+//    }
+
+    do {
+      // to many 127 as result...
+      let range: CountableClosedRange<Int8> = -128...127
+      var expectedAtLeastOnePositive = false
+      var expectedAtLeastOneNegative = false
+      for _ in 1...1_000_000 {
+        let value = Int8.random(in: range)
+        print(value)
+        XCTAssertTrue(range ~= value)
+        if (value.isPositive) { expectedAtLeastOnePositive = true }
+        if (value.isNegative) { expectedAtLeastOneNegative = true }
+      }
+      XCTAssertTrue(expectedAtLeastOnePositive && expectedAtLeastOneNegative)
+    }
+  }
+
+  //  func test_randomPerformance() {
+  //    measure {
+  //      for _ in 1...10000 {
+  //      Int._random(in: -100000...10000)
+  //      //Int.random(in: -100000...10000)
+  //      }
+  //    }
+  //  }
+
 }
 
+
+fileprivate extension Int {
+
+  /// **Mechanica**
+  ///
+  /// Returns a random Int bounded by a closed interval range.
+  fileprivate static func _random(in range: ClosedRange<Int>) -> Int {
+    return range.lowerBound + Int(arc4random_uniform(UInt32(range.upperBound - range.lowerBound + 1)))
+  }
+  
+}

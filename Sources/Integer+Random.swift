@@ -31,14 +31,15 @@ extension Integer {
   /// Returns a random value.
   public static func random() -> Self {
     var result: Self = 0
-    withUnsafeMutablePointer(to: &result) { resultPtr in
-      arc4random_buf(UnsafeMutablePointer(resultPtr), MemoryLayout<Self>.size)
-    }
-    //arc4random_buf(UnsafeMutablePointer(&result), MemoryLayout<Self>.size)
+    //    withUnsafeMutablePointer(to: &result) { resultPtr in
+    //      arc4random_buf(UnsafeMutablePointer(resultPtr), MemoryLayout<Self>.size)
+    //    }
+    arc4random_buf(UnsafeMutablePointer(&result), MemoryLayout<Self>.size)
     return result
   }
 
 }
+
 
 /// **Mechanica**
 ///
@@ -67,20 +68,129 @@ extension Int8:   FixedWidthInteger {}
 extension UInt:   FixedWidthInteger {}
 extension Int:    FixedWidthInteger {}
 
+extension FixedWidthInteger {
+
+  internal static func bitwiseCeil<T : FixedWidthInteger>(x: T) -> T {
+    var i = ~T.min
+    while ~i < x {
+      i = T.multiplyWithOverflow(i, 2).0
+    }
+    return ~i
+  }
+
+  //  public static func random(max: Self) -> Self {
+  //    let m = bitwiseCeil(x: max)
+  //    var result: Self = 0 //FIXED HERE
+  //    repeat {
+  //      arc4random_buf(&result, MemoryLayout<Self>.size)
+  //      //print("result_before: \(result)")
+  //      result &= m
+  //
+  //      print("result_after: \(result)")
+  //
+  //    } while result > max
+  //    return result
+  //  }
+
+
+
+}
+
 extension FixedWidthInteger where Stride: SignedInteger {
+
+  static func random(max: Self) -> Self {
+    print(max)
+    print(Self.self.min)
+    return random(in: Self.min...max)
+  }
+
+  public static func random(interval: CountableClosedRange<Self>) -> Self {
+    let a = interval.lowerBound
+    let b = interval.upperBound
+
+    func random(max: Self) -> Self {
+      let m = bitwiseCeil(x: max)
+      var result: Self = 0 //FIXED HERE
+      repeat {
+        arc4random_buf(&result, MemoryLayout<Self>.size)
+        result &= m
+
+      } while result > max
+      return result
+    }
+    return a + random(max: b - a)
+  }
+
+
+  //  public static func random(interval: CountableClosedRange<Self>) -> Self {
+  //    let a = interval.lowerBound
+  //    let b = interval.upperBound
+  //    return a + random(max: b - a)
+  //  }
 
   /// **Mechanica**
   ///
   /// Returns a random FixedWidthInteger bounded by a closed interval range.
+  //  public static func random(in range: CountableClosedRange<Self>) -> Self {
+  //    let rangeSize = range.upperBound - range.lowerBound
+  //    guard (rangeSize != 0) else { return range.upperBound }
+  //    var randomValue = random()
+  //    let (result, overflow) = subtractWithOverflow(range.upperBound, range.lowerBound)
+  //    let maxDivisible = overflow ? max - ~result : result
+  //    while randomValue < maxDivisible {
+  //      randomValue = random()
+  //    }
+  //    return (randomValue % rangeSize) + range.lowerBound
+  //  }
+  //  public static func random(in range: CountableClosedRange<Self>) -> Self {
+  //    let lowerBound = range.lowerBound
+  //    let upperBound = range.upperBound
+  //    let rangeSize = upperBound - lowerBound
+  //    guard (rangeSize != 0) else { return upperBound }
+  //    let (result, _) = subtractWithOverflow(upperBound, lowerBound)
+  //    let r = random(interval: 0...result)
+  //    return addWithOverflow(lowerBound, r).0
+  //  }
+
   public static func random(in range: CountableClosedRange<Self>) -> Self {
-    let rangeSize = range.upperBound - range.lowerBound
-    guard (rangeSize != 0) else { return range.upperBound }
-    var randomValue = random()
-    let (result, overflow) = subtractWithOverflow(range.upperBound, range.lowerBound)
-    let maxDivisible = overflow ? max - ~result : result
-    while randomValue < maxDivisible { randomValue = random() }
-    return (randomValue % rangeSize) + range.lowerBound
+    let lowerBound = range.lowerBound
+    let upperBound = range.upperBound
+    guard (lowerBound != upperBound) else { return lowerBound }
+    let (result, overflow) = subtractWithOverflow(upperBound, lowerBound)
+
+    //let r = random(interval: 0...result)
+
+    func random(max: Self) -> Self {
+      let m = bitwiseCeil(x: max)
+      var result: Self = 0 //FIXED HERE
+      repeat {
+        arc4random_buf(&result, MemoryLayout<Self>.size)
+        result &= m
+      } while result > max
+      return result
+    }
+
+
+    if (overflow) {
+      //let lb = (lowerBound < 0) ? lowerBound * -1 : lowerBound
+
+      //TODO: fix
+      var (lb,overflow) = multiplyWithOverflow(lowerBound, -1)
+      if (overflow){
+        lb = (lb + 1) * -1
+        print(lb)
+      }
+      let ub = (upperBound < 0) ? upperBound * -1 : upperBound
+      let randomMin = random(max: lb) * -1
+      let randomMax = random(max: ub)
+      let randomValue = randomMax + randomMin
+      return randomValue
+    } else {
+      let randomValue = random(max: result)
+      return addWithOverflow(lowerBound, randomValue).0
+    }
   }
+
 
   /// **Mechanica**
   ///
@@ -88,5 +198,5 @@ extension FixedWidthInteger where Stride: SignedInteger {
   internal static func random(min: Self, max: Self) -> Self {
     return random(in: min...max)
   }
-
+  
 }
