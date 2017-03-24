@@ -43,7 +43,31 @@ extension SignedInteger {
   /// `255.hexadecimalString` //"ff"
   ///
   public final func hexadecimalString(uppercase: Bool = true) -> String {
-    return String(self, radix: 16, uppercase: false)
+    return String(self, radix: 16, uppercase: uppercase)
   }
   
+}
+
+extension UnsignedInteger {
+
+  /// **Mechanica**
+  ///
+  /// Creates a string representing the given value in the binary base.
+  ///
+  /// `255.binaryString` //"11111111"
+  ///
+  public final func binaryString() -> String {
+    return String(self, radix: 2)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Creates a string representing the given value in the hexadecimal base.
+  ///
+  /// `255.hexadecimalString` //"ff"
+  ///
+  public final func hexadecimalString(uppercase: Bool = true) -> String {
+    return String(self, radix: 16, uppercase: uppercase)
+  }
+
 }
