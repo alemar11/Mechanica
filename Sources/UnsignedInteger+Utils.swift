@@ -1,5 +1,5 @@
 //
-//  SignedInteger+Utils.swift
+//  UnsignedInteger+Utils.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -24,54 +24,28 @@
 
 import Foundation
 
-extension SignedInteger {
-
-  /// **Mechanica**
-  ///
-  /// Creates a string representing the given value in the hexadecimal base.
-  ///
-  /// `255.hexadecimalString` //"ff"
-  ///
-  public final func hexadecimalString(uppercase: Bool = true) -> String {
-    return String(self, radix: 16, uppercase: false)
-  }
-  
-}
-
 // MARK:- BinaryConvertible
 
-extension SignedInteger where Self: BinaryConvertible {
+extension UnsignedInteger where Self: BinaryConvertible {
   
   /// **Mechanica**
   ///
   /// Creates a string representing the given value in the binary base.
   ///
   /// ```
-  /// 255.binaryString //"11111111"
-  /// Int16(-1).binaryString //"1111111111111111"
+  /// Int8(10).binaryString //"00001010"
   /// ```
   ///
-   public var binaryString: String {
+  public var binaryString: String {
+    let binaryString = String(self, radix:2)
     let size = MemoryLayout.size(ofValue: self) * 8
-    let signed: IntMax = toIntMax()
-    let unsigned: UIntMax = UIntMax(bitPattern: signed)
-    var binaryString = String(unsigned, radix:2)
-    switch binaryString.characters.count {
-    case let count where count > size:
-      let startIndex = binaryString.index(binaryString.startIndex, offsetBy: count-size)
-      let endIndex   = binaryString.index(startIndex, offsetBy: count, limitedBy: binaryString.endIndex) ?? binaryString.endIndex
-      binaryString = binaryString[startIndex..<endIndex]
-    default:
-      binaryString = String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
-    }
-    return binaryString
-
+    return String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
   }
   
 }
 
-extension Int8:  BinaryConvertible {}
-extension Int16: BinaryConvertible {}
-extension Int32: BinaryConvertible {}
-extension Int64: BinaryConvertible {}
-extension Int:   BinaryConvertible {}
+extension UInt8:  BinaryConvertible {}
+extension UInt16: BinaryConvertible {}
+extension UInt32: BinaryConvertible {}
+extension UInt64: BinaryConvertible {}
+extension UInt:   BinaryConvertible {}
