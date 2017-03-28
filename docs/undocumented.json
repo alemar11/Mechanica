@@ -8,6 +8,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/BinaryConvertible.swift",
+      "line": 27,
+      "symbol": "BinaryConvertible",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/a.marzoli/Developer/Mechanica/Sources/FetchConfigurable.swift",
       "line": 49,
       "symbol": "FetchConfigurable.defaultSortDescriptors",

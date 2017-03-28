@@ -1,5 +1,5 @@
 //
-//  SignedInteger+Utils.swift
+//  SignedIntegerUtilsTests.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -25,24 +25,29 @@
 import XCTest
 @testable import Mechanica
 
-
 class SignedIntegerTests: XCTestCase {
-
+  
+  // MARK: - BinaryConvertible
+  
+  /// http://www.binaryconvert.com/result_signed_int.html?decimal=045049049049
   func test_binaryString() {
-    XCTAssertEqual(255.binaryString(), "11111111")
-    XCTAssertEqual(0.binaryString(), "0")
-    XCTAssertEqual(1.binaryString(), "1")
-    XCTAssertEqual(11.binaryString(),"1011")
-    XCTAssertEqual(111.binaryString(),"1101111")
-    XCTAssertEqual(Int.max.binaryString(),"111111111111111111111111111111111111111111111111111111111111111")
-
-
-    XCTAssertEqual(UInt(111).binaryString(),"1101111")
-    //XCTAssertEqual(Int8(-128).binaryString(), "-10000000")
+    XCTAssertEqual(Int8(10).binaryString, "00001010")
+    XCTAssertEqual(Int8(-1).binaryString, "11111111")
+    XCTAssertEqual((-3).binaryString, "1111111111111111111111111111111111111111111111111111111111111101")
+    XCTAssertEqual(255.binaryString, "0000000000000000000000000000000000000000000000000000000011111111")
+    XCTAssertEqual(Int8(0).binaryString, "00000000")
+    XCTAssertEqual(1.binaryString, "0000000000000000000000000000000000000000000000000000000000000001")
+    XCTAssertEqual(Int16(-1).binaryString, "1111111111111111")
+    XCTAssertEqual(11.binaryString,"0000000000000000000000000000000000000000000000000000000000001011")
+    XCTAssertEqual(111.binaryString,"0000000000000000000000000000000000000000000000000000000001101111")
+    XCTAssertEqual(Int.max.binaryString,"0111111111111111111111111111111111111111111111111111111111111111")
+    XCTAssertEqual(Int32(-111).binaryString,"11111111111111111111111110010001")
   }
-
-  func test_hexadecimalString() {
-    XCTAssertEqual(255.hexadecimalString(), "FF")
+  
+  // MARK: - Utils
+  
+  func test_hexadecimalString(uppercase: Bool = true) {
+    XCTAssertEqual(255.hexadecimalString(), "ff")
     XCTAssertEqual(255.hexadecimalString(uppercase: false), "ff")
     XCTAssertEqual(255.hexadecimalString(uppercase: true), "FF")
     XCTAssertEqual(0.hexadecimalString(), "0")
@@ -52,8 +57,8 @@ class SignedIntegerTests: XCTestCase {
     XCTAssertEqual(111222.hexadecimalString(),"1B276")
     XCTAssertEqual(Int.max.hexadecimalString(uppercase: true), "7FFFFFFFFFFFFFFF")
     XCTAssertEqual(Int.max.hexadecimalString(uppercase: false), "7fffffffffffffff")
-
+    
     //XCTAssertEqual(Int8(-11).hexadecimalString(), "-B")
   }
-
+  
 }

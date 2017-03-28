@@ -314,6 +314,7 @@ class ColorUtilsTests: XCTestCase {
     let green = Color(red: 0, green: 1.0, blue: 0, alpha: 1.0)
     let blue = Color(red: 0, green: 0, blue: 1.0, alpha: 1.0)
     XCTAssertEqual(Color(hex: 0xFF0000), red)
+    XCTAssertEqual(Color(hex:16711680), red)
     XCTAssertEqual(Color(hex: 0x00FF00), green)
     XCTAssertEqual(Color(hex: 0x0000FF), blue)
     XCTAssertEqual(Color(hex: 0xFF0000, alpha: 0.5), red.withAlphaComponent(0.5))

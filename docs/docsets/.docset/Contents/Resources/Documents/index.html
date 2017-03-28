@@ -44,6 +44,9 @@
             <a href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Extensions/BinaryFloatingPoint.html">BinaryFloatingPoint</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Extensions/Bool.html">Bool</a>
               </li>
               <li class="nav-group-task">
@@ -69,6 +72,18 @@
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Int16.html">Int16</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Int32.html">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Int64.html">Int64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Int8.html">Int8</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/Integer.html">Integer</a>
@@ -125,7 +140,25 @@
                 <a href="Extensions/String.html">String</a>
               </li>
               <li class="nav-group-task">
+                <a href="Extensions/UInt.html">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UInt16.html">UInt16</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UInt32.html">UInt32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UInt64.html">UInt64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UInt8.html">UInt8</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Extensions/URL.html">URL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UnsignedInteger.html">UnsignedInteger</a>
               </li>
             </ul>
           </li>
@@ -151,6 +184,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Protocols/ArrayKeyCodable.html">ArrayKeyCodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/BinaryConvertible.html">BinaryConvertible</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/BoolKeyCodable.html">BoolKeyCodable</a>
@@ -187,6 +223,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/PropertyListConfiguration.html">PropertyListConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Randomizable.html">Randomizable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/RemoteDeletable.html">RemoteDeletable</a>
@@ -259,15 +298,12 @@
         <section>
           <section class="section">
             
-            <p><img src="https://raw.githubusercontent.com/tinrobots/Mechanica/assets/mechanica.png" alt="Mechanica: Swift Utils">
-<br/>
-<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift 3.0"></a> 
-<img src="https://img.shields.io/badge/Platform-iOS%2010%2B-blue.svg" alt="Platform iOS 10"> 
-<img src="https://img.shields.io/badge/Platform-macOS%2010.12%2B-blue.svg" alt="Platform macOS 10.12+"> 
-<img src="https://img.shields.io/badge/Platform-tvOS%2010%2B-blue.svg" alt="Platform"> 
-<img src="https://img.shields.io/badge/Platform-watchOS%203%2B-blue.svg" alt="Platform">
-<br/>
-<a href="https://github.com/alemar11/Console/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat" alt="License MIT"></a></p>
+            <p><img src="https://raw.githubusercontent.com/tinrobots/Mechanica/assets/mechanica.png" alt="Mechanica: Swift Utils"></p>
+
+<p><a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/Swift-3.0.2-orange.svg?style=flat" alt="Swift 3.0.2"></a> 
+<img src="https://img.shields.io/badge/Platform-iOS%2010%2B%20%7C%20macOS%2010.12+%20%7C%20tvOS%2010+%20%7C%20watchOS%203+-blue.svg" alt="Platforms"> </p>
+
+<p><a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a></p>
 
 <table><thead>
 <tr>
@@ -277,21 +313,97 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>Develop</td>
-<td><img src="https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop" alt="Build Status"></td>
-<td><img src="https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg" alt="Code Coverage"></td>
-</tr>
-<tr>
 <td>Master</td>
 <td><a href="https://travis-ci.org/tinrobots/Mechanica"><img src="https://travis-ci.org/tinrobots/Mechanica.svg?branch=master" alt="Build Status"></a></td>
 <td><img src="https://img.shields.io/codecov/c/github/tinrobots/Mechanica/master.svg" alt="Code Coverage"></td>
 </tr>
+<tr>
+<td>Develop</td>
+<td><img src="https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop" alt="Build Status"></td>
+<td><img src="https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg" alt="Code Coverage"></td>
+</tr>
 </tbody></table>
+<a href='#mechanica' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='mechanica'>Mechanica</h2>
+
+<p><a href="https://github.com/tinrobots/Mechanica/releases"><img src="https://img.shields.io/github/release/tinrobots/Mechanica.svg" alt="GitHub release"></a> </p>
+
+<p>A library of Swift utils to ease your iOS / macOS / watchOS / tvOS development.</p>
+
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+
+<ul>
+<li>iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+</li>
+<li>Xcode 8.1+</li>
+<li>Swift 3.0+</li>
+</ul>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+<a href='#carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='carthage'>Carthage</h3>
+
+<p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.</p>
+
+<p>You can install Carthage with <a href="http://brew.sh/">Homebrew</a> using the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>brew update
+<span class="gp">$ </span>brew install carthage
+</code></pre>
+
+<p>To integrate Mechanica into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "tinrobots/Mechanica" ~&gt; 0.1.0
+</code></pre>
+
+<p>Run <code>carthage update</code> to build the framework and drag the built <code>Mechanica.framework</code> into your Xcode project.</p>
+<a href='#manually' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='manually'>Manually</h3>
+
+<p>If you prefer not to use either of the aforementioned dependency managers, you can integrate Mechanica into your project manually.</p>
+<a href='#embedded-framework' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='embedded-framework'>Embedded Framework</h4>
+
+<ul>
+<li>Open up Terminal, <code>cd</code> into your top-level project directory, and run the following command <q>if</q> your project is not initialized as a git repository:</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>git init
+</code></pre>
+
+<ul>
+<li>Add Mechanica as a git <a href="http://git-scm.com/docs/git-submodule">submodule</a> by running the following command:</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>git submodule add https://github.com/tinrobots/Mechanica.git
+</code></pre>
+
+<ul>
+<li><p>Open the new <code>Mechanica</code> folder, and drag the <code>Mechanica.xcodeproj</code> into the Project Navigator of your application&rsquo;s Xcode project.</p>
+
+<blockquote>
+<p>It should appear nested underneath your application&rsquo;s blue project icon. Whether it is above or below all the other Xcode groups does not matter.</p>
+</blockquote></li>
+<li><p>Select the <code>Mechanica.xcodeproj</code> in the Project Navigator and verify the deployment target matches that of your application target.</p></li>
+<li><p>Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the <q>Targets</q> heading in the sidebar.</p></li>
+<li><p>In the tab bar at the top of that window, open the <q>General</q> panel.</p></li>
+<li><p>Click on the <code>+</code> button under the <q>Embedded Binaries</q> section.</p></li>
+<li><p>You will see two different <code>Mechanica.xcodeproj</code> folders each with two different versions of the <code>Mechanica.framework</code> nested inside a <code>Products</code> folder.</p>
+
+<blockquote>
+<p>It does not matter which <code>Products</code> folder you choose from, but it does matter whether you choose the top or bottom <code>Mechanica.framework</code>.</p>
+</blockquote></li>
+<li><p>Select the top <code>Mechanica.framework</code> for iOS and the bottom one for macOS.</p>
+
+<blockquote>
+<p>You can verify which one you selected by inspecting the build log for your project. The build target for <code>Mechanica</code> will be listed as either <code>Mechanica iOS</code>, <code>Mechanica macOS</code>, <code>Mechanica tvOS</code> or <code>Mechanica watchOS</code>.</p>
+</blockquote></li>
+</ul>
+<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+
+<p><a href="https://github.com/alemar11/Console/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat" alt="License MIT"></a></p>
+
+<p>Mechanica is released under the MIT license. See LICENSE for details.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-03-19)</p>
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-03-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
