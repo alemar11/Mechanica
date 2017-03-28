@@ -24,6 +24,9 @@
 
 import Foundation
 
+/// **Mechanica**
+///
+/// Types conforming to `BinaryConvertible` can be represented in binary base.
 public protocol BinaryConvertible {
   
   /// **Mechanica**
