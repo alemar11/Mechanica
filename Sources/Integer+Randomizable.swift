@@ -24,18 +24,6 @@
 
 import Foundation
 
-/// **Mechanica**
-///
-/// Types conforming to Randomizable protocol can generate a random value.
-public protocol Randomizable {
-
-  /// **Mechanica**
-  ///
-  /// Returns a random value bounded by a closed interval range.
-  static func random(min: Self, max: Self) -> Self
-
-}
-
 //  MARK: - Integer
 
 extension UInt64: Randomizable {}

@@ -150,6 +150,10 @@
 		23964A071E5B06D100C8E0DF /* CollectionUtiilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23964A061E5B06D100C8E0DF /* CollectionUtiilsTests.swift */; };
 		23964A081E5B06D100C8E0DF /* CollectionUtiilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23964A061E5B06D100C8E0DF /* CollectionUtiilsTests.swift */; };
 		23964A091E5B06D100C8E0DF /* CollectionUtiilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23964A061E5B06D100C8E0DF /* CollectionUtiilsTests.swift */; };
+		2398F2571E8A9FD10031A43D /* Randomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2398F2561E8A9FD10031A43D /* Randomizable.swift */; };
+		2398F2581E8A9FD10031A43D /* Randomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2398F2561E8A9FD10031A43D /* Randomizable.swift */; };
+		2398F2591E8A9FD10031A43D /* Randomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2398F2561E8A9FD10031A43D /* Randomizable.swift */; };
+		2398F25A1E8A9FD10031A43D /* Randomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2398F2561E8A9FD10031A43D /* Randomizable.swift */; };
 		239F8DD31E55B03900E3DF33 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* AssociatedObject.swift */; };
 		239F8DD41E55B03900E3DF33 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* AssociatedObject.swift */; };
 		239F8DD51E55B03900E3DF33 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* AssociatedObject.swift */; };
@@ -416,6 +420,7 @@
 		23949C681E4BB0AD00BD9EC8 /* NSAttributedStringUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringUtilsTests.swift; sourceTree = "<group>"; };
 		23964A011E5B034800C8E0DF /* Collection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Collection+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		23964A061E5B06D100C8E0DF /* CollectionUtiilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionUtiilsTests.swift; sourceTree = "<group>"; };
+		2398F2561E8A9FD10031A43D /* Randomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Randomizable.swift; sourceTree = "<group>"; };
 		239F8DD21E55B03900E3DF33 /* AssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AssociatedObject.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		239F8DD71E55DED500E3DF33 /* NSObject+Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Swizzling.swift"; sourceTree = "<group>"; };
 		23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Utils.swift"; sourceTree = "<group>"; };
@@ -722,6 +727,7 @@
 			isa = PBXGroup;
 			children = (
 				235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */,
+				2398F2561E8A9FD10031A43D /* Randomizable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1167,6 +1173,7 @@
 				D2CAF3401DA2A71300E6E843 /* NSManagedObject+Utils.swift in Sources */,
 				D2C149951DCCE04000376031 /* NSManagedObject+Deletable.swift in Sources */,
 				D2ABD0071E004F8D006859B9 /* ProcessInfo+Utils.swift in Sources */,
+				2398F2571E8A9FD10031A43D /* Randomizable.swift in Sources */,
 				12B9563A1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				D205B0601DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */,
 				239F8DD81E55DED500E3DF33 /* NSObject+Swizzling.swift in Sources */,
@@ -1221,6 +1228,7 @@
 				237274C01E7C41790017B127 /* Integer+Utils.swift in Sources */,
 				D2ABD0081E004F8D006859B9 /* ProcessInfo+Utils.swift in Sources */,
 				12431A601DCE2F5A00594940 /* FetchConfigurable.swift in Sources */,
+				2398F2581E8A9FD10031A43D /* Randomizable.swift in Sources */,
 				D2CAF3491DA2A71300E6E843 /* NSPersistentStoreCoordinator+Utils.swift in Sources */,
 				D205B0611DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */,
 				23EE9B1A1E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */,
@@ -1293,6 +1301,7 @@
 				D278BD981DEF1061006FAD83 /* Color+Flat.swift in Sources */,
 				23949C571E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */,
 				235DCB8D1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
+				2398F2591E8A9FD10031A43D /* Randomizable.swift in Sources */,
 				23964A041E5B034800C8E0DF /* Collection+Utils.swift in Sources */,
 				D240944C1E4C802B00EB4163 /* NSPredicate+Operators.swift in Sources */,
 				D20544FC1DDC508B007DCE97 /* Configuration.swift in Sources */,
@@ -1348,6 +1357,7 @@
 				D278BD991DEF1061006FAD83 /* Color+Flat.swift in Sources */,
 				23949C581E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */,
 				235DCB8E1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
+				2398F25A1E8A9FD10031A43D /* Randomizable.swift in Sources */,
 				23964A051E5B034800C8E0DF /* Collection+Utils.swift in Sources */,
 				D240944D1E4C802B00EB4163 /* NSPredicate+Operators.swift in Sources */,
 				D2CAF3431DA2A71300E6E843 /* NSManagedObject+Utils.swift in Sources */,
