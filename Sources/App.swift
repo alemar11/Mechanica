@@ -26,7 +26,7 @@ import Foundation
 
 public struct App {
 
-  #if os(OSX)
+  #if os(macOS)
   /// **Mechanica**
   ///
   /// Returns true if the current app is sandboxed.

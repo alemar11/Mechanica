@@ -26,7 +26,7 @@ import Foundation
 
 extension ProcessInfo {
 
-  #if os(OSX)
+  #if os(macOS)
   /// **Mechanica**
   ///
   ///  Returns true if the app is sandboxed.

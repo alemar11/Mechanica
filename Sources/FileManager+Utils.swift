@@ -83,7 +83,7 @@ extension FileManager {
     return try! url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
   
-//  #if os(OSX)
+//  #if os(macOS)
 //  
 //  /// **Mechanica**
 //  ///

@@ -27,7 +27,7 @@ import XCTest
 
 class AppTests: XCTestCase {
 
-  #if os(OSX)
+  #if os(macOS)
   func test_isSandboxed() {
     XCTAssertFalse(App.isSandboxed)
   }

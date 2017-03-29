@@ -30,7 +30,7 @@ import Foundation
   ///
   /// Alias for UIColor.
   public typealias Color = UIKit.UIColor
-#elseif os(OSX)
+#elseif os(macOS)
   import Cocoa
   /// **Mechanica**
   ///
@@ -87,7 +87,7 @@ extension Color {
       let compatibleSRGBColor = (colorSpaceName == CGColorSpace.sRGB) ? self: self.convertingToCompatibleSRGBColor()
       guard let color = compatibleSRGBColor else { return nil }
       guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else { return nil } // could not be converted
-    #elseif os(OSX)
+    #elseif os(macOS)
       let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
       let compatibleSRGBColor = (rgbColorSpaces.contains(self.colorSpace)) ? self : self.usingColorSpace(.sRGB)
       guard let color = compatibleSRGBColor else { return nil } // Could not be converted
