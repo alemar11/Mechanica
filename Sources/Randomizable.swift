@@ -1,5 +1,5 @@
 //
-//  BinaryConvertible.swift
+//  Randomizable.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -26,12 +26,12 @@ import Foundation
 
 /// **Mechanica**
 ///
-/// Types conforming to `BinaryConvertible` can be represented in binary base.
-public protocol BinaryConvertible {
-  
+/// Types conforming to Randomizable protocol can generate a random value.
+public protocol Randomizable {
+
   /// **Mechanica**
   ///
-  /// Creates a string representing the given value in the binary base.
-  var binaryString: String { get }
+  /// Returns a random value bounded by a closed interval range.
+  static func random(min: Self, max: Self) -> Self
   
 }
