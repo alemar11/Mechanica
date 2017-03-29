@@ -1315,10 +1315,7 @@
 				D278BD981DEF1061006FAD83 /* Color+Flat.swift in Sources */,
 				23949C571E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */,
 				235DCB8D1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
-<<<<<<< HEAD
-=======
 				2398F2591E8A9FD10031A43D /* Randomizable.swift in Sources */,
->>>>>>> origin/develop
 				23964A041E5B034800C8E0DF /* Collection+Utils.swift in Sources */,
 				D240944C1E4C802B00EB4163 /* NSPredicate+Operators.swift in Sources */,
 				D20544FC1DDC508B007DCE97 /* Configuration.swift in Sources */,
@@ -1375,10 +1372,7 @@
 				D278BD991DEF1061006FAD83 /* Color+Flat.swift in Sources */,
 				23949C581E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */,
 				235DCB8E1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
-<<<<<<< HEAD
-=======
 				2398F25A1E8A9FD10031A43D /* Randomizable.swift in Sources */,
->>>>>>> origin/develop
 				23964A051E5B034800C8E0DF /* Collection+Utils.swift in Sources */,
 				D240944D1E4C802B00EB4163 /* NSPredicate+Operators.swift in Sources */,
 				D2CAF3431DA2A71300E6E843 /* NSManagedObject+Utils.swift in Sources */,
@@ -1455,10 +1449,7 @@
 				D205B0661DF6F8BB002D78EF /* FloatingPointUtilsTests.swift in Sources */,
 				D208D17F1DF045C6009687BB /* ColorFlatTests.swift in Sources */,
 				23F541341E5623F400D41122 /* NSObjectSwizzlingTests.swift in Sources */,
-<<<<<<< HEAD
 				23004E591E83D320003CF888 /* UserDefaultsUtilsTests.swift in Sources */,
-=======
->>>>>>> origin/develop
 				23145DC91E89B70400BB7F97 /* BinaryFloatingPointUtilsTests.swift in Sources */,
 				D24094501E4C884500EB4163 /* NSPredicateOperatorsTests.swift in Sources */,
 				D273A5961DD5C5BA0007796F /* SequenceUtilsTests.swift in Sources */,
