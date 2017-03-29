@@ -26,21 +26,21 @@ import Foundation
 
 
 extension Bool {
-
+  
   /// **Mechanica**
   ///
   /// Returns 1 if true, or 0 if false.
   public var int: Int {
     return self ? 1 : 0
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns `true` if true, or `false` if false.
   public var string: String {
     return description
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns `true` or `false` randomly.
@@ -63,5 +63,24 @@ extension Bool {
   }
   
 }
+
+// MARK:- BinaryConvertible
+
+extension Bool: BinaryConvertible {
+  
+  /// **Mechanica**
+  ///
+  /// Creates a string representing the given value in the binary base.
+  ///
+  /// ```
+  /// true.binaryString //"1"
+  /// ```
+  ///
+  public var binaryString: String {
+    return self ? "1" : "0"
+  }
+  
+}
+
 
 
