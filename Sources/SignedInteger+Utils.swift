@@ -28,16 +28,6 @@ extension SignedInteger {
 
   /// **Mechanica**
   ///
-  /// Creates a string representing the given value in the binary base.
-  ///
-  /// `255.binaryString` //"11111111"
-  ///
-  public final func binaryString() -> String {
-    return String(self, radix: 2)
-  }
-
-  /// **Mechanica**
-  ///
   /// Creates a string representing the given value in the hexadecimal base.
   ///
   /// `255.hexadecimalString` //"ff"
@@ -47,3 +37,41 @@ extension SignedInteger {
   }
   
 }
+
+// MARK:- BinaryConvertible
+
+extension SignedInteger where Self: BinaryConvertible {
+  
+  /// **Mechanica**
+  ///
+  /// Creates a string representing the given value in the binary base.
+  ///
+  /// ```
+  /// 255.binaryString //"11111111"
+  /// Int16(-1).binaryString //"1111111111111111"
+  /// ```
+  ///
+   public var binaryString: String {
+    let size = MemoryLayout.size(ofValue: self) * 8
+    let signed: IntMax = toIntMax()
+    let unsigned: UIntMax = UIntMax(bitPattern: signed)
+    var binaryString = String(unsigned, radix:2)
+    switch binaryString.characters.count {
+    case let count where count > size:
+      let startIndex = binaryString.index(binaryString.startIndex, offsetBy: count-size)
+      let endIndex   = binaryString.index(startIndex, offsetBy: count, limitedBy: binaryString.endIndex) ?? binaryString.endIndex
+      binaryString = binaryString[startIndex..<endIndex]
+    default:
+      binaryString = String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
+    }
+    return binaryString
+
+  }
+  
+}
+
+extension Int8:  BinaryConvertible {}
+extension Int16: BinaryConvertible {}
+extension Int32: BinaryConvertible {}
+extension Int64: BinaryConvertible {}
+extension Int:   BinaryConvertible {}

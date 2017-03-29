@@ -183,6 +183,11 @@ extension Color {
   ///
   /// Returns a sRGB color from a hexadecimal integer.
   ///
+  /// ```
+  /// Color(hex: 0xFF0000)
+  /// Color(hex: 0xFF0000, alpha: 0.5)
+  /// ```
+  ///
   /// - Parameters:
   ///   - hex: The hex component of the color object, specified as a value from 0x000000 to 0xFFFFFF
   ///   - alpha: The opacity component of the color object, specified as a value from 0.0 to 1.0 (optional).
