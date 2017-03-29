@@ -2,7 +2,8 @@ Pod::Spec.new do |s|
   s.name    = 'Mechanica'
   s.version = '0.2.0'
   s.license = 'MIT'
-
+  s.documentation_url = 'http://www.tinrobots.org/Mechanica'
+  
   s.summary   = 'A library of Swift utils to ease your iOS/macOS/watchOS/tvOS development.'
   s.homepage  = 'https://github.com/tinrobots/Mechanica'
   s.authors   = { 'Alessandro Marzoli' => 'me@alessandromarzoli.com' }
