@@ -89,7 +89,7 @@ class FileManagerUtilsTests: XCTestCase {
     }
   }
   
-//  #if os(OSX)
+//  #if os(macOS)
 //  func test_applicationSupportSubDirectory() {
 //    let url = FileManager.default.applicationSupportSubDirectory //~/Library/Application Support/xctest/
 //    let url2 = FileManager.default.applicationSupportSubDirectory
