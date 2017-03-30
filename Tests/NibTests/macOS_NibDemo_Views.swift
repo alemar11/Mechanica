@@ -1,5 +1,5 @@
 //
-//  tvOS_NibDemo_Views.swift
+//  macOS_NibDemo_Views.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -22,8 +22,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import UIKit
+#if os(macOS)
 
-class tvOS_NibDemo_View1: UIView {}
+import Cocoa
 
-class tvOS_NibDemo_View2: UIView {}
+class macOS_NibDemo_View_1: NSView {
+
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+
+        // Drawing code here.
+    }
+
+}
+
+class macOS_NibDemo_View_2: NSView {
+
+  override func draw(_ dirtyRect: NSRect) {
+    super.draw(dirtyRect)
+
+    // Drawing code here.
+  }
+
+}
+
+#endif

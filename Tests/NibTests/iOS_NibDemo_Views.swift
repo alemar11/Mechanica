@@ -1,5 +1,5 @@
 //
-//  macOS_StoryboardDemo_WindowController_1.swift
+//  iOS_NibDemo_Views.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -22,12 +22,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Cocoa
+#if os(iOS)
 
-class macOS_StoryboardDemo_WindowController_1: NSWindowController {
+import UIKit
 
-    override func windowDidLoad() {
-        super.windowDidLoad()
-    }
+class iOS_NibDemo_View_1: UIView {}
 
-}
+class iOS_NibDemo_View_2: UIView {}
+
+#endif

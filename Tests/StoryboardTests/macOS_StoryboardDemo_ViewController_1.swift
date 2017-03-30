@@ -1,5 +1,5 @@
 //
-//  SignedInteger+Utils.swift
+//  macOS_StoryboardDemo_ViewController_1.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -22,31 +22,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import XCTest
-@testable import Mechanica
+#if os(macOS)
 
+import Cocoa
 
-class SignedIntegerTests: XCTestCase {
+class macOS_StoryboardDemo_ViewController_1: NSViewController {
 
-  func test_binaryString() {
-    XCTAssertEqual(255.binaryString(), "11111111")
-    XCTAssertEqual(0.binaryString(), "0")
-    XCTAssertEqual(1.binaryString(), "1")
-    XCTAssertEqual(11.binaryString(),"1011")
-    XCTAssertEqual(111.binaryString(),"1101111")
-    XCTAssertEqual(Int.max.binaryString(),"111111111111111111111111111111111111111111111111111111111111111")
-  }
-
-  func test_hexadecimalString(uppercase: Bool = true) {
-    XCTAssertEqual(255.hexadecimalString(), "ff")
-    XCTAssertEqual(255.hexadecimalString(uppercase: false), "ff")
-    XCTAssertEqual(255.hexadecimalString(uppercase: true), "FF")
-    XCTAssertEqual(0.hexadecimalString(), "0")
-    XCTAssertEqual(1.hexadecimalString(), "1")
-    XCTAssertEqual(11.hexadecimalString(),"b")
-    XCTAssertEqual(111.hexadecimalString(uppercase: true),"6F")
-    XCTAssertEqual(111222.hexadecimalString(),"1B276")
-    XCTAssertEqual(Int.max.hexadecimalString(uppercase: false), "7FFFFFFFFFFFFFFF")
-  }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
 }
+
+#endif

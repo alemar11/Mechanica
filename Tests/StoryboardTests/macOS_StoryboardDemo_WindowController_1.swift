@@ -1,5 +1,5 @@
 //
-//  XCTest+Utils.swift
+//  macOS_StoryboardDemo_WindowController_1.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -22,13 +22,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import XCTest
-import Foundation
+#if os(macOS)
 
-extension XCTest {
-  
-  var unitTestBundle: Bundle {
-    return Bundle(for: type(of: self))
-  }
-  
+import Cocoa
+
+class macOS_StoryboardDemo_WindowController_1: NSWindowController {
+
+    override func windowDidLoad() {
+        super.windowDidLoad()
+    }
+
 }
+
+#endif

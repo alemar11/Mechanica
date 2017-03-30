@@ -1,5 +1,5 @@
 //
-//  macOS_NibDemo_Views.swift
+//  tvOS_StoryboardDemo_ViewController_1.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -22,24 +22,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Cocoa
+#if os(tvOS)
 
-class macOS_NibDemo_View_1: NSView {
+import UIKit
 
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
+class tvOS_StoryboardDemo_ViewController_1: UIViewController {
 
-        // Drawing code here.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 
 }
 
-class macOS_NibDemo_View_2: NSView {
-
-  override func draw(_ dirtyRect: NSRect) {
-    super.draw(dirtyRect)
-
-    // Drawing code here.
-  }
-
-}
+#endif

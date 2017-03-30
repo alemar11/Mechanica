@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Mechanica",
-    dependencies : [],
-    exclude: ["Tests"]
+    name: "Mechanica"
+    //dependencies : [],
+    //exclude: ["Tests"]
 )

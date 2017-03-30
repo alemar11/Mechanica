@@ -42,6 +42,13 @@ extension Storyboard: StoryboardKeyCodable {
 
 
 class StoryboardTests: XCTestCase {
+
+  var unitTestBundle: Bundle!
+
+  override func setUp() {
+    super.setUp()
+    unitTestBundle = Bundle(for: type(of: self))
+  }
   
   func test_instantiate() {
     

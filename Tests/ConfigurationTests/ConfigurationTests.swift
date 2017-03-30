@@ -101,14 +101,22 @@ extension Configuration: DictionaryKeyCodable {
 
 class ConfigurationTests: XCTestCase {
 
-  private var plistPath: String {
-    return unitTestBundle.path(forResource: "ConfigurationDemo", ofType: "plist")!
+  var unitTestBundle: Bundle!
+
+  override func setUp() {
+    super.setUp()
+    unitTestBundle = Bundle(for: type(of: self))
   }
 
   func test_configuration() {
 
+    guard let plistPath = unitTestBundle.path(forResource: "ConfigurationDemo", ofType: "plist") else {
+      XCTFail("Invalid plist file.")
+      return
+    }
+
     guard let config = Configuration(plistPath: plistPath) else {
-      XCTAssert(true, "Invalid plist file.")
+      XCTFail("Invalid plist file.")
       return
     }
 
@@ -151,9 +159,9 @@ class ConfigurationTests: XCTestCase {
     /// Dictionary
     XCTAssertNotNil(config.dictionary(forKey: .dictionaryItem))
     XCTAssertNotNil(config.dictionary(forKey: .dictionaryItem2))
-
+    
   }
-
-
-
+  
+  
+  
 }

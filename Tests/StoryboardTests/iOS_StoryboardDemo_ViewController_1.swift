@@ -22,6 +22,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if os(iOS)
+
 import UIKit
 
 class iOS_StoryboardDemo_ViewController_1: UIViewController {
@@ -35,3 +37,5 @@ class iOS_StoryboardDemo_ViewController_1: UIViewController {
     }
 
 }
+
+#endif

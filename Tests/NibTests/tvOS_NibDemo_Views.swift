@@ -1,5 +1,5 @@
 //
-//  macOS_StoryboardDemo_ViewController_1.swift
+//  tvOS_NibDemo_Views.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -22,12 +22,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Cocoa
+#if os(tvOS)
 
-class macOS_StoryboardDemo_ViewController_1: NSViewController {
+import UIKit
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+class tvOS_NibDemo_View1: UIView {}
 
-}
+class tvOS_NibDemo_View2: UIView {}
+
+#endif
