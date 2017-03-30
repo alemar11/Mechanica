@@ -101,12 +101,7 @@ extension Configuration: DictionaryKeyCodable {
 
 class ConfigurationTests: XCTestCase {
 
-  var unitTestBundle: Bundle!
-
-  override func setUp() {
-    super.setUp()
-    unitTestBundle = Bundle(for: type(of: self))
-  }
+  lazy var unitTestBundle: Bundle =  { return Bundle(for: type(of: self)) }()
 
   func test_configuration() {
 
