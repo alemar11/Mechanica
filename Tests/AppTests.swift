@@ -27,11 +27,14 @@ import XCTest
 
 class AppTests: XCTestCase {
 
-  #if os(OSX)
   func test_isSandboxed() {
-    XCTAssertFalse(App.isSandboxed)
+    #if os(macOS)
+      XCTAssertFalse(App.isSandboxed)
+    #else
+      XCTAssertTrue(App.isSandboxed)
+    #endif
   }
-  #endif
+
 
   func test_isRunningUnitTests() {
     XCTAssertTrue(App.isRunningUnitTests)
@@ -40,5 +43,5 @@ class AppTests: XCTestCase {
   func test_identifier() {
     XCTAssert(App.identifier == "xctest")
   }
-
+  
 }

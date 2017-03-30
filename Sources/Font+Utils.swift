@@ -30,7 +30,7 @@ import Foundation
   ///
   /// Alias for UIFont.
   public typealias Font = UIKit.UIFont
-#elseif os(OSX)
+#elseif os(macOS)
   import Cocoa
   /// **Mechanica**
   ///
