@@ -609,7 +609,7 @@
 				2317E3841E8D14400087BB79 /* ConfigurationTests */,
 				2317E3881E8D14400087BB79 /* DictionaryTests */,
 				2317E38B1E8D14400087BB79 /* IntegerTests */,
-				2317E3901E8D14400087BB79 /* MiscellaneaTests */,
+				2317E3901E8D14400087BB79 /* MechanicaTests */,
 				2317E3A11E8D14400087BB79 /* NibTests */,
 				2317E3AA1E8D14400087BB79 /* NSAttributedStringTests */,
 				2317E3AE1E8D14400087BB79 /* StoryboardTests */,
@@ -691,7 +691,7 @@
 			path = IntegerTests;
 			sourceTree = "<group>";
 		};
-		2317E3901E8D14400087BB79 /* MiscellaneaTests */ = {
+		2317E3901E8D14400087BB79 /* MechanicaTests */ = {
 			isa = PBXGroup;
 			children = (
 				2317E3911E8D14400087BB79 /* AppTests.swift */,
@@ -710,7 +710,6 @@
 				2317E39E1E8D14400087BB79 /* SequenceUtilsTests.swift */,
 				2317E39F1E8D14400087BB79 /* URLOperatorsTests.swift */,
 			);
-			name = MiscellaneaTests;
 			path = MechanicaTests;
 			sourceTree = "<group>";
 		};
