@@ -22,6 +22,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if os(iOS)
+
 import Foundation
 import UIKit
 
@@ -294,3 +296,4 @@ fileprivate extension Selector {
   static let didChangeFrame = #selector(KeyboardObserver.keyboardDidChangeFrame(_:))
 }
 
+#endif
