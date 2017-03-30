@@ -26,18 +26,21 @@ import Foundation
 
 public struct App {
 
-  #if os(macOS)
-  /// **Mechanica**
-  ///
-  /// Returns true if the current app is sandboxed.
-  public static var isSandboxed: Bool {
-    return ProcessInfo.isSandboxed
-  }
-  #endif
 
   /// **Mechanica**
   ///
-  /// Returns true if the current app is running Unit Tests.
+  /// **macOS**: Returns `true` if the current app is sandboxed. **iOS**, **tvOS**, **watchOS** returns always `true`.
+  public static var isSandboxed: Bool {
+    #if os(macOS)
+      return ProcessInfo.isSandboxed
+    #else
+      return true
+    #endif
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns `true` if the current app is running Unit Tests.
   public static var isRunningUnitTests: Bool {
     return ProcessInfo.isRunningUnitTests
   }
@@ -53,5 +56,5 @@ public struct App {
     }
     return nil
   }
-
+  
 }
