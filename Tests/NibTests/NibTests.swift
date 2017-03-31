@@ -44,6 +44,7 @@ extension Nib: NibKeyCodable {
 
   /// UILongPressGestureRecognizer is now nib loadable.
   extension UILongPressGestureRecognizer: NibLoadable {}
+
 #elseif os(tvOS)
 
   import UIKit
@@ -65,6 +66,7 @@ extension Nib: NibKeyCodable {
   /// NSTouchBar is now nib loadable.
   @available(OSX 10.12.2, *)
   extension NSTouchBar : NibLoadable {}
+  
 #endif
 
 
