@@ -24,10 +24,11 @@
 
 #if os(tvOS)
 
-import UIKit
+  import UIKit
 
-class tvOS_NibDemo_View1: UIView {}
+  class tvOS_NibDemo_View_1: UIView {}
 
-class tvOS_NibDemo_View2: UIView {}
+  class tvOS_NibDemo_View_2: UIView {}
 
 #endif
+

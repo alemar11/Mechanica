@@ -24,10 +24,10 @@
 
 #if os(iOS)
 
-import UIKit
+  import UIKit
 
-class iOS_NibDemo_View_1: UIView {}
+  class iOS_NibDemo_View_1: UIView {}
 
-class iOS_NibDemo_View_2: UIView {}
+  class iOS_NibDemo_View_2: UIView {}
 
 #endif

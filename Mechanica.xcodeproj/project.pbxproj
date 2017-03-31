@@ -150,8 +150,6 @@
 		2317E41B1E8D14400087BB79 /* NibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3A61E8D14400087BB79 /* NibTests.swift */; };
 		2317E41C1E8D14400087BB79 /* NibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3A61E8D14400087BB79 /* NibTests.swift */; };
 		2317E41D1E8D14400087BB79 /* NibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3A61E8D14400087BB79 /* NibTests.swift */; };
-		2317E41F1E8D14400087BB79 /* tvOS_NibDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2317E3A71E8D14400087BB79 /* tvOS_NibDemo.xib */; };
-		2317E4221E8D14400087BB79 /* tvOS_NibDemo_Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3A81E8D14400087BB79 /* tvOS_NibDemo_Views.swift */; };
 		2317E4271E8D14400087BB79 /* NSAttributedStringOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3AB1E8D14400087BB79 /* NSAttributedStringOperatorsTests.swift */; };
 		2317E4281E8D14400087BB79 /* NSAttributedStringOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3AB1E8D14400087BB79 /* NSAttributedStringOperatorsTests.swift */; };
 		2317E4291E8D14400087BB79 /* NSAttributedStringOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3AB1E8D14400087BB79 /* NSAttributedStringOperatorsTests.swift */; };
@@ -194,6 +192,8 @@
 		235B5EC01E4F68E000DBBE0D /* Font+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */; };
 		235B5EC11E4F68E000DBBE0D /* Font+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */; };
 		235B5EC21E4F68E000DBBE0D /* Font+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */; };
+		235C10421E8EB0A2007034DD /* tvOS_NibDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235C10221E8EAEB7007034DD /* tvOS_NibDemo.xib */; };
+		235C10431E8EB0C1007034DD /* tvOS_NibDemo_Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235C10211E8EAEB7007034DD /* tvOS_NibDemo_Views.swift */; };
 		235DCB861E89B35A006AFEBE /* BinaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */; };
 		235DCB871E89B35A006AFEBE /* BinaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */; };
 		235DCB881E89B35A006AFEBE /* BinaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */; };
@@ -420,8 +420,6 @@
 		2317E3A41E8D14400087BB79 /* macOS_NibDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = macOS_NibDemo.xib; sourceTree = "<group>"; };
 		2317E3A51E8D14400087BB79 /* macOS_NibDemo_Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = macOS_NibDemo_Views.swift; sourceTree = "<group>"; };
 		2317E3A61E8D14400087BB79 /* NibTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTests.swift; sourceTree = "<group>"; };
-		2317E3A71E8D14400087BB79 /* tvOS_NibDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tvOS_NibDemo.xib; sourceTree = "<group>"; };
-		2317E3A81E8D14400087BB79 /* tvOS_NibDemo_Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tvOS_NibDemo_Views.swift; sourceTree = "<group>"; };
 		2317E3AB1E8D14400087BB79 /* NSAttributedStringOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringOperatorsTests.swift; sourceTree = "<group>"; };
 		2317E3AC1E8D14400087BB79 /* NSAttributedStringUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringUtilsTests.swift; sourceTree = "<group>"; };
 		2317E3AD1E8D14400087BB79 /* NSMutableAttributedStringOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringOperatorsTests.swift; sourceTree = "<group>"; };
@@ -440,6 +438,8 @@
 		2317E3BD1E8D14400087BB79 /* StringValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringValidationTests.swift; sourceTree = "<group>"; };
 		233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+Utils.swift"; sourceTree = "<group>"; };
+		235C10211E8EAEB7007034DD /* tvOS_NibDemo_Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tvOS_NibDemo_Views.swift; sourceTree = "<group>"; };
+		235C10221E8EAEB7007034DD /* tvOS_NibDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tvOS_NibDemo.xib; sourceTree = "<group>"; };
 		235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryConvertible.swift; sourceTree = "<group>"; };
 		235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BinaryFloatingPoint+Utils.swift"; sourceTree = "<group>"; };
 		235DCB8F1E89B40F006AFEBE /* UnsignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UnsignedInteger+Utils.swift"; sourceTree = "<group>"; };
@@ -716,13 +716,13 @@
 		2317E3A11E8D14400087BB79 /* NibTests */ = {
 			isa = PBXGroup;
 			children = (
-				2317E3A21E8D14400087BB79 /* iOS_NibDemo.xib */,
 				2317E3A31E8D14400087BB79 /* iOS_NibDemo_Views.swift */,
-				2317E3A41E8D14400087BB79 /* macOS_NibDemo.xib */,
+				2317E3A21E8D14400087BB79 /* iOS_NibDemo.xib */,
 				2317E3A51E8D14400087BB79 /* macOS_NibDemo_Views.swift */,
+				2317E3A41E8D14400087BB79 /* macOS_NibDemo.xib */,
 				2317E3A61E8D14400087BB79 /* NibTests.swift */,
-				2317E3A71E8D14400087BB79 /* tvOS_NibDemo.xib */,
-				2317E3A81E8D14400087BB79 /* tvOS_NibDemo_Views.swift */,
+				235C10211E8EAEB7007034DD /* tvOS_NibDemo_Views.swift */,
+				235C10221E8EAEB7007034DD /* tvOS_NibDemo.xib */,
 			);
 			path = NibTests;
 			sourceTree = "<group>";
@@ -1121,9 +1121,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235C10421E8EB0A2007034DD /* tvOS_NibDemo.xib in Resources */,
 				2317E4431E8D14400087BB79 /* tvOS_StoryboardDemo.storyboard in Resources */,
 				2317E3C51E8D14400087BB79 /* ConfigurationDemo.plist in Resources */,
-				2317E41F1E8D14400087BB79 /* tvOS_NibDemo.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1444,10 +1444,10 @@
 				2317E4011E8D14400087BB79 /* OptionalUtilsTests.swift in Sources */,
 				2317E3E91E8D14400087BB79 /* BoolUtilsTests.swift in Sources */,
 				2317E44F1E8D14400087BB79 /* StringNSStringTests.swift in Sources */,
+				235C10431E8EB0C1007034DD /* tvOS_NibDemo_Views.swift in Sources */,
 				2317E3FB1E8D14400087BB79 /* NSObjectSwizzlingTests.swift in Sources */,
 				2317E3E61E8D14400087BB79 /* BinaryFloatingPointUtilsTests.swift in Sources */,
 				2317E40A1E8D14400087BB79 /* URLOperatorsTests.swift in Sources */,
-				2317E4221E8D14400087BB79 /* tvOS_NibDemo_Views.swift in Sources */,
 				2317E3BF1E8D14400087BB79 /* ColorFlatTests.swift in Sources */,
 				2317E3C21E8D14400087BB79 /* ColorUtilsTests.swift in Sources */,
 				2317E3D71E8D14400087BB79 /* IntegerUtilsTests.swift in Sources */,

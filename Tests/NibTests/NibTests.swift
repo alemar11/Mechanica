@@ -37,8 +37,8 @@ extension Nib: NibKeyCodable {
 
 #if os(iOS)
   extension UILongPressGestureRecognizer: NibLoadable {}
-#elseif os(tvOS)
-  extension UIRotationGestureRecognizer: NibLoadable {}
+//#elseif os(tvOS)
+  //
 #elseif os(macOS)
   @available(OSX 10.12.2, *)
   extension NSTouchBar : NibLoadable {}
@@ -82,7 +82,7 @@ class NibTests: XCTestCase {
 
     #elseif os(tvOS)
 
-      let nib = Nib.nib(forKey: .iOS, bundle: unitTestBundle)
+      let nib = Nib.nib(forKey: .tvOS, bundle: unitTestBundle)
       XCTAssertNotNil(nib)
       
       do {
@@ -100,14 +100,6 @@ class NibTests: XCTestCase {
       do {
         let view2: tvOS_NibDemo_View_2 = nib.instantiate()
         XCTAssertNotNil(view2)
-      }
-      do {
-        let gesture = nib.instantiate() as UIRotationGestureRecognizer
-        XCTAssertNotNil(gesture)
-      }
-      do {
-        let gesture: UIRotationGestureRecognizer = nib.instantiate()
-        XCTAssertNotNil(gesture)
       }
 
     #elseif os(macOS)
