@@ -36,13 +36,37 @@ extension Nib: NibKeyCodable {
 }
 
 #if os(iOS)
+
+  import UIKit
+  
+  class iOS_NibDemo_View_1: UIView {}
+  class iOS_NibDemo_View_2: UIView {}
+
+  /// UILongPressGestureRecognizer is now nib loadable.
   extension UILongPressGestureRecognizer: NibLoadable {}
-//#elseif os(tvOS)
-  //
+#elseif os(tvOS)
+
+  import UIKit
+  class tvOS_NibDemo_View_1: UIView {}
+  class tvOS_NibDemo_View_2: UIView {}
+
 #elseif os(macOS)
+
+  import Cocoa
+
+  class macOS_NibDemo_View_1: NSView {
+    override func draw(_ dirtyRect: NSRect) { super.draw(dirtyRect) }
+  }
+
+  class macOS_NibDemo_View_2: NSView {
+    override func draw(_ dirtyRect: NSRect) { super.draw(dirtyRect) }
+  }
+
+  /// NSTouchBar is now nib loadable.
   @available(OSX 10.12.2, *)
   extension NSTouchBar : NibLoadable {}
 #endif
+
 
 class NibTests: XCTestCase {
 
@@ -54,7 +78,7 @@ class NibTests: XCTestCase {
 
       let nib = Nib.nib(forKey: .iOS, bundle: unitTestBundle)
       XCTAssertNotNil(nib)
-      
+
       do {
         let view1 = nib.instantiate() as iOS_NibDemo_View_1
         XCTAssertNotNil(view1)
@@ -84,7 +108,7 @@ class NibTests: XCTestCase {
 
       let nib = Nib.nib(forKey: .tvOS, bundle: unitTestBundle)
       XCTAssertNotNil(nib)
-      
+
       do {
         let view1 = nib.instantiate() as tvOS_NibDemo_View_1
         XCTAssertNotNil(view1)
@@ -106,7 +130,7 @@ class NibTests: XCTestCase {
 
       let nib = Nib.nib(forKey: .macOS, bundle: unitTestBundle)
       XCTAssertNotNil(nib)
-      
+
       do {
         let view1 = nib.instantiate() as macOS_NibDemo_View_1
         XCTAssertNotNil(view1)
@@ -135,9 +159,9 @@ class NibTests: XCTestCase {
           XCTAssertNotNil(touchBar)
         }
       }
-
+      
     #endif
-
+    
   }
-
+  
 }
