@@ -40,6 +40,23 @@ extension Storyboard: StoryboardKeyCodable {
 
 }
 
+#if os(iOS)
+  
+  import UIKit
+  class iOS_StoryboardDemo_ViewController_1: UIViewController {}
+  
+#elseif os(tvOS)
+  
+  import UIKit
+  class tvOS_StoryboardDemo_ViewController_1: UIViewController {}
+  
+#elseif os(macOS)
+  
+  import Cocoa
+  class macOS_StoryboardDemo_ViewController_1: NSViewController {}
+  class macOS_StoryboardDemo_WindowController_1: NSWindowController {}
+  
+#endif
 
 class StoryboardTests: XCTestCase {
 

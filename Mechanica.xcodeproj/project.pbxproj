@@ -158,15 +158,11 @@
 		2317E42E1E8D14400087BB79 /* NSMutableAttributedStringOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3AD1E8D14400087BB79 /* NSMutableAttributedStringOperatorsTests.swift */; };
 		2317E42F1E8D14400087BB79 /* NSMutableAttributedStringOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3AD1E8D14400087BB79 /* NSMutableAttributedStringOperatorsTests.swift */; };
 		2317E4301E8D14400087BB79 /* iOS_StoryboardDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2317E3AF1E8D14400087BB79 /* iOS_StoryboardDemo.storyboard */; };
-		2317E4331E8D14400087BB79 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3B01E8D14400087BB79 /* iOS_StoryboardDemo_ViewController_1.swift */; };
 		2317E4381E8D14400087BB79 /* macOS_StoryboardDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2317E3B11E8D14400087BB79 /* macOS_StoryboardDemo.storyboard */; };
-		2317E43B1E8D14400087BB79 /* macOS_StoryboardDemo_ViewController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3B21E8D14400087BB79 /* macOS_StoryboardDemo_ViewController_1.swift */; };
-		2317E43E1E8D14400087BB79 /* macOS_StoryboardDemo_WindowController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3B31E8D14400087BB79 /* macOS_StoryboardDemo_WindowController_1.swift */; };
 		2317E43F1E8D14400087BB79 /* StoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3B41E8D14400087BB79 /* StoryboardTests.swift */; };
 		2317E4401E8D14400087BB79 /* StoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3B41E8D14400087BB79 /* StoryboardTests.swift */; };
 		2317E4411E8D14400087BB79 /* StoryboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3B41E8D14400087BB79 /* StoryboardTests.swift */; };
 		2317E4431E8D14400087BB79 /* tvOS_StoryboardDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2317E3B51E8D14400087BB79 /* tvOS_StoryboardDemo.storyboard */; };
-		2317E4461E8D14400087BB79 /* tvOS_StoryboardDemo_ViewController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3B61E8D14400087BB79 /* tvOS_StoryboardDemo_ViewController_1.swift */; };
 		2317E44B1E8D14400087BB79 /* StringConversionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3B91E8D14400087BB79 /* StringConversionsTests.swift */; };
 		2317E44C1E8D14400087BB79 /* StringConversionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3B91E8D14400087BB79 /* StringConversionsTests.swift */; };
 		2317E44D1E8D14400087BB79 /* StringConversionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2317E3B91E8D14400087BB79 /* StringConversionsTests.swift */; };
@@ -419,13 +415,9 @@
 		2317E3AC1E8D14400087BB79 /* NSAttributedStringUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringUtilsTests.swift; sourceTree = "<group>"; };
 		2317E3AD1E8D14400087BB79 /* NSMutableAttributedStringOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringOperatorsTests.swift; sourceTree = "<group>"; };
 		2317E3AF1E8D14400087BB79 /* iOS_StoryboardDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iOS_StoryboardDemo.storyboard; sourceTree = "<group>"; };
-		2317E3B01E8D14400087BB79 /* iOS_StoryboardDemo_ViewController_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS_StoryboardDemo_ViewController_1.swift; sourceTree = "<group>"; };
 		2317E3B11E8D14400087BB79 /* macOS_StoryboardDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = macOS_StoryboardDemo.storyboard; sourceTree = "<group>"; };
-		2317E3B21E8D14400087BB79 /* macOS_StoryboardDemo_ViewController_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = macOS_StoryboardDemo_ViewController_1.swift; sourceTree = "<group>"; };
-		2317E3B31E8D14400087BB79 /* macOS_StoryboardDemo_WindowController_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = macOS_StoryboardDemo_WindowController_1.swift; sourceTree = "<group>"; };
 		2317E3B41E8D14400087BB79 /* StoryboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardTests.swift; sourceTree = "<group>"; };
 		2317E3B51E8D14400087BB79 /* tvOS_StoryboardDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = tvOS_StoryboardDemo.storyboard; sourceTree = "<group>"; };
-		2317E3B61E8D14400087BB79 /* tvOS_StoryboardDemo_ViewController_1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tvOS_StoryboardDemo_ViewController_1.swift; sourceTree = "<group>"; };
 		2317E3B91E8D14400087BB79 /* StringConversionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConversionsTests.swift; sourceTree = "<group>"; };
 		2317E3BA1E8D14400087BB79 /* StringNSStringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringNSStringTests.swift; sourceTree = "<group>"; };
 		2317E3BB1E8D14400087BB79 /* StringOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringOperatorsTests.swift; sourceTree = "<group>"; };
@@ -732,13 +724,9 @@
 			isa = PBXGroup;
 			children = (
 				2317E3AF1E8D14400087BB79 /* iOS_StoryboardDemo.storyboard */,
-				2317E3B01E8D14400087BB79 /* iOS_StoryboardDemo_ViewController_1.swift */,
 				2317E3B11E8D14400087BB79 /* macOS_StoryboardDemo.storyboard */,
-				2317E3B21E8D14400087BB79 /* macOS_StoryboardDemo_ViewController_1.swift */,
-				2317E3B31E8D14400087BB79 /* macOS_StoryboardDemo_WindowController_1.swift */,
 				2317E3B41E8D14400087BB79 /* StoryboardTests.swift */,
 				2317E3B51E8D14400087BB79 /* tvOS_StoryboardDemo.storyboard */,
-				2317E3B61E8D14400087BB79 /* tvOS_StoryboardDemo_ViewController_1.swift */,
 			);
 			path = StoryboardTests;
 			sourceTree = "<group>";
@@ -1383,7 +1371,6 @@
 				2317E4571E8D14400087BB79 /* StringValidationTests.swift in Sources */,
 				2317E4541E8D14400087BB79 /* StringUtilsTests.swift in Sources */,
 				2317E44B1E8D14400087BB79 /* StringConversionsTests.swift in Sources */,
-				2317E4331E8D14400087BB79 /* iOS_StoryboardDemo_ViewController_1.swift in Sources */,
 				2317E43F1E8D14400087BB79 /* StoryboardTests.swift in Sources */,
 				2317E3FD1E8D14400087BB79 /* NSPredicateOperatorsTests.swift in Sources */,
 				2317E4031E8D14400087BB79 /* RangeReplaceableCollectionUtilsTests.swift in Sources */,
@@ -1423,7 +1410,6 @@
 				2317E3D41E8D14400087BB79 /* IntegerRandomizableTests.swift in Sources */,
 				2317E3EC1E8D14400087BB79 /* BundleInfoTests.swift in Sources */,
 				2317E4581E8D14400087BB79 /* StringValidationTests.swift in Sources */,
-				2317E4461E8D14400087BB79 /* tvOS_StoryboardDemo_ViewController_1.swift in Sources */,
 				2317E4551E8D14400087BB79 /* StringUtilsTests.swift in Sources */,
 				2317E44C1E8D14400087BB79 /* StringConversionsTests.swift in Sources */,
 				2317E4401E8D14400087BB79 /* StoryboardTests.swift in Sources */,
@@ -1462,7 +1448,6 @@
 				2317E3E41E8D14400087BB79 /* AssociatedObjectTests.swift in Sources */,
 				2317E3F91E8D14400087BB79 /* KeyboardObserverTests.swift in Sources */,
 				2317E4291E8D14400087BB79 /* NSAttributedStringOperatorsTests.swift in Sources */,
-				2317E43B1E8D14400087BB79 /* macOS_StoryboardDemo_ViewController_1.swift in Sources */,
 				2317E3D51E8D14400087BB79 /* IntegerRandomizableTests.swift in Sources */,
 				2317E3ED1E8D14400087BB79 /* BundleInfoTests.swift in Sources */,
 				2317E4591E8D14400087BB79 /* StringValidationTests.swift in Sources */,
@@ -1483,7 +1468,6 @@
 				2317E3C31E8D14400087BB79 /* ColorUtilsTests.swift in Sources */,
 				2317E3D81E8D14400087BB79 /* IntegerUtilsTests.swift in Sources */,
 				2317E3DE1E8D14400087BB79 /* UnsignedIntegerUtilsTests.swift in Sources */,
-				2317E43E1E8D14400087BB79 /* macOS_StoryboardDemo_WindowController_1.swift in Sources */,
 				2317E4081E8D14400087BB79 /* SequenceUtilsTests.swift in Sources */,
 				2317E3CF1E8D14400087BB79 /* DictionaryUtilsTests.swift in Sources */,
 				2317E42F1E8D14400087BB79 /* NSMutableAttributedStringOperatorsTests.swift in Sources */,
