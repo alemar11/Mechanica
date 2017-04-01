@@ -38,10 +38,8 @@ extension Nib: NibKeyCodable {
 #if os(iOS)
 
   import UIKit
-  
   class iOS_NibDemo_View_1: UIView {}
   class iOS_NibDemo_View_2: UIView {}
-
   /// UILongPressGestureRecognizer is now nib loadable.
   extension UILongPressGestureRecognizer: NibLoadable {}
 
@@ -54,15 +52,8 @@ extension Nib: NibKeyCodable {
 #elseif os(macOS)
 
   import Cocoa
-
-  class macOS_NibDemo_View_1: NSView {
-    override func draw(_ dirtyRect: NSRect) { super.draw(dirtyRect) }
-  }
-
-  class macOS_NibDemo_View_2: NSView {
-    override func draw(_ dirtyRect: NSRect) { super.draw(dirtyRect) }
-  }
-
+  class macOS_NibDemo_View_1: NSView {}
+  class macOS_NibDemo_View_2: NSView {}
   /// NSTouchBar is now nib loadable.
   @available(OSX 10.12.2, *)
   extension NSTouchBar : NibLoadable {}
