@@ -23,8 +23,8 @@ A library of Swift utils to ease your iOS | macOS | watchOS | tvOS development.
 ## Requirements
 
 - iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+
-- Xcode 8.1+
-- Swift 3.0+
+- Xcode 8.3
+- Swift 3.1
 
 ## Installation
 
