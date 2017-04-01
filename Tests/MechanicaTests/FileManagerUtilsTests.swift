@@ -25,6 +25,10 @@
 import XCTest
 @testable import Mechanica
 
+@available(iOS 10, *)
+@available(tvOS 10, *)
+@available(watchOS 3, *)
+@available(OSX 10.12, *)
 class FileManagerUtilsTests: XCTestCase {
   
   func test_clearOrDestroyDirectory() {

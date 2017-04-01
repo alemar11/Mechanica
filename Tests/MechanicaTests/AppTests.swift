@@ -1,5 +1,5 @@
 //
-//  macOS_StoryboardDemo_WindowController_1.swift
+//  App.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -22,12 +22,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Cocoa
+import XCTest
+@testable import Mechanica
 
-class macOS_StoryboardDemo_WindowController_1: NSWindowController {
+class AppTests: XCTestCase {
 
-    override func windowDidLoad() {
-        super.windowDidLoad()
-    }
+  func test_isSandboxed() {
+    #if os(macOS)
+      XCTAssertFalse(App.isSandboxed)
+    #else
+      XCTAssertTrue(App.isSandboxed)
+    #endif
+  }
 
+
+  func test_isRunningUnitTests() {
+    XCTAssertTrue(App.isRunningUnitTests)
+  }
+
+  func test_identifier() {
+    XCTAssert(App.identifier == "xctest")
+  }
+  
 }

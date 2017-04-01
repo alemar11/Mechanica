@@ -36,15 +36,34 @@ extension Nib: NibKeyCodable {
 }
 
 #if os(iOS)
+
+  import UIKit
+  class iOS_NibDemo_View_1: UIView {}
+  class iOS_NibDemo_View_2: UIView {}
+  /// UILongPressGestureRecognizer is now nib loadable.
   extension UILongPressGestureRecognizer: NibLoadable {}
+
 #elseif os(tvOS)
-  extension UIRotationGestureRecognizer: NibLoadable {}
+
+  import UIKit
+  class tvOS_NibDemo_View_1: UIView {}
+  class tvOS_NibDemo_View_2: UIView {}
+
 #elseif os(macOS)
+
+  import Cocoa
+  class macOS_NibDemo_View_1: NSView {}
+  class macOS_NibDemo_View_2: NSView {}
+  /// NSTouchBar is now nib loadable.
   @available(OSX 10.12.2, *)
   extension NSTouchBar : NibLoadable {}
+  
 #endif
 
+
 class NibTests: XCTestCase {
+
+  lazy var unitTestBundle: Bundle =  { return Bundle(for: type(of: self)) }()
 
   func test_instantiate() {
 
@@ -52,7 +71,7 @@ class NibTests: XCTestCase {
 
       let nib = Nib.nib(forKey: .iOS, bundle: unitTestBundle)
       XCTAssertNotNil(nib)
-      
+
       do {
         let view1 = nib.instantiate() as iOS_NibDemo_View_1
         XCTAssertNotNil(view1)
@@ -80,9 +99,9 @@ class NibTests: XCTestCase {
 
     #elseif os(tvOS)
 
-      let nib = Nib.nib(forKey: .iOS, bundle: unitTestBundle)
+      let nib = Nib.nib(forKey: .tvOS, bundle: unitTestBundle)
       XCTAssertNotNil(nib)
-      
+
       do {
         let view1 = nib.instantiate() as tvOS_NibDemo_View_1
         XCTAssertNotNil(view1)
@@ -99,20 +118,12 @@ class NibTests: XCTestCase {
         let view2: tvOS_NibDemo_View_2 = nib.instantiate()
         XCTAssertNotNil(view2)
       }
-      do {
-        let gesture = nib.instantiate() as UIRotationGestureRecognizer
-        XCTAssertNotNil(gesture)
-      }
-      do {
-        let gesture: UIRotationGestureRecognizer = nib.instantiate()
-        XCTAssertNotNil(gesture)
-      }
 
     #elseif os(macOS)
 
       let nib = Nib.nib(forKey: .macOS, bundle: unitTestBundle)
       XCTAssertNotNil(nib)
-      
+
       do {
         let view1 = nib.instantiate() as macOS_NibDemo_View_1
         XCTAssertNotNil(view1)
@@ -141,9 +152,9 @@ class NibTests: XCTestCase {
           XCTAssertNotNil(touchBar)
         }
       }
-
+      
     #endif
-
+    
   }
-
+  
 }

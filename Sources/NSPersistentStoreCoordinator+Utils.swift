@@ -29,6 +29,10 @@ extension NSPersistentStoreCoordinator {
   /// **Mechanica**
   ///
   /// Destroys a Persistent Store located at `url`.
+  @available(iOS 10, *)
+  @available(tvOS 10, *)
+  @available(watchOS 3, *)
+  @available(OSX 10.12, *)
   public static func destroyStore(as url: URL) {
     do {
       let psc = self.init(managedObjectModel: NSManagedObjectModel())
@@ -41,6 +45,10 @@ extension NSPersistentStoreCoordinator {
   /// **Mechanica**
   ///
   /// Replaces a Persistent Store located at `targetURL` with one at `sourceURL`.
+  @available(iOS 10, *)
+  @available(tvOS 10, *)
+  @available(watchOS 3, *)
+  @available(OSX 10.12, *)
   public static func replaceStore(at targetURL: URL, withStoreFrom sourceURL: URL) throws {
     let psc = self.init(managedObjectModel: NSManagedObjectModel())
     try psc.replacePersistentStore(at: targetURL, destinationOptions: nil, withPersistentStoreFrom: sourceURL, sourceOptions: nil, ofType: NSSQLiteStoreType)
