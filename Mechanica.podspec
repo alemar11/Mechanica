@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name    = 'Mechanica'
-  s.version = '0.2.0'
+  s.version = '0.2.1'
   s.license = 'MIT'
   s.documentation_url = 'http://www.tinrobots.org/Mechanica'
   
