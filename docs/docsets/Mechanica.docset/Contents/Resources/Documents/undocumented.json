@@ -37,14 +37,14 @@
     },
     {
       "file": "/Users/a.marzoli/Developer/Mechanica/Sources/NSManagedObject+Deletable.swift",
-      "line": 178,
+      "line": 182,
       "symbol": "RemoteDeletable.hasChangedForRemoteDeletion",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/a.marzoli/Developer/Mechanica/Sources/NSManagedObject+Deletable.swift",
-      "line": 187,
+      "line": 191,
       "symbol": "RemoteDeletable.notMarkedForDeletionPredicate",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
@@ -65,7 +65,7 @@
     },
     {
       "file": "/Users/a.marzoli/Developer/Mechanica/Sources/Storyboard.swift",
-      "line": 135,
+      "line": 137,
       "symbol": "StoryboardIdentifiable.storyboardIdentifier",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
