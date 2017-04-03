@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+
+# Jazzy
+undocumented.json
+docset/.docset/Contents/Resources/Documents/undocumented.json
