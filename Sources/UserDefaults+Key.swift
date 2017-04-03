@@ -83,7 +83,7 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// This function allows you to create your own custom subscript. Example: `[Int: String]`.
-  public final func set<T>(_ value: Any?, forKey key: Key<T>) {
+  public final func set<T>(_ value: T?, forKey key: Key<T>) {
     set(value, forKey: key.value)
   }
 
@@ -127,6 +127,8 @@ extension UserDefaults {
   }
 
   // MARK: - Object
+  
+  //TODO: too generic
 
   public final subscript(key: Key<Any>) -> Any? {
     get { return object(forKey: key) }
@@ -145,6 +147,7 @@ extension UserDefaults {
   /// Sets the value of the specified default key in the standard application domain.
   /// The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
   public final func set<T>(object: T?, forKey key: Key<T>) {
+    //TODO: euqal to   public final func set<T>(_ value: T?, forKey key: Key<T>) 
     set(object, forKey: key)
   }
 
@@ -333,8 +336,8 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Sets the value of the specified default key in the standard application domain.
-  public final func set(int: Bool?, forKey key: Key<Bool>) {
-    set(int, forKey: key)
+  public final func set(bool: Bool?, forKey key: Key<Bool>) {
+    set(bool, forKey: key)
   }
 
 
@@ -371,21 +374,14 @@ extension UserDefaults {
 
   // MARK: - NSArray
 
-  public final func array<T: _ObjectiveCBridgeable>(forKey key: Key<[T]>) -> [T] {
-    return array(forKey: key.value) as NSArray? as? [T] ?? []
-  }
-
-  public final func array<T: _ObjectiveCBridgeable>(forKey key: Key<[T]?>) -> [T]? {
+  public final func array<T: _ObjectiveCBridgeable>(forKey key: Key<[T]>) -> [T]? {
     return array(forKey: key.value) as NSArray? as? [T]
   }
 
-  public final func array<T: Any>(forKey key: Key<[T]>) -> [T] {
-    return array(forKey: key.value) as NSArray? as? [T] ?? []
-  }
 
-  public final func array<T: Any>(forKey key: Key<[T]?>) -> [T]? {
-    return array(forKey: key.value) as NSArray? as? [T]
-  }
+//  public final func array<T: Any>(forKey key: Key<[T]>) -> [T]? {
+//    return array(forKey: key.value) as NSArray? as? [T]
+//  }
 
 }
 
@@ -460,23 +456,24 @@ extension UserDefaults {
 extension UserDefaults {
 
   // TODO: we need to be sure that T.RawValue is compatible
-  public final func archive<T: RawRepresentable>(_ key: Key<T>, _ value: T) {
-    set(value.rawValue, forKey: key)
-  }
-
-  public final func archive<T: RawRepresentable>(_ key: Key<T?>, _ value: T?) {
-    if let value = value {
-      set(value.rawValue, forKey: key)
-    } else {
+  public final func set<T: RawRepresentable>(rawRepresentable value: T?, forKey key: Key<T>) {
+    guard let value = value else {
       removeObject(forKey: key)
+      return
     }
+    switch value.rawValue {
+    case let raw as String:
+      set(raw, forKey: key.value)
+    case let raw as Int:
+      set(raw, forKey: key.value)
+      //TODO....
+    default:
+      fatalError("\(type(of: T.self)) is not a compatible type.")
+    }
+    
   }
 
-  public final func unarchive<T: RawRepresentable>(_ key: Key<T?>) -> T? {
-    return object(forKey: key.value).flatMap { T(rawValue: $0 as! T.RawValue) }
-  }
-
-  public final func unarchive<T: RawRepresentable>(_ key: Key<T>) -> T? {
+  public final func rawRepresentable<T: RawRepresentable>(forKey key: Key<T>) -> T? {
     return object(forKey: key.value).flatMap { T(rawValue: $0 as! T.RawValue) }
   }
 }
@@ -485,23 +482,16 @@ extension UserDefaults {
 
 extension UserDefaults {
 
-  public final func archive<T: NSCoding>(_ key: Key<T>, _ value: T) {
-    set(NSKeyedArchiver.archivedData(withRootObject: value), forKey: key)
-  }
-
-  public final func archive<T: NSCoding>(_ key: Key<T?>, _ value: T?) {
+  public final func set<T: NSCoding>(archivableValue value: T?, forKey key: Key<T>) {
     if let value = value {
-      set(NSKeyedArchiver.archivedData(withRootObject: value), forKey: key)
+      let data = NSKeyedArchiver.archivedData(withRootObject: value)
+      set(data, forKey: key.value)
     } else {
       removeObject(forKey: key)
     }
   }
 
-  public final func unarchive<T: NSCoding>(_ key: Key<T>) -> T? {
-    return data(forKey: key.value).flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) } as? T
-  }
-  
-  public final func unarchive<T: NSCoding>(_ key: Key<T?>) -> T? {
+  public final func archivableValue<T: NSCoding>(forKey key: Key<T>) -> T? {
     return data(forKey: key.value).flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) } as? T
   }
   
