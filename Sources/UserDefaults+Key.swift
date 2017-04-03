@@ -22,6 +22,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+
+// TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0148-generic-subscripts.md
+
 import Foundation
 
 
@@ -49,7 +52,7 @@ public extension UserDefaults {
   /// **Mechanica**
   ///
   /// Returns `true` if `key` exists.
-  public func hasKey(_ key: String) -> Bool {
+  public final func hasKey(_ key: String) -> Bool {
     return object(forKey: key) != nil
   }
 
@@ -59,14 +62,16 @@ public extension UserDefaults {
   /// - Note: This method only removes keys on the receiver `UserDefaults` object.
   ///         System-defined keys will still be present afterwards.
   ///         `resetStandardUserDefaults` simply resets the in-memory user defaults object.
-  public func removeAll() {
+  public final func removeAll() {
     for (key, _) in dictionaryRepresentation() {
       removeObject(forKey: key)
     }
   }
 
+  /// **Mechanica**
+  ///
   /// Removes the contents of the specified persistent domain from the user’s defaults.
-  public func destory(bundleIdentifier: String) {
+  public final func destroy(bundleIdentifier: String) {
     removePersistentDomain(forName: bundleIdentifier)
   }
 
@@ -75,18 +80,24 @@ public extension UserDefaults {
 
 extension UserDefaults {
 
+  /// **Mechanica**
+  ///
   /// This function allows you to create your own custom subscript. Example: `[Int: String]`.
-  public func set<T>(_ value: Any?, forKey key: Key<T>) {
+  public final func set<T>(_ value: Any?, forKey key: Key<T>) {
     set(value, forKey: key.value)
   }
 
+  /// **Mechanica**
+  ///
   /// Returns `true` if `key` exists
-  public func hasKey<T>(_ key: Key<T>) -> Bool {
+  public final func hasKey<T>(_ key: Key<T>) -> Bool {
     return object(forKey: key.value) != nil
   }
 
+  /// **Mechanica**
+  ///
   /// Removes value for `key`
-  public func removeObject<T>(forKey key: Key<T>) {
+  public final func removeObject<T>(forKey key: Key<T>) {
     removeObject(forKey: key.value)
   }
 
@@ -96,7 +107,7 @@ extension UserDefaults {
 
   //  MARK: - String
 
-  public subscript(key: Key<String>) -> String? {
+  public final subscript(key: Key<String>) -> String? {
     get { return string(forKey: key) }
     set { set(newValue, forKey: key) }
   }
@@ -104,204 +115,247 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Returns the string associated with the specified key.
-  public func string(forKey key: Key<String>) -> String? {
+  public final func string(forKey key: Key<String>) -> String? {
     return string(forKey: key.value)
   }
 
   /// **Mechanica**
   ///
   /// Stores a string (or removes the value if nil is passed as the value) for the provided key.
-  public func set(string: String?, forKey key: Key<String>) {
+  public final func set(string: String?, forKey key: Key<String>) {
     set(string, forKey: key)
   }
 
   // MARK: - Object
 
-  public subscript(key: Key<Any>) -> Any? {
+  public final subscript(key: Key<Any>) -> Any? {
     get { return object(forKey: key) }
     set { set(newValue, forKey: key) }
   }
 
+  /// **Mechanica**
+  ///
   /// Returns the object associated with the first occurrence of the specified default.
-  func object(forKey key: Key<Any>) -> Any? {
-    return object(forKey: key.value)
+  public final func object<T>(forKey key: Key<T>) -> T? {
+    return object(forKey: key.value) as? T
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the value of the specified default key in the standard application domain.
   /// The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
-  public func set(object: Any?, forKey key: Key<Any>) {
+  public final func set<T>(object: T?, forKey key: Key<T>) {
     set(object, forKey: key)
   }
 
   // MARK: - NSNumber
 
-  public subscript(key: Key<NSNumber?>) -> NSNumber? {
+  public final subscript(key: Key<NSNumber>) -> NSNumber? {
     get { return object(forKey: key.value) as? NSNumber }
     set { set(newValue, forKey: key) }
   }
 
+  /// **Mechanica**
+  ///
   /// Returns the NSNumber associated with the first occurrence of the specified default.
-  public func number(forKey key: Key<NSNumber>) -> NSNumber? {
+  public final func number(forKey key: Key<NSNumber>) -> NSNumber? {
     return object(forKey: key.value) as? NSNumber
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the value of the specified default key in the standard application domain.
-  public func set(number: NSNumber?, forKey key: Key<NSNumber>) {
+  public final func set(number: NSNumber?, forKey key: Key<NSNumber>) {
     set(number, forKey: key)
   }
 
   // MARK: - Array
 
-  public subscript(key: Key<[Any]>) -> [Any]? {
+  public final subscript(key: Key<[Any]>) -> [Any]? {
     get { return array(forKey: key) }
     set { set(newValue, forKey: key) }
   }
 
+  /// **Mechanica**
+  ///
   /// Returns the array associated with the specified key.
-  public func array(forKey key: Key<[Any]>) -> [Any]? {
-    return array(forKey: key.value)
+  public final func array<T>(forKey key: Key<[T]>) -> [T]? {
+    return array(forKey: key.value) as? [T]
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the value of the specified default key in the standard application domain.
-  public func set(array: [Any]?, forKey key: Key<[Any]>) {
+  public final func set<T>(array: [T]?, forKey key: Key<[T]>) {
     set(array, forKey: key)
   }
 
   // MARK: - Dictionary
 
-  public subscript(key: Key<[String: Any]?>) -> [String: Any]? {
+  public final subscript(key: Key<[String: Any]>) -> [String: Any]? {
     get { return dictionary(forKey: key.value) }
     set { set(newValue, forKey: key) }
   }
 
-  public func dictionary(forKey key: Key<[String: Any]>) -> [String: Any]? {
-    return dictionary(forKey: key.value)
+  /// **Mechanica**
+  ///
+  /// Returns the dictionary object associated with the specified key.
+  public final func dictionary<K: Hashable, V: Any>(forKey key: Key<[K:V]>) -> [K: V]? {
+    return dictionary(forKey: key.value) as? [K: V]
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the value of the specified default key in the standard application domain.
-  public func set(dictionary: [String: Any]? , forKey key: Key<[String: Any]>) {
+  public final func set<K: Hashable, V: Any>(dictionary: [K: V]? , forKey key: Key<[K: V]>) {
     set(dictionary, forKey: key)
   }
 
 
   // MARK: - Date
 
-  public subscript(key: Key<Date?>) -> Date? {
+  public final subscript(key: Key<Date>) -> Date? {
     get { return object(forKey: key.value) as? Date }
     set { set(newValue, forKey: key) }
   }
 
-  public func date(forKey key: Key<Date>) -> Date? {
+  public final func date(forKey key: Key<Date>) -> Date? {
     return object(forKey: key.value) as? Date
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the value of the specified default key in the standard application domain.
-  public func set(date: Date?, forKey key: Key< Date>) {
+  public final func set(date: Date?, forKey key: Key< Date>) {
     set(date, forKey: key)
   }
 
   // MARK: - Data
 
-  public subscript(key: Key<Data?>) -> Data? {
+  public final subscript(key: Key<Data>) -> Data? {
     get { return data(forKey: key.value) }
     set { set(newValue, forKey: key) }
   }
 
+  /// **Mechanica**
+  ///
   /// Returns the data object associated with the specified key.
-  public func data(forKey key: Key<Data>) -> Data? {
+  public final func data(forKey key: Key<Data>) -> Data? {
     return data(forKey: key.value)
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the data value of the specified default key in the standard application domain.
-  public func set(data:  Data? , forKey key: Key< Data>) {
+  public final func set(data:  Data? , forKey key: Key< Data>) {
     set(data, forKey: key)
   }
 
 
   // MARK: - Int
 
-  public subscript(key: Key<Int?>) -> Int? {
+  public final subscript(key: Key<Int>) -> Int {
     get { return integer(forKey: key.value) }
     set { set(newValue, forKey: key) }
   }
 
-  /// Returns the integer value associated with the specified key.
-  public func integer(forKey key: Key<Int>) -> Int? {
+  /// **Mechanica**
+  ///
+  /// Returns the integer value associated with the specified key. If no Integer is associated with the key, returns 0.
+  public final func integer(forKey key: Key<Int>) -> Int {
     return integer(forKey: key.value)
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the value of the specified default key in the standard application domain.
-  public func set(integer: Int?, forKey key: Key<Int>) {
+  public final func set(integer: Int?, forKey key: Key<Int>) {
     set(integer, forKey: key)
   }
 
 
   // MARK: - Double
 
-  public subscript(key: Key<Double?>) -> Double? {
+  public final subscript(key: Key<Double>) -> Double? {
     get { return double(forKey: key.value) }
     set { set(newValue, forKey: key) }
   }
 
-  /// Returns the double value associated with the specified key.
-  public func double(forKey key: Key<Double>) -> Double? {
+  /// **Mechanica**
+  ///
+  /// Returns the double value associated with the specified key. If no Double is associated with the key, returns 0.
+  public final func double(forKey key: Key<Double>) -> Double? {
     return double(forKey: key.value)
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the value of the specified default key in the standard application domain.
-  public func set(double: Double?, forKey key: Key<Double>) {
+  public final func set(double: Double?, forKey key: Key<Double>) {
     set(double, forKey: key)
   }
 
   // MARK: - Float
 
-  public subscript(key: Key<Float?>) -> Float? {
+  public final subscript(key: Key<Float>) -> Float {
     get { return float(forKey: key.value) }
     set { set(newValue, forKey: key) }
   }
 
-  /// Returns the floating-point value associated with the specified key.
-  public func float(forKey key: Key<Float>) -> Float? {
+  /// **Mechanica**
+  ///
+  /// Returns the floating-point value associated with the specified key. If no Float is associated with the key, returns 0.
+  public final func float(forKey key: Key<Float>) -> Float {
     return float(forKey: key.value)
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the value of the specified default key in the standard application domain.
-  public func set(float: Float?, forKey key: Key<Float>) {
+  public final func set(float: Float?, forKey key: Key<Float>) {
     set(float, forKey: key)
   }
 
   // MARK: - Bool
 
-  public subscript(key: Key<Bool?>) -> Bool? {
+  public final subscript(key: Key<Bool>) -> Bool {
     get { return bool(forKey: key.value) }
     set { set(newValue, forKey: key) }
   }
 
-  /// Returns the Boolean value associated with the specified key.
-  public func bool(forKey key: Key<Bool>) -> Bool? {
+  /// **Mechanica**
+  ///
+  /// Returns the Boolean value associated with the specified key. If no Boolean is associated with the key, returns false.
+  public final func bool(forKey key: Key<Bool>) -> Bool {
     return bool(forKey: key.value)
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the value of the specified default key in the standard application domain.
-  public func set(int: Bool?, forKey key: Key<Bool>) {
+  public final func set(int: Bool?, forKey key: Key<Bool>) {
     set(int, forKey: key)
   }
 
 
-  //  MARK: - URL
+  // MARK: - URL
 
-  public subscript(key: Key<URL?>) -> URL? {
+  public final subscript(key: Key<URL>) -> URL? {
     get { return url(forKey: key.value) }
     set { set(newValue, forKey: key) }
   }
 
+  /// **Mechanica**
+  ///
   /// Returns the URL instance associated with the specified key.
-  public func url(forKey key: Key<URL>) -> URL? {
+  public final func url(forKey key: Key<URL>) -> URL? {
     return url(forKey: key.value)
   }
 
+  /// **Mechanica**
+  ///
   /// Sets the value of the specified default key in the standard application domain.
-  public func set(url: URL?, forKey key: Key<URL>) {
+  public final func set(url: URL?, forKey key: Key<URL>) {
     set(url, forKey: key)
   }
 
@@ -315,87 +369,89 @@ extension UserDefaults {
 
 extension UserDefaults {
 
-  public func array<T: _ObjectiveCBridgeable>(forKey key: Key<[T]>) -> [T] {
+  // MARK: - NSArray
+
+  public final func array<T: _ObjectiveCBridgeable>(forKey key: Key<[T]>) -> [T] {
     return array(forKey: key.value) as NSArray? as? [T] ?? []
   }
 
-  public func array<T: _ObjectiveCBridgeable>(forKey key: Key<[T]?>) -> [T]? {
+  public final func array<T: _ObjectiveCBridgeable>(forKey key: Key<[T]?>) -> [T]? {
     return array(forKey: key.value) as NSArray? as? [T]
   }
 
-  public func array<T: Any>(forKey key: Key<[T]>) -> [T] {
+  public final func array<T: Any>(forKey key: Key<[T]>) -> [T] {
     return array(forKey: key.value) as NSArray? as? [T] ?? []
   }
 
-  public func array<T: Any>(forKey key: Key<[T]?>) -> [T]? {
+  public final func array<T: Any>(forKey key: Key<[T]?>) -> [T]? {
     return array(forKey: key.value) as NSArray? as? [T]
   }
 
 }
 
-extension UserDefaults {
-
-  public subscript(key: Key<[String]?>) -> [String]? {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[String]>) -> [String] {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[Int]?>) -> [Int]? {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[Int]>) -> [Int] {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[Double]?>) -> [Double]? {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[Double]>) -> [Double] {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[Bool]?>) -> [Bool]? {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[Bool]>) -> [Bool] {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[Data]?>) -> [Data]? {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[Data]>) -> [Data] {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[Date]?>) -> [Date]? {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-  public subscript(key: Key<[Date]>) -> [Date] {
-    get { return array(forKey: key) }
-    set { set(newValue, forKey: key) }
-  }
-
-}
+//extension UserDefaults {
+//
+//  public final subscript(key: Key<[String]?>) -> [String]? {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[String]>) -> [String] {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[Int]?>) -> [Int]? {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[Int]>) -> [Int] {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[Double]?>) -> [Double]? {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[Double]>) -> [Double] {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[Bool]?>) -> [Bool]? {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[Bool]>) -> [Bool] {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[Data]?>) -> [Data]? {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[Data]>) -> [Data] {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[Date]?>) -> [Date]? {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//  public final subscript(key: Key<[Date]>) -> [Date] {
+//    get { return array(forKey: key) }
+//    set { set(newValue, forKey: key) }
+//  }
+//
+//}
 
 // MARK: - Archiving custom types
 
@@ -404,11 +460,11 @@ extension UserDefaults {
 extension UserDefaults {
 
   // TODO: we need to be sure that T.RawValue is compatible
-  public func archive<T: RawRepresentable>(_ key: Key<T>, _ value: T) {
+  public final func archive<T: RawRepresentable>(_ key: Key<T>, _ value: T) {
     set(value.rawValue, forKey: key)
   }
 
-  public func archive<T: RawRepresentable>(_ key: Key<T?>, _ value: T?) {
+  public final func archive<T: RawRepresentable>(_ key: Key<T?>, _ value: T?) {
     if let value = value {
       set(value.rawValue, forKey: key)
     } else {
@@ -416,11 +472,11 @@ extension UserDefaults {
     }
   }
 
-  public func unarchive<T: RawRepresentable>(_ key: Key<T?>) -> T? {
+  public final func unarchive<T: RawRepresentable>(_ key: Key<T?>) -> T? {
     return object(forKey: key.value).flatMap { T(rawValue: $0 as! T.RawValue) }
   }
 
-  public func unarchive<T: RawRepresentable>(_ key: Key<T>) -> T? {
+  public final func unarchive<T: RawRepresentable>(_ key: Key<T>) -> T? {
     return object(forKey: key.value).flatMap { T(rawValue: $0 as! T.RawValue) }
   }
 }
@@ -429,11 +485,11 @@ extension UserDefaults {
 
 extension UserDefaults {
 
-  public func archive<T: NSCoding>(_ key: Key<T>, _ value: T) {
+  public final func archive<T: NSCoding>(_ key: Key<T>, _ value: T) {
     set(NSKeyedArchiver.archivedData(withRootObject: value), forKey: key)
   }
 
-  public func archive<T: NSCoding>(_ key: Key<T?>, _ value: T?) {
+  public final func archive<T: NSCoding>(_ key: Key<T?>, _ value: T?) {
     if let value = value {
       set(NSKeyedArchiver.archivedData(withRootObject: value), forKey: key)
     } else {
@@ -441,11 +497,11 @@ extension UserDefaults {
     }
   }
 
-  public func unarchive<T: NSCoding>(_ key: Key<T>) -> T? {
+  public final func unarchive<T: NSCoding>(_ key: Key<T>) -> T? {
     return data(forKey: key.value).flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) } as? T
   }
   
-  public func unarchive<T: NSCoding>(_ key: Key<T?>) -> T? {
+  public final func unarchive<T: NSCoding>(_ key: Key<T?>) -> T? {
     return data(forKey: key.value).flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) } as? T
   }
   
