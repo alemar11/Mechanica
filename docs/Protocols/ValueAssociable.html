@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>BoolKeyCodable Protocol Reference</title>
+    <title>ValueAssociable Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/BoolKeyCodable" class="dashAnchor"></a>
-    <a title="BoolKeyCodable Protocol Reference"></a>
+    <a name="//apple_ref/swift/Protocol/ValueAssociable" class="dashAnchor"></a>
+    <a title="ValueAssociable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Mechanica Docs</a> (97% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">Mechanica Reference</a>
         <img id="carat" src="../img/carat.png" />
-        BoolKeyCodable Protocol Reference
+        ValueAssociable Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -304,16 +304,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>BoolKeyCodable</h1>
+            <h1>ValueAssociable</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">BoolKeyCodable</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ValueAssociable</span></code></pre>
 
                 </div>
               </div>
             <p><strong>Mechanica</strong></p>
 
-<p>Types adopting the <code>BoolKeyCodable</code> protocol can be used to construct key path to <code>Bool</code> values.</p>
+<p>Classes adopting this protocol can associate values to the object itself.</p>
 
           </section>
           <section class="section task-group-section">
@@ -322,12 +322,12 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:Fe9MechanicaRxS_14BoolKeyCodablexS_25PropertyListConfigurationWxPS0_7BoolKey8RawValue_zSSrS0_4boolFT6forKeywxS2__Sb"></a>
-                    <a name="//apple_ref/swift/Method/bool(forKey:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Fe9MechanicaRxS_14BoolKeyCodablexS_25PropertyListConfigurationWxPS0_7BoolKey8RawValue_zSSrS0_4boolFT6forKeywxS2__Sb">bool(forKey:)</a>
+                    <a name="/s:FP9Mechanica15ValueAssociable3seturFT15associatedValueGSqqd___6forKeySV9andPolicyOSC22objc_AssociationPolicy_T_"></a>
+                    <a name="//apple_ref/swift/Method/set(associatedValue:forKey:andPolicy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP9Mechanica15ValueAssociable3seturFT15associatedValueGSqqd___6forKeySV9andPolicyOSC22objc_AssociationPolicy_T_">set(associatedValue:forKey:andPolicy:)</a>
                     </code>
                       <span class="declaration-note">
-                        Extension method
+                        Default implementation
                       </span>
                   </div>
                   <div class="height-container">
@@ -337,16 +337,205 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns a <code>Bool</code> value for a <code>BoolKey</code>.</p>
+<p>Sets an associated value using a given key and association policy.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Removes an associated value using a given key and association policy.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">bool</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">BoolKey</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="k">set</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">associatedValue</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">?,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">UnsafeRawPointer</span><span class="p">,</span> <span class="n">andPolicy</span> <span class="nv">policy</span><span class="p">:</span> <span class="n">objc_AssociationPolicy</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value to associate with the key key for object. Pass nil to clear an existing association.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key for the association.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>policy</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The policy for the association.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP9Mechanica15ValueAssociable18getAssociatedValueurFT6forKeySV_GSqqd___"></a>
+                    <a name="//apple_ref/swift/Method/getAssociatedValue(forKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP9Mechanica15ValueAssociable18getAssociatedValueurFT6forKeySV_GSqqd___">getAssociatedValue(forKey:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the value associated for a given key.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Removes an associated value using a given key and association policy.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="n">getAssociatedValue</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">UnsafeRawPointer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key for the association.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the value associated with the key.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP9Mechanica15ValueAssociable21removeAssociatedValueFT6forKeySV9andPolicyOSC22objc_AssociationPolicy_T_"></a>
+                    <a name="//apple_ref/swift/Method/removeAssociatedValue(forKey:andPolicy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP9Mechanica15ValueAssociable21removeAssociatedValueFT6forKeySV9andPolicyOSC22objc_AssociationPolicy_T_">removeAssociatedValue(forKey:andPolicy:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Removes an associated value using a given key and association policy.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Removes an associated value using a given key and association policy.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeAssociatedValue</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">UnsafeRawPointer</span><span class="p">,</span> <span class="n">andPolicy</span> <span class="nv">policy</span><span class="p">:</span> <span class="n">objc_AssociationPolicy</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key for the association.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>policy</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The policy for the association.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
