@@ -30,7 +30,6 @@ private let namespace = "org.tinrobots.test"
 extension UserDefaults {
   enum TestKey {
     static let string1      = Key<String>(value:"string1")
-    static let object1      = Key<Color>(value:"object1")
     static let number1      = Key<NSNumber>(value:"number1")
     static let array1       = Key<[Bool]>(value:"array1")
     static let dictionary1  = Key<[String: Int]>(value:"dictionary1")
@@ -46,6 +45,8 @@ extension UserDefaults {
 
 class UserDefaultsUtilsTests: XCTestCase {
 
+  lazy var unitTestBundle: Bundle =  { return Bundle(for: type(of: self)) }()
+
   let userDefaults = UserDefaults.standard
 
   override func setUp() {
@@ -55,58 +56,354 @@ class UserDefaultsUtilsTests: XCTestCase {
 
 
   func test_removeAll() {
-
     userDefaults.removeAll()
     XCTAssertNil(userDefaults[UserDefaults.TestKey.string1])
-    XCTAssertNil(userDefaults.object(forKey: UserDefaults.TestKey.object1))
     XCTAssertNil(userDefaults[UserDefaults.TestKey.number1])
     XCTAssertNil(userDefaults.array(forKey: UserDefaults.TestKey.array1))
     XCTAssertNil(userDefaults.dictionary(forKey: UserDefaults.TestKey.dictionary1))
     XCTAssertNil(userDefaults[UserDefaults.TestKey.date1])
     XCTAssertNil(userDefaults[UserDefaults.TestKey.data1])
-    XCTAssertEqual(userDefaults[UserDefaults.TestKey.int1], 0)
-    XCTAssertEqual(userDefaults[UserDefaults.TestKey.double1], 0.0)
-    XCTAssertEqual(userDefaults[UserDefaults.TestKey.float1], 0.0)
-    XCTAssertFalse(userDefaults[UserDefaults.TestKey.bool1])
+    XCTAssertNil(userDefaults[UserDefaults.TestKey.int1])
+    XCTAssertNil(userDefaults[UserDefaults.TestKey.double1])
+    XCTAssertNil(userDefaults[UserDefaults.TestKey.float1])
+    XCTAssertNil(userDefaults[UserDefaults.TestKey.bool1])
     XCTAssertNil(userDefaults[UserDefaults.TestKey.url1])
+  }
+
+  //  MARK: - String
+
+  func test_string() {
+    let value = "myString"
+    let value2 = "myString2"
+    let key = Key<String>(value: "myString")
+    userDefaults.set(string: value, forKey: key)
+    XCTAssertTrue(userDefaults.string(forKey: key) == value)
+    XCTAssertTrue(userDefaults[key] == value)
+    userDefaults[key] = value2
+    XCTAssertTrue(userDefaults.string(forKey: key) == value2)
+    XCTAssertTrue(userDefaults[key] == value2)
+    XCTAssertTrue(userDefaults.hasKey(key))
+    userDefaults.set(string: nil, forKey: key)
+    XCTAssertFalse(userDefaults.hasKey(key))
+  }
+
+  // MARK: - Object
+
+  func test_object() {
+    do {
+      let red = Color.red.rgb32Bit
+      let yellow = Color.yellow.rgb32Bit
+      let key =  Key<UInt32>(value: "myColor")
+      userDefaults.set(object: red, forKey: key)
+      XCTAssertTrue(userDefaults.hasKey(key))
+      XCTAssert(userDefaults.object(forKey: key) == red)
+      userDefaults.set(object: yellow, forKey: key)
+      XCTAssert(userDefaults.object(forKey: key) == yellow)
+    }
+
+    do {
+      let red = Color.red.rgb32Bit
+      let yellow = Color.yellow.rgb32Bit
+      let key =  Key<Any>(value: "myColor")
+      userDefaults.set(object: red, forKey: key)
+      let color = userDefaults[key] as? UInt32
+      XCTAssertEqual(red,color)
+      userDefaults[key] = yellow
+      XCTAssertTrue(userDefaults.hasKey(key))
+    }
 
   }
 
-  //http://stackoverflow.com/questions/19720611/attempt-to-set-a-non-property-list-object-as-an-nsuserdefaults
-  func test_object() {
-    let key =  Key<UInt32>(value: "color")
-    let red = Color.red.rgb32Bit
-    let yellow = Color.yellow.rgb32Bit
-    userDefaults.set(red, forKey: key)
+  // MARK: - Array
+
+  func test_array() {
+
+    do {
+      let value =  ["one","two"]
+      let value2 = ["three", "four"]
+      let key = Key<[String]>(value: "myArray")
+      userDefaults.set(array:value, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value)
+      userDefaults.set(array:value2, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value2)
+      XCTAssertTrue(userDefaults.hasKey(key))
+      userDefaults.set(array: nil, forKey: key)
+      XCTAssertFalse(userDefaults.hasKey(key))
+    }
+
+    do {
+      let person1 = Person(firstname: "name1", surname: "surname1")
+      let person2 = Person(firstname: "name2", surname: "surname2")
+      let person3 = Person(firstname: "name3", surname: "surname3")
+      let person4 = Person(firstname: "name4", surname: "surname4")
+
+      let value = [person1, person2]
+      let value2 = [person3, person4]
+      let valueData = value.map{ NSKeyedArchiver.archivedData(withRootObject:$0) }
+      let valueData2 = value2.map{ NSKeyedArchiver.archivedData(withRootObject:$0) }
+      let key = Key<[Data]>(value: "myArray")
+
+      userDefaults.set(array:valueData, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == valueData)
+      let data = userDefaults.array(forKey: key)!
+      let persons = data.flatMap{NSKeyedUnarchiver.unarchiveObject(with: $0) as? Person}
+      XCTAssertTrue(value[0] == persons[0])
+      XCTAssertTrue(value[1] == persons[1])
+
+      userDefaults.set(array: valueData2, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == valueData2)
+      let data2 = userDefaults.array(forKey: key)!
+      let persons2 = data2.flatMap{NSKeyedUnarchiver.unarchiveObject(with: $0) as? Person}
+      XCTAssertTrue(value2[0] == persons2[0])
+      XCTAssertTrue(value2[1] == persons2[1])
+
+      XCTAssertTrue(userDefaults.hasKey(key))
+      userDefaults.set(array: nil, forKey: key)
+      XCTAssertFalse(userDefaults.hasKey(key))
+    }
+
+    do {
+      let value: [Any] =  ["one", 2]
+      let value2: [Any] = ["three", 4]
+      let key = Key<[Any]>(value: "myArray")
+      userDefaults.set(array:value, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      let results = userDefaults[key]!
+      XCTAssertTrue(results[0] as! String == value[0] as! String)
+      XCTAssertTrue(results[1] as! Int == value[1] as! Int)
+      userDefaults[key] = value2
+
+      let result = userDefaults.array(forKey: key)
+      XCTAssertNotNil(result)
+      let i = result![1] as! Int
+      XCTAssertTrue(i == 4)
+
+      XCTAssertTrue(userDefaults.hasKey(key))
+      userDefaults.set(array: nil, forKey: key)
+      XCTAssertFalse(userDefaults.hasKey(key))
+    }
+
+  }
+
+  // MARK: - Dictionary
+
+  func test_dictionary() {
+    let value:  [String : Any] = ["1":1, "2":"two"]
+    let value2: [String : Any] = ["3":3, "4":"four"]
+    let key = Key<[String: Any]>(value: "myDicationary")
+    userDefaults.set(dictionary: value, forKey: key)
+
+    do {
+      let dictionary = userDefaults.dictionary(forKey: key)
+      XCTAssertNotNil(dictionary)
+      let val1 = dictionary!["1"] as? Int
+      let val2 = dictionary!["2"] as? String
+      XCTAssertNotNil(val1)
+      XCTAssertNotNil(val2)
+      XCTAssertTrue(val1! == 1)
+      XCTAssertTrue(val2! == "two")
+    }
+
+    userDefaults.set(dictionary: value2, forKey: key)
+    do {
+      let dictionary = userDefaults[key]
+      XCTAssertNotNil(dictionary)
+      let val1 = dictionary!["3"] as? Int
+      let val2 = dictionary!["4"] as? String
+      XCTAssertNotNil(val1)
+      XCTAssertNotNil(val2)
+      XCTAssertTrue(val1! == 3)
+      XCTAssertTrue(val2! == "four")
+    }
+
     XCTAssertTrue(userDefaults.hasKey(key))
-    XCTAssert(userDefaults.object(forKey: key) == red)
-    userDefaults.set(yellow, forKey: key)
-    XCTAssert(userDefaults.object(forKey: key) == yellow)
+    userDefaults[key] = nil
+    XCTAssertFalse(userDefaults.hasKey(key))
+
+  }
+
+  // MARK: - Date
+
+  func test_date() {
+    let value = Date()
+    let value2 = Date(timeInterval: 10, since: value)
+    let key = Key<Date>(value: "myDate")
+    userDefaults.set(date: value, forKey: key)
+    XCTAssertTrue(userDefaults.date(forKey: key) == value)
+    XCTAssertTrue(userDefaults[key] == value)
+    userDefaults[key] = value2
+    XCTAssertTrue(userDefaults.date(forKey: key) == value2)
+    XCTAssertTrue(userDefaults[key] == value2)
+    XCTAssertTrue(userDefaults.hasKey(key))
+    userDefaults.set(date: nil, forKey: key)
+    XCTAssertFalse(userDefaults.hasKey(key))
+  }
+
+  // MARK: - Data
+
+  func test_data() {
+    let value = Data(base64Encoded: "tin".base64Encoded!)
+    let value2 = Data(base64Encoded: "robots".base64Encoded!)
+    let key = Key<Data>(value: "myData")
+    userDefaults.set(data: value, forKey: key)
+    XCTAssertTrue(userDefaults.data(forKey: key) == value)
+    XCTAssertTrue(userDefaults[key] == value)
+    userDefaults[key] = value2
+    XCTAssertTrue(userDefaults.data(forKey: key) == value2)
+    XCTAssertTrue(userDefaults[key] == value2)
+    XCTAssertTrue(userDefaults.hasKey(key))
+    userDefaults.set(data: nil, forKey: key)
+    XCTAssertFalse(userDefaults.hasKey(key))
+  }
+
+  // MARK: - NSNumber
+
+  func test_number() {
+    let value = NSNumber(integerLiteral: 10)
+    let value2 = NSNumber(value: 10.11)
+    let key = Key<NSNumber>(value: "myNumber")
+    userDefaults.set(number: value, forKey: key)
+    XCTAssertTrue(userDefaults.number(forKey: key) == value)
+    XCTAssertTrue(userDefaults[key] == value)
+    userDefaults[key] = value2
+    XCTAssertTrue(userDefaults.number(forKey: key) == value2)
+    XCTAssertTrue(userDefaults[key] == value2)
+    XCTAssertTrue(userDefaults.hasKey(key))
+    userDefaults.set(number: nil, forKey: key)
+    XCTAssertFalse(userDefaults.hasKey(key))
+  }
+
+  // MARK: - Int
+
+  func test_int() {
+    let value = 10
+    let value2 = 11
+    let key = Key<Int>(value: "myInt")
+    userDefaults.set(integer: value, forKey: key)
+    XCTAssertTrue(userDefaults.integer(forKey: key) == value)
+    XCTAssertTrue(userDefaults[key] == value)
+    userDefaults[key] = value2
+    XCTAssertTrue(userDefaults.integer(forKey: key) == value2)
+    XCTAssertTrue(userDefaults[key] == value2)
+    XCTAssertTrue(userDefaults.hasKey(key))
+    userDefaults.set(integer: nil, forKey: key)
+    XCTAssertFalse(userDefaults.hasKey(key))
+  }
+
+  // MARK: - Double
+
+  func test_double() {
+    let value = 10.10
+    let value2 = 11.11
+    let key = Key<Double>(value: "myDouble")
+    userDefaults.set(double: value, forKey: key)
+    XCTAssertTrue(userDefaults.double(forKey: key) == value)
+    XCTAssertTrue(userDefaults[key] == value)
+    userDefaults[key] = value2
+    XCTAssertTrue(userDefaults.double(forKey: key) == value2)
+    XCTAssertTrue(userDefaults[key] == value2)
+    XCTAssertTrue(userDefaults.hasKey(key))
+    userDefaults.set(double: nil, forKey: key)
+    XCTAssertFalse(userDefaults.hasKey(key))
+  }
+
+  // MARK: - Float
+
+  func test_float() {
+    let value = Float(10.10)
+    let value2 = Float(11.11)
+    let key = Key<Float>(value: "myFloat")
+    userDefaults.set(float: value, forKey: key)
+    XCTAssertTrue(userDefaults.float(forKey: key) == value)
+    XCTAssertTrue(userDefaults[key] == value)
+    userDefaults[key] = value2
+    XCTAssertTrue(userDefaults.float(forKey: key) == value2)
+    XCTAssertTrue(userDefaults[key] == value2)
+    XCTAssertTrue(userDefaults.hasKey(key))
+    userDefaults.set(float: nil, forKey: key)
+    XCTAssertFalse(userDefaults.hasKey(key))
+  }
+
+  // MARK: - Bool
+
+  func test_boolean() {
+    let value = true
+    let value2 = false
+    let key = Key<Bool>(value: "myBool")
+    userDefaults.set(bool: value, forKey: key)
+    XCTAssertTrue(userDefaults.bool(forKey: key) == value)
+    XCTAssertTrue(userDefaults[key] == value)
+    userDefaults[key] = value2
+    XCTAssertTrue(userDefaults.bool(forKey: key) == value2)
+    XCTAssertTrue(userDefaults[key] == value2)
+    XCTAssertTrue(userDefaults.hasKey(key))
+    userDefaults.set(bool: nil, forKey: key)
+    XCTAssertFalse(userDefaults.hasKey(key))
+  }
+
+  // MARK: - URL
+
+  func test_url() {
+    let value = URL(string: "tinrobot.com")
+    let value2 = URL(string: "tinrobot.com/Mechanica")
+    let key = Key<URL>(value: "myURL")
+    userDefaults.set(url: value, forKey: key)
+    XCTAssertTrue(userDefaults.url(forKey: key) == value)
+    XCTAssertTrue(userDefaults[key] == value)
+    userDefaults[key] = value2
+    XCTAssertTrue(userDefaults.url(forKey: key) == value2)
+    XCTAssertTrue(userDefaults[key] == value2)
+    XCTAssertTrue(userDefaults.hasKey(key))
+    userDefaults.set(url: nil, forKey: key)
+    XCTAssertFalse(userDefaults.hasKey(key))
+  }
+
+  // MARK: - NSCoding
+
+  func test_archive() {
+    let value = Person(firstname: "name1", surname: "surname1")
+    let value2 = Person(firstname: "name2", surname: "surname2")
+    let key = Key<Person>(value: "myPerson")
+    userDefaults.set(archivableValue: value, forKey: key)
+    XCTAssertTrue(userDefaults.archivableValue(forKey: key)! == value)
+    userDefaults.set(archivableValue: value2, forKey: key)
+    XCTAssertTrue(userDefaults.archivableValue(forKey: key)! == value2)
+    XCTAssertTrue(userDefaults.hasKey(key))
+    userDefaults.set(archivableValue: nil, forKey: key)
+    XCTAssertFalse(userDefaults.hasKey(key))
   }
 
 }
 
 
-//  MARK: - String
 
-// MARK: - Object
+class Person: NSObject, NSCoding {
+  let surname: String
+  let firstname: String
 
-// MARK: - NSNumber
+  required init(firstname:String, surname:String) {
+    self.firstname = firstname
+    self.surname = surname
+  }
 
-// MARK: - Array
+  required init?(coder aDecoder: NSCoder) {
+    firstname = aDecoder.decodeObject(forKey: #keyPath(Person.firstname)) as! String
+    surname = aDecoder.decodeObject(forKey: #keyPath(Person.surname)) as! String
+  }
 
-// MARK: - Dictionary
+  func encode(with aCoder: NSCoder) {
+    aCoder.encode(firstname, forKey: #keyPath(Person.firstname))
+    aCoder.encode(surname, forKey: #keyPath(Person.surname))
+  }
 
-// MARK: - Date
+  static func ==(left: Person, right: Person) -> Bool {
+    return left.firstname == right.firstname && left.surname == right.surname
+  }
+  
+}
 
-// MARK: - Data
 
-// MARK: - Int
-
-// MARK: - Double
-
-// MARK: - Float
-
-// MARK: - Bool
-
-// MARK: - URL
