@@ -62,7 +62,7 @@ class FileManagerUtilsTests: XCTestCase {
         XCTAssertTrue(FileManager.default.fileExists(atPath: fakeBaseDirectoryAsFileyURL.path))
         
       } catch {
-        XCTAssertTrue(false, error.localizedDescription)
+        XCTFail(error.localizedDescription)
       }
       
       // cleaning
@@ -77,7 +77,7 @@ class FileManagerUtilsTests: XCTestCase {
         try FileManager.default.destroyFileOrDirectory(atPath: containerURL.path)
         XCTAssertNotNil(try? FileManager.default.destroyFileOrDirectory(atPath: containerURL.path))
       } catch {
-        XCTAssertTrue(false, error.localizedDescription)
+        XCTFail(error.localizedDescription)
       }
     }
     
@@ -89,7 +89,7 @@ class FileManagerUtilsTests: XCTestCase {
     do {
       try FileManager.default.destroyFileOrDirectory(atPath: newCacheDirectory.path)
     } catch {
-      XCTAssertTrue(false, error.localizedDescription)
+      XCTFail(error.localizedDescription)
     }
   }
   
