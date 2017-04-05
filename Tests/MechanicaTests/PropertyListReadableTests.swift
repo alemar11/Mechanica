@@ -1,5 +1,5 @@
 //
-//  ConfigurationTests.swift
+//  PropertyListReadable.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -26,44 +26,47 @@ import XCTest
 @testable import Mechanica
 
 fileprivate enum BoolKey {
-  static let boolItem = KeyPath<Bool>(path: "BoolItem")
+  static let boolItem = Key<Bool>(path: "BoolItem")
 }
 
 fileprivate enum StringKey {
-  static let stringItem = KeyPath<String>(path: "StringItem")
-  static let stringItem3 = KeyPath<String>(path: "DictionaryItem.DictionaryItem2.StringItem3")
-  static let stringItem4 = KeyPath<String>(path: "DictionaryItem.DictionaryItem2.StringItem4")
+  typealias stringKey = Key<String> // we can use a type alias
+  static let stringItem = stringKey(path: "StringItem")
+  static let stringItem3 = stringKey(path: "DictionaryItem.DictionaryItem2.StringItem3")
+  static let stringItem4 = stringKey(path: "DictionaryItem.DictionaryItem2.StringItem4")
 }
 
 fileprivate enum DateKey {
-  static let dateItem = KeyPath<Date>(path: "DateItem")
-  static let dateItem2 = KeyPath<Date>(path: "DictionaryItem.DateItem2")
+  static let dateItem = Key<Date>(path: "DateItem")
+  static let dateItem2 = Key<Date>(path: "DictionaryItem.DateItem2")
 
 }
 
 fileprivate enum NumberKey {
-  static let numberItem   =  KeyPath<NSNumber>(path: "NumberItem")
-  static let numberItem2  =  KeyPath<NSNumber>(path: "DictionaryItem.NumberItem2")
-  static let numberItem3  =  KeyPath<NSNumber>(path: "DictionaryItem.NumberItem3")
+  private static let numberKeyPath = Key<NSNumber>.path // or a closure
+  static let numberItem   =  numberKeyPath("NumberItem")
+  static let numberItem2  =  numberKeyPath("DictionaryItem.NumberItem2")
+  static let numberItem3  =  numberKeyPath("DictionaryItem.NumberItem3")
 }
 
 fileprivate enum DataKey {
-  static let dataItem =  KeyPath<Data>(path: "DataItem")
+  static let dataItem =  Key<Data>(path: "DataItem")
 }
 
 fileprivate enum URLKey {
-  static let urlItem  = KeyPath<URL>(path: "URLItem")
-  static let urlItem2 = KeyPath<URL>(path: "URLItem2")
-  static let wrongURL = KeyPath<URL>(path: "WrongURLItem")
+  static let urlItem      = Key<URL>(path: "URLItem")
+  static let urlItem2     = Key<URL>(path: "URLItem2")
+  static let notFoundURL  = Key<URL>(path: "NotFoundURLItem")
+  static let wrongURL     = Key<URL>(path: "WrongURLItem")
 }
 
 fileprivate enum ArrayKey {
-  static let arrayItem = KeyPath<[Any]>(path: "ArrayItem")
+  static let arrayItem = Key<[Any]>(path: "ArrayItem")
 }
 
 fileprivate enum DictionaryKey {
-  static let dictionaryItem   = KeyPath<[String:Any]>(path: "DictionaryItem")
-  static let dictionaryItem2  = KeyPath<[String:Any]>(path: "DictionaryItem.DictionaryItem2")
+  static let dictionaryItem   = Key<[String:Any]>(path: "DictionaryItem")
+  static let dictionaryItem2  = Key<[String:Any]>(path: "DictionaryItem.DictionaryItem2")
 }
 
 /// Demo configuration file (.plist)
@@ -88,7 +91,7 @@ class ConfigurationTests: XCTestCase {
 
   func test_configuration() {
 
-    guard let plistPath = unitTestBundle.path(forResource: "ConfigurationDemo", ofType: "plist") else {
+    guard let plistPath = unitTestBundle.path(forResource: "PropertyListDemo", ofType: "plist") else {
       XCTFail("Invalid plist file.")
       return
     }
@@ -127,6 +130,7 @@ class ConfigurationTests: XCTestCase {
     XCTAssert(config.url(forKeyPath: URLKey.urlItem)?.absoluteString == "http://www.tinrobots.org")
     XCTAssert(config.url(forKeyPath: URLKey.urlItem2)?.absoluteString == "tinrobots.org")
     XCTAssertNil(config.url(forKeyPath: URLKey.wrongURL))
+    XCTAssertNil(config.url(forKeyPath: URLKey.notFoundURL))
 
     /// Data
     XCTAssertNotNil(config.data(forKeyPath: DataKey.dataItem))

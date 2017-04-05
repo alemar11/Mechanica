@@ -30,8 +30,10 @@ import Foundation
 /// Specialize this struct with a type and initialize it with a value.
 /// - Note: Use `Key` to avoid *stringly typed* APIs.
 ///
-/// - key: key value
-/// - namespacedKey: optional namespace, if not empty Key value will be namespace.key
+/// - simple: a `String` key.
+/// - namespaced: a namespaced `String` key.
+/// - path: a `String` key path.
+///
 ///
 /// ```
 /// K<String>(key: "myKey1") // value: myKey1
@@ -41,27 +43,45 @@ import Foundation
 ///
 public enum Key<T> {
   
-  case key(key: String)
-  case namespacedKey(String, namespace: String)
+  /// **Mechanica**
+  ///
+  /// A simple `String` key.
+  case simple(String)
+  /// **Mechanica**
+  ///
+  /// A namespaced String key.
+  case namespaced(String, namespace: String)
+  /// **Mechanica**
+  ///
+  /// A string key path.
   case path(String)
   
+  /// Create a new Key.
+  ///
+  /// - Parameters:
+  ///   - key: key value
+  ///   - namespace: optional namespace for the key to avoid collision with other keys with the same value defined in other libraries.
   init(key: String, namespace: String? = nil) {
     if let namespace = namespace {
-      self = .namespacedKey(key, namespace: namespace)
+      self = .namespaced(key, namespace: namespace)
     } else {
-      self = .key(key: key)
+      self = .simple(key)
     }
   }
   
+  
+  /// Create a new Key with a path.
+  ///
+  /// - Parameter path: a `String` composed by a list of keys separated by dots used to identify a nested value.
   init(path: String) {
     self = .path(path)
   }
   
   var value: String {
     switch self {
-    case .key(let k):
+    case .simple(let k):
       return k
-    case let .namespacedKey(k,n):
+    case let .namespaced(k,n):
       return k + "." + n
     case .path(let path):
       return path
@@ -70,6 +90,7 @@ public enum Key<T> {
   
 }
 
- //private let k = Key<Bool>.key
- //typealias boolKey = Key<Bool>
+//TODO: var description
+
+
 

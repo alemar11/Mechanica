@@ -47,8 +47,8 @@ extension PropertyListReadable {
   /// **Mechanica**
   ///
   /// Returns an `Bool` value for a specified key path or nil if the key was not found.
-  public func bool(forKeyPath keyPath: KeyPath<Bool>) -> Bool? {
-    return propertyList.value(forKeyPath: keyPath.path) as? Bool
+  public func bool(forKeyPath keyPath: Key<Bool>) -> Bool? {
+    return propertyList.value(forKeyPath: keyPath.value) as? Bool
   }
 
   // MARK: - String
@@ -56,8 +56,8 @@ extension PropertyListReadable {
   /// **Mechanica**
   ///
   /// Returns an `String` value for a specified key path or nil if the key was not found.
-  public func string(forKeyPath keyPath: KeyPath<String>) -> String? {
-    return propertyList.value(forKeyPath: keyPath.path) as? String
+  public func string(forKeyPath keyPath: Key<String>) -> String? {
+    return propertyList.value(forKeyPath: keyPath.value) as? String
   }
 
   // MARK: - URL
@@ -65,8 +65,8 @@ extension PropertyListReadable {
   /// **Mechanica**
   ///
   /// Returns an `URL` value for a specified key path or nil if the key was not found.
-  public func url(forKeyPath keyPath: KeyPath<URL>) -> URL? {
-    guard let url = propertyList.value(forKeyPath: keyPath.path) as? String else { return nil }
+  public func url(forKeyPath keyPath: Key<URL>) -> URL? {
+    guard let url = propertyList.value(forKeyPath: keyPath.value) as? String else { return nil }
     return URL(string: url)
   }
 
@@ -75,8 +75,8 @@ extension PropertyListReadable {
   /// **Mechanica**
   ///
   /// Returns a `NSNumber` object for a specified key path or nil if the key was not found.
-  public func number(forKeyPath keyPath: KeyPath<NSNumber>) -> NSNumber? {
-    return propertyList.value(forKeyPath: keyPath.path) as? NSNumber
+  public func number(forKeyPath keyPath: Key<NSNumber>) -> NSNumber? {
+    return propertyList.value(forKeyPath: keyPath.value) as? NSNumber
   }
 
   // MARK: - Date
@@ -84,8 +84,8 @@ extension PropertyListReadable {
   /// **Mechanica**
   ///
   /// Returns an `Date` value value for a specified key path or nil if the key was not found.
-  public func date(forKeyPath keyPath: KeyPath<Date>) -> Date? {
-    return propertyList.value(forKeyPath: keyPath.path) as? Date
+  public func date(forKeyPath keyPath: Key<Date>) -> Date? {
+    return propertyList.value(forKeyPath: keyPath.value) as? Date
   }
 
   // MARK: - Data
@@ -93,8 +93,8 @@ extension PropertyListReadable {
   /// **Mechanica**
   ///
   /// Returns an `Data` value for a specified key path or nil if the key was not found.
-  public func data(forKeyPath keyPath: KeyPath<Data>) -> Data? {
-    return propertyList.value(forKeyPath: keyPath.path) as? Data
+  public func data(forKeyPath keyPath: Key<Data>) -> Data? {
+    return propertyList.value(forKeyPath: keyPath.value) as? Data
   }
 
   // MARK: - Array
@@ -102,8 +102,8 @@ extension PropertyListReadable {
   /// **Mechanica**
   ///
   /// Returns an `Array` value for a specified key path or nil if the key was not found.
-  public func array<T: Any>(forKeyPath keyPath: KeyPath<[T]>) -> [T]? {
-    return (propertyList.value(forKeyPath: keyPath.path) as? Array<T>)
+  public func array<T: Any>(forKeyPath keyPath: Key<[T]>) -> [T]? {
+    return (propertyList.value(forKeyPath: keyPath.value) as? Array<T>)
   }
 
   // MARK: - Dictionary
@@ -111,8 +111,8 @@ extension PropertyListReadable {
   /// **Mechanica**
   ///
   /// Returns an `Dictionary` [String:V] for a specified key path or nil if the key was not found.
-  public func dictionary<V: Any>(forKeyPath keyPath: KeyPath<[String: V]>) ->  [String:V]? {
-    return propertyList.value(forKeyPath: keyPath.path) as? Dictionary<String,V>
+  public func dictionary<V: Any>(forKeyPath keyPath: Key<[String: V]>) ->  [String:V]? {
+    return propertyList.value(forKeyPath: keyPath.value) as? Dictionary<String,V>
   }
   
 }
