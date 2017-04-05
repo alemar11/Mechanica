@@ -26,55 +26,45 @@ import Foundation
 
 /// **Mechanica**
 ///
-/// Base struct for static keys with a phantom type.
+/// Base enum for static keys with a phantom type.
 /// Specialize this struct with a type and initialize it with a value.
 /// - Note: Use `Key` to avoid *stringly typed* APIs.
-public struct Key<T> {
-
-  /// **Mechanica**
-  ///
-  /// value containing the key or the keypath.
-  public let value: String
-
-  //public let namespace: String = ""
-}
-
-//protocol KeyNamespaceable { }
-//
-//extension KeyNamespaceable {
-//
-//  private static func namespace(_ key: Key<Any>) -> String {
-//    return "\(Self.self).\(key.value)"
-//  }
-//
-//}
-
-
-public enum K<T> {
+///
+/// - key: key value
+/// - namespacedKey: optional namespace, if not empty Key value will be namespace.key
+///
+/// ```
+/// K<String>(key: "myKey1") // value: myKey1
+/// K<Int>(key: "myKey2", namespace: "org.tinrobots") // value: org.tinrobots.myKey2
+/// K<Bool>(key: "myKey2", namespace: "org.tinrobots") // value: org.tinrobots.myKey3
+/// ```
+///
+public enum Key<T> {
 
   case key(key: String)
   case namespacedKey(namespace:String, key: String)
-  //case defaultNamespacedKey(key:String)
 
   init(key: String, namespace: String = "") {
     if namespace.isBlank {
-    self = K(key: key)
+      self = .key(key: key)
     } else {
-      self = K(key: key, namespace: namespace)
+      self = .namespacedKey(namespace: namespace, key: key)
     }
   }
 
   var value: String {
+    print(self)
     switch self {
     case .key(let k):
+      print("1")
       return k
     case let .namespacedKey(k,n):
-      return k+"."+n //TODO add . only if needed
+      print("2")
+      return k + "." + n //TODO add . only if needed
     }
   }
 
 }
-
 
 
 

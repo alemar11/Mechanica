@@ -29,17 +29,17 @@ private let namespace = "org.tinrobots.test"
 
 extension UserDefaults {
   enum TestKey {
-    static let string1      = Key<String>(value:"string1")
-    static let number1      = Key<NSNumber>(value:"number1")
-    static let array1       = Key<[Bool]>(value:"array1")
-    static let dictionary1  = Key<[String: Int]>(value:"dictionary1")
-    static let date1        = Key<Date>(value:"date1")
-    static let data1        = Key<Data>(value:"data1")
-    static let int1         = Key<Int>(value:"int1")
-    static let double1      = Key<Double>(value:"double1")
-    static let float1       = Key<Float>(value:"flaot1")
-    static let bool1        = Key<Bool>(value:"bool1")
-    static let url1         = Key<URL>(value:"url1")
+    static let string1      = Key<String>(key:"string1", namespace: "tin.robots")
+    static let number1      = Key<NSNumber>(key:"number1")
+    static let array1       = Key<[Bool]>(key:"array1")
+    static let dictionary1  = Key<[String: Int]>(key:"dictionary1")
+    static let date1        = Key<Date>(key:"date1")
+    static let data1        = Key<Data>(key:"data1")
+    static let int1         = Key<Int>(key:"int1")
+    static let double1      = Key<Double>(key:"double1")
+    static let float1       = Key<Float>(key:"flaot1")
+    static let bool1        = Key<Bool>(key:"bool1")
+    static let url1         = Key<URL>(key:"url1")
   }
 }
 
@@ -75,7 +75,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_string() {
     let value = "myString"
     let value2 = "myString2"
-    let key = Key<String>(value: "myString")
+    let key = Key<String>(key: "myString")
     userDefaults.set(string: value, forKey: key)
     XCTAssertTrue(userDefaults.string(forKey: key) == value)
     XCTAssertTrue(userDefaults[key] == value)
@@ -93,7 +93,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     do {
       let red = Color.red.rgb32Bit
       let yellow = Color.yellow.rgb32Bit
-      let key =  Key<UInt32>(value: "myColor")
+      let key =  Key<UInt32>(key: "myColor")
       userDefaults.set(object: red, forKey: key)
       XCTAssertTrue(userDefaults.hasKey(key))
       XCTAssert(userDefaults.object(forKey: key) == red)
@@ -104,7 +104,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     do {
       let red = Color.red.rgb32Bit
       let yellow = Color.yellow.rgb32Bit
-      let key =  Key<Any>(value: "myColor")
+      let key =  Key<Any>(key: "myColor")
       userDefaults.set(object: red, forKey: key)
       let color = userDefaults[key] as? UInt32
       XCTAssertEqual(red,color)
@@ -121,7 +121,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     do {
       let value =  ["one","two"]
       let value2 = ["three", "four"]
-      let key = Key<[String]>(value: "myArray")
+      let key = Key<[String]>(key: "myArray")
       userDefaults.set(array:value, forKey: key)
       XCTAssertNotNil(userDefaults.array(forKey: key)!)
       XCTAssertTrue(userDefaults.array(forKey: key)! == value)
@@ -143,7 +143,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       let value2 = [person3, person4]
       let valueData = value.map{ NSKeyedArchiver.archivedData(withRootObject:$0) }
       let valueData2 = value2.map{ NSKeyedArchiver.archivedData(withRootObject:$0) }
-      let key = Key<[Data]>(value: "myArray")
+      let key = Key<[Data]>(key: "myArray")
 
       userDefaults.set(array:valueData, forKey: key)
       XCTAssertNotNil(userDefaults.array(forKey: key)!)
@@ -169,7 +169,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     do {
       let value: [Any] =  ["one", 2]
       let value2: [Any] = ["three", 4]
-      let key = Key<[Any]>(value: "myArray")
+      let key = Key<[Any]>(key: "myArray")
       userDefaults.set(array:value, forKey: key)
       XCTAssertNotNil(userDefaults.array(forKey: key)!)
       let results = userDefaults[key]!
@@ -194,7 +194,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_dictionary() {
     let value:  [String : Any] = ["1":1, "2":"two"]
     let value2: [String : Any] = ["3":3, "4":"four"]
-    let key = Key<[String: Any]>(value: "myDicationary")
+    let key = Key<[String: Any]>(key: "myDicationary")
     userDefaults.set(dictionary: value, forKey: key)
 
     do {
@@ -231,7 +231,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_date() {
     let value = Date()
     let value2 = Date(timeInterval: 10, since: value)
-    let key = Key<Date>(value: "myDate")
+    let key = Key<Date>(key: "myDate")
     userDefaults.set(date: value, forKey: key)
     XCTAssertTrue(userDefaults.date(forKey: key) == value)
     XCTAssertTrue(userDefaults[key] == value)
@@ -248,7 +248,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_data() {
     let value = Data(base64Encoded: "tin".base64Encoded!)
     let value2 = Data(base64Encoded: "robots".base64Encoded!)
-    let key = Key<Data>(value: "myData")
+    let key = Key<Data>(key: "myData")
     userDefaults.set(data: value, forKey: key)
     XCTAssertTrue(userDefaults.data(forKey: key) == value)
     XCTAssertTrue(userDefaults[key] == value)
@@ -265,7 +265,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_number() {
     let value = NSNumber(integerLiteral: 10)
     let value2 = NSNumber(value: 10.11)
-    let key = Key<NSNumber>(value: "myNumber")
+    let key = Key<NSNumber>(key: "myNumber")
     userDefaults.set(number: value, forKey: key)
     XCTAssertTrue(userDefaults.number(forKey: key) == value)
     XCTAssertTrue(userDefaults[key] == value)
@@ -282,7 +282,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_int() {
     let value = 10
     let value2 = 11
-    let key = Key<Int>(value: "myInt")
+    let key = Key<Int>(key: "myInt")
     userDefaults.set(integer: value, forKey: key)
     XCTAssertTrue(userDefaults.integer(forKey: key) == value)
     XCTAssertTrue(userDefaults[key] == value)
@@ -299,7 +299,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_double() {
     let value = 10.10
     let value2 = 11.11
-    let key = Key<Double>(value: "myDouble")
+    let key = Key<Double>(key: "myDouble")
     userDefaults.set(double: value, forKey: key)
     XCTAssertTrue(userDefaults.double(forKey: key) == value)
     XCTAssertTrue(userDefaults[key] == value)
@@ -316,7 +316,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_float() {
     let value = Float(10.10)
     let value2 = Float(11.11)
-    let key = Key<Float>(value: "myFloat")
+    let key = Key<Float>(key: "myFloat")
     userDefaults.set(float: value, forKey: key)
     XCTAssertTrue(userDefaults.float(forKey: key) == value)
     XCTAssertTrue(userDefaults[key] == value)
@@ -333,7 +333,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_boolean() {
     let value = true
     let value2 = false
-    let key = Key<Bool>(value: "myBool")
+    let key = Key<Bool>(key: "myBool")
     userDefaults.set(bool: value, forKey: key)
     XCTAssertTrue(userDefaults.bool(forKey: key) == value)
     XCTAssertTrue(userDefaults[key] == value)
@@ -350,7 +350,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_url() {
     let value = URL(string: "tinrobot.com")
     let value2 = URL(string: "tinrobot.com/Mechanica")
-    let key = Key<URL>(value: "myURL")
+    let key = Key<URL>(key: "myURL")
     userDefaults.set(url: value, forKey: key)
     XCTAssertTrue(userDefaults.url(forKey: key) == value)
     XCTAssertTrue(userDefaults[key] == value)
@@ -367,7 +367,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   func test_archive() {
     let value = Person(firstname: "name1", surname: "surname1")
     let value2 = Person(firstname: "name2", surname: "surname2")
-    let key = Key<Person>(value: "myPerson")
+    let key = Key<Person>(key: "myPerson")
     userDefaults.set(archivableValue: value, forKey: key)
     XCTAssertTrue(userDefaults.archivableValue(forKey: key)! == value)
     userDefaults.set(archivableValue: value2, forKey: key)
