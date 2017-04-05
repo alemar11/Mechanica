@@ -40,31 +40,36 @@ import Foundation
 /// ```
 ///
 public enum Key<T> {
-
+  
   case key(key: String)
-  case namespacedKey(namespace:String, key: String)
-
-  init(key: String, namespace: String = "") {
-    if namespace.isBlank {
-      self = .key(key: key)
+  case namespacedKey(String, namespace: String)
+  case path(String)
+  
+  init(key: String, namespace: String? = nil) {
+    if let namespace = namespace {
+      self = .namespacedKey(key, namespace: namespace)
     } else {
-      self = .namespacedKey(namespace: namespace, key: key)
+      self = .key(key: key)
     }
   }
-
+  
+  init(path: String) {
+    self = .path(path)
+  }
+  
   var value: String {
-    print(self)
     switch self {
     case .key(let k):
-      print("1")
       return k
     case let .namespacedKey(k,n):
-      print("2")
-      return k + "." + n //TODO add . only if needed
+      return k + "." + n
+    case .path(let path):
+      return path
     }
   }
-
+  
 }
 
-
+ //private let k = Key<Bool>.key
+ //typealias boolKey = Key<Bool>
 
