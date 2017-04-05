@@ -1,5 +1,5 @@
 //
-//  Key.swift
+//  KeyPath.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -26,55 +26,13 @@ import Foundation
 
 /// **Mechanica**
 ///
-/// Base struct for static keys with a phantom type.
-/// Specialize this struct with a type and initialize it with a value.
-/// - Note: Use `Key` to avoid *stringly typed* APIs.
-public struct Key<T> {
+/// Base struct for static key paths with a phantom type.
+/// Specialize this struct with a type and initialize it with a key path.
+/// - Note: Use `KeyPath` to avoid *stringly typed* APIs.
+public struct KeyPath<T> {
 
   /// **Mechanica**
   ///
-  /// value containing the key or the keypath.
-  public let value: String
-
-  //public let namespace: String = ""
+  /// Key path.
+  let path: String
 }
-
-//protocol KeyNamespaceable { }
-//
-//extension KeyNamespaceable {
-//
-//  private static func namespace(_ key: Key<Any>) -> String {
-//    return "\(Self.self).\(key.value)"
-//  }
-//
-//}
-
-
-public enum K<T> {
-
-  case key(key: String)
-  case namespacedKey(namespace:String, key: String)
-  //case defaultNamespacedKey(key:String)
-
-  init(key: String, namespace: String = "") {
-    if namespace.isBlank {
-    self = K(key: key)
-    } else {
-      self = K(key: key, namespace: namespace)
-    }
-  }
-
-  var value: String {
-    switch self {
-    case .key(let k):
-      return k
-    case let .namespacedKey(k,n):
-      return k+"."+n //TODO add . only if needed
-    }
-  }
-
-}
-
-
-
-

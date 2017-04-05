@@ -25,79 +25,62 @@
 import XCTest
 @testable import Mechanica
 
-extension Configuration: BoolKeyCodable {
+fileprivate enum BoolKey {
+  static let boolItem = KeyPath<Bool>(path: "BoolItem")
+}
 
-  public enum BoolKey: String {
-    case boolItem = "BoolItem"
-    //case wrongBoolItem  = "DateItem"
+fileprivate enum StringKey {
+  static let stringItem = KeyPath<String>(path: "StringItem")
+  static let stringItem3 = KeyPath<String>(path: "DictionaryItem.DictionaryItem2.StringItem3")
+  static let stringItem4 = KeyPath<String>(path: "DictionaryItem.DictionaryItem2.StringItem4")
+}
+
+fileprivate enum DateKey {
+  static let dateItem = KeyPath<Date>(path: "DateItem")
+  static let dateItem2 = KeyPath<Date>(path: "DictionaryItem.DateItem2")
+
+}
+
+fileprivate enum NumberKey {
+  static let numberItem   =  KeyPath<NSNumber>(path: "NumberItem")
+  static let numberItem2  =  KeyPath<NSNumber>(path: "DictionaryItem.NumberItem2")
+  static let numberItem3  =  KeyPath<NSNumber>(path: "DictionaryItem.NumberItem3")
+}
+
+fileprivate enum DataKey {
+  static let dataItem =  KeyPath<Data>(path: "DataItem")
+}
+
+fileprivate enum URLKey {
+  static let urlItem  = KeyPath<URL>(path: "URLItem")
+  static let urlItem2 = KeyPath<URL>(path: "URLItem2")
+  static let wrongURL = KeyPath<URL>(path: "WrongURLItem")
+}
+
+fileprivate enum ArrayKey {
+  static let arrayItem = KeyPath<[Any]>(path: "ArrayItem")
+}
+
+fileprivate enum DictionaryKey {
+  static let dictionaryItem   = KeyPath<[String:Any]>(path: "DictionaryItem")
+  static let dictionaryItem2  = KeyPath<[String:Any]>(path: "DictionaryItem.DictionaryItem2")
+}
+
+/// Demo configuration file (.plist)
+class Configuration: PropertyListReadable {
+
+  private(set) var propertyList: NSDictionary
+
+  init?(plistPath: String) {
+    guard let plist = NSDictionary(contentsOfFile: plistPath) else {
+      assertionFailure("Could not read plist file or the plist file is an array.")
+      return nil
+    }
+    propertyList = plist
   }
 
 }
 
-extension Configuration: StringKeyCodable {
-
-  public enum StringKey: String {
-    case stringItem   = "StringItem"
-    case stringItem3  = "DictionaryItem.DictionaryItem2.StringItem3"
-    case stringItem4  = "DictionaryItem.DictionaryItem2.StringItem4"
-    //case wrongStringItem  = "DictionaryItem11.StringItem4"
-  }
-
-}
-
-extension Configuration: DateKeyCodable {
-
-  public enum DateKey: String {
-    case dateItem   = "DateItem"
-    case dateItem2  = "DictionaryItem.DateItem2"
-  }
-
-}
-
-extension Configuration: NumberKeyCodable {
-
-  public enum NumberKey: String {
-    case numberItem   = "NumberItem"
-    case numberItem2  = "DictionaryItem.NumberItem2"
-    case numberItem3  = "DictionaryItem.NumberItem3"
-  }
-
-}
-
-extension Configuration: DataKeyCodable {
-
-  public enum DataKey: String {
-    case dataItem = "DataItem"
-  }
-
-}
-
-extension Configuration: URLKeyCodable{
-
-  public enum URLKey: String {
-    case urlItem  = "URLItem"
-    case urlItem2 = "URLItem2"
-    case wrongURL = "WrongURLItem"
-  }
-
-}
-
-extension Configuration: ArrayKeyCodable {
-
-  public enum ArrayKey: String {
-    case arrayItem = "ArrayItem"
-  }
-
-}
-
-extension Configuration: DictionaryKeyCodable {
-
-  public enum DictionaryKey: String {
-    case dictionaryItem   = "DictionaryItem"
-    case dictionaryItem2  = "DictionaryItem.DictionaryItem2"
-  }
-
-}
 
 class ConfigurationTests: XCTestCase {
 
@@ -119,21 +102,21 @@ class ConfigurationTests: XCTestCase {
     XCTAssert(config.propertyList === config2.propertyList)
 
     /// Bool
-    XCTAssert(config.bool(forKey: .boolItem))
+    XCTAssertTrue(config.bool(forKeyPath: BoolKey.boolItem)!)
 
     /// String
-    XCTAssert(config.string(forKey: .stringItem) == "Hello World")
-    XCTAssert(config.string(forKey: .stringItem3) == "Hello World 3")
-    XCTAssert(config.string(forKey: .stringItem4).isEmpty)
+    XCTAssert(config.string(forKeyPath: StringKey.stringItem) == "Hello World")
+    XCTAssert(config.string(forKeyPath: StringKey.stringItem3) == "Hello World 3")
+    XCTAssert(config.string(forKeyPath: StringKey.stringItem4)!.isEmpty)
 
     /// NSNumber
-    XCTAssert(config.number(forKey: .numberItem).intValue == 1)
-    XCTAssert(config.number(forKey: .numberItem2).doubleValue == Double.pi)
-    XCTAssert(config.number(forKey: .numberItem3).doubleValue == 11.145)
-    XCTAssertTrue(config.date(forKey: .dateItem).timeIntervalSince1970 == Date(timeIntervalSince1970: 0).timeIntervalSince1970)
+    XCTAssert(config.number(forKeyPath: NumberKey.numberItem)?.intValue == 1)
+    XCTAssert(config.number(forKeyPath: NumberKey.numberItem2)?.doubleValue == Double.pi)
+    XCTAssert(config.number(forKeyPath: NumberKey.numberItem3)?.doubleValue == 11.145)
 
     /// Date
-    let date = config.date(forKey: .dateItem2)
+    XCTAssertTrue(config.date(forKeyPath: DateKey.dateItem)!.timeIntervalSince1970 == Date(timeIntervalSince1970: 0).timeIntervalSince1970)
+    let date = config.date(forKeyPath: DateKey.dateItem2)!
     let calendar = NSCalendar.current
     let components = calendar.dateComponents([.day,.month,.year], from: date)
     XCTAssertTrue(components.year == 2016)
@@ -141,22 +124,22 @@ class ConfigurationTests: XCTestCase {
     XCTAssertTrue(components.day == 16)
 
     /// URL
-    XCTAssert(config.url(forKey: .urlItem)?.absoluteString == "http://www.tinrobots.org")
-    XCTAssert(config.url(forKey: .urlItem2)?.absoluteString == "tinrobots.org")
-    XCTAssertNil(config.url(forKey: .wrongURL))
+    XCTAssert(config.url(forKeyPath: URLKey.urlItem)?.absoluteString == "http://www.tinrobots.org")
+    XCTAssert(config.url(forKeyPath: URLKey.urlItem2)?.absoluteString == "tinrobots.org")
+    XCTAssertNil(config.url(forKeyPath: URLKey.wrongURL))
 
     /// Data
-    XCTAssertNotNil(config.data(forKey: .dataItem))
+    XCTAssertNotNil(config.data(forKeyPath: DataKey.dataItem))
 
     /// Array
-    XCTAssert(config.array(forKey: .arrayItem).count == 3)
+    XCTAssert(config.array(forKeyPath: ArrayKey.arrayItem)?.count == 3)
 
     /// Dictionary
-    XCTAssertNotNil(config.dictionary(forKey: .dictionaryItem))
-    XCTAssertNotNil(config.dictionary(forKey: .dictionaryItem2))
-    
+    XCTAssertNotNil(config.dictionary(forKeyPath: DictionaryKey.dictionaryItem))
+    XCTAssertNotNil(config.dictionary(forKeyPath: DictionaryKey.dictionaryItem2))
+
   }
-  
-  
-  
+
+
+
 }
