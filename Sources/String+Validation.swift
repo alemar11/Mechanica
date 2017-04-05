@@ -81,7 +81,7 @@ public extension String {
   ///
   /// Checks if the `String` is **blank** (a string that is either empty or contains only space/newline characters).
   public var isBlank: Bool {
-    return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
+    return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
   }
 
   /// **Mechanica**
