@@ -580,7 +580,6 @@
 				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
 				23964A011E5B034800C8E0DF /* Collection+Utils.swift */,
 				D278BD931DEF102A006FAD83 /* Color */,
-				D20544F91DDC508B007DCE97 /* PropertyListReadable.swift */,
 				D2CAF3371DA2A6ED00E6E843 /* CoreData */,
 				233B48B91E6F1379003D5341 /* Dictionary */,
 				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
@@ -694,6 +693,7 @@
 		235DCB841E89B337006AFEBE /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				D20544F91DDC508B007DCE97 /* PropertyListReadable.swift */,
 				239F8DD21E55B03900E3DF33 /* ValueAssociable.swift */,
 				235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */,
 				2398F2561E8A9FD10031A43D /* Randomizable.swift */,

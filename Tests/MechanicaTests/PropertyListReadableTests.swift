@@ -26,47 +26,47 @@ import XCTest
 @testable import Mechanica
 
 fileprivate enum BoolKey {
-  static let boolItem = Key<Bool>(path: "BoolItem")
+  static let boolItem = Key<Bool>("BoolItem")
 }
 
 fileprivate enum StringKey {
   typealias stringKey = Key<String> // we can use a type alias
-  static let stringItem = stringKey(path: "StringItem")
-  static let stringItem3 = stringKey(path: "DictionaryItem.DictionaryItem2.StringItem3")
-  static let stringItem4 = stringKey(path: "DictionaryItem.DictionaryItem2.StringItem4")
+  static let stringItem = stringKey("StringItem")
+  static let stringItem3 = stringKey("DictionaryItem.DictionaryItem2.StringItem3")
+  static let stringItem4 = stringKey("DictionaryItem.DictionaryItem2.StringItem4")
 }
 
 fileprivate enum DateKey {
-  static let dateItem = Key<Date>(path: "DateItem")
-  static let dateItem2 = Key<Date>(path: "DictionaryItem.DateItem2")
+  static let dateItem = Key<Date>("DateItem")
+  static let dateItem2 = Key<Date>("DictionaryItem.DateItem2")
 
 }
 
 fileprivate enum NumberKey {
-  private static let numberKeyPath = Key<NSNumber>.path // or a closure
+  private static let numberKeyPath = Key<NSNumber>.simple // or a closure
   static let numberItem   =  numberKeyPath("NumberItem")
   static let numberItem2  =  numberKeyPath("DictionaryItem.NumberItem2")
   static let numberItem3  =  numberKeyPath("DictionaryItem.NumberItem3")
 }
 
 fileprivate enum DataKey {
-  static let dataItem =  Key<Data>(path: "DataItem")
+  static let dataItem =  Key<Data>("DataItem")
 }
 
 fileprivate enum URLKey {
-  static let urlItem      = Key<URL>(path: "URLItem")
-  static let urlItem2     = Key<URL>(path: "URLItem2")
-  static let notFoundURL  = Key<URL>(path: "NotFoundURLItem")
-  static let wrongURL     = Key<URL>(path: "WrongURLItem")
+  static let urlItem      = Key<URL>("URLItem")
+  static let urlItem2     = Key<URL>("URLItem2")
+  static let notFoundURL  = Key<URL>("NotFoundURLItem")
+  static let wrongURL     = Key<URL>("WrongURLItem")
 }
 
 fileprivate enum ArrayKey {
-  static let arrayItem = Key<[Any]>(path: "ArrayItem")
+  static let arrayItem = Key<[Any]>("ArrayItem")
 }
 
 fileprivate enum DictionaryKey {
-  static let dictionaryItem   = Key<[String:Any]>(path: "DictionaryItem")
-  static let dictionaryItem2  = Key<[String:Any]>(path: "DictionaryItem.DictionaryItem2")
+  static let dictionaryItem   = Key<[String:Any]>("DictionaryItem")
+  static let dictionaryItem2  = Key<[String:Any]>("DictionaryItem.DictionaryItem2")
 }
 
 /// Demo configuration file (.plist)

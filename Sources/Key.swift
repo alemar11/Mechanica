@@ -27,70 +27,62 @@ import Foundation
 /// **Mechanica**
 ///
 /// Base enum for static keys with a phantom type.
-/// Specialize this struct with a type and initialize it with a value.
+/// Specialize this enum with a type and initialize it with a key, key path (both namespaced or not).
 /// - Note: Use `Key` to avoid *stringly typed* APIs.
 ///
-/// - simple: a `String` key.
-/// - namespaced: a namespaced `String` key.
-/// - path: a `String` key path.
+/// - simple: a `String` key or key path.
+/// - namespaced: a namespaced `String` key or key path.
 ///
 ///
 /// ```
-/// K<String>(key: "myKey1") // value: myKey1
-/// K<Int>(key: "myKey2", namespace: "org.tinrobots") // value: org.tinrobots.myKey2
-/// K<Bool>(key: "myKey2", namespace: "org.tinrobots") // value: org.tinrobots.myKey3
+/// Key<String>("myKey1") // value: myKey1
+/// Key<Int>("myKey2", namespace: "org.tinrobots")  // value: org.tinrobots.myKey2
+/// Key<Bool>("myKey2", namespace: "org.tinrobots") // value: org.tinrobots.myKey3
 /// ```
 ///
-public enum Key<T> {
-  
+public enum Key<T>: CustomStringConvertible {
+
   /// **Mechanica**
   ///
-  /// A simple `String` key.
+  /// A simple `String` key, use it for no namespaced keys or key paths.
   case simple(String)
+
   /// **Mechanica**
   ///
   /// A namespaced String key.
   case namespaced(String, namespace: String)
-  /// **Mechanica**
-  ///
-  /// A string key path.
-  case path(String)
-  
+
   /// Create a new Key.
   ///
   /// - Parameters:
-  ///   - key: key value
+  ///   - string: key or key path value.
   ///   - namespace: optional namespace for the key to avoid collision with other keys with the same value defined in other libraries.
-  init(key: String, namespace: String? = nil) {
+  public init(_ string: String, namespace: String? = nil) {
     if let namespace = namespace {
-      self = .namespaced(key, namespace: namespace)
+      self = .namespaced(string, namespace: namespace)
     } else {
-      self = .simple(key)
+      self = .simple(string)
     }
   }
-  
-  
-  /// Create a new Key with a path.
+
+  /// **Mechanica**
   ///
-  /// - Parameter path: a `String` composed by a list of keys separated by dots used to identify a nested value.
-  init(path: String) {
-    self = .path(path)
-  }
-  
-  var value: String {
+  /// Returns the key formatted with the namespace if defined.
+  public var value: String {
     switch self {
     case .simple(let k):
       return k
     case let .namespaced(k,n):
       return k + "." + n
-    case .path(let path):
-      return path
     }
   }
-  
+
+  public var description: String {
+    return ("Key<\(T.self)> with value: \(value)")
+  }
+
 }
 
-//TODO: var description
 
 
 
