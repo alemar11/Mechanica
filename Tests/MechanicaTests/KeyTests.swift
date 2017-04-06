@@ -1,5 +1,5 @@
 //
-//  Key.swift
+//  KeyTests.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -26,15 +26,21 @@ import XCTest
 @testable import Mechanica
 
 
-class Key: XCTestCase {
+class KeyTests: XCTestCase {
 
-//  func test_simple() {
-//    let key = stringKey("test1")
-//    XCTAssertEqual(key.value, "test1")
-//  }
-//
-//  func test_namespace() {
-//
-//  }
-    
+  typealias stringKey = Key<String>
+
+  func test_simple() {
+    let key = stringKey("test")
+    XCTAssertEqual(key.value, "test")
+  }
+
+  func test_namespace() {
+    let key = stringKey("test")
+    let key2 = stringKey("test", namespace: "namespace")
+    XCTAssertEqual(key.value, "test")
+    XCTAssertEqual(key2.value, "namespace.test")
+    XCTAssertNotEqual(key.value, key2.value)
+  }
+
 }

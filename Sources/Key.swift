@@ -73,14 +73,14 @@ public enum Key<T>: CustomStringConvertible {
     case .simple(let k):
       return k
     case let .namespaced(k,n):
-      return k + "." + n
+      return n + "." + k
     }
   }
 
   public var description: String {
     return ("Key<\(T.self)> with value: \(value)")
   }
-
+  
 }
 
 

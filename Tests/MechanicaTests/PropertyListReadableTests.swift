@@ -85,7 +85,7 @@ class Configuration: PropertyListReadable {
 }
 
 
-class ConfigurationTests: XCTestCase {
+class PropertyListReadableTests: XCTestCase {
 
   lazy var unitTestBundle: Bundle =  { return Bundle(for: type(of: self)) }()
 
