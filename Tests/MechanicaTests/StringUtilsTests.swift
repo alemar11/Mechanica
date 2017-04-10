@@ -288,6 +288,13 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.removingPrefix(upToPosition: 100) == "")
     XCTAssertTrue(s.removingPrefix(upToPosition: -1) == "")
     XCTAssertTrue("".removingPrefix(upToPosition: 1) == "")
+
+    XCTAssertTrue(s.removingPrefix("") == "hello")
+    XCTAssertTrue(s.removingPrefix("h") == "ello")
+    XCTAssertTrue(s.removingPrefix("hel") == "lo")
+    XCTAssertTrue(s.removingPrefix("abc") == "hello")
+    XCTAssertTrue(s.removingPrefix("\n") == "hello")
+    XCTAssertTrue("\na".removingPrefix("\n") == "a")
   }
 
   func test_removingSuffix() {
@@ -301,6 +308,13 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.removingSuffix(fromPosition: 100) == "")
     XCTAssertTrue(s.removingSuffix(fromPosition: -1) == "")
     XCTAssertTrue("".removingSuffix(fromPosition: 1) == "")
+
+    XCTAssertTrue(s.removingSuffix("abc") == "hello")
+    XCTAssertTrue(s.removingSuffix("o") == "hell")
+    XCTAssertTrue(s.removingSuffix("llo") == "he")
+    XCTAssertTrue(s.removingSuffix("hello") == "")
+    XCTAssertTrue("\na".removingSuffix("a") == "\n")
+
   }
 
   func test_removingCharacters() {

@@ -73,7 +73,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the String associated with the given key for reading and writing.
+  /// Accesses the `String` associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<String>) -> String? {
@@ -83,14 +83,14 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the String associated with the specified key.
+  /// Returns the `String` associated with the specified key.
   public final func string(forKey key: Key<String>) -> String? {
     return string(forKey: key.value)
   }
 
   /// **Mechanica**
   ///
-  /// Stores a String (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores a `String` (or removes the value if nil is passed as the value) for the provided key.
   public final func set(string: String?, forKey key: Key<String>) {
     set(object: string, forKey: key)
   }
@@ -99,7 +99,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the NSNumber associated with the given key for reading and writing.
+  /// Accesses the `NSNumber` associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<NSNumber>) -> NSNumber? {
@@ -109,14 +109,14 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the NSNumber associated with the specified key, or nil if the key was not found.
+  /// Returns the `NSNumber` associated with the specified key, or nil if the key was not found.
   public final func number(forKey key: Key<NSNumber>) -> NSNumber? {
     return object(forKey: key)
   }
 
   /// **Mechanica**
   ///
-  /// Stores a String (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores a `String` (or removes the value if nil is passed as the value) for the provided key.
   public final func set(number: NSNumber?, forKey key: Key<NSNumber>) {
     set(object: number, forKey: key)
   }
@@ -125,7 +125,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the Array value associated with the given key for reading and writing.
+  /// Accesses the `Array` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<[Any]>) -> [Any]? {
@@ -135,14 +135,14 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the Array associated with the specified key.
+  /// Returns the `Array` associated with the specified key, or nil if the key was not found.
   public final func array<T>(forKey key: Key<[T]>) -> [T]? {
     return array(forKey: key.value) as? [T]
   }
 
   /// **Mechanica**
   ///
-  /// Stores an Array (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores an `Array` (or removes the value if nil is passed as the value) for the provided key.
   /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
   public final func set<T>(array: [T]?, forKey key: Key<[T]>) {
     set(object: array, forKey: key)
@@ -152,7 +152,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the Dictionary [String:Any] value associated with the given key for reading and writing.
+  /// Accesses the `Dictionary` [String:Any] value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<[String: Any]>) -> [String: Any]? {
@@ -163,14 +163,14 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the Dictionary associated with the specified key.
+  /// Returns the `Dictionary` associated with the specified key, or nil if the key was not found.
   public final func dictionary<V: Any>(forKey key: Key<[String: V]>) -> [String: V]? {
     return dictionary(forKey: key.value) as? [String: V]
   }
 
   /// **Mechanica**
   ///
-  /// Stores a Dictionary [String:Any] (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores a `Dictionary` [String:Any] (or removes the value if nil is passed as the value) for the provided key.
   /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
   public final func set<V: Any>(dictionary: [String: V]? , forKey key: Key<[String: V]>) {
     set(object: dictionary, forKey: key)
@@ -181,7 +181,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the Date value associated with the given key for reading and writing.
+  /// Accesses the `Date` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<Date>) -> Date? {
@@ -192,14 +192,14 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the Date associated with the specified key, or nil if the key was not found.
+  /// Returns the `Date` associated with the specified key, or nil if the key was not found.
   public final func date(forKey key: Key<Date>) -> Date? {
     return object(forKey: key)
   }
 
   /// **Mechanica**
   ///
-  /// Stores a Date value (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores a `Date` value (or removes the value if nil is passed as the value) for the provided key.
   public final func set(date: Date?, forKey key: Key< Date>) {
     set(object: date, forKey: key)
   }
@@ -208,7 +208,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the Data value associated with the given key for reading and writing.
+  /// Accesses the `Data` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<Data>) -> Data? {
@@ -218,14 +218,14 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the Data value associated with the specified key, or nil if the key was not found.
+  /// Returns the `Data` value associated with the specified key, or nil if the key was not found.
   public final func data(forKey key: Key<Data>) -> Data? {
     return data(forKey: key.value)
   }
 
   /// **Mechanica**
   ///
-  /// Stores a Data (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores a `Data` (or removes the value if nil is passed as the value) for the provided key.
   public final func set(data: Data?, forKey key: Key< Data>) {
     set(object: data, forKey: key)
   }
@@ -235,7 +235,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the Int value associated with the given key for reading and writing.
+  /// Accesses the `Int` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<Int>) -> Int? {
@@ -245,7 +245,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the Int value associated with the specified key, or nil if the key was not found.
+  /// Returns the `Int` value associated with the specified key, or nil if the key was not found.
   public final func integer(forKey key: Key<Int>) -> Int? {
     return (object(forKey: key) as NSNumber?)?.intValue
     //return integer(forKey: key.value)
@@ -253,7 +253,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Stores an Int value (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores an `Int` value (or removes the value if nil is passed as the value) for the provided key.
   public final func set(integer: Int?, forKey key: Key<Int>) {
     set(object: integer, forKey: key)
   }
@@ -263,7 +263,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the Double value associated with the given key for reading and writing.
+  /// Accesses the `Double` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<Double>) -> Double? {
@@ -273,7 +273,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the Double value associated with the specified key, or nil if the key was not found.
+  /// Returns the `Double` value associated with the specified key, or nil if the key was not found.
   public final func double(forKey key: Key<Double>) -> Double? {
     return (object(forKey: key) as NSNumber?)?.doubleValue
     //return double(forKey: key.value)
@@ -281,7 +281,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Stores a Double value (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores a `Double` value (or removes the value if nil is passed as the value) for the provided key.
   public final func set(double: Double?, forKey key: Key<Double>) {
     set(object: double, forKey: key)
   }
@@ -290,7 +290,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the Flaoting-Point value associated with the given key for reading and writing.
+  /// Accesses the `Flaoting-Point` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<Float>) -> Float? {
@@ -300,7 +300,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the Floating-Point value associated with the specified key, or nil if the key was not found.
+  /// Returns the `Floating-Point` value associated with the specified key, or nil if the key was not found.
   public final func float(forKey key: Key<Float>) -> Float? {
     return (object(forKey: key) as NSNumber?)?.floatValue
     //return float(forKey: key.value)
@@ -308,7 +308,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Stores a Floating-Point value (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores a `Floating-Point` value (or removes the value if nil is passed as the value) for the provided key.
   public final func set(float: Float?, forKey key: Key<Float>) {
     set(object: float, forKey: key)
   }
@@ -317,7 +317,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the Boolean value associated with the given key for reading and writing.
+  /// Accesses the `Bool` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<Bool>) -> Bool? {
@@ -327,7 +327,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the Boolean value associated with the specified key, or nil if the key was not found.
+  /// Returns the `Bool` value associated with the specified key, or nil if the key was not found.
   public final func bool(forKey key: Key<Bool>) -> Bool? {
     return (object(forKey: key) as NSNumber?)?.boolValue
     //return bool(forKey: key.value)
@@ -335,7 +335,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Stores a Bool value (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores a `Bool` value (or removes the value if nil is passed as the value) for the provided key.
   public final func set(bool: Bool?, forKey key: Key<Bool>) {
     set(object: bool, forKey: key)
   }
@@ -345,7 +345,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the URL instance associated with the given key for reading and writing.
+  /// Accesses the `URL` instance associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript(key: Key<URL>) -> URL? {
@@ -355,14 +355,14 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Returns the URL instance associated with the specified key, or nil if the key was not found.
+  /// Returns the `URL` instance associated with the specified key, or nil if the key was not found.
   public final func url(forKey key: Key<URL>) -> URL? {
     return url(forKey: key.value)
   }
 
   /// **Mechanica**
   ///
-  /// Stores an URL instance (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores an `URL` instance (or removes the value if nil is passed as the value) for the provided key.
   public final func set(url: URL?, forKey key: Key<URL>) {
     if let url = url {
       set(url, forKey: key.value)
