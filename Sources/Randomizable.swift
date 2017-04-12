@@ -47,20 +47,20 @@ public protocol RangeRandomizable: Randomizable {
 
 }
 
-extension RangeRandomizable where Self: Comparable & Strideable, Self.Stride: SignedInteger {
-
-  /// **Mechanica**
-  ///
-  /// Returns a random value given a `CountableClosedRange`.
-  static func random(closedRange: CountableClosedRange<Self>) -> Self {
-    return random(min: closedRange.lowerBound, max: closedRange.upperBound)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a random value given a `ClosedRange`.
-  static func random(range: ClosedRange<Self>) -> Self {
-    return random(min: range.lowerBound, max: range.upperBound-1)
-  }
-
-}
+//extension RangeRandomizable where Self: Strideable, Self.Stride: SignedInteger {
+//
+//  /// **Mechanica**
+//  ///
+//  /// Returns a random value given a `CountableClosedRange`.
+//  public static func random(in range: CountableClosedRange<Self>) -> Self {
+//    return random(min: range.lowerBound, max: range.upperBound)
+//  }
+//
+//  /// **Mechanica**
+//  ///
+//  /// Returns a random value given a `CountableRange`.
+//  public static func random(in range: CountableRange<Self>) -> Self {
+//    return random(min: range.lowerBound, max:range.upperBound-1)
+//  }
+//
+//}

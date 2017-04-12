@@ -49,6 +49,7 @@ class IntegerRandomizableTests: XCTestCase {
     XCTAssertTrue(Int.random(in: 1...100) <= 100)
     XCTAssertTrue(Int.random(min: 1, max: 100) <= 100)
     XCTAssertTrue(Int.min...Int.max ~= Int.random())
+     XCTAssertTrue(Int32.min...Int32.max ~= Int32.random())
     XCTAssertFalse(Int.random(min: 50, max: 100) > 100)
     XCTAssertFalse(Int.random(min: 40, max: 50) < 40)
 
@@ -203,7 +204,20 @@ class IntegerRandomizableTests: XCTestCase {
       }
       XCTAssertTrue(expectedAtLeastOnePositive && expectedAtLeastOneNegative)
     }
-    
+
+    do {
+      let range = UInt64.min..<UInt64.max
+      var expectedAtLeastOnePositive = false
+      var expectedAtLeastOneNegative = false
+      for _ in 1...100 {
+        let value = UInt64.random(in: range)
+        XCTAssertTrue(range ~= value, "\(value) should be contained in \(range)")
+        if (value.isPositive) { expectedAtLeastOnePositive = true }
+        if (value.isNegative) { expectedAtLeastOneNegative = true }
+      }
+      XCTAssertTrue(expectedAtLeastOnePositive && !expectedAtLeastOneNegative)
+    }
+
     do {
       let range = UInt64.min..<UInt64.max
       var expectedAtLeastOnePositive = false

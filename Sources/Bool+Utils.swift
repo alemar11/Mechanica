@@ -40,14 +40,7 @@ extension Bool {
   public var string: String {
     return description
   }
-  
-  /// **Mechanica**
-  ///
-  /// Returns `true` or `false` randomly.
-  static public func random() -> Bool {
-    return arc4random_uniform(2) == 0
-  }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` Bool with the inverted value of `self`.
@@ -83,4 +76,13 @@ extension Bool: BinaryConvertible {
 }
 
 
+extension Bool: Randomizable {
 
+  /// **Mechanica**
+  ///
+  /// Returns `true` or `false` randomly.
+  static public func random() -> Bool {
+    return arc4random_uniform(2) == 0
+  }
+  
+}

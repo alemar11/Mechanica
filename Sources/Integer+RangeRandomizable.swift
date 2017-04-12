@@ -43,18 +43,17 @@ extension Integer where Stride: SignedInteger, Self:RangeRandomizable {
   ///
   /// Returns a random Integer bounded by a closed interval range.
   public static func random(in range: CountableClosedRange<Self>) -> Self {
-    return Self.random(min: range.lowerBound, max:range.upperBound)
+    return random(min: range.lowerBound, max:range.upperBound)
   }
 
   /// **Mechanica**
   ///
   /// Returns a random Integer bounded by a closed interval range.
   public static func random(in range: CountableRange<Self>) -> Self {
-    return Self.random(min: range.lowerBound, max:range.upperBound-1)
+    return random(min: range.lowerBound, max:range.upperBound-1)
   }
   
 }
-
 
 fileprivate let _wordSize = __WORDSIZE
 
