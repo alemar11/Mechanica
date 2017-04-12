@@ -31,7 +31,36 @@ public protocol Randomizable {
 
   /// **Mechanica**
   ///
+  /// Returns a random value.
+  static func random() -> Self
+}
+
+/// **Mechanica**
+///
+/// Types conforming to RangeRandomizable protocol can generate a random value in a closed interval range.
+public protocol RangeRandomizable: Randomizable {
+
+  /// **Mechanica**
+  ///
   /// Returns a random value bounded by a closed interval range.
   static func random(min: Self, max: Self) -> Self
-  
+
+}
+
+extension RangeRandomizable where Self: Comparable & Strideable, Self.Stride: SignedInteger {
+
+  /// **Mechanica**
+  ///
+  /// Returns a random value given a `CountableClosedRange`.
+  static func random(closedRange: CountableClosedRange<Self>) -> Self {
+    return random(min: closedRange.lowerBound, max: closedRange.upperBound)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a random value given a `ClosedRange`.
+  static func random(range: ClosedRange<Self>) -> Self {
+    return random(min: range.lowerBound, max: range.upperBound-1)
+  }
+
 }

@@ -1,5 +1,5 @@
 //
-//  Integer+Randomizable.swift
+//  Integer+RangeRandomizable.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -26,18 +26,18 @@ import Foundation
 
 //  MARK: - Integer
 
-extension UInt64: Randomizable {}
-extension Int64:  Randomizable {}
-extension UInt32: Randomizable {}
-extension Int32:  Randomizable {}
-extension UInt16: Randomizable {}
-extension Int16:  Randomizable {}
-extension UInt8:  Randomizable {}
-extension Int8:   Randomizable {}
-extension UInt:   Randomizable {}
-extension Int:    Randomizable {}
+extension UInt64: RangeRandomizable {}
+extension Int64:  RangeRandomizable {}
+extension UInt32: RangeRandomizable {}
+extension Int32:  RangeRandomizable {}
+extension UInt16: RangeRandomizable {}
+extension Int16:  RangeRandomizable {}
+extension UInt8:  RangeRandomizable {}
+extension Int8:   RangeRandomizable {}
+extension UInt:   RangeRandomizable {}
+extension Int:    RangeRandomizable {}
 
-extension Integer where Stride: SignedInteger, Self:Randomizable {
+extension Integer where Stride: SignedInteger, Self:RangeRandomizable {
 
   /// **Mechanica**
   ///
@@ -82,6 +82,13 @@ extension UInt {
     }
   }
 
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns a random UInt between `min` and `max` values.
+  public static func random() -> UInt {
+    return random(min: min, max: max)
+  }
+
 }
 
 extension UInt64 {
@@ -113,6 +120,13 @@ extension UInt64 {
     return (r % u) + min
   }
 
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns a random UInt64 between `min` and `max` values.
+  public static func random() -> UInt64 {
+    return random(min: min, max: max)
+  }
+
 }
 
 extension UInt32 {
@@ -127,6 +141,13 @@ extension UInt32 {
     guard (min != max) else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     return arc4random_uniform(max - min) + min
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns a random UInt32 between `min` and `max` values.
+  public static func random() -> UInt32 {
+    return random(min: min, max: max)
   }
 
 }
@@ -145,6 +166,13 @@ extension UInt16 {
     return UInt16(arc4random_uniform(UInt32(max) - UInt32(min)) + UInt32(min))
   }
 
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns a random UInt16 between `min` and `max` values.
+  public static func random() -> UInt16 {
+    return random(min: min, max: max)
+  }
+
 }
 
 extension UInt8 {
@@ -159,6 +187,13 @@ extension UInt8 {
     guard (min != max) else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     return UInt8(arc4random_uniform(UInt32(max) - UInt32(min)) + UInt32(min))
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns a random UInt8 between `min` and `max` values.
+  public static func random() -> UInt8 {
+    return random(min: min, max: max)
   }
 
 }
@@ -179,6 +214,13 @@ extension Int {
     case 64: return Int(Int64.random(min: Int64(min), max: Int64(max)))
     default: return min
     }
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns a random Int between `min` and `max` values.
+  public static func random() -> Int {
+    return random(min: min, max: max)
   }
 
 }
@@ -205,6 +247,13 @@ extension Int64 {
     }
   }
 
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns a random Int64 between `min` and `max` values.
+  public static func random() -> Int64 {
+    return random(min: min, max: max)
+  }
+
 }
 
 extension Int32 {
@@ -220,6 +269,13 @@ extension Int32 {
     precondition(min < max, "\(max) should be greater than \(min).")
     let r = arc4random_uniform(UInt32(Int64(max) - Int64(min)))
     return Int32(Int64(r) + Int64(min))
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns a random Int32 between `min` and `max` values.
+  public static func random() -> Int32 {
+    return random(min: min, max: max)
   }
 
 }
@@ -240,6 +296,13 @@ extension Int16 {
     return Int16(Int32(r) + Int32(min))
   }
 
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns a random Int16 between `min` and `max` values.
+  public static func random() -> Int16 {
+    return random(min: min, max: max)
+  }
+
 }
 
 extension Int8 {
@@ -255,6 +318,13 @@ extension Int8 {
     precondition(min < max, "\(max) should be greater than \(min).")
     let r = arc4random_uniform(UInt32(Int32(max) - Int32(min)))
     return Int8(Int32(r) + Int32(min))
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns a random Int8 between `min` and `max` values.
+  public static func random() -> Int8 {
+    return random(min: min, max: max)
   }
 
 }
