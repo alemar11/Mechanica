@@ -27,7 +27,7 @@ import Foundation
 public extension String {
 
   // MARK: - Validation Methods
-  
+
   /// **Mechanica**
   ///
   /// Returns true if the `String` contains one or more letters.
@@ -62,14 +62,14 @@ public extension String {
   public var isAlphaNumeric: Bool {
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns true if all the characters are lowercased.
   public var isLowercased: Bool {
     return self == lowercased()
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns true, if all characters are uppercased. Otherwise, false.
@@ -81,7 +81,7 @@ public extension String {
   ///
   /// Checks if the `String` is **blank** (a string that is either empty or contains only space/newline characters).
   public var isBlank: Bool {
-    return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
+    return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
   }
 
   /// **Mechanica**
@@ -100,11 +100,16 @@ public extension String {
   ///
   /// Returns true if the `String` is a valid email format.
   public var isValidEmail: Bool {
-    guard !self.lowercased().hasPrefix("mailto:") else { return false }
-    guard let emailDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return false }
-    let matches = emailDetector.matches(in: self, options: NSRegularExpression.MatchingOptions.anchored, range: NSRange(location: 0, length: length))
-    guard matches.count == 1 else { return false }
-    return matches[0].url?.absoluteString == "mailto:\(self)"
-  }
+    //    guard !self.lowercased().hasPrefix("mailto:") else { return false }
+    //    guard let emailDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return false }
+    //    let matches = emailDetector.matches(in: self, options: NSRegularExpression.MatchingOptions.anchored, range: NSRange(location: 0, length: length))
+    //    guard matches.count == 1 else { return false }
+    //    return matches[0].url?.absoluteString == "mailto:\(self)"
 
+    /// credits: https://medium.com/@darthpelo/email-validation-in-swift-3-0-acfebe4d879a
+    /// credits: http://www.cocoawithlove.com/2009/06/verifying-that-string-is-email-address.html
+    let emailRegEx = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+    return NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx).evaluate(with: self)
+  }
+  
 }
