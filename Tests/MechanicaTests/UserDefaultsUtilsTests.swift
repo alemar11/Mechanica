@@ -54,7 +54,6 @@ class UserDefaultsUtilsTests: XCTestCase {
     userDefaults.removeAll()
   }
 
-
   func test_removeAll() {
     userDefaults.removeAll()
     XCTAssertNil(userDefaults[UserDefaults.TestKey.string1])
