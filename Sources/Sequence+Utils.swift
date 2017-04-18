@@ -28,7 +28,7 @@ extension Sequence {
 
   /// **Mechanica**
   /// Returns: the first element (if any) `matching` the predicate.
-  /// - Parameters: 
+  /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   /// - Note: Same as `first(where:)`.
   /// - SeeAlso: `first(where:)`
@@ -57,7 +57,7 @@ extension Sequence {
   public final func hasAll(where predicate: (Iterator.Element) -> Bool) -> Bool {
     return findFirst{ !predicate($0) } == nil
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter criteria: The criteria closure takes an `Iterator.Element` and returns its classification.
@@ -73,6 +73,20 @@ extension Sequence {
     return dictionary
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns the elements count matching a predicate.
+  /// - Parameter shouldCount: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.
+  public final func count(_ shouldCount: (Iterator.Element) -> Bool) -> Int {
+    var count = 0
+    for element in self {
+      if (shouldCount(element)){
+        count += 1
+      }
+    }
+    return count
+  }
+
 }
 
 // MARK: - AnyObject
@@ -85,6 +99,6 @@ extension Sequence where Iterator.Element: AnyObject {
   public final func containsObjectIdentical(to object: AnyObject) -> Bool {
     return contains { $0 === object }
   }
-
+  
 }
 

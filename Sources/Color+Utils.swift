@@ -51,24 +51,21 @@ extension Color {
   public final var hexString: String {
     return String(format:"#%06x", rgb32Bit)
   }
-  
-  // MARK: - Miscellanea
-  
+
   /// **Mechanica**
   ///
   /// Initializes and returns a **random** color object in the sRGB space.
-  public static func random() -> Color {
+  public class func random() -> Self {
     //drand48() generates a random number between 0 to 1
     let red = CGFloat(drand48()), green = CGFloat(drand48()), blue = CGFloat(drand48()), alpha = CGFloat(drand48())
     #if os(iOS) || os(tvOS) || os(watchOS)
-      return Color(red: red, green: green, blue: blue, alpha: alpha)
+      return self.init(red: red, green: green, blue: blue, alpha: alpha)
     #else
-      return Color(srgbRed: red, green: green, blue: blue, alpha: alpha)
+      return self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
     #endif
   }
-  
-}
 
+}
 
 // MARK: - sRGBA
 

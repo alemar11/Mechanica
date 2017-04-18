@@ -150,6 +150,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("mailto:test@.tinrobots.org".isValidEmail)
     XCTAssertFalse("test@.tinrobots.org".isValidEmail)
     XCTAssertFalse("test.@tinrobots.org".isValidEmail)
+    XCTAssertFalse("te@st@tinrobots.org".isValidEmail)
     XCTAssertFalse("test@tinrobots..org".isValidEmail)
     XCTAssertFalse("test@tinrobots.org.".isValidEmail)
     XCTAssertFalse("test@tinrobotsorg".isValidEmail)

@@ -1,5 +1,5 @@
 //
-//  Randomizable.swift
+//  KeyTests.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -22,16 +22,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import Mechanica
 
-/// **Mechanica**
-///
-/// Types conforming to Randomizable protocol can generate a random value.
-public protocol Randomizable {
 
-  /// **Mechanica**
-  ///
-  /// Returns a random value bounded by a closed interval range.
-  static func random(min: Self, max: Self) -> Self
-  
+class KeyTests: XCTestCase {
+
+  typealias stringKey = Key<String>
+
+  func test_simple() {
+    let key = stringKey("test")
+    XCTAssertEqual(key.value, "test")
+  }
+
+  func test_namespace() {
+    let key = stringKey("test")
+    let key2 = stringKey("test", namespace: "namespace")
+    XCTAssertEqual(key.value, "test")
+    XCTAssertEqual(key2.value, "namespace.test")
+    XCTAssertNotEqual(key.value, key2.value)
+  }
+
 }

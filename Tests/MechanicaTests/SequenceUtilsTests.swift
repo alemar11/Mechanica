@@ -42,7 +42,6 @@ class SequenceUtilsTests: XCTestCase {
     }
   }
 
-
   private let list = [Demo(value1: "demo1",value2: 1),
                       Demo(value1: "demo2",value2: 2),
                       Demo(value1: "demo3",value2: 3),
@@ -101,6 +100,13 @@ class SequenceUtilsTests: XCTestCase {
     list.append(demoObject)
     XCTAssertTrue(list.containsObjectIdentical(to: demoObject))
 
+  }
+
+  func test_count() {
+    XCTAssertEqual(list.count{ $0.value2 == 1}, 2)
+    XCTAssertEqual(list.count{ $0.value2 == 3}, 2)
+    XCTAssertEqual(list.count{ $0.value2 == 4}, 0)
+    XCTAssertEqual(list.count{ $0.value1 == "demo1"}, 1)
   }
 
   func test_groupedBy() {

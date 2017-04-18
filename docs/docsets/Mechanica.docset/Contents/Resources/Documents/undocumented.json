@@ -22,6 +22,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/a.marzoli/Developer/Mechanica/Sources/IntegerRandomizable.swift",
+      "line": 28,
+      "symbol": "IntegerRandomizable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/a.marzoli/Developer/Mechanica/Sources/ModelVersion.swift",
       "line": 110,
       "symbol": "ModelVersion.successor",

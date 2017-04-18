@@ -25,7 +25,7 @@
 import Foundation
 
 extension String {
-  
+
   // MARK: - Helper Methods
   
   /// **Mechanica**
@@ -218,9 +218,7 @@ extension String {
   ///  - parameter maxLength: substring max lenght
   ///
   public func prefix(maxLength: Int) -> String {
-    guard maxLength > 0 else {
-      return ""
-    }
+    guard maxLength > 0 else { return "" }
     return String(self.characters.prefix(maxLength))
   }
   
@@ -243,29 +241,59 @@ extension String {
   ///
   ///  Returns a new `String` containing the characters of the String from the one at a given position to the end.
   ///
+  /// ```
+  /// "hello".removingPrefix(upToPosition: 1) // "ello"
+  /// ```
+  ///
   ///  - parameter upToPosition: position (included) up to which remove the prefix.
   public func removingPrefix(upToPosition: Int = 1) -> String {
-    guard (upToPosition >= 0 && upToPosition <= self.length) else {
-      return ""
-    }
+    guard (upToPosition >= 0 && upToPosition <= self.length) else { return "" }
     
     let startIndex = self.index(self.startIndex, offsetBy: upToPosition)
     return self.substring(from: startIndex)
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Returns a new `String` removing the spcified prefix (if the string has it).
+  ///
+  /// ```
+  /// "hello".removingPrefix("hel") // "lo"
+  /// ```
+  ///  - parameter prefix: prefix to be removed.
+  public func removingPrefix(_ prefix: String) -> String {
+    guard self.hasPrefix(prefix) else { return self }
+    return self.removingPrefix(upToPosition: prefix.length)
   }
   
   /// **Mechanica**
   ///
   ///  Returns a new `String` containing the characters of the String up to, but not including, the one at a given position.
   ///
+  ///  ```
+  ///  "hello".removingSuffix(fromPosition: 1) == "hell"
+  ///  ```
+  ///
   ///  - parameter fromPosition: position (included) from which remove the suffix
   public func removingSuffix(fromPosition: Int = 1) -> String {
-    guard (fromPosition >= 0 && fromPosition <= self.length) else {
-      return ""
-    }
+    guard (fromPosition >= 0 && fromPosition <= self.length) else { return "" }
     let startIndex = self.index(self.endIndex, offsetBy: -fromPosition)
     return self.substring(to: startIndex)
   }
-  
+
+  /// **Mechanica**
+  ///
+  ///  Returns a new `String` removing the spcified suffix (if the string has it).
+  ///
+  /// ```
+  /// "hello".removingSuffix("0") // "hell"
+  /// ```
+  ///  - parameter prefix: prefix to be removed.
+  public func removingSuffix(_ suffix: String) -> String {
+    guard self.hasSuffix(suffix) else { return self }
+    return self.removingSuffix(fromPosition: suffix.length)
+  }
+
   /// **Mechanica**
   ///
   ///  Returns a new `String` removing the characters in the given set.

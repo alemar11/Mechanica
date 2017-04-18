@@ -356,6 +356,7 @@ class ColorUtilsTests: XCTestCase {
   
   func test_lightenedByIncreasingBrightness() {
     let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
+    XCTAssertEqual(gray.lightened(byIncreasingBrightness: 0.0), gray)
     XCTAssertEqual(gray.lightened(byIncreasingBrightness: 0.5), Color(red: 1.0, green: 1.0, blue: 1.0, alpha:1))
     XCTAssertEqual(Color.red.lightened(byIncreasingBrightness: 0.5), Color(red: 1.5, green: 0, blue: 0, alpha: 1))
     XCTAssertEqual(Color.green.lightened(byIncreasingBrightness: 0.5), Color(red: 0, green: 1.5, blue: 0, alpha: 1))
@@ -364,6 +365,7 @@ class ColorUtilsTests: XCTestCase {
   
   func test_darkenedByDecreasingBrightness() {
     let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
+     XCTAssertEqual(gray.darkened(byDecreasingBrightness: 0.0), gray)
     XCTAssertEqual(gray.darkened(byDecreasingBrightness: 0.5), Color(red: 0, green: 0, blue: 0, alpha: 1))
     XCTAssertEqual(Color.red.darkened(byDecreasingBrightness: 0.5), Color(red: 0.5, green: 0, blue: 0, alpha: 1))
     XCTAssertEqual(Color.green.darkened(byDecreasingBrightness: 0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
@@ -372,6 +374,7 @@ class ColorUtilsTests: XCTestCase {
   
   func test_shadedByIncreasingSaturation() {
     let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
+    XCTAssertEqual(gray.shaded(byIncreasingSaturation: 0.0), gray)
     XCTAssertEqual(gray.shaded(byIncreasingSaturation: 0.5), Color(red: 0.5, green: 0.25, blue: 0.25, alpha: 1))
     XCTAssertEqual(Color.red.shaded(byIncreasingSaturation: 0.5), Color(red: 1, green: -0.5, blue: -0.5, alpha: 1))
     XCTAssertEqual(Color.green.shaded(byIncreasingSaturation: 0.5), Color(red: -0.5, green: 1.0, blue:-0.5, alpha: 1))
@@ -380,6 +383,7 @@ class ColorUtilsTests: XCTestCase {
   
   func test_tintedByDecreasingSaturation() {
     let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
+    XCTAssertEqual(gray.tinted(byDecreasingSaturation: 0.0), gray)
     XCTAssertEqual(gray.tinted(byDecreasingSaturation: 0.5), Color(red: 0.5, green: 0.75, blue: 0.75, alpha: 1))
     XCTAssertEqual(Color.red.tinted(byDecreasingSaturation: 0.5), Color(red: 1, green: 0.5, blue: 0.5, alpha: 1))
     XCTAssertEqual(Color.green.tinted(byDecreasingSaturation: 0.5), Color(red: 0.5, green: 1.0, blue:0.5, alpha: 1))
