@@ -24,8 +24,6 @@
 
 import Foundation
 
-
-
 /// **Mechanica**
 ///
 /// Types conforming to `PropertyListReadable` can be used to read values from a Property List (.plist) file.
