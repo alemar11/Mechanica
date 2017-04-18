@@ -52,13 +52,6 @@ extension Color {
     return String(format:"#%06x", rgb32Bit)
   }
 
-}
-
-
-// MARK: - Randomizable
-
-extension Color: Randomizable {
-
   /// **Mechanica**
   ///
   /// Initializes and returns a **random** color object in the sRGB space.
