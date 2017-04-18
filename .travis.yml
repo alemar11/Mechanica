@@ -27,8 +27,8 @@ before_install:
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
 install:
   #fix issues https://github.com/travis-ci/travis-ci/issues/7580 
-  - rm -rf ~/Library/Developer/CoreSimulator
-  - sudo killall -9 com.apple.CoreSimulator.CoreSimulatorService  
+  #- rm -rf ~/Library/Developer/CoreSimulator
+  #- sudo killall -9 com.apple.CoreSimulator.CoreSimulatorService  
 script:
   - set -o pipefail
   - xcodebuild -version
