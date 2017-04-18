@@ -247,7 +247,7 @@ extension UserDefaults {
   ///
   /// Returns the `Int` value associated with the specified key, or nil if the key was not found.
   public final func integer(forKey key: Key<Int>) -> Int? {
-    return (object(forKey: key) as NSNumber?)?.intValue
+    return optionalInteger(forKey: key.value)
     //return integer(forKey: key.value)
   }
 
@@ -275,7 +275,7 @@ extension UserDefaults {
   ///
   /// Returns the `Double` value associated with the specified key, or nil if the key was not found.
   public final func double(forKey key: Key<Double>) -> Double? {
-    return (object(forKey: key) as NSNumber?)?.doubleValue
+    return optionalDouble(forKey: key.value)
     //return double(forKey: key.value)
   }
 
@@ -302,7 +302,7 @@ extension UserDefaults {
   ///
   /// Returns the `Floating-Point` value associated with the specified key, or nil if the key was not found.
   public final func float(forKey key: Key<Float>) -> Float? {
-    return (object(forKey: key) as NSNumber?)?.floatValue
+    return optionalFloat(forKey: key.value)
     //return float(forKey: key.value)
   }
 
@@ -329,7 +329,7 @@ extension UserDefaults {
   ///
   /// Returns the `Bool` value associated with the specified key, or nil if the key was not found.
   public final func bool(forKey key: Key<Bool>) -> Bool? {
-    return (object(forKey: key) as NSNumber?)?.boolValue
+    return optionalBool(forKey: key.value)
     //return bool(forKey: key.value)
   }
 
@@ -377,19 +377,14 @@ extension UserDefaults {
   ///
   /// Returns the object conformig to `NSCoding` associated with the specified key, or nil if the key was not found.
   public final func archivableValue<T: NSCoding>(forKey key: Key<T>) -> T? {
-    return data(forKey: key.value).flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) } as? T
+    return archivableValue(forKey: key.value)
   }
 
   /// **Mechanica**
   ///
   /// Stores an object conformig to `NSCoding` (or removes the value if nil is passed as the value) for the provided key.
   public final func set<T: NSCoding>(archivableValue value: T?, forKey key: Key<T>) {
-    if let value = value {
-      let data = NSKeyedArchiver.archivedData(withRootObject: value)
-      set(data, forKey: key.value)
-    } else {
-      removeObject(forKey: key)
-    }
+    set(archivableValue: value, forKey: key.value)
   }
 
 }

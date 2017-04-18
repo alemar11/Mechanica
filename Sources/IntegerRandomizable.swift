@@ -1,5 +1,5 @@
 //
-//  Integer+RangeRandomizable.swift
+//  IntegerRandomizable.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -24,37 +24,46 @@
 
 import Foundation
 
+
+public protocol IntegerRandomizable {
+
+  /// **Mechanica**
+  ///
+  /// Returns a random value bounded by a closed interval range.
+  static func random(min: Self, max: Self) -> Self
+  
+}
+
 //  MARK: - Integer
 
-extension UInt64: RangeRandomizable {}
-extension Int64:  RangeRandomizable {}
-extension UInt32: RangeRandomizable {}
-extension Int32:  RangeRandomizable {}
-extension UInt16: RangeRandomizable {}
-extension Int16:  RangeRandomizable {}
-extension UInt8:  RangeRandomizable {}
-extension Int8:   RangeRandomizable {}
-extension UInt:   RangeRandomizable {}
-extension Int:    RangeRandomizable {}
+extension UInt64: IntegerRandomizable {}
+extension Int64:  IntegerRandomizable {}
+extension UInt32: IntegerRandomizable {}
+extension Int32:  IntegerRandomizable {}
+extension UInt16: IntegerRandomizable {}
+extension Int16:  IntegerRandomizable {}
+extension UInt8:  IntegerRandomizable {}
+extension Int8:   IntegerRandomizable {}
+extension UInt:   IntegerRandomizable {}
+extension Int:    IntegerRandomizable {}
 
-extension Integer where Stride: SignedInteger, Self:RangeRandomizable {
+extension Integer where Stride: SignedInteger, Self:IntegerRandomizable {
 
   /// **Mechanica**
   ///
   /// Returns a random Integer bounded by a closed interval range.
   public static func random(in range: CountableClosedRange<Self>) -> Self {
-    return Self.random(min: range.lowerBound, max:range.upperBound)
+    return random(min: range.lowerBound, max:range.upperBound)
   }
 
   /// **Mechanica**
   ///
   /// Returns a random Integer bounded by a closed interval range.
   public static func random(in range: CountableRange<Self>) -> Self {
-    return Self.random(min: range.lowerBound, max:range.upperBound-1)
+    return random(min: range.lowerBound, max:range.upperBound-1)
   }
   
 }
-
 
 fileprivate let _wordSize = __WORDSIZE
 

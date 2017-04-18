@@ -84,3 +84,26 @@ public extension UserDefaults {
 
 }
 
+  // MARK: NSCoding
+
+extension UserDefaults {
+
+  /// **Mechanica**
+  ///
+  /// Returns the object conformig to `NSCoding` associated with the specified key, or nil if the key was not found.
+  public final func archivableValue<T: NSCoding>(forKey key: String) -> T? {
+    return data(forKey: key).flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) } as? T
+  }
+
+  /// **Mechanica**
+  ///
+  /// Stores an object conformig to `NSCoding` (or removes the value if nil is passed as the value) for the provided key.
+  public final func set<T: NSCoding>(archivableValue value: T?, forKey key: String) {
+    if let value = value {
+      let data = NSKeyedArchiver.archivedData(withRootObject: value)
+      set(data, forKey: key)
+    } else {
+      removeObject(forKey: key)
+    }
+  }
+}
