@@ -1,5 +1,5 @@
 //
-//  IntegerRandomizableTests.swift
+//  FixedWidthIntegerItervalRandomizable.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -25,7 +25,7 @@
 import XCTest
 @testable import Mechanica
 
-class IntegerRandomizableTests: XCTestCase {
+class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
   func test_randomInt() {
 
