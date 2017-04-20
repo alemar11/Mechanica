@@ -1,5 +1,5 @@
 //
-//  FixedWidthInteger+IntervalRandomizable.swift
+//  FixedWidthIntegerRandomizable.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -24,19 +24,7 @@
 
 import Foundation
 
-/// **Mechanica**
-///
-/// Types conforming to `IntervalRandomizable` returns a random value in an interval range.
-public protocol IntervalRandomizable {
-
-  /// **Mechanica**
-  ///
-  /// Returns a random value bounded by a closed interval range.
-  static func random(min: Self, max: Self) -> Self
-  
-}
-
-//  MARK: - Integer
+//  MARK: - FixedWidthInteger
 
 /// **Mechanica**
 ///
@@ -52,7 +40,24 @@ public protocol FixedWidthInteger : Integer {
   static var min: Self { get }
 }
 
-typealias FixedWidthIntegerRandomizable = FixedWidthInteger & IntervalRandomizable
+//  MARK: - IntegerRandomizable
+
+/// **Mechanica**
+/// - TODO: Rename this protocol `FixedWidthIntegerRandomizable` with Swift 4.
+public protocol IntegerRandomizable {
+  
+  /// **Mechanica**
+  ///
+  /// Returns a random value between `min` and `max` values.
+  
+  /// **Mechanica**
+  ///
+  /// Returns a random value bounded by a closed interval range.
+  static func random(min: Self, max: Self) -> Self
+  
+}
+
+public typealias FixedWidthIntegerRandomizable = FixedWidthInteger & IntegerRandomizable
 
 extension UInt64: FixedWidthIntegerRandomizable {}
 extension Int64:  FixedWidthIntegerRandomizable {}
@@ -65,7 +70,7 @@ extension Int8:   FixedWidthIntegerRandomizable {}
 extension UInt:   FixedWidthIntegerRandomizable {}
 extension Int:    FixedWidthIntegerRandomizable {}
 
-extension FixedWidthInteger where Stride: SignedInteger, Self: IntervalRandomizable {
+extension FixedWidthInteger where Stride: SignedInteger, Self: IntegerRandomizable {
 
   /// **Mechanica**
   ///
