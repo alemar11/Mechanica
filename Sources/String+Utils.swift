@@ -113,7 +113,9 @@ extension String {
     let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
     return self.replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
   }
-  
+
+  // MARK: - Random
+
   /// **Mechanica**
   ///
   /// Generates a `new` random alphanumeric string of a given length (default 8).
