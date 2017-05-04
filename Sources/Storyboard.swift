@@ -44,12 +44,12 @@ import Foundation
 
 /// **Mechanica**
 ///
-/// Types adopting the `StoryboardKeyCodable` protocol can be used to define Storyboard names.
-public protocol StoryboardKeyCodable {
+/// Types adopting the `StoryboardEnumerable` protocol can be used to define Storyboard names.
+public protocol StoryboardEnumerable {
   associatedtype StoryboardName: RawRepresentable
 }
 
-extension StoryboardKeyCodable where StoryboardName.RawValue == String {
+extension StoryboardEnumerable where StoryboardName.RawValue == String {
   
   /**
    **Mechanica**
@@ -58,7 +58,7 @@ extension StoryboardKeyCodable where StoryboardName.RawValue == String {
    
    i.e.
    ```
-   extension Storyboard: StoryboardKeyCodable {
+   extension Storyboard: StoryboardEnumerable {
    enum StoryboardName : String {
    case main    = "MainStoryboard"
    case detail  = "DetailStoryboard"

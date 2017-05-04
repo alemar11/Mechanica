@@ -25,7 +25,7 @@
 import XCTest
 @testable import Mechanica
 
-extension Nib: NibKeyCodable {
+extension Nib: NibEnumerable {
 
   public enum NibName : String {
     case iOS    = "iOS_NibDemo"
