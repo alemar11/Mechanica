@@ -203,16 +203,19 @@
                 <a href="Protocols/FetchConfigurable.html">FetchConfigurable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/FixedWidthInteger.html">FixedWidthInteger</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/IntegerRandomizable.html">IntegerRandomizable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/ModelVersion.html">ModelVersion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/NibIdentifiable.html">NibIdentifiable</a>
+                <a href="Protocols/NibEnumerable.html">NibEnumerable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/NibKeyCodable.html">NibKeyCodable</a>
+                <a href="Protocols/NibIdentifiable.html">NibIdentifiable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols.html#/s:P9Mechanica11NibLoadable">NibLoadable</a>
@@ -224,10 +227,10 @@
                 <a href="Protocols/RemoteDeletable.html">RemoteDeletable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/StoryboardIdentifiable.html">StoryboardIdentifiable</a>
+                <a href="Protocols/StoryboardEnumerable.html">StoryboardEnumerable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/StoryboardKeyCodable.html">StoryboardKeyCodable</a>
+                <a href="Protocols/StoryboardIdentifiable.html">StoryboardIdentifiable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/UpdateTimestampable.html">UpdateTimestampable</a>
@@ -1009,6 +1012,60 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:iE9MechanicaSS9subscriptFSiGSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:iE9MechanicaSS9subscriptFSiGSqSS_">subscript(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><em>Mechanica</em>*</p>
+
+<p>Gets the character at the specified index as String.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>index Position of the character to get</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Character as String or nil if the index is out of bounds</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:iE9MechanicaSS9subscriptFGVs5RangeSi_GSqSS_"></a>
                     <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:iE9MechanicaSS9subscriptFGVs5RangeSi_GSqSS_">subscript(_:)</a>
@@ -1117,60 +1174,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:iE9MechanicaSS9subscriptFSiGSqSS_"></a>
-                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:iE9MechanicaSS9subscriptFSiGSqSS_">subscript(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><em>Mechanica</em>*</p>
-
-<p>Gets the character at the specified index as String.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>index</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>index Position of the character to get</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Character as String or nil if the index is out of bounds</p>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:iE9MechanicaSS9subscriptFVSC8_NSRangeGSqSS_"></a>
                     <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:iE9MechanicaSS9subscriptFVSC8_NSRangeGSqSS_">subscript(_:)</a>
@@ -1227,7 +1230,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-04-18)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-09)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

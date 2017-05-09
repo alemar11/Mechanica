@@ -203,16 +203,19 @@
                 <a href="Protocols/FetchConfigurable.html">FetchConfigurable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/FixedWidthInteger.html">FixedWidthInteger</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/IntegerRandomizable.html">IntegerRandomizable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/ModelVersion.html">ModelVersion</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/NibIdentifiable.html">NibIdentifiable</a>
+                <a href="Protocols/NibEnumerable.html">NibEnumerable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/NibKeyCodable.html">NibKeyCodable</a>
+                <a href="Protocols/NibIdentifiable.html">NibIdentifiable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols.html#/s:P9Mechanica11NibLoadable">NibLoadable</a>
@@ -224,10 +227,10 @@
                 <a href="Protocols/RemoteDeletable.html">RemoteDeletable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/StoryboardIdentifiable.html">StoryboardIdentifiable</a>
+                <a href="Protocols/StoryboardEnumerable.html">StoryboardEnumerable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/StoryboardKeyCodable.html">StoryboardKeyCodable</a>
+                <a href="Protocols/StoryboardIdentifiable.html">StoryboardIdentifiable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/UpdateTimestampable.html">UpdateTimestampable</a>
@@ -552,6 +555,56 @@
               </ul>
             </div>
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/FixedWidthInteger"></a>
+                <a name="//apple_ref/swift/Section/FixedWidthInteger" class="dashAnchor"></a>
+                <a href="#/FixedWidthInteger">
+                  <h3 class="section-name">FixedWidthInteger</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P9Mechanica17FixedWidthInteger"></a>
+                    <a name="//apple_ref/swift/Protocol/FixedWidthInteger" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Mechanica17FixedWidthInteger">FixedWidthInteger</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>From SE-0104 (Swift 4), Int nad UInt families will conform to FixedWidthInteger.
+<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0104-improved-integers.md">https://github.com/apple/swift-evolution/blob/master/proposals/0104-improved-integers.md</a>
+- TODO: This protocol should be removed with with Swift 4.</p>
+
+                        <a href="Protocols/FixedWidthInteger.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">FixedWidthInteger</span> <span class="p">:</span> <span class="kt">Integer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/IntegerRandomizable"></a>
+                <a name="//apple_ref/swift/Section/IntegerRandomizable" class="dashAnchor"></a>
+                <a href="#/IntegerRandomizable">
+                  <h3 class="section-name">IntegerRandomizable</h3>
+                </a>
+              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -566,9 +619,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong>
+- TODO: Rename this protocol <code>FixedWidthIntegerRandomizable</code> with Swift 4.</p>
 
                         <a href="Protocols/IntegerRandomizable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IntegerRandomizable</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -587,9 +649,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:P9Mechanica20StoryboardKeyCodable"></a>
-                    <a name="//apple_ref/swift/Protocol/StoryboardKeyCodable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:P9Mechanica20StoryboardKeyCodable">StoryboardKeyCodable</a>
+                    <a name="/s:P9Mechanica20StoryboardEnumerable"></a>
+                    <a name="//apple_ref/swift/Protocol/StoryboardEnumerable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Mechanica20StoryboardEnumerable">StoryboardEnumerable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -599,15 +661,15 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Types adopting the <code>StoryboardKeyCodable</code> protocol can be used to define Storyboard names.</p>
+<p>Types adopting the <code>StoryboardEnumerable</code> protocol can be used to define Storyboard names.</p>
 
-                        <a href="Protocols/StoryboardKeyCodable.html" class="slightly-smaller">See more</a>
+                        <a href="Protocols/StoryboardEnumerable.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">StoryboardKeyCodable</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">StoryboardEnumerable</span></code></pre>
 
                         </div>
                       </div>
@@ -735,9 +797,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:P9Mechanica13NibKeyCodable"></a>
-                    <a name="//apple_ref/swift/Protocol/NibKeyCodable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:P9Mechanica13NibKeyCodable">NibKeyCodable</a>
+                    <a name="/s:P9Mechanica13NibEnumerable"></a>
+                    <a name="//apple_ref/swift/Protocol/NibEnumerable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Mechanica13NibEnumerable">NibEnumerable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -747,15 +809,15 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Types adopting the <code>NibKeyCodable</code> protocol can be used to define Nib names.</p>
+<p>Types adopting the <code>NibEnumerable</code> protocol can be used to define Nib names.</p>
 
-                        <a href="Protocols/NibKeyCodable.html" class="slightly-smaller">See more</a>
+                        <a href="Protocols/NibEnumerable.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NibKeyCodable</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NibEnumerable</span></code></pre>
 
                         </div>
                       </div>
@@ -848,7 +910,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-04-18)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-09)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
