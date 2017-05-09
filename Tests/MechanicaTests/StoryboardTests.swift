@@ -26,7 +26,7 @@
 import XCTest
 @testable import Mechanica
 
-extension Storyboard: StoryboardKeyCodable {
+extension Storyboard: StoryboardEnumerable {
 
   public enum StoryboardName : String {
     #if os(iOS)

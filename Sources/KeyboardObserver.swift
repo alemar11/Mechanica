@@ -206,7 +206,6 @@ public final class KeyboardObserver {
   /// Registers for `KeyboardObserver` events and starts calling corresponding event handlers.
   public final func register() {
     let defaultCenter = NotificationCenter.default
-
     for event in callbacks.keys {
       defaultCenter.addObserver(self, selector: event.selector, name: event.notificationName, object: nil)
     }
@@ -288,12 +287,12 @@ public final class KeyboardObserver {
 // MARK: - Selectors
 
 fileprivate extension Selector {
-  static let willShow = #selector(KeyboardObserver.keyboardWillShow(_:))
-  static let didShow = #selector(KeyboardObserver.keyboardDidShow(_:))
-  static let willHide = #selector(KeyboardObserver.keyboardWillHide(_:))
-  static let didHide = #selector(KeyboardObserver.keyboardDidHide(_:))
-  static let willChangeFrame = #selector(KeyboardObserver.keyboardWillChangeFrame(_:))
-  static let didChangeFrame = #selector(KeyboardObserver.keyboardDidChangeFrame(_:))
+  static let willShow         = #selector(KeyboardObserver.keyboardWillShow(_:))
+  static let didShow          = #selector(KeyboardObserver.keyboardDidShow(_:))
+  static let willHide         = #selector(KeyboardObserver.keyboardWillHide(_:))
+  static let didHide          = #selector(KeyboardObserver.keyboardDidHide(_:))
+  static let willChangeFrame  = #selector(KeyboardObserver.keyboardWillChangeFrame(_:))
+  static let didChangeFrame   = #selector(KeyboardObserver.keyboardDidChangeFrame(_:))
 }
 
 #endif

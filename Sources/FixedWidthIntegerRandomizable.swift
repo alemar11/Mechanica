@@ -1,5 +1,5 @@
 //
-//  IntegerRandomizable.swift
+//  FixedWidthIntegerRandomizable.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -24,9 +24,32 @@
 
 import Foundation
 
+//  MARK: - FixedWidthInteger
 
+/// **Mechanica**
+///
+/// From SE-0104 (Swift 4), Int nad UInt families will conform to FixedWidthInteger.
+/// https://github.com/apple/swift-evolution/blob/master/proposals/0104-improved-integers.md
+/// - TODO: This protocol should be removed with with Swift 4.
+public protocol FixedWidthInteger : Integer {
+  
+  /// The maximum representable integer in this type.
+  static var max: Self { get }
+  
+  /// The minimum representable value.
+  static var min: Self { get }
+}
+
+//  MARK: - IntegerRandomizable
+
+/// **Mechanica**
+/// - TODO: Rename this protocol `FixedWidthIntegerRandomizable` with Swift 4.
 public protocol IntegerRandomizable {
-
+  
+  /// **Mechanica**
+  ///
+  /// Returns a random value between `min` and `max` values.
+  
   /// **Mechanica**
   ///
   /// Returns a random value bounded by a closed interval range.
@@ -34,20 +57,20 @@ public protocol IntegerRandomizable {
   
 }
 
-//  MARK: - Integer
+public typealias FixedWidthIntegerRandomizable = FixedWidthInteger & IntegerRandomizable
 
-extension UInt64: IntegerRandomizable {}
-extension Int64:  IntegerRandomizable {}
-extension UInt32: IntegerRandomizable {}
-extension Int32:  IntegerRandomizable {}
-extension UInt16: IntegerRandomizable {}
-extension Int16:  IntegerRandomizable {}
-extension UInt8:  IntegerRandomizable {}
-extension Int8:   IntegerRandomizable {}
-extension UInt:   IntegerRandomizable {}
-extension Int:    IntegerRandomizable {}
+extension UInt64: FixedWidthIntegerRandomizable {}
+extension Int64:  FixedWidthIntegerRandomizable {}
+extension UInt32: FixedWidthIntegerRandomizable {}
+extension Int32:  FixedWidthIntegerRandomizable {}
+extension UInt16: FixedWidthIntegerRandomizable {}
+extension Int16:  FixedWidthIntegerRandomizable {}
+extension UInt8:  FixedWidthIntegerRandomizable {}
+extension Int8:   FixedWidthIntegerRandomizable {}
+extension UInt:   FixedWidthIntegerRandomizable {}
+extension Int:    FixedWidthIntegerRandomizable {}
 
-extension Integer where Stride: SignedInteger, Self:IntegerRandomizable {
+extension FixedWidthInteger where Stride: SignedInteger, Self: IntegerRandomizable {
 
   /// **Mechanica**
   ///
@@ -67,7 +90,7 @@ extension Integer where Stride: SignedInteger, Self:IntegerRandomizable {
 
 fileprivate let _wordSize = __WORDSIZE
 
-fileprivate func arc4random <T: ExpressibleByIntegerLiteral> (type: T.Type) -> T {
+fileprivate func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   var result:T = 0
   arc4random_buf(&result, Int(MemoryLayout<T>.size))
   return result

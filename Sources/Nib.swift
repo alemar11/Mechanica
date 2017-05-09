@@ -40,12 +40,12 @@
 
 /// **Mechanica**
 ///
-/// Types adopting the `NibKeyCodable` protocol can be used to define Nib names.
-public protocol NibKeyCodable {
+/// Types adopting the `NibEnumerable` protocol can be used to define Nib names.
+public protocol NibEnumerable {
   associatedtype NibName: RawRepresentable
 }
 
-extension NibKeyCodable where NibName.RawValue == String {
+extension NibEnumerable where NibName.RawValue == String {
 
   /**
    **Mechanica**
@@ -54,7 +54,7 @@ extension NibKeyCodable where NibName.RawValue == String {
 
    i.e.
    ```
-   extension Nib: NibKeyCodable {
+   extension Nib: NibEnumerable {
    enum NibName : String {
    case first   = "first"
    case second  = "second"
