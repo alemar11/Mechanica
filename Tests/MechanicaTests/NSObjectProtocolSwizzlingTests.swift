@@ -1,5 +1,5 @@
 //
-//  NSObjectUtils.swift
+//  NSObjectProtocolSwizzlingTests.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -25,13 +25,37 @@
 import XCTest
 @testable import Mechanica
 
-class Demo: NSObject{}
+class Test : NSObject {
+  dynamic func methodOne() -> Int { return 1 }
+  dynamic func methodThree() -> String { return "three" }
+  dynamic func methodFive(string: String) -> String { return ".." + string + ".." }
+  override init(){}
+}
 
-class NSObjectUtils: XCTestCase {
-  
-  func test_className(){
-    XCTAssertEqual(Demo.className, "Demo")
-    XCTAssertEqual(Demo().className, "Demo")
+extension Test {
+  func methodTwo() -> Int { return methodTwo() + 10 }
+  func methodFour() -> String { return methodFour() + "!!" }
+  func methodSix(string: String) -> String { return "--" + string + "--" }
+}
+
+class NSObjectSwizzlingTests: XCTestCase {
+
+  override func setUp() {
+    Test.swizzle([
+      ( #selector(Test.methodOne), #selector(Test.methodTwo) ),
+      ( #selector(Test.methodThree), #selector(Test.methodFour) ),
+      ( #selector(Test.methodFive), #selector(Test.methodSix) )
+      ])
   }
-  
+
+  func test_swizzlingExtension() {
+    let test = Test()
+    XCTAssertTrue(test.methodOne() == 11)
+    XCTAssertTrue(test.methodTwo() == 1)
+    XCTAssertTrue(test.methodThree() == "three!!")
+    XCTAssertTrue(test.methodFour() == "three")
+    XCTAssertTrue(test.methodFive(string: "five") == "--five--")
+    XCTAssertTrue(test.methodSix(string: "six") == "..six..")
+  }
+
 }

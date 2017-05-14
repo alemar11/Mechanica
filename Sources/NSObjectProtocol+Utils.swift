@@ -1,5 +1,5 @@
 //
-//  NSObject+Utils.swift
+//  NSObjectProtocol+Utils.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -24,20 +24,20 @@
 
 import Foundation
 
-extension NSObject {
+extension NSObjectProtocol {
   
   /// **Mechanica**
   ///
-  /// Returns the class name of an NSObject as `String`.
-  public final var className: String {
-    return String(describing: type(of: self))
+  /// Returns the type of an object conforming to `NSObjectProtocol` as `String`.
+  public final var type: String {
+    return typeName(of: self)
   }
   
   /// **Mechanica**
   ///
-  /// Returns the class name of an NSObject as `String`.
-  public final class var className: String {
-    return String(describing: self)
+  /// Returns the type of an object instance conforming to `NSObjectProtocol` as `String`.
+  public final static var type: String {
+    return typeName(of: self)
   }
   
 }
