@@ -236,6 +236,13 @@
 		239F8DD91E55DED500E3DF33 /* NSObject+Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD71E55DED500E3DF33 /* NSObject+Swizzling.swift */; };
 		239F8DDA1E55DED500E3DF33 /* NSObject+Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD71E55DED500E3DF33 /* NSObject+Swizzling.swift */; };
 		239F8DDB1E55DED500E3DF33 /* NSObject+Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD71E55DED500E3DF33 /* NSObject+Swizzling.swift */; };
+		23B2ED6D1EC8CDBB006365BD /* NSObject+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2ED6C1EC8CDBB006365BD /* NSObject+Utils.swift */; };
+		23B2ED6E1EC8CDBB006365BD /* NSObject+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2ED6C1EC8CDBB006365BD /* NSObject+Utils.swift */; };
+		23B2ED6F1EC8CDBB006365BD /* NSObject+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2ED6C1EC8CDBB006365BD /* NSObject+Utils.swift */; };
+		23B2ED701EC8CDBB006365BD /* NSObject+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2ED6C1EC8CDBB006365BD /* NSObject+Utils.swift */; };
+		23B2ED721EC8CE28006365BD /* NSObjectUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2ED711EC8CE28006365BD /* NSObjectUtils.swift */; };
+		23B2ED731EC8CE28006365BD /* NSObjectUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2ED711EC8CE28006365BD /* NSObjectUtils.swift */; };
+		23B2ED741EC8CE28006365BD /* NSObjectUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2ED711EC8CE28006365BD /* NSObjectUtils.swift */; };
 		23C27C381E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */; };
 		23C27C391E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */; };
 		23C27C3A1E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */; };
@@ -454,6 +461,8 @@
 		23964A011E5B034800C8E0DF /* Collection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Collection+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		239F8DD21E55B03900E3DF33 /* ValueAssociable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ValueAssociable.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		239F8DD71E55DED500E3DF33 /* NSObject+Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Swizzling.swift"; sourceTree = "<group>"; };
+		23B2ED6C1EC8CDBB006365BD /* NSObject+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Utils.swift"; sourceTree = "<group>"; };
+		23B2ED711EC8CE28006365BD /* NSObjectUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectUtils.swift; sourceTree = "<group>"; };
 		23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeyTests.swift; sourceTree = "<group>"; };
 		23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
@@ -593,7 +602,7 @@
 				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
 				12B6B1B81E0D5D180057FE5F /* Nib.swift */,
 				23949C5E1E4B97A500BD9EC8 /* NSAttributedString */,
-				239F8DD71E55DED500E3DF33 /* NSObject+Swizzling.swift */,
+				23B2ED751EC8CF0A006365BD /* NSObject */,
 				D24094491E4C802B00EB4163 /* NSPredicate+Operators.swift */,
 				12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */,
 				D2ABD0061E004F8D006859B9 /* ProcessInfo+Utils.swift */,
@@ -682,6 +691,7 @@
 				237F175E1E90000800726553 /* URLOperatorsTests.swift */,
 				23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */,
 				23F3F6FA1E9651AB002DAC89 /* KeyTests.swift */,
+				23B2ED711EC8CE28006365BD /* NSObjectUtils.swift */,
 			);
 			path = MechanicaTests;
 			sourceTree = "<group>";
@@ -794,6 +804,15 @@
 				23949C591E4B979D00BD9EC8 /* NSAttributedString+Utils.swift */,
 			);
 			name = NSAttributedString;
+			sourceTree = "<group>";
+		};
+		23B2ED751EC8CF0A006365BD /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				239F8DD71E55DED500E3DF33 /* NSObject+Swizzling.swift */,
+				23B2ED6C1EC8CDBB006365BD /* NSObject+Utils.swift */,
+			);
+			name = NSObject;
 			sourceTree = "<group>";
 		};
 		D278BD931DEF102A006FAD83 /* Color */ = {
@@ -1212,6 +1231,7 @@
 				D278BD961DEF1061006FAD83 /* Color+Flat.swift in Sources */,
 				12D9DEFD1E085B6A000799C6 /* Bool+Utils.swift in Sources */,
 				D21A31F01DEDC9DA00E4A609 /* String+Conversions.swift in Sources */,
+				23B2ED6D1EC8CDBB006365BD /* NSObject+Utils.swift in Sources */,
 				D2B965631DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift in Sources */,
 				D2CAF33C1DA2A71300E6E843 /* NSFetchRequest+Utils.swift in Sources */,
 				12B9563F1D8820CA00F75DD5 /* String+Validation.swift in Sources */,
@@ -1231,6 +1251,7 @@
 				12B9562E1D880B3B00F75DD5 /* Optional+Utils.swift in Sources */,
 				D2CAF3411DA2A71300E6E843 /* NSManagedObject+Utils.swift in Sources */,
 				23949C5B1E4B979D00BD9EC8 /* NSAttributedString+Utils.swift in Sources */,
+				23B2ED6E1EC8CDBB006365BD /* NSObject+Utils.swift in Sources */,
 				23DA87001E65C42C009C5CFE /* SignedInteger+Utils.swift in Sources */,
 				234FBBEA1E82BF9600679676 /* UserDefaults+Key.swift in Sources */,
 				D2C149961DCCE04000376031 /* NSManagedObject+Deletable.swift in Sources */,
@@ -1307,6 +1328,7 @@
 				1230C2D81DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */,
 				D273A59C1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				D262EF201DA5487F0061AB10 /* ModelVersion.swift in Sources */,
+				23B2ED6F1EC8CDBB006365BD /* NSObject+Utils.swift in Sources */,
 				234FBBEB1E82BF9600679676 /* UserDefaults+Key.swift in Sources */,
 				D24745AF1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift in Sources */,
 				23839F881E93CCE4002D757B /* Key.swift in Sources */,
@@ -1365,6 +1387,7 @@
 				1230C2D91DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */,
 				12B9563D1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				D20544FD1DDC508B007DCE97 /* PropertyListReadable.swift in Sources */,
+				23B2ED701EC8CDBB006365BD /* NSObject+Utils.swift in Sources */,
 				234FBBEC1E82BF9600679676 /* UserDefaults+Key.swift in Sources */,
 				D24745B01E4B3DF800956918 /* NSMutableAttributedString+Operators.swift in Sources */,
 				23839F891E93CCE4002D757B /* Key.swift in Sources */,
@@ -1403,6 +1426,7 @@
 				237F17651E90000900726553 /* BinaryFloatingPointUtilsTests.swift in Sources */,
 				237F17B91E90000900726553 /* SignedIntegerUtilsTests.swift in Sources */,
 				237F17951E90000900726553 /* KeyboardObserverTests.swift in Sources */,
+				23B2ED721EC8CE28006365BD /* NSObjectUtils.swift in Sources */,
 				237F17621E90000900726553 /* ValueAssociableTests.swift in Sources */,
 				237F177A1E90000900726553 /* PropertyListReadableTests.swift in Sources */,
 				237F17C51E90000900726553 /* StringOperatorsTests.swift in Sources */,
@@ -1476,6 +1500,7 @@
 				237F17BD1E90000900726553 /* StoryboardTests.swift in Sources */,
 				237F17721E90000900726553 /* ColorFlatTests.swift in Sources */,
 				237F176F1E90000900726553 /* CollectionUtiilsTests.swift in Sources */,
+				23B2ED731EC8CE28006365BD /* NSObjectUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1519,6 +1544,7 @@
 				237F17BE1E90000900726553 /* StoryboardTests.swift in Sources */,
 				237F17731E90000900726553 /* ColorFlatTests.swift in Sources */,
 				237F17701E90000900726553 /* CollectionUtiilsTests.swift in Sources */,
+				23B2ED741EC8CE28006365BD /* NSObjectUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
