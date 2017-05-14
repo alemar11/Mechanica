@@ -594,7 +594,7 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				23839F851E93CCE4002D757B /* Key.swift */,
+				23F6A1621EC8DBD400D20502 /* AnyUtils.swift */,
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */,
 				12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */,
@@ -607,6 +607,7 @@
 				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
 				235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */,
 				231741C21E82A07F009CC93D /* Integer */,
+				23839F851E93CCE4002D757B /* Key.swift */,
 				129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */,
 				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
 				12B6B1B81E0D5D180057FE5F /* Nib.swift */,
@@ -622,7 +623,6 @@
 				12B956431D8824AB00F75DD5 /* String */,
 				D220818C1E07FEB700BE4268 /* URL+Operators.swift */,
 				23839F831E93C737002D757B /* UserDefaults */,
-				23F6A1621EC8DBD400D20502 /* AnyUtils.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -673,35 +673,35 @@
 		2317E3901E8D14400087BB79 /* MechanicaTests */ = {
 			isa = PBXGroup;
 			children = (
-				2384BDB11E9170810036C128 /* UserDefaultsUtilsTests.swift */,
+				23F6A1671EC8DF6500D20502 /* AnyUtilsTests.swift */,
 				237F17361E90000800726553 /* AppTests.swift */,
-				237F17371E90000800726553 /* ValueAssociableTests.swift */,
 				237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */,
 				237F17391E90000800726553 /* BoolUtilsTests.swift */,
 				237F173A1E90000800726553 /* BundleInfoTests.swift */,
 				237F173B1E90000800726553 /* CollectionUtiilsTests.swift */,
 				237F17DE1E9000A300726553 /* Color */,
-				237F17DF1E9000A800726553 /* PropertyListReadable */,
 				237F17E01E9000B100726553 /* Dictionary */,
 				237F17421E90000800726553 /* FileManagerUtilsTests.swift */,
 				237F17431E90000800726553 /* FloatingPointUtilsTests.swift */,
 				237F17DD1E90009D00726553 /* Integer */,
-				237F17DB1E90008700726553 /* Nib */,
-				237F17DC1E90009000726553 /* Storyboard */,
 				237F17481E90000800726553 /* KeyboardObserverTests.swift */,
+				23F3F6FA1E9651AB002DAC89 /* KeyTests.swift */,
+				237F17DB1E90008700726553 /* Nib */,
 				237F174C1E90000800726553 /* NSAttributedStringOperatorsTests.swift */,
 				237F174D1E90000800726553 /* NSAttributedStringUtilsTests.swift */,
 				237F174E1E90000800726553 /* NSMutableAttributedStringOperatorsTests.swift */,
 				23B2ED761EC8D4F6006365BD /* NSObject */,
 				237F17501E90000800726553 /* NSPredicateOperatorsTests.swift */,
 				237F17511E90000800726553 /* OptionalUtilsTests.swift */,
+				237F17DF1E9000A800726553 /* PropertyListReadable */,
 				237F17521E90000800726553 /* RangeReplaceableCollectionUtilsTests.swift */,
 				237F17531E90000800726553 /* SequenceUtilsTests.swift */,
+				237F17DC1E90009000726553 /* Storyboard */,
 				237F17DA1E90007400726553 /* String */,
 				237F175E1E90000800726553 /* URLOperatorsTests.swift */,
 				23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */,
-				23F3F6FA1E9651AB002DAC89 /* KeyTests.swift */,
-				23F6A1671EC8DF6500D20502 /* AnyUtilsTests.swift */,
+				2384BDB11E9170810036C128 /* UserDefaultsUtilsTests.swift */,
+				237F17371E90000800726553 /* ValueAssociableTests.swift */,
 			);
 			path = MechanicaTests;
 			sourceTree = "<group>";
