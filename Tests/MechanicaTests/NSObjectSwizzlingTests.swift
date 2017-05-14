@@ -25,51 +25,6 @@
 import XCTest
 @testable import Mechanica
 
-
-//class Test : NSObject {
-//  dynamic func methodOne() -> Int { return 1 }
-//  dynamic func methodThree() -> String { return "three" }
-//}
-//
-//extension Test {
-//  
-//  override class func initialize() {
-//    /// Perform this one time only
-//    struct Inner {
-//      static let swizzling: () = {
-//        
-//        /// these 2 lines...
-//        //Test.swizzle(method: #selector(Test.methodOne), with: #selector(Test.methodTwo))
-//        //Test.swizzle(method: #selector(Test.methodThree), with: #selector(Test.methodFour))
-//        /// are the same as:
-//        Test.swizzle([
-//          ( #selector(Test.methodOne), #selector(Test.methodTwo) ),
-//          ( #selector(Test.methodThree), #selector(Test.methodFour) )
-//          ])
-//        
-//      }()
-//    }
-//    let _ = Inner.swizzling
-//  }
-//  
-//  func methodTwo() -> Int { return methodTwo() + 10 }
-//  
-//  func methodFour() -> String { return methodFour() + "!!" }
-//  
-//}
-//
-//class NSObjectSwizzlingTests: XCTestCase {
-//  
-//  func test_swizzlingExtension() {
-//    let test = Test()
-//    XCTAssertTrue(test.methodOne() == 11)
-//    XCTAssertTrue(test.methodTwo() == 1)
-//    XCTAssertTrue(test.methodThree() == "three!!")
-//    XCTAssertTrue(test.methodFour() == "three")
-//  }
-//  
-//}
-
 class Test : NSObject {
   dynamic func methodOne() -> Int { return 1 }
   dynamic func methodThree() -> String { return "three" }
