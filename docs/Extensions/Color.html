@@ -116,7 +116,7 @@
                 <a href="../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/NSObject.html">NSObject</a>
+                <a href="../Extensions/NSObjectProtocol.html">NSObjectProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/NSPersistentStoreCoordinator.html">NSPersistentStoreCoordinator</a>
@@ -188,6 +188,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:F9Mechanica18setAssociatedValueurFTGSqx_9forObjectP_8usingKeySV9andPolicyOSC22objc_AssociationPolicy_T_">setAssociatedValue(_:forObject:usingKey:andPolicy:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F9Mechanica8typeNameFT2ofP__SS">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -318,7 +321,7 @@
                 <a href="../Typealiases.html#/s:9Mechanica10Storyboard">Storyboard</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:E9MechanicaCSo8NSObject18SwizzlingSelectors">SwizzlingSelectors</a>
+                <a href="../Typealiases.html#/s:E9MechanicaPSo16NSObjectProtocol18SwizzlingSelectors">SwizzlingSelectors</a>
               </li>
             </ul>
           </li>
@@ -559,8 +562,12 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Creates a <code>new</code> color in the <strong>sRGB</strong> color space that matches (or <em>closely approximates</em>) the current color.
-- Note: <a href="https://developer.apple.com/videos/play/wwdc2016/712/?time=2368">WWDC 2016 - 712</a></p>
+<p>Creates a <code>new</code> color in the <strong>sRGB</strong> color space that matches (or <em>closely approximates</em>) the current color.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <a href="https://developer.apple.com/videos/play/wwdc2016/712/?time=2368">WWDC 2016 - 712</a>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -590,7 +597,6 @@
                         <p><strong>Mechanica</strong></p>
 
 <p>Mixes the given color object with the receiver. Specifically, takes the average of each of the RGB components, optionally weighted by the given percentage.</p>
-
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     See <a href="http://stackoverflow.com/questions/11598043/get-slightly-lighter-and-darker-color-from-uicolor/23120676#23120676">lighter and darker color</a>
@@ -619,7 +625,6 @@
                               <td>
                                 <div>
                                   <p>color to be mixed.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -632,7 +637,6 @@
                               <td>
                                 <div>
                                   <p>mixing weight. (by default (0.5) takes the average of each of the RGBA components.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -642,7 +646,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>a <code>new color</code> mixing <code>self</code> with the given <code>color</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -662,8 +665,12 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns a <code>new</code> color derived from <code>self</code> darkened by the given percentage in the RGBA color space.
-- Note: The <code>new</code> color is obtained mixing <code>self</code> with the black color.</p>
+<p>Returns a <code>new</code> color derived from <code>self</code> darkened by the given percentage in the RGBA color space.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The <code>new</code> color is obtained mixing <code>self</code> with the black color.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -692,8 +699,12 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns a <code>new</code> color derived from <code>self</code> lightened by the given percentage in the RGBA color space.
-- Note: The <code>new</code> color is obtained mixing <code>self</code> with the white color.</p>
+<p>Returns a <code>new</code> color derived from <code>self</code> lightened by the given percentage in the RGBA color space.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The <code>new</code> color is obtained mixing <code>self</code> with the white color.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -727,7 +738,6 @@
                         <p><strong>Mechanica</strong></p>
 
 <p>Returns a sRGB color from a hexadecimal integer.</p>
-
 <pre class="highlight plaintext"><code>Color(hex: 0xFF0000)
 Color(hex: 0xFF0000, alpha: 0.5)
 </code></pre>
@@ -754,7 +764,6 @@ Color(hex: 0xFF0000, alpha: 0.5)
                               <td>
                                 <div>
                                   <p>The hex component of the color object, specified as a value from 0x000000 to 0xFFFFFF</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -767,7 +776,6 @@ Color(hex: 0xFF0000, alpha: 0.5)
                               <td>
                                 <div>
                                   <p>The opacity component of the color object, specified as a value from 0.0 to 1.0 (optional).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -793,7 +801,6 @@ Color(hex: 0xFF0000, alpha: 0.5)
                         <p><strong>Mechanica</strong></p>
 
 <p>Creates and returns an Color object given an hex color string.</p>
-
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     <p>Supported formats: <code>RGB</code>, <code>#RGB</code>, <code><a href="../Extensions/Color.html#/s:E9MechanicaCSo7UIColor4RGBA">RGBA</a></code>, <code>#RGBA</code>, <code>RRGGBB</code>, <code>#RRGGBB</code>, <code>RRGGBBAA</code>, <code>#RRGGBBAA</code>).</p>
@@ -822,7 +829,6 @@ Color(hex: 0xFF0000, alpha: 0.5)
                               <td>
                                 <div>
                                   <p>The hex color string (e.g.: <code>#551a8b</code>, <code>551a8b</code>, <code>551A8B</code>, <code>#FFF</code>).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -967,8 +973,12 @@ Color(hex: 0xFF0000, alpha: 0.5)
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns a <code>new</code> color derived from <code>self</code> saturating the hue (increasing the saturation) by a <code>percentage</code> in the HSB color space, making it more intense and darker.
-- Note: Increasing the saturation makes the color less closer to white.</p>
+<p>Returns a <code>new</code> color derived from <code>self</code> saturating the hue (increasing the saturation) by a <code>percentage</code> in the HSB color space, making it more intense and darker.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Increasing the saturation makes the color less closer to white.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -997,8 +1007,12 @@ Color(hex: 0xFF0000, alpha: 0.5)
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns a <code>new</code> color derived from <code>self</code> desaturating the hue (decreasing the saturation) by a <code>percentage</code> in the HSB color space, making it less intense.
-- Note: Decreasing the saturation makes the color closer to white.</p>
+<p>Returns a <code>new</code> color derived from <code>self</code> desaturating the hue (decreasing the saturation) by a <code>percentage</code> in the HSB color space, making it less intense.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Decreasing the saturation makes the color closer to white.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -1052,8 +1066,8 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

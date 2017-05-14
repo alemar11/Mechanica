@@ -116,7 +116,7 @@
                 <a href="../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/NSObject.html">NSObject</a>
+                <a href="../Extensions/NSObjectProtocol.html">NSObjectProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/NSPersistentStoreCoordinator.html">NSPersistentStoreCoordinator</a>
@@ -188,6 +188,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:F9Mechanica18setAssociatedValueurFTGSqx_9forObjectP_8usingKeySV9andPolicyOSC22objc_AssociationPolicy_T_">setAssociatedValue(_:forObject:usingKey:andPolicy:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F9Mechanica8typeNameFT2ofP__SS">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -318,7 +321,7 @@
                 <a href="../Typealiases.html#/s:9Mechanica10Storyboard">Storyboard</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:E9MechanicaCSo8NSObject18SwizzlingSelectors">SwizzlingSelectors</a>
+                <a href="../Typealiases.html#/s:E9MechanicaPSo16NSObjectProtocol18SwizzlingSelectors">SwizzlingSelectors</a>
               </li>
             </ul>
           </li>
@@ -354,9 +357,7 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Removes the first element that matches the given <code>predicate</code>.
-- Parameters:
-  - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
+<p>Removes the first element that matches the given <code>predicate</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -380,7 +381,6 @@
                               <td>
                                 <div>
                                   <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -405,9 +405,7 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Removes the first element that matches the given <code>predicate</code> and returns a <code>new</code> collection.
-- Parameters:
-  - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
+<p>Removes the first element that matches the given <code>predicate</code> and returns a <code>new</code> collection.</p>
 
                       </div>
                       <div class="declaration">
@@ -431,7 +429,6 @@
                               <td>
                                 <div>
                                   <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -456,9 +453,7 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Removes the last element that matches the given <code>predicate</code>.
-- Parameters:
-  - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
+<p>Removes the last element that matches the given <code>predicate</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -482,7 +477,6 @@
                               <td>
                                 <div>
                                   <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -507,9 +501,7 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Removes the last element that matches the given <code>predicate</code> and returns a <code>new</code> collection.
-- Parameters:
-  - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
+<p>Removes the last element that matches the given <code>predicate</code> and returns a <code>new</code> collection.</p>
 
                       </div>
                       <div class="declaration">
@@ -533,7 +525,6 @@
                               <td>
                                 <div>
                                   <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -558,9 +549,7 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Removes all the elements that matches the given <code>predicate</code> and returns all the removed element (if any).
-- Parameters:
-  - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
+<p>Removes all the elements that matches the given <code>predicate</code> and returns all the removed element (if any).</p>
 
                       </div>
                       <div class="declaration">
@@ -584,7 +573,6 @@
                               <td>
                                 <div>
                                   <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -609,9 +597,7 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Removes all the elements that matches the given <code>predicate</code> and returns a <code>new</code> array.
-- Parameters:
-  - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
+<p>Removes all the elements that matches the given <code>predicate</code> and returns a <code>new</code> array.</p>
 
                       </div>
                       <div class="declaration">
@@ -635,7 +621,6 @@
                               <td>
                                 <div>
                                   <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -663,9 +648,7 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p><strong>Mechanica</strong>
-Removes the first specified element from the collection (if exists).
-- Returns: The element removed (if any).
-- Parameter element: The element to remove the last occurrence.</p>
+Removes the first specified element from the collection (if exists).</p>
 
                       </div>
                       <div class="declaration">
@@ -689,7 +672,6 @@ Removes the first specified element from the collection (if exists).
                               <td>
                                 <div>
                                   <p>The element to remove the last occurrence.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -699,7 +681,6 @@ Removes the first specified element from the collection (if exists).
                       <div>
                         <h4>Return Value</h4>
                         <p>The element removed (if any).</p>
-
                       </div>
                     </section>
                   </div>
@@ -719,9 +700,7 @@ Removes the first specified element from the collection (if exists).
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Removes the last specified element from the array (if exists).
-- Returns: The element removed (if any).
-- Parameter element: The element to remove the collection occurrence.</p>
+<p>Removes the last specified element from the array (if exists).</p>
 
                       </div>
                       <div class="declaration">
@@ -745,7 +724,6 @@ Removes the first specified element from the collection (if exists).
                               <td>
                                 <div>
                                   <p>The element to remove the collection occurrence.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -755,7 +733,6 @@ Removes the first specified element from the collection (if exists).
                       <div>
                         <h4>Return Value</h4>
                         <p>The element removed (if any).</p>
-
                       </div>
                     </section>
                   </div>
@@ -765,8 +742,8 @@ Removes the first specified element from the collection (if exists).
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

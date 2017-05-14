@@ -116,7 +116,7 @@
                 <a href="../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/NSObject.html">NSObject</a>
+                <a href="../Extensions/NSObjectProtocol.html">NSObjectProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/NSPersistentStoreCoordinator.html">NSPersistentStoreCoordinator</a>
@@ -188,6 +188,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:F9Mechanica18setAssociatedValueurFTGSqx_9forObjectP_8usingKeySV9andPolicyOSC22objc_AssociationPolicy_T_">setAssociatedValue(_:forObject:usingKey:andPolicy:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F9Mechanica8typeNameFT2ofP__SS">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -318,7 +321,7 @@
                 <a href="../Typealiases.html#/s:9Mechanica10Storyboard">Storyboard</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:E9MechanicaCSo8NSObject18SwizzlingSelectors">SwizzlingSelectors</a>
+                <a href="../Typealiases.html#/s:E9MechanicaPSo16NSObjectProtocol18SwizzlingSelectors">SwizzlingSelectors</a>
               </li>
             </ul>
           </li>
@@ -460,7 +463,6 @@
                               <td>
                                 <div>
                                   <p>Searched context.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -473,7 +475,6 @@
                               <td>
                                 <div>
                                   <p>Matching predicate.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -486,7 +487,6 @@
                               <td>
                                 <div>
                                   <p>Configuration closure called only when creating a new object.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -496,7 +496,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>A matching object or a configured new one.</p>
-
                       </div>
                     </section>
                   </div>
@@ -540,7 +539,6 @@
                               <td>
                                 <div>
                                   <p>Searched context.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -553,7 +551,6 @@
                               <td>
                                 <div>
                                   <p>Matching predicate.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -563,7 +560,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>A matching object (if any).</p>
-
                       </div>
                     </section>
                   </div>
@@ -704,12 +700,7 @@ Faulted objects are not considered to to prevent Core Data to make a round trip 
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Tries to retrieve an object from the cache; if there’s nothing in the cache executes the fetch request and caches the result (if a single object is found).
-- Parameters:
-  - context: Searched context.
-  - cacheKey: Cache key.
-  - configuration: Configurable fetch request.
-- Returns: A cached object (if any).</p>
+<p>Tries to retrieve an object from the cache; if there’s nothing in the cache executes the fetch request and caches the result (if a single object is found).</p>
 
                       </div>
                       <div class="declaration">
@@ -733,7 +724,6 @@ Faulted objects are not considered to to prevent Core Data to make a round trip 
                               <td>
                                 <div>
                                   <p>Searched context.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -746,7 +736,6 @@ Faulted objects are not considered to to prevent Core Data to make a round trip 
                               <td>
                                 <div>
                                   <p>Cache key.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -759,7 +748,6 @@ Faulted objects are not considered to to prevent Core Data to make a round trip 
                               <td>
                                 <div>
                                   <p>Configurable fetch request.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -769,7 +757,6 @@ Faulted objects are not considered to to prevent Core Data to make a round trip 
                       <div>
                         <h4>Return Value</h4>
                         <p>A cached object (if any).</p>
-
                       </div>
                     </section>
                   </div>
@@ -779,8 +766,8 @@ Faulted objects are not considered to to prevent Core Data to make a round trip 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

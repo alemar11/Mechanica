@@ -116,7 +116,7 @@
                 <a href="../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/NSObject.html">NSObject</a>
+                <a href="../Extensions/NSObjectProtocol.html">NSObjectProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/NSPersistentStoreCoordinator.html">NSPersistentStoreCoordinator</a>
@@ -188,6 +188,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:F9Mechanica18setAssociatedValueurFTGSqx_9forObjectP_8usingKeySV9andPolicyOSC22objc_AssociationPolicy_T_">setAssociatedValue(_:forObject:usingKey:andPolicy:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F9Mechanica8typeNameFT2ofP__SS">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -318,7 +321,7 @@
                 <a href="../Typealiases.html#/s:9Mechanica10Storyboard">Storyboard</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:E9MechanicaCSo8NSObject18SwizzlingSelectors">SwizzlingSelectors</a>
+                <a href="../Typealiases.html#/s:E9MechanicaPSo16NSObjectProtocol18SwizzlingSelectors">SwizzlingSelectors</a>
               </li>
             </ul>
           </li>
@@ -353,11 +356,17 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p><strong>Mechanica</strong>
-Returns: the first element (if any) <code>matching</code> the predicate.
-- Parameters:
-  - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-- Note: Same as <code>first(where:)</code>.
-- SeeAlso: <code>first(where:)</code></p>
+Returns: the first element (if any) <code>matching</code> the predicate.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Same as <code>first(where:)</code>.
+
+</div>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code>first(where:)</code>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -381,7 +390,6 @@ Returns: the first element (if any) <code>matching</code> the predicate.
                               <td>
                                 <div>
                                   <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -406,9 +414,7 @@ Returns: the first element (if any) <code>matching</code> the predicate.
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns true if there is at least one element <code>matching</code> the predicate.
-- Parameters:
-  - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
+<p>Returns true if there is at least one element <code>matching</code> the predicate.</p>
 
                       </div>
                       <div class="declaration">
@@ -432,7 +438,6 @@ Returns: the first element (if any) <code>matching</code> the predicate.
                               <td>
                                 <div>
                                   <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -457,9 +462,7 @@ Returns: the first element (if any) <code>matching</code> the predicate.
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns true if all the elements <code>match</code> the predicate.
-- Parameters:
-  - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
+<p>Returns true if all the elements <code>match</code> the predicate.</p>
 
                       </div>
                       <div class="declaration">
@@ -483,7 +486,6 @@ Returns: the first element (if any) <code>matching</code> the predicate.
                               <td>
                                 <div>
                                   <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -530,7 +532,6 @@ Returns: the first element (if any) <code>matching</code> the predicate.
                               <td>
                                 <div>
                                   <p>The criteria closure takes an <code>Iterator.Element</code> and returns its classification.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -540,7 +541,6 @@ Returns: the first element (if any) <code>matching</code> the predicate.
                       <div>
                         <h4>Return Value</h4>
                         <p>Returns a grouped dictionary with the keys that the criteria function returns.</p>
-
                       </div>
                     </section>
                   </div>
@@ -560,8 +560,7 @@ Returns: the first element (if any) <code>matching</code> the predicate.
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns the elements count matching a predicate.
-- Parameter shouldCount: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.</p>
+<p>Returns the elements count matching a predicate.</p>
 
                       </div>
                       <div class="declaration">
@@ -585,7 +584,6 @@ Returns: the first element (if any) <code>matching</code> the predicate.
                               <td>
                                 <div>
                                   <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -633,8 +631,8 @@ Returns: the first element (if any) <code>matching</code> the predicate.
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

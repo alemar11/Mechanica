@@ -116,7 +116,7 @@
                 <a href="../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/NSObject.html">NSObject</a>
+                <a href="../Extensions/NSObjectProtocol.html">NSObjectProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/NSPersistentStoreCoordinator.html">NSPersistentStoreCoordinator</a>
@@ -188,6 +188,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:F9Mechanica18setAssociatedValueurFTGSqx_9forObjectP_8usingKeySV9andPolicyOSC22objc_AssociationPolicy_T_">setAssociatedValue(_:forObject:usingKey:andPolicy:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F9Mechanica8typeNameFT2ofP__SS">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -318,7 +321,7 @@
                 <a href="../Typealiases.html#/s:9Mechanica10Storyboard">Storyboard</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:E9MechanicaCSo8NSObject18SwizzlingSelectors">SwizzlingSelectors</a>
+                <a href="../Typealiases.html#/s:E9MechanicaPSo16NSObjectProtocol18SwizzlingSelectors">SwizzlingSelectors</a>
               </li>
             </ul>
           </li>
@@ -531,7 +534,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>Pattern to match.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -543,8 +545,7 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>Search option:  for case-sensitive, false for case-insensitive. (if  this function is equivalent to <code>self.contains(...)</code>)</p>
-
+                                  <p>Search option: <em>true</em> for case-sensitive, false for case-insensitive. (if <em>true</em> this function is equivalent to <code>self.contains(...)</code>)</p>
                                 </div>
                               </td>
                             </tr>
@@ -553,8 +554,7 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>if contains match, otherwise false.</p>
-
+                        <p><em>true</em> if contains match, otherwise false.</p>
                       </div>
                     </section>
                   </div>
@@ -598,7 +598,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>The <code>CharacterSet</code> used to test the string.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -607,8 +606,7 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>if all the characters in the string belong to the <code>CharacterSet</code>, otherwise false.</p>
-
+                        <p><em>true</em> if all the characters in the string belong to the <code>CharacterSet</code>, otherwise false.</p>
                       </div>
                     </section>
                   </div>
@@ -652,7 +650,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>target string</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -665,7 +662,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>replacement string</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -678,7 +674,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p><code>*true*</code> (default) for a case-sensitive replacemente</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -836,7 +831,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>characters to strip</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -846,7 +840,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>stripped string</p>
-
                       </div>
                     </section>
                   </div>
@@ -890,7 +883,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>characters to strip</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -900,7 +892,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p>stripped string</p>
-
                       </div>
                     </section>
                   </div>
@@ -1037,7 +1028,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                         <p><em>Mechanica</em>*</p>
 
 <p>Returns a substring, up to maxLength in length, containing the initial elements of the <code>String</code>.</p>
-
 <div class="aside aside-warning">
     <p class="aside-title">Warning</p>
     If maxLength exceeds self.count, the result contains all the elements of self.
@@ -1066,7 +1056,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>substring max lenght</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1092,7 +1081,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                         <p><em>Mechanica</em>*</p>
 
 <p>Returns a slice, up to maxLength in length, containing the final elements of <code>String</code>.</p>
-
 <div class="aside aside-warning">
     <p class="aside-title">Warning</p>
     If maxLength exceeds <code>String</code> character count, the result contains all the elements of <code>String</code>.
@@ -1121,7 +1109,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>substring max lenght</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1158,7 +1145,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                         <p><strong>Mechanica</strong></p>
 
 <p>Returns a new <code>String</code> containing the characters of the String from the one at a given position to the end.</p>
-
 <pre class="highlight plaintext"><code>"hello".removingPrefix(upToPosition: 1) // "ello"
 </code></pre>
 
@@ -1184,7 +1170,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>position (included) up to which remove the prefix.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1210,7 +1195,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                         <p><strong>Mechanica</strong></p>
 
 <p>Returns a new <code>String</code> removing the spcified prefix (if the string has it).</p>
-
 <pre class="highlight plaintext"><code>"hello".removingPrefix("hel") // "lo"
 </code></pre>
 
@@ -1236,7 +1220,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>prefix to be removed.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1262,7 +1245,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                         <p><em>Mechanica</em>*</p>
 
 <p>Returns a new <code>String</code> containing the characters of the String up to, but not including, the one at a given position.</p>
-
 <pre class="highlight plaintext"><code>"hello".removingSuffix(fromPosition: 1) == "hell"
 </code></pre>
 
@@ -1288,7 +1270,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>position (included) from which remove the suffix</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1314,7 +1295,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                         <p><strong>Mechanica</strong></p>
 
 <p>Returns a new <code>String</code> removing the spcified suffix (if the string has it).</p>
-
 <pre class="highlight plaintext"><code>"hello".removingSuffix("0") // "hell"
 </code></pre>
 
@@ -1340,7 +1320,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                               <td>
                                 <div>
                                   <p>prefix to be removed.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1395,9 +1374,7 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                         <p><em>Mechanica</em>*</p>
 
 <p>Truncates the <code>String</code> to the given length (number of characters) and appends optional trailing string if longer.
-The default trailing is the ellipsis (…).
-- parameter length:   number of characters after which the <code>String</code> is truncated
-- parameter trailing: optional trailing string</p>
+The default trailing is the ellipsis (…).</p>
 
                       </div>
                       <div class="declaration">
@@ -1421,7 +1398,6 @@ The default trailing is the ellipsis (…).
                               <td>
                                 <div>
                                   <p>number of characters after which the <code>String</code> is truncated</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1434,7 +1410,6 @@ The default trailing is the ellipsis (…).
                               <td>
                                 <div>
                                   <p>optional trailing string</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1472,7 +1447,6 @@ The default trailing is the ellipsis (…).
 
 <p>Condenses all white spaces repetitions in a single white space.
 White space at the beginning or ending of the <code>String</code> are trimmed out.</p>
-
 <pre class="highlight plaintext"><code>let aString = "test    too many    spaces"
 aString.removeExcessiveSpaces //test too many spaces
 </code></pre>
@@ -1489,7 +1463,6 @@ aString.removeExcessiveSpaces //test too many spaces
                       <div>
                         <h4>Return Value</h4>
                         <p>A <code>new</code> string where all white spaces repetitions are replaced with a single white space.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1524,7 +1497,6 @@ White space and new lines at the beginning or ending of the <code>String</code> 
                       <div>
                         <h4>Return Value</h4>
                         <p>A <code>new</code> string where all white spaces and new lines repetitions are replaced with a single white space.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1627,7 +1599,6 @@ White space and new lines at the beginning or ending of the <code>String</code> 
 <p>Produces a camel cased version of the <code>String</code>.</p>
 
 <p>Example:</p>
-
 <pre class="highlight plaintext"><code>let string = "HelloWorld"
 print(string.decapitalized()) // "helloWorld"
 </code></pre>
@@ -1644,7 +1615,6 @@ print(string.decapitalized()) // "helloWorld"
                       <div>
                         <h4>Return Value</h4>
                         <p>A camel cased copy of the <code>String</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1667,7 +1637,6 @@ print(string.decapitalized()) // "helloWorld"
 <p>Produces the kebab cased version of the <code>String</code>.</p>
 
 <p>Example:</p>
-
 <pre class="highlight plaintext"><code>let string = "Hello World"
 print(string.kebabCased()) // "-Hello-World-"
 </code></pre>
@@ -1684,7 +1653,6 @@ print(string.kebabCased()) // "-Hello-World-"
                       <div>
                         <h4>Return Value</h4>
                         <p>The kebab cased copy of the <code>String</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1707,7 +1675,6 @@ print(string.kebabCased()) // "-Hello-World-"
 <p>Produces a pascal cased version of the <code>String</code>.</p>
 
 <p>Example:</p>
-
 <pre class="highlight plaintext"><code>let string = "HELLO WORLD"
 print(string.pascalCased()) // "HelloWorld"
 </code></pre>
@@ -1724,7 +1691,6 @@ print(string.pascalCased()) // "HelloWorld"
                       <div>
                         <h4>Return Value</h4>
                         <p>A pascal cased copy of the <code>String</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1747,7 +1713,6 @@ print(string.pascalCased()) // "HelloWorld"
 <p>Produces the slug version of the <code>String</code>.</p>
 
 <p>Example:</p>
-
 <pre class="highlight plaintext"><code>let string = "Hello World"
 print(string.slugCased()) // "Hello-World"
 </code></pre>
@@ -1764,7 +1729,6 @@ print(string.slugCased()) // "Hello-World"
                       <div>
                         <h4>Return Value</h4>
                         <p>The slug copy of the <code>String</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1787,7 +1751,6 @@ print(string.slugCased()) // "Hello-World"
 <p>Produces the snake cased version of the <code>String</code>.</p>
 
 <p>Example:</p>
-
 <pre class="highlight plaintext"><code>let string = "hello world"
 print(string.snakeCased())
 // Prints "hello_world"
@@ -1805,7 +1768,6 @@ print(string.snakeCased())
                       <div>
                         <h4>Return Value</h4>
                         <p>The slug copy of the <code>String</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1828,7 +1790,6 @@ print(string.snakeCased())
 <p>Produces the swap cased version of the <code>String</code>.</p>
 
 <p>Example:</p>
-
 <pre class="highlight plaintext"><code>let string = "Hello World"
 print(string.swapCased()) // "hELLO wORLD"
 </code></pre>
@@ -1845,7 +1806,6 @@ print(string.swapCased()) // "hELLO wORLD"
                       <div>
                         <h4>Return Value</h4>
                         <p>The swap cased copy of the <code>String</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -2599,8 +2559,8 @@ print(string.swapCased()) // "hELLO wORLD"
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

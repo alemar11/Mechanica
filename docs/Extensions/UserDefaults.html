@@ -116,7 +116,7 @@
                 <a href="../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/NSObject.html">NSObject</a>
+                <a href="../Extensions/NSObjectProtocol.html">NSObjectProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/NSPersistentStoreCoordinator.html">NSPersistentStoreCoordinator</a>
@@ -188,6 +188,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:F9Mechanica18setAssociatedValueurFTGSqx_9forObjectP_8usingKeySV9andPolicyOSC22objc_AssociationPolicy_T_">setAssociatedValue(_:forObject:usingKey:andPolicy:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F9Mechanica8typeNameFT2ofP__SS">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -318,7 +321,7 @@
                 <a href="../Typealiases.html#/s:9Mechanica10Storyboard">Storyboard</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:E9MechanicaCSo8NSObject18SwizzlingSelectors">SwizzlingSelectors</a>
+                <a href="../Typealiases.html#/s:E9MechanicaPSo16NSObjectProtocol18SwizzlingSelectors">SwizzlingSelectors</a>
               </li>
             </ul>
           </li>
@@ -354,8 +357,12 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns <code>true</code> if a <code>key</code> exists.
-- Note: When a value for a give key is set to nil, the key is automatically removed.</p>
+<p>Returns <code>true</code> if a <code>key</code> exists.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    When a value for a give key is set to nil, the key is automatically removed.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -453,8 +460,12 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Sets the value of the specified default key.
-- Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.</p>
+<p>Sets the value of the specified default key.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -661,8 +672,12 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Stores an <code>Array</code> (or removes the value if nil is passed as the value) for the provided key.
-- Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.</p>
+<p>Stores an <code>Array</code> (or removes the value if nil is passed as the value) for the provided key.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -731,8 +746,12 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Stores a <code>Dictionary</code> <a href="or%20removes%20the%20value%20if%20nil%20is%20passed%20as%20the%20value">String:Any</a> for the provided key.
-- Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.</p>
+<p>Stores a <code>Dictionary</code> <a href="or%20removes%20the%20value%20if%20nil%20is%20passed%20as%20the%20value">String:Any</a> for the provided key.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -1346,10 +1365,14 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Removes all keys and values from user defaults.
-- Note: This method only removes keys on the receiver <code>UserDefaults</code> object.
-        System-defined keys will still be present afterwards.
-        <code>resetStandardUserDefaults</code> simply resets the in-memory user defaults object.</p>
+<p>Removes all keys and values from user defaults.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method only removes keys on the receiver <code>UserDefaults</code> object.
+    System-defined keys will still be present afterwards.
+    <code>resetStandardUserDefaults</code> simply resets the in-memory user defaults object.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -1399,8 +1422,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>A key in the current user’s defaults database.</p>
-
+                                  <p>A key in the current user&rsquo;s defaults database.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1410,7 +1432,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>The integer value associated with the specified key. If the specified key does not exist, this method returns nil.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1451,8 +1472,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>A key in the current user’s defaults database.</p>
-
+                                  <p>A key in the current user&rsquo;s defaults database.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1462,7 +1482,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>The floating-point value associated with the specified key. If the key does not exist, this method returns nil.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1503,8 +1522,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>A key in the current user’s defaults database.</p>
-
+                                  <p>A key in the current user&rsquo;s defaults database.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1514,7 +1532,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>The double value associated with the specified key. If the specified key does not exist, this method returns nil.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1555,8 +1572,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>A key in the current user’s defaults database.</p>
-
+                                  <p>A key in the current user&rsquo;s defaults database.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1566,7 +1582,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>The bool value associated with the specified key. If the specified key does not exist, this method returns nil.</p>
-
                       </div>
                     </section>
                   </div>
@@ -1638,8 +1653,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

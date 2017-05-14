@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Nib Extension Reference</title>
+    <title>NSObjectProtocol Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Extension/Nib" class="dashAnchor"></a>
-    <a title="Nib Extension Reference"></a>
+    <a name="//apple_ref/swift/Extension/NSObjectProtocol" class="dashAnchor"></a>
+    <a title="NSObjectProtocol Extension Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Mechanica Docs</a> (97% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">Mechanica Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Nib Extension Reference
+        NSObjectProtocol Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -330,14 +330,9 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Nib</h1>
-              <div class="declaration">
-                <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt"><a href="../Typealiases.html#/s:9Mechanica3Nib">Nib</a></span> <span class="o">=</span> <span class="kt">UIKit</span><span class="o">.</span><span class="kt">UINib</span></code></pre>
+            <h1>NSObjectProtocol</h1>
+            <p>Undocumented</p>
 
-                </div>
-              </div>
-            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -345,9 +340,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FE9MechanicaCSo5UINib11instantiateuRxS_11NibLoadablerFT9withOwnerGSqP__7optionsGSqGVs10DictionaryVs11AnyHashableP____x"></a>
-                    <a name="//apple_ref/swift/Method/instantiate(withOwner:options:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FE9MechanicaCSo5UINib11instantiateuRxS_11NibLoadablerFT9withOwnerGSqP__7optionsGSqGVs10DictionaryVs11AnyHashableP____x">instantiate(withOwner:options:)</a>
+                    <a name="/s:ZFE9MechanicaPSo16NSObjectProtocol7swizzleFT6methodV10ObjectiveC8Selector4withS2__T_"></a>
+                    <a name="//apple_ref/swift/Method/swizzle(method:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFE9MechanicaPSo16NSObjectProtocol7swizzleFT6methodV10ObjectiveC8Selector4withS2__T_">swizzle(method:with:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -357,14 +352,158 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Instantiates and returns an obejct conforming to <code><a href="../Protocols.html#/s:P9Mechanica11NibLoadable">NibLoadable</a></code> from a Nib.</p>
+<p>Exchanges the implementations of two methods given their corresponding selectors.</p>
+
+<p>To use method swizzling with your Swift classes there are two requirements that you must comply with:</p>
+
+<ol>
+<li>The class containing the methods to be swizzled must extend <strong>NSObject</strong>.</li>
+<li>The methods you want to swizzle must have the <strong>dynamic</strong> attribute.</li>
+</ol>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>In Objective-C you&rsquo;d perform the swizzling in load() , but this method is not permitted in Swift. But load is a Objective-C only method and cannot be overridden in Swift, trying to do it anyway will result in a compile time error. The next best place to perform the swizzling is in initialize, a method called right before the first method of your class is invoked.</p>
+
+</div>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><a href="https://www.uraimo.com/2015/10/23/effective-method-swizzling-with-swift/">Effective method swizzling with Swift</a></p>
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="n">instantiate</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">withOwner</span> <span class="nv">owner</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="p">[</span><span class="kt">AnyHashable</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:P9Mechanica11NibLoadable">NibLoadable</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">swizzle</span><span class="p">(</span><span class="n">method</span> <span class="nv">originalSelector</span><span class="p">:</span> <span class="kt">Selector</span><span class="p">,</span> <span class="n">with</span> <span class="nv">swizzledSelector</span><span class="p">:</span> <span class="kt">Selector</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>originalSelector</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>Selector</code> for the original method</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>swizzledSelector</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>Selector</code> for the swizzled methos</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFE9MechanicaPSo16NSObjectProtocol7swizzleFGSaT16originalSelectorV10ObjectiveC8Selector16swizzledSelectorS2___T_"></a>
+                    <a name="//apple_ref/swift/Method/swizzle(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFE9MechanicaPSo16NSObjectProtocol7swizzleFGSaT16originalSelectorV10ObjectiveC8Selector16swizzledSelectorS2___T_">swizzle(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Exchanges the implementations of each couple of Selectors.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Extensions/NSObjectProtocol.html#/s:ZFE9MechanicaPSo16NSObjectProtocol7swizzleFT6methodV10ObjectiveC8Selector4withS2__T_">swizzle(method:with:)</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">swizzle</span><span class="p">(</span><span class="n">_</span> <span class="nv">selectors</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Typealiases.html#/s:E9MechanicaPSo16NSObjectProtocol18SwizzlingSelectors">SwizzlingSelectors</a></span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE9MechanicaPSo16NSObjectProtocol4typeSS"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE9MechanicaPSo16NSObjectProtocol4typeSS">type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the type of an object conforming to <code>NSObjectProtocol</code> as <code>String</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvE9MechanicaPSo16NSObjectProtocol4typeSS"></a>
+                    <a name="//apple_ref/swift/Variable/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvE9MechanicaPSo16NSObjectProtocol4typeSS">type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the type of an object instance conforming to <code>NSObjectProtocol</code> as <code>String</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
