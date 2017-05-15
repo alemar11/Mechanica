@@ -27,14 +27,14 @@ import XCTest
 
 class AnyUtilsTests: XCTestCase {
   
-  class Demo {}
+  private class Demo {}
   
   class Demo2: CustomStringConvertible, CustomDebugStringConvertible {
     var description: String { return "description-Demo2"}
     var debugDescription: String { return "debugDescription-Demo2"}
   }
   
-  class Demo3: Demo {}
+  private class Demo3: Demo {}
   
   class DemoNSObject: NSObject {}
   
