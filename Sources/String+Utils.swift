@@ -1,5 +1,5 @@
 //
-//  String.swift
+//  String+Utils.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -72,18 +72,18 @@ extension String {
   
   /// **Mechanica**
   ///
-  ///  Checks if a `String` contains a given pattern.
+  ///  Checks if `self` contains a `String`.
   ///
   /// - Parameters:
-  ///   -  pattern:       Pattern to match.
-  ///   - caseSensitive:  Search option: *true* for case-sensitive, false for case-insensitive. (if *true* this function is equivalent to `self.contains(...)`)
+  ///   -  string:       String to match.
+  ///   - caseSensitive: Search option: *true* for case-sensitive, false for case-insensitive. (if *true* this function is equivalent to `self.contains(...)`)
   ///
   ///  - Returns: *true* if contains match, otherwise false.
-  public func contains(_ pattern: String, caseSensitive: Bool) -> Bool {
+  public func contains(_ string: String, caseSensitive: Bool) -> Bool {
     if (caseSensitive) {
-      return self.contains(pattern) //(self.range(of: pattern) != nil)
+      return self.contains(string)
     } else {
-      return (self.range(of: pattern, options: .caseInsensitive) != nil)
+      return (self.range(of: string, options: .caseInsensitive) != nil)
     }
   }
   
@@ -426,9 +426,13 @@ extension String {
   ///
   ///  - Returns: range of the first occurrence or nil.
   public subscript (substring: String) -> Range<String.Index>? {
-    let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
+    let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex) )
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
+
+  // MARK: - Regular Expression
+
+  
   
   // MARK: - Case Operators
   

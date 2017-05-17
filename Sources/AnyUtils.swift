@@ -30,34 +30,8 @@ import Foundation
 public func typeName(of some: Any) -> String {
   let value = (some is Any.Type) ? "\(some)" : "\(type(of: some))"
   if (!value.starts(with: "(")) { return value }
-  //return (some is Any.Type) ? "\(String(describing: some))" : "\(String(describing: type(of: some)))"
-  
-  //match a word inside "(" and " in" https://regex101.com/r/eO6eB7/10
-  let pattern = "(?<=\\()[^()]{1,10}(?=\\sin)"
-//  let regex = try! NSRegularExpression(pattern: pattern, options: [])
-//  // (4):
-//  let matches = regex.matches(in: value, options: [], range: NSRange(location: 0, length: value.characters.count))
-//  
-//  let j = String.matches(for: pattern, in: value)
-  
-  if let result = value.range(of: pattern, options: .regularExpression) {
-    return value[result]
-  }
-  
+  let pattern = "(?<=\\()[^()]{1,10}(?=\\sin)" // match a word inside "(" and " in" https://regex101.com/r/eO6eB7/10
+  //if let result = value.range(of: pattern, options: .regularExpression) { return value[result] }
+  if let result = value.firstRange(matching: pattern) { return value[result] }
   return value
-}
-
-extension String {
-static func matches(for regex: String, in text: String) -> [String] {
-  
-  do {
-    let regex = try NSRegularExpression(pattern: regex)
-    let nsString = text as NSString
-    let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
-    return results.map { nsString.substring(with: $0.range)}
-  } catch let error {
-    print("invalid regex: \(error.localizedDescription)")
-    return []
-  }
-}
 }
