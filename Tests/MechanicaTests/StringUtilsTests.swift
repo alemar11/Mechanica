@@ -91,6 +91,22 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("abc".reversed() == "cba")
     XCTAssertTrue("🤔aa".reversed() == "aa🤔")
   }
+  
+  func test_initials() {
+    
+    do {
+    let text = "tin Robots ! 🤖"
+    let initials = text.initials()
+      XCTAssertEqual(initials, ["t", "R", "!", "🤖"])
+    }
+    
+    do {
+      let text = "\n"
+      let initials = text.initials()
+      XCTAssertTrue(initials.isEmpty)
+    }
+    
+  }
 
   func test_contains_caseSensitive() {
     XCTAssertTrue("AaBbCc".contains("a", caseSensitive: true))
