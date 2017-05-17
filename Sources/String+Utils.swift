@@ -119,7 +119,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Generates a `new` random alphanumeric string of a given length (default 8).
-  public static func random(length: Int = 8) -> String {
+  public static func random(length: UInt32 = 8) -> String {
     let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     var randomString: String = ""
     for _ in 0..<length {
