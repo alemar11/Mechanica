@@ -250,7 +250,6 @@ extension String {
   ///  - parameter upToPosition: position (included) up to which remove the prefix.
   public func removingPrefix(upToPosition: Int = 1) -> String {
     guard (upToPosition >= 0 && upToPosition <= self.length) else { return "" }
-    
     let startIndex = self.index(self.startIndex, offsetBy: upToPosition)
     return self.substring(from: startIndex)
   }
@@ -320,7 +319,6 @@ extension String {
     
     switch length {
     case 0..<self.length:
-      //return self.substringToIndex(self.startIndex.advancedBy(length)) + (trailing ?? "")
       return self.prefix(maxLength: length) + (trailing ?? "")
     case _ where length >= self.length:
       return self // no truncation needed
@@ -371,12 +369,8 @@ extension String {
   ///
   ///  - Returns: Character as String or nil if the index is out of bounds
   public subscript (index: Int) -> String? {
-    
-    guard (0..<self.characters.count ~= index) else {
-      return nil
-    }
+    guard (0..<self.characters.count ~= index) else { return nil }
     return String(Array(self.characters)[index])
-    
   }
   
   /// **Mechanica**
@@ -405,19 +399,11 @@ extension String {
   ///
   ///  - Returns: Substring in range or nil.
   public subscript (range: Range<Int>) -> String? {
-    
-    guard (0...self.self.length ~= range.lowerBound) else {
-      return nil
-    }
-    
-    guard (0...self.self.length ~= range.upperBound) else {
-      return nil
-    }
-    
+    guard (0...self.self.length ~= range.lowerBound) else { return nil }
+    guard (0...self.self.length ~= range.upperBound) else { return nil }
     let start = self.index(self.startIndex, offsetBy: range.lowerBound)
     let end = self.index(self.startIndex, offsetBy: range.upperBound)
     return substring(with: Range(uncheckedBounds: (lower: start, upper: end)))
-    
   }
   
   /// **Mechanica**
