@@ -399,10 +399,10 @@ extension String {
   ///
   ///  - Returns: Substring in Range or nil.
   public subscript (range: Range<Int>) -> String? {
-    guard (0...self.self.length ~= range.lowerBound) else { return nil }
-    guard (0...self.self.length ~= range.upperBound) else { return nil }
-    let start = self.index(self.startIndex, offsetBy: range.lowerBound)
-    let end = self.index(self.startIndex, offsetBy: range.upperBound)
+    guard (0...length ~= range.lowerBound) else { return nil }
+    guard (0...length ~= range.upperBound) else { return nil }
+    let start = index(startIndex, offsetBy: range.lowerBound)
+    let end = index(startIndex, offsetBy: range.upperBound)
     return substring(with: Range(uncheckedBounds: (lower: start, upper: end)))
   }
   
@@ -414,14 +414,10 @@ extension String {
   ///
   ///  - Returns: Substring in NSRange or nil.
   public subscript (nsRange: NSRange) -> String? {
-   //let end = range.location + range.length
-    //return self[Range(uncheckedBounds: (lower: range.location, upper: end))]
     guard let range = nsRange.toRange() else { return nil }
-    //let start = UTF16Index(range.lowerBound)
-    //let end = UTF16Index(range.upperBound)
     return self[range]
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns the range of the first occurrence of a given string in the `String`.
@@ -429,7 +425,7 @@ extension String {
   ///  - parameter substring: substring
   ///
   ///  - Returns: range of the first occurrence or nil.
-  public subscript (substring: String) -> Range<Index>? {
+  public subscript (substring: String) -> Range<String.Index>? {
     let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
@@ -524,5 +520,3 @@ extension String {
   }
   
 }
-
-

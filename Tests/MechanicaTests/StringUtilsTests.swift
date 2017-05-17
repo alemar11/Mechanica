@@ -413,16 +413,16 @@ class StringUtilsTests: XCTestCase {
   }
 
   func test_subscript() {
-    let string = "∆Test😗"
+    let string = "∆Test😗🇮🇹"
 
     XCTAssertTrue(string[0] == "∆")
     XCTAssertTrue(string[1] == "T")
 
     XCTAssertNil(string[-1])
-    XCTAssertNil(string[6])
+    XCTAssertNil(string[7])
     XCTAssertNil(string[10])
 
-    XCTAssertTrue(string[string.length - 1] == "😗")
+    XCTAssertTrue(string[string.length - 1] == "🇮🇹")
 
     XCTAssertTrue(string[0..<1] == "∆")
     XCTAssertTrue(string[1..<6] == "Test😗")
@@ -436,9 +436,8 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(string[Range(0..<3)] == "∆Te")
     XCTAssertTrue(string[Range(3..<3)] == "")
     XCTAssertTrue(string[Range(3..<6)] == "st😗")
-    XCTAssertTrue(string[Range(0..<string.length)] == "∆Test😗")
+    XCTAssertTrue(string[Range(0..<string.length)] == "∆Test😗🇮🇹")
 
-    //XCTAssertNil(string[Range(string.length+1 ..< string.length)])
     XCTAssertNil(string[Range(string.length ..< string.length+1)])
     XCTAssertTrue(string[Range(string.length ..< string.length)] == "")
 
@@ -470,6 +469,15 @@ class StringUtilsTests: XCTestCase {
     let nsrange4 = NSRange(location: -1, length: 2)
     XCTAssertNil(string[nsrange4])
 
+    let nsrange5 = NSRange(location: 1, length: 1)
+    XCTAssertTrue(string[nsrange5] == "T")
+
+    let nsrange6 = NSRange(location: 2, length: 1)
+    XCTAssertTrue(string[nsrange6] == "e")
+
+    let nsrange7 = NSRange(location: 6, length: 1)
+    XCTAssertTrue(string[nsrange7] == "🇮🇹")
+
     XCTAssertNil(string[""])
     let range2 = string["∆"]
     XCTAssertTrue(range2! == string.startIndex ..< string.index(string.startIndex, offsetBy: 1))
@@ -477,6 +485,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssert(range3! ~= string.index(string.startIndex, offsetBy: 2) ..< string.index(string.startIndex, offsetBy: 5))
     XCTAssertNil(string["k"])
     XCTAssertNil(string["123est"])
+
   }
 
   func test_replacingCharacters() {
