@@ -26,7 +26,7 @@ import XCTest
 @testable import Mechanica
 
 class StringRegularExpressionsTests: XCTestCase {
-    
+  
   func test_firstRange() {
     
     do {
@@ -91,5 +91,19 @@ class StringRegularExpressionsTests: XCTestCase {
     
   }
   
+//  func test_findStringInitialsPerformance() {
+//    let text = "Tin Robots 🤖😀🤖"
+//    self.measure {
+//      //let initials = text.strings(matching: String.Pattern.firstAlphanumericCharacter)
+//      let initials = text.initials().filter{$0.isAlphaNumeric}
+//      XCTAssertEqual(initials, ["T", "R"])
+//    }
+//  }
+  
 }
 
+extension String {
+  func acronym() -> String {
+    return components(separatedBy: .whitespaces).filter { !$0.isEmpty }.reduce("") { $0.0 + String($0.1.characters.first!) }
+  }
+}
