@@ -57,6 +57,7 @@ extension String {
     ///
     /// Pattern matches non-Alphanumeric and non-Whitespace characters.
     static let nonAlphanumericSpace = "[^a-zA-Z\\d\\s]"
+    
   }
 
 }
