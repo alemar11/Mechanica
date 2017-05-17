@@ -116,8 +116,8 @@ extension String {
   
   /// **Mechanica**
   ///
-  /// Returns a list containing the first character of each word of `self`.
-  func initials() -> [String] {
+  /// Returns a list containing the first character of each word contained in `self`.
+  func firstCharacterOfEachWord() -> [String] {
     return components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.map { String($0.characters.prefix(1)) }
   }
 

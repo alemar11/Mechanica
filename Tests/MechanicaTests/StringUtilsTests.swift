@@ -92,17 +92,17 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("🤔aa".reversed() == "aa🤔")
   }
   
-  func test_initials() {
+  func test_firstCharacterOfEachWord() {
     
     do {
     let text = "tin Robots ! 🤖"
-    let initials = text.initials()
+    let initials = text.firstCharacterOfEachWord()
       XCTAssertEqual(initials, ["t", "R", "!", "🤖"])
     }
     
     do {
       let text = "\n"
-      let initials = text.initials()
+      let initials = text.firstCharacterOfEachWord()
       XCTAssertTrue(initials.isEmpty)
     }
     

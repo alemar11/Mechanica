@@ -95,7 +95,7 @@ class StringRegularExpressionsTests: XCTestCase {
   //    let text = "Tin Robots 🤖😀🤖"
   //    self.measure {
   //      //let initials = text.strings(matching: String.Pattern.firstAlphanumericCharacter)
-  //      let initials = text.initials().filter{$0.isAlphaNumeric}
+  //      let initials = text.firstCharacterOfEachWord().filter{$0.isAlphaNumeric}
   //      XCTAssertEqual(initials, ["T", "R"])
   //    }
   //  }
