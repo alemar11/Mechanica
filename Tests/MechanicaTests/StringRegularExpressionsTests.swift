@@ -37,7 +37,7 @@ class StringRegularExpressionsTests: XCTestCase {
     
     do {
       let text = "Hello World - Tin Robots 🤖😀🤖"
-      let range = text.firstRange(matching: String.Pattern.firstAlphanumericCharacter)
+      let range = text.firstRange(matching: String.Pattern.firstAlphaNumericCharacter)
       XCTAssertNotNil(range)
       XCTAssertEqual(text[range!], "H")
       let invalidPattern = "//⛏"
@@ -71,16 +71,16 @@ class StringRegularExpressionsTests: XCTestCase {
     
     do {
       let text = "Hello World - Tin Robots 🤖😀🤖"
-      XCTAssertEqual(text.strings(matching: String.Pattern.firstAlphanumericCharacter),["H", "W", "T", "R"])
-      XCTAssertEqual(text.strings(matching: String.Pattern.lastAlphanumericCharacter),["o", "d", "n", "s"])
+      XCTAssertEqual(text.strings(matching: String.Pattern.firstAlphaNumericCharacter),["H", "W", "T", "R"])
+      XCTAssertEqual(text.strings(matching: String.Pattern.lastAlphaNumericCharacter),["o", "d", "n", "s"])
       let invalidPattern = "//⛏"
       XCTAssertTrue(text.strings(matching: invalidPattern).isEmpty)
     }
     
     do {
       let text = "🤖😀🤖"
-      XCTAssertTrue(text.strings(matching: String.Pattern.firstAlphanumericCharacter).isEmpty)
-      XCTAssertTrue(text.strings(matching: String.Pattern.lastAlphanumericCharacter).isEmpty)
+      XCTAssertTrue(text.strings(matching: String.Pattern.firstAlphaNumericCharacter).isEmpty)
+      XCTAssertTrue(text.strings(matching: String.Pattern.firstAlphaNumericCharacter).isEmpty)
     }
     
     do {

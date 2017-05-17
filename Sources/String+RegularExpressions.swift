@@ -41,12 +41,12 @@ extension String {
     /// **Mechanica**
     ///
     /// Pattern matches first alphanumeric character of each word.
-    static let firstAlphanumericCharacter = "(\\b\\w|(?<=_)[^_])"
+    static let firstAlphaNumericCharacter = "(\\b\\w|(?<=_)[^_])"
 
     /// **Mechanica**
     ///
     /// Pattern matches last alphanumeric character of each word.
-    static let lastAlphanumericCharacter = "(\\w\\b|[^_](?=_))"
+    static let lastAlphaNumericCharacter = "(\\w\\b|[^_](?=_))"
 
     /// **Mechanica**
     ///

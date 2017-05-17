@@ -194,7 +194,7 @@ extension String {
   ///
   /// - Note: It will be decapitalized the first character (if any) that's not a special character.
   public func decapitalized() -> String {
-    let ranges = self.ranges(matching: String.Pattern.firstAlphanumericCharacter)
+    let ranges = self.ranges(matching: String.Pattern.firstAlphaNumericCharacter)
     var decapitalizedString = self
     for range in ranges {
       let character = self[range.lowerBound]
@@ -215,7 +215,7 @@ extension String {
   ///
   /// - Note: It will be capitalized the first character (if any) that's not a special character.
   public func capitalized() -> String {
-    let ranges = self.ranges(matching: String.Pattern.firstAlphanumericCharacter)
+    let ranges = self.ranges(matching: String.Pattern.firstAlphaNumericCharacter)
     var decapitalizedString = self
     for range in ranges {
       let character = self[range.lowerBound]
