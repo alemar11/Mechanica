@@ -100,10 +100,5 @@ class StringRegularExpressionsTests: XCTestCase {
 //    }
 //  }
   
-}
 
-extension String {
-  func acronym() -> String {
-    return components(separatedBy: .whitespaces).filter { !$0.isEmpty }.reduce("") { $0.0 + String($0.1.characters.first!) }
-  }
-}
+
