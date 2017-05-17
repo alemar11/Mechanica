@@ -173,7 +173,49 @@ extension String {
     }
     return ""
   }
-  
+
+  /// **Mechanica**
+  ///
+  /// Returns a new `String` with each word capitalized.
+  ///
+  /// Example:
+  ///
+  ///     let string = "Hello World"
+  ///     print(string.decapitalized()) // "hello world"
+  ///
+  /// - Note: It will be decapitalized the first character (if any) that's not a special character.
+  public func decapitalized() -> String {
+    let ranges = self.ranges(matching: String.Pattern.firstCharacter)
+    var decapitalizedString = self
+    for range in ranges {
+      let character = self[range.lowerBound]
+      let lowercasedCharacter = String(character).lowercased()
+      decapitalizedString = decapitalizedString.replacingCharacters(in: range, with: lowercasedCharacter)
+    }
+    return decapitalizedString
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a new `String` with each word decapitalized.
+  ///
+  /// Example:
+  ///
+  ///     let string = "hello world"
+  ///     print(string.capitalized()) // "Hello World"
+  ///
+  /// - Note: It will be capitalized the first character (if any) that's not a special character.
+  public func capitalized() -> String {
+    let ranges = self.ranges(matching: String.Pattern.firstCharacter)
+    var decapitalizedString = self
+    for range in ranges {
+      let character = self[range.lowerBound]
+      let lowercasedCharacter = String(character).uppercased()
+      decapitalizedString = decapitalizedString.replacingCharacters(in: range, with: lowercasedCharacter)
+    }
+    return decapitalizedString
+  }
+
   /// **Mechanica**
   ///
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
@@ -443,7 +485,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "HelloWorld"
-  ///     print(string.decapitalized()) // "helloWorld"
+  ///     print(string.camelCased()) // "helloWorld"
   ///
   /// - Returns: A camel cased copy of the `String`.
   public func camelCased() -> String {
