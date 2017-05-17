@@ -397,7 +397,7 @@ extension String {
   ///
   ///  - parameter range: range
   ///
-  ///  - Returns: Substring in range or nil.
+  ///  - Returns: Substring in Range or nil.
   public subscript (range: Range<Int>) -> String? {
     guard (0...self.self.length ~= range.lowerBound) else { return nil }
     guard (0...self.self.length ~= range.upperBound) else { return nil }
@@ -412,10 +412,12 @@ extension String {
   ///
   ///  - parameter range: NSRange
   ///
-  ///  - Returns: Substring in range or nil.
-  public subscript (range: NSRange) -> String? {
-    let end = range.location + range.length
-    return self[Range(uncheckedBounds: (lower: range.location, upper: end))]
+  ///  - Returns: Substring in NSRange or nil.
+  public subscript (nsRange: NSRange) -> String? {
+   //let end = range.location + range.length
+    //return self[Range(uncheckedBounds: (lower: range.location, upper: end))]
+    guard let range = nsRange.toRange() else { return nil }
+    return self[range]
   }
   
   /// **Mechanica**
