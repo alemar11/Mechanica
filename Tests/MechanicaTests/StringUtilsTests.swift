@@ -560,28 +560,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertEqual("Hell0W0rld".camelCased(), "hell0W0rld")
     XCTAssertEqual("helloWorld".camelCased(), "helloWorld")
   }
-  
-  func test_decapitalized() {
-    XCTAssertEqual("hello world!".decapitalized(), "hello world!")
-    XCTAssertEqual("Hello World!".decapitalized(), "hello world!")
-    XCTAssertEqual("HELLO WORLD!".decapitalized(), "hELLO wORLD!")
-    XCTAssertEqual("Hello !World!".decapitalized(), "hello !world!")
-    XCTAssertEqual("Hello 🌏World!".decapitalized(), "hello 🌏world!")
-    XCTAssertEqual("Hello 🌏∂World!".decapitalized(), "hello 🌏∂world!")
-    XCTAssertEqual("Hello 1World!".decapitalized(), "hello 1World!")
-  }
-  
-  //  func test_capitalized() {
-  //    XCTAssertEqual("Hello World!".capitalized(), "Hello World!")
-  //    XCTAssertEqual("hello World!".capitalized(), "Hello World!")
-  //    XCTAssertEqual("hELLO WORLD!".capitalized(), "HELLO WORLD!")
-  //    XCTAssertEqual("hello !World!".capitalized(), "Hello !World!")
-  //    XCTAssertEqual("hello 🌏World!".capitalized(), "Hello 🌏World!")
-  //    XCTAssertEqual("hello 🌏∂World!".capitalized(), "Hello 🌏∂World!")
-  //    XCTAssertEqual("hello 1world!".capitalized(), "Hello 1world!")
-  //  }
-  
-  
+    
   func test_kebabCased() {
     XCTAssertEqual("Hello World".kebabCased(), "-hello-world-")
     XCTAssertEqual("Hello_World".kebabCased(), "-hello-world-")
