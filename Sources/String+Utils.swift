@@ -475,10 +475,6 @@ extension String {
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
 
-  // MARK: - Regular Expression
-
-
-
   // MARK: - Case Operators
 
   /// **Mechanica**

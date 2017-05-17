@@ -24,6 +24,8 @@
 
 import Foundation
 
+// MARK: - Regular Expression Commons Patterns
+
 extension String {
 
   /// **Mechanica**
@@ -58,6 +60,8 @@ extension String {
   }
 
 }
+
+// MARK: - Regular Expression
 
 extension String {
 
