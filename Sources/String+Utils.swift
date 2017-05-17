@@ -417,6 +417,8 @@ extension String {
    //let end = range.location + range.length
     //return self[Range(uncheckedBounds: (lower: range.location, upper: end))]
     guard let range = nsRange.toRange() else { return nil }
+    //let start = UTF16Index(range.lowerBound)
+    //let end = UTF16Index(range.upperBound)
     return self[range]
   }
   
@@ -427,7 +429,7 @@ extension String {
   ///  - parameter substring: substring
   ///
   ///  - Returns: range of the first occurrence or nil.
-  public subscript (substring: String) -> Range<String.Index>? {
+  public subscript (substring: String) -> Range<Index>? {
     let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
