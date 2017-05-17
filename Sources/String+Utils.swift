@@ -174,6 +174,8 @@ extension String {
     return ""
   }
 
+  // MARK: - Capitalization Methods
+
   /// **Mechanica**
   ///
   /// Returns a new `String` with each word capitalized.
@@ -238,6 +240,8 @@ extension String {
 
   }
 
+  // MARK: - Suffix and Prefix Methods
+
   /// **Mechanica**
   ///
   /// Returns a `new` string containing the first character of the `String`.
@@ -278,8 +282,6 @@ extension String {
     }
     return String(self.characters.suffix(maxLength))
   }
-
-  // MARK: - Remove Methods
 
   /// **Mechanica**
   ///
