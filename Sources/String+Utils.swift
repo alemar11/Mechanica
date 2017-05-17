@@ -113,6 +113,13 @@ extension String {
     let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
     return self.replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
   }
+  
+  /// **Mechanica**
+  ///
+  /// Returns a list containing the first character of each word of `self`.
+  func initials() -> [String] {
+    return components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.map { String($0.characters.prefix(1)) }
+  }
 
   // MARK: - Random
 
@@ -226,7 +233,6 @@ extension String {
     let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
     let result = capitalizedFirstCharacher + String(self.characters.dropFirst())
     return result
-
   }
 
   /// **Mechanica**
@@ -237,7 +243,6 @@ extension String {
     let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
     let result = capitalizedFirstCharacher + String(self.characters.dropFirst())
     return result
-
   }
 
   // MARK: - Suffix and Prefix Methods
