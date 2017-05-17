@@ -28,6 +28,10 @@ import Foundation
 ///
 /// Returns the type name as `String`.
 public func typeName(of some: Any) -> String {
-  return (some is Any.Type) ? "\(some)" : "\(type(of: some))"
-  //return (some is Any.Type) ? "\(String(describing: some))" : "\(String(describing: type(of: some)))"
+  let value = (some is Any.Type) ? "\(some)" : "\(type(of: some))"
+  if (!value.starts(with: "(")) { return value }
+  let pattern = "(?<=\\()[^()]{1,10}(?=\\sin)" // match a word inside "(" and " in" https://regex101.com/r/eO6eB7/10
+  //if let result = value.range(of: pattern, options: .regularExpression) { return value[result] }
+  if let result = value.firstRange(matching: pattern) { return value[result] }
+  return value
 }
