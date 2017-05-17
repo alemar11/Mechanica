@@ -359,7 +359,7 @@ extension String {
     return filtered.joined(separator: " ")
   }
   
-  // MARK: Subscript Methods
+  // MARK: - Subscript Methods
   
   /// **Mechanica**
   ///
@@ -430,7 +430,7 @@ extension String {
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
   
-  // MARK: Case Operators
+  // MARK: - Case Operators
   
   /// **Mechanica**
   ///
