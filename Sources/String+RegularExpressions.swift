@@ -75,12 +75,23 @@ extension String {
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
   /// - Returns: returns a list of matched strings for `self`.
-  func strings(matching pattern: String, options: NSRegularExpression.Options = []) -> [String] {
+  func matches(for pattern: String, options: NSRegularExpression.Options = []) -> [String] {
     var strings: [String] = []
     for range in ranges(matching: pattern, options: options) {
       strings.append(self.substring(with: range))
     }
     return strings
   }
-  
+
+  /// **Mechanica**
+  ///
+  /// - Parameters:
+  ///   - pattern: a regular expression pattern.
+  ///   - options: a list of `NSRegularExpression.Options`.
+  /// - Returns: returns the first matched string for `self`.
+  func firstMatch(for pattern: String, options: NSRegularExpression.Options = []) -> String? {
+    guard let range = firstRange(matching: pattern) else { return nil }
+     return self.substring(with: range)
+  }
+
 }
