@@ -1,5 +1,5 @@
 //
-//  String.swift
+//  String+Utils.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
@@ -27,21 +27,21 @@ import Foundation
 extension String {
 
   // MARK: - Helper Methods
-  
+
   /// **Mechanica**
   ///
   /// Returns the length of the `String`.
   public var length: Int {
     return self.characters.count
   }
-  
+
   /// **Mechanica**
   ///
   /// Reverse `self`.
   public mutating func reverse() {
     self = String(self.characters.reversed())
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` reversed `String`.
@@ -49,7 +49,7 @@ extension String {
   public func reversed() -> String {
     return String(self.characters.reversed())
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns *true* if `self` starts with a given prefix.
@@ -59,7 +59,7 @@ extension String {
     }
     return hasPrefix(prefix)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns *true* if `self` ends with a given suffix.
@@ -69,24 +69,24 @@ extension String {
     }
     return hasSuffix(suffix)
   }
-  
+
   /// **Mechanica**
   ///
-  ///  Checks if a `String` contains a given pattern.
+  ///  Checks if `self` contains a `String`.
   ///
   /// - Parameters:
-  ///   -  pattern:       Pattern to match.
-  ///   - caseSensitive:  Search option: *true* for case-sensitive, false for case-insensitive. (if *true* this function is equivalent to `self.contains(...)`)
+  ///   -  string:       String to match.
+  ///   - caseSensitive: Search option: *true* for case-sensitive, false for case-insensitive. (if *true* this function is equivalent to `self.contains(...)`)
   ///
   ///  - Returns: *true* if contains match, otherwise false.
-  public func contains(_ pattern: String, caseSensitive: Bool) -> Bool {
+  public func contains(_ string: String, caseSensitive: Bool) -> Bool {
     if (caseSensitive) {
-      return self.contains(pattern) //(self.range(of: pattern) != nil)
+      return self.contains(string)
     } else {
-      return (self.range(of: pattern, options: .caseInsensitive) != nil)
+      return (self.range(of: string, options: .caseInsensitive) != nil)
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Checks if if all the characters in the string belong to a specific `CharacterSet`.
@@ -100,7 +100,7 @@ extension String {
     }
     return true
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a `new` string in which all occurrences of a target are replaced by another given string.
@@ -113,13 +113,20 @@ extension String {
     let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
     return self.replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
   }
+  
+  /// **Mechanica**
+  ///
+  /// Returns a list containing the first character of each word contained in `self`.
+  func firstCharacterOfEachWord() -> [String] {
+    return components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.map { String($0.characters.prefix(1)) }
+  }
 
   // MARK: - Random
 
   /// **Mechanica**
   ///
   /// Generates a `new` random alphanumeric string of a given length (default 8).
-  public static func random(length: Int = 8) -> String {
+  public static func random(length: UInt32 = 8) -> String {
     let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     var randomString: String = ""
     for _ in 0..<length {
@@ -128,16 +135,16 @@ extension String {
     }
     return randomString
   }
-  
+
   // MARK: - Trimming Methods
-  
+
   /// **Mechanica**
   ///
   /// Removes spaces and new lines from both ends of `self.
   public mutating func trim() {
     self = trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a `new` String made by removing spaces and new lines from both ends.
@@ -145,7 +152,7 @@ extension String {
     //return trimmedLeft().trimmedRight()
     return self.trimmingCharacters(in: .whitespacesAndNewlines)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Strips the specified characters from the beginning of `self`.
@@ -159,7 +166,7 @@ extension String {
     }
     return ""
   }
-  
+
   /// **Mechanica**
   ///
   ///  Strips the specified characters from the end of `self`.
@@ -173,7 +180,7 @@ extension String {
     }
     return ""
   }
-  
+
   /// **Mechanica**
   ///
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
@@ -182,9 +189,8 @@ extension String {
     let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
     let result = capitalizedFirstCharacher + String(self.characters.dropFirst())
     return result
-    
   }
-  
+
   /// **Mechanica**
   ///
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
@@ -193,9 +199,10 @@ extension String {
     let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
     let result = capitalizedFirstCharacher + String(self.characters.dropFirst())
     return result
-    
   }
-  
+
+  // MARK: - Suffix and Prefix Methods
+
   /// **Mechanica**
   ///
   /// Returns a `new` string containing the first character of the `String`.
@@ -203,7 +210,7 @@ extension String {
     let first = self.substring(to: self.index(after: self.startIndex))
     return first
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string containing the last character of the `String`.
@@ -211,7 +218,7 @@ extension String {
     let last = self.substring(from: self.index(before: self.endIndex))
     return last
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a substring, up to maxLength in length, containing the initial elements of the `String`.
@@ -223,7 +230,7 @@ extension String {
     guard maxLength > 0 else { return "" }
     return String(self.characters.prefix(maxLength))
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a slice, up to maxLength in length, containing the final elements of `String`.
@@ -236,21 +243,18 @@ extension String {
     }
     return String(self.characters.suffix(maxLength))
   }
-  
-  // MARK: - Remove Methods
-  
+
   /// **Mechanica**
   ///
   ///  Returns a new `String` containing the characters of the String from the one at a given position to the end.
   ///
-  /// ```
-  /// "hello".removingPrefix(upToPosition: 1) // "ello"
-  /// ```
+  /// Example:
+  ///
+  ///     "hello".removingPrefix(upToPosition: 1) // "ello"
   ///
   ///  - parameter upToPosition: position (included) up to which remove the prefix.
   public func removingPrefix(upToPosition: Int = 1) -> String {
     guard (upToPosition >= 0 && upToPosition <= self.length) else { return "" }
-    
     let startIndex = self.index(self.startIndex, offsetBy: upToPosition)
     return self.substring(from: startIndex)
   }
@@ -259,22 +263,23 @@ extension String {
   ///
   ///  Returns a new `String` removing the spcified prefix (if the string has it).
   ///
-  /// ```
-  /// "hello".removingPrefix("hel") // "lo"
-  /// ```
+  /// Example:
+  ///
+  ///     "hello".removingPrefix("hel") // "lo"
+  ///
   ///  - parameter prefix: prefix to be removed.
   public func removingPrefix(_ prefix: String) -> String {
     guard self.hasPrefix(prefix) else { return self }
     return self.removingPrefix(upToPosition: prefix.length)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a new `String` containing the characters of the String up to, but not including, the one at a given position.
   ///
-  ///  ```
-  ///  "hello".removingSuffix(fromPosition: 1) == "hell"
-  ///  ```
+  /// Example:
+  ///
+  ///     "hello".removingSuffix(fromPosition: 1) == "hell"
   ///
   ///  - parameter fromPosition: position (included) from which remove the suffix
   public func removingSuffix(fromPosition: Int = 1) -> String {
@@ -287,9 +292,10 @@ extension String {
   ///
   ///  Returns a new `String` removing the spcified suffix (if the string has it).
   ///
-  /// ```
-  /// "hello".removingSuffix("0") // "hell"
-  /// ```
+  /// Example:
+  ///
+  ///     "hello".removingSuffix("0") // "hell"
+  ///
   ///  - parameter prefix: prefix to be removed.
   public func removingSuffix(_ suffix: String) -> String {
     guard self.hasSuffix(suffix) else { return self }
@@ -308,7 +314,7 @@ extension String {
     }
     return String(chars)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Truncates the `String` to the given length (number of characters) and appends optional trailing string if longer.
@@ -317,30 +323,30 @@ extension String {
   ///  - parameter trailing: optional trailing string
   ///
   public func truncate(at length: Int, withTrailing trailing: String? = "…") -> String {
-    
+
     switch length {
     case 0..<self.length:
-      //return self.substringToIndex(self.startIndex.advancedBy(length)) + (trailing ?? "")
       return self.prefix(maxLength: length) + (trailing ?? "")
     case _ where length >= self.length:
       return self // no truncation needed
     default:
       return ""
     }
-    
+
   }
-  
+
   // MARK: - Cleaning Methods
-  
+
   /// **Mechanica**
   ///
   ///  Condenses all white spaces repetitions in a single white space.
   ///  White space at the beginning or ending of the `String` are trimmed out.
   ///
-  ///  ```
-  ///  let aString = "test    too many    spaces"
-  ///  aString.removeExcessiveSpaces //test too many spaces
-  ///  ```
+  /// Example:
+  ///
+  ///     let aString = "test    too many    spaces"
+  ///     aString.removeExcessiveSpaces //test too many spaces
+  ///
   ///
   ///  - Returns: A `new` string where all white spaces repetitions are replaced with a single white space.
   public func condensingExcessiveSpaces() -> String {
@@ -348,7 +354,7 @@ extension String {
     let filtered = components.filter({!$0.isEmpty})
     return filtered.joined(separator: " ")
   }
-  
+
   /// **Mechanica**
   ///
   ///  Condenses all white spaces and new lines repetitions in a single white space.
@@ -360,9 +366,9 @@ extension String {
     let filtered = components.filter({!$0.isBlank})
     return filtered.joined(separator: " ")
   }
-  
-  // MARK: Subscript Methods
-  
+
+  // MARK: - Subscript Methods
+
   /// **Mechanica**
   ///
   ///  Gets the character at the specified index as String.
@@ -371,14 +377,10 @@ extension String {
   ///
   ///  - Returns: Character as String or nil if the index is out of bounds
   public subscript (index: Int) -> String? {
-    
-    guard (0..<self.characters.count ~= index) else {
-      return nil
-    }
+    guard (0..<self.characters.count ~= index) else { return nil }
     return String(Array(self.characters)[index])
-    
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string in which the characters in a specified `CountableClosedRange` range of the String are replaced by a given string.
@@ -387,7 +389,7 @@ extension String {
     let end   = characters.index(start, offsetBy: range.count)
     return self.replacingCharacters(in: start ..< end, with: replacement)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string in which the characters in a specified `CountableRange` range of the String are replaced by a given string.
@@ -396,42 +398,34 @@ extension String {
     let end   = characters.index(start, offsetBy: range.count)
     return self.replacingCharacters(in: start ..< end, with: replacement)
   }
-  
+
   /// **Mechanica**
   ///
   ///   Returns the substring in the given range.
   ///
   ///  - parameter range: range
   ///
-  ///  - Returns: Substring in range or nil.
+  ///  - Returns: Substring in Range or nil.
   public subscript (range: Range<Int>) -> String? {
-    
-    guard (0...self.self.length ~= range.lowerBound) else {
-      return nil
-    }
-    
-    guard (0...self.self.length ~= range.upperBound) else {
-      return nil
-    }
-    
-    let start = self.index(self.startIndex, offsetBy: range.lowerBound)
-    let end = self.index(self.startIndex, offsetBy: range.upperBound)
+    guard (0...length ~= range.lowerBound) else { return nil }
+    guard (0...length ~= range.upperBound) else { return nil }
+    let start = index(startIndex, offsetBy: range.lowerBound)
+    let end = index(startIndex, offsetBy: range.upperBound)
     return substring(with: Range(uncheckedBounds: (lower: start, upper: end)))
-    
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns the substring in the given `NSRange`
   ///
   ///  - parameter range: NSRange
   ///
-  ///  - Returns: Substring in range or nil.
-  public subscript (range: NSRange) -> String? {
-    let end = range.location + range.length
-    return self[Range(uncheckedBounds: (lower: range.location, upper: end))]
+  ///  - Returns: Substring in NSRange or nil.
+  public subscript (nsRange: NSRange) -> String? {
+    guard let range = nsRange.toRange() else { return nil }
+    return self[range]
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns the range of the first occurrence of a given string in the `String`.
@@ -440,12 +434,12 @@ extension String {
   ///
   ///  - Returns: range of the first occurrence or nil.
   public subscript (substring: String) -> Range<String.Index>? {
-    let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex))
+    let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex) )
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
-  
-  // MARK: Case Operators
-  
+
+  // MARK: - Case Operators
+
   /// **Mechanica**
   ///
   /// Produces a camel cased version of the `String`.
@@ -453,13 +447,13 @@ extension String {
   /// Example:
   ///
   ///     let string = "HelloWorld"
-  ///     print(string.decapitalized()) // "helloWorld"
+  ///     print(string.camelCased()) // "helloWorld"
   ///
   /// - Returns: A camel cased copy of the `String`.
   public func camelCased() -> String {
     return pascalCased().decapitalizedFirstCharacter()
   }
-  
+
   /// **Mechanica**
   ///
   /// Produces the kebab cased version of the `String`.
@@ -473,7 +467,7 @@ extension String {
   public func kebabCased() -> String {
     return "-" + slugCased() + "-"
   }
-  
+
   /// **Mechanica**
   ///
   /// Produces a pascal cased version of the `String`.
@@ -487,7 +481,7 @@ extension String {
   public func pascalCased() -> String {
     return self.replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: "-", with: " ").components(separatedBy: .whitespaces).joined()
   }
-  
+
   /// **Mechanica**
   ///
   /// Produces the slug version of the `String`.
@@ -501,7 +495,7 @@ extension String {
   public func slugCased() -> String {
     return self.replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: "-", with: " ").condensingExcessiveSpaces().replacingOccurrences(of: " ", with: "-").lowercased()
   }
-  
+
   /// **Mechanica**
   ///
   /// Produces the snake cased version of the `String`.
@@ -516,7 +510,7 @@ extension String {
   public func snakeCased() -> String {
     return self.replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: "-", with: " ").condensingExcessiveSpaces().replacingOccurrences(of: " ", with: "_")
   }
-  
+
   /// **Mechanica**
   ///
   /// Produces the swap cased version of the `String`.
@@ -534,5 +528,3 @@ extension String {
   }
   
 }
-
-

@@ -116,7 +116,7 @@
                 <a href="../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/NSObject.html">NSObject</a>
+                <a href="../Extensions/NSObjectProtocol.html">NSObjectProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/NSPersistentStoreCoordinator.html">NSPersistentStoreCoordinator</a>
@@ -188,6 +188,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:F9Mechanica18setAssociatedValueurFTGSqx_9forObjectP_8usingKeySV9andPolicyOSC22objc_AssociationPolicy_T_">setAssociatedValue(_:forObject:usingKey:andPolicy:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F9Mechanica8typeNameFT2ofP__SS">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -318,7 +321,7 @@
                 <a href="../Typealiases.html#/s:9Mechanica10Storyboard">Storyboard</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:E9MechanicaCSo8NSObject18SwizzlingSelectors">SwizzlingSelectors</a>
+                <a href="../Typealiases.html#/s:E9MechanicaPSo16NSObjectProtocol18SwizzlingSelectors">SwizzlingSelectors</a>
               </li>
             </ul>
           </li>
@@ -507,14 +510,14 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Checks if a <code>String</code> contains a given pattern.</p>
+<p>Checks if <code>self</code> contains a <code>String</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">contains</span><span class="p">(</span><span class="n">_</span> <span class="nv">pattern</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">caseSensitive</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">contains</span><span class="p">(</span><span class="n">_</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">caseSensitive</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -525,12 +528,12 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>pattern</em>
+                                <em>string</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Pattern to match.</p>
+                                  <p>String to match.</p>
 
                                 </div>
                               </td>
@@ -702,9 +705,9 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFE9MechanicaSS6randomFT6lengthSi_SS"></a>
+                    <a name="/s:ZFE9MechanicaSS6randomFT6lengthVs6UInt32_SS"></a>
                     <a name="//apple_ref/swift/Method/random(length:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFE9MechanicaSS6randomFT6lengthSi_SS">random(length:)</a>
+                    <a class="token" href="#/s:ZFE9MechanicaSS6randomFT6lengthVs6UInt32_SS">random(length:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -721,7 +724,7 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">random</span><span class="p">(</span><span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">random</span><span class="p">(</span><span class="nv">length</span><span class="p">:</span> <span class="kt">UInt32</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -963,6 +966,17 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Suffix%20and%20Prefix%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Suffix and Prefix Methods" class="dashAnchor"></a>
+                <a href="#/Suffix%20and%20Prefix%20Methods">
+                  <h3 class="section-name">Suffix and Prefix Methods</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -1131,17 +1145,6 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Remove%20Methods"></a>
-                <a name="//apple_ref/swift/Section/Remove Methods" class="dashAnchor"></a>
-                <a href="#/Remove%20Methods">
-                  <h3 class="section-name">Remove Methods</h3>
-                </a>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -1158,6 +1161,8 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                         <p><strong>Mechanica</strong></p>
 
 <p>Returns a new <code>String</code> containing the characters of the String from the one at a given position to the end.</p>
+
+<p>Example:</p>
 
 <pre class="highlight plaintext"><code>"hello".removingPrefix(upToPosition: 1) // "ello"
 </code></pre>
@@ -1211,6 +1216,8 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
 
 <p>Returns a new <code>String</code> removing the spcified prefix (if the string has it).</p>
 
+<p>Example:</p>
+
 <pre class="highlight plaintext"><code>"hello".removingPrefix("hel") // "lo"
 </code></pre>
 
@@ -1259,9 +1266,11 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p><em>Mechanica</em>*</p>
+                        <p><strong>Mechanica</strong></p>
 
 <p>Returns a new <code>String</code> containing the characters of the String up to, but not including, the one at a given position.</p>
+
+<p>Example:</p>
 
 <pre class="highlight plaintext"><code>"hello".removingSuffix(fromPosition: 1) == "hell"
 </code></pre>
@@ -1314,6 +1323,8 @@ Shorthand for <em>self.characters.reverse()</em>.</p>
                         <p><strong>Mechanica</strong></p>
 
 <p>Returns a new <code>String</code> removing the spcified suffix (if the string has it).</p>
+
+<p>Example:</p>
 
 <pre class="highlight plaintext"><code>"hello".removingSuffix("0") // "hell"
 </code></pre>
@@ -1468,10 +1479,12 @@ The default trailing is the ellipsis (…).
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p><em>Mechanica</em>*</p>
+                        <p><strong>Mechanica</strong></p>
 
 <p>Condenses all white spaces repetitions in a single white space.
-White space at the beginning or ending of the <code>String</code> are trimmed out.</p>
+ White space at the beginning or ending of the <code>String</code> are trimmed out.</p>
+
+<p>Example:</p>
 
 <pre class="highlight plaintext"><code>let aString = "test    too many    spaces"
 aString.removeExcessiveSpaces //test too many spaces
@@ -1629,7 +1642,7 @@ White space and new lines at the beginning or ending of the <code>String</code> 
 <p>Example:</p>
 
 <pre class="highlight plaintext"><code>let string = "HelloWorld"
-print(string.decapitalized()) // "helloWorld"
+print(string.camelCased()) // "helloWorld"
 </code></pre>
 
                       </div>
@@ -1845,6 +1858,140 @@ print(string.swapCased()) // "hELLO wORLD"
                       <div>
                         <h4>Return Value</h4>
                         <p>The swap cased copy of the <code>String</code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE9MechanicaSS6rangesFT8matchingSS7optionsVCSo19NSRegularExpression7Options_GSaGVs5RangeVVSS13CharacterView5Index__"></a>
+                    <a name="//apple_ref/swift/Method/ranges(matching:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE9MechanicaSS6rangesFT8matchingSS7optionsVCSo19NSRegularExpression7Options_GSaGVs5RangeVVSS13CharacterView5Index__">ranges(matching:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">ranges</span><span class="p">(</span><span class="n">matching</span> <span class="nv">pattern</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSRegularExpression</span><span class="o">.</span><span class="kt">Options</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Range</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="o">&gt;</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pattern</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a regular expression pattern.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a list of <code>NSRegularExpression.Options</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>returns a list of matched ranges for <code>self</code> or empy. Defaults to [].</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE9MechanicaSS10firstRangeFT8matchingSS7optionsVCSo19NSRegularExpression7Options_GSqGVs5RangeVVSS13CharacterView5Index__"></a>
+                    <a name="//apple_ref/swift/Method/firstRange(matching:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE9MechanicaSS10firstRangeFT8matchingSS7optionsVCSo19NSRegularExpression7Options_GSqGVs5RangeVVSS13CharacterView5Index__">firstRange(matching:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">firstRange</span><span class="p">(</span><span class="n">matching</span> <span class="nv">pattern</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSRegularExpression</span><span class="o">.</span><span class="kt">Options</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">Range</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="o">&gt;</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pattern</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a regular expression pattern.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a list of <code>NSRegularExpression.Options</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>returns a the first matched range for <code>self</code> or nil.</p>
 
                       </div>
                     </section>
@@ -2599,7 +2746,7 @@ print(string.swapCased()) // "hELLO wORLD"
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-09)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-18)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
