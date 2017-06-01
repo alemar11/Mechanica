@@ -45,8 +45,6 @@ extension UserDefaults {
 
 class UserDefaultsUtilsTests: XCTestCase {
 
-  lazy var unitTestBundle: Bundle =  { return Bundle(for: type(of: self)) }()
-
   let userDefaults = UserDefaults.standard
 
   override func setUp() {

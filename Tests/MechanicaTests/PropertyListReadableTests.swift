@@ -87,8 +87,6 @@ class Configuration: PropertyListReadable {
 
 class PropertyListReadableTests: XCTestCase {
 
-  lazy var unitTestBundle: Bundle =  { return Bundle(for: type(of: self)) }()
-
   func test_configuration() {
 
     guard let plistPath = unitTestBundle.path(forResource: "PropertyListDemo", ofType: "plist") else {
