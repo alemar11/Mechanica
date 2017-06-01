@@ -31,7 +31,7 @@ before_install:
   - xcrun simctl delete 38C891AB-EC79-43E4-9311-6FDEB12DCF11 || true
 
 before_script:
-  - swiftlint reporter "emoji"
+  - swiftlint --reporter "emoji"
 
 script:
   - set -o pipefail
