@@ -69,7 +69,7 @@ extension UserDefaults {
     set(object, forKey: key.value)
   }
 
-  //  MARK: - String
+  // MARK: - String
 
   /// **Mechanica**
   ///

@@ -38,7 +38,6 @@ import Foundation
   public typealias Color = AppKit.NSColor
 #endif
 
-
 extension Color {
   
   fileprivate typealias ColorConverter = (Color) -> Color?

@@ -25,7 +25,7 @@ env:
 
 before_install:
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
-  - brew update && brew install swiftlint
+  #- brew update && brew install swiftlint
   # fix for watchOS until https://github.com/travis-ci/travis-ci/issues/7580 is fixed
   - xcrun simctl delete 38C891AB-EC79-43E4-9311-6FDEB12DCF11 || true
 
