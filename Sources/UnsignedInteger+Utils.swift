@@ -24,10 +24,10 @@
 
 import Foundation
 
-// MARK:- BinaryConvertible
+// MARK: - BinaryConvertible
 
 extension UnsignedInteger where Self: BinaryConvertible {
-  
+
   /// **Mechanica**
   ///
   /// Creates a string representing the given value in the binary base.
@@ -41,7 +41,7 @@ extension UnsignedInteger where Self: BinaryConvertible {
     let size = MemoryLayout.size(ofValue: self) * 8
     return String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
   }
-  
+
 }
 
 extension UInt8:  BinaryConvertible {}

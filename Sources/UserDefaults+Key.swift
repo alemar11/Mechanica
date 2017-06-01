@@ -176,7 +176,6 @@ extension UserDefaults {
     set(object: dictionary, forKey: key)
   }
 
-
   // MARK: - Date
 
   /// **Mechanica**
@@ -188,7 +187,6 @@ extension UserDefaults {
     get { return object(forKey: key.value) as? Date }
     set { set(object: newValue, forKey: key) }
   }
-
 
   /// **Mechanica**
   ///
@@ -230,7 +228,6 @@ extension UserDefaults {
     set(object: data, forKey: key)
   }
 
-
   // MARK: - Int
 
   /// **Mechanica**
@@ -257,7 +254,6 @@ extension UserDefaults {
   public final func set(integer: Int?, forKey key: Key<Int>) {
     set(object: integer, forKey: key)
   }
-
 
   // MARK: - Double
 
@@ -340,7 +336,6 @@ extension UserDefaults {
     set(object: bool, forKey: key)
   }
 
-
   // MARK: - URL
 
   /// **Mechanica**
@@ -389,7 +384,6 @@ extension UserDefaults {
 
 }
 
-
 //extension UserDefaults {
 //
 //  public final subscript(key: Key<[String]>) -> [String]? {
@@ -424,7 +418,6 @@ extension UserDefaults {
 //
 //}
 
-
 // MARK: RawRepresentable
 
 //extension UserDefaults {
@@ -454,10 +447,3 @@ extension UserDefaults {
 //  }
 //  
 //}
-
-
-
-
-
-
-

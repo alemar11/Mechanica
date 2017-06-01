@@ -28,10 +28,10 @@ import Foundation
 ///
 /// Types conforming to `BinaryConvertible` can be represented in binary base.
 public protocol BinaryConvertible {
-  
+
   /// **Mechanica**
   ///
   /// Creates a string representing the given value in the binary base.
   var binaryString: String { get }
-  
+
 }

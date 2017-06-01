@@ -199,7 +199,7 @@ public final class KeyboardObserver {
   /// **Mechanica**
   ///
   /// Initializes a new instance of `KeyboardObserver`.
-  public init(){}
+  public init() {}
 
   /// **Mechanica**
   ///

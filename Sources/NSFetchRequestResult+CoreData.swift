@@ -135,7 +135,6 @@ extension NSFetchRequestResult where Self: NSManagedObject {
       }.lazy.forEach(context.delete(_:))
   }
 
-
   /// **Mechanica**
   ///
   /// Removes all entities from within the specified `NSManagedObjectContext` excluding a given list of entities.
@@ -183,7 +182,6 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     return nil
   }
 
-
   /// **Mechanica**
   ///
   /// Executes a fetch request where only a single object is expected as result, otherwhile a fatal error occurs.
@@ -229,5 +227,5 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     }
     return cached
   }
-  
+
 }

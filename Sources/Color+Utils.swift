@@ -39,11 +39,11 @@ import Foundation
 #endif
 
 extension Color {
-  
+
   fileprivate typealias ColorConverter = (Color) -> Color?
-  
+
   fileprivate final func processingColor(using converter: ColorConverter) -> Color? { return converter(self) }
-  
+
   /// **Mechanica**
   ///
   /// Returns the hexadecimal string representation of `self` in the sRGB space.
@@ -69,15 +69,15 @@ extension Color {
 // MARK: - sRGBA
 
 extension Color {
-  
+
   /// **Mechanica**
   ///
   /// Alias for RGBA color space components
   public typealias RGBA = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
-  
+
   /// Returns the color's RGBA components.
   public final var rgba: RGBA? {
-    var red : CGFloat = .nan, green : CGFloat = .nan, blue : CGFloat = .nan, alpha : CGFloat = .nan
+    var red: CGFloat = .nan, green: CGFloat = .nan, blue: CGFloat = .nan, alpha: CGFloat = .nan
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard let space = cgColor.colorSpace, let colorSpaceName = space.name else { return nil }
       let compatibleSRGBColor = (colorSpaceName == CGColorSpace.sRGB) ? self: self.convertingToCompatibleSRGBColor()
@@ -91,8 +91,7 @@ extension Color {
     #endif
     return (red, green, blue, alpha)
   }
-  
-  
+
   /// **Mechanica**
   ///
   /// Returns the components (in 8 bit) that make up the color in the sRGB color space.
@@ -100,7 +99,7 @@ extension Color {
     guard let components = rgba else { fatalError("Couldn't calculate RGBA values") }
     return (red: UInt8(components.red * 255), green: UInt8(components.green * 255), blue: UInt8(components.blue * 255), alpha: UInt8(components.alpha * 255))
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns an UInt32 representation of `self` in the sRGB space without alpha channel.
@@ -108,7 +107,7 @@ extension Color {
     let components = rgba8Bit
     return (UInt32(components.red) << 16) | (UInt32(components.green) << 8) | UInt32(components.blue)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns an UInt32 representation of `self` in the sRGB space with alpha channel.
@@ -116,7 +115,7 @@ extension Color {
     let components = rgba8Bit
     return (UInt32(components.red) << 24) | (UInt32(components.green) << 16) | UInt32(components.blue) << 8 | UInt32(components.alpha)
   }
-  
+
   /// **Mechanica**
   ///
   /// Creates a `new` color in the **sRGB** color space that matches (or *closely approximates*) the current color.
@@ -131,7 +130,7 @@ extension Color {
       return compatibleSRGBColor
     #endif
   }
-  
+
   /// **Mechanica**
   ///
   /// Mixes the given color object with the receiver. Specifically, takes the average of each of the RGB components, optionally weighted by the given percentage.
@@ -148,7 +147,7 @@ extension Color {
     }
     return processingColor(using: converter)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` darkened by the given percentage in the RGBA color space.
@@ -158,7 +157,7 @@ extension Color {
     guard let (r, g, b, a) = rgba else { return nil }
     return Color(red: r - percentage, green: g - percentage, blue: b - percentage, alpha: a)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` lightened by the given percentage in the RGBA color space.
@@ -170,11 +169,10 @@ extension Color {
   }
 }
 
-
 // MARK: - Initializers
 
 extension Color {
-  
+
   /// **Mechanica**
   ///
   /// Returns a sRGB color from a hexadecimal integer.
@@ -197,7 +195,7 @@ extension Color {
       self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
     #endif
   }
-  
+
   /// **Mechanica**
   ///
   /// Creates and returns an Color object given an hex color string.
@@ -213,7 +211,7 @@ extension Color {
     case 3: // rgb
       formattedHexString.append("f"); fallthrough
     case 4: // rgba
-      formattedHexString = formattedHexString.characters.map{"\($0)\($0)"}.joined(separator: "")
+      formattedHexString = formattedHexString.characters.map{ "\($0)\($0)" }.joined( separator: "" )
     case 6: // rrggbb
       formattedHexString.append("ff")
     case 8: // rrggbbaa
@@ -226,7 +224,7 @@ extension Color {
     let green = CGFloat((hexEquivalent & 0x00FF0000) >> 16) / 255.0
     let blue = CGFloat((hexEquivalent & 0x0000FF00) >> 08) / 255.0
     let alpha = CGFloat((hexEquivalent & 0x000000FF) >> 00) / 255.0
-    
+
     //    #if os(iOS) || os(tvOS) || os(watchOS)
     //      self.init(red: red, green: green, blue: blue, alpha: alpha)
     //    #else
@@ -234,18 +232,18 @@ extension Color {
     //    #endif
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
-  
+
 }
 
 // MARK: - HSBA
 
 extension Color {
-  
+
   /// **Mechanica**
   ///
   /// Alias for HSBA color space components
   public typealias HSBA = (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat)
-  
+
   /// **Mechanica**
   ///
   /// Returns the components that make up the color in the HSBA color space.
@@ -258,7 +256,7 @@ extension Color {
     #endif
     return (hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` lightened increasing the brightness by a `percentage` in the HSB color space.
@@ -269,11 +267,10 @@ extension Color {
       //let percentage: CGFloat = min(max(percentage, -1), 1)
       //let newBrightness = min(max(hsba.brightness + percentage, -1), 1)
       return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: hsba.brightness + percentage, alpha: hsba.alpha)
-      
     }
     return processingColor(using: converter)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` darkened decreasing the brightness by a `percentage` in the HSB color space.
@@ -285,7 +282,7 @@ extension Color {
     }
     return processingColor(using: converter)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` saturating the hue (increasing the saturation) by a `percentage` in the HSB color space, making it more intense and darker.
@@ -298,7 +295,7 @@ extension Color {
     }
     return processingColor(using: converter)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` desaturating the hue (decreasing the saturation) by a `percentage` in the HSB color space, making it less intense.
@@ -311,7 +308,7 @@ extension Color {
     }
     return processingColor(using: converter)
   }
-  
+
 }
 
 //extension Color {
@@ -322,4 +319,3 @@ extension Color {
 //  }
 //
 //}
-

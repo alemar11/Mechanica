@@ -72,7 +72,7 @@ public enum Key<T>: CustomStringConvertible {
     switch self {
     case .simple(let k):
       return k
-    case let .namespaced(k,n):
+    case let .namespaced(k, n):
       return n + "." + k
     }
   }
@@ -80,9 +80,5 @@ public enum Key<T>: CustomStringConvertible {
   public var description: String {
     return ("Key<\(T.self)> with value: \(value)")
   }
-  
+
 }
-
-
-
-

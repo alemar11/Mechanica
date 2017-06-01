@@ -49,5 +49,5 @@ extension Collection where Self.Index == Int, Iterator.Element: Equatable {
     }
     return nil
   }
-  
+
 }

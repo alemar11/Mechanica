@@ -26,7 +26,7 @@ import CoreData
 
 // MARK: - Cache
 
-fileprivate let SingleObjectCacheKey = "\(mechanicaBundleIdentifier).CoreData.Cache"
+fileprivate let singleObjectCacheKey = "\(mechanicaBundleIdentifier).CoreData.Cache"
 fileprivate typealias SingleObjectCache = [String:NSManagedObject]
 
 extension NSManagedObjectContext {
@@ -35,16 +35,16 @@ extension NSManagedObjectContext {
   ///
   /// Caches an `object` for a `key` in this context.
   public final func setCachedObject(_ object: NSManagedObject?, forKey key: String) {
-    var cache = userInfo[SingleObjectCacheKey] as? SingleObjectCache ?? [:]
+    var cache = userInfo[singleObjectCacheKey] as? SingleObjectCache ?? [:]
     cache[key] = object
-    userInfo[SingleObjectCacheKey] = cache
+    userInfo[singleObjectCacheKey] = cache
   }
 
   /// **Mechanica**
   ///
   /// Returns a cached object in this context for a given `key`.
   public final func cachedObject(forKey key: String) -> NSManagedObject? {
-    guard let cache = userInfo[SingleObjectCacheKey] as? [String:NSManagedObject] else { return nil }
+    guard let cache = userInfo[singleObjectCacheKey] as? [String:NSManagedObject] else { return nil }
     return cache[key]
   }
 
@@ -52,7 +52,7 @@ extension NSManagedObjectContext {
   ///
   /// Clears all cached object in this context.
   public final func clearCachedObjects() -> Void {
-    var cache = userInfo[SingleObjectCacheKey]
+    var cache = userInfo[singleObjectCacheKey]
     if (cache as? SingleObjectCache) != nil {
       cache = nil
     }

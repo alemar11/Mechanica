@@ -103,7 +103,7 @@ extension PropertyListReadable {
   ///
   /// Returns an `Array` value for a specified key path or nil if the key was not found.
   public final func array<T: Any>(forKeyPath keyPath: Key<[T]>) -> [T]? {
-    return (propertyList.value(forKeyPath: keyPath.value) as? Array<T>)
+    return (propertyList.value(forKeyPath: keyPath.value) as? [T])
   }
 
   // MARK: - Dictionary
@@ -112,10 +112,7 @@ extension PropertyListReadable {
   ///
   /// Returns an `Dictionary` [String:V] for a specified key path or nil if the key was not found.
   public final func dictionary<V: Any>(forKeyPath keyPath: Key<[String: V]>) ->  [String:V]? {
-    return propertyList.value(forKeyPath: keyPath.value) as? Dictionary<String,V>
+    return propertyList.value(forKeyPath: keyPath.value) as? [String: V]
   }
-  
+
 }
-
-
-

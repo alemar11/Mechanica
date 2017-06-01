@@ -31,7 +31,7 @@ import Foundation
 #endif
 
 extension NSAttributedString {
-  
+
   /// **Mechanica**
   ///
   /// Initializes and returns a `new` NSAttributedString object from the `html` contained in the given string.
@@ -45,5 +45,5 @@ extension NSAttributedString {
     guard let data = html.data(using: String.Encoding.utf8, allowLossyConversion: allowLossyConversion) else { return nil }
     try? self.init(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
   }
-  
+
 }

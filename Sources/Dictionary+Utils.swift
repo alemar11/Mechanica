@@ -81,5 +81,5 @@ public extension Dictionary where Key: ExpressibleByStringLiteral {
       }
     }
   }
-  
+
 }

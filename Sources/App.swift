@@ -26,7 +26,6 @@ import Foundation
 
 public struct App {
 
-
   /// **Mechanica**
   ///
   /// **macOS**: Returns `true` if the current app is sandboxed. **iOS**, **tvOS**, **watchOS** returns always `true`.
@@ -56,5 +55,5 @@ public struct App {
     }
     return nil
   }
-  
+
 }

@@ -40,27 +40,27 @@ public protocol DelayedDeletable: class {
   ///
   /// Checks whether or not the managed object’s `markedForDeletion` property has unsaved changes.
   var hasChangedForDelayedDeletion: Bool { get }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `DelayedDeletable`.
   ///
   /// This object can be deleted starting from this particular date.
   var markedForDeletionAsOf: Date? { get set }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `DelayedDeletable`.
   ///
   /// Marks an object to be deleted at a later point in time.
   func markForLocalDeletion()
-  
+
 }
 
 // MARK: - DelayedDeletable Extension
 
 extension DelayedDeletable {
-  
+
   /// **Mechanica**
   ///
   /// Protocol `DelayedDeletable`.
@@ -69,11 +69,11 @@ extension DelayedDeletable {
   public static var notMarkedForLocalDeletionPredicate: NSPredicate {
     return NSPredicate(format: "%K == NULL", markedForDeletionKey)
   }
-  
+
 }
 
 extension DelayedDeletable where Self: NSManagedObject {
-  
+
   public final var hasChangedForDelayedDeletion: Bool {
     return changedValue(forKey: markedForDeletionKey) as? Date != nil
   }
@@ -86,15 +86,14 @@ extension DelayedDeletable where Self: NSManagedObject {
     guard isFault || markedForDeletionAsOf == nil else { return }
     markedForDeletionAsOf = Date()
   }
-  
-  }
 
+}
 
 // MARK: - Batch Deletion
 
 extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletable {
-  
-  //TODO: work in progress
+
+  // TODO: work in progress
   @available(iOS 10, *)
   @available(tvOS 10, *)
   @available(watchOS 3, *)
@@ -106,9 +105,13 @@ extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletab
     request.predicate = NSPredicate(format: "%K < %@", markedForDeletionKey, [cutOff])
     let batchRequest = NSBatchDeleteRequest(fetchRequest: request)
     batchRequest.resultType = .resultTypeStatusOnly
-    try! context.execute(batchRequest)
+    do {
+      try context.execute(batchRequest)
+    } catch {
+      fatalError(error.localizedDescription)
+    }
   }
-  
+
 }
 
 // MARK: - Remote Deletion
@@ -119,34 +122,34 @@ fileprivate let markedForRemoteDeletionKey = "isMarkedForRemoteDeletion"
 ///
 /// Objects adopting the `RemoteDeletable` support remote deletion.
 public protocol RemoteDeletable: class {
-  
+
   /// **Mechanica**
   ///
   /// Protocol `RemoteDeletable`.
   ///
   /// Checks whether or not the managed object’s `markedForRemoteDeletion` property has unsaved changes.
   var hasChangedForRemoteDeletion: Bool { get }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `RemoteDeletable`.
   ///
   /// Returns `true` if the object is marked to be deleted remotely.
   var isMarkedForRemoteDeletion: Bool { get set }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `RemoteDeletable`.
   ///
   /// Marks an object to be deleted remotely, on the backend (i.e. Cloud Kit).
   func markForRemoteDeletion()
-  
+
 }
 
 // MARK: - RemoteDeletable Extension
 
 extension RemoteDeletable {
-  
+
   /// **Mechanica**
   ///
   /// Protocol `RemoteDeletable`.
@@ -155,7 +158,7 @@ extension RemoteDeletable {
   public static var notMarkedForRemoteDeletionPredicate: NSPredicate {
     return NSPredicate(format: "%K == false", markedForRemoteDeletionKey)
   }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `RemoteDeletable`.
@@ -164,7 +167,7 @@ extension RemoteDeletable {
   public static var markedForRemoteDeletionPredicate: NSPredicate {
     return NSCompoundPredicate(notPredicateWithSubpredicate: notMarkedForRemoteDeletionPredicate)
   }
-  
+
   /// **Mechanica**
   ///
   /// Protocol `RemoteDeletable`.
@@ -173,24 +176,21 @@ extension RemoteDeletable {
   public final func markForRemoteDeletion() {
     isMarkedForRemoteDeletion = true
   }
-  
+
 }
 
-
 extension RemoteDeletable where Self: NSManagedObject {
-  
+
   public final var hasChangedForRemoteDeletion: Bool {
     return changedValue(forKey: markedForRemoteDeletionKey) as? Bool == true
   }
-  
+
 }
 
-
 extension RemoteDeletable where Self: DelayedDeletable {
-  
+
   public static var notMarkedForDeletionPredicate: NSPredicate {
     return NSCompoundPredicate(andPredicateWithSubpredicates: [notMarkedForLocalDeletionPredicate, notMarkedForRemoteDeletionPredicate])
   }
-  
-}
 
+}

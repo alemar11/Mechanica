@@ -46,7 +46,6 @@ public extension UserDefaults {
     }
   }
 
-
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -54,7 +53,6 @@ public extension UserDefaults {
   public final func optionalInteger(forKey defaultName: String) -> Int? {
     return (object(forKey: defaultName) as? NSNumber)?.intValue
   }
-
 
   /// **Mechanica**
   ///
@@ -64,7 +62,6 @@ public extension UserDefaults {
     return (object(forKey: defaultName) as? NSNumber)?.floatValue
   }
 
-
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -72,7 +69,6 @@ public extension UserDefaults {
   public final func optionalDouble(forKey defaultName: String) -> Double? {
     return (object(forKey: defaultName) as? NSNumber)?.doubleValue
   }
-
 
   /// **Mechanica**
   ///

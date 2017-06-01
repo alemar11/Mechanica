@@ -28,9 +28,9 @@
 import Foundation
 
 extension FileManager {
-  
+
   // MARK: - URL
-  
+
   /// **Mechanica**
   ///
   /// Returns the location of the document directory (*Documents/*).
@@ -38,9 +38,11 @@ extension FileManager {
   ///
   /// The contents of *Documents* directory are **backed up by iTunes and iCloud**.
   public var documentDirectory: URL {
+    // swiftlint:disable force_try
     return try! url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    // swiftlint:enable force_try
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the location of the library directory (*Library/*).
@@ -50,9 +52,11 @@ extension FileManager {
   ///
   /// The contents of the *Library* directory are **backed up by iTunes and iCloud** (with the exception of the *Caches subdirectory*).
   public var libraryDirectory: URL {
+    // swiftlint:disable force_try
     return try! url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    // swiftlint:enable force_try
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the location of discardable cache files (*Library/Caches/*).
@@ -66,9 +70,11 @@ extension FileManager {
   ///
   /// - Important: Sandboxed *macOS* apps have all their *Caches* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
   public var cachesDirectory: URL {
+    // swiftlint:disable force_try
     return try! url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    // swiftlint:enable force_try
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the location of application support files (*Library/Application Support/*).
@@ -80,48 +86,52 @@ extension FileManager {
   ///
   /// - Important: Sandboxed *macOS* apps have all their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
   public var applicationSupportDirectory: URL {
+    // swiftlint:disable force_try
     return try! url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    // swiftlint:enable force_try
   }
-  
-//  #if os(macOS)
-//  
-//  /// **Mechanica**
-//  ///
-//  /// On non-sanboxed *macOS* apps returns the location of a subdirectory inside Application Support folder (*Library/Application Support/*) whose name is that of your app's bundle identifier or of your app's executable file name. (i.e. *Library/Application Support/org.tinrobots.app01*).
-//  ///
-//  /// On sandboxed *macOS* apps returns their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
-//  public var applicationSupportSubDirectory: URL {
-//    var url = applicationSupportDirectory
-//    guard (!ProcessInfo.isSandboxed) else { return url }
-//    url.appendPathComponent(App.identifier ?? "", isDirectory: true)
-//    if (!fileExists(atPath: url.path)) {
-//      try! createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
-//    }
-//    return url
-//  }
-//  
-//  #endif
-  
+
+  //  #if os(macOS)
+  //
+  //  /// **Mechanica**
+  //  ///
+  //  /// On non-sanboxed *macOS* apps returns the location of a subdirectory inside Application Support folder (*Library/Application Support/*) whose name is that of your app's bundle identifier or of your app's executable file name. (i.e. *Library/Application Support/org.tinrobots.app01*).
+  //  ///
+  //  /// On sandboxed *macOS* apps returns their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
+  //  public var applicationSupportSubDirectory: URL {
+  //    var url = applicationSupportDirectory
+  //    guard (!ProcessInfo.isSandboxed) else { return url }
+  //    url.appendPathComponent(App.identifier ?? "", isDirectory: true)
+  //    if (!fileExists(atPath: url.path)) {
+  //      try! createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+  //    }
+  //    return url
+  //  }
+  //
+  //  #endif
+
   /// **Mechanica**
   ///
   /// Creates and returns always a `new` directory in Library/Caches for discardable cache files.
   public var makeNewCachesSubDirectory: URL {
     let url = cachesDirectory.appendingPathComponent(UUID().uuidString)
-    if (!fileExists(atPath: url.path)){
+    if (!fileExists(atPath: url.path)) {
+      // swiftlint:disable force_try
       try! createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+      // swiftlint:enable force_try
     }
     return url
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the container directory associated with the specified security application group Identifier.
   public final func containerDirectory(for groupIdentifier: String) -> URL? {
     return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
   }
-  
+
   // MARK: - Delete
-  
+
   /// **Mechanica**
   ///
   /// Clears all contents in a directory `path`; throws an error in cases of failure.
@@ -131,14 +141,13 @@ extension FileManager {
     var isDirectory: ObjCBool = false
     guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
     guard isDirectory.boolValue == true else { return }
-    
     let contents = try contentsOfDirectory(atPath: path)
     for file in contents {
       let path = URL(fileURLWithPath: path).appendingPathComponent(file).path
       try removeItem(atPath: path)
     }
   }
-    
+
   /// **Mechanica**
   ///
   /// Destroys a file or a directory at a given `path`; throws an error in cases of failure.
@@ -148,6 +157,5 @@ extension FileManager {
     guard fileExists(atPath: path) == true else { return }
     try removeItem(atPath: path)
   }
-  
-}
 
+}

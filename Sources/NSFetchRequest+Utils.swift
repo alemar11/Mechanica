@@ -25,7 +25,7 @@
 import CoreData
 
 extension NSFetchRequest {
-    
+
     /// **Mechanica**
     ///
     /// Creates a NSFetchRequest.
@@ -41,7 +41,6 @@ extension NSFetchRequest {
         self.predicate = predicate
         self.fetchBatchSize = batchSize
     }
-    
     //TODO: work in progress
     func addingAndPredicate(predicate: NSPredicate) {
         guard let currentPredicate = self.predicate else {
@@ -50,7 +49,6 @@ extension NSFetchRequest {
         }
         self.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [currentPredicate, predicate])
     }
-    
     //TODO: work in progress
     func addingOrPredicate(predicate: NSPredicate) {
         guard let currentPredicate = self.predicate else {
@@ -59,7 +57,6 @@ extension NSFetchRequest {
         }
         self.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [currentPredicate, predicate])
     }
-    
     //TODO: work in progress
     func appendingSortDescriptors(descriptors: [NSSortDescriptor]) {
         if self.sortDescriptors != nil {
@@ -68,8 +65,5 @@ extension NSFetchRequest {
             self.sortDescriptors = descriptors
         }
     }
-    
+
 }
-
-
-

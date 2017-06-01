@@ -113,7 +113,7 @@ extension String {
     let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
     return self.replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a list containing the first character of each word contained in `self`.
@@ -526,5 +526,5 @@ extension String {
       String($0).isLowercased ? String($0).uppercased() : String($0).lowercased()
     }).joined()
   }
-  
+
 }

@@ -60,7 +60,7 @@ extension NSObjectProtocol {
   ///
   /// Exchanges the implementations of each couple of Selectors.
   /// - SeeAlso: `swizzle(method:with:)`
-  public static func swizzle(_ selectors: [SwizzlingSelectors]){
+  public static func swizzle(_ selectors: [SwizzlingSelectors]) {
     selectors.forEach { swizzle(method: $0.0, with: $0.1) }
   }
 
