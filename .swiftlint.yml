@@ -1,0 +1,6 @@
+excluded:
+  - Tests
+line_length: 160
+file_length: 1000
+
+reporter: "xcode"
