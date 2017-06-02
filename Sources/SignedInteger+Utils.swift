@@ -35,13 +35,13 @@ extension SignedInteger {
   public final func hexadecimalString(uppercase: Bool = true) -> String {
     return String(self, radix: 16, uppercase: false)
   }
-  
+
 }
 
-// MARK:- BinaryConvertible
+// MARK: - BinaryConvertible
 
 extension SignedInteger where Self: BinaryConvertible {
-  
+
   /// **Mechanica**
   ///
   /// Creates a string representing the given value in the binary base.
@@ -67,7 +67,7 @@ extension SignedInteger where Self: BinaryConvertible {
     return binaryString
 
   }
-  
+
 }
 
 extension Int8:  BinaryConvertible {}

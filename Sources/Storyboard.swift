@@ -50,7 +50,7 @@ public protocol StoryboardEnumerable {
 }
 
 extension StoryboardEnumerable where StoryboardName.RawValue == String {
-  
+
   /**
    **Mechanica**
    
@@ -72,11 +72,11 @@ extension StoryboardEnumerable where StoryboardName.RawValue == String {
   public static func storyboard(forKey key: StoryboardName, bundle: Bundle? = nil) -> Storyboard {
     return Storyboard(storyboard: key, bundle: bundle)
   }
-  
+
 }
 
 extension Storyboard {
-  
+
   /**
    **Mechanica**
    
@@ -103,30 +103,29 @@ extension Storyboard {
 // MARK: - Storyboard Main (default)
 
 extension Storyboard {
-  
+
   private enum MainStoryboard {
     static let uiMainStoryboardFileKey = "UIMainStoryboardFile"
     static let nsMainStoryboardFileKey = "NSMainStoryboardFile"
   }
-  
+
   /// Returns the main storyboard defined in an Xcode project under *General* > *Deployment info* > *main interface*.
   public static var mainStoryboard: Storyboard? {
-    
+
     #if os(iOS) || os(tvOS)
       let mainStoryboardFileName = MainStoryboard.uiMainStoryboardFileKey
     #elseif os(macOS)
       let mainStoryboardFileName = MainStoryboard.nsMainStoryboardFileKey
     #endif
-    
+
     guard let mainStoryboardName = Bundle.main.infoDictionary?[mainStoryboardFileName] as? String else {
       //assertionFailure("\(mainStoryboardFileName) not found in main Bundle.")
       return nil
     }
     return Storyboard(name: mainStoryboardName, bundle: Bundle.main)
   }
-  
-}
 
+}
 
 // MARK: - StoryboardIdentifiable
 
@@ -138,31 +137,27 @@ public protocol StoryboardIdentifiable: class {
 }
 
 extension StoryboardIdentifiable {
-  
+
   /// **Mechanica**
   ///
   /// By default the *storyboardIdentifier* (Storyboard ID) is the name of the class.
   public static var storyboardIdentifier: String {
     return String(describing: self)
   }
-  
+
 }
 
 #if os(iOS) || os(tvOS)
-  
   extension UIViewController : StoryboardIdentifiable {}
-  
 #elseif os(macOS)
-  
   extension NSViewController : StoryboardIdentifiable {}
   extension NSWindowController : StoryboardIdentifiable {}
-  
 #endif
 
 extension Storyboard {
-  
+
   #if os(iOS) || os(tvOS)
-  
+
   /**
    **Mechanica**
    
@@ -179,10 +174,9 @@ extension Storyboard {
     }
     return viewController
   }
-  
-  
+
   #elseif os(macOS)
-  
+
   /**
    **Mechanica**
    
@@ -199,7 +193,7 @@ extension Storyboard {
     }
     return viewController
   }
-  
+
   /**
    **Mechanica**
    
@@ -216,9 +210,9 @@ extension Storyboard {
     }
     return windowController
   }
-  
+
   #endif
-  
+
 }
 
 #endif

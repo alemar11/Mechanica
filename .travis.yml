@@ -14,6 +14,7 @@ env:
   - TVOS_SDK=appletvsimulator10.2
   - WATCHOS_SDK=watchsimulator3.2
   #- EXAMPLE_SCHEME="Mechanica Example"
+  
   matrix:
     - DESTINATION="OS=3.2,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"  CODECOV_FLAG="watchos"
 
@@ -25,8 +26,12 @@ env:
 
 before_install:
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
+  - brew install swiftlint
   # fix for watchOS until https://github.com/travis-ci/travis-ci/issues/7580 is fixed
   - xcrun simctl delete 38C891AB-EC79-43E4-9311-6FDEB12DCF11 || true
+
+before_script:
+  - swiftlint --reporter "emoji"
 
 script:
   - set -o pipefail

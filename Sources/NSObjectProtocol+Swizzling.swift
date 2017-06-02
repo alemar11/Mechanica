@@ -43,7 +43,9 @@ extension NSObjectProtocol {
   ///   - originalSelector: `Selector` for the original method
   ///   - swizzledSelector: `Selector` for the swizzled methos
   ///
-  /// - Note: In Objective-C you'd perform the swizzling in load() , but this method is not permitted in Swift. But load is a Objective-C only method and cannot be overridden in Swift, trying to do it anyway will result in a compile time error. The next best place to perform the swizzling is in initialize, a method called right before the first method of your class is invoked.
+  /// - Note: In Objective-C you'd perform the swizzling in load() , but this method is not permitted in Swift. 
+  /// But load is a Objective-C only method and cannot be overridden in Swift, trying to do it anyway will result in a compile time error. 
+  /// The next best place to perform the swizzling is in initialize, a method called right before the first method of your class is invoked.
   /// - SeeAlso: [Effective method swizzling with Swift](https://www.uraimo.com/2015/10/23/effective-method-swizzling-with-swift/)
   public static func swizzle(method originalSelector: Selector, with swizzledSelector: Selector) {
     let originalMethod  = class_getInstanceMethod(self, originalSelector)
@@ -60,7 +62,7 @@ extension NSObjectProtocol {
   ///
   /// Exchanges the implementations of each couple of Selectors.
   /// - SeeAlso: `swizzle(method:with:)`
-  public static func swizzle(_ selectors: [SwizzlingSelectors]){
+  public static func swizzle(_ selectors: [SwizzlingSelectors]) {
     selectors.forEach { swizzle(method: $0.0, with: $0.1) }
   }
 

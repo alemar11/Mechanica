@@ -25,7 +25,7 @@
 import Foundation
 
 public extension Dictionary {
-  
+
   /// **Mechanica**
   ///
   /// Returns true if the `key` exists in the dictionary.
@@ -34,4 +34,3 @@ public extension Dictionary {
   }
 
 }
-

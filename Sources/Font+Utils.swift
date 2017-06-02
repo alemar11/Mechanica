@@ -37,5 +37,3 @@ import Foundation
   /// Alias for NSFont.
   public typealias Font = AppKit.NSFont
 #endif
-
-

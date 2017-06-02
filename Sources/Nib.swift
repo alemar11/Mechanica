@@ -88,7 +88,6 @@ public protocol NibLoadable {}
   extension NSView : NibLoadable {}
 #endif
 
-
 extension Nib {
 
   /// **Mechanica**
@@ -102,14 +101,18 @@ extension Nib {
       guard (self.instantiate(withOwner: owner, topLevelObjects: &array)) else {
         fatalError("\(String(describing: self)) could not be instantiated.")
       }
-      let contents = (array as! Array<Any>).filter { $0 is T }
+      // swiftlint:disable force_cast
+      let contents = (array as! [Any]).filter { $0 is T }
+      // swiftlint:enable force_cast
     #endif
 
     switch (contents.count) {
     case 0:
       fatalError("\(String(describing: T.self)) could not be found in \(String(describing: self)).")
     case 1:
+      // swiftlint:disable force_cast
       return contents.first as! T
+      // swiftlint:enable force_cast
     default:
       fatalError("More than one \(String(describing: T.self)) has been found in \(String(describing: self)).")
     }
@@ -144,4 +147,3 @@ public extension NibIdentifiable {
     #endif
   }
 }
-

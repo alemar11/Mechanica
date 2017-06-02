@@ -64,12 +64,13 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Sets the value of the specified default key.
-  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
+  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary.
+  /// For NSArray and NSDictionary objects, their contents must be property list objects.
   public final func set<T>(object: T?, forKey key: Key<T>) {
     set(object, forKey: key.value)
   }
 
-  //  MARK: - String
+  // MARK: - String
 
   /// **Mechanica**
   ///
@@ -143,7 +144,8 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Stores an `Array` (or removes the value if nil is passed as the value) for the provided key.
-  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
+  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary.
+  /// For NSArray and NSDictionary objects, their contents must be property list objects.
   public final func set<T>(array: [T]?, forKey key: Key<[T]>) {
     set(object: array, forKey: key)
   }
@@ -171,11 +173,11 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Stores a `Dictionary` [String:Any] (or removes the value if nil is passed as the value) for the provided key.
-  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
-  public final func set<V: Any>(dictionary: [String: V]? , forKey key: Key<[String: V]>) {
+  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. 
+  /// For NSArray and NSDictionary objects, their contents must be property list objects.
+  public final func set<V: Any>(dictionary: [String: V]?, forKey key: Key<[String: V]>) {
     set(object: dictionary, forKey: key)
   }
-
 
   // MARK: - Date
 
@@ -188,7 +190,6 @@ extension UserDefaults {
     get { return object(forKey: key.value) as? Date }
     set { set(object: newValue, forKey: key) }
   }
-
 
   /// **Mechanica**
   ///
@@ -230,7 +231,6 @@ extension UserDefaults {
     set(object: data, forKey: key)
   }
 
-
   // MARK: - Int
 
   /// **Mechanica**
@@ -257,7 +257,6 @@ extension UserDefaults {
   public final func set(integer: Int?, forKey key: Key<Int>) {
     set(object: integer, forKey: key)
   }
-
 
   // MARK: - Double
 
@@ -340,7 +339,6 @@ extension UserDefaults {
     set(object: bool, forKey: key)
   }
 
-
   // MARK: - URL
 
   /// **Mechanica**
@@ -389,7 +387,6 @@ extension UserDefaults {
 
 }
 
-
 //extension UserDefaults {
 //
 //  public final subscript(key: Key<[String]>) -> [String]? {
@@ -424,7 +421,6 @@ extension UserDefaults {
 //
 //}
 
-
 // MARK: RawRepresentable
 
 //extension UserDefaults {
@@ -454,10 +450,3 @@ extension UserDefaults {
 //  }
 //  
 //}
-
-
-
-
-
-
-

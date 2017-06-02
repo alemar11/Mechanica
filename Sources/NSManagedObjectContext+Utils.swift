@@ -25,7 +25,7 @@
 import CoreData
 
 extension NSManagedObjectContext {
-  
+
   /// **Mechanica**
   ///
   /// The persistent stores associated with the receiver.
@@ -34,7 +34,7 @@ extension NSManagedObjectContext {
     let stores = psc.persistentStores
     return stores
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a dictionary that contains the metadata currently stored or to-be-stored in a given persistent store.
@@ -42,7 +42,7 @@ extension NSManagedObjectContext {
     guard let psc = persistentStoreCoordinator else { fatalError("Must have Persistent Store Coordinator.") }
     return psc.metadata(for: store)
   }
-  
+
   /// **Mechanica**
   ///
   /// Adds an `object` to the store's metadata and saves it asynchronously.
@@ -57,10 +57,10 @@ extension NSManagedObjectContext {
       var md = psc.metadata(for: store)
       md[key] = object
       psc.setMetadata(md, for: store)
-      
+
     })
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the entity with the specified name from the managed object model associated with the specified managed object context’s persistent store coordinator.
@@ -70,7 +70,7 @@ extension NSManagedObjectContext {
     //guard let entity = NSEntityDescription.entity(forEntityName: name, in: self) else { fatalError("Entity \(name) not found") }
     return entity
   }
-  
+
   /// **Mechanica**
   ///
   /// - Returns: a `new` background `NSManagedObjectContext`.
@@ -85,31 +85,31 @@ extension NSManagedObjectContext {
     }
     return context
   }
-  
+
 }
 
 // MARK: - Save
 
 extension NSManagedObjectContext {
-  
+
   /// **Mechanica**
   ///
   /// Asynchronously performs changes and then saves them or **rollbacks** if any error occurs.
   /// - Parameters:
   ///   - changes: Changes to be applied in the current context before the saving operation.
-  public final func performSave(after changes: @escaping () -> ()) {
+  public final func performSave(after changes: @escaping () -> Void) {
     perform {
       [unowned unownoedSelf = self] in
       changes()
       try? unownoedSelf.saveOrRollBack()
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Synchronously performs changes and then saves them or **rollbacks** if any error occurs.
   /// - Throws: throws an error in cases of a saving operation failure.
-  public final func performSaveAndWait(after changes: @escaping () -> ()) throws {
+  public final func performSaveAndWait(after changes: @escaping () -> Void) throws {
     var saveError: Error? = nil
     performAndWait {
       [unowned unownoedSelf = self] in
@@ -122,8 +122,7 @@ extension NSManagedObjectContext {
     }
     if let error = saveError { throw error }
   }
-  
-  
+
   /// Saves the `NSManagedObjectContext` if changes are present or **rollbacks** if any error occurs.
   private final func saveOrRollBack() throws {
     guard hasChanges else { return }
@@ -135,7 +134,5 @@ extension NSManagedObjectContext {
       throw error
     }
   }
-  
+
 }
-
-

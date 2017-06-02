@@ -33,7 +33,7 @@ extension Optional {
     switch self {
     case .none:
       return false
-    case .some(_):
+    case .some:
       return true
     }
   }

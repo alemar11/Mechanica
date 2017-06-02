@@ -1,0 +1,14 @@
+excluded:
+  - Carthage
+  - Pods
+  - Tests
+
+disabled_rules: # rule identifiers to exclude from running
+  - control_statement
+  - large_tuple
+  - todo
+
+line_length: 200
+file_length: 1000
+
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)

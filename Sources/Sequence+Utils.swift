@@ -55,7 +55,7 @@ extension Sequence {
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   public final func hasAll(where predicate: (Iterator.Element) -> Bool) -> Bool {
-    return findFirst{ !predicate($0) } == nil
+    return findFirst { !predicate($0) } == nil
   }
 
   /// **Mechanica**
@@ -80,7 +80,7 @@ extension Sequence {
   public final func count(_ shouldCount: (Iterator.Element) -> Bool) -> Int {
     var count = 0
     for element in self {
-      if (shouldCount(element)){
+      if (shouldCount(element)) {
         count += 1
       }
     }
@@ -99,6 +99,5 @@ extension Sequence where Iterator.Element: AnyObject {
   public final func containsObjectIdentical(to object: AnyObject) -> Bool {
     return contains { $0 === object }
   }
-  
-}
 
+}
