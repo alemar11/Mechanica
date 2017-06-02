@@ -42,6 +42,7 @@ extension Nib: NibEnumerable {
   class iOS_NibDemo_View_2: UIView {}
   /// UILongPressGestureRecognizer is now nib loadable.
   extension UILongPressGestureRecognizer: NibLoadable {}
+   class iOS_NibViewIdentifiable: UIView, NibIdentifiable {}
 
 #elseif os(tvOS)
 
@@ -153,6 +154,13 @@ class NibTests: XCTestCase {
       
     #endif
     
+  }
+  
+  func test_nibIdentifiable() {
+    #if os(iOS)
+      let view = iOS_NibViewIdentifiable.instantiateFromNib(bundle: unitTestBundle)
+      XCTAssertNotNil(view)
+    #endif
   }
   
 }

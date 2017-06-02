@@ -99,6 +99,7 @@
 		237274C01E7C41790017B127 /* Integer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237274BE1E7C41790017B127 /* Integer+Utils.swift */; };
 		237274C11E7C41790017B127 /* Integer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237274BE1E7C41790017B127 /* Integer+Utils.swift */; };
 		237274C21E7C41790017B127 /* Integer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237274BE1E7C41790017B127 /* Integer+Utils.swift */; };
+		237CED461EE209360074E141 /* iOS_NibViewIdentifiable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237CED451EE209360074E141 /* iOS_NibViewIdentifiable.xib */; };
 		237F175F1E90000800726553 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17361E90000800726553 /* AppTests.swift */; };
 		237F17601E90000900726553 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17361E90000800726553 /* AppTests.swift */; };
 		237F17611E90000900726553 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17361E90000800726553 /* AppTests.swift */; };
@@ -430,6 +431,7 @@
 		235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BinaryFloatingPoint+Utils.swift"; sourceTree = "<group>"; };
 		235DCB8F1E89B40F006AFEBE /* UnsignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UnsignedInteger+Utils.swift"; sourceTree = "<group>"; };
 		237274BE1E7C41790017B127 /* Integer+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Integer+Utils.swift"; sourceTree = "<group>"; };
+		237CED451EE209360074E141 /* iOS_NibViewIdentifiable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iOS_NibViewIdentifiable.xib; sourceTree = "<group>"; };
 		237F17361E90000800726553 /* AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTests.swift; sourceTree = "<group>"; };
 		237F17371E90000800726553 /* ValueAssociableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueAssociableTests.swift; sourceTree = "<group>"; };
 		237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFloatingPointUtilsTests.swift; sourceTree = "<group>"; };
@@ -760,6 +762,7 @@
 				237F17491E90000800726553 /* macOS_NibDemo.xib */,
 				237F174B1E90000800726553 /* NibTests.swift */,
 				237F175B1E90000800726553 /* tvOS_NibDemo.xib */,
+				237CED451EE209360074E141 /* iOS_NibViewIdentifiable.xib */,
 			);
 			name = Nib;
 			sourceTree = "<group>";
@@ -1176,6 +1179,7 @@
 				237F17921E90000900726553 /* iOS_StoryboardDemo.storyboard in Resources */,
 				237F178F1E90000900726553 /* iOS_NibDemo.xib in Resources */,
 				237F17771E90000900726553 /* PropertyListDemo.plist in Resources */,
+				237CED461EE209360074E141 /* iOS_NibViewIdentifiable.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

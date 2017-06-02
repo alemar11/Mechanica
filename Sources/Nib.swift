@@ -49,9 +49,9 @@ extension NibEnumerable where NibName.RawValue == String {
 
   /**
    **Mechanica**
-
+   
    Creates and returns a Nib object for a specified nib enum case.
-
+   
    i.e.
    ```
    extension Nib: NibEnumerable {
@@ -60,7 +60,7 @@ extension NibEnumerable where NibName.RawValue == String {
    case second  = "second"
    }
    }
-
+   
    let firstNib = Nib.nib(forKey: .first)
    ```
    - Note: If the bundle parameter is nil, the main bundle is used.
@@ -92,7 +92,7 @@ extension Nib {
 
   /// **Mechanica**
   ///
-  /// Instantiates and returns an obejct conforming to `NibLoadable` from a Nib.
+  /// Instantiates and returns an object conforming to `NibLoadable` from a Nib.
   public final func instantiate<T>(withOwner owner: Any? = nil, options: [AnyHashable : Any]? = nil) -> T where T: NibLoadable {
     #if os(iOS) || os(tvOS)
       let contents = self.instantiate(withOwner: owner, options: options).filter { $0 is T }
@@ -112,7 +112,7 @@ extension Nib {
     case 1:
       // swiftlint:disable force_cast
       return contents.first as! T
-      // swiftlint:enable force_cast
+    // swiftlint:enable force_cast
     default:
       fatalError("More than one \(String(describing: T.self)) has been found in \(String(describing: self)).")
     }
@@ -124,26 +124,44 @@ extension Nib {
 
 /// **Mechanica**
 ///
-/// Objects adopting the `NibIdentifiable` protocol are nib based and are the XIB root object.
+/// Objects adopting the `NibIdentifiable` protocol are nib based and are the only XIB root object.
 public protocol NibIdentifiable: class {
   static var nibIdentifier: String { get }
 }
 
-// MARK: Default implementation
+// MARK: - Default implementation
 
 public extension NibIdentifiable {
 
+  /// **Mechanica**
+  ///
+  /// The name of the nib file.
+  ///
   /// By default the *nibIdentifier* is the name of the class.
   static var nibIdentifier: String {
     return String(describing: self)
   }
 
+  /// **Mechanica**
+  ///
   /// By default, uses the nib which is named as the name of the class and it's located in the bundle of that class.
-  static var nib: Nib {
+  /// TODO description
+  static func nib(bundle: Bundle? = nil) -> Nib {
     #if os(iOS) || os(tvOS)
-    return Nib(nibName: nibIdentifier, bundle: Bundle(for: self))
+      return Nib(nibName: nibIdentifier, bundle: bundle)
     #elseif os(macOS)
-    return Nib(nibNamed: nibIdentifier, bundle: Bundle(for: self))!
+      return Nib(nibNamed: nibIdentifier, bundle: bundle)!
     #endif
   }
+
+  /// **Mechanica**
+  ///
+  /// TODO description
+  static func instantiateFromNib(bundle: Bundle? = nil) -> Self {
+    guard let content = nib(bundle: bundle).instantiate(withOwner: self, options: nil).first as? Self else {
+      fatalError("\(String(describing: self)) could not be instantiated. Please verify if \(nibIdentifier).xib exists and contains only a top obcject whose class is \(String(describing: self)).")
+    }
+    return content
+  }
+
 }
