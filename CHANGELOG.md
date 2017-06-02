@@ -16,3 +16,11 @@
 - Added `Key` enum.
 - UserDefaults extensions.
 - Added a new ` count(_ shouldCount: (Iterator.Element) -> Bool) -> Int` function in `Sequence`.
+
+### 0.2.0
+
+- added more extensions
+
+### 0.1.0
+
+- first release
