@@ -53,5 +53,5 @@ extension Integer {
   public final var isNegative: Bool {
     return (self < 0)
   }
-  
+
 }

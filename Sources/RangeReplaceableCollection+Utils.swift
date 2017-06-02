@@ -25,7 +25,7 @@
 import Foundation
 
 extension RangeReplaceableCollection where Self.Index == Int {
-  
+
   /// **Mechanica**
   ///
   /// Removes the first element that matches the given `predicate`.
@@ -36,7 +36,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
     guard let idx = index(where: predicate) else { return nil }
     return remove(at: idx)
   }
-  
+
   /// **Mechanica**
   ///
   /// Removes the first element that matches the given `predicate` and returns a `new` collection.
@@ -47,7 +47,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
     items.removeFirst(where: predicate)
     return items
   }
-  
+
   /// **Mechanica**
   ///
   /// Removes the last element that matches the given `predicate`.
@@ -63,7 +63,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
     }
     return nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Removes the last element that matches the given `predicate` and returns a `new` collection.
@@ -74,7 +74,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
     items.removeLast(where: predicate)
     return items
   }
-  
+
   /// **Mechanica**
   ///
   /// Removes all the elements that matches the given `predicate` and returns all the removed element (if any).
@@ -91,7 +91,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
     }
     return removedElements
   }
-  
+
   /// **Mechanica**
   ///
   /// Removes all the elements that matches the given `predicate` and returns a `new` array.
@@ -102,11 +102,11 @@ extension RangeReplaceableCollection where Self.Index == Int {
     items.removeAll(where: predicate)
     return items
   }
-  
+
 }
 
 extension RangeReplaceableCollection where Self.Index == Int, Iterator.Element: Equatable {
-  
+
   /// **Mechanica**
   /// Removes the first specified element from the collection (if exists).
   /// - Returns: The element removed (if any).
@@ -116,7 +116,7 @@ extension RangeReplaceableCollection where Self.Index == Int, Iterator.Element: 
     guard let idx = index(of: element) else { return nil }
     return remove(at: idx)
   }
-  
+
   /// **Mechanica**
   ///
   /// Removes the last specified element from the array (if exists).
@@ -129,6 +129,5 @@ extension RangeReplaceableCollection where Self.Index == Int, Iterator.Element: 
     }
     return nil
   }
-  
-}
 
+}

@@ -50,7 +50,8 @@ import UIKit
 
  You *must* call `register()` for callbacks to be triggered.
 
- Calling `unregister()` will stop callbacks from triggering (UIKit's notifications won't be observed anymore), but callbacks themselves won't be dismissed; you can resume event callbacks by calling `register()` again.
+ Calling `unregister()` will stop callbacks from triggering (UIKit's notifications won't be observed anymore), but callbacks themselves won't be dismissed; 
+ you can resume event callbacks by calling `register()` again.
 
  To remove all event callbacks, call `clear()`.
  */
@@ -59,7 +60,7 @@ public final class KeyboardObserver {
   /// **Mechanica**
   ///
   /// A `KeyboardObserver` callback.
-  public typealias Callback = (Options) -> ()
+  public typealias Callback = (Options) -> Void
 
   // MARK: - Keyboard Options
 
@@ -199,7 +200,7 @@ public final class KeyboardObserver {
   /// **Mechanica**
   ///
   /// Initializes a new instance of `KeyboardObserver`.
-  public init(){}
+  public init() {}
 
   /// **Mechanica**
   ///

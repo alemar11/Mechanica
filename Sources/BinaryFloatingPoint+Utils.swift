@@ -24,10 +24,10 @@
 
 import Foundation
 
-// MARK:- BinaryConvertible
+// MARK: - BinaryConvertible
 
 extension BinaryFloatingPoint where Self: BinaryConvertible {
-  
+
   /// **Mechanica**
   ///
   /// Creates a string representing the given value in the binary base.

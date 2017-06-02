@@ -62,7 +62,9 @@ extension FetchConfigurable where Self: NSManagedObject {
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
   public static var sortedFetchRequest: NSFetchRequest<Self> {
+    // swiftlint:disable force_cast
     let request = Self.fetchRequest() as! NSFetchRequest<Self>
+    // swiftlint:enable force_cast
     request.sortDescriptors = defaultSortDescriptors
     request.predicate       = defaultPredicate
     return request

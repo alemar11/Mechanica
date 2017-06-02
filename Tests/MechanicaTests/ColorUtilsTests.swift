@@ -223,10 +223,12 @@ class ColorUtilsTests: XCTestCase {
       /// RGBA_FROM_P3{152, 101, 51, 255}
       let (r_p3, g_p3, b_p3, a_p3) = brownP3.rgba8Bit
       let (r, g, b, a) = brownRGBA.rgba8Bit
-      
-      XCTAssertTrue(r-1...r+1 ~= r_p3)
-      XCTAssertTrue(g-1...g+1 ~= g_p3)
-      XCTAssertTrue(b-1...b+1 ~= b_p3)
+      XCTAssertEqualWithAccuracy(Double(r_p3), Double(r), accuracy: 1.0)
+      XCTAssertEqualWithAccuracy(Double(g_p3), Double(g), accuracy: 1.0)
+      XCTAssertEqualWithAccuracy(Double(b_p3), Double(b), accuracy: 1.0)
+      //XCTAssertTrue(r-1...r+1 ~= r_p3)
+      //XCTAssertTrue(g-1...g+1 ~= g_p3)
+      //XCTAssertTrue(b-1...b+1 ~= b_p3)
       XCTAssertTrue(a == a_p3)
     }
     

@@ -24,7 +24,7 @@
 
 import Foundation
 
-// MARK:- ValueAssociable Protocol
+// MARK: - ValueAssociable Protocol
 
 /// **Mechanica**
 ///
@@ -76,7 +76,7 @@ extension ValueAssociable {
 
 }
 
-// MARK:- Associated Objects
+// MARK: - Associated Objects
 
 /// **Mechanica**
 ///
@@ -114,4 +114,3 @@ public func getAssociatedValue<T>(forObject object: Any, usingKey key: UnsafeRaw
 public func removeAssociatedValue(forObject object: Any, usingKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
   objc_setAssociatedObject(object, key, nil, policy)
 }
-

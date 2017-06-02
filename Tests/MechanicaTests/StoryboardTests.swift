@@ -60,8 +60,6 @@ extension Storyboard: StoryboardEnumerable {
 
 class StoryboardTests: XCTestCase {
 
-  lazy var unitTestBundle: Bundle =  { return Bundle(for: type(of: self)) }()
-
   func test_instantiate() {
 
     #if os(iOS)

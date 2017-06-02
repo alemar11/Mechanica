@@ -1,5 +1,15 @@
 # Changelog
 
+### 0.4.0
+
+- added SwiftLint
+- more String extensions
+- bugfixes
+
+### 0.3.1
+
+- minor bugfixes
+
 ### 0.3.0
 
 - Added protocol `ValueAssociable`.

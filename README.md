@@ -53,7 +53,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Mechanica', '~> 0.1'
+    pod 'Mechanica', '~> 0.4'
 end
 ```
 
@@ -77,7 +77,7 @@ $ brew install carthage
 To integrate Mechanica into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "tinrobots/Mechanica" ~> 0.1.0
+github "tinrobots/Mechanica" ~> 0.4.0
 ```
 
 Run `carthage update` to build the framework and drag the built `Mechanica.framework` into your Xcode project.

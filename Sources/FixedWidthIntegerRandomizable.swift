@@ -24,37 +24,33 @@
 
 import Foundation
 
-//  MARK: - FixedWidthInteger
+// MARK: - FixedWidthInteger
 
 /// **Mechanica**
 ///
 /// From SE-0104 (Swift 4), Int nad UInt families will conform to FixedWidthInteger.
 /// https://github.com/apple/swift-evolution/blob/master/proposals/0104-improved-integers.md
 /// - TODO: This protocol should be removed with with Swift 4.
-public protocol FixedWidthInteger : Integer {
-  
+public protocol FixedWidthInteger: Integer {
+
   /// The maximum representable integer in this type.
   static var max: Self { get }
-  
+
   /// The minimum representable value.
   static var min: Self { get }
 }
 
-//  MARK: - IntegerRandomizable
+// MARK: - IntegerRandomizable
 
 /// **Mechanica**
 /// - TODO: Rename this protocol `FixedWidthIntegerRandomizable` with Swift 4.
 public protocol IntegerRandomizable {
-  
+
   /// **Mechanica**
   ///
   /// Returns a random value between `min` and `max` values.
-  
-  /// **Mechanica**
-  ///
-  /// Returns a random value bounded by a closed interval range.
   static func random(min: Self, max: Self) -> Self
-  
+
 }
 
 public typealias FixedWidthIntegerRandomizable = FixedWidthInteger & IntegerRandomizable
@@ -85,18 +81,18 @@ extension FixedWidthInteger where Stride: SignedInteger, Self: IntegerRandomizab
   public static func random(in range: CountableRange<Self>) -> Self {
     return random(min: range.lowerBound, max:range.upperBound-1)
   }
-  
+
 }
 
 fileprivate let _wordSize = __WORDSIZE
 
 fileprivate func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
-  var result:T = 0
+  var result: T = 0
   arc4random_buf(&result, Int(MemoryLayout<T>.size))
   return result
 }
 
-//  MARK: - UnsignedInteger
+// MARK: - UnsignedInteger
 
 extension UInt {
 
@@ -230,7 +226,7 @@ extension UInt8 {
 
 }
 
-//  MARK: - SignedInteger
+// MARK: - SignedInteger
 
 extension Int {
 
@@ -272,7 +268,7 @@ extension Int64 {
     let u = overflow ? UInt64.max - UInt64(~s) : UInt64(s)
     let r = UInt64.random(max: u)
 
-    if r > UInt64(Int64.max)  {
+    if r > UInt64(Int64.max) {
       return Int64(r - (UInt64(~min) + 1))
     } else {
       return Int64(r) + min
@@ -311,7 +307,6 @@ extension Int32 {
   }
 
 }
-
 
 extension Int16 {
 
@@ -360,6 +355,3 @@ extension Int8 {
   }
 
 }
-
-
-

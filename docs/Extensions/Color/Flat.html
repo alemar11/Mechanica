@@ -116,7 +116,7 @@
                 <a href="../../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Extensions/NSObject.html">NSObject</a>
+                <a href="../../Extensions/NSObjectProtocol.html">NSObjectProtocol</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Extensions/NSPersistentStoreCoordinator.html">NSPersistentStoreCoordinator</a>
@@ -188,6 +188,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../../Functions.html#/s:F9Mechanica18setAssociatedValueurFTGSqx_9forObjectP_8usingKeySV9andPolicyOSC22objc_AssociationPolicy_T_">setAssociatedValue(_:forObject:usingKey:andPolicy:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Functions.html#/s:F9Mechanica8typeNameFT2ofP__SS">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -318,7 +321,7 @@
                 <a href="../../Typealiases.html#/s:9Mechanica10Storyboard">Storyboard</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Typealiases.html#/s:E9MechanicaCSo8NSObject18SwizzlingSelectors">SwizzlingSelectors</a>
+                <a href="../../Typealiases.html#/s:E9MechanicaPSo16NSObjectProtocol18SwizzlingSelectors">SwizzlingSelectors</a>
               </li>
             </ul>
           </li>
@@ -369,7 +372,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">turquoise</span>      <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.1019607843</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.737254902</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.6117647059</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">turquoise</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.1019607843</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.737254902</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.6117647059</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -402,7 +405,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">greenSea</span>       <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.0862745098</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.6274509804</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.5215686275</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">greenSea</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.0862745098</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.6274509804</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.5215686275</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -439,7 +442,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">nephritis</span>      <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.1529411765</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.6823529412</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.3764705882</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">nephritis</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.1529411765</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.6823529412</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.3764705882</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -472,7 +475,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">emerald</span>        <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.1803921569</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.4431372549</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">emerald</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.1803921569</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.4431372549</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -509,7 +512,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">belizeHole</span>     <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.1607843137</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.5019607843</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.7254901961</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">belizeHole</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.1607843137</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.5019607843</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.7254901961</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -542,7 +545,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">peterRiver</span>     <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.2039215686</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.5960784314</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.8588235294</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">peterRiver</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.2039215686</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.5960784314</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.8588235294</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -579,7 +582,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">wisteria</span>       <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.5568627451</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.2666666667</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.6784313725</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">wisteria</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.5568627451</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.2666666667</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.6784313725</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -612,7 +615,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">amethyst</span>       <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.6078431373</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.3490196078</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.7137254902</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">amethyst</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.6078431373</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.3490196078</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.7137254902</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -649,7 +652,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">midnightBlue</span>  <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.1725490196</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.2431372549</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.3137254902</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">midnightBlue</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.1725490196</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.2431372549</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.3137254902</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -682,7 +685,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">wetAsphalt</span>    <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.2039215686</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.2862745098</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.368627451</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">wetAsphalt</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.2039215686</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.2862745098</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.368627451</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -719,7 +722,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">sunFlower</span>     <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.9450980392</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.768627451</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.05882352941</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">sunFlower</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.9450980392</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.768627451</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.05882352941</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -752,7 +755,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">orange</span>        <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.9529411765</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.6117647059</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.07058823529</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">orange</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.9529411765</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.6117647059</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.07058823529</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -789,7 +792,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">carrot</span>        <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.9019607843</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.4941176471</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.1333333333</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">carrot</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.9019607843</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.4941176471</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.1333333333</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -822,7 +825,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">pumpkin</span>       <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.8274509804</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.3294117647</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pumpkin</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.8274509804</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.3294117647</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -859,7 +862,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">alizarin</span>      <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.9058823529</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.2980392157</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.2352941176</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">alizarin</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.9058823529</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.2980392157</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.2352941176</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -892,7 +895,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">pomegranate</span>   <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.7529411765</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.2235294118</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.168627451</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pomegranate</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.7529411765</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.2235294118</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.168627451</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -929,7 +932,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">clouds</span>        <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.9254901961</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.9411764706</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.9450980392</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">clouds</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.9254901961</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.9411764706</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.9450980392</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -962,7 +965,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">silver</span>        <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.7411764706</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.7647058824</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.7803921569</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">silver</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.7411764706</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.7647058824</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.7803921569</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -999,7 +1002,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">concrete</span>      <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.5843137255</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.6470588235</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.6509803922</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">concrete</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.5843137255</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.6470588235</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.6509803922</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1032,7 +1035,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span>  <span class="nv">asbestos</span>      <span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.4980392157</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.5490196078</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.5529411765</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">asbestos</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="err">#</span><span class="nf">colorLiteral</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.4980392157</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.5490196078</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.5529411765</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1044,7 +1047,7 @@ Color palette from <a href="https://flatuicolors.com">flatuicolors.com</a></p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-05-09)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-06-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
