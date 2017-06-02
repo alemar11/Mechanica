@@ -2,13 +2,13 @@
 
 ### 0.4.0
 
-- more String extensions
 - added SwiftLint
+- more String extensions
 - bugfixes
 
 ### 0.3.1
 
-- bugfixes
+- minor bugfixes
 
 ### 0.3.0
 
