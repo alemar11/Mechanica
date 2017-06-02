@@ -64,7 +64,8 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Sets the value of the specified default key.
-  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
+  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary.
+  /// For NSArray and NSDictionary objects, their contents must be property list objects.
   public final func set<T>(object: T?, forKey key: Key<T>) {
     set(object, forKey: key.value)
   }
@@ -143,7 +144,8 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Stores an `Array` (or removes the value if nil is passed as the value) for the provided key.
-  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
+  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary.
+  /// For NSArray and NSDictionary objects, their contents must be property list objects.
   public final func set<T>(array: [T]?, forKey key: Key<[T]>) {
     set(object: array, forKey: key)
   }
@@ -171,8 +173,9 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Stores a `Dictionary` [String:Any] (or removes the value if nil is passed as the value) for the provided key.
-  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects.
-  public final func set<V: Any>(dictionary: [String: V]? , forKey key: Key<[String: V]>) {
+  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. 
+  /// For NSArray and NSDictionary objects, their contents must be property list objects.
+  public final func set<V: Any>(dictionary: [String: V]?, forKey key: Key<[String: V]>) {
     set(object: dictionary, forKey: key)
   }
 

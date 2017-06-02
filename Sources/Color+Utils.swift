@@ -211,7 +211,7 @@ extension Color {
     case 3: // rgb
       formattedHexString.append("f"); fallthrough
     case 4: // rgba
-      formattedHexString = formattedHexString.characters.map{ "\($0)\($0)" }.joined( separator: "" )
+      formattedHexString = formattedHexString.characters.map { "\($0)\($0)" }.joined( separator: "" )
     case 6: // rrggbb
       formattedHexString.append("ff")
     case 8: // rrggbbaa

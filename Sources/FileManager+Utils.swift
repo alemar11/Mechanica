@@ -34,7 +34,8 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the location of the document directory (*Documents/*).
-  /// - Note: Use this directory to store user-generated content. The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.
+  /// - Note: Use this directory to store user-generated content. 
+  /// The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.
   ///
   /// The contents of *Documents* directory are **backed up by iTunes and iCloud**.
   public var documentDirectory: URL {
@@ -62,7 +63,8 @@ extension FileManager {
   /// Returns the location of discardable cache files (*Library/Caches/*).
   /// - Note: Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file.
   ///
-  /// Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance. Examples of cache data include (but are not limited to) database cache files and transient, downloadable content.
+  /// Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance. 
+  /// Examples of cache data include (but are not limited to) database cache files and transient, downloadable content.
   ///
   /// The contents of the *Library/Caches* are **not backed up by iTunes and iCloud**.
   ///
@@ -78,7 +80,10 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the location of application support files (*Library/Application Support/*).
-  /// - Note: Put app-created support files in the *Library/Application support/* directory. In general, this directory includes files that the app uses to run but that should remain hidden from the user. This directory can also include data files, configuration files, templates and modified versions of resources loaded from the app bundle.
+  /// - Note: Put app-created support files in the *Library/Application support/* directory.
+  ///
+  /// In general, this directory includes files that the app uses to run but that should remain hidden from the user.
+  /// This directory can also include data files, configuration files, templates and modified versions of resources loaded from the app bundle.
   ///
   /// The contents of the *Library/Application Support/* are **backed up by iTunes and iCloud**.
   ///
@@ -90,25 +95,6 @@ extension FileManager {
     return try! url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     // swiftlint:enable force_try
   }
-
-  //  #if os(macOS)
-  //
-  //  /// **Mechanica**
-  //  ///
-  //  /// On non-sanboxed *macOS* apps returns the location of a subdirectory inside Application Support folder (*Library/Application Support/*) whose name is that of your app's bundle identifier or of your app's executable file name. (i.e. *Library/Application Support/org.tinrobots.app01*).
-  //  ///
-  //  /// On sandboxed *macOS* apps returns their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
-  //  public var applicationSupportSubDirectory: URL {
-  //    var url = applicationSupportDirectory
-  //    guard (!ProcessInfo.isSandboxed) else { return url }
-  //    url.appendPathComponent(App.identifier ?? "", isDirectory: true)
-  //    if (!fileExists(atPath: url.path)) {
-  //      try! createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
-  //    }
-  //    return url
-  //  }
-  //
-  //  #endif
 
   /// **Mechanica**
   ///

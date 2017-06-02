@@ -70,7 +70,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(tvOS 10, *)
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
-  public static func findOrCreate(in context: NSManagedObjectContext, where predicate: NSPredicate, with configuration: (Self) -> ()) -> Self {
+  public static func findOrCreate(in context: NSManagedObjectContext, where predicate: NSPredicate, with configuration: (Self) -> Void) -> Self {
     guard let object = findOrFetch(in: context, where: predicate) else {
       let newObject: Self = Self(context: context) //context.insertObject()
       configuration(newObject)
@@ -81,7 +81,8 @@ extension NSFetchRequestResult where Self: NSManagedObject {
 
   /// **Mechanica**
   ///
-  /// Tries to find an existing object in the context (memory) matching a predicate and if doesn’t find the object in the context, tries to load it using a fetch request (if multiple objects are found, returns the **first** one).
+  /// Tries to find an existing object in the context (memory) matching a predicate;
+  /// if it doesn’t find the object in the context, tries to load it using a fetch request (if multiple objects are found, returns the **first** one).
   ///
   /// - Parameters:
   ///   - context: Searched context.
@@ -111,7 +112,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(tvOS 10, *)
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
-  public static func fetch(in context: NSManagedObjectContext, with configuration: (NSFetchRequest<Self>) -> () = { _ in }) -> [Self] {
+  public static func fetch(in context: NSManagedObjectContext, with configuration: (NSFetchRequest<Self>) -> Void = { _ in }) -> [Self] {
     let request = NSFetchRequest<Self>(entityName: entityName)
     configuration(request)
     guard let result = try? context.fetch(request) else { fatalError("Fetched objects have wrong type.") }
@@ -158,7 +159,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(tvOS 10, *)
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
-  public static func count(in context: NSManagedObjectContext, for configuration: (NSFetchRequest<Self>) -> () = { _ in }) -> Int {
+  public static func count(in context: NSManagedObjectContext, for configuration: (NSFetchRequest<Self>) -> Void = { _ in }) -> Int {
     let request = NSFetchRequest<Self>(entityName: entityName)
     configuration(request)
     do {
@@ -189,7 +190,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(tvOS 10, *)
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
-  public static func fetchSingleObject(in context: NSManagedObjectContext, with configuration: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
+  public static func fetchSingleObject(in context: NSManagedObjectContext, with configuration: @escaping (NSFetchRequest<Self>) -> Void) -> Self? {
     let result = fetch(in: context) { request in
       configuration(request)
       request.fetchLimit = 2
@@ -219,7 +220,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(tvOS 10, *)
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
-  public static func fetchCachedObject(in context: NSManagedObjectContext, forKey cacheKey: String, with configuration: @escaping (NSFetchRequest<Self>) -> ()) -> Self? {
+  public static func fetchCachedObject(in context: NSManagedObjectContext, forKey cacheKey: String, with configuration: @escaping (NSFetchRequest<Self>) -> Void) -> Self? {
     guard let cached = context.cachedObject(forKey: cacheKey) as? Self else {
       let result = fetchSingleObject(in: context, with: configuration)
       context.setCachedObject(result, forKey: cacheKey)

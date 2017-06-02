@@ -55,7 +55,7 @@ extension Sequence {
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   public final func hasAll(where predicate: (Iterator.Element) -> Bool) -> Bool {
-    return findFirst{ !predicate($0) } == nil
+    return findFirst { !predicate($0) } == nil
   }
 
   /// **Mechanica**

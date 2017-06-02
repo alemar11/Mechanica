@@ -97,7 +97,7 @@ extension NSManagedObjectContext {
   /// Asynchronously performs changes and then saves them or **rollbacks** if any error occurs.
   /// - Parameters:
   ///   - changes: Changes to be applied in the current context before the saving operation.
-  public final func performSave(after changes: @escaping () -> ()) {
+  public final func performSave(after changes: @escaping () -> Void) {
     perform {
       [unowned unownoedSelf = self] in
       changes()
@@ -109,7 +109,7 @@ extension NSManagedObjectContext {
   ///
   /// Synchronously performs changes and then saves them or **rollbacks** if any error occurs.
   /// - Throws: throws an error in cases of a saving operation failure.
-  public final func performSaveAndWait(after changes: @escaping () -> ()) throws {
+  public final func performSaveAndWait(after changes: @escaping () -> Void) throws {
     var saveError: Error? = nil
     performAndWait {
       [unowned unownoedSelf = self] in

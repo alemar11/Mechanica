@@ -99,7 +99,7 @@ extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletab
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
   fileprivate static func batchDeleteObjectsMarkedForDeletion(in context: NSManagedObjectContext) {
-    guard let _ = context.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing. A NSBatchDeleteRequest instance operates directly on one or more persistent stores.") }
+    guard context.persistentStoreCoordinator != nil else { fatalError("Persistent Store Coordinator missing. A NSBatchDeleteRequest instance operates directly on one or more persistent stores.") }
     let request = fetchRequest()
     let cutOff = Date(timeIntervalSinceNow: -timeBeforePermanentlyDeletingObjects)
     request.predicate = NSPredicate(format: "%K < %@", markedForDeletionKey, [cutOff])

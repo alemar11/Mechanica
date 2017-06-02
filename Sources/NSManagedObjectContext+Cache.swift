@@ -51,7 +51,7 @@ extension NSManagedObjectContext {
   /// **Mechanica**
   ///
   /// Clears all cached object in this context.
-  public final func clearCachedObjects() -> Void {
+  public final func clearCachedObjects() {
     var cache = userInfo[singleObjectCacheKey]
     if (cache as? SingleObjectCache) != nil {
       cache = nil
