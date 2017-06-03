@@ -56,13 +56,13 @@ extension StoryboardEnumerable where StoryboardName.RawValue == String {
    
    Creates and returns a storyboard object for a specified storyboard enum case.
    
-   i.e.
+   Example:
    ```
    extension Storyboard: StoryboardEnumerable {
-   enum StoryboardName : String {
-   case main    = "MainStoryboard"
-   case detail  = "DetailStoryboard"
-   }
+    enum StoryboardName : String {
+      case main    = "MainStoryboard"
+      case detail  = "DetailStoryboard"
+    }
    }
    
    let mainStoryboard = Storyboard.storyboard(forKey: .main)
@@ -82,13 +82,13 @@ extension Storyboard {
    
    Creates and returns a storyboard object for a specified storyboard enum case.
    
-   i.e.
+   Example:
    ```
    extension Storyboard {
-   enum StoryboardName : String {
-   case main = "MainStoryboard"
-   case detail = "DetailStoryboard"
-   }
+    enum StoryboardName : String {
+      case main = "MainStoryboard"
+      case detail = "DetailStoryboard"
+    }
    }
    
    let mainStoryboard = Storyboard(storyboard: Storyboard.StoryboardName.main)
