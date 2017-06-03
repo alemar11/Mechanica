@@ -3,7 +3,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "Mechanica"
+    name: "Mechanica",
+    targets:
+        [
+          Target(name: "Mechanica")
+        ]
     //dependencies : [],
     //exclude: ["Tests"]
 )
