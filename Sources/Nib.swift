@@ -36,7 +36,7 @@
   public typealias Nib = AppKit.NSNib
 #endif
 
-// MARK: - NibKeyCodable
+// MARK: - NibEnumerable
 
 /// **Mechanica**
 ///
@@ -52,17 +52,17 @@ extension NibEnumerable where NibName.RawValue == String {
    
    Creates and returns a Nib object for a specified nib enum case.
    
-   i.e.
-   ```
-   extension Nib: NibEnumerable {
-   enum NibName : String {
-   case first   = "first"
-   case second  = "second"
-   }
-   }
+   Example:
    
-   let firstNib = Nib.nib(forKey: .first)
-   ```
+        extension Nib: NibEnumerable {
+          enum NibName : String {
+            case first   = "first"
+            case second  = "second"
+          }
+        }
+   
+        let firstNib = Nib.nib(forKey: .first)
+   
    - Note: If the bundle parameter is nil, the main bundle is used.
    */
   public static func nib(forKey key: NibName, bundle: Bundle? = nil) -> Nib {
@@ -126,10 +126,15 @@ extension Nib {
 ///
 /// Objects adopting the `NibIdentifiable` protocol are nib based and are the only XIB root object.
 public protocol NibIdentifiable: class {
+
+  /// **Mechanica**
+  ///
+  /// The name of the nib file.
   static var nibIdentifier: String { get }
+
 }
 
-// MARK: - Default implementation
+// MARK: - NibIdentifiable Default implementation
 
 public extension NibIdentifiable {
 
@@ -144,9 +149,15 @@ public extension NibIdentifiable {
 
   /// **Mechanica**
   ///
-  /// By default, uses the nib which is named as the name of the class and it's located in the bundle of that class.
-  /// TODO description
-  static func nib(bundle: Bundle? = nil) -> Nib {
+  /// - Parameter bundle: the bundle where the .xib file is located.
+  /// - Returns: the nib whose `Self` is the the only XIB root object.
+  ///
+  ///   Example:
+  ///
+  ///       extension MyView: NibIdentifiable {} //in a MyView.xib should exists only an object of class "MyView".
+  ///       let nib = nib()
+  ///
+  static func nib(inBundle bundle: Bundle? = nil) -> Nib {
     #if os(iOS) || os(tvOS)
       return Nib(nibName: nibIdentifier, bundle: bundle)
     #elseif os(macOS)
@@ -156,12 +167,30 @@ public extension NibIdentifiable {
 
   /// **Mechanica**
   ///
-  /// TODO description
-  static func instantiateFromNib(bundle: Bundle? = nil) -> Self {
-    guard let content = nib(bundle: bundle).instantiate(withOwner: self, options: nil).first as? Self else {
-      fatalError("\(String(describing: self)) could not be instantiated. Please verify if \(nibIdentifier).xib exists and contains only a top obcject whose class is \(String(describing: self)).")
+  /// - Parameter bundle: the bundle where the .xib file is located
+  /// - Returns: an instance of 'Self´ unarchived from the nib whose `Self` is the the only XIB root object.
+  ///
+  ///   Example:
+  ///
+  ///       extension MyView: NibIdentifiable {} //in a MyView.xib should exists only an object of class "MyView"
+  ///       let view = MyView.instantiateFromNib()
+  ///
+  static func instantiateFromNib(inBundle bundle: Bundle? = nil) -> Self {
+    #if os(iOS) || os(tvOS)
+      let content = nib(inBundle: bundle).instantiate(withOwner: self, options: nil).first as? Self
+    #elseif os(macOS)
+      var array = NSArray()
+      guard (nib(inBundle: bundle).instantiate(withOwner: self, topLevelObjects: &array)) else {
+        fatalError("\(String(describing: self)) could not be instantiated.")
+      }
+      // swiftlint:disable force_cast
+      let content = (array as! [Any]).first as? Self
+      // swiftlint:enable force_cast
+    #endif
+    guard let rootContent = content else {
+      fatalError("\(String(describing: self)) could not be instantiated. Please verify if \(nibIdentifier).xib exists and contains only a top object whose class is \(String(describing: self)).")
     }
-    return content
+    return rootContent
   }
 
 }

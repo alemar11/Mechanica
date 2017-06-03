@@ -99,7 +99,7 @@
 		237274C01E7C41790017B127 /* Integer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237274BE1E7C41790017B127 /* Integer+Utils.swift */; };
 		237274C11E7C41790017B127 /* Integer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237274BE1E7C41790017B127 /* Integer+Utils.swift */; };
 		237274C21E7C41790017B127 /* Integer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237274BE1E7C41790017B127 /* Integer+Utils.swift */; };
-		237CED461EE209360074E141 /* iOS_NibViewIdentifiable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237CED451EE209360074E141 /* iOS_NibViewIdentifiable.xib */; };
+		237CED461EE209360074E141 /* iOS_ViewNibIdentifiable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237CED451EE209360074E141 /* iOS_ViewNibIdentifiable.xib */; };
 		237F175F1E90000800726553 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17361E90000800726553 /* AppTests.swift */; };
 		237F17601E90000900726553 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17361E90000800726553 /* AppTests.swift */; };
 		237F17611E90000900726553 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17361E90000800726553 /* AppTests.swift */; };
@@ -253,6 +253,8 @@
 		23C27C381E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */; };
 		23C27C391E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */; };
 		23C27C3A1E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */; };
+		23D736751EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D736741EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib */; };
+		23D736771EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D736761EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib */; };
 		23DA86FF1E65C42C009C5CFE /* SignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */; };
 		23DA87001E65C42C009C5CFE /* SignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */; };
 		23DA87011E65C42C009C5CFE /* SignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */; };
@@ -431,7 +433,7 @@
 		235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BinaryFloatingPoint+Utils.swift"; sourceTree = "<group>"; };
 		235DCB8F1E89B40F006AFEBE /* UnsignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UnsignedInteger+Utils.swift"; sourceTree = "<group>"; };
 		237274BE1E7C41790017B127 /* Integer+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Integer+Utils.swift"; sourceTree = "<group>"; };
-		237CED451EE209360074E141 /* iOS_NibViewIdentifiable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iOS_NibViewIdentifiable.xib; sourceTree = "<group>"; };
+		237CED451EE209360074E141 /* iOS_ViewNibIdentifiable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iOS_ViewNibIdentifiable.xib; sourceTree = "<group>"; };
 		237F17361E90000800726553 /* AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTests.swift; sourceTree = "<group>"; };
 		237F17371E90000800726553 /* ValueAssociableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueAssociableTests.swift; sourceTree = "<group>"; };
 		237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFloatingPointUtilsTests.swift; sourceTree = "<group>"; };
@@ -485,6 +487,8 @@
 		23B2ED6C1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObjectProtocol+Utils.swift"; sourceTree = "<group>"; };
 		23B2ED711EC8CE28006365BD /* NSObjectProtocolUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectProtocolUtils.swift; sourceTree = "<group>"; };
 		23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeyTests.swift; sourceTree = "<group>"; };
+		23D736741EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = macOS_ViewNibIdentifiable.xib; sourceTree = "<group>"; };
+		23D736761EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tvOS_ViewNibIdentifiable.xib; sourceTree = "<group>"; };
 		23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
 		23F3F6FA1E9651AB002DAC89 /* KeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTests.swift; sourceTree = "<group>"; };
@@ -762,7 +766,9 @@
 				237F17491E90000800726553 /* macOS_NibDemo.xib */,
 				237F174B1E90000800726553 /* NibTests.swift */,
 				237F175B1E90000800726553 /* tvOS_NibDemo.xib */,
-				237CED451EE209360074E141 /* iOS_NibViewIdentifiable.xib */,
+				237CED451EE209360074E141 /* iOS_ViewNibIdentifiable.xib */,
+				23D736741EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib */,
+				23D736761EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib */,
 			);
 			name = Nib;
 			sourceTree = "<group>";
@@ -1179,7 +1185,7 @@
 				237F17921E90000900726553 /* iOS_StoryboardDemo.storyboard in Resources */,
 				237F178F1E90000900726553 /* iOS_NibDemo.xib in Resources */,
 				237F17771E90000900726553 /* PropertyListDemo.plist in Resources */,
-				237CED461EE209360074E141 /* iOS_NibViewIdentifiable.xib in Resources */,
+				237CED461EE209360074E141 /* iOS_ViewNibIdentifiable.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,6 +1193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D736771EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib in Resources */,
 				237F17CF1E90000900726553 /* tvOS_NibDemo.xib in Resources */,
 				237F17D21E90000900726553 /* tvOS_StoryboardDemo.storyboard in Resources */,
 				237F17781E90000900726553 /* PropertyListDemo.plist in Resources */,
@@ -1197,6 +1204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D736751EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib in Resources */,
 				237F179D1E90000900726553 /* macOS_StoryboardDemo.storyboard in Resources */,
 				237F179A1E90000900726553 /* macOS_NibDemo.xib in Resources */,
 				237F17791E90000900726553 /* PropertyListDemo.plist in Resources */,

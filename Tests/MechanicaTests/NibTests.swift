@@ -38,26 +38,35 @@ extension Nib: NibEnumerable {
 #if os(iOS)
 
   import UIKit
+  // NibLoadable
   class iOS_NibDemo_View_1: UIView {}
   class iOS_NibDemo_View_2: UIView {}
   /// UILongPressGestureRecognizer is now nib loadable.
   extension UILongPressGestureRecognizer: NibLoadable {}
-   class iOS_NibViewIdentifiable: UIView, NibIdentifiable {}
+  // NibIdentifiable
+  class iOS_ViewNibIdentifiable: UIView, NibIdentifiable {}
 
 #elseif os(tvOS)
 
   import UIKit
+  // NibLoadable
   class tvOS_NibDemo_View_1: UIView {}
   class tvOS_NibDemo_View_2: UIView {}
+  // NibIdentifiable
+  class tvOS_ViewNibIdentifiable: UIView, NibIdentifiable {}
 
 #elseif os(macOS)
 
   import Cocoa
+  // NibLoadable
   class macOS_NibDemo_View_1: NSView {}
   class macOS_NibDemo_View_2: NSView {}
   /// NSTouchBar is now nib loadable.
   @available(OSX 10.12.2, *)
+  // NibIdentifiable
   extension NSTouchBar : NibLoadable {}
+  
+  class macOS_ViewNibIdentifiable: NSView, NibIdentifiable {}
   
 #endif
 
@@ -158,7 +167,13 @@ class NibTests: XCTestCase {
   
   func test_nibIdentifiable() {
     #if os(iOS)
-      let view = iOS_NibViewIdentifiable.instantiateFromNib(bundle: unitTestBundle)
+      let view = iOS_ViewNibIdentifiable.instantiateFromNib(inBundle: unitTestBundle)
+      XCTAssertNotNil(view)
+      #elseif os(tvOS)
+      let view = tvOS_ViewNibIdentifiable.instantiateFromNib(inBundle: unitTestBundle)
+      XCTAssertNotNil(view)
+    #elseif os(macOS)
+      let view = macOS_ViewNibIdentifiable.instantiateFromNib(inBundle: unitTestBundle)
       XCTAssertNotNil(view)
     #endif
   }
