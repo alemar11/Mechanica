@@ -183,9 +183,11 @@ public extension NibIdentifiable {
       guard (nib(inBundle: bundle).instantiate(withOwner: self, topLevelObjects: &array)) else {
         fatalError("\(String(describing: self)) could not be instantiated.")
       }
-      // swiftlint:disable force_cast
-      let content = (array as! [Any]).first as? Self
-      // swiftlint:enable force_cast
+      let contents = array.filter { $0 is Self }
+      guard contents.count == 1 else {
+        fatalError("\(String(describing: self)) could not be instantiated. There should be only a top object (and not \(contents.count) whose class is \(String(describing: self))")
+      }
+      let content = contents.first as? Self
     #endif
     guard let rootContent = content else {
       fatalError("\(String(describing: self)) could not be instantiated. Please verify if \(nibIdentifier).xib exists and contains only a top object whose class is \(String(describing: self)).")

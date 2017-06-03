@@ -253,8 +253,8 @@
 		23C27C381E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */; };
 		23C27C391E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */; };
 		23C27C3A1E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */; };
-		23D736751EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D736741EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib */; };
 		23D736771EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D736761EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib */; };
+		23D736781EE2C720007D6E51 /* macOS_ViewNibIdentifiable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D736741EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib */; };
 		23DA86FF1E65C42C009C5CFE /* SignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */; };
 		23DA87001E65C42C009C5CFE /* SignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */; };
 		23DA87011E65C42C009C5CFE /* SignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */; };
@@ -1204,7 +1204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23D736751EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib in Resources */,
+				23D736781EE2C720007D6E51 /* macOS_ViewNibIdentifiable.xib in Resources */,
 				237F179D1E90000900726553 /* macOS_StoryboardDemo.storyboard in Resources */,
 				237F179A1E90000900726553 /* macOS_NibDemo.xib in Resources */,
 				237F17791E90000900726553 /* PropertyListDemo.plist in Resources */,
