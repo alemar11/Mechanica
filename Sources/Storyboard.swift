@@ -56,13 +56,13 @@ extension StoryboardEnumerable where StoryboardName.RawValue == String {
    
    Creates and returns a storyboard object for a specified storyboard enum case.
    
-   i.e.
+   Example:
    ```
    extension Storyboard: StoryboardEnumerable {
-   enum StoryboardName : String {
-   case main    = "MainStoryboard"
-   case detail  = "DetailStoryboard"
-   }
+    enum StoryboardName : String {
+      case main    = "MainStoryboard"
+      case detail  = "DetailStoryboard"
+    }
    }
    
    let mainStoryboard = Storyboard.storyboard(forKey: .main)
@@ -82,13 +82,13 @@ extension Storyboard {
    
    Creates and returns a storyboard object for a specified storyboard enum case.
    
-   i.e.
+   Example:
    ```
    extension Storyboard {
-   enum StoryboardName : String {
-   case main = "MainStoryboard"
-   case detail = "DetailStoryboard"
-   }
+    enum StoryboardName : String {
+      case main = "MainStoryboard"
+      case detail = "DetailStoryboard"
+    }
    }
    
    let mainStoryboard = Storyboard(storyboard: Storyboard.StoryboardName.main)
@@ -140,7 +140,7 @@ extension StoryboardIdentifiable {
 
   /// **Mechanica**
   ///
-  /// By default the *storyboardIdentifier* (Storyboard ID) is the name of the class.
+  /// By default the *storyboardIdentifier* (**Storyboard ID**) is the name of the class.
   public static var storyboardIdentifier: String {
     return String(describing: self)
   }
@@ -162,7 +162,7 @@ extension Storyboard {
    **Mechanica**
    
    Instantiates and returns a UIViewController conforming to `StoryboardIdentifiable`.
-   - Note: In Xcode, set as "Storyboard ID" the UIViewController class name.
+   - Note: In Xcode, set as **Storyboard ID** the UIViewController class name.
    
    ```
    let vc = myStoryboard.instantiateViewController() as TestViewController
@@ -181,7 +181,7 @@ extension Storyboard {
    **Mechanica**
    
    Instantiates and returns a NSViewController conforming to `StoryboardIdentifiable`.
-   - Note: In Xcode, set as "Storyboard ID" the NSViewController class name.
+   - Note: In Xcode, set as **Storyboard ID** the NSViewController class name.
    
    ```
    let vc = myStoryboard.instantiateViewController() as TestViewController
@@ -198,7 +198,7 @@ extension Storyboard {
    **Mechanica**
    
    Instantiates and returns a NSWindowController conforming to `StoryboardIdentifiable`.
-   - Note: In Xcode, set as "Storyboard ID" the NSWindowController class name.
+   - Note: In Xcode, set as **Storyboard ID** the NSWindowController class name.
    
    ```
    let wc = myStoryboard.instantiateViewController() as TestViewController

@@ -14,7 +14,7 @@
     <a title="NibIdentifiable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Mechanica Docs</a> (97% documented)</p>
+        <p><a href="../index.html">Mechanica Docs</a> (98% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -339,7 +339,7 @@
               </div>
             <p><strong>Mechanica</strong></p>
 
-<p>Objects adopting the <code>NibIdentifiable</code> protocol are nib based and are the XIB root object.</p>
+<p>Objects adopting the <code>NibIdentifiable</code> protocol are nib based and are the only XIB root object.</p>
 
           </section>
           <section class="section task-group-section">
@@ -361,19 +361,25 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>The name of the nib file.</p>
 
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p>By default the <em>nibIdentifier</em> is the name of the class.</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>The name of the nib file.</p>
+
+<p>By default the <em>nibIdentifier</em> is the name of the class.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">NibIdentifiable</span><span class="p">:</span> <span class="kd">class</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">nibIdentifier</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -387,9 +393,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZvE9MechanicaPS_15NibIdentifiable3nibCSo5UINib"></a>
-                    <a name="//apple_ref/swift/Variable/nib" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZvE9MechanicaPS_15NibIdentifiable3nibCSo5UINib">nib</a>
+                    <a name="/s:ZFE9MechanicaPS_15NibIdentifiable3nibFT8inBundleGSqCSo6Bundle__CSo5UINib"></a>
+                    <a name="//apple_ref/swift/Method/nib(inBundle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFE9MechanicaPS_15NibIdentifiable3nibFT8inBundleGSqCSo6Bundle__CSo5UINib">nib(inBundle:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -400,16 +406,116 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>By default, uses the nib which is named as the name of the class and it&rsquo;s located in the bundle of that class.</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Example:</p>
+
+<pre class="highlight plaintext"><code>  extension MyView: NibIdentifiable {} //in a MyView.xib should exists only an object of class "MyView".
+  let nib = nib()
+</code></pre>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">nib</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9Mechanica3Nib">Nib</a></span></code></pre>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">nib</span><span class="p">(</span><span class="n">inBundle</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kt">Bundle</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:9Mechanica3Nib">Nib</a></span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bundle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the bundle where the .xib file is located.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>the nib whose <code>Self</code> is the the only XIB root object.</p>
+
+<p>Example:</p>
+
+<pre class="highlight plaintext"><code></code></pre>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFE9MechanicaPS_15NibIdentifiable18instantiateFromNibFT8inBundleGSqCSo6Bundle__x"></a>
+                    <a name="//apple_ref/swift/Method/instantiateFromNib(inBundle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFE9MechanicaPS_15NibIdentifiable18instantiateFromNibFT8inBundleGSqCSo6Bundle__x">instantiateFromNib(inBundle:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Example:</p>
+
+<pre class="highlight plaintext"><code>  extension MyView: NibIdentifiable {} //in a MyView.xib should exists only an object of class "MyView"
+  let view = MyView.instantiateFromNib()
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">instantiateFromNib</span><span class="p">(</span><span class="n">inBundle</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kt">Bundle</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bundle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the bundle where the .xib file is located</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an instance of ’Self´ unarchived from the nib whose <code>Self</code> is the the only XIB root object.</p>
+
+<p>Example:</p>
+
+<pre class="highlight plaintext"><code></code></pre>
+
                       </div>
                     </section>
                   </div>
@@ -419,7 +525,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-06-02)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-06-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

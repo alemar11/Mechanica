@@ -1,14 +1,19 @@
 # Changelog
 
+### 0.4.1
+
+- added NibIdentifiable protocol tests.
+- better descriptions here and there.
+
 ### 0.4.0
 
-- added SwiftLint
-- more String extensions
-- bugfixes
+- added SwiftLint.
+- more String extensions.
+- bugfixes.
 
 ### 0.3.1
 
-- minor bugfixes
+- minor bugfixes.
 
 ### 0.3.0
 
@@ -19,8 +24,8 @@
 
 ### 0.2.0
 
-- added more extensions
+- added more extensions.
 
 ### 0.1.0
 
-- first release
+- first release. ⭐

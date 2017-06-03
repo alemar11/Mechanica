@@ -4,7 +4,7 @@
 ![Platforms](https://img.shields.io/badge/Platform-iOS%2010%2B%20|%20macOS%2010.12+%20|%20tvOS%2010+%20|%20watchOS%203+-blue.svg) 
 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Mechanica.svg)](https://cocoapods.org)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Mechanica.svg)](https://cocoapods.org/pods/Mechanica)
 
 |Branch|Build Status|Code Coverage|
 |----|----|----|
