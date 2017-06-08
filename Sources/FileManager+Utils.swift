@@ -34,8 +34,8 @@ extension FileManager {
   /// **Mechanica**
   ///
   /// Returns the location of the document directory (*Documents/*).
-  /// - Note: Use this directory to store user-generated content. 
   /// The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.
+  /// - Note: Use this directory to store user-generated content.
   ///
   /// The contents of *Documents* directory are **backed up by iTunes and iCloud**.
   public var documentDirectory: URL {

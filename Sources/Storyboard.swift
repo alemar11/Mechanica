@@ -182,7 +182,7 @@ extension Storyboard {
    
    Instantiates and returns a NSViewController conforming to `StoryboardIdentifiable`.
    - Note: In Xcode, set as **Storyboard ID** the NSViewController class name.
-   
+
    ```
    let vc = myStoryboard.instantiateViewController() as TestViewController
    ```
