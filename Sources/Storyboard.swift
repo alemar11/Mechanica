@@ -54,7 +54,7 @@
     /// **Mechanica**
     /// Creates and returns a storyboard object for a specified storyboard enum case.
     ///
-    ///    Example:
+    /// Example:
     ///
     ///     extension Storyboard: StoryboardEnumerable {
     ///       enum StoryboardName : String {
@@ -77,7 +77,7 @@
     ///
     /// Creates and returns a storyboard object for a specified storyboard enum case.
     ///
-    ///   Example:
+    /// Example:
     ///
     ///     extension Storyboard {
     ///       enum StoryboardName : String {
@@ -196,9 +196,9 @@
       }
       return windowController
     }
-    
+
     #endif
-    
+
   }
-  
+
 #endif

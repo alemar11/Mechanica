@@ -27,13 +27,12 @@
 import Foundation
 import UIKit
 
-
 /// **Mechanica**
 ///
 /// `KeyboardObserver` is an UIKit keyboard's behavior observer (for iOS apps) without Notification Center.
 /// Declare what should happen on what event and `register()`.
 ///
-///   Example:
+/// Example:
 ///
 ///     let keyboard = KeyboardObserver()
 ///     keyboard
