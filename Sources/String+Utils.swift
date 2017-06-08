@@ -246,7 +246,7 @@ extension String {
 
   /// **Mechanica**
   ///
-  ///  Returns a new `String` containing the characters of the String from the one at a given position to the end.
+  /// Returns a new `String` containing the characters of the String from the one at a given position to the end.
   ///
   /// Example:
   ///
@@ -290,7 +290,7 @@ extension String {
 
   /// **Mechanica**
   ///
-  ///  Returns a new `String` removing the spcified suffix (if the string has it).
+  /// Returns a new `String` removing the spcified suffix (if the string has it).
   ///
   /// Example:
   ///
