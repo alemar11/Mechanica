@@ -27,34 +27,30 @@
 import Foundation
 import UIKit
 
-/**
- **Mechanica**
 
- `KeyboardObserver` is an UIKit keyboard's behavior observer (for iOS apps) without Notification Center.
-
- Declare what should happen on what event and `register()`.
-
- ```
- let keyboard = KeyboardObserver()
-
- keyboard
- .on(event: .didShow) { (options) in
-    print("didShow")
- }
- .on(event: .didHide) { (options) in
-    print("didHide")
- }
- .register()
- }
- ```
-
- You *must* call `register()` for callbacks to be triggered.
-
- Calling `unregister()` will stop callbacks from triggering (UIKit's notifications won't be observed anymore), but callbacks themselves won't be dismissed; 
- you can resume event callbacks by calling `register()` again.
-
- To remove all event callbacks, call `clear()`.
- */
+/// **Mechanica**
+///
+/// `KeyboardObserver` is an UIKit keyboard's behavior observer (for iOS apps) without Notification Center.
+/// Declare what should happen on what event and `register()`.
+///
+///   Example:
+///
+///     let keyboard = KeyboardObserver()
+///     keyboard
+///      .on(event: .didShow) { (options) in
+///        print("didShow")
+///      }
+///      .on(event: .didHide) { (options) in
+///        print("didHide")
+///      }
+///      .register()
+///
+/// You *must* call `register()` for callbacks to be triggered.
+///
+/// Calling `unregister()` will stop callbacks from triggering (UIKit's notifications won't be observed anymore), but callbacks themselves won't be dismissed;
+/// you can resume event callbacks by calling `register()` again.
+///
+/// To remove all event callbacks, call `clear()`.
 public final class KeyboardObserver {
 
   /// **Mechanica**
