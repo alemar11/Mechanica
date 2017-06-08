@@ -24,7 +24,7 @@
 
 #if !os(watchOS)
 
-import Foundation
+  import Foundation
 
 #if os(iOS) || os(tvOS)
   import UIKit
@@ -32,7 +32,7 @@ import Foundation
   ///
   /// Alias for UIStoryboard.
   public typealias Storyboard = UIKit.UIStoryboard
-#elseif os(macOS)
+  #elseif os(macOS)
   import Cocoa
   /// **Mechanica**
   ///
@@ -40,179 +40,165 @@ import Foundation
   public typealias Storyboard = AppKit.NSStoryboard
 #endif
 
-// MARK: - StoryboardKeyCodable
-
-/// **Mechanica**
-///
-/// Types adopting the `StoryboardEnumerable` protocol can be used to define Storyboard names.
-public protocol StoryboardEnumerable {
-  associatedtype StoryboardName: RawRepresentable
-}
-
-extension StoryboardEnumerable where StoryboardName.RawValue == String {
-
-  /**
-   **Mechanica**
-   
-   Creates and returns a storyboard object for a specified storyboard enum case.
-   
-   Example:
-   ```
-   extension Storyboard: StoryboardEnumerable {
-    enum StoryboardName : String {
-      case main    = "MainStoryboard"
-      case detail  = "DetailStoryboard"
-    }
-   }
-   
-   let mainStoryboard = Storyboard.storyboard(forKey: .main)
-   ```
-   - Note: If the bundle parameter is nil, the main bundle is used.
-   */
-  public static func storyboard(forKey key: StoryboardName, bundle: Bundle? = nil) -> Storyboard {
-    return Storyboard(storyboard: key, bundle: bundle)
-  }
-
-}
-
-extension Storyboard {
-
-  /**
-   **Mechanica**
-   
-   Creates and returns a storyboard object for a specified storyboard enum case.
-   
-   Example:
-   ```
-   extension Storyboard {
-    enum StoryboardName : String {
-      case main = "MainStoryboard"
-      case detail = "DetailStoryboard"
-    }
-   }
-   
-   let mainStoryboard = Storyboard(storyboard: Storyboard.StoryboardName.main)
-   ```
-   
-   */
-  fileprivate convenience init<T: RawRepresentable>(storyboard: T, bundle: Bundle? = nil) where T.RawValue == String {
-    self.init(name: storyboard.rawValue, bundle: bundle)
-  }
-}
-
-// MARK: - Storyboard Main (default)
-
-extension Storyboard {
-
-  private enum MainStoryboard {
-    static let uiMainStoryboardFileKey = "UIMainStoryboardFile"
-    static let nsMainStoryboardFileKey = "NSMainStoryboardFile"
-  }
-
-  /// Returns the main storyboard defined in an Xcode project under *General* > *Deployment info* > *main interface*.
-  public static var mainStoryboard: Storyboard? {
-
-    #if os(iOS) || os(tvOS)
-      let mainStoryboardFileName = MainStoryboard.uiMainStoryboardFileKey
-    #elseif os(macOS)
-      let mainStoryboardFileName = MainStoryboard.nsMainStoryboardFileKey
-    #endif
-
-    guard let mainStoryboardName = Bundle.main.infoDictionary?[mainStoryboardFileName] as? String else {
-      //assertionFailure("\(mainStoryboardFileName) not found in main Bundle.")
-      return nil
-    }
-    return Storyboard(name: mainStoryboardName, bundle: Bundle.main)
-  }
-
-}
-
-// MARK: - StoryboardIdentifiable
-
-/// **Mechanica**
-///
-/// Objects adopting the `StoryboardIdentifiable` protocol have an unique Storyboard ID.
-public protocol StoryboardIdentifiable: class {
-  static var storyboardIdentifier: String { get }
-}
-
-extension StoryboardIdentifiable {
+  // MARK: - StoryboardKeyCodable
 
   /// **Mechanica**
   ///
-  /// By default the *storyboardIdentifier* (**Storyboard ID**) is the name of the class.
-  public static var storyboardIdentifier: String {
-    return String(describing: self)
+  /// Types adopting the `StoryboardEnumerable` protocol can be used to define Storyboard names.
+  public protocol StoryboardEnumerable {
+    associatedtype StoryboardName: RawRepresentable
   }
 
-}
+  extension StoryboardEnumerable where StoryboardName.RawValue == String {
+
+    /// **Mechanica**
+    /// Creates and returns a storyboard object for a specified storyboard enum case.
+    ///
+    ///    Example:
+    ///
+    ///     extension Storyboard: StoryboardEnumerable {
+    ///       enum StoryboardName : String {
+    ///         case main    = "MainStoryboard"
+    ///         case detail  = "DetailStoryboard"
+    ///        }
+    ///      }
+    ///     let mainStoryboard = Storyboard.storyboard(forKey: .main)
+    ///
+    /// - Note: If the bundle parameter is nil, the main bundle is used.
+    public static func storyboard(forKey key: StoryboardName, bundle: Bundle? = nil) -> Storyboard {
+      return Storyboard(storyboard: key, bundle: bundle)
+    }
+
+  }
+
+  extension Storyboard {
+
+    /// **Mechanica**
+    ///
+    /// Creates and returns a storyboard object for a specified storyboard enum case.
+    ///
+    ///   Example:
+    ///
+    ///     extension Storyboard {
+    ///       enum StoryboardName : String {
+    ///         case main = "MainStoryboard"
+    ///         case detail = "DetailStoryboard"
+    ///       }
+    ///     }
+    ///     let mainStoryboard = Storyboard(storyboard: Storyboard.StoryboardName.main)
+    ///
+    fileprivate convenience init<T: RawRepresentable>(storyboard: T, bundle: Bundle? = nil) where T.RawValue == String {
+      self.init(name: storyboard.rawValue, bundle: bundle)
+    }
+  }
+
+  // MARK: - Storyboard Main (default)
+
+  extension Storyboard {
+
+    private enum MainStoryboard {
+      static let uiMainStoryboardFileKey = "UIMainStoryboardFile"
+      static let nsMainStoryboardFileKey = "NSMainStoryboardFile"
+    }
+
+    /// Returns the main storyboard defined in an Xcode project under *General* > *Deployment info* > *main interface*.
+    public static var mainStoryboard: Storyboard? {
+
+      #if os(iOS) || os(tvOS)
+        let mainStoryboardFileName = MainStoryboard.uiMainStoryboardFileKey
+      #elseif os(macOS)
+        let mainStoryboardFileName = MainStoryboard.nsMainStoryboardFileKey
+      #endif
+
+      guard let mainStoryboardName = Bundle.main.infoDictionary?[mainStoryboardFileName] as? String else {
+        //assertionFailure("\(mainStoryboardFileName) not found in main Bundle.")
+        return nil
+      }
+      return Storyboard(name: mainStoryboardName, bundle: Bundle.main)
+    }
+
+  }
+
+  // MARK: - StoryboardIdentifiable
+
+  /// **Mechanica**
+  ///
+  /// Objects adopting the `StoryboardIdentifiable` protocol have an unique Storyboard ID.
+  public protocol StoryboardIdentifiable: class {
+    static var storyboardIdentifier: String { get }
+  }
+
+  extension StoryboardIdentifiable {
+
+    /// **Mechanica**
+    ///
+    /// By default the *storyboardIdentifier* (**Storyboard ID**) is the name of the class.
+    public static var storyboardIdentifier: String {
+      return String(describing: self)
+    }
+
+  }
 
 #if os(iOS) || os(tvOS)
   extension UIViewController : StoryboardIdentifiable {}
-#elseif os(macOS)
+  #elseif os(macOS)
   extension NSViewController : StoryboardIdentifiable {}
   extension NSWindowController : StoryboardIdentifiable {}
 #endif
 
-extension Storyboard {
+  extension Storyboard {
 
-  #if os(iOS) || os(tvOS)
+    #if os(iOS) || os(tvOS)
 
-  /**
-   **Mechanica**
-   
-   Instantiates and returns a UIViewController conforming to `StoryboardIdentifiable`.
-   - Note: In Xcode, set as **Storyboard ID** the UIViewController class name.
-   
-   ```
-   let vc = myStoryboard.instantiateViewController() as TestViewController
-   ```
-   */
-  public final func instantiateViewController<T: UIViewController>() -> T where T: StoryboardIdentifiable {
-    guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
-      fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
+    /// **Mechanica**
+    ///
+    ///   Instantiates and returns a UIViewController conforming to `StoryboardIdentifiable`.
+    ///   - Note: In Xcode, set as **Storyboard ID** the UIViewController class name.
+    ///
+    ///   ```
+    ///   let vc = myStoryboard.instantiateViewController() as TestViewController
+    ///   ```
+    public final func instantiateViewController<T: UIViewController>() -> T where T: StoryboardIdentifiable {
+      guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
+        fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
+      }
+      return viewController
     }
-    return viewController
-  }
 
-  #elseif os(macOS)
+    #elseif os(macOS)
 
-  /**
-   **Mechanica**
-   
-   Instantiates and returns a NSViewController conforming to `StoryboardIdentifiable`.
-   - Note: In Xcode, set as **Storyboard ID** the NSViewController class name.
-
-   ```
-   let vc = myStoryboard.instantiateViewController() as TestViewController
-   ```
-   */
-  public final func instantiateViewController<T: NSViewController>() -> T where T: StoryboardIdentifiable {
-    guard let viewController = self.instantiateController(withIdentifier: T.storyboardIdentifier) as? T else {
-      fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
+    /// **Mechanica**
+    ///
+    ///   Instantiates and returns a NSViewController conforming to `StoryboardIdentifiable`.
+    ///   - Note: In Xcode, set as **Storyboard ID** the NSViewController class name.
+    ///
+    ///   ```
+    ///   let vc = myStoryboard.instantiateViewController() as TestViewController
+    ///
+    public final func instantiateViewController<T: NSViewController>() -> T where T: StoryboardIdentifiable {
+      guard let viewController = self.instantiateController(withIdentifier: T.storyboardIdentifier) as? T else {
+        fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
+      }
+      return viewController
     }
-    return viewController
-  }
 
-  /**
-   **Mechanica**
-   
-   Instantiates and returns a NSWindowController conforming to `StoryboardIdentifiable`.
-   - Note: In Xcode, set as **Storyboard ID** the NSWindowController class name.
-   
-   ```
-   let wc = myStoryboard.instantiateViewController() as TestViewController
-   ```
-   */
-  public final func instantiateWindowController<T: NSWindowController>() -> T where T: StoryboardIdentifiable {
-    guard let windowController = self.instantiateController(withIdentifier: T.storyboardIdentifier) as? T else {
-      fatalError("Couldn't instantiate a Window Controller with identifier \(T.storyboardIdentifier) ")
+    /// **Mechanica**
+    ///
+    ///   Instantiates and returns a NSWindowController conforming to `StoryboardIdentifiable`.
+    ///   - Note: In Xcode, set as **Storyboard ID** the NSWindowController class name.
+    ///
+    ///   ```
+    ///   let vc = myStoryboard.instantiateViewController() as TestViewController
+    ///
+    public final func instantiateWindowController<T: NSWindowController>() -> T where T: StoryboardIdentifiable {
+      guard let windowController = self.instantiateController(withIdentifier: T.storyboardIdentifier) as? T else {
+        fatalError("Couldn't instantiate a Window Controller with identifier \(T.storyboardIdentifier) ")
+      }
+      return windowController
     }
-    return windowController
+    
+    #endif
+    
   }
-
-  #endif
-
-}
-
+  
 #endif
