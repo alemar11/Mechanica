@@ -1,3 +1,5 @@
 source "https://rubygems.org"
 
-gem "jazzy"
+group :release do
+  gem "jazzy"
+end
