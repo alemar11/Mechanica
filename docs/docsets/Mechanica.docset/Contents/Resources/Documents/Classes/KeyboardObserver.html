@@ -253,59 +253,6 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Subscripts.html">Subscripts</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeyCSo8NSNumber_GSqS2__">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeyGSaP___GSqGSaP___">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeyGVs10DictionarySSP___GSqGS2_SSP___">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeyP__GSqP__">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeySS_GSqSS_">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeySb_GSqSb_">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeySd_GSqSd_">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeySf_GSqSf_">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeySi_GSqSi_">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeyV10Foundation3URL_GSqS3__">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeyV10Foundation4Data_GSqS3__">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaCSo12UserDefaults9subscriptFGOS_3KeyV10Foundation4Date_GSqS3__">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaSS9subscriptFGVs5RangeSi_GSqSS_">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaSS9subscriptFSSGSqGVs5RangeVVSS13CharacterView5Index__">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaSS9subscriptFSiGSqSS_">subscript(_:)</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Subscripts.html#/s:iE9MechanicaSS9subscriptFVSC8_NSRangeGSqSS_">subscript(_:)</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="../Typealiases.html">Typealiases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -319,9 +266,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Typealiases.html#/s:9Mechanica10Storyboard">Storyboard</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:E9MechanicaPSo16NSObjectProtocol18SwizzlingSelectors">SwizzlingSelectors</a>
               </li>
             </ul>
           </li>
@@ -339,26 +283,24 @@
               </div>
             <p><strong>Mechanica</strong></p>
 
-<p><code>KeyboardObserver</code> is an UIKit keyboard&rsquo;s behavior observer (for iOS apps) without Notification Center.</p>
+<p><code>KeyboardObserver</code> is an UIKit keyboard&rsquo;s behavior observer (for iOS apps) without Notification Center.
+Declare what should happen on what event and <code>register()</code>.</p>
 
-<p>Declare what should happen on what event and <code>register()</code>.</p>
-
+<p>Example:</p>
 <pre class="highlight plaintext"><code>let keyboard = KeyboardObserver()
-
 keyboard
-.on(event: .didShow) { (options) in
+ .on(event: .didShow) { (options) in
    print("didShow")
-}
-.on(event: .didHide) { (options) in
+ }
+ .on(event: .didHide) { (options) in
    print("didHide")
-}
-.register()
-}
+ }
+ .register()
 </code></pre>
 
 <p>You <em>must</em> call <code>register()</code> for callbacks to be triggered.</p>
 
-<p>Calling <code>unregister()</code> will stop callbacks from triggering (UIKit&rsquo;s notifications won&rsquo;t be observed anymore), but callbacks themselves won&rsquo;t be dismissed; 
+<p>Calling <code>unregister()</code> will stop callbacks from triggering (UIKit&rsquo;s notifications won&rsquo;t be observed anymore), but callbacks themselves won&rsquo;t be dismissed;
 you can resume event callbacks by calling <code>register()</code> again.</p>
 
 <p>To remove all event callbacks, call <code>clear()</code>.</p>
@@ -366,13 +308,6 @@ you can resume event callbacks by calling <code>register()</code> again.</p>
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Keyboard%20Options"></a>
-                <a name="//apple_ref/swift/Section/Keyboard Options" class="dashAnchor"></a>
-                <a href="#/Keyboard%20Options">
-                  <h3 class="section-name">Keyboard Options</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -403,6 +338,17 @@ you can resume event callbacks by calling <code>register()</code> again.</p>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Keyboard%20Options"></a>
+                <a name="//apple_ref/swift/Section/Keyboard Options" class="dashAnchor"></a>
+                <a href="#/Keyboard%20Options">
+                  <h3 class="section-name">Keyboard Options</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -500,9 +446,17 @@ you can resume event callbacks by calling <code>register()</code> again.</p>
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Defines <code>KeyboardObserver</code> behaviours.
-- Warning: Without calling <code><a href="../Classes/KeyboardObserver.html#/s:FC9Mechanica16KeyboardObserver8registerFT_T_">register()</a></code> none of the closures will be executed.
-- Warning: If more closures are declared on the same event, only the latter will be executed.</p>
+<p>Defines <code>KeyboardObserver</code> behaviours.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Without calling <code><a href="../Classes/KeyboardObserver.html#/s:FC9Mechanica16KeyboardObserver8registerFT_T_">register()</a></code> none of the closures will be executed.
+
+</div>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>If more closures are declared on the same event, only the latter will be executed.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -526,7 +480,6 @@ you can resume event callbacks by calling <code>register()</code> again.</p>
                               <td>
                                 <div>
                                   <p><code>KeyboardObserver</code> event on which callback should be executed.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -539,7 +492,6 @@ you can resume event callbacks by calling <code>register()</code> again.</p>
                               <td>
                                 <div>
                                   <p>Closure of code which will be executed on <code>KeyboardObserver</code>.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -549,7 +501,6 @@ you can resume event callbacks by calling <code>register()</code> again.</p>
                       <div>
                         <h4>Return Value</h4>
                         <p><code>Self</code> for chaining purpose.</p>
-
                       </div>
                     </section>
                   </div>
@@ -656,8 +607,12 @@ you can resume event callbacks by calling <code>register()</code> again.</p>
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Unregister from <code>KeyboardObserver</code> events.
-- Warning: callbacks themselves won&rsquo;t be dismissed.</p>
+<p>Unregister from <code>KeyboardObserver</code> events.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    callbacks themselves won&rsquo;t be dismissed.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -676,8 +631,8 @@ you can resume event callbacks by calling <code>register()</code> again.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-06-03)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-06-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
