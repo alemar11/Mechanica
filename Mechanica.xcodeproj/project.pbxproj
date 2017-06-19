@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		2334048D1EF7C889006DA3A9 /* SwiftLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 233404901EF7C889006DA3A9 /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
+			buildPhases = (
+				233404911EF7C897006DA3A9 /* SwiftLint */,
+			);
+			dependencies = (
+				233404931EF7C927006DA3A9 /* PBXTargetDependency */,
+				233404951EF7C927006DA3A9 /* PBXTargetDependency */,
+				233404971EF7C927006DA3A9 /* PBXTargetDependency */,
+				233404991EF7C927006DA3A9 /* PBXTargetDependency */,
+			);
+			name = SwiftLint;
+			productName = SwiftLint;
+		};
 		D2ED4AD01DF85BAD0042F012 /* Cleanup Whitespace */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = D2ED4AD31DF85BAD0042F012 /* Build configuration list for PBXAggregateTarget "Cleanup Whitespace" */;
@@ -394,6 +409,34 @@
 			remoteInfo = "Mechanica tvOS";
 		};
 		12B537241D33F192005C52A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12B536991D33EB6B005C52A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12B536E11D33ED29005C52A7;
+			remoteInfo = "Mechanica macOS";
+		};
+		233404921EF7C927006DA3A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12B536991D33EB6B005C52A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12B536B11D33ECEC005C52A7;
+			remoteInfo = "Mechanica iOS";
+		};
+		233404941EF7C927006DA3A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12B536991D33EB6B005C52A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12B536BE1D33ECFB005C52A7;
+			remoteInfo = "Mechanica watchOS";
+		};
+		233404961EF7C927006DA3A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12B536991D33EB6B005C52A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12B536D41D33ED1C005C52A7;
+			remoteInfo = "Mechanica tvOS";
+		};
+		233404981EF7C927006DA3A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 12B536991D33EB6B005C52A7 /* Project object */;
 			proxyType = 1;
@@ -948,7 +991,6 @@
 				12B536AE1D33ECEC005C52A7 /* Frameworks */,
 				12B536AF1D33ECEC005C52A7 /* Headers */,
 				12B536B01D33ECEC005C52A7 /* Resources */,
-				2341B1E41EE06B7400E1E7F0 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -967,7 +1009,6 @@
 				12B536BB1D33ECFB005C52A7 /* Frameworks */,
 				12B536BC1D33ECFB005C52A7 /* Headers */,
 				12B536BD1D33ECFB005C52A7 /* Resources */,
-				23FFCA481EE0AB7400312A17 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -986,7 +1027,6 @@
 				12B536D11D33ED1C005C52A7 /* Frameworks */,
 				12B536D21D33ED1C005C52A7 /* Headers */,
 				12B536D31D33ED1C005C52A7 /* Resources */,
-				23FFCA491EE0AB8A00312A17 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -1005,7 +1045,6 @@
 				12B536DE1D33ED29005C52A7 /* Frameworks */,
 				12B536DF1D33ED29005C52A7 /* Headers */,
 				12B536E01D33ED29005C52A7 /* Resources */,
-				23FFCA4B1EE0ABB800312A17 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -1118,6 +1157,10 @@
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
+					2334048D1EF7C889006DA3A9 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
 					D2ED4AD01DF85BAD0042F012 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = TUY3F9922N;
@@ -1145,6 +1188,7 @@
 				12B5370E1D33F186005C52A7 /* Mechanica tvOS Tests */,
 				12B5371D1D33F192005C52A7 /* Mechanica macOS Tests */,
 				D2ED4AD01DF85BAD0042F012 /* Cleanup Whitespace */,
+				2334048D1EF7C889006DA3A9 /* SwiftLint */,
 			);
 		};
 /* End PBXProject section */
@@ -1214,49 +1258,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2341B1E41EE06B7400E1E7F0 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		23FFCA481EE0AB7400312A17 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		23FFCA491EE0AB8A00312A17 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		23FFCA4B1EE0ABB800312A17 /* SwiftLint */ = {
+		233404911EF7C897006DA3A9 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1690,6 +1692,26 @@
 			target = 12B536E11D33ED29005C52A7 /* Mechanica macOS */;
 			targetProxy = 12B537241D33F192005C52A7 /* PBXContainerItemProxy */;
 		};
+		233404931EF7C927006DA3A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12B536B11D33ECEC005C52A7 /* Mechanica iOS */;
+			targetProxy = 233404921EF7C927006DA3A9 /* PBXContainerItemProxy */;
+		};
+		233404951EF7C927006DA3A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12B536BE1D33ECFB005C52A7 /* Mechanica watchOS */;
+			targetProxy = 233404941EF7C927006DA3A9 /* PBXContainerItemProxy */;
+		};
+		233404971EF7C927006DA3A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12B536D41D33ED1C005C52A7 /* Mechanica tvOS */;
+			targetProxy = 233404961EF7C927006DA3A9 /* PBXContainerItemProxy */;
+		};
+		233404991EF7C927006DA3A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12B536E11D33ED29005C52A7 /* Mechanica macOS */;
+			targetProxy = 233404981EF7C927006DA3A9 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -2071,6 +2093,20 @@
 			};
 			name = Release;
 		};
+		2334048E1EF7C889006DA3A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2334048F1EF7C889006DA3A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D2ED4AD11DF85BAD0042F012 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2161,6 +2197,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		233404901EF7C889006DA3A9 /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2334048E1EF7C889006DA3A9 /* Debug */,
+				2334048F1EF7C889006DA3A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		D2ED4AD31DF85BAD0042F012 /* Build configuration list for PBXAggregateTarget "Cleanup Whitespace" */ = {
 			isa = XCConfigurationList;
