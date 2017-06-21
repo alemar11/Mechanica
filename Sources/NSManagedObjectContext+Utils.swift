@@ -29,7 +29,7 @@ extension NSManagedObjectContext {
   /// **Mechanica**
   ///
   /// The persistent stores associated with the receiver.
-  private final var stores: [NSPersistentStore] {
+  public final var persistentStores: [NSPersistentStore] {
     guard let psc = persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
     let stores = psc.persistentStores
     return stores
@@ -54,9 +54,9 @@ extension NSManagedObjectContext {
   public final func setMetaDataObject(_ object: AnyObject?, with key: String, for store: NSPersistentStore) {
     performSave(after: {
       guard let psc = self.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
-      var md = psc.metadata(for: store)
-      md[key] = object
-      psc.setMetadata(md, for: store)
+      var metaData = psc.metadata(for: store)
+      metaData[key] = object
+      psc.setMetadata(metaData, for: store)
 
     })
   }
@@ -67,7 +67,7 @@ extension NSManagedObjectContext {
   public final func entity(forEntityName name: String) -> NSEntityDescription {
     guard let psc = persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
     guard let entity = psc.managedObjectModel.entitiesByName[name] else { fatalError("Entity \(name) not found.") }
-    //guard let entity = NSEntityDescription.entity(forEntityName: name, in: self) else { fatalError("Entity \(name) not found") }
+    //guard let entity = NSEntityDescription.entity(forEntityName: name, in: self) else { fatalError("Entity \(name) not found.") }
     return entity
   }
 
