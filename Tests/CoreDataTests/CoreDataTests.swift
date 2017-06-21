@@ -26,6 +26,11 @@ import XCTest
 import CoreData
 @testable import Mechanica
 
+enum EntityKey {
+  static let car = "Car"
+  static let person = "Person"
+}
+
 class CoreDataTests: XCTestCase {
 
   func setupInMemoryManagedObjectContext() throws -> NSManagedObjectContext {
@@ -37,10 +42,28 @@ class CoreDataTests: XCTestCase {
     return managedObjectContext
   }
 
-  func test_ManagedObjectContextSetup() {
+  func testManagedObjectContextSetup() {
+
+    // Given, When
     let context = XCTAssertNoThrows(try setupInMemoryManagedObjectContext())
-    XCTAssertNotNil(context)
+
+    // Then
+    guard let c = context else {
+      XCTAssertNotNil(context)
+      return
+    }
+       XCTAssertTrue(context!.persistentStores.count == 1)
+
+    let persistentStore = context!.persistentStores.first
+    let metaData = context!.metaData(for: persistentStore!)
+    print((metaData["NSStoreModelVersionHashes"] as? [String: Any])?["Car"])
+    print(metaData["NSStoreType"]) //InMemory
+
+    //test set metaData, todo
+
+    XCTAssertNotNil(context!.entity(forEntityName: "Car"))
+    XCTAssertNotNil(context!.entity(forEntityName: "Person"))
+    print(description)
   }
 
 }
-
