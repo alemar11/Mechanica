@@ -35,9 +35,9 @@ extension NSPersistentStoreCoordinator {
   @available(OSX 10.12, *)
   public static func destroyStore(as url: URL) {
     do {
-      let psc = self.init(managedObjectModel: NSManagedObjectModel())
-      try psc.destroyPersistentStore(at: url, ofType: NSSQLiteStoreType, options: nil)
-    } catch let error {
+      let persistentStoreCoordinator = self.init(managedObjectModel: NSManagedObjectModel())
+      try persistentStoreCoordinator.destroyPersistentStore(at: url, ofType: NSSQLiteStoreType, options: nil)
+    } catch {
       print("Failed to destroy persistent store at \(url).", error)
     }
   }
@@ -50,8 +50,8 @@ extension NSPersistentStoreCoordinator {
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
   public static func replaceStore(at targetURL: URL, withStoreFrom sourceURL: URL) throws {
-    let psc = self.init(managedObjectModel: NSManagedObjectModel())
-    try psc.replacePersistentStore(at: targetURL, destinationOptions: nil, withPersistentStoreFrom: sourceURL, sourceOptions: nil, ofType: NSSQLiteStoreType)
+    let persistentStoreCoordinator = self.init(managedObjectModel: NSManagedObjectModel())
+    try persistentStoreCoordinator.replacePersistentStore(at: targetURL, destinationOptions: nil, withPersistentStoreFrom: sourceURL, sourceOptions: nil, ofType: NSSQLiteStoreType)
   }
 
 }

@@ -30,6 +30,8 @@ fileprivate enum ModelVersionKey {
   static let mom  = "mom"
 }
 
+/// **Mechanica**
+///
 /// Types adopting the `ModelVersion` protocol can be used to describe a Core Data Model and its versioning.
 public protocol ModelVersion: Equatable {
 
