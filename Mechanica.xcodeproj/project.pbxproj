@@ -270,6 +270,18 @@
 		23C27C3A1E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */; };
 		23D736771EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D736761EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib */; };
 		23D736781EE2C720007D6E51 /* macOS_ViewNibIdentifiable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D736741EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib */; };
+		23D926C41EFA67E900629E17 /* DemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D926C21EFA67E900629E17 /* DemoModel.xcdatamodeld */; };
+		23D926C51EFA67E900629E17 /* DemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D926C21EFA67E900629E17 /* DemoModel.xcdatamodeld */; };
+		23D926C61EFA67E900629E17 /* DemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D926C21EFA67E900629E17 /* DemoModel.xcdatamodeld */; };
+		23D926D81EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */; };
+		23D926D91EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */; };
+		23D926DA1EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */; };
+		23D926DC1EFA6FC800629E17 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DB1EFA6FC800629E17 /* CoreDataTests.swift */; };
+		23D926DD1EFA6FC800629E17 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DB1EFA6FC800629E17 /* CoreDataTests.swift */; };
+		23D926DE1EFA6FC800629E17 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DB1EFA6FC800629E17 /* CoreDataTests.swift */; };
+		23D926E01EFA795F00629E17 /* ModelVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */; };
+		23D926E11EFA795F00629E17 /* ModelVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */; };
+		23D926E21EFA795F00629E17 /* ModelVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */; };
 		23DA86FF1E65C42C009C5CFE /* SignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */; };
 		23DA87001E65C42C009C5CFE /* SignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */; };
 		23DA87011E65C42C009C5CFE /* SignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */; };
@@ -532,6 +544,10 @@
 		23D922991EFA670900629E17 /* Info-Tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Tests.plist"; sourceTree = "<group>"; };
 		23D9229A1EFA670900629E17 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		23D9229B1EFA670900629E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23D926C31EFA67E900629E17 /* DemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemoModel.xcdatamodel; sourceTree = "<group>"; };
+		23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoModelVersion.swift; sourceTree = "<group>"; };
+		23D926DB1EFA6FC800629E17 /* CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelVersionTests.swift; sourceTree = "<group>"; };
 		23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
 		23F3F6FA1E9651AB002DAC89 /* KeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTests.swift; sourceTree = "<group>"; };
@@ -685,6 +701,7 @@
 		12B536EE1D33ED6A005C52A7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				23D926C11EFA679000629E17 /* CoreDataTests */,
 				2317E3901E8D14400087BB79 /* MechanicaTests */,
 			);
 			path = Tests;
@@ -891,6 +908,17 @@
 				23D9229B1EFA670900629E17 /* Info.plist */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		23D926C11EFA679000629E17 /* CoreDataTests */ = {
+			isa = PBXGroup;
+			children = (
+				23D926C21EFA67E900629E17 /* DemoModel.xcdatamodeld */,
+				23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */,
+				23D926DB1EFA6FC800629E17 /* CoreDataTests.swift */,
+				23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */,
+			);
+			path = CoreDataTests;
 			sourceTree = "<group>";
 		};
 		D278BD931DEF102A006FAD83 /* Color */ = {
@@ -1543,6 +1571,8 @@
 				2384BDB21E9170810036C128 /* UserDefaultsUtilsTests.swift in Sources */,
 				230A4EEF1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */,
 				237F17A41E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
+				23D926D81EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */,
+				23D926DC1EFA6FC800629E17 /* CoreDataTests.swift in Sources */,
 				237F17CB1E90000900726553 /* StringValidationTests.swift in Sources */,
 				237F17BF1E90000900726553 /* StringConversionsTests.swift in Sources */,
 				237F17B61E90000900726553 /* SequenceUtilsTests.swift in Sources */,
@@ -1557,6 +1587,7 @@
 				237F175F1E90000800726553 /* AppTests.swift in Sources */,
 				237F17D71E90000900726553 /* URLOperatorsTests.swift in Sources */,
 				237F17D41E90000900726553 /* UnsignedIntegerUtilsTests.swift in Sources */,
+				23D926C41EFA67E900629E17 /* DemoModel.xcdatamodeld in Sources */,
 				237F17681E90000900726553 /* BoolUtilsTests.swift in Sources */,
 				237F17B31E90000900726553 /* RangeReplaceableCollectionUtilsTests.swift in Sources */,
 				237F178C1E90000900726553 /* IntegerUtilsTests.swift in Sources */,
@@ -1568,6 +1599,7 @@
 				237F17BC1E90000900726553 /* StoryboardTests.swift in Sources */,
 				237F17711E90000900726553 /* ColorFlatTests.swift in Sources */,
 				237F176E1E90000900726553 /* CollectionUtiilsTests.swift in Sources */,
+				23D926E01EFA795F00629E17 /* ModelVersionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1575,6 +1607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D926E11EFA795F00629E17 /* ModelVersionTests.swift in Sources */,
 				237F17AB1E90000900726553 /* NSObjectProtocolSwizzlingTests.swift in Sources */,
 				237F178A1E90000900726553 /* FixedWidthIntegerRandomizableTests.swift in Sources */,
 				237F17A21E90000900726553 /* NSAttributedStringOperatorsTests.swift in Sources */,
@@ -1587,6 +1620,7 @@
 				237F177B1E90000900726553 /* PropertyListReadableTests.swift in Sources */,
 				237F17C61E90000900726553 /* StringOperatorsTests.swift in Sources */,
 				237F17871E90000900726553 /* FloatingPointUtilsTests.swift in Sources */,
+				23D926C51EFA67E900629E17 /* DemoModel.xcdatamodeld in Sources */,
 				23C27C391E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */,
 				237F17A51E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
 				237F17CC1E90000900726553 /* StringValidationTests.swift in Sources */,
@@ -1605,7 +1639,9 @@
 				237F17D81E90000900726553 /* URLOperatorsTests.swift in Sources */,
 				237F17D51E90000900726553 /* UnsignedIntegerUtilsTests.swift in Sources */,
 				237F17691E90000900726553 /* BoolUtilsTests.swift in Sources */,
+				23D926DD1EFA6FC800629E17 /* CoreDataTests.swift in Sources */,
 				237F17B41E90000900726553 /* RangeReplaceableCollectionUtilsTests.swift in Sources */,
+				23D926D91EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */,
 				237F178D1E90000900726553 /* IntegerUtilsTests.swift in Sources */,
 				237F17C31E90000900726553 /* StringNSStringTests.swift in Sources */,
 				237F17A81E90000900726553 /* NSMutableAttributedStringOperatorsTests.swift in Sources */,
@@ -1622,6 +1658,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D926E21EFA795F00629E17 /* ModelVersionTests.swift in Sources */,
 				237F17AC1E90000900726553 /* NSObjectProtocolSwizzlingTests.swift in Sources */,
 				237F178B1E90000900726553 /* FixedWidthIntegerRandomizableTests.swift in Sources */,
 				237F17A31E90000900726553 /* NSAttributedStringOperatorsTests.swift in Sources */,
@@ -1634,6 +1671,7 @@
 				237F177C1E90000900726553 /* PropertyListReadableTests.swift in Sources */,
 				237F17C71E90000900726553 /* StringOperatorsTests.swift in Sources */,
 				237F17881E90000900726553 /* FloatingPointUtilsTests.swift in Sources */,
+				23D926C61EFA67E900629E17 /* DemoModel.xcdatamodeld in Sources */,
 				23C27C3A1E9E5BAB006C235E /* UserDefaultsKeyTests.swift in Sources */,
 				237F17A61E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
 				237F17CD1E90000900726553 /* StringValidationTests.swift in Sources */,
@@ -1652,7 +1690,9 @@
 				237F17D91E90000900726553 /* URLOperatorsTests.swift in Sources */,
 				237F17D61E90000900726553 /* UnsignedIntegerUtilsTests.swift in Sources */,
 				237F176A1E90000900726553 /* BoolUtilsTests.swift in Sources */,
+				23D926DE1EFA6FC800629E17 /* CoreDataTests.swift in Sources */,
 				237F17B51E90000900726553 /* RangeReplaceableCollectionUtilsTests.swift in Sources */,
+				23D926DA1EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */,
 				237F178E1E90000900726553 /* IntegerUtilsTests.swift in Sources */,
 				237F17C41E90000900726553 /* StringNSStringTests.swift in Sources */,
 				237F17A91E90000900726553 /* NSMutableAttributedStringOperatorsTests.swift in Sources */,
@@ -2001,8 +2041,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Release-iphoneos",
+				);
 				INFOPLIST_FILE = "Support/Info-Tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/arm64",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/armv7",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2014,8 +2063,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Release-iphoneos",
+				);
 				INFOPLIST_FILE = "Support/Info-Tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/arm64",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/armv7",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -2026,8 +2084,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Release-iphoneos",
+				);
 				INFOPLIST_FILE = "Support/Info-Tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/arm64",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/armv7",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -2041,8 +2108,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Release-iphoneos",
+				);
 				INFOPLIST_FILE = "Support/Info-Tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/arm64",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/armv7",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -2057,8 +2133,17 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Release-iphoneos",
+				);
 				INFOPLIST_FILE = "Support/Info-Tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/arm64",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/armv7",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2074,8 +2159,17 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Release-iphoneos",
+				);
 				INFOPLIST_FILE = "Support/Info-Tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/arm64",
+					"$(PROJECT_DIR)/Tests/CoreDataTests/Mechanica.build/Release-iphoneos/Mechanica\\ iOS.build/Objects-normal/armv7",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2208,6 +2302,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		23D926C21EFA67E900629E17 /* DemoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				23D926C31EFA67E900629E17 /* DemoModel.xcdatamodel */,
+			);
+			currentVersion = 23D926C31EFA67E900629E17 /* DemoModel.xcdatamodel */;
+			path = DemoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 12B536991D33EB6B005C52A7 /* Project object */;
 }
