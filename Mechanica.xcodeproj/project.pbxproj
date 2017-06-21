@@ -453,13 +453,10 @@
 		12B536BF1D33ECFB005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536D51D33ED1C005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536E21D33ED29005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		12B536EB1D33ED6A005C52A7 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		12B536EC1D33ED6A005C52A7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		12B536ED1D33ED6A005C52A7 /* Mechanica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mechanica.h; sourceTree = "<group>"; };
+		12B536ED1D33ED6A005C52A7 /* Mechanica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mechanica.h; path = Sources/Mechanica.h; sourceTree = "<group>"; };
 		12B537001D33F16E005C52A7 /* Mechanica iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mechanica iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B5370F1D33F186005C52A7 /* Mechanica tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mechanica tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B5371E1D33F192005C52A7 /* Mechanica macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mechanica macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		12B537291D33F1D3005C52A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12B6B1B81E0D5D180057FE5F /* Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Nib.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Utils.swift"; sourceTree = "<group>"; };
 		12B9562B1D880B3B00F75DD5 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
@@ -532,6 +529,9 @@
 		23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeyTests.swift; sourceTree = "<group>"; };
 		23D736741EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = macOS_ViewNibIdentifiable.xib; sourceTree = "<group>"; };
 		23D736761EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tvOS_ViewNibIdentifiable.xib; sourceTree = "<group>"; };
+		23D922991EFA670900629E17 /* Info-Tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Tests.plist"; sourceTree = "<group>"; };
+		23D9229A1EFA670900629E17 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		23D9229B1EFA670900629E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
 		23F3F6FA1E9651AB002DAC89 /* KeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTests.swift; sourceTree = "<group>"; };
@@ -621,20 +621,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12A90BBE1D33FF5B00834DC0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				12B537291D33F1D3005C52A7 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		12B536981D33EB6B005C52A7 = {
 			isa = PBXGroup;
 			children = (
+				12B536ED1D33ED6A005C52A7 /* Mechanica.h */,
 				12B536A31D33EB6B005C52A7 /* Products */,
 				12B536EA1D33ED6A005C52A7 /* Sources */,
-				12B536FB1D33F14F005C52A7 /* Supporting Files */,
+				23D922981EFA670900629E17 /* Support */,
 				12B536EE1D33ED6A005C52A7 /* Tests */,
 			);
 			sourceTree = "<group>";
@@ -693,20 +686,8 @@
 			isa = PBXGroup;
 			children = (
 				2317E3901E8D14400087BB79 /* MechanicaTests */,
-				12A90BBE1D33FF5B00834DC0 /* Supporting Files */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		12B536FB1D33F14F005C52A7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				12B536EB1D33ED6A005C52A7 /* Info-tvOS.plist */,
-				12B536EC1D33ED6A005C52A7 /* Info.plist */,
-				12B536ED1D33ED6A005C52A7 /* Mechanica.h */,
-			);
-			name = "Supporting Files";
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		12B956431D8824AB00F75DD5 /* String */ = {
@@ -900,6 +881,16 @@
 				23B2ED711EC8CE28006365BD /* NSObjectProtocolUtils.swift */,
 			);
 			name = NSObject;
+			sourceTree = "<group>";
+		};
+		23D922981EFA670900629E17 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				23D922991EFA670900629E17 /* Info-Tests.plist */,
+				23D9229A1EFA670900629E17 /* Info-tvOS.plist */,
+				23D9229B1EFA670900629E17 /* Info.plist */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 		D278BD931DEF102A006FAD83 /* Color */ = {
