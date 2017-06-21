@@ -25,6 +25,8 @@
 import XCTest
 import Foundation
 
+// MARK: - XCTest Extension
+
 extension XCTest {
 
   /// **Mechanica**
@@ -35,6 +37,8 @@ extension XCTest {
   }
 
 }
+
+// MARK: - XCTAssert Additions
 
 /// **Mechanica**
 ///
@@ -50,8 +54,8 @@ func XCTAssertNoThrows(_ expression: @autoclosure () throws -> Void, _ message: 
   do {
     try expression()
     ok = true
-  } catch let e {
-    let failMessage = "Unexpected exception: \(e). \(message)"
+  } catch {
+    let failMessage = "Unexpected exception: \(error). \(message)"
     XCTFail(failMessage, file: file, line: line)
   }
   return ok
@@ -70,8 +74,8 @@ func XCTAssertNoThrows<T>(_ expression: @autoclosure () throws -> T, _ message: 
   var t: T? = nil
   do {
     t = try expression()
-  } catch let e {
-    let failMessage = "Unexpected exception: \(e). \(message)"
+  } catch {
+    let failMessage = "Unexpected exception: \(error). \(message)"
     XCTFail(failMessage, file: file, line: line)
   }
   return t
