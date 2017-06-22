@@ -41,6 +41,7 @@ extension Test {
 class NSObjectSwizzlingTests: XCTestCase {
 
   override func setUp() {
+    super.setUp()
     Test.swizzle([
       ( #selector(Test.methodOne), #selector(Test.methodTwo) ),
       ( #selector(Test.methodThree), #selector(Test.methodFour) ),

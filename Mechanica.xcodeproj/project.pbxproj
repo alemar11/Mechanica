@@ -276,9 +276,9 @@
 		23D926D81EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */; };
 		23D926D91EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */; };
 		23D926DA1EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */; };
-		23D926DC1EFA6FC800629E17 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DB1EFA6FC800629E17 /* CoreDataTests.swift */; };
-		23D926DD1EFA6FC800629E17 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DB1EFA6FC800629E17 /* CoreDataTests.swift */; };
-		23D926DE1EFA6FC800629E17 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DB1EFA6FC800629E17 /* CoreDataTests.swift */; };
+		23D926DC1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DB1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift */; };
+		23D926DD1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DB1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift */; };
+		23D926DE1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DB1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift */; };
 		23D926E01EFA795F00629E17 /* ModelVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */; };
 		23D926E11EFA795F00629E17 /* ModelVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */; };
 		23D926E21EFA795F00629E17 /* ModelVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */; };
@@ -546,7 +546,7 @@
 		23D9229B1EFA670900629E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23D926C31EFA67E900629E17 /* DemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemoModel.xcdatamodel; sourceTree = "<group>"; };
 		23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoModelVersion.swift; sourceTree = "<group>"; };
-		23D926DB1EFA6FC800629E17 /* CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		23D926DB1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextUtilsTests.swift; sourceTree = "<group>"; };
 		23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelVersionTests.swift; sourceTree = "<group>"; };
 		23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
@@ -915,7 +915,7 @@
 			children = (
 				23D926C21EFA67E900629E17 /* DemoModel.xcdatamodeld */,
 				23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */,
-				23D926DB1EFA6FC800629E17 /* CoreDataTests.swift */,
+				23D926DB1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift */,
 				23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */,
 			);
 			path = CoreDataTests;
@@ -1572,7 +1572,7 @@
 				230A4EEF1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */,
 				237F17A41E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
 				23D926D81EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */,
-				23D926DC1EFA6FC800629E17 /* CoreDataTests.swift in Sources */,
+				23D926DC1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift in Sources */,
 				237F17CB1E90000900726553 /* StringValidationTests.swift in Sources */,
 				237F17BF1E90000900726553 /* StringConversionsTests.swift in Sources */,
 				237F17B61E90000900726553 /* SequenceUtilsTests.swift in Sources */,
@@ -1639,7 +1639,7 @@
 				237F17D81E90000900726553 /* URLOperatorsTests.swift in Sources */,
 				237F17D51E90000900726553 /* UnsignedIntegerUtilsTests.swift in Sources */,
 				237F17691E90000900726553 /* BoolUtilsTests.swift in Sources */,
-				23D926DD1EFA6FC800629E17 /* CoreDataTests.swift in Sources */,
+				23D926DD1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift in Sources */,
 				237F17B41E90000900726553 /* RangeReplaceableCollectionUtilsTests.swift in Sources */,
 				23D926D91EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */,
 				237F178D1E90000900726553 /* IntegerUtilsTests.swift in Sources */,
@@ -1690,7 +1690,7 @@
 				237F17D91E90000900726553 /* URLOperatorsTests.swift in Sources */,
 				237F17D61E90000900726553 /* UnsignedIntegerUtilsTests.swift in Sources */,
 				237F176A1E90000900726553 /* BoolUtilsTests.swift in Sources */,
-				23D926DE1EFA6FC800629E17 /* CoreDataTests.swift in Sources */,
+				23D926DE1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift in Sources */,
 				237F17B51E90000900726553 /* RangeReplaceableCollectionUtilsTests.swift in Sources */,
 				23D926DA1EFA6E6C00629E17 /* DemoModelVersion.swift in Sources */,
 				237F178E1E90000900726553 /* IntegerUtilsTests.swift in Sources */,

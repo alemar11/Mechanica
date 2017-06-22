@@ -371,9 +371,9 @@ class UserDefaultsUtilsTests: XCTestCase {
   // MARK: - NSCoding
 
   func test_archive() {
-    let value = Person(firstname: "name1", surname: "surname1")
-    let value2 = Person(firstname: "name2", surname: "surname2")
-    let key = Key<Person>("myPerson")
+    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
+    let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
+    let key = Key<UserDefaultsUtilsTests.Person>("myPerson")
     userDefaults.set(archivableValue: value, forKey: key)
     XCTAssertTrue(userDefaults.archivableValue(forKey: key)! == value)
     userDefaults.set(archivableValue: value2, forKey: key)
@@ -386,30 +386,34 @@ class UserDefaultsUtilsTests: XCTestCase {
 }
 
 
+// MARK: - UserDefaultsUtilsTests Namespace
 
-class Person: NSObject, NSCoding {
-  let surname: String
-  let firstname: String
+extension UserDefaultsUtilsTests {
 
-  required init(firstname:String, surname:String) {
-    self.firstname = firstname
-    self.surname = surname
-  }
+  class Person: NSObject, NSCoding {
+    let surname: String
+    let firstname: String
 
-  required init?(coder aDecoder: NSCoder) {
-    firstname = aDecoder.decodeObject(forKey: #keyPath(Person.firstname)) as! String
-    surname = aDecoder.decodeObject(forKey: #keyPath(Person.surname)) as! String
-  }
+    required init(firstname:String, surname:String) {
+      self.firstname = firstname
+      self.surname = surname
+    }
 
-  func encode(with aCoder: NSCoder) {
-    aCoder.encode(firstname, forKey: #keyPath(Person.firstname))
-    aCoder.encode(surname, forKey: #keyPath(Person.surname))
-  }
+    required init?(coder aDecoder: NSCoder) {
+      firstname = aDecoder.decodeObject(forKey: #keyPath(Person.firstname)) as! String
+      surname = aDecoder.decodeObject(forKey: #keyPath(Person.surname)) as! String
+    }
 
-  static func ==(left: Person, right: Person) -> Bool {
-    return left.firstname == right.firstname && left.surname == right.surname
+    func encode(with aCoder: NSCoder) {
+      aCoder.encode(firstname, forKey: #keyPath(Person.firstname))
+      aCoder.encode(surname, forKey: #keyPath(Person.surname))
+    }
+    
+    static func ==(left: Person, right: Person) -> Bool {
+      return left.firstname == right.firstname && left.surname == right.surname
+    }
+    
   }
   
 }
-
 
