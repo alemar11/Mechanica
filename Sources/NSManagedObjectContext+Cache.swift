@@ -26,35 +26,37 @@ import CoreData
 
 // MARK: - Cache
 
-fileprivate let singleObjectCacheKey = "\(mechanicaBundleIdentifier).CoreData.Cache"
-fileprivate typealias SingleObjectCache = [String:NSManagedObject]
+fileprivate let managedObjectsCacheKey = "\(mechanicaBundleIdentifier).CoreData.ManagedObjectsCache"
+fileprivate typealias ManagedObjectsCache = [String: NSManagedObject]
 
 extension NSManagedObjectContext {
 
   /// **Mechanica**
   ///
-  /// Caches an `object` for a `key` in this context.
-  public final func setCachedObject(_ object: NSManagedObject?, forKey key: String) {
-    var cache = userInfo[singleObjectCacheKey] as? SingleObjectCache ?? [:]
+  /// Caches a NSManagedObject `object` for a `key` in this context.
+  /// - Note: The NSManagedObject `object` must have the same NSManagedObjectContext of `self` otherwise it will be not cached.
+  public final func setCachedManagedObject(_ object: NSManagedObject?, forKey key: String) {
+    guard let context = object?.managedObjectContext, context === self else { return }
+    var cache = userInfo[managedObjectsCacheKey] as? ManagedObjectsCache ?? [:]
     cache[key] = object
-    userInfo[singleObjectCacheKey] = cache
+    userInfo[managedObjectsCacheKey] = cache
   }
 
   /// **Mechanica**
   ///
-  /// Returns a cached object in this context for a given `key`.
-  public final func cachedObject(forKey key: String) -> NSManagedObject? {
-    guard let cache = userInfo[singleObjectCacheKey] as? [String:NSManagedObject] else { return nil }
+  /// Returns a cached NSManagedObject `object` in this context for a given `key`.
+  public final func cachedManagedObject(forKey key: String) -> NSManagedObject? {
+    guard let cache = userInfo[managedObjectsCacheKey] as? ManagedObjectsCache else { return nil }
     return cache[key]
   }
 
   /// **Mechanica**
   ///
-  /// Clears all cached object in this context.
-  public final func clearCachedObjects() {
-    var cache = userInfo[singleObjectCacheKey]
-    if (cache as? SingleObjectCache) != nil {
-      cache = nil
+  /// Clears all cached NSManagedObject objects in this context.
+  public final func clearCachedManagedObjects() {
+    let cache = userInfo[managedObjectsCacheKey]
+    if (cache as? ManagedObjectsCache) != nil {
+      userInfo[managedObjectsCacheKey] = nil
     }
   }
 
