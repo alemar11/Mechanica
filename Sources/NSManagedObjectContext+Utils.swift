@@ -30,8 +30,8 @@ extension NSManagedObjectContext {
   ///
   /// The persistent stores associated with the receiver.
   public final var persistentStores: [NSPersistentStore] {
-    guard let psc = persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
-    let stores = psc.persistentStores
+    guard let persistentStoreCoordinator = persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
+    let stores = persistentStoreCoordinator.persistentStores
     return stores
   }
 
@@ -39,25 +39,25 @@ extension NSManagedObjectContext {
   ///
   /// Returns a dictionary that contains the metadata currently stored or to-be-stored in a given persistent store.
   public final func metaData(for store: NSPersistentStore) -> [String: Any] {
-    guard let psc = persistentStoreCoordinator else { fatalError("Must have Persistent Store Coordinator.") }
-    return psc.metadata(for: store)
+    guard let persistentStoreCoordinator = persistentStoreCoordinator else { fatalError("Must have Persistent Store Coordinator.") }
+    return persistentStoreCoordinator.metadata(for: store)
   }
 
   /// **Mechanica**
   ///
-  /// Adds an `object` to the store's metadata and saves it asynchronously.
+  /// Adds an `object` to the store's metadata and saves it **asynchronously**.
   ///
   /// - Parameters:
   ///   - object: Object to be added to the medata dictionary.
   ///   - key: Object key
   ///   - store: NSPersistentStore where is stored the metadata.
-  public final func setMetaDataObject(_ object: AnyObject?, with key: String, for store: NSPersistentStore) {
+  public final func setMetaDataObject(_ object: Any?, with key: String, for store: NSPersistentStore, completion handler: ((_ metaData: [String : Any])->())? = nil) {
     performSave(after: {
-      guard let psc = self.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
-      var metaData = psc.metadata(for: store)
+      guard let persistentStoreCoordinator = self.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
+      var metaData = persistentStoreCoordinator.metadata(for: store)
       metaData[key] = object
-      psc.setMetadata(metaData, for: store)
-
+      persistentStoreCoordinator.setMetadata(metaData, for: store)
+      handler?(metaData)
     })
   }
 
@@ -65,11 +65,17 @@ extension NSManagedObjectContext {
   ///
   /// Returns the entity with the specified name from the managed object model associated with the specified managed object context’s persistent store coordinator.
   public final func entity(forEntityName name: String) -> NSEntityDescription {
-    guard let psc = persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
-    guard let entity = psc.managedObjectModel.entitiesByName[name] else { fatalError("Entity \(name) not found.") }
+    guard let persistentStoreCoordinator = persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
+    guard let entity = persistentStoreCoordinator.managedObjectModel.entitiesByName[name] else { fatalError("Entity \(name) not found.") }
     //guard let entity = NSEntityDescription.entity(forEntityName: name, in: self) else { fatalError("Entity \(name) not found.") }
     return entity
   }
+
+}
+
+// MARK: - Child Context
+
+extension NSManagedObjectContext {
 
   /// **Mechanica**
   ///
