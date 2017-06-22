@@ -7,7 +7,7 @@ let package = Package(
     targets:
         [
           Target(name: "Mechanica")
-        ]
+        ],
     //dependencies : [],
-    //exclude: ["Tests"]
+    exclude: ["Tests/CoreDataTests"]
 )
