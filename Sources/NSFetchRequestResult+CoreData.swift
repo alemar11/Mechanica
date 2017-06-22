@@ -221,9 +221,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
   public static func fetchCachedObject(in context: NSManagedObjectContext, forKey cacheKey: String, with configuration: @escaping (NSFetchRequest<Self>) -> Void) -> Self? {
-    guard let cached = context.cachedObject(forKey: cacheKey) as? Self else {
+    guard let cached = context.cachedManagedObject(forKey: cacheKey) as? Self else {
       let result = fetchSingleObject(in: context, with: configuration)
-      context.setCachedObject(result, forKey: cacheKey)
+      context.setCachedManagedObject(result, forKey: cacheKey)
       return result
     }
     return cached
