@@ -97,7 +97,7 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       XCTAssertNotNil(metaData["NSStoreType"] as? String)
 
       let addMetaDataExpectation = expectation(description: "Add MetaData Expectation") //XCTestExpectation(description: "set metadata")
-      stack.mainContext.setMetaDataObject("Test", with: "testKey", for: firstPersistentStore){ _ in
+      stack.mainContext.setMetaDataObject("Test", with: "testKey", for: firstPersistentStore){
         addMetaDataExpectation.fulfill()
       }
       waitForExpectations(timeout: 5.0, handler: nil)
