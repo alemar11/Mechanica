@@ -51,13 +51,14 @@ extension NSManagedObjectContext {
   ///   - object: Object to be added to the medata dictionary.
   ///   - key: Object key
   ///   - store: NSPersistentStore where is stored the metadata.
-  public final func setMetaDataObject(_ object: Any?, with key: String, for store: NSPersistentStore, completion handler: ((_ metaData: [String : Any])->())? = nil) {
+  ///   - handler: The completion handler called when the saving is completed.
+  public final func setMetaDataObject(_ object: Any?, with key: String, for store: NSPersistentStore, completion handler: (()->())? = nil) {
     performSave(after: {
       guard let persistentStoreCoordinator = self.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
       var metaData = persistentStoreCoordinator.metadata(for: store)
       metaData[key] = object
       persistentStoreCoordinator.setMetadata(metaData, for: store)
-      handler?(metaData)
+      handler?()
     })
   }
 
@@ -67,7 +68,7 @@ extension NSManagedObjectContext {
   public final func entity(forEntityName name: String) -> NSEntityDescription {
     guard let persistentStoreCoordinator = persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
     guard let entity = persistentStoreCoordinator.managedObjectModel.entitiesByName[name] else { fatalError("Entity \(name) not found.") }
-    //guard let entity = NSEntityDescription.entity(forEntityName: name, in: self) else { fatalError("Entity \(name) not found.") }
+//    guard let entity = NSEntityDescription.entity(forEntityName: name, in: self) else { fatalError("Entity \(name) not found.") }
     return entity
   }
 
