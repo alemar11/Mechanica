@@ -36,10 +36,18 @@ extension NSManagedObjectContext {
   /// Caches a NSManagedObject `object` for a `key` in this context.
   /// - Note: The NSManagedObject `object` must have the same NSManagedObjectContext of `self` otherwise it will be not cached.
   public final func setCachedManagedObject(_ object: NSManagedObject?, forKey key: String) {
-    guard let context = object?.managedObjectContext, context === self else { return }
-    var cache = userInfo[managedObjectsCacheKey] as? ManagedObjectsCache ?? [:]
-    cache[key] = object
-    userInfo[managedObjectsCacheKey] = cache
+    switch (object) {
+    case let managedObject? where managedObject.managedObjectContext != nil && managedObject.managedObjectContext !== self:
+      print("The managedObject \(managedObject.objectID) has a NSManagedObjectContext \(managedObject.managedObjectContext!) different from \(self) and it will be not cached.")
+      return
+    case let managedObject? where managedObject.managedObjectContext == nil:
+      print("The managedObject \(managedObject.objectID) doen't have a NSManagedObjectContext and it will be not cached.")
+      return
+    default:
+      var cache = userInfo[managedObjectsCacheKey] as? ManagedObjectsCache ?? [:]
+      cache[key] = object
+      userInfo[managedObjectsCacheKey] = cache
+    }
   }
 
   /// **Mechanica**
@@ -59,5 +67,5 @@ extension NSManagedObjectContext {
       userInfo[managedObjectsCacheKey] = nil
     }
   }
-
+  
 }
