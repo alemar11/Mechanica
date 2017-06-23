@@ -45,7 +45,6 @@ class SignedIntegerTests: XCTestCase {
       XCTAssertEqual(11.binaryString,"0000000000000000000000000000000000000000000000000000000000001011")
       XCTAssertEqual(111.binaryString,"0000000000000000000000000000000000000000000000000000000001101111")
       XCTAssertEqual(Int.max.binaryString,"0111111111111111111111111111111111111111111111111111111111111111")
-
     #elseif (arch(i386) || arch(arm))
       // For 32-bit systems
       XCTAssertEqual((-3).binaryString, "11111111111111111111111111111101")
@@ -59,8 +58,8 @@ class SignedIntegerTests: XCTestCase {
 
   // MARK: - Utils
 
-  func testHexadecimalString(uppercase: Bool = true) {
-    XCTAssertEqual(255.hexadecimalString(), "ff")
+  func testHexadecimalString() {
+    XCTAssertEqual(255.hexadecimalString(), "FF")
     XCTAssertEqual(255.hexadecimalString(uppercase: false), "ff")
     XCTAssertEqual(255.hexadecimalString(uppercase: true), "FF")
     XCTAssertEqual(0.hexadecimalString(), "0")
@@ -68,10 +67,19 @@ class SignedIntegerTests: XCTestCase {
     XCTAssertEqual(11.hexadecimalString(),"B")
     XCTAssertEqual(111.hexadecimalString(uppercase: true),"6F")
     XCTAssertEqual(111222.hexadecimalString(),"1B276")
+    #if (arch(x86_64) || arch(arm64))
+      // For 64-bit systems
     XCTAssertEqual(Int.max.hexadecimalString(uppercase: true), "7FFFFFFFFFFFFFFF")
     XCTAssertEqual(Int.max.hexadecimalString(uppercase: false), "7fffffffffffffff")
-
-    //XCTAssertEqual(Int8(-11).hexadecimalString(), "-B")
+    #elseif (arch(i386) || arch(arm))
+      // For 32-bit systems
+      XCTAssertEqual(Int.max.hexadecimalString(uppercase: true), "7FFFFFFF")
+      XCTAssertEqual(Int.max.hexadecimalString(uppercase: false), "7fffffff")
+    #endif
+    // TODO: negative hex
+    XCTAssertEqual(Int8(-11).hexadecimalString(), "-B") // FFFFFFF5
   }
   
 }
+
+
