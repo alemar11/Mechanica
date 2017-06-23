@@ -176,7 +176,6 @@ class ColorUtilsTests: XCTestCase {
       /// RGBA_FROM_P3{141, 68, 173, 255}
       let (r_p3, g_p3, b_p3, a_p3) = wisteriaP3.rgba!
       let (r, g, b, a) = wisteriaRGBA.rgba!
-      
       XCTAssertEqualWithAccuracy(Double(r_p3) * 255, Double(r) * 255, accuracy: 1.0)
       XCTAssertEqualWithAccuracy(Double(g_p3) * 255, Double(g) * 255, accuracy: 1.0)
       XCTAssertEqualWithAccuracy(Double(b_p3) * 255, Double(b) * 255, accuracy: 1.0)
