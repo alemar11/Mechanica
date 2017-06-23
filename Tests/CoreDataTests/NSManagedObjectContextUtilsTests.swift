@@ -56,7 +56,7 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.person])
       XCTAssertNotNil(metaData["NSStoreType"] as? String)
 
-      let addMetaDataExpectation = expectation(description: "Add MetaData Expectation") //XCTestExpectation(description: "set metadata")
+      let addMetaDataExpectation = expectation(description: "Add MetaData Expectation") 
       stack.mainContext.setMetaDataObject("Test", with: "testKey", for: firstPersistentStore){
         addMetaDataExpectation.fulfill()
       }
