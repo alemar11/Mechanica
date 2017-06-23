@@ -31,7 +31,7 @@ import XCTest
 @available(OSX 10.12, *)
 class FileManagerUtilsTests: XCTestCase {
   
-  func test_clearOrDestroyDirectory() {
+  func testClearOrDestroyDirectory() {
     
     let directories = [FileManager.default.documentDirectory,
                        FileManager.default.libraryDirectory,
@@ -83,7 +83,7 @@ class FileManagerUtilsTests: XCTestCase {
     
   }
   
-  func test_newCachesSubdirectory() {
+  func testNewCachesSubdirectory() {
     let newCacheDirectory = FileManager.default.makeNewCachesSubDirectory
     XCTAssertTrue(FileManager.default.fileExists(atPath: newCacheDirectory.path))
     do {

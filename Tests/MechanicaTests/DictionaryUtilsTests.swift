@@ -27,7 +27,7 @@ import XCTest
 
 class DictionaryUtilsTests: XCTestCase {
 
-  func test_initFromJSON() {
+  func testInitFromJSON() {
 
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
@@ -61,7 +61,7 @@ class DictionaryUtilsTests: XCTestCase {
 
   }
 
-  func test_jsonString() {
+  func testJSONString() {
 
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
@@ -82,7 +82,7 @@ class DictionaryUtilsTests: XCTestCase {
 
   }
 
-  func test_jsonData() {
+  func testJSONData() {
 
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
