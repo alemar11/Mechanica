@@ -49,8 +49,7 @@ extension Color {
   /// Returns the hexadecimal string representation of `self` in the sRGB space.
   public final var hexString: String {
     guard let components = rgba else { fatalError("Couldn't calculate RGBA values") }
-    return String(format: "#%02X%02X%02X",Int(components.red * 0xff),Int(components.green * 0xff),Int(components.blue * 0xff)
-    )
+    return String(format: "#%02X%02X%02X", Int(components.red * 0xff), Int(components.green * 0xff), Int(components.blue * 0xff))
   }
 
   /// **Mechanica**
