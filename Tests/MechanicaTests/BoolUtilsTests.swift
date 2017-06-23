@@ -27,17 +27,17 @@ import XCTest
 
 class BoolUtilsTests: XCTestCase {
 
-  func test_int() {
+  func testInt() {
     XCTAssert(true.int == 1)
     XCTAssert(false.int == 0)
   }
 
-  func test_string() {
+  func testString() {
     XCTAssert(true.string == "true")
     XCTAssert(false.string == "false")
   }
 
-  func test_random() {
+  func testRandom() {
     let b = Bool.random()
     switch b {
     case true:
@@ -48,7 +48,7 @@ class BoolUtilsTests: XCTestCase {
     }
   }
   
-  func test_toggle() {
+  func testToggle() {
     let b1 = true
     XCTAssertTrue(b1.toggled == false)
     var b2 = false
@@ -58,7 +58,7 @@ class BoolUtilsTests: XCTestCase {
   
   // MARK:- BinaryConvertible
   
-  func test_binaryString() {
+  func testBinaryString() {
     XCTAssertEqual(true.binaryString, "1")
     XCTAssertEqual(false.binaryString, "0")
   }

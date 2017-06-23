@@ -27,7 +27,7 @@ import XCTest
 
 class ColorFlatTests: XCTestCase {
 
-  func test_flatColors() {
+  func testFlatColors() {
 
     XCTAssert(Color.black.hexString             == "#000000".uppercased())
     XCTAssert(Color.Flat.turquoise.hexString    == "#1abc9c".uppercased())
