@@ -77,7 +77,7 @@ class DictionaryUtilsTests: XCTestCase {
       let dictionary2: [String: Any?] = ["key1":"val1", "key2": nil]
       let jsonString = dictionary2.jsonString()
       XCTAssertNotNil(jsonString)
-      XCTAssertTrue(jsonString == "{\"key2\":null,\"key1\":\"val1\"}")
+      XCTAssertTrue(jsonString == "{\"key2\":null,\"key1\":\"val1\"}" || jsonString == "{\"key1\":\"val1\",\"key2\":null}")
     }
 
   }

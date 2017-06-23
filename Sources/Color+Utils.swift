@@ -48,7 +48,9 @@ extension Color {
   ///
   /// Returns the hexadecimal string representation of `self` in the sRGB space.
   public final var hexString: String {
-    return String(format:"#%06x", rgb32Bit)
+    guard let components = rgba else { fatalError("Couldn't calculate RGBA values") }
+    return String(format: "#%02X%02X%02X",Int(components.red * 0xff),Int(components.green * 0xff),Int(components.blue * 0xff)
+    )
   }
 
   /// **Mechanica**
@@ -86,7 +88,7 @@ extension Color {
     #elseif os(macOS)
       let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
       let compatibleSRGBColor = (rgbColorSpaces.contains(self.colorSpace)) ? self : self.usingColorSpace(.sRGB)
-      guard let color = compatibleSRGBColor else { return nil } // Could not be converted
+      guard let color = compatibleSRGBColor else { return nil } // could not be converted
       color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
     #endif
     return (red, green, blue, alpha)
@@ -94,31 +96,8 @@ extension Color {
 
   /// **Mechanica**
   ///
-  /// Returns the components (in 8 bit) that make up the color in the sRGB color space.
-  public final var rgba8Bit: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8) {
-    guard let components = rgba else { fatalError("Couldn't calculate RGBA values") }
-    return (red: UInt8(components.red * 255), green: UInt8(components.green * 255), blue: UInt8(components.blue * 255), alpha: UInt8(components.alpha * 255))
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns an UInt32 representation of `self` in the sRGB space without alpha channel.
-  public final var rgb32Bit: UInt32 {
-    let components = rgba8Bit
-    return (UInt32(components.red) << 16) | (UInt32(components.green) << 8) | UInt32(components.blue)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns an UInt32 representation of `self` in the sRGB space with alpha channel.
-  public final var rgba32Bit: UInt32 {
-    let components = rgba8Bit
-    return (UInt32(components.red) << 24) | (UInt32(components.green) << 16) | UInt32(components.blue) << 8 | UInt32(components.alpha)
-  }
-
-  /// **Mechanica**
-  ///
   /// Creates a `new` color in the **sRGB** color space that matches (or *closely approximates*) the current color.
+  /// Although the new color might have different component values, it looks the same as the original.
   /// - Note: [WWDC 2016 - 712](https://developer.apple.com/videos/play/wwdc2016/712/?time=2368)
   public final func convertingToCompatibleSRGBColor() -> Color? {
     #if os(iOS) || os(tvOS) || os(watchOS)
