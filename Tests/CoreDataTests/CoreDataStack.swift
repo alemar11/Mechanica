@@ -22,7 +22,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-
 import XCTest
 import CoreData
 
@@ -32,16 +31,16 @@ enum EntityKey {
 }
 
 class CoreDataStack {
-  
+
   enum StoreType { case sqlite, inMemory }
-  
+
   var persistentStoreCoordinator: NSPersistentStoreCoordinator
   var mainContext: NSManagedObjectContext
-  
+
   init?(type: StoreType = .inMemory) {
     let managedObjectModel = DemoModelVersion.currentVersion.managedObjectModel()
     let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-    
+
     switch (type) {
     case .inMemory:
       do {
@@ -50,18 +49,26 @@ class CoreDataStack {
         XCTFail("\(error)")
       }
     case .sqlite:
-      do {
-        let storeURL = URL(fileURLWithPath: "\(NSTemporaryDirectory())\(DemoModelVersion.currentVersion.modelName).sqlite" )
-        try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
-      } catch {
-        XCTFail("\(error)")
-      }
+      let storeURL = URL(fileURLWithPath: "\(NSTemporaryDirectory())\(DemoModelVersion.currentVersion.modelName).sqlite" )
+      let persistentStoreDescription = NSPersistentStoreDescription(url: storeURL)
+      persistentStoreDescription.type = NSSQLiteStoreType
+      persistentStoreDescription.shouldMigrateStoreAutomatically = true // default behaviour
+      persistentStoreDescription.shouldInferMappingModelAutomatically = true // default behaviour
+      persistentStoreDescription.shouldAddStoreAsynchronously = false // default
+      var hasFailed = false
+      persistentStoreCoordinator.addPersistentStore(with: persistentStoreDescription, completionHandler: { (persistentStoreDescription, error) in
+        if let error = error {
+          XCTFail("\(error)")
+          hasFailed = true
+        }
+      })
+      if (hasFailed) { return nil }
     }
-    
+
     self.persistentStoreCoordinator = persistentStoreCoordinator
     let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
     self.mainContext = managedObjectContext
   }
-  
+
 }

@@ -41,31 +41,62 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
   }
 
   func testMetaData() {
-    // Given
-    let stack = CoreDataStack()
-    if let stack = stack {
+    do {
+      // Given
+      let stack = CoreDataStack(type: .sqlite)
+      if let stack = stack {
 
-      // When
-      guard let firstPersistentStore = stack.mainContext.persistentStores.first else {
-        XCTAssertNotNil(stack.mainContext.persistentStores.first)
-        return
-      }
-      // Then
-      let metaData = stack.mainContext.metaData(for: firstPersistentStore)
-      XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.car])
-      XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.person])
-      XCTAssertNotNil(metaData["NSStoreType"] as? String)
+        // When
+        guard let firstPersistentStore = stack.mainContext.persistentStores.first else {
+          XCTAssertNotNil(stack.mainContext.persistentStores.first)
+          return
+        }
+        // Then
+        let metaData = stack.mainContext.metaData(for: firstPersistentStore)
+        XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.car])
+        XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.person])
+        XCTAssertNotNil(metaData["NSStoreType"] as? String)
 
-      let addMetaDataExpectation = expectation(description: "Add MetaData Expectation") 
-      stack.mainContext.setMetaDataObject("Test", with: "testKey", for: firstPersistentStore){
-        addMetaDataExpectation.fulfill()
+        let addMetaDataExpectation = expectation(description: "Add MetaData Expectation")
+        stack.mainContext.setMetaDataObject("Test", with: "testKey", for: firstPersistentStore){
+          addMetaDataExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 5.0, handler: nil)
+        let updatedMetaData = stack.mainContext.metaData(for: firstPersistentStore)
+        XCTAssertNotNil(updatedMetaData["testKey"])
+        XCTAssertEqual(updatedMetaData["testKey"] as? String, "Test")
+      } else {
+        XCTAssertNotNil(stack)
       }
-      waitForExpectations(timeout: 5.0, handler: nil)
-      let updatedMetaData = stack.mainContext.metaData(for: firstPersistentStore)
-      XCTAssertNotNil(updatedMetaData["testKey"])
-      XCTAssertEqual(updatedMetaData["testKey"] as? String, "Test")
-    } else {
-      XCTAssertNotNil(stack)
+    }
+
+    do {
+      // Given
+      let stack = CoreDataStack(type: .inMemory)
+      if let stack = stack {
+
+        // When
+        guard let firstPersistentStore = stack.mainContext.persistentStores.first else {
+          XCTAssertNotNil(stack.mainContext.persistentStores.first)
+          return
+        }
+        // Then
+        let metaData = stack.mainContext.metaData(for: firstPersistentStore)
+        XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.car])
+        XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.person])
+        XCTAssertNotNil(metaData["NSStoreType"] as? String)
+
+        let addMetaDataExpectation = expectation(description: "Add MetaData Expectation")
+        stack.mainContext.setMetaDataObject("Test", with: "testKey", for: firstPersistentStore){
+          addMetaDataExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 5.0, handler: nil)
+        let updatedMetaData = stack.mainContext.metaData(for: firstPersistentStore)
+        XCTAssertNotNil(updatedMetaData["testKey"])
+        XCTAssertEqual(updatedMetaData["testKey"] as? String, "Test")
+      } else {
+        XCTAssertNotNil(stack)
+      }
     }
 
   }
@@ -96,5 +127,5 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       XCTAssertNotEqual(backgroundContext2.parent,stack.mainContext)
     }
   }
-
+  
 }

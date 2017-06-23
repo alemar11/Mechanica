@@ -52,7 +52,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
   public static func fetchRequest() -> NSFetchRequest<Self> {
-    //let fetchRequest = NSFetchRequest<Self>(entity: entity)
+    // let fetchRequest = NSFetchRequest<Self>(entity: entity)
     let fetchRequest = NSFetchRequest<Self>(entityName: entityName)
     return fetchRequest
   }
@@ -72,7 +72,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(OSX 10.12, *)
   public static func findOrCreate(in context: NSManagedObjectContext, where predicate: NSPredicate, with configuration: (Self) -> Void) -> Self {
     guard let object = findOrFetch(in: context, where: predicate) else {
-      let newObject: Self = Self(context: context) //context.insertObject()
+      let newObject: Self = Self(context: context) // context.insertObject()
       configuration(newObject)
       return newObject
     }
@@ -93,9 +93,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
   public static func findOrFetch(in context: NSManagedObjectContext, where predicate: NSPredicate) -> Self? {
-    //first we should fetch an existing object in the context as a performance optimization
+    // first we should fetch an existing object in the context as a performance optimization
     guard let object = findMaterializedObject(in: context, where: predicate) else {
-      //if it's not in memory, we should execute a fetch to see if it exists
+      // if it's not in memory, we should execute a fetch to see if it exists
       return fetch(in: context) { request in
         request.predicate = predicate
         request.returnsObjectsAsFaults = false
