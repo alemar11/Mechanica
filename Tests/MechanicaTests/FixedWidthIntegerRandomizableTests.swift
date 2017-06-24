@@ -27,7 +27,7 @@ import XCTest
 
 class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
-  func test_randomInt() {
+  func testRandomInt() {
 
     /// Int
 
@@ -112,7 +112,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
   }
 
-  func test_randomUInt() {
+  func testRandomUInt() {
 
     /// UInt
 
@@ -164,7 +164,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
   }
 
-  func test_overflow() {
+  func testOverflow() {
     
     do {
       let range: CountableClosedRange<Int8> = -118...10
@@ -259,7 +259,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
     
   }
 
-  //  func test_randomPerformance() {
+  //  func testRandomPerformance() {
   //    measure {
   //      for _ in 1...10000 {
   //      Int._random(in: -100000...10000)

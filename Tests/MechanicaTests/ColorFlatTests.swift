@@ -27,29 +27,29 @@ import XCTest
 
 class ColorFlatTests: XCTestCase {
 
-  func test_flatColors() {
+  func testFlatColors() {
 
-    XCTAssert(Color.black.hexString             == "#000000")
-    XCTAssert(Color.Flat.turquoise.hexString    == "#1abc9c")
-    XCTAssert(Color.Flat.greenSea.hexString     == "#16a085")
-    XCTAssert(Color.Flat.nephritis.hexString    == "#27ae60")
-    XCTAssert(Color.Flat.emerald.hexString      == "#2ecc71")
-    XCTAssert(Color.Flat.belizeHole.hexString   == "#2980b9")
-    XCTAssert(Color.Flat.peterRiver.hexString   == "#3498db")
-    XCTAssert(Color.Flat.wisteria.hexString     == "#8e44ad")
-    XCTAssert(Color.Flat.amethyst.hexString     == "#9b59b6")
-    XCTAssert(Color.Flat.midnightBlue.hexString == "#2c3e50")
-    XCTAssert(Color.Flat.wetAsphalt.hexString   == "#34495e")
-    XCTAssert(Color.Flat.sunFlower.hexString    == "#f1c40f")
-    XCTAssert(Color.Flat.orange.hexString       == "#f39c12")
-    XCTAssert(Color.Flat.carrot.hexString       == "#e67e22")
-    XCTAssert(Color.Flat.pumpkin.hexString      == "#d35400")
-    XCTAssert(Color.Flat.alizarin.hexString     == "#e74c3c")
-    XCTAssert(Color.Flat.pomegranate.hexString  == "#c0392b")
-    XCTAssert(Color.Flat.clouds.hexString       == "#ecf0f1")
-    XCTAssert(Color.Flat.silver.hexString       == "#bdc3c7")
-    XCTAssert(Color.Flat.concrete.hexString     == "#95a5a6")
-    XCTAssert(Color.Flat.asbestos.hexString     == "#7f8c8d")
+    XCTAssert(Color.black.hexString             == "#000000".uppercased())
+    XCTAssert(Color.Flat.turquoise.hexString    == "#1abc9c".uppercased())
+    XCTAssert(Color.Flat.greenSea.hexString     == "#16a085".uppercased())
+    XCTAssert(Color.Flat.nephritis.hexString    == "#27ae60".uppercased())
+    XCTAssert(Color.Flat.emerald.hexString      == "#2ecc71".uppercased())
+    XCTAssert(Color.Flat.belizeHole.hexString   == "#2980b9".uppercased())
+    XCTAssert(Color.Flat.peterRiver.hexString   == "#3498db".uppercased())
+    XCTAssert(Color.Flat.wisteria.hexString     == "#8e44ad".uppercased())
+    XCTAssert(Color.Flat.amethyst.hexString     == "#9b59b6".uppercased())
+    XCTAssert(Color.Flat.midnightBlue.hexString == "#2c3e50".uppercased())
+    XCTAssert(Color.Flat.wetAsphalt.hexString   == "#34495e".uppercased())
+    XCTAssert(Color.Flat.sunFlower.hexString    == "#f1c40f".uppercased())
+    XCTAssert(Color.Flat.orange.hexString       == "#f39c12".uppercased())
+    XCTAssert(Color.Flat.carrot.hexString       == "#e67e22".uppercased())
+    XCTAssert(Color.Flat.pumpkin.hexString      == "#d35400".uppercased())
+    XCTAssert(Color.Flat.alizarin.hexString     == "#e74c3c".uppercased())
+    XCTAssert(Color.Flat.pomegranate.hexString  == "#c0392b".uppercased())
+    XCTAssert(Color.Flat.clouds.hexString       == "#ecf0f1".uppercased())
+    XCTAssert(Color.Flat.silver.hexString       == "#bdc3c7".uppercased())
+    XCTAssert(Color.Flat.concrete.hexString     == "#95a5a6".uppercased())
+    XCTAssert(Color.Flat.asbestos.hexString     == "#7f8c8d".uppercased())
 
   }
 

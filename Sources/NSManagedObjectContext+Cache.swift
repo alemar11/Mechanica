@@ -67,5 +67,5 @@ extension NSManagedObjectContext {
       userInfo[managedObjectsCacheKey] = nil
     }
   }
-  
+
 }

@@ -50,7 +50,7 @@ extension FloatingPoint {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
     for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
-    return Darwin.ceil(self * divisor) / divisor //equals to (self * divisor).rounded(.up) / divisor
+    return Darwin.ceil(self * divisor) / divisor // equals to (self * divisor).rounded(.up) / divisor
   }
 
   /// **Mechanica**
@@ -67,7 +67,7 @@ extension FloatingPoint {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
     for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
-    return Darwin.floor(self * divisor) / divisor //equals to (self * divisor).rounded(.down) / divisor
+    return Darwin.floor(self * divisor) / divisor // equals to (self * divisor).rounded(.down) / divisor
   }
 
   /// **Mechanica**

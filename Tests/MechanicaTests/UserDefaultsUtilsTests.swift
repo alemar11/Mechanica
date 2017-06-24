@@ -93,24 +93,24 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   func test_object() {
     do {
-      let red = Color.red.rgb32Bit
-      let yellow = Color.yellow.rgb32Bit
+      let x = UInt32(10)
+      let y = UInt32(20)
       let key =  Key<UInt32>("myColor")
-      userDefaults.set(object: red, forKey: key)
+      userDefaults.set(object: x, forKey: key)
       XCTAssertTrue(userDefaults.hasKey(key))
-      XCTAssert(userDefaults.object(forKey: key) == red)
-      userDefaults.set(object: yellow, forKey: key)
-      XCTAssert(userDefaults.object(forKey: key) == yellow)
+      XCTAssert(userDefaults.object(forKey: key) == x)
+      userDefaults.set(object: y, forKey: key)
+      XCTAssert(userDefaults.object(forKey: key) == y)
     }
 
     do {
-      let red = Color.red.rgb32Bit
-      let yellow = Color.yellow.rgb32Bit
+      let x = "10" as NSString
+      let y = "20" as NSString
       let key =  Key<Any>("myColor")
-      userDefaults.set(object: red, forKey: key)
-      let color = userDefaults[key] as? UInt32
-      XCTAssertEqual(red,color)
-      userDefaults[key] = yellow
+      userDefaults.set(object: x, forKey: key)
+      let k = userDefaults[key] as? NSString
+      XCTAssertEqual(x,k)
+      userDefaults[key] = y
       XCTAssertTrue(userDefaults.hasKey(key))
     }
 

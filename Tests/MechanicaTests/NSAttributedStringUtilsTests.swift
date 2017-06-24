@@ -48,7 +48,7 @@ class NSAttributedStringUtilsTests: XCTestCase {
         XCTAssert(false, "No text backgroud-color found.")
         return
       }
-      XCTAssertTrue(color.hexString == "#9999ff")
+      XCTAssertTrue(color.hexString == "#9999ff".uppercased())
 
       guard let _ = s!.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: nil) as? NSParagraphStyle else {
         XCTAssert(false, "No NSParagraphStyle found.")

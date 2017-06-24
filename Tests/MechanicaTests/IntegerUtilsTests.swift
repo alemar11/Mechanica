@@ -27,7 +27,7 @@ import XCTest
 
 class IntegerUtilsTests: XCTestCase {
 
-  func test_isEven() {
+  func testIsEven() {
     XCTAssertTrue(2.isEven)
     XCTAssertTrue(22.isEven)
     XCTAssertTrue(202220.isEven)
@@ -36,7 +36,7 @@ class IntegerUtilsTests: XCTestCase {
     XCTAssertFalse(202221.isEven)
   }
 
-  func test_isOdd() {
+  func testIsOdd() {
     XCTAssertTrue(1.isOdd)
     XCTAssertTrue(11.isOdd)
     XCTAssertTrue(171717.isOdd)
@@ -46,7 +46,7 @@ class IntegerUtilsTests: XCTestCase {
     XCTAssertFalse(202220.isOdd)
   }
 
-  func test_isPositive() {
+  func testIsPositive() {
     XCTAssertTrue(2.isPositive)
     XCTAssertTrue(21.isPositive)
     XCTAssertTrue(202220.isPositive)
@@ -55,7 +55,7 @@ class IntegerUtilsTests: XCTestCase {
     XCTAssertFalse((-202220).isPositive)
   }
 
-  func test_isNegative() {
+  func testIsNegative() {
     XCTAssertTrue((-2).isNegative)
     XCTAssertTrue((-21).isNegative)
     XCTAssertTrue((-202220).isNegative)

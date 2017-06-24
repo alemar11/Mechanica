@@ -52,7 +52,7 @@ extension NSManagedObjectContext {
   ///   - key: Object key
   ///   - store: NSPersistentStore where is stored the metadata.
   ///   - handler: The completion handler called when the saving is completed.
-  public final func setMetaDataObject(_ object: Any?, with key: String, for store: NSPersistentStore, completion handler: (()->())? = nil) {
+  public final func setMetaDataObject(_ object: Any?, with key: String, for store: NSPersistentStore, completion handler: ( () -> Void )? = nil) {
     performSave(after: {
       guard let persistentStoreCoordinator = self.persistentStoreCoordinator else { fatalError("Persistent Store Coordinator missing.") }
       var metaData = persistentStoreCoordinator.metadata(for: store)
