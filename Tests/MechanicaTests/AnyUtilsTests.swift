@@ -57,7 +57,7 @@ class AnyUtilsTests: XCTestCase {
     var debugDescription: String { return "debugDescription-DemoEnum2"}
   }
   
-  func test_typeName() {
+  func testTypeName() {
     
     XCTAssertEqual(typeName(of: Demo()), "Demo")
     XCTAssertEqual(typeName(of: Demo.self), "Demo")

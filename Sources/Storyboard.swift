@@ -153,7 +153,7 @@
     /// **Mechanica**
     ///
     ///   Instantiates and returns a UIViewController conforming to `StoryboardIdentifiable`.
-    ///   - Note: In Xcode, set as **Storyboard ID** the UIViewController class name.
+    ///   - Note: In Xcode, set the UIViewController class name as **Storyboard ID**.
     ///
     ///   ```
     ///   let vc = myStoryboard.instantiateViewController() as TestViewController
@@ -185,7 +185,7 @@
     /// **Mechanica**
     ///
     ///   Instantiates and returns a NSWindowController conforming to `StoryboardIdentifiable`.
-    ///   - Note: In Xcode, set as **Storyboard ID** the NSWindowController class name.
+    ///   - Note: In Xcode, set the NSWindowController class name as **Storyboard ID**.
     ///
     ///   ```
     ///   let vc = myStoryboard.instantiateViewController() as TestViewController

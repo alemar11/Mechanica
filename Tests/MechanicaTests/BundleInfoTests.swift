@@ -27,8 +27,10 @@ import XCTest
 
 class BundleInfoTests: XCTestCase {
 
-    func test_bundle() {
+    func testBundle() {
+      // Given, When
       let bundle = Bundle(identifier: mechanicaBundleIdentifier)
+      // Then
       XCTAssertTrue(bundle?.version != nil)
       XCTAssertTrue(bundle?.shortVersionString != nil)
       XCTAssertTrue(bundle?.displayName == nil)

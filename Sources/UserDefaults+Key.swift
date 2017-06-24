@@ -248,7 +248,6 @@ extension UserDefaults {
   /// Returns the `Int` value associated with the specified key, or nil if the key was not found.
   public final func integer(forKey key: Key<Int>) -> Int? {
     return optionalInteger(forKey: key.value)
-    //return integer(forKey: key.value)
   }
 
   /// **Mechanica**
@@ -275,7 +274,6 @@ extension UserDefaults {
   /// Returns the `Double` value associated with the specified key, or nil if the key was not found.
   public final func double(forKey key: Key<Double>) -> Double? {
     return optionalDouble(forKey: key.value)
-    //return double(forKey: key.value)
   }
 
   /// **Mechanica**
@@ -302,7 +300,6 @@ extension UserDefaults {
   /// Returns the `Floating-Point` value associated with the specified key, or nil if the key was not found.
   public final func float(forKey key: Key<Float>) -> Float? {
     return optionalFloat(forKey: key.value)
-    //return float(forKey: key.value)
   }
 
   /// **Mechanica**
@@ -329,7 +326,6 @@ extension UserDefaults {
   /// Returns the `Bool` value associated with the specified key, or nil if the key was not found.
   public final func bool(forKey key: Key<Bool>) -> Bool? {
     return optionalBool(forKey: key.value)
-    //return bool(forKey: key.value)
   }
 
   /// **Mechanica**
