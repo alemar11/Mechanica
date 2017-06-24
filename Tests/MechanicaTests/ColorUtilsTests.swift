@@ -270,7 +270,6 @@ class ColorUtilsTests: XCTestCase {
       XCTAssertEqualWithAccuracy(Double(peterRiverRGBA.green) * 255, Double(colorRGBA.green) * 255, accuracy: 1.0)
       XCTAssertTrue(peterRiverRGBA.blue * 255 == colorRGBA.blue * 255)
       XCTAssertTrue(peterRiverRGBA.alpha * 255 == colorRGBA.alpha * 255)
-      XCTAssertTrue(Color.Flat.peterRiver.rgbaInt! == color.rgbaInt!)
     }
     
     do {
