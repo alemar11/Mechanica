@@ -27,21 +27,21 @@ import XCTest
 
 class StringNSStringTests: XCTestCase {
 
-  func test_lastPathComponent() {
+  func testLastPathComponent() {
     XCTAssert("/tmp/scratch.tiff".lastPathComponent == "scratch.tiff")
     XCTAssert("/tmp/scratch".lastPathComponent == "scratch")
     XCTAssert("scratch///".lastPathComponent == "scratch")
     XCTAssert("/".lastPathComponent == "/")
   }
 
-  func test_pathExtension() {
+  func testPathExtension() {
     XCTAssert("/tmp/scratch.tiff".pathExtension == "tiff")
     XCTAssert(".scratch.tiff".pathExtension == "tiff")
     XCTAssert("/tmp/scratch".pathExtension == "")
     XCTAssert("/tmp/scratch..tiff".pathExtension == "tiff")
   }
 
-  func test_deletingLastPathComponent() {
+  func testDeletingLastPathComponent() {
     XCTAssert("/tmp/scratch.tiff".deletingLastPathComponent == "/tmp")
     XCTAssert( "/tmp/lock/".deletingLastPathComponent == "/tmp")
     XCTAssert( "/tmp/".deletingLastPathComponent == "/")
@@ -50,7 +50,7 @@ class StringNSStringTests: XCTestCase {
     XCTAssert("scratch.tiff".deletingLastPathComponent == "")
   }
 
-  func test_deletingPathExtension() {
+  func testDeletingPathExtension() {
     XCTAssert("/tmp/scratch.tiff".deletingPathExtension == "/tmp/scratch")
     XCTAssert("/tmp/".deletingPathExtension == "/tmp")
     XCTAssert("scratch.bundle/".deletingPathExtension == "scratch")
@@ -59,7 +59,7 @@ class StringNSStringTests: XCTestCase {
     XCTAssert("/".deletingPathExtension == "/")
   }
 
-  func test_pathComponents() {
+  func testPathComponents() {
     let path = "tmp/scratch";
     let pathComponents = path.pathComponents
     XCTAssert(pathComponents[0] == "tmp")
@@ -72,7 +72,7 @@ class StringNSStringTests: XCTestCase {
     XCTAssert(pathComponents2[2] == "scratch")
   }
 
-  func test_appendingPathComponent() {
+  func testAppendingPathComponent() {
     let scratch = "scratch.tiff"
     XCTAssert("/tmp".appendingPathComponent(scratch) == "/tmp/scratch.tiff")
     XCTAssert("/tmp/".appendingPathComponent(scratch) == "/tmp/scratch.tiff")
@@ -80,7 +80,7 @@ class StringNSStringTests: XCTestCase {
     XCTAssert("".appendingPathComponent(scratch) == "scratch.tiff")
   }
 
-  func test_appendingPathExtension() {
+  func testAppendingPathExtension() {
     let ext = "tiff"
     XCTAssert("/tmp/scratch.old".appendingPathExtension(ext) == "/tmp/scratch.old.tiff")
     XCTAssert("/tmp/scratch.".appendingPathExtension(ext) == "/tmp/scratch..tiff")

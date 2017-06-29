@@ -11,7 +11,7 @@ import XCTest
 
 class StringOperatorsTests: XCTestCase {
 
-  func test_multiply() {
+  func testMultiply() {
     XCTAssert("a"*2 == "aa")
     XCTAssert("aA"*2 == "aAaA")
     XCTAssert("Hello World "+"!"*2 == "Hello World !!")
@@ -22,7 +22,7 @@ class StringOperatorsTests: XCTestCase {
     XCTAssert(3*"🇮🇹" == "🇮🇹🇮🇹🇮🇹")
   }
 
-  func test_OptionalStringCoalescingOperator() {
+  func testOptionalStringCoalescingOperator() {
     let someValue: Int? = 10
     let stringValue = "\(someValue ??? "unknown")"
     XCTAssert(stringValue == "10")

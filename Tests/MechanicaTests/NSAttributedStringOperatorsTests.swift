@@ -27,7 +27,7 @@ import XCTest
 
 class NSAttributedStringOperatorsTests: XCTestCase {
     
-  func test_addition() {
+  func testAddition() {
    
     /// addition between NSAttributedStrings
     do {

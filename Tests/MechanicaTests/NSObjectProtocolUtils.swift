@@ -31,7 +31,7 @@ class NSObjectUtils: XCTestCase {
   
   class Demo: NSObject{}
   
-  func test_className(){
+  func testClassName(){
     XCTAssertEqual(Demo.type, "Demo")
     XCTAssertEqual(Demo().type, "Demo")
   }

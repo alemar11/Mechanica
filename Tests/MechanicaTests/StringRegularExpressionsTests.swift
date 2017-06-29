@@ -65,7 +65,7 @@ fileprivate extension String {
 
 class StringRegularExpressionsTests: XCTestCase {
 
-  func test_firstRange() {
+  func testFirstRange() {
 
     do {
       let pattern = "^https?:\\/\\/.*"
@@ -98,7 +98,7 @@ class StringRegularExpressionsTests: XCTestCase {
 
   }
 
-  func test_matches() {
+  func testMatches() {
 
     do {
       //https://regex101.com/r/jLz7Sz/1
@@ -133,7 +133,7 @@ class StringRegularExpressionsTests: XCTestCase {
 
   }
 
-  //  func test_findStringInitialsPerformance() {
+  //  func testFindStringInitialsPerformance() {
   //    let text = "Tin Robots 🤖😀🤖"
   //    self.measure {
   //      //let initials = text.matches(for: String.Pattern.firstAlphanumericCharacter)

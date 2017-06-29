@@ -29,7 +29,7 @@ class CollectionUtiilsTests: XCTestCase {
   
   // MARK - Equatable
   
-  let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
+  private let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
   
   func testFirstIndex() {
     let index1 = array.firstIndex(of: 1)

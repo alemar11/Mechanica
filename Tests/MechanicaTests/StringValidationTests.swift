@@ -27,7 +27,7 @@ import XCTest
 
 class StringValidationTests: XCTestCase {
 
-  func test_hasLetters() {
+  func testHasLetters() {
     XCTAssertTrue("a".hasLetters)
     XCTAssertTrue("11f5644+fadsdsf4".hasLetters)
     XCTAssertTrue("|!\"è£$%&)".hasLetters)
@@ -39,7 +39,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("0.1".hasLetters)
   }
 
-  func test_hasNumbers() {
+  func testHasNumbers() {
     XCTAssertTrue("a1".hasNumbers)
     XCTAssertTrue(".ò@dasg9n".hasNumbers)
     XCTAssertFalse("|!\"£$%&)".hasNumbers)
@@ -47,7 +47,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("abcdef".hasNumbers)
   }
 
-  func test_isBlank() {
+  func testIsBlank() {
     XCTAssertTrue("".isBlank)
     XCTAssertTrue(" ".isBlank)
     XCTAssertTrue("  ".isBlank)
@@ -61,7 +61,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("a \r\n ".isBlank)
   }
 
-  func test_isHomogeneous() {
+  func testIsHomogeneous() {
     XCTAssertTrue("~~~".isHomogeneous)
     XCTAssertTrue("aaa".isHomogeneous)
     XCTAssertTrue("🤔🤔".isHomogeneous)
@@ -74,7 +74,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse(" ~~~".isHomogeneous)
   }
 
-  func test_isAlphabetic() {
+  func testIsAlphabetic() {
     XCTAssertTrue("abcd".isAlphabetic)
     XCTAssertTrue("abCd".isAlphabetic)
     XCTAssertTrue("ù".isAlphabetic)
@@ -88,7 +88,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("🚀".isAlphabetic)
   }
 
-  func test_isAlphaNumeric() {
+  func testIsAlphaNumeric() {
     XCTAssertTrue("123".isAlphaNumeric)
     XCTAssertTrue("0001".isAlphaNumeric)
     XCTAssertTrue("abcd".isAlphaNumeric)
@@ -104,7 +104,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("🚀".isAlphaNumeric)
   }
 
-  func test_isNumeric() {
+  func testIsNumeric() {
     XCTAssertTrue("123".isNumeric)
     XCTAssertTrue("0001".isNumeric)
     XCTAssertTrue("0000000000000000000000".isNumeric)
@@ -116,7 +116,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("abc1".isNumeric)
   }
 
-  func test_isLowercased() {
+  func testIsLowercased() {
     XCTAssertTrue("123".isLowercased)
     XCTAssertTrue("abcd123".isLowercased)
     XCTAssertTrue("123!?)".isLowercased)
@@ -126,7 +126,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("123!C?)".isLowercased)
   }
 
-  func test_isUppercased() {
+  func testIsUppercased() {
     XCTAssertTrue("123".isUppercased)
     XCTAssertTrue("ABC123".isUppercased)
     XCTAssertTrue("ABC...!?".isUppercased)
@@ -135,7 +135,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("123A!?)".isLowercased)
   }
 
-  func test_isValideEmail() {
+  func testIsValideEmail() {
     //valid emails
     XCTAssertTrue("test@tinrobots.org".isValidEmail)
     XCTAssertTrue("test.test@tinrobots.org".isValidEmail)

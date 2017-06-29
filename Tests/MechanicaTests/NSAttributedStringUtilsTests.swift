@@ -27,7 +27,7 @@ import XCTest
 
 class NSAttributedStringUtilsTests: XCTestCase {
 
-  func test_initHTML(){
+  func testInitHTML(){
     do {
       let html = "<html><head><style type=\"text/css\">@font-face {font-family: Avenir-Roman}body {font-family: Avenir-Roman;font-size:15;margin: 0;padding: 0}</style></head><body style=\"background-color: #E6E6FA;\">"
         + "<span style=\"background-color: #9999ff;\">Hello World</span>"

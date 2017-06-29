@@ -30,12 +30,12 @@ class KeyTests: XCTestCase {
 
   typealias stringKey = Key<String>
 
-  func test_simple() {
+  func testSimple() {
     let key = stringKey("test")
     XCTAssertEqual(key.value, "test")
   }
 
-  func test_namespace() {
+  func testNamespace() {
     let key = stringKey("test")
     let key2 = stringKey("test", namespace: "namespace")
     XCTAssertEqual(key.value, "test")

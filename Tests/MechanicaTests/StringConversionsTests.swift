@@ -27,7 +27,7 @@ import XCTest
 
 class StringConversionsTests: XCTestCase {
 
-  func test_bool() {
+  func testBool() {
     guard let n = "1".bool, n == true else {
       XCTAssert(false, "Couldn't get the correct Bool value.")
       return
@@ -45,18 +45,18 @@ class StringConversionsTests: XCTestCase {
     XCTAssertNil("01".bool, "Couldn't get the correct Bool value.")
   }
 
-  func test_base64Decoded() {
+  func testBase64Decoded() {
     XCTAssertNil("123".base64Decoded, "Couldn't get the correct Base64 decoded value.")
     XCTAssert("SGVsbG8gV29ybGQh".base64Decoded == "Hello World!", "Couldn't get the correct Base64 decoded value.")
     XCTAssert("SGVsbG8gUm9ib3RzIfCfpJbwn6SW".base64Decoded ==  "Hello Robots!🤖🤖", "Couldn't get the correct Base64 decoded value.")
   }
 
-  func test_base64Encoded() {
+  func testBase64Encoded() {
     XCTAssert("Hello World!".base64Encoded == "SGVsbG8gV29ybGQh", "Couldn't get the correct Base64 encoded value.")
     XCTAssert("Hello Robots!🤖🤖".base64Encoded == "SGVsbG8gUm9ib3RzIfCfpJbwn6SW", "Couldn't get the correct Base64 encoded value.")
   }
 
-  func test_double() {
+  func testDouble() {
     guard let n = "11".double, n == 11 else {
       XCTAssert(false, "Couldn't get correct Double value.")
       return
@@ -73,7 +73,7 @@ class StringConversionsTests: XCTestCase {
     XCTAssertNil("11,04".double, "Couldn't get correct Double value.")
   }
 
-  func test_float() {
+  func testFloat() {
 
     /// Float
     do {
@@ -118,7 +118,7 @@ class StringConversionsTests: XCTestCase {
     XCTAssertNil("11,04830483048304830483048304830483".float64, "Couldn't get correct Float 64 value.")
   }
 
-  func test_int() {
+  func testInt() {
 
     /// Int
     do {
@@ -193,7 +193,7 @@ class StringConversionsTests: XCTestCase {
     XCTAssertNil("9223372036854775808".int64, "Couldn't get correct Int 64 value.")
   }
 
-  func test_URL() {
+  func testURL() {
     XCTAssertNotNil("tinrobots.org".url, "Couldn't get correct URL value.")
     XCTAssertNil("tin🤖🤖.org".url, "Couldn't get correct URL value.")
     XCTAssertNil("".url, "Couldn't get correct URL value.")

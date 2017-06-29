@@ -33,7 +33,7 @@ class UserDefaultsKeyTests: XCTestCase {
     userDefaults.removeAll()
   }
 
-  func test_optionalInt() {
+  func testOptionalInt() {
     let key = "intKey"
     userDefaults.set(10, forKey: key)
     XCTAssertNotNil(userDefaults.integer(forKey: key))
@@ -43,7 +43,7 @@ class UserDefaultsKeyTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
   }
 
-  func test_optionalDouble() {
+  func testOptionalDouble() {
     let key = "doubleKey"
     userDefaults.set(Double(10), forKey: key)
     XCTAssertNotNil(userDefaults.double(forKey: key))
@@ -53,7 +53,7 @@ class UserDefaultsKeyTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
   }
 
-  func test_optionalFloat() {
+  func testOptionalFloat() {
     let key = "floatKey"
     userDefaults.set(10.1, forKey: key)
     XCTAssertNotNil(userDefaults.float(forKey: key))
@@ -63,7 +63,7 @@ class UserDefaultsKeyTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
   }
 
-  func test_optionalBool() {
+  func testOptionalBool() {
     let key = "floatKey"
     userDefaults.set(true, forKey: key)
     XCTAssertNotNil(userDefaults.bool(forKey: key))
@@ -73,7 +73,7 @@ class UserDefaultsKeyTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
   }
 
-  func test_removeAll() {
+  func testRemoveAll() {
     let key = "intKey"
     userDefaults.set(10, forKey: key)
     XCTAssertNotNil(userDefaults.value(forKey: key))

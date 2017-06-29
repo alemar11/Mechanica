@@ -87,7 +87,7 @@ class Configuration: PropertyListReadable {
 
 class PropertyListReadableTests: XCTestCase {
 
-  func test_configuration() {
+  func testConfiguration() {
 
     guard let plistPath = unitTestBundle.path(forResource: "PropertyListDemo", ofType: "plist") else {
       XCTFail("Invalid plist file.")

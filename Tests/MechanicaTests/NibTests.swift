@@ -73,7 +73,7 @@ extension Nib: NibEnumerable {
 
 class NibTests: XCTestCase {
 
-  func test_instantiate() {
+  func testInstantiate() {
 
     #if os(iOS)
 
@@ -165,7 +165,7 @@ class NibTests: XCTestCase {
     
   }
   
-  func test_nibIdentifiable() {
+  func testNibIdentifiable() {
     #if os(iOS)
       let view = iOS_ViewNibIdentifiable.instantiateFromNib(inBundle: unitTestBundle)
       XCTAssertNotNil(view)

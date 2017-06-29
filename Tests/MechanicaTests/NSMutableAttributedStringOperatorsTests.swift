@@ -27,7 +27,7 @@ import XCTest
 
 class NSMutableAttributedStringOperatorsTests: XCTestCase {
   
-  func test_addition() {
+  func testAddition() {
     
     /// addition between NSMutableAttributedStrings
     do {
@@ -132,7 +132,7 @@ class NSMutableAttributedStringOperatorsTests: XCTestCase {
     
   }
   
-  func test_compoundAddition() {
+  func testCompoundAddition() {
     do {
       let s = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
       s += " "

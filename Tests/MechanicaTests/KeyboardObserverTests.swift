@@ -61,12 +61,12 @@ class KeyboardObserverTests: XCTestCase {
     super.tearDown()
   }
 
-  func test_register() {
+  func testRegister() {
     keyboardObserver.register()
     executeRegistedTests()
   }
 
-  func test_clear() {
+  func testClear() {
     keyboardObserver.register()
     keyboardObserver.clear() // Callbacks will be dismissed.
 
@@ -150,7 +150,7 @@ class KeyboardObserverTests: XCTestCase {
 
   }
 
-  func test_unregister() {
+  func testUnregister() {
     keyboardObserver.register()
     keyboardObserver.unregister() // Callbacks won’t be dismissed.
 

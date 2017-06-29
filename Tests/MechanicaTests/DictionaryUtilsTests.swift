@@ -99,7 +99,7 @@ class DictionaryUtilsTests: XCTestCase {
 
   }
 
-  func test_lowercaseAllKeys() {
+  func testLowercaseAllKeys() {
     var dictionary = ["Key1":1, "key2":2, "kEY3":3]
     dictionary.lowercaseAllKeys()
     dictionary.keys.enumerated().forEach { (arg) in

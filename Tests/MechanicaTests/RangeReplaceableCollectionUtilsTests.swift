@@ -27,7 +27,7 @@ import XCTest
 
 class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
-  func test_removeFirst() {
+  func testRemoveFirst() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     /// removes the first even Int
@@ -43,7 +43,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     XCTAssertTrue(all == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
   }
 
-  func test_removingFirst() {
+  func testRemovingFirst() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     do {
@@ -61,7 +61,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   }
 
-  func test_removeLast() {
+  func testRemoveLast() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     /// removes the first even Int
@@ -77,7 +77,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     XCTAssertTrue(all == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
   }
 
-  func test_removingLast() {
+  func testRemovingLast() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     do {
@@ -95,7 +95,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   }
 
-  func test_removeAll() {
+  func testRemoveAll() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     /// removes the first even Int
@@ -111,7 +111,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     XCTAssertTrue(all == [1, 3, 5, 7, 9])
   }
 
-  func test_removingAll() {
+  func testRemovingAll() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     do {
@@ -131,7 +131,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   // MARK - Equatable
 
-  func test_removeFirstOccurrence() {
+  func testRemoveFirstOccurrence() {
 
     do {
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
@@ -165,7 +165,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   }
 
-  func test_removeLastOccurrence() {
+  func testRemoveLastOccurrence() {
 
     do {
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
@@ -199,7 +199,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   }
 
-  //  func test_removingLastPerformance() {
+  //  func testRemovingLastPerformance() {
   //    var array = [Int]()
   //    for i in stride(from: 0, to: 1_000_000, by: 1) {
   //      array.append(i)

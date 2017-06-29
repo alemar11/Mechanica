@@ -49,7 +49,7 @@ class NSObjectSwizzlingTests: XCTestCase {
       ])
   }
 
-  func test_swizzlingExtension() {
+  func testSwizzlingExtension() {
     let test = Test()
     XCTAssertTrue(test.methodOne() == 11)
     XCTAssertTrue(test.methodTwo() == 1)

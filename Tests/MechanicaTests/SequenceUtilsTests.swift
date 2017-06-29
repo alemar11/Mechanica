@@ -57,7 +57,7 @@ class SequenceUtilsTests: XCTestCase {
                        Demo(value1: "demo1",value2: 1),
                        Demo(value1: "demo1",value2: 1)]
 
-  func test_findFirstOccurrence() {
+  func testFindFirstOccurrence() {
 
     let occurrence1 = list.findFirst(where: {$0.value2 == 3})
     XCTAssertTrue(occurrence1 != nil)
@@ -68,7 +68,7 @@ class SequenceUtilsTests: XCTestCase {
 
   }
 
-  func test_hasSome() {
+  func testHasSome() {
     XCTAssertTrue(list.hasSome(where: {$0.value1 == "demo5"}))
     XCTAssertTrue(list.hasSome(where: {$0.value2 == 1}))
     XCTAssertTrue(list2.hasSome(where: {$0.value1 == "demo1"}))
@@ -77,7 +77,7 @@ class SequenceUtilsTests: XCTestCase {
     XCTAssertFalse(list.hasSome(where: { $0.value1 == "demo1" && $0.value2 == 4}))
   }
 
-  func test_hasAll() {
+  func testHasAll() {
     XCTAssertTrue(list2.hasAll{$0.value1 == "demo1"})
     XCTAssertFalse(list2.hasAll{$0.value1 == "demo11"})
     XCTAssertFalse(list.hasAll{$0.value1 == "demo12"})
@@ -85,7 +85,7 @@ class SequenceUtilsTests: XCTestCase {
 
   // MARK: - AnyObject
 
-  func test_contatinsObjectIdentical() {
+  func testContatinsObjectIdentical() {
 
 
     var list = [DemoObject(value1: "demo1",value2: 1),
@@ -102,14 +102,14 @@ class SequenceUtilsTests: XCTestCase {
 
   }
 
-  func test_count() {
+  func testCount() {
     XCTAssertEqual(list.count{ $0.value2 == 1}, 2)
     XCTAssertEqual(list.count{ $0.value2 == 3}, 2)
     XCTAssertEqual(list.count{ $0.value2 == 4}, 0)
     XCTAssertEqual(list.count{ $0.value1 == "demo1"}, 1)
   }
 
-  func test_groupedBy() {
+  func testGroupedBy() {
 
     let array = ["1", "1", "2", "3", "3", "1", "4"]
     let groupedDictionary = array.grouped(by: { return $0 } ) //[ "1" : ["1", "1", "1"], "2" : ["2"], "3" : ["3", "3"], "4" : ["4"] ]
@@ -146,7 +146,7 @@ class SequenceUtilsTests: XCTestCase {
 
   }
 
-//    func test_findFirstPerformance() {
+//    func testFindFirstPerformance() {
 //      var array = [Int]()
 //      for i in stride(from: 0, to: 1_000_000, by: 1) {
 //        array.append(i)

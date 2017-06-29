@@ -27,7 +27,7 @@ import XCTest
 
 class OptionalUtilsTests: XCTestCase {
 
-  func test_hasValue(){
+  func testHasValue(){
     var value: Any?
     XCTAssert(!value.hasValue)
     value = "tinrobots"

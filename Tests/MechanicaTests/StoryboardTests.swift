@@ -60,7 +60,7 @@ extension Storyboard: StoryboardEnumerable {
 
 class StoryboardTests: XCTestCase {
 
-  func test_instantiate() {
+  func testInstantiate() {
 
     #if os(iOS)
 
