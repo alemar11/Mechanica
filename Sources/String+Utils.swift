@@ -422,7 +422,7 @@ extension String {
   ///
   ///  - Returns: Substring in NSRange or nil.
   public subscript (nsRange: NSRange) -> String? {
-    guard let range = nsRange.toRange() else { return nil }
+    guard let range = Range(nsRange) else { return nil }
     return self[range]
   }
 

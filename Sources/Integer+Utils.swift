@@ -24,7 +24,7 @@
 
 import Foundation
 
-extension Integer {
+extension BinaryInteger {
 
   /// **Mechanica**
   ///

@@ -32,7 +32,7 @@ extension String {
   ///
   /// Returns a range equivalent to the given `NSRange` or `nil` if the range can't be converted.
   private func range(from nsRange: NSRange) -> Range<Index>? {
-    guard let range = nsRange.toRange() else { return nil }
+    guard let range = Range(nsRange) else { return nil }
     let utf16Start = UTF16Index(range.lowerBound)
     let utf16End = UTF16Index(range.upperBound)
 

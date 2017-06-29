@@ -32,7 +32,7 @@ extension FloatingPoint {
   public func rounded(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
-    for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
+    for _ in 0..<decimalPlaces { divisor *= 10 }
     return (self * divisor).rounded() / divisor
   }
 
@@ -49,7 +49,7 @@ extension FloatingPoint {
   public func ceiled(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
-    for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
+    for _ in 0..<decimalPlaces { divisor *= 10  }
     return Darwin.ceil(self * divisor) / divisor // equals to (self * divisor).rounded(.up) / divisor
   }
 
@@ -66,7 +66,7 @@ extension FloatingPoint {
   public func floored(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
-    for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
+    for _ in 0..<decimalPlaces { divisor *= 10 }
     return Darwin.floor(self * divisor) / divisor // equals to (self * divisor).rounded(.down) / divisor
   }
 

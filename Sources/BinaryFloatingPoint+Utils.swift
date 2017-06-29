@@ -25,38 +25,39 @@
 import Foundation
 
 // MARK: - BinaryConvertible
+//swift4
+//extension BinaryFloatingPoint where Self: BinaryConvertible {
+//
+//  /// **Mechanica**
+//  ///
+//  /// Creates a string representing the given value in the binary base.
+//  ///
+//  /// ```
+//  /// Float(-5.625).binaryString //"11000000101101000000000000000000
+//  /// ```
+//  ///
+//  public var binaryString: String {
+//    let floatingPointSign = (sign == FloatingPointSign.minus) ? "1" : "0"
+//    let exponentBitCount = Self.exponentBitCount
+//    let mantissaBitCount = Self.significandBitCount
+//    var exponent = String(self.exponentBitPattern, radix: 2)
+//    var mantissa = String(self.significandBitPattern, radix: 2)
+//    if (exponentBitCount > exponent.characters.count) {
+//      exponent = String(repeating: "0", count: (exponentBitCount - exponent.characters.count)) + exponent
+//    }
+//    if (mantissaBitCount > mantissa.characters.count) {
+//      mantissa = String(repeating: "0", count: (mantissaBitCount - mantissa.characters.count)) + mantissa
+//    }
+//    return "\(floatingPointSign)\(exponent)\(mantissa)"
+//  }
+//
+//}
+//
+//extension Float:    BinaryConvertible {}
+//extension Float64:  BinaryConvertible {}
+//
+//// Float80 is apparently only available on macOS, but it will compile on the iOS/tvOS/watchOS simulator because that's run in macOS.
+//#if os(macOS)
+//extension Float80:  BinaryConvertible {}
+//#endif
 
-extension BinaryFloatingPoint where Self: BinaryConvertible {
-
-  /// **Mechanica**
-  ///
-  /// Creates a string representing the given value in the binary base.
-  ///
-  /// ```
-  /// Float(-5.625).binaryString //"11000000101101000000000000000000
-  /// ```
-  ///
-  public var binaryString: String {
-    let floatingPointSign = (sign == FloatingPointSign.minus) ? "1" : "0"
-    let exponentBitCount = Self.exponentBitCount
-    let mantissaBitCount = Self.significandBitCount
-    var exponent = String(self.exponentBitPattern, radix: 2)
-    var mantissa = String(self.significandBitPattern, radix: 2)
-    if (exponentBitCount > exponent.characters.count) {
-      exponent = String(repeating: "0", count: (exponentBitCount - exponent.characters.count)) + exponent
-    }
-    if (mantissaBitCount > mantissa.characters.count) {
-      mantissa = String(repeating: "0", count: (mantissaBitCount - mantissa.characters.count)) + mantissa
-    }
-    return "\(floatingPointSign)\(exponent)\(mantissa)"
-  }
-
-}
-
-extension Float:    BinaryConvertible {}
-extension Float64:  BinaryConvertible {}
-
-// Float80 is apparently only available on macOS, but it will compile on the iOS/tvOS/watchOS simulator because that's run in macOS.
-#if os(macOS)
-extension Float80:  BinaryConvertible {}
-#endif

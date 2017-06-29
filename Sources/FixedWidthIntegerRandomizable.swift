@@ -31,14 +31,14 @@ import Foundation
 /// From SE-0104 (Swift 4), Int nad UInt families will conform to FixedWidthInteger.
 /// https://github.com/apple/swift-evolution/blob/master/proposals/0104-improved-integers.md
 /// - TODO: This protocol should be removed with with Swift 4.
-public protocol FixedWidthInteger: Integer {
-
-  /// The maximum representable integer in this type.
-  static var max: Self { get }
-
-  /// The minimum representable value.
-  static var min: Self { get }
-}
+//public protocol FixedWidthInteger: Integer {
+//
+//  /// The maximum representable integer in this type.
+//  static var max: Self { get }
+//
+//  /// The minimum representable value.
+//  static var min: Self { get }
+//}
 
 // MARK: - IntegerRandomizable
 
@@ -53,18 +53,18 @@ public protocol IntegerRandomizable {
 
 }
 
-public typealias FixedWidthIntegerRandomizable = FixedWidthInteger & IntegerRandomizable
+//public typealias FixedWidthIntegerRandomizable = FixedWidthInteger & IntegerRandomizable
 
-extension UInt64: FixedWidthIntegerRandomizable {}
-extension Int64:  FixedWidthIntegerRandomizable {}
-extension UInt32: FixedWidthIntegerRandomizable {}
-extension Int32:  FixedWidthIntegerRandomizable {}
-extension UInt16: FixedWidthIntegerRandomizable {}
-extension Int16:  FixedWidthIntegerRandomizable {}
-extension UInt8:  FixedWidthIntegerRandomizable {}
-extension Int8:   FixedWidthIntegerRandomizable {}
-extension UInt:   FixedWidthIntegerRandomizable {}
-extension Int:    FixedWidthIntegerRandomizable {}
+extension UInt64: IntegerRandomizable {}
+extension Int64:  IntegerRandomizable {}
+extension UInt32: IntegerRandomizable {}
+extension Int32:  IntegerRandomizable {}
+extension UInt16: IntegerRandomizable {}
+extension Int16:  IntegerRandomizable {}
+extension UInt8:  IntegerRandomizable {}
+extension Int8:   IntegerRandomizable {}
+extension UInt:   IntegerRandomizable {}
+extension Int:    IntegerRandomizable {}
 
 extension FixedWidthInteger where Stride: SignedInteger, Self: IntegerRandomizable {
 
@@ -264,8 +264,8 @@ extension Int64 {
   public static func random(min: Int64 = min, max: Int64 = max) -> Int64 {
     guard (min != max) else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
-    let (s, overflow) = Int64.subtractWithOverflow(max, min)
-    let u = overflow ? UInt64.max - UInt64(~s) : UInt64(s)
+    let (partialValue, overflow) = max.subtractingReportingOverflow(min) //Int64.subtractWithOverflow(max, min)
+    let u = (overflow == ArithmeticOverflow.overflow) ? UInt64.max - UInt64(~partialValue) : UInt64(partialValue)
     let r = UInt64.random(max: u)
 
     if r > UInt64(Int64.max) {

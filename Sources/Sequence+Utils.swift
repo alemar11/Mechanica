@@ -63,7 +63,7 @@ extension Sequence {
   ///
   /// - Parameter criteria: The criteria closure takes an `Iterator.Element` and returns its classification.
   /// - Returns: Returns a grouped dictionary with the keys that the criteria function returns.
-  public func grouped<Key: Hashable>(by criteria: (Iterator.Element) -> (Key)) -> [Key : [Iterator.Element]] {
+  public func grouped<Key>(by criteria: (Iterator.Element) -> (Key)) -> [Key : [Iterator.Element]] {
     var dictionary: [Key : [Iterator.Element]] = [:]
     for element in self {
       let key = criteria(element)
