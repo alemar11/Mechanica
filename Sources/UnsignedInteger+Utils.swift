@@ -39,7 +39,7 @@ extension UnsignedInteger where Self: BinaryConvertible & FixedWidthInteger {
   public var binaryString: String {
     let binaryString = String(self, radix:2)
     let size = MemoryLayout.size(ofValue: self) * 8
-    return String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
+    return String(repeating: "0", count: (size - binaryString.count)) + binaryString
   }
 
 }

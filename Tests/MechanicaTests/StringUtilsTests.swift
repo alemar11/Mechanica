@@ -505,7 +505,7 @@ class StringUtilsTests: XCTestCase {
       let newString = s.replacingCharacters(in: countableRange, with: "1")
       XCTAssertTrue(newString == "1")
       
-      let countableClosedRange = CountableClosedRange(uncheckedBounds: (lower: 0, upper: s.characters.count-1)) //[0,9]
+      let countableClosedRange = CountableClosedRange(uncheckedBounds: (lower: 0, upper: s.count-1)) //[0,9]
       let newString2 = s.replacingCharacters(in: countableClosedRange, with: "1")
       XCTAssertTrue(newString2 == "1")
     }

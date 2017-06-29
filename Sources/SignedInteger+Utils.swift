@@ -51,13 +51,13 @@ extension SignedInteger where Self: BinaryConvertible {
     let signed = Int(self)
     let unsigned = UInt(bitPattern: signed)
     var binaryString = String(unsigned, radix:2)
-    switch binaryString.characters.count {
+    switch binaryString.count {
     case let count where count > size:
       let startIndex = binaryString.index(binaryString.startIndex, offsetBy: count-size)
       let endIndex   = binaryString.index(startIndex, offsetBy: count, limitedBy: binaryString.endIndex) ?? binaryString.endIndex
       binaryString = String(binaryString[startIndex..<endIndex])
     default:
-      binaryString = String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
+      binaryString = String(repeating: "0", count: (size - binaryString.count)) + binaryString
     }
     return binaryString
 

@@ -196,7 +196,7 @@ extension Color {
   public convenience init?(hexString: String) {
     guard !hexString.isBlank else { return nil }
     var formattedHexString = hexString.hasPrefix("#") ? String(hexString.characters.dropFirst()) : hexString
-    switch formattedHexString.characters.count {
+    switch formattedHexString.count {
     case 3: // rgb
       formattedHexString.append("f"); fallthrough
     case 4: // rgba

@@ -52,7 +52,7 @@ extension String {
   /// - Returns: returns a list of matched ranges for `self` or empy. Defaults to [].
   public func ranges(matching pattern: String, options: NSRegularExpression.Options = []) -> [Range<String.Index>] {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return [] }
-    let matches = regex.matches(in: self, options: [], range: NSRange(location: 0, length: characters.count))
+    let matches = regex.matches(in: self, options: [], range: NSRange(location: 0, length: count))
     let ranges = matches.flatMap { return self.range(from: $0.range) }
     return ranges
   }
@@ -65,7 +65,7 @@ extension String {
   /// - Returns: returns a the first matched range for `self` or nil.
   public func firstRange(matching pattern: String, options: NSRegularExpression.Options = []) -> Range<String.Index>? {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return nil }
-    let range = regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: characters.count)).flatMap { return self.range(from: $0.range) }
+    let range = regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)).flatMap { return self.range(from: $0.range) }
     return range
   }
 
