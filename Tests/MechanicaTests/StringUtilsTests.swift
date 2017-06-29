@@ -279,14 +279,15 @@ class StringUtilsTests: XCTestCase {
   }
   
   func testFirst(){
-    let s = "Hello"
-    XCTAssertTrue(s.first == "H")
+    XCTAssertTrue("Hello".first == "H")
+    XCTAssertTrue("∂Hello".first == "∂")
+    XCTAssertTrue(" Hello".first == " ")
   }
   
-  
   func testLast(){
-    let s = "Hello"
-    XCTAssertTrue(s.last == "o")
+    XCTAssertTrue("Hello".last == "o")
+    XCTAssertTrue("Hello∂".last == "∂")
+    XCTAssertTrue("Hello ".last == " ")
   }
   
   func testRemovingPrefix() {
@@ -300,7 +301,6 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.removingPrefix(upToPosition: 100) == "")
     XCTAssertTrue(s.removingPrefix(upToPosition: -1) == "")
     XCTAssertTrue("".removingPrefix(upToPosition: 1) == "")
-    
     XCTAssertTrue(s.removingPrefix("") == "hello")
     XCTAssertTrue(s.removingPrefix("h") == "ello")
     XCTAssertTrue(s.removingPrefix("hel") == "lo")
@@ -320,7 +320,6 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.removingSuffix(fromPosition: 100) == "")
     XCTAssertTrue(s.removingSuffix(fromPosition: -1) == "")
     XCTAssertTrue("".removingSuffix(fromPosition: 1) == "")
-    
     XCTAssertTrue(s.removingSuffix("abc") == "hello")
     XCTAssertTrue(s.removingSuffix("o") == "hell")
     XCTAssertTrue(s.removingSuffix("llo") == "he")
@@ -354,7 +353,6 @@ class StringUtilsTests: XCTestCase {
   
   func testTruncate() {
     let s = "Hello World"
-    
     XCTAssertTrue(s.truncate(at: 0) == "…")
     XCTAssertTrue(s.truncate(at: 0, withTrailing: nil) == "")
     XCTAssertTrue(s.truncate(at: 5) == "Hello…")
@@ -420,22 +418,16 @@ class StringUtilsTests: XCTestCase {
   
   func testSubscript() {
     let string = "∆Test😗🇮🇹"
-    
     XCTAssertTrue(string[0] == "∆")
     XCTAssertTrue(string[1] == "T")
-    
     XCTAssertNil(string[-1])
     XCTAssertNil(string[7])
     XCTAssertNil(string[10])
-    
     XCTAssertTrue(string[string.length - 1] == "🇮🇹")
-    
     XCTAssertTrue(string[0..<1] == "∆")
     XCTAssertTrue(string[1..<6] == "Test😗")
-    
     XCTAssertNotNil(string["Test"])
     XCTAssertNotNil(string["😗"])
-    
     
     // MARK: - Range
     
@@ -443,10 +435,8 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(string[Range(3..<3)] == "")
     XCTAssertTrue(string[Range(3..<6)] == "st😗")
     XCTAssertTrue(string[Range(0..<string.length)] == "∆Test😗🇮🇹")
-    
     XCTAssertNil(string[Range(string.length ..< string.length+1)])
     XCTAssertTrue(string[Range(string.length ..< string.length)] == "")
-    
     XCTAssertNil(string[Range(1 ..< 100)])
     XCTAssertNil(string[Range(-1 ..< 1)])
     XCTAssertNil(string[Range(1 ..< string.length+1)])
