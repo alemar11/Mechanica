@@ -26,16 +26,16 @@ import XCTest
 @testable import Mechanica
 
 class Test : NSObject {
-  dynamic func methodOne() -> Int { return 1 }
-  dynamic func methodThree() -> String { return "three" }
-  dynamic func methodFive(string: String) -> String { return ".." + string + ".." }
+  @objc dynamic func methodOne() -> Int { return 1 }
+  @objc dynamic func methodThree() -> String { return "three" }
+  @objc dynamic func methodFive(string: String) -> String { return ".." + string + ".." }
   override init(){}
 }
 
 extension Test {
-  func methodTwo() -> Int { return methodTwo() + 10 }
-  func methodFour() -> String { return methodFour() + "!!" }
-  func methodSix(string: String) -> String { return "--" + string + "--" }
+  @objc func methodTwo() -> Int { return methodTwo() + 10 }
+  @objc func methodFour() -> String { return methodFour() + "!!" }
+  @objc func methodSix(string: String) -> String { return "--" + string + "--" }
 }
 
 class NSObjectSwizzlingTests: XCTestCase {

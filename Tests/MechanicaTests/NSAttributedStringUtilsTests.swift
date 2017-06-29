@@ -36,7 +36,7 @@ class NSAttributedStringUtilsTests: XCTestCase {
       XCTAssertNotNil(s)
 
       XCTAssertTrue(s!.string == "Hello World")
-      guard let font = s!.attribute(NSFontAttributeName, at: 0, effectiveRange: nil) as? Font else {
+      guard let font = s!.attribute(NSAttributedStringKey.font, at: 0, effectiveRange: nil) as? Font else {
         XCTAssert(false, "No Avenir-Roman font name found.")
         return
       }
@@ -44,13 +44,13 @@ class NSAttributedStringUtilsTests: XCTestCase {
       XCTAssertTrue(font.fontName == "Avenir-Roman")
       XCTAssertTrue(font.pointSize == 15.00)
 
-      guard let color = s!.attribute(NSBackgroundColorAttributeName, at: 0, effectiveRange: nil) as? Color else {
+      guard let color = s!.attribute(NSAttributedStringKey.backgroundColor, at: 0, effectiveRange: nil) as? Color else {
         XCTAssert(false, "No text backgroud-color found.")
         return
       }
       XCTAssertTrue(color.hexString == "#9999ff".uppercased())
 
-      guard let _ = s!.attribute(NSParagraphStyleAttributeName, at: 0, effectiveRange: nil) as? NSParagraphStyle else {
+      guard let _ = s!.attribute(NSAttributedStringKey.paragraphStyle, at: 0, effectiveRange: nil) as? NSParagraphStyle else {
         XCTAssert(false, "No NSParagraphStyle found.")
         return
       }

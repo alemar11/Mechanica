@@ -39,8 +39,9 @@ class FileManagerUtilsTests: XCTestCase {
                        FileManager.default.applicationSupportDirectory,
                        FileManager.default.temporaryDirectory]
     
-    directories.enumerated().forEach { (offset, directoryURL) in
-      
+    directories.enumerated().forEach { (arg) in
+
+      let (_, directoryURL) = arg
       let containerURL                = directoryURL.appendingPathComponent("org.tinrobots.tests", isDirectory: true)
       let baseDemoURL                 = containerURL.appendingPathComponent("demo", isDirectory: true)          // org.tinrobots.tests/demo/
       let fakeBaseDirectoryURL        = containerURL.appendingPathComponent("fakeDemo", isDirectory: true)      // org.tinrobots.tests/fakeDemo/

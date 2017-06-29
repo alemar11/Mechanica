@@ -33,11 +33,9 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("cafe".length == 4)
     XCTAssertTrue("cafè".length == 4)
     XCTAssertTrue("🇮🇹".length == 1)
-    XCTAssertTrue("🇮🇹🇮🇹".length == 1)
-    XCTAssertTrue("🇮🇹 🇮🇹".length == 3)
-    XCTAssertTrue("👍🏻".length > 1) //2
-    XCTAssertTrue("👍🏽".length > 1) //2
-    XCTAssertTrue("👨‍👨‍👧‍👦".length > 1) //4
+    XCTAssertTrue("👍🏻".length == 1) //2
+    XCTAssertTrue("👍🏽".length == 1) //2
+    XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
   }
   
   func test_starts() {
@@ -246,7 +244,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.prefix(maxLength: 4) == "Hell")
     XCTAssertTrue(s.prefix(maxLength: 5) == "Hello")
     XCTAssertTrue(s.prefix(maxLength: 6) == "Hello ")
-    XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World 🖖")
+    XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World 🖖🏽")
     XCTAssertTrue(s.prefix(maxLength: 14) == "Hello World 🖖🏽")
     XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World 🖖🏽")
   }
@@ -255,14 +253,12 @@ class StringUtilsTests: XCTestCase {
     let s = "Hello World 🖖🏽"
     XCTAssertTrue(s.suffix(maxLength: -100) == "")
     XCTAssertTrue(s.suffix(maxLength: 0) == "")
-    XCTAssertTrue(s.suffix(maxLength: 1) == "🏽")
-    XCTAssertTrue(s.suffix(maxLength: 2) == "🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 3) == " 🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 4) == "d 🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 5) == "ld 🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 6) == "rld 🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 13) == "ello World 🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 14) == "Hello World 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 3) == "d 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 4) == "ld 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 5) == "rld 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World 🖖🏽")
     XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World 🖖🏽")
   }
   
@@ -389,14 +385,8 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s4.truncate(at: 2) == "a🇮🇹…")
     XCTAssertTrue(s4.truncate(at: 3) == "a🇮🇹b…")
     XCTAssertTrue(s4.truncate(at: 4) == "a🇮🇹bb…")
-    
-    /// Currently, Swift counts multiple flags following each other as a single Character, and it seems this will still be “correct” in Unicode 9
-    /// Multiple emoji flags are counted as 1 character: "🇮🇹🇮🇹".characters.count is 1
-    /// Swift can't understand them without a separation character.
-    /// http://stackoverflow.com/questions/26862282/swift-countelements-return-incorrect-value-when-count-flag-emoji
-    /// https://oleb.net/blog/2016/12/emoji-4-0/
-    XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹🇮🇹…")
-    XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹c…")
+    XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹…")
+    XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹…")
     
     let s5 = "\u{2126}"
     XCTAssertTrue(s5.truncate(at: 0) == "…")
@@ -412,12 +402,12 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s7.truncate(at: 2) == "👍👍…")
     XCTAssertTrue(s7.truncate(at: 3) == "👍👍👍…")
     
-    let s8 = "👍👍🏻👍🏼👍🏾" // 7 characters (4x👍 + 3 skin tone)
+    let s8 = "👍👍🏻👍🏼👍🏾"
     XCTAssertTrue(s8.truncate(at: 1) == "👍…")
-    XCTAssertTrue(s8.truncate(at: 2) == "👍👍…") //skin tone truncated
-    XCTAssertTrue(s8.truncate(at: 3) == "👍👍🏻…")
-    XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍…") //skin tone truncated
-    XCTAssertTrue(s8.truncate(at: 5) == "👍👍🏻👍🏼…")
+    XCTAssertTrue(s8.truncate(at: 2) == "👍👍🏻…")
+    XCTAssertTrue(s8.truncate(at: 3) == "👍👍🏻👍🏼…")
+    XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍🏼👍🏾")
+    XCTAssertTrue(s8.truncate(at: 5) == "👍👍🏻👍🏼👍🏾")
     
     //flags sperated by a ZERO WIDTH SPACE
     let s9 = "🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹"

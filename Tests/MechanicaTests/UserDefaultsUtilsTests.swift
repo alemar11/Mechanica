@@ -391,8 +391,8 @@ class UserDefaultsUtilsTests: XCTestCase {
 extension UserDefaultsUtilsTests {
 
   class Person: NSObject, NSCoding {
-    let surname: String
-    let firstname: String
+    @objc let surname: String
+    @objc let firstname: String
 
     required init(firstname:String, surname:String) {
       self.firstname = firstname

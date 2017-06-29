@@ -33,7 +33,8 @@ extension XCTest {
   ///
   /// Returns the current XCTest Bundle.
   var unitTestBundle: Bundle {
-    return Bundle(for: type(of: self))
+    // swift 4
+    return Bundle(for: self.classForCoder)
   }
 
 }
