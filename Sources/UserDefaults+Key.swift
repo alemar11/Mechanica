@@ -48,8 +48,7 @@ extension UserDefaults {
   /// Accesses the object value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-  public final subscript(key: Key<Any>) -> Any? {
-    // TODO: Swift 4: https://github.com/apple/swift-evolution/blob/master/proposals/0148-generic-subscripts.md
+  public final subscript<T>(key: Key<T>) -> T? {
     get { return object(forKey: key) }
     set { set(object: newValue, forKey: key) }
   }
@@ -129,7 +128,7 @@ extension UserDefaults {
   /// Accesses the `Array` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-  public final subscript(key: Key<[Any]>) -> [Any]? {
+  public final subscript<V>(key: Key<[V]>) -> [V]? {
     get { return array(forKey: key) }
     set { set(object: newValue, forKey: key) }
   }
@@ -154,12 +153,11 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  /// Accesses the `Dictionary` [String:Any] value associated with the given key for reading and writing.
+  /// Accesses the `Dictionary` value [String: V] associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-  public final subscript(key: Key<[String: Any]>) -> [String: Any]? {
-    // TODO: Swift 4: https://github.com/apple/swift-evolution/blob/master/proposals/0148-generic-subscripts.md
-    get { return dictionary(forKey: key.value) }
+  public final subscript<V>(key: Key<[String: V]>) -> [String: V]? {
+    get { return dictionary(forKey: key.value) as? [String : V] }
     set { set(object: newValue, forKey: key) }
   }
 
@@ -175,7 +173,7 @@ extension UserDefaults {
   /// Stores a `Dictionary` [String:Any] (or removes the value if nil is passed as the value) for the provided key.
   /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. 
   /// For NSArray and NSDictionary objects, their contents must be property list objects.
-  public final func set<V: Any>(dictionary: [String: V]?, forKey key: Key<[String: V]>) {
+  public final func set<V>(dictionary: [String: V]?, forKey key: Key<[String: V]>) {
     set(object: dictionary, forKey: key)
   }
 
