@@ -119,9 +119,6 @@
                 <a href="../Extensions/NSObjectProtocol.html">NSObjectProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/NSPersistentStoreCoordinator.html">NSPersistentStoreCoordinator</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Extensions/NSPredicate.html">NSPredicate</a>
               </li>
               <li class="nav-group-task">
@@ -340,9 +337,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FE9MechanicaCSo22NSManagedObjectContext15setCachedObjectFTGSqCSo15NSManagedObject_6forKeySS_T_"></a>
-                    <a name="//apple_ref/swift/Method/setCachedObject(_:forKey:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FE9MechanicaCSo22NSManagedObjectContext15setCachedObjectFTGSqCSo15NSManagedObject_6forKeySS_T_">setCachedObject(_:forKey:)</a>
+                    <a name="/s:FE9MechanicaCSo22NSManagedObjectContext22setCachedManagedObjectFTGSqCSo15NSManagedObject_6forKeySS_T_"></a>
+                    <a name="//apple_ref/swift/Method/setCachedManagedObject(_:forKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE9MechanicaCSo22NSManagedObjectContext22setCachedManagedObjectFTGSqCSo15NSManagedObject_6forKeySS_T_">setCachedManagedObject(_:forKey:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -352,14 +349,19 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Caches an <code>object</code> for a <code>key</code> in this context.</p>
+<p>Caches a NSManagedObject <code>object</code> for a <code>key</code> in this context.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The NSManagedObject <code>object</code> must have the same NSManagedObjectContext of <code>self</code> otherwise it will be not cached.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">setCachedObject</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">NSManagedObject</span><span class="p">?,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">setCachedManagedObject</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">NSManagedObject</span><span class="p">?,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -369,9 +371,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FE9MechanicaCSo22NSManagedObjectContext12cachedObjectFT6forKeySS_GSqCSo15NSManagedObject_"></a>
-                    <a name="//apple_ref/swift/Method/cachedObject(forKey:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FE9MechanicaCSo22NSManagedObjectContext12cachedObjectFT6forKeySS_GSqCSo15NSManagedObject_">cachedObject(forKey:)</a>
+                    <a name="/s:FE9MechanicaCSo22NSManagedObjectContext19cachedManagedObjectFT6forKeySS_GSqCSo15NSManagedObject_"></a>
+                    <a name="//apple_ref/swift/Method/cachedManagedObject(forKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE9MechanicaCSo22NSManagedObjectContext19cachedManagedObjectFT6forKeySS_GSqCSo15NSManagedObject_">cachedManagedObject(forKey:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -381,14 +383,14 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns a cached object in this context for a given <code>key</code>.</p>
+<p>Returns a cached NSManagedObject <code>object</code> in this context for a given <code>key</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">cachedObject</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSManagedObject</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">cachedManagedObject</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSManagedObject</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -398,9 +400,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FE9MechanicaCSo22NSManagedObjectContext18clearCachedObjectsFT_T_"></a>
-                    <a name="//apple_ref/swift/Method/clearCachedObjects()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FE9MechanicaCSo22NSManagedObjectContext18clearCachedObjectsFT_T_">clearCachedObjects()</a>
+                    <a name="/s:FE9MechanicaCSo22NSManagedObjectContext25clearCachedManagedObjectsFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/clearCachedManagedObjects()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE9MechanicaCSo22NSManagedObjectContext25clearCachedManagedObjectsFT_T_">clearCachedManagedObjects()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -410,14 +412,14 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Clears all cached object in this context.</p>
+<p>Clears all cached NSManagedObject objects in this context.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">clearCachedObjects</span><span class="p">()</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">clearCachedManagedObjects</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -428,6 +430,35 @@
             </div>
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vE9MechanicaCSo22NSManagedObjectContext16persistentStoresGSaCSo17NSPersistentStore_"></a>
+                    <a name="//apple_ref/swift/Property/persistentStores" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vE9MechanicaCSo22NSManagedObjectContext16persistentStoresGSaCSo17NSPersistentStore_">persistentStores</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>The persistent stores associated with the receiver.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">var</span> <span class="nv">persistentStores</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSPersistentStore</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -460,9 +491,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FE9MechanicaCSo22NSManagedObjectContext17setMetaDataObjectFTGSqPs9AnyObject__4withSS3forCSo17NSPersistentStore_T_"></a>
-                    <a name="//apple_ref/swift/Method/setMetaDataObject(_:with:for:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FE9MechanicaCSo22NSManagedObjectContext17setMetaDataObjectFTGSqPs9AnyObject__4withSS3forCSo17NSPersistentStore_T_">setMetaDataObject(_:with:for:)</a>
+                    <a name="/s:FE9MechanicaCSo22NSManagedObjectContext17setMetaDataObjectFTGSqP__4withSS3forCSo17NSPersistentStore10completionGSqFT_T___T_"></a>
+                    <a name="//apple_ref/swift/Method/setMetaDataObject(_:with:for:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE9MechanicaCSo22NSManagedObjectContext17setMetaDataObjectFTGSqP__4withSS3forCSo17NSPersistentStore10completionGSqFT_T___T_">setMetaDataObject(_:with:for:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -472,14 +503,14 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Adds an <code>object</code> to the store&rsquo;s metadata and saves it asynchronously.</p>
+<p>Adds an <code>object</code> to the store&rsquo;s metadata and saves it <strong>asynchronously</strong>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">setMetaDataObject</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">?,</span> <span class="n">with</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="k">for</span> <span class="nv">store</span><span class="p">:</span> <span class="kt">NSPersistentStore</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">setMetaDataObject</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?,</span> <span class="n">with</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="k">for</span> <span class="nv">store</span><span class="p">:</span> <span class="kt">NSPersistentStore</span><span class="p">,</span> <span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="p">(</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -496,7 +527,6 @@
                               <td>
                                 <div>
                                   <p>Object to be added to the medata dictionary.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -509,7 +539,6 @@
                               <td>
                                 <div>
                                   <p>Object key</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -522,7 +551,18 @@
                               <td>
                                 <div>
                                   <p>NSPersistentStore where is stored the metadata.</p>
-
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler called when the saving is completed.</p>
                                 </div>
                               </td>
                             </tr>
@@ -561,6 +601,10 @@
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -597,8 +641,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>Specifies if this new context is a child context of the current context (default ).</p>
-
+                                  <p>Specifies if this new context is a child context of the current context (default <em>false</em>).</p>
                                 </div>
                               </td>
                             </tr>
@@ -608,7 +651,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>a <code>new</code> background <code>NSManagedObjectContext</code>.</p>
-
                       </div>
                     </section>
                   </div>
@@ -632,9 +674,7 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Asynchronously performs changes and then saves them or <strong>rollbacks</strong> if any error occurs.
-- Parameters:
-  - changes: Changes to be applied in the current context before the saving operation.</p>
+<p>Asynchronously performs changes and then saves them or <strong>rollbacks</strong> if any error occurs.</p>
 
                       </div>
                       <div class="declaration">
@@ -658,7 +698,6 @@
                               <td>
                                 <div>
                                   <p>Changes to be applied in the current context before the saving operation.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -683,8 +722,12 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Synchronously performs changes and then saves them or <strong>rollbacks</strong> if any error occurs.
-- Throws: throws an error in cases of a saving operation failure.</p>
+<p>Synchronously performs changes and then saves them or <strong>rollbacks</strong> if any error occurs.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    throws an error in cases of a saving operation failure.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -703,8 +746,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-06-03)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-06-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

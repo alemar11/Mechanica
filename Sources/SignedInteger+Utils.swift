@@ -24,34 +24,29 @@
 
 import Foundation
 
-extension SignedInteger {
-
-  /// **Mechanica**
-  ///
-  /// Creates a string representing the given value in the hexadecimal base.
-  ///
-  /// `255.hexadecimalString` //"ff"
-  ///
-  public final func hexadecimalString(uppercase: Bool = true) -> String {
-    return String(self, radix: 16, uppercase: false)
-  }
-
-}
-
 // MARK: - BinaryConvertible
 
 extension SignedInteger where Self: BinaryConvertible {
-
+  
   /// **Mechanica**
   ///
   /// Creates a string representing the given value in the binary base.
   ///
-  /// ```
-  /// 255.binaryString //"11111111"
-  /// Int16(-1).binaryString //"1111111111111111"
-  /// ```
+  /// Example:
   ///
-   public var binaryString: String {
+  ///     255.binaryString //"11111111"
+  ///     Int16(-1).binaryString //"1111111111111111"
+  ///     1.binaryString  //"0000000000000000000000000000000000000000000000000000000000000001" (Int 64 bit)
+  ///     1.binaryString  //"00000000000000000000000000000001" (Int 32 bit)
+  ///
+  /// - Note: Negative integers are converted with the **two's complement operation**. For signed binary use `String(:,radix:)`
+  ///
+  /// Example:
+  ///
+  ///     String(Int8(-127), radix: 2) // -1111111
+  ///     Int8(-127).binaryString // 10000001
+  ///
+  public var binaryString: String {
     let size = MemoryLayout.size(ofValue: self) * 8
     let signed: IntMax = toIntMax()
     let unsigned: UIntMax = UIntMax(bitPattern: signed)
@@ -65,9 +60,9 @@ extension SignedInteger where Self: BinaryConvertible {
       binaryString = String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
     }
     return binaryString
-
+    
   }
-
+  
 }
 
 extension Int8:  BinaryConvertible {}

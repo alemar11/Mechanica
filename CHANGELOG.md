@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.4.2
+
+- bug fixes.
+- more tests.
+- fixes on Core Data utils
+- removed unused API
+
 ### 0.4.1
 
 - added NibIdentifiable protocol tests.

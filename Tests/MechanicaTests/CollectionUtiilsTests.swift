@@ -26,13 +26,12 @@ import XCTest
 @testable import Mechanica
 
 class CollectionUtiilsTests: XCTestCase {
-
+  
   // MARK - Equatable
-
- let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
-
-  func test_firstIndex() {
-
+  
+  let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
+  
+  func testFirstIndex() {
     let index1 = array.firstIndex(of: 1)
     XCTAssertTrue(index1 == 0)
     let index2 = array.firstIndex(of: 8)
@@ -41,11 +40,9 @@ class CollectionUtiilsTests: XCTestCase {
     XCTAssertTrue(index3 == 5)
     let index4 = array.firstIndex(of: 11)
     XCTAssertTrue(index4 == nil)
-
   }
-
-  func test_lastIndex() {
-    
+  
+  func testLastIndex() {
     let index1 = array.lastIndex(of: 1)
     XCTAssertTrue(index1 == 2)
     let index2 = array.lastIndex(of: 8)

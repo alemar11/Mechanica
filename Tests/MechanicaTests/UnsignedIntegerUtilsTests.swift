@@ -14,7 +14,7 @@ class UnsignedIntegerUtilsTests: XCTestCase {
   // MARK: - BinaryConvertible
   
   /// http://www.binaryconvert.com/result_signed_int.html?decimal=045049049049
-  func test_binaryString() {
+  func testBinaryString() {
     XCTAssertEqual(UInt8(10).binaryString,"00001010")
     XCTAssertEqual(UInt8(255).binaryString,"11111111")
     XCTAssertEqual(UInt16(10).binaryString,"0000000000001010")

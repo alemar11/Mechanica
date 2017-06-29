@@ -47,24 +47,20 @@ public protocol NibEnumerable {
 
 extension NibEnumerable where NibName.RawValue == String {
 
-  /**
-   **Mechanica**
-   
-   Creates and returns a Nib object for a specified nib enum case.
-   
-   Example:
-   
-        extension Nib: NibEnumerable {
-          enum NibName : String {
-            case first   = "first"
-            case second  = "second"
-          }
-        }
-   
-        let firstNib = Nib.nib(forKey: .first)
-   
-   - Note: If the bundle parameter is nil, the main bundle is used.
-   */
+/// **Mechanica**
+/// Creates and returns a Nib object for a specified nib enum case.
+///
+///  Example:
+///
+///       extension Nib: NibEnumerable {
+///          enum NibName : String {
+///            case first   = "first"
+///            case second  = "second"
+///          }
+///       }
+///       let firstNib = Nib.nib(forKey: .first)
+///
+/// - Note: If the bundle parameter is nil, the main bundle is used.
   public static func nib(forKey key: NibName, bundle: Bundle? = nil) -> Nib {
     #if os(iOS) || os(tvOS)
       return  UINib(nibName: key.rawValue, bundle: bundle)
@@ -152,7 +148,7 @@ public extension NibIdentifiable {
   /// - Parameter bundle: the bundle where the .xib file is located.
   /// - Returns: the nib whose `Self` is the the only XIB root object.
   ///
-  ///   Example:
+  /// Example:
   ///
   ///       extension MyView: NibIdentifiable {} //in a MyView.xib should exists only an object of class "MyView".
   ///       let nib = nib()
@@ -170,7 +166,7 @@ public extension NibIdentifiable {
   /// - Parameter bundle: the bundle where the .xib file is located
   /// - Returns: an instance of 'Self´ unarchived from the nib whose `Self` is the the only XIB root object.
   ///
-  ///   Example:
+  /// Example:
   ///
   ///       extension MyView: NibIdentifiable {} //in a MyView.xib should exists only an object of class "MyView"
   ///       let view = MyView.instantiateFromNib()

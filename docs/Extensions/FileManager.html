@@ -119,9 +119,6 @@
                 <a href="../Extensions/NSObjectProtocol.html">NSObjectProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/NSPersistentStoreCoordinator.html">NSPersistentStoreCoordinator</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Extensions/NSPredicate.html">NSPredicate</a>
               </li>
               <li class="nav-group-task">
@@ -360,8 +357,12 @@
                         <p><strong>Mechanica</strong></p>
 
 <p>Returns the location of the document directory (<em>Documents/</em>).
-- Note: Use this directory to store user-generated content. 
 The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Use this directory to store user-generated content.
+
+</div>
 
 <p>The contents of <em>Documents</em> directory are <strong>backed up by iTunes and iCloud</strong>.</p>
 
@@ -392,8 +393,12 @@ The contents of this directory can be made available to the user through file sh
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns the location of the library directory (<em>Library/</em>).
-- Note: Use the Library subdirectories for any files you don’t want exposed to the user. Your app should not use these directories for user data files.</p>
+<p>Returns the location of the library directory (<em>Library/</em>).</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Use the Library subdirectories for any files you don’t want exposed to the user. Your app should not use these directories for user data files.
+
+</div>
 
 <p>You typically put files in one of several standard subdirectories. iOS apps commonly use the <em>Application Support</em> and <em>Caches subdirectories</em>; however, you can create custom subdirectories.</p>
 
@@ -426,8 +431,12 @@ The contents of this directory can be made available to the user through file sh
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns the location of discardable cache files (<em>Library/Caches/</em>).
-- Note: Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file.</p>
+<p>Returns the location of discardable cache files (<em>Library/Caches/</em>).</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file.
+
+</div>
 
 <p>Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance. 
 Examples of cache data include (but are not limited to) database cache files and transient, downloadable content.</p>
@@ -435,7 +444,6 @@ Examples of cache data include (but are not limited to) database cache files and
 <p>The contents of the <em>Library/Caches</em> are <strong>not backed up by iTunes and iCloud</strong>.</p>
 
 <p>Note that the system may delete the Caches/ directory to free up disk space, so your app must be able to re-create or download these files as needed.</p>
-
 <div class="aside aside-important">
     <p class="aside-title">Important</p>
     Sandboxed <em>macOS</em> apps have all their <em>Caches</em> directory located at a system-defined path (typically found at <em>~/Library/Containers/<bundle_id></em>).
@@ -469,20 +477,22 @@ Examples of cache data include (but are not limited to) database cache files and
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns the location of application support files (<em>Library/Application Support/</em>).
-- Note: Put app-created support files in the <em>Library/Application support/</em> directory.</p>
+<p>Returns the location of application support files (<em>Library/Application Support/</em>).</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Put app-created support files in the <em>Library/Application support/</em> directory.
+
+</div>
 
 <p>In general, this directory includes files that the app uses to run but that should remain hidden from the user.
 This directory can also include data files, configuration files, templates and modified versions of resources loaded from the app bundle.</p>
 
 <p>The contents of the <em>Library/Application Support/</em> are <strong>backed up by iTunes and iCloud</strong>.</p>
-
 <div class="aside aside-warning">
     <p class="aside-title">Warning</p>
     <p>On <em>macOS</em> all content in this directory should be placed in a <strong>custom subdirectory</strong> whose name is that of your app’s bundle identifier or your company.</p>
 
 </div>
-
 <div class="aside aside-important">
     <p class="aside-title">Important</p>
     <p>Sandboxed <em>macOS</em> apps have all their <em>Application Support</em> directory located at a system-defined path (typically found at <em>~/Library/Containers/<bundle_id></em>).</p>
@@ -608,8 +618,7 @@ This directory can also include data files, configuration files, templates and m
                               </td>
                               <td>
                                 <div>
-                                  <p>path (if it’s not a directory path, nothing is done).</p>
-
+                                  <p><strong>directory</strong> path (if it&rsquo;s not a directory path, nothing is done).</p>
                                 </div>
                               </td>
                             </tr>
@@ -658,7 +667,6 @@ This directory can also include data files, configuration files, templates and m
                               <td>
                                 <div>
                                   <p>directory or file path.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -673,8 +681,8 @@ This directory can also include data files, configuration files, templates and m
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-06-03)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-06-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

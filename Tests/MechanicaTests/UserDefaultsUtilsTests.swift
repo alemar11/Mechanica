@@ -93,24 +93,24 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   func test_object() {
     do {
-      let red = Color.red.rgb32Bit
-      let yellow = Color.yellow.rgb32Bit
+      let x = UInt32(10)
+      let y = UInt32(20)
       let key =  Key<UInt32>("myColor")
-      userDefaults.set(object: red, forKey: key)
+      userDefaults.set(object: x, forKey: key)
       XCTAssertTrue(userDefaults.hasKey(key))
-      XCTAssert(userDefaults.object(forKey: key) == red)
-      userDefaults.set(object: yellow, forKey: key)
-      XCTAssert(userDefaults.object(forKey: key) == yellow)
+      XCTAssert(userDefaults.object(forKey: key) == x)
+      userDefaults.set(object: y, forKey: key)
+      XCTAssert(userDefaults.object(forKey: key) == y)
     }
 
     do {
-      let red = Color.red.rgb32Bit
-      let yellow = Color.yellow.rgb32Bit
+      let x = "10" as NSString
+      let y = "20" as NSString
       let key =  Key<Any>("myColor")
-      userDefaults.set(object: red, forKey: key)
-      let color = userDefaults[key] as? UInt32
-      XCTAssertEqual(red,color)
-      userDefaults[key] = yellow
+      userDefaults.set(object: x, forKey: key)
+      let k = userDefaults[key] as? NSString
+      XCTAssertEqual(x,k)
+      userDefaults[key] = y
       XCTAssertTrue(userDefaults.hasKey(key))
     }
 
@@ -371,9 +371,9 @@ class UserDefaultsUtilsTests: XCTestCase {
   // MARK: - NSCoding
 
   func test_archive() {
-    let value = Person(firstname: "name1", surname: "surname1")
-    let value2 = Person(firstname: "name2", surname: "surname2")
-    let key = Key<Person>("myPerson")
+    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
+    let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
+    let key = Key<UserDefaultsUtilsTests.Person>("myPerson")
     userDefaults.set(archivableValue: value, forKey: key)
     XCTAssertTrue(userDefaults.archivableValue(forKey: key)! == value)
     userDefaults.set(archivableValue: value2, forKey: key)
@@ -386,30 +386,34 @@ class UserDefaultsUtilsTests: XCTestCase {
 }
 
 
+// MARK: - UserDefaultsUtilsTests Namespace
 
-class Person: NSObject, NSCoding {
-  let surname: String
-  let firstname: String
+extension UserDefaultsUtilsTests {
 
-  required init(firstname:String, surname:String) {
-    self.firstname = firstname
-    self.surname = surname
-  }
+  class Person: NSObject, NSCoding {
+    let surname: String
+    let firstname: String
 
-  required init?(coder aDecoder: NSCoder) {
-    firstname = aDecoder.decodeObject(forKey: #keyPath(Person.firstname)) as! String
-    surname = aDecoder.decodeObject(forKey: #keyPath(Person.surname)) as! String
-  }
+    required init(firstname:String, surname:String) {
+      self.firstname = firstname
+      self.surname = surname
+    }
 
-  func encode(with aCoder: NSCoder) {
-    aCoder.encode(firstname, forKey: #keyPath(Person.firstname))
-    aCoder.encode(surname, forKey: #keyPath(Person.surname))
-  }
+    required init?(coder aDecoder: NSCoder) {
+      firstname = aDecoder.decodeObject(forKey: #keyPath(Person.firstname)) as! String
+      surname = aDecoder.decodeObject(forKey: #keyPath(Person.surname)) as! String
+    }
 
-  static func ==(left: Person, right: Person) -> Bool {
-    return left.firstname == right.firstname && left.surname == right.surname
+    func encode(with aCoder: NSCoder) {
+      aCoder.encode(firstname, forKey: #keyPath(Person.firstname))
+      aCoder.encode(surname, forKey: #keyPath(Person.surname))
+    }
+    
+    static func ==(left: Person, right: Person) -> Bool {
+      return left.firstname == right.firstname && left.surname == right.surname
+    }
+    
   }
   
 }
-
 

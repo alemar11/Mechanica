@@ -52,7 +52,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
   public static func fetchRequest() -> NSFetchRequest<Self> {
-    //let fetchRequest = NSFetchRequest<Self>(entity: entity)
+    // let fetchRequest = NSFetchRequest<Self>(entity: entity)
     let fetchRequest = NSFetchRequest<Self>(entityName: entityName)
     return fetchRequest
   }
@@ -72,7 +72,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(OSX 10.12, *)
   public static func findOrCreate(in context: NSManagedObjectContext, where predicate: NSPredicate, with configuration: (Self) -> Void) -> Self {
     guard let object = findOrFetch(in: context, where: predicate) else {
-      let newObject: Self = Self(context: context) //context.insertObject()
+      let newObject: Self = Self(context: context) // context.insertObject()
       configuration(newObject)
       return newObject
     }
@@ -93,9 +93,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
   public static func findOrFetch(in context: NSManagedObjectContext, where predicate: NSPredicate) -> Self? {
-    //first we should fetch an existing object in the context as a performance optimization
+    // first we should fetch an existing object in the context as a performance optimization
     guard let object = findMaterializedObject(in: context, where: predicate) else {
-      //if it's not in memory, we should execute a fetch to see if it exists
+      // if it's not in memory, we should execute a fetch to see if it exists
       return fetch(in: context) { request in
         request.predicate = predicate
         request.returnsObjectsAsFaults = false
@@ -123,7 +123,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   ///
   /// Specifies objects (matching a given predicate) that should be removed from its persistent store when changes are committed.
   /// If objects have not yet been saved to a persistent store, they are simply removed from the context.
-  /// - note: `NSBatchDeleteRequest` would be more efficient but requires a context with an `NSPersistentStoreCoordinator` directly connected (no child context).
+  /// - Note: `NSBatchDeleteRequest` would be more efficient but requires a context with an `NSPersistentStoreCoordinator` directly connected (no child context).
   @available(iOS 10, *)
   @available(tvOS 10, *)
   @available(watchOS 3, *)
@@ -221,9 +221,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(watchOS 3, *)
   @available(OSX 10.12, *)
   public static func fetchCachedObject(in context: NSManagedObjectContext, forKey cacheKey: String, with configuration: @escaping (NSFetchRequest<Self>) -> Void) -> Self? {
-    guard let cached = context.cachedObject(forKey: cacheKey) as? Self else {
+    guard let cached = context.cachedManagedObject(forKey: cacheKey) as? Self else {
       let result = fetchSingleObject(in: context, with: configuration)
-      context.setCachedObject(result, forKey: cacheKey)
+      context.setCachedManagedObject(result, forKey: cacheKey)
       return result
     }
     return cached

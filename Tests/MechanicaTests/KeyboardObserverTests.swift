@@ -39,6 +39,7 @@ class KeyboardObserverTests: XCTestCase {
   var didShowOptions: KeyboardObserver.Options?
 
   override func setUp() {
+    super.setUp()
     keyboardObserver.on(event: KeyboardObserver.Event.willChangeFrame) { [weak self] in self?.willChangeFrameOptions = $0 }
     keyboardObserver.on(event: KeyboardObserver.Event.didChangeFrame) { [weak self] in self?.didChangeFrameOptions = $0 }
     keyboardObserver.on(event: KeyboardObserver.Event.willHide) { [weak self] in self?.willHideOptions = $0 }
@@ -57,6 +58,7 @@ class KeyboardObserverTests: XCTestCase {
     didHideOptions          = nil
     willShowOptions         = nil
     didShowOptions          = nil
+    super.tearDown()
   }
 
   func test_register() {

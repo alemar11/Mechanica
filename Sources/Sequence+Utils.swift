@@ -27,6 +27,7 @@ import Foundation
 extension Sequence {
 
   /// **Mechanica**
+  ///
   /// Returns: the first element (if any) `matching` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
