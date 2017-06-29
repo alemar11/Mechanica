@@ -26,48 +26,48 @@ import Foundation
 
 // MARK: - BinaryConvertible
 //swift 4
-//extension SignedInteger where Self: BinaryConvertible {
-//
-//  /// **Mechanica**
-//  ///
-//  /// Creates a string representing the given value in the binary base.
-//  ///
-//  /// Example:
-//  ///
-//  ///     255.binaryString //"11111111"
-//  ///     Int16(-1).binaryString //"1111111111111111"
-//  ///     1.binaryString  //"0000000000000000000000000000000000000000000000000000000000000001" (Int 64 bit)
-//  ///     1.binaryString  //"00000000000000000000000000000001" (Int 32 bit)
-//  ///
-//  /// - Note: Negative integers are converted with the **two's complement operation**. For signed binary use `String(:,radix:)`
-//  ///
-//  /// Example:
-//  ///
-//  ///     String(Int8(-127), radix: 2) // -1111111
-//  ///     Int8(-127).binaryString // 10000001
-//  ///
-//  public var binaryString: String {
-//    let size = MemoryLayout.size(ofValue: self) * 8
-//    let signed: IntMax = toIntMax()
-//    let unsigned: UIntMax = UIntMax(bitPattern: signed)
-//    var binaryString = String(unsigned, radix:2)
-//    switch binaryString.characters.count {
-//    case let count where count > size:
-//      let startIndex = binaryString.index(binaryString.startIndex, offsetBy: count-size)
-//      let endIndex   = binaryString.index(startIndex, offsetBy: count, limitedBy: binaryString.endIndex) ?? binaryString.endIndex
-//      binaryString = binaryString[startIndex..<endIndex]
-//    default:
-//      binaryString = String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
-//    }
-//    return binaryString
-//
-//  }
-//
-//}
-//
-//extension Int8:  BinaryConvertible {}
-//extension Int16: BinaryConvertible {}
-//extension Int32: BinaryConvertible {}
-//extension Int64: BinaryConvertible {}
-//extension Int:   BinaryConvertible {}
+extension SignedInteger where Self: BinaryConvertible {
+
+  /// **Mechanica**
+  ///
+  /// Creates a string representing the given value in the binary base.
+  ///
+  /// Example:
+  ///
+  ///     255.binaryString //"11111111"
+  ///     Int16(-1).binaryString //"1111111111111111"
+  ///     1.binaryString  //"0000000000000000000000000000000000000000000000000000000000000001" (Int 64 bit)
+  ///     1.binaryString  //"00000000000000000000000000000001" (Int 32 bit)
+  ///
+  /// - Note: Negative integers are converted with the **two's complement operation**. For signed binary use `String(:,radix:)`
+  ///
+  /// Example:
+  ///
+  ///     String(Int8(-127), radix: 2) // -1111111
+  ///     Int8(-127).binaryString // 10000001
+  ///
+  public var binaryString: String {
+    let size = MemoryLayout.size(ofValue: self) * 8
+    let signed = Int(self)
+    let unsigned = UInt(bitPattern: signed)
+    var binaryString = String(unsigned, radix:2)
+    switch binaryString.characters.count {
+    case let count where count > size:
+      let startIndex = binaryString.index(binaryString.startIndex, offsetBy: count-size)
+      let endIndex   = binaryString.index(startIndex, offsetBy: count, limitedBy: binaryString.endIndex) ?? binaryString.endIndex
+      binaryString = String(binaryString[startIndex..<endIndex])
+    default:
+      binaryString = String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
+    }
+    return binaryString
+
+  }
+
+}
+
+extension Int8:  BinaryConvertible {}
+extension Int16: BinaryConvertible {}
+extension Int32: BinaryConvertible {}
+extension Int64: BinaryConvertible {}
+extension Int:   BinaryConvertible {}
 
