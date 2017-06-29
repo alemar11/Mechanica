@@ -27,7 +27,8 @@ import Foundation
 // MARK: - FixedWidthIntegerRandomizable
 
 /// **Mechanica**
-/// - TODO: Rename this protocol `FixedWidthIntegerRandomizable` with Swift 4.
+///
+/// FixedWidthInteger random protocol.
 public protocol FixedWidthIntegerRandomizable {
 
   /// **Mechanica**
