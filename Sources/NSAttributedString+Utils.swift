@@ -44,7 +44,7 @@ extension NSAttributedString {
   /// - Warning: Using the HTML importer (NSHTMLTextDocumentType) is only possible on the main thread.
   public convenience init?(html: String, allowLossyConversion: Bool = false) {
     guard let data = html.data(using: String.Encoding.utf8, allowLossyConversion: allowLossyConversion) else { return nil }
-    try? self.init(data: data, options: [ NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+    try? self.init(data: data, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
   }
 
 }
