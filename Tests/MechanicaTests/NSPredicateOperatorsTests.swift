@@ -26,13 +26,13 @@ import XCTest
 @testable import Mechanica
 
 class NSPredicateOperatorsTests: XCTestCase {
-    
+
   
-  func test_operators() {
+  func testOperators() {
     
     final class TestClass: NSObject {
-      let id: Int
-      let text: String
+      @objc let id: Int
+      @objc let text: String
       
       init(id: Int, text: String) {
         self.id = id
@@ -63,7 +63,7 @@ class NSPredicateOperatorsTests: XCTestCase {
     let textEndsWithE_predicate = NSPredicate(format: "text ENDSWITH[cd] 'e'")
 
     do {
-    let result = (tests as NSArray).filtered(using: textEqualToOne_predicate)
+      let result = (tests as NSArray).filtered(using: textEqualToOne_predicate)
       XCTAssert(result.count == 1)
     }
     
@@ -144,5 +144,5 @@ class NSPredicateOperatorsTests: XCTestCase {
     }
     
   }
-    
+
 }
