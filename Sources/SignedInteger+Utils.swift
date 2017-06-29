@@ -25,7 +25,7 @@
 import Foundation
 
 // MARK: - BinaryConvertible
-//swift4
+//swift 4
 //extension SignedInteger where Self: BinaryConvertible {
 //
 //  /// **Mechanica**
