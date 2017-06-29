@@ -1,5 +1,5 @@
 //
-//  Integer+Utils.swift
+//  BinaryInteger+Utils.swift
 //  Mechanica
 //
 //  Copyright © 2016-2017 Tinrobots.
