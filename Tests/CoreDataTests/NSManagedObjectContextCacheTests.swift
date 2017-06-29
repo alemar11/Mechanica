@@ -42,6 +42,7 @@ class NSManagedObjectContextCacheTests: XCTestCase {
       let car1 = Car(context: stack.mainContext)
       car1.maker = "Alessandro"
       car1.model = "Model 1"
+      car1.numberPlate = "123"
       car1.owner = person1
       // When
       mainContext.setCachedManagedObject(person1, forKey: "testKey")

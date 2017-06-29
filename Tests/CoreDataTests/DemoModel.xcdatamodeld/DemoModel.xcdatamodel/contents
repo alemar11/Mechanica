@@ -3,7 +3,13 @@
     <entity name="Car" representedClassName=".Car" syncable="YES" codeGenerationType="class">
         <attribute name="maker" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberPlate" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="cars" inverseEntity="Person" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="numberPlate"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Person" representedClassName=".Person" syncable="YES" codeGenerationType="class">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,7 +17,7 @@
         <relationship name="cars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="owner" inverseEntity="Car" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Car" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Car" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="Person" positionX="-54" positionY="-9" width="128" height="90"/>
     </elements>
 </model>
