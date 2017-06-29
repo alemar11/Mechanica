@@ -40,7 +40,7 @@ import Foundation
 
 extension Color {
 
-  private typealias ColorConverter = (Color) -> Color?
+  fileprivate typealias ColorConverter = (Color) -> Color?
 
   private final func processingColor(using converter: ColorConverter) -> Color? { return converter(self) }
 
@@ -115,7 +115,7 @@ extension Color {
       let compatibleSRGBColor = self.cgColor.converted(to: colorSpace, intent: CGColorRenderingIntent.defaultIntent, options: nil)!
       return Color(cgColor: compatibleSRGBColor)
     #else
-      let compatibleSRGBColor = (self.colorSpaceName != NSCalibratedRGBColorSpace) ? self.usingColorSpace(NSColorSpace.sRGB) : self
+      let compatibleSRGBColor = (self.colorSpaceName != NSColorSpaceName.calibratedRGB) ? self.usingColorSpace(NSColorSpace.sRGB) : self
       return compatibleSRGBColor
     #endif
   }

@@ -65,7 +65,7 @@ extension NibEnumerable where NibName.RawValue == String {
     #if os(iOS) || os(tvOS)
       return  UINib(nibName: key.rawValue, bundle: bundle)
     #elseif os(macOS)
-      return NSNib(nibNamed: key.rawValue, bundle: bundle)!
+      return NSNib(nibNamed: NSNib.Name(rawValue: key.rawValue), bundle: bundle)!
     #endif
   }
 
@@ -93,8 +93,8 @@ extension Nib {
     #if os(iOS) || os(tvOS)
       let contents = self.instantiate(withOwner: owner, options: options).filter { $0 is T }
     #elseif os(macOS)
-      var array = NSArray()
-      guard (self.instantiate(withOwner: owner, topLevelObjects: &array)) else {
+      var objects: NSArray?
+      guard (self.instantiate(withOwner: owner, topLevelObjects: &objects)), let array = objects else {
         fatalError("\(String(describing: self)) could not be instantiated.")
       }
       // swiftlint:disable force_cast
@@ -157,7 +157,7 @@ public extension NibIdentifiable {
     #if os(iOS) || os(tvOS)
       return Nib(nibName: nibIdentifier, bundle: bundle)
     #elseif os(macOS)
-      return Nib(nibNamed: nibIdentifier, bundle: bundle)!
+      return Nib(nibNamed: NSNib.Name(rawValue: nibIdentifier), bundle: bundle)!
     #endif
   }
 
@@ -175,13 +175,16 @@ public extension NibIdentifiable {
     #if os(iOS) || os(tvOS)
       let content = nib(inBundle: bundle).instantiate(withOwner: self, options: nil).first as? Self
     #elseif os(macOS)
-      var array = NSArray()
-      guard (nib(inBundle: bundle).instantiate(withOwner: self, topLevelObjects: &array)) else {
+      var objects: NSArray?
+      guard (nib(inBundle: bundle).instantiate(withOwner: self, topLevelObjects: &objects)) else {
         fatalError("\(String(describing: self)) could not be instantiated.")
+      }
+      guard let array = objects else {
+        fatalError("\(String(describing: self)) could not be instantiated. There should be a top object.")
       }
       let contents = array.filter { $0 is Self }
       guard contents.count == 1 else {
-        fatalError("\(String(describing: self)) could not be instantiated. There should be only a top object (and not \(contents.count) whose class is \(String(describing: self))")
+        fatalError("\(String(describing: self)) could not be instantiated. There should be only a top object (and not \(contents.count) whose class is \(String(describing: self)).")
       }
       let content = contents.first as? Self
     #endif

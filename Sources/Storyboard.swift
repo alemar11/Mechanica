@@ -88,7 +88,12 @@
     ///     let mainStoryboard = Storyboard(storyboard: Storyboard.StoryboardName.main)
     ///
     fileprivate convenience init<T: RawRepresentable>(storyboard: T, bundle: Bundle? = nil) where T.RawValue == String {
-      self.init(name: storyboard.rawValue, bundle: bundle)
+       #if os(iOS) || os(tvOS)
+        self.init(name: storyboard.rawValue, bundle: bundle)
+      #elseif os(macOS)
+        self.init(name: NSStoryboard.Name(rawValue: storyboard.rawValue), bundle: bundle)
+      #endif
+
     }
   }
 
@@ -101,22 +106,25 @@
       static let nsMainStoryboardFileKey = "NSMainStoryboardFile"
     }
 
+    /// **Mechanica**
+    ///
     /// Returns the main storyboard defined in an Xcode project under *General* > *Deployment info* > *main interface*.
-    public static var mainStoryboard: Storyboard? {
-
+    public static var defaultStoryboard: Storyboard? {
       #if os(iOS) || os(tvOS)
         let mainStoryboardFileName = MainStoryboard.uiMainStoryboardFileKey
       #elseif os(macOS)
+        if #available(macOS 10.13, *) { return Storyboard.main }
         let mainStoryboardFileName = MainStoryboard.nsMainStoryboardFileKey
       #endif
+      guard let mainStoryboardName = Bundle.main.infoDictionary?[mainStoryboardFileName] as? String else { return nil }
 
-      guard let mainStoryboardName = Bundle.main.infoDictionary?[mainStoryboardFileName] as? String else {
-        //assertionFailure("\(mainStoryboardFileName) not found in main Bundle.")
-        return nil
-      }
-      return Storyboard(name: mainStoryboardName, bundle: Bundle.main)
+      #if os(iOS) || os(tvOS)
+        return Storyboard(name: mainStoryboardName, bundle: Bundle.main)
+      #elseif os(macOS)
+         return Storyboard(name: NSStoryboard.Name(rawValue: mainStoryboardName), bundle: Bundle.main)
+      #endif
+
     }
-
   }
 
   // MARK: - StoryboardIdentifiable
@@ -175,8 +183,8 @@
     ///   ```
     ///   let vc = myStoryboard.instantiateViewController() as TestViewController
     ///
-    public final func instantiateViewController<T: NSViewController>() -> T where T: StoryboardIdentifiable {
-      guard let viewController = self.instantiateController(withIdentifier: T.storyboardIdentifier) as? T else {
+    public final func instantiateViewController<T: NSViewController>() -> T {
+      guard let viewController = self.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: T.storyboardIdentifier)) as? T else {
         fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
       }
       return viewController
@@ -190,8 +198,8 @@
     ///   ```
     ///   let vc = myStoryboard.instantiateViewController() as TestViewController
     ///
-    public final func instantiateWindowController<T: NSWindowController>() -> T where T: StoryboardIdentifiable {
-      guard let windowController = self.instantiateController(withIdentifier: T.storyboardIdentifier) as? T else {
+    public final func instantiateWindowController<T: NSWindowController>() -> T {
+      guard let windowController = self.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: T.storyboardIdentifier)) as? T else {
         fatalError("Couldn't instantiate a Window Controller with identifier \(T.storyboardIdentifier) ")
       }
       return windowController

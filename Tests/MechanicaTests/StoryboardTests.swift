@@ -110,7 +110,7 @@ class StoryboardTests: XCTestCase {
 
     #endif
 
-    XCTAssert(Storyboard.mainStoryboard == nil)
+    XCTAssert(Storyboard.defaultStoryboard == nil)
   }
 
 }
