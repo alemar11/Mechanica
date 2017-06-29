@@ -42,7 +42,7 @@ extension Color {
 
   fileprivate typealias ColorConverter = (Color) -> Color?
 
-  private final func processingColor(using converter: ColorConverter) -> Color? { return converter(self) }
+  fileprivate final func processingColor(using converter: ColorConverter) -> Color? { return converter(self) }
 
   /// **Mechanica**
   ///
