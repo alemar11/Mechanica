@@ -24,27 +24,11 @@
 
 import Foundation
 
-// MARK: - FixedWidthInteger
-
-/// **Mechanica**
-///
-/// From SE-0104 (Swift 4), Int nad UInt families will conform to FixedWidthInteger.
-/// https://github.com/apple/swift-evolution/blob/master/proposals/0104-improved-integers.md
-/// - TODO: This protocol should be removed with with Swift 4.
-//public protocol FixedWidthInteger: Integer {
-//
-//  /// The maximum representable integer in this type.
-//  static var max: Self { get }
-//
-//  /// The minimum representable value.
-//  static var min: Self { get }
-//}
-
-// MARK: - IntegerRandomizable
+// MARK: - FixedWidthIntegerRandomizable
 
 /// **Mechanica**
 /// - TODO: Rename this protocol `FixedWidthIntegerRandomizable` with Swift 4.
-public protocol IntegerRandomizable {
+public protocol FixedWidthIntegerRandomizable {
 
   /// **Mechanica**
   ///
@@ -53,20 +37,18 @@ public protocol IntegerRandomizable {
 
 }
 
-//public typealias FixedWidthIntegerRandomizable = FixedWidthInteger & IntegerRandomizable
+extension UInt64: FixedWidthIntegerRandomizable {}
+extension Int64:  FixedWidthIntegerRandomizable {}
+extension UInt32: FixedWidthIntegerRandomizable {}
+extension Int32:  FixedWidthIntegerRandomizable {}
+extension UInt16: FixedWidthIntegerRandomizable {}
+extension Int16:  FixedWidthIntegerRandomizable {}
+extension UInt8:  FixedWidthIntegerRandomizable {}
+extension Int8:   FixedWidthIntegerRandomizable {}
+extension UInt:   FixedWidthIntegerRandomizable {}
+extension Int:    FixedWidthIntegerRandomizable {}
 
-extension UInt64: IntegerRandomizable {}
-extension Int64:  IntegerRandomizable {}
-extension UInt32: IntegerRandomizable {}
-extension Int32:  IntegerRandomizable {}
-extension UInt16: IntegerRandomizable {}
-extension Int16:  IntegerRandomizable {}
-extension UInt8:  IntegerRandomizable {}
-extension Int8:   IntegerRandomizable {}
-extension UInt:   IntegerRandomizable {}
-extension Int:    IntegerRandomizable {}
-
-extension FixedWidthInteger where Stride: SignedInteger, Self: IntegerRandomizable {
+extension FixedWidthInteger where Stride: SignedInteger, Self: FixedWidthIntegerRandomizable {
 
   /// **Mechanica**
   ///
