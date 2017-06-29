@@ -162,7 +162,7 @@ extension String {
   ///  - Returns: stripped string
   public func trimmedLeft(characterSet set: CharacterSet = .whitespacesAndNewlines) -> String {
     if let range = rangeOfCharacter(from: set.inverted) {
-      return self[range.lowerBound..<endIndex]
+      return String(self[range.lowerBound..<endIndex])
     }
     return ""
   }
@@ -176,7 +176,7 @@ extension String {
   ///  - Returns: stripped string
   public func trimmedRight(characterSet set: CharacterSet = .whitespacesAndNewlines) -> String {
     if let range = rangeOfCharacter(from: set.inverted, options: .backwards) {
-      return self[startIndex..<range.upperBound]
+      return String(self[startIndex..<range.upperBound])
     }
     return ""
   }

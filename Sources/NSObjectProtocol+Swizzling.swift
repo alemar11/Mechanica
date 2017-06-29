@@ -50,9 +50,9 @@ extension NSObjectProtocol {
   public static func swizzle(method originalSelector: Selector, with swizzledSelector: Selector) {
     let originalMethod  = class_getInstanceMethod(self, originalSelector)
     let swizzledMethod  = class_getInstanceMethod(self, swizzledSelector)
-    let isMethodAdded   = class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
+    let isMethodAdded   = class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod!), method_getTypeEncoding(swizzledMethod!))
     if isMethodAdded {
-      class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+      class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod!), method_getTypeEncoding(originalMethod!))
     } else {
       method_exchangeImplementations(originalMethod, swizzledMethod)
     }

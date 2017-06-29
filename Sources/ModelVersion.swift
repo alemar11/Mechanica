@@ -97,7 +97,7 @@ extension ModelVersion {
   /// Protocol `ModelVersion`.
   ///
   /// Return the NSManagedObjectModel for this `ModelVersion`.
-  public final func managedObjectModel() -> NSManagedObjectModel {
+  public func managedObjectModel() -> NSManagedObjectModel {
     let omoURL = modelBundle.url(forResource: versionName, withExtension: "\(ModelVersionKey.omo)", subdirectory: momd)
     let momURL = modelBundle.url(forResource: versionName, withExtension: "\(ModelVersionKey.mom)", subdirectory: momd)
     guard let url = omoURL ?? momURL else { fatalError("Model version \(self) not found.") }

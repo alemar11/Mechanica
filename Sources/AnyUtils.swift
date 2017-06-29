@@ -32,6 +32,6 @@ public func typeName(of some: Any) -> String {
   if (!value.starts(with: "(")) { return value }
   let pattern = "(?<=\\()[^()]{1,10}(?=\\sin)" // match a word inside "(" and " in" https://regex101.com/r/eO6eB7/10
   //if let result = value.range(of: pattern, options: .regularExpression) { return value[result] }
-  if let result = value.firstRange(matching: pattern) { return value[result] }
+  if let result = value.firstRange(matching: pattern) { return String(value[result]) }
   return value
 }

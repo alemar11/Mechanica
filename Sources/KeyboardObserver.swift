@@ -228,7 +228,7 @@ public final class KeyboardObserver {
   /// Handler for `UIKeyboardWillShow` Notification.
   ///
   /// - parameter notification: keyboard notification
-  fileprivate dynamic func keyboardWillShow(_ notification: Notification) {
+  @objc fileprivate dynamic func keyboardWillShow(_ notification: Notification) {
     guard let callback = callbacks[.willShow] else { return }
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)
@@ -237,7 +237,7 @@ public final class KeyboardObserver {
   /// Handler for `UIKeyboardDidShow` Notification.
   ///
   /// - parameter notification: keyboard notification
-  fileprivate dynamic func keyboardDidShow(_ notification: Notification) {
+  @objc fileprivate dynamic func keyboardDidShow(_ notification: Notification) {
     guard let callback = callbacks[.didShow] else { return }
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)  }
@@ -245,7 +245,7 @@ public final class KeyboardObserver {
   /// Handler for `UIKeyboardWillHide` Notification.
   ///
   /// - parameter notification: keyboard notification
-  fileprivate dynamic func keyboardWillHide(_ notification: Notification) {
+  @objc fileprivate dynamic func keyboardWillHide(_ notification: Notification) {
     guard let callback = callbacks[.willHide] else { return }
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)
@@ -254,7 +254,7 @@ public final class KeyboardObserver {
   /// Handler for `UIKeyboardDidHide` Notification.
   ///
   /// - parameter notification: keyboard notification
-  fileprivate dynamic func keyboardDidHide(_ notification: Notification) {
+  @objc fileprivate dynamic func keyboardDidHide(_ notification: Notification) {
     guard let callback = callbacks[.didHide] else { return }
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)
@@ -263,7 +263,7 @@ public final class KeyboardObserver {
   /// Handler for `UIKeyboardWillChangeFrame` Notification.
   ///
   /// - parameter notification: keyboard notification
-  fileprivate dynamic func keyboardWillChangeFrame(_ notification: Notification) {
+  @objc fileprivate dynamic func keyboardWillChangeFrame(_ notification: Notification) {
     guard let callback = callbacks[.willChangeFrame] else { return }
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)
@@ -272,7 +272,7 @@ public final class KeyboardObserver {
   /// Handler for `UIKeyboardDidChangeFrame` Notification.
   ///
   /// - parameter notification: keyboard notification
-  fileprivate dynamic func keyboardDidChangeFrame(_ notification: Notification) {
+  @objc fileprivate dynamic func keyboardDidChangeFrame(_ notification: Notification) {
     guard let callback = callbacks[.didChangeFrame] else { return }
     let options = Options.makeOptions(fromInfo: notification.userInfo!)
     callback(options)

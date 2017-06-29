@@ -33,7 +33,7 @@ extension Sequence {
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   /// - Note: Same as `first(where:)`.
   /// - SeeAlso: `first(where:)`
-  public final func findFirst(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
+  public func findFirst(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
     //return first(where: predicate)
     for element in self where predicate(element) {
       return element
@@ -46,7 +46,7 @@ extension Sequence {
   /// Returns true if there is at least one element `matching` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public final func hasSome(where predicate: (Iterator.Element) -> Bool) -> Bool {
+  public func hasSome(where predicate: (Iterator.Element) -> Bool) -> Bool {
     return findFirst(where: predicate) != nil
   }
 
@@ -55,7 +55,7 @@ extension Sequence {
   /// Returns true if all the elements `match` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public final func hasAll(where predicate: (Iterator.Element) -> Bool) -> Bool {
+  public func hasAll(where predicate: (Iterator.Element) -> Bool) -> Bool {
     return findFirst { !predicate($0) } == nil
   }
 
@@ -63,7 +63,7 @@ extension Sequence {
   ///
   /// - Parameter criteria: The criteria closure takes an `Iterator.Element` and returns its classification.
   /// - Returns: Returns a grouped dictionary with the keys that the criteria function returns.
-  public final func grouped<Key: Hashable>(by criteria: (Iterator.Element) -> (Key)) -> [Key : [Iterator.Element]] {
+  public func grouped<Key: Hashable>(by criteria: (Iterator.Element) -> (Key)) -> [Key : [Iterator.Element]] {
     var dictionary: [Key : [Iterator.Element]] = [:]
     for element in self {
       let key = criteria(element)
@@ -78,7 +78,7 @@ extension Sequence {
   ///
   /// Returns the elements count matching a predicate.
   /// - Parameter shouldCount: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.
-  public final func count(_ shouldCount: (Iterator.Element) -> Bool) -> Int {
+  public func count(_ shouldCount: (Iterator.Element) -> Bool) -> Int {
     var count = 0
     for element in self {
       if (shouldCount(element)) {
@@ -97,7 +97,7 @@ extension Sequence where Iterator.Element: AnyObject {
   /// **Mechanica**
   ///
   /// Returns true if the `Sequence` contains an element identical (referential equality) to an `object`.
-  public final func containsObjectIdentical(to object: AnyObject) -> Bool {
+  public func containsObjectIdentical(to object: AnyObject) -> Bool {
     return contains { $0 === object }
   }
 

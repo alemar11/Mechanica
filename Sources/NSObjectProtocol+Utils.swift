@@ -29,14 +29,14 @@ extension NSObjectProtocol {
   /// **Mechanica**
   ///
   /// Returns the type of an object conforming to `NSObjectProtocol` as `String`.
-  public final var type: String {
+  public var type: String {
     return typeName(of: self)
   }
 
   /// **Mechanica**
   ///
   /// Returns the type of an object instance conforming to `NSObjectProtocol` as `String`.
-  public final static var type: String {
+  public static var type: String {
     return typeName(of: self)
   }
 

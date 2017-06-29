@@ -62,15 +62,15 @@ extension NSObject: ValueAssociable {}
 
 extension ValueAssociable {
 
-  public final func set<T>(associatedValue value: T?, forKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+  public func set<T>(associatedValue value: T?, forKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
     setAssociatedValue(value, forObject: self, usingKey: key)
   }
 
-  public final func getAssociatedValue<T>(forKey key: UnsafeRawPointer) -> T? {
+  public func getAssociatedValue<T>(forKey key: UnsafeRawPointer) -> T? {
     return Mechanica.getAssociatedValue(forObject: self, usingKey: key)
   }
 
-  public final func removeAssociatedValue(forKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+  public func removeAssociatedValue(forKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
     Mechanica.removeAssociatedValue(forObject: self, usingKey: key, andPolicy: policy)
   }
 
