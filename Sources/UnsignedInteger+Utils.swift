@@ -25,28 +25,29 @@
 import Foundation
 
 // MARK: - BinaryConvertible
-//swift 4
-//extension UnsignedInteger where Self: BinaryConvertible {
-//
-//  /// **Mechanica**
-//  ///
-//  /// Creates a string representing the given value in the binary base.
-//  ///
-//  /// ```
-//  /// Int8(10).binaryString //"00001010"
-//  /// ```
-//  ///
-//  public var binaryString: String {
-//    let binaryString = String(self, radix:2)
-//    let size = MemoryLayout.size(ofValue: self) * 8
-//    return String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
-//  }
-//
-//}
-//
-//extension UInt8:  BinaryConvertible {}
-//extension UInt16: BinaryConvertible {}
-//extension UInt32: BinaryConvertible {}
-//extension UInt64: BinaryConvertible {}
-//extension UInt:   BinaryConvertible {}
+
+extension UnsignedInteger where Self: BinaryConvertible & FixedWidthInteger {
+
+  /// **Mechanica**
+  ///
+  /// Creates a string representing the given value in the binary base.
+  ///
+  /// ```
+  /// Int8(10).binaryString //"00001010"
+  /// ```
+  ///
+  public var binaryString: String {
+    let binaryString = String(self, radix:2)
+    let size = MemoryLayout.size(ofValue: self) * 8
+    return String(repeating: "0", count: (size - binaryString.characters.count)) + binaryString
+  }
+
+}
+
+// FixedWidthInteger & UnsignedInteger
+extension UInt8:  BinaryConvertible {}
+extension UInt16: BinaryConvertible {}
+extension UInt32: BinaryConvertible {}
+extension UInt64: BinaryConvertible {}
+extension UInt:   BinaryConvertible {}
 
