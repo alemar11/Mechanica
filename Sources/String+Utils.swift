@@ -32,13 +32,13 @@ extension String {
   ///
   /// Returns the length of the `String`.
   public var length: Int {
-    return self.characters.count
+    return self.count
   }
 
   /// **Mechanica**
   ///
   /// Reverse `self`.
-  public mutating func reverse() {
+  public mutating func reverseString() {
     self = String(self.characters.reversed())
   }
 
@@ -46,7 +46,7 @@ extension String {
   ///
   /// Returns a `new` reversed `String`.
   /// Shorthand for *self.characters.reverse()*.
-  public func reversed() -> String {
+  public func reversedString() -> String {
     return String(self.characters.reversed())
   }
 
@@ -118,7 +118,7 @@ extension String {
   ///
   /// Returns a list containing the first character of each word contained in `self`.
   func firstCharacterOfEachWord() -> [String] {
-    return components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.map { String($0.characters.prefix(1)) }
+    return components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.map { String($0.prefix(1)) }
   }
 
   // MARK: - Random
@@ -130,7 +130,7 @@ extension String {
     let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     var randomString: String = ""
     for _ in 0..<length {
-      let randomValue = arc4random_uniform(UInt32(base.characters.count))
+      let randomValue = arc4random_uniform(UInt32(base.count))
       randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
     }
     return randomString
@@ -187,7 +187,7 @@ extension String {
   public func capitalizedFirstCharacter() -> String {
     guard (!self.isEmpty) else { return self }
     let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
-    let result = capitalizedFirstCharacher + String(self.characters.dropFirst())
+    let result = capitalizedFirstCharacher + String(self.dropFirst())
     return result
   }
 
@@ -197,7 +197,7 @@ extension String {
   public func decapitalizedFirstCharacter() -> String {
     guard (!self.isEmpty) else { return self }
     let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
-    let result = capitalizedFirstCharacher + String(self.characters.dropFirst())
+    let result = capitalizedFirstCharacher + String(self.dropFirst())
     return result
   }
 
@@ -228,7 +228,7 @@ extension String {
   ///
   public func prefix(maxLength: Int) -> String {
     guard maxLength > 0 else { return "" }
-    return String(self.characters.prefix(maxLength))
+    return String(self.prefix(maxLength))
   }
 
   /// **Mechanica**
@@ -241,7 +241,7 @@ extension String {
     guard maxLength > 0 else {
       return ""
     }
-    return String(self.characters.suffix(maxLength))
+    return String(self.suffix(maxLength))
   }
 
   /// **Mechanica**
@@ -377,7 +377,7 @@ extension String {
   ///
   ///  - Returns: Character as String or nil if the index is out of bounds
   public subscript (index: Int) -> String? {
-    guard (0..<self.characters.count ~= index) else { return nil }
+    guard (0..<self.count ~= index) else { return nil }
     return String(Array(self.characters)[index])
   }
 
@@ -385,8 +385,8 @@ extension String {
   ///
   /// Returns a `new` string in which the characters in a specified `CountableClosedRange` range of the String are replaced by a given string.
   public func replacingCharacters(in range: CountableClosedRange<Int>, with replacement: String) -> String {
-    let start = characters.index(characters.startIndex, offsetBy: range.lowerBound)
-    let end   = characters.index(start, offsetBy: range.count)
+    let start = index(startIndex, offsetBy: range.lowerBound)
+    let end   = index(start, offsetBy: range.count)
     return self.replacingCharacters(in: start ..< end, with: replacement)
   }
 
@@ -394,8 +394,8 @@ extension String {
   ///
   /// Returns a `new` string in which the characters in a specified `CountableRange` range of the String are replaced by a given string.
   public func replacingCharacters(in range: CountableRange<Int>, with replacement: String) -> String {
-    let start = characters.index(characters.startIndex, offsetBy: range.lowerBound)
-    let end   = characters.index(start, offsetBy: range.count)
+    let start = index(startIndex, offsetBy: range.lowerBound)
+    let end   = index(start, offsetBy: range.count)
     return self.replacingCharacters(in: start ..< end, with: replacement)
   }
 
@@ -522,7 +522,7 @@ extension String {
   ///
   /// - Returns: The swap cased copy of the `String`.
   public func swapCased() -> String {
-    return characters.map({
+    return self.map({
       String($0).isLowercased ? String($0).uppercased() : String($0).lowercased()
     }).joined()
   }

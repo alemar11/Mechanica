@@ -27,7 +27,7 @@ import XCTest
 
 class StringUtilsTests: XCTestCase {
   
-  func test_length() {
+  func testLength() {
     XCTAssertTrue("".length == 0)
     XCTAssertTrue(" ".length == 1)
     XCTAssertTrue("cafe".length == 4)
@@ -38,7 +38,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
   }
   
-  func test_starts() {
+  func testStarts() {
     //case sensitive
     XCTAssertTrue("a".starts(with:"a"))
     XCTAssertFalse("a".starts(with:"A"))
@@ -53,7 +53,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertFalse("Hello".starts(with:"helloo", caseSensitive: false))
   }
   
-  func test_ends() {
+  func testEnds() {
     //case sensitive
     XCTAssertTrue("a".ends(with:"a"))
     XCTAssertFalse("a".ends(with:"A"))
@@ -68,29 +68,29 @@ class StringUtilsTests: XCTestCase {
     XCTAssertFalse("Hello".ends(with:"helloo", caseSensitive: false))
   }
   
-  func test_reverse() {
+  func testReverse() {
     var a = "a"
-    a.reverse()
+    a.reverseString()
     XCTAssertTrue(a == "a")
     var aa = "aa"
-    aa.reverse()
+    aa.reverseString()
     XCTAssertTrue(aa == "aa")
     var abc = "abc"
-    abc.reverse()
+    abc.reverseString()
     XCTAssertTrue(abc == "cba")
     var 🤔aa = "🤔aa"
-    🤔aa.reverse()
+    🤔aa.reverseString()
     XCTAssertTrue(🤔aa == "aa🤔")
   }
   
-  func test_reversed() {
-    XCTAssertTrue("a".reversed() == "a")
-    XCTAssertTrue("aa".reversed() == "aa")
-    XCTAssertTrue("abc".reversed() == "cba")
-    XCTAssertTrue("🤔aa".reversed() == "aa🤔")
+  func testReversed() {
+    XCTAssertTrue("a".reversedString() == "a")
+    XCTAssertTrue("aa".reversedString() == "aa")
+    XCTAssertTrue("abc".reversedString() == "cba")
+    XCTAssertTrue("🤔aa".reversedString() == "aa🤔")
   }
   
-  func test_firstCharacterOfEachWord() {
+  func testFirstCharacterOfEachWord() {
     
     do {
       let text = "tin Robots ! 🤖"
@@ -106,7 +106,7 @@ class StringUtilsTests: XCTestCase {
     
   }
   
-  func test_contains_caseSensitive() {
+  func testContainsCaseSensitive() {
     XCTAssertTrue("AaBbCc".contains("a", caseSensitive: true))
     XCTAssertTrue("AaBbCc".contains("Aa", caseSensitive: true))
     
@@ -128,7 +128,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertFalse("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("{20", caseSensitive: true))
   }
   
-  func test_containsCharacters() {
+  func testContainsCharacters() {
     XCTAssertFalse("".containsCharacters(in: .letters))
     XCTAssertTrue("AaBbCc".containsCharacters(in: .letters))
     XCTAssertFalse("A1aBbCc".containsCharacters(in: .letters))
@@ -137,7 +137,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("123".containsCharacters(in: .decimalDigits))
   }
   
-  func test_replace() {
+  func testReplace() {
     XCTAssertTrue("AaBbCc".replace("a", with: "Z") == "AZBbCc")
     XCTAssertTrue("AaBbCc".replace("a", with: "a") == "AaBbCc")
     XCTAssertFalse("AaBbCc".replace("a", with: "A") == "AaBbCc")
@@ -157,13 +157,13 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("AaBbCc".replace("", with: "A", caseSensitive: false) == "AaBbCc")
   }
   
-  func test_trim() {
+  func testTrim() {
     var s1 = "   Hello World   "
     s1.trim()
     XCTAssertTrue(s1 == "Hello World")
   }
   
-  func test_trimmed() {
+  func testTrimmed() {
     let s1 = "   Hello World   "
     XCTAssertTrue(s1.trimmedLeft() == "Hello World   ")
     XCTAssertTrue(s1.trimmedRight() == "   Hello World")
@@ -188,7 +188,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s5.trimmed() == "abcdefg")
   }
   
-  func test_capitalizedFirstCharacter() {
+  func testCapitalizedFirstCharacter() {
     let s1 = "   hello world   "
     XCTAssertTrue(s1.capitalizedFirstCharacter() == s1)
     let s2 = "hello world   "
@@ -211,7 +211,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s10.capitalizedFirstCharacter() == s10)
   }
   
-  func test_decapitalizedFirstCharacter() {
+  func testDecapitalizedFirstCharacter() {
     let s1 = "   hello world   "
     XCTAssertTrue(s1.decapitalizedFirstCharacter() == s1)
     let s2 = "Hello world   "
@@ -234,7 +234,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s10.decapitalizedFirstCharacter() == s10)
   }
   
-  func test_prefix() {
+  func testPrefix() {
     let s = "Hello World 🖖🏽"
     XCTAssertTrue(s.prefix(maxLength: -100) == "")
     XCTAssertTrue(s.prefix(maxLength: 0) == "")
@@ -249,7 +249,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World 🖖🏽")
   }
   
-  func test_suffix() {
+  func testSuffix() {
     let s = "Hello World 🖖🏽"
     XCTAssertTrue(s.suffix(maxLength: -100) == "")
     XCTAssertTrue(s.suffix(maxLength: 0) == "")
@@ -262,7 +262,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World 🖖🏽")
   }
   
-  func test_condensingExcessiveSpaces() {
+  func testCondensingExcessiveSpaces() {
     XCTAssertTrue("test spaces too many".condensingExcessiveSpaces() == "test spaces too many")
     XCTAssertTrue("test  spaces    too many".condensingExcessiveSpaces() == "test spaces too many")
     XCTAssertTrue(" test spaces too many ".condensingExcessiveSpaces() == "test spaces too many")
@@ -270,7 +270,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("test spaces too many ".condensingExcessiveSpaces() == "test spaces too many")
   }
   
-  func test_condensingExcessiveSpacesAndNewLines() {
+  func testCondensingExcessiveSpacesAndNewLines() {
     XCTAssertTrue("test\n spaces too many".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
     XCTAssertTrue("\n\ntest  spaces    too many".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
     XCTAssertTrue(" test spaces too many \n\n".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
@@ -278,18 +278,18 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("test\n\n spaces \n\n too many ".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
   }
   
-  func test_first(){
+  func testFirst(){
     let s = "Hello"
     XCTAssertTrue(s.first == "H")
   }
   
   
-  func test_last(){
+  func testLast(){
     let s = "Hello"
     XCTAssertTrue(s.last == "o")
   }
   
-  func test_removingPrefix() {
+  func testRemovingPrefix() {
     
     let s = "hello"
     XCTAssertTrue(s.removingPrefix(upToPosition: 0) == "hello")
@@ -309,7 +309,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("\na".removingPrefix("\n") == "a")
   }
   
-  func test_removingSuffix() {
+  func testRemovingSuffix() {
     
     let s = "hello"
     XCTAssertTrue(s.removingSuffix(fromPosition: 0) == "hello")
@@ -329,7 +329,7 @@ class StringUtilsTests: XCTestCase {
     
   }
   
-  func test_removingCharacters() {
+  func testRemovingCharacters() {
     do {
       let s = "123Hello45 !World..5"
       let result1 = s.removingCharacters(in: CharacterSet.letters.inverted)
@@ -352,7 +352,7 @@ class StringUtilsTests: XCTestCase {
     
   }
   
-  func test_truncate() {
+  func testTruncate() {
     let s = "Hello World"
     
     XCTAssertTrue(s.truncate(at: 0) == "…")
@@ -418,7 +418,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s9.truncate(at: 5) == "🇮🇹​🇮🇹​🇮🇹")
   }
   
-  func test_subscript() {
+  func testSubscript() {
     let string = "∆Test😗🇮🇹"
     
     XCTAssertTrue(string[0] == "∆")
@@ -448,17 +448,11 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(string[Range(string.length ..< string.length)] == "")
     
     XCTAssertNil(string[Range(1 ..< 100)])
-    
     XCTAssertNil(string[Range(-1 ..< 1)])
-    
     XCTAssertNil(string[Range(1 ..< string.length+1)])
-    
     XCTAssertNil(string[Range(100 ..< 200)])
-    
     XCTAssertNil(string[Range(-1 ..< string.length)])
-    
     XCTAssertNil(string[Range(-1 ..< 1)])
-    
     XCTAssertNil(string[Range(string.length+10 ..< string.length+10)])
     
     // MARK: - NSRange
@@ -494,7 +488,7 @@ class StringUtilsTests: XCTestCase {
     
   }
   
-  func test_replacingCharacters() {
+  func testReplacingCharacters() {
     
     let s = "Hello World" //10 characters
     do{
@@ -517,7 +511,7 @@ class StringUtilsTests: XCTestCase {
     }
   }
   
-  func test_random() {
+  func testRandom() {
     
     do {
       let randomString = String.random()
@@ -541,7 +535,7 @@ class StringUtilsTests: XCTestCase {
   
   // MARK: - Case Operators
   
-  func test_camelCased() {
+  func testCamelCased() {
     XCTAssertEqual("Hello World".camelCased(), "helloWorld")
     XCTAssertEqual("  Hello World".camelCased(), "helloWorld")
     XCTAssertEqual("HelloWorld".camelCased(), "helloWorld")
@@ -551,7 +545,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertEqual("helloWorld".camelCased(), "helloWorld")
   }
     
-  func test_kebabCased() {
+  func testKebabCased() {
     XCTAssertEqual("Hello World".kebabCased(), "-hello-world-")
     XCTAssertEqual("Hello_World".kebabCased(), "-hello-world-")
     XCTAssertEqual("_Hello_World".kebabCased(), "-hello-world-")
@@ -561,7 +555,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertEqual("     HelloWorld".kebabCased(), "-helloworld-")
   }
   
-  func test_pascalCased() {
+  func testPascalCased() {
     XCTAssertEqual("Hello World".pascalCased(), "HelloWorld")
     XCTAssertEqual("HelloWorld".pascalCased(), "HelloWorld")
     XCTAssertEqual("HelloWorld ".pascalCased(), "HelloWorld")
@@ -570,7 +564,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertEqual("Hell0W0rld".pascalCased(), "Hell0W0rld")
   }
   
-  func test_slugCased() {
+  func testSlugCased() {
     XCTAssertEqual("Hello World".slugCased(), "hello-world")
     XCTAssertEqual("Hello_World".slugCased(), "hello-world")
     XCTAssertEqual("Hello-World".slugCased(), "hello-world")
@@ -580,7 +574,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertEqual("HelloWorld".slugCased(), "helloworld")
   }
   
-  func test_snakeCased() {
+  func testSnakeCased() {
     XCTAssertEqual("Hello World".snakeCased(), "Hello_World")
     XCTAssertEqual("hello world".snakeCased(), "hello_world")
     XCTAssertEqual("hello_world".snakeCased(), "hello_world")
@@ -591,7 +585,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertEqual("HelloWorld".snakeCased(), "HelloWorld")
   }
   
-  func test_swapCased() {
+  func testSwapCased() {
     XCTAssertEqual("Hello World".swapCased(), "hELLO wORLD")
     XCTAssertEqual("hELLO wORLD".swapCased(), "Hello World")
     XCTAssertEqual("HelloWorld".swapCased(), "hELLOwORLD")
