@@ -27,37 +27,37 @@ import XCTest
 
 // MARK: - Regular Expression Commons Patterns
 
-private extension String {
+fileprivate extension String {
 
   /// **Mechanica**
   ///
   /// Common Regular Expression Patterns
-  private enum Pattern {
+  fileprivate enum Pattern {
 
     /// **Mechanica**
     ///
     /// Pattern matches email addresses.
-    private static let email = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+    fileprivate static let email = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
 
     /// **Mechanica**
     ///
     /// Pattern matches first alphanumeric character of each word.
-    private static let firstAlphaNumericCharacter = "(\\b\\w|(?<=_)[^_])"
+    fileprivate static let firstAlphaNumericCharacter = "(\\b\\w|(?<=_)[^_])"
 
     /// **Mechanica**
     ///
     /// Pattern matches last alphanumeric character of each word.
-    private static let lastAlphaNumericCharacter = "(\\w\\b|[^_](?=_))"
+    fileprivate static let lastAlphaNumericCharacter = "(\\w\\b|[^_](?=_))"
 
     /// **Mechanica**
     ///
     /// Pattern matches non-Alphanumeric characters.
-    private static let nonAlphanumeric = "[^a-zA-Z\\d]"
+    fileprivate static let nonAlphanumeric = "[^a-zA-Z\\d]"
 
     /// **Mechanica**
     ///
     /// Pattern matches non-Alphanumeric and non-Whitespace characters.
-    private static let nonAlphanumericSpace = "[^a-zA-Z\\d\\s]"
+    fileprivate static let nonAlphanumericSpace = "[^a-zA-Z\\d\\s]"
 
   }
 
