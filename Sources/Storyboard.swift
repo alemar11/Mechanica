@@ -158,7 +158,7 @@
     ///   ```
     ///   let vc = myStoryboard.instantiateViewController() as TestViewController
     ///   ```
-    public final func instantiateViewController<T: UIViewController>() -> T where T: StoryboardIdentifiable {
+    public final func instantiateViewController<T: UIViewController>() -> T {
       guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
         fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
       }
