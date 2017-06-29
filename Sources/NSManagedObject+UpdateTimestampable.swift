@@ -24,7 +24,7 @@
 
 import CoreData
 
-fileprivate let updateTimestampKey = "updatedAt"
+private let updateTimestampKey = "updatedAt"
 
 /// **Mechanica**
 ///

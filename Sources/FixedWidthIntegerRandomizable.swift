@@ -84,9 +84,9 @@ extension FixedWidthInteger where Stride: SignedInteger, Self: IntegerRandomizab
 
 }
 
-fileprivate let _wordSize = __WORDSIZE
+private let _wordSize = __WORDSIZE
 
-fileprivate func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
+private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   var result: T = 0
   arc4random_buf(&result, Int(MemoryLayout<T>.size))
   return result

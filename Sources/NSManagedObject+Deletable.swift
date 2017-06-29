@@ -26,9 +26,9 @@ import CoreData
 
 // MARK: - Local Deletion
 
-fileprivate let markedForDeletionKey = "markedForDeletionAsOf"
+private let markedForDeletionKey = "markedForDeletionAsOf"
 /// Objects marked for local deletion more than this time (in seconds) ago will get permanently deleted.
-fileprivate let timeBeforePermanentlyDeletingObjects = TimeInterval(120)
+private let timeBeforePermanentlyDeletingObjects = TimeInterval(120)
 
 /// **Mechanica**
 ///
@@ -98,7 +98,7 @@ extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletab
   @available(tvOS 9, *)
   @available(watchOS 2, *)
   @available(OSX 10.11, *)
-  fileprivate static func batchDeleteObjectsMarkedForDeletion(in context: NSManagedObjectContext) {
+  private static func batchDeleteObjectsMarkedForDeletion(in context: NSManagedObjectContext) {
     guard context.persistentStoreCoordinator != nil else { fatalError("Persistent Store Coordinator missing. A NSBatchDeleteRequest instance operates directly on one or more persistent stores.") }
     let request = fetchRequest()
     let cutOff = Date(timeIntervalSinceNow: -timeBeforePermanentlyDeletingObjects)
@@ -116,7 +116,7 @@ extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletab
 
 // MARK: - Remote Deletion
 
-fileprivate let markedForRemoteDeletionKey = "isMarkedForRemoteDeletion"
+private let markedForRemoteDeletionKey = "isMarkedForRemoteDeletion"
 
 /// **Mechanica**
 ///

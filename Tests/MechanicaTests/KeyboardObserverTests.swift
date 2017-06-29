@@ -311,7 +311,7 @@ class KeyboardObserverTests: XCTestCase {
 
 }
 
-fileprivate extension KeyboardObserverTests {
+private extension KeyboardObserverTests {
 
   func makeUserInfoWith(startFrame: CGRect, endFrame: CGRect, animationCurve: UIViewAnimationCurve, animationDuration: Double, currentApp: Bool) -> [AnyHashable : Any] {
     var userInfo = [AnyHashable : Any]()

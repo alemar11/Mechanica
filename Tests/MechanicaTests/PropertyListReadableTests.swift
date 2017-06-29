@@ -25,46 +25,46 @@
 import XCTest
 @testable import Mechanica
 
-fileprivate enum BoolKey {
+private enum BoolKey {
   static let boolItem = Key<Bool>("BoolItem")
 }
 
-fileprivate enum StringKey {
+private enum StringKey {
   typealias stringKey = Key<String> // we can use a type alias
   static let stringItem = stringKey("StringItem")
   static let stringItem3 = stringKey("DictionaryItem.DictionaryItem2.StringItem3")
   static let stringItem4 = stringKey("DictionaryItem.DictionaryItem2.StringItem4")
 }
 
-fileprivate enum DateKey {
+private enum DateKey {
   static let dateItem = Key<Date>("DateItem")
   static let dateItem2 = Key<Date>("DictionaryItem.DateItem2")
 
 }
 
-fileprivate enum NumberKey {
+private enum NumberKey {
   private static let numberKeyPath = Key<NSNumber>.simple // or a closure
   static let numberItem   =  numberKeyPath("NumberItem")
   static let numberItem2  =  numberKeyPath("DictionaryItem.NumberItem2")
   static let numberItem3  =  numberKeyPath("DictionaryItem.NumberItem3")
 }
 
-fileprivate enum DataKey {
+private enum DataKey {
   static let dataItem =  Key<Data>("DataItem")
 }
 
-fileprivate enum URLKey {
+private enum URLKey {
   static let urlItem      = Key<URL>("URLItem")
   static let urlItem2     = Key<URL>("URLItem2")
   static let notFoundURL  = Key<URL>("NotFoundURLItem")
   static let wrongURL     = Key<URL>("WrongURLItem")
 }
 
-fileprivate enum ArrayKey {
+private enum ArrayKey {
   static let arrayItem = Key<[Any]>("ArrayItem")
 }
 
-fileprivate enum DictionaryKey {
+private enum DictionaryKey {
   static let dictionaryItem   = Key<[String:Any]>("DictionaryItem")
   static let dictionaryItem2  = Key<[String:Any]>("DictionaryItem.DictionaryItem2")
 }

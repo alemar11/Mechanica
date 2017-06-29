@@ -36,4 +36,4 @@ extension DemoModelVersion: ModelVersion {
   public var modelName: String { return "DemoModel" }
 }
 
-fileprivate class DummyObject {} // used to get the current bundle 🤓
+private class DummyObject {} // used to get the current bundle 🤓

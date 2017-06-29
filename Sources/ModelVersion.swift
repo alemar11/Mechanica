@@ -24,7 +24,7 @@
 
 import CoreData
 
-fileprivate enum ModelVersionKey {
+private enum ModelVersionKey {
   static let momd = "momd"
   static let omo  = "omo"
   static let mom  = "mom"

@@ -271,12 +271,12 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 }
 
 
-fileprivate extension Int {
+private extension Int {
 
   /// **Mechanica**
   ///
   /// Returns a random Int bounded by a closed interval range.
-  fileprivate static func _random(in range: ClosedRange<Int>) -> Int {
+  private static func _random(in range: ClosedRange<Int>) -> Int {
     return range.lowerBound + Int(arc4random_uniform(UInt32(range.upperBound - range.lowerBound + 1)))
   }
   
