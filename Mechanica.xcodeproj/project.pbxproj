@@ -672,35 +672,36 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				23793D7B1F067FE9002987C4 /* tt */,
+				23793D7A1F067FD7002987C4 /* UserDefaults */,
+				23793D791F067FC3002987C4 /* String */,
+				23793D781F067FB1002987C4 /* Protocols */,
+				23793D771F067F9B002987C4 /* NSObject */,
+				23793D761F067F84002987C4 /* NSAttributedString */,
+				23793D751F067F71002987C4 /* Integer */,
+				23793D741F067F63002987C4 /* Dictionary */,
+				23793D721F067F42002987C4 /* CoreData */,
+				23793D701F067F22002987C4 /* Color */,
 				23F6A1621EC8DBD400D20502 /* AnyUtils.swift */,
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */,
 				12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */,
 				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
 				23964A011E5B034800C8E0DF /* Collection+Utils.swift */,
-				D278BD931DEF102A006FAD83 /* Color */,
-				D2CAF3371DA2A6ED00E6E843 /* CoreData */,
-				233B48B91E6F1379003D5341 /* Dictionary */,
 				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
+				D262EF251DA54AD10061AB10 /* Sequence+Utils.swift */,
 				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
 				235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */,
-				231741C21E82A07F009CC93D /* Integer */,
 				23839F851E93CCE4002D757B /* Key.swift */,
 				129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */,
 				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
 				12B6B1B81E0D5D180057FE5F /* Nib.swift */,
-				23949C5E1E4B97A500BD9EC8 /* NSAttributedString */,
-				23B2ED751EC8CF0A006365BD /* NSObject */,
 				D24094491E4C802B00EB4163 /* NSPredicate+Operators.swift */,
 				12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */,
 				D2ABD0061E004F8D006859B9 /* ProcessInfo+Utils.swift */,
-				235DCB841E89B337006AFEBE /* Protocols */,
 				23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */,
-				D262EF251DA54AD10061AB10 /* Sequence+Utils.swift */,
 				D26C6C291DEC83B800B7D26A /* Storyboard.swift */,
-				12B956431D8824AB00F75DD5 /* String */,
 				D220818C1E07FEB700BE4268 /* URL+Operators.swift */,
-				23839F831E93C737002D757B /* UserDefaults */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -714,30 +715,6 @@
 				2317E3901E8D14400087BB79 /* MechanicaTests */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		12B956431D8824AB00F75DD5 /* String */ = {
-			isa = PBXGroup;
-			children = (
-				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
-				12B9563E1D8820CA00F75DD5 /* String+Validation.swift */,
-				D21A31EF1DEDC9DA00E4A609 /* String+Conversions.swift */,
-				D208D1811DF07103009687BB /* String+Operators.swift */,
-				D2234A611E002D2600252551 /* String+NSString.swift */,
-				23FF8F211ECC92AB00A9ADD8 /* String+RegularExpressions.swift */,
-			);
-			name = String;
-			sourceTree = "<group>";
-		};
-		231741C21E82A07F009CC93D /* Integer */ = {
-			isa = PBXGroup;
-			children = (
-				235DCB8F1E89B40F006AFEBE /* UnsignedInteger+Utils.swift */,
-				23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */,
-				D28CAEE51E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift */,
-				237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */,
-			);
-			name = Integer;
 			sourceTree = "<group>";
 		};
 		2317E3901E8D14400087BB79 /* MechanicaTests */ = {
@@ -773,25 +750,6 @@
 				237F17371E90000800726553 /* ValueAssociableTests.swift */,
 			);
 			path = MechanicaTests;
-			sourceTree = "<group>";
-		};
-		233B48B91E6F1379003D5341 /* Dictionary */ = {
-			isa = PBXGroup;
-			children = (
-				D24094441E4C7B3900EB4163 /* Dictionary+Validation.swift */,
-				233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */,
-			);
-			name = Dictionary;
-			sourceTree = "<group>";
-		};
-		235DCB841E89B337006AFEBE /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				D20544F91DDC508B007DCE97 /* PropertyListReadable.swift */,
-				239F8DD21E55B03900E3DF33 /* ValueAssociable.swift */,
-				235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */,
-			);
-			name = Protocols;
 			sourceTree = "<group>";
 		};
 		235E0EDA1F065BA800E7A4D8 /* Color */ = {
@@ -879,32 +837,105 @@
 			path = PropertyListReadable;
 			sourceTree = "<group>";
 		};
-		23839F831E93C737002D757B /* UserDefaults */ = {
+		23793D701F067F22002987C4 /* Color */ = {
 			isa = PBXGroup;
 			children = (
-				234FBBE81E82BF9600679676 /* UserDefaults+Key.swift */,
-				23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */,
+				D278BD941DEF1061006FAD83 /* Color+Flat.swift */,
+				D278BD951DEF1061006FAD83 /* Color+Utils.swift */,
 			);
-			name = UserDefaults;
+			path = Color;
 			sourceTree = "<group>";
 		};
-		23949C5E1E4B97A500BD9EC8 /* NSAttributedString */ = {
+		23793D721F067F42002987C4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D2CAF3381DA2A71300E6E843 /* NSFetchRequest+Utils.swift */,
+				D2B965671DD0D002000C71C1 /* NSManagedObject */,
+				D2B965681DD0D017000C71C1 /* NSManagedObjectContext */,
+				D262EF1D1DA5487F0061AB10 /* ModelVersion.swift */,
+				12431A5E1DCE2F5A00594940 /* FetchConfigurable.swift */,
+				D2B9655D1DD0C26E000C71C1 /* Collection+CoreData.swift */,
+				23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		23793D741F067F63002987C4 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				D24094441E4C7B3900EB4163 /* Dictionary+Validation.swift */,
+				233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		23793D751F067F71002987C4 /* Integer */ = {
+			isa = PBXGroup;
+			children = (
+				235DCB8F1E89B40F006AFEBE /* UnsignedInteger+Utils.swift */,
+				23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */,
+				D28CAEE51E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift */,
+				237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */,
+			);
+			path = Integer;
+			sourceTree = "<group>";
+		};
+		23793D761F067F84002987C4 /* NSAttributedString */ = {
 			isa = PBXGroup;
 			children = (
 				D24745AC1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift */,
 				23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */,
 				23949C591E4B979D00BD9EC8 /* NSAttributedString+Utils.swift */,
 			);
-			name = NSAttributedString;
+			path = NSAttributedString;
 			sourceTree = "<group>";
 		};
-		23B2ED751EC8CF0A006365BD /* NSObject */ = {
+		23793D771F067F9B002987C4 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
 				239F8DD71E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift */,
 				23B2ED6C1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift */,
 			);
-			name = NSObject;
+			path = NSObject;
+			sourceTree = "<group>";
+		};
+		23793D781F067FB1002987C4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D20544F91DDC508B007DCE97 /* PropertyListReadable.swift */,
+				239F8DD21E55B03900E3DF33 /* ValueAssociable.swift */,
+				235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		23793D791F067FC3002987C4 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
+				12B9563E1D8820CA00F75DD5 /* String+Validation.swift */,
+				D21A31EF1DEDC9DA00E4A609 /* String+Conversions.swift */,
+				D208D1811DF07103009687BB /* String+Operators.swift */,
+				D2234A611E002D2600252551 /* String+NSString.swift */,
+				23FF8F211ECC92AB00A9ADD8 /* String+RegularExpressions.swift */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		23793D7A1F067FD7002987C4 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				234FBBE81E82BF9600679676 /* UserDefaults+Key.swift */,
+				23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		23793D7B1F067FE9002987C4 /* tt */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = tt;
 			sourceTree = "<group>";
 		};
 		23D922981EFA670900629E17 /* Support */ = {
@@ -931,15 +962,6 @@
 			path = CoreDataTests;
 			sourceTree = "<group>";
 		};
-		D278BD931DEF102A006FAD83 /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				D278BD941DEF1061006FAD83 /* Color+Flat.swift */,
-				D278BD951DEF1061006FAD83 /* Color+Utils.swift */,
-			);
-			name = Color;
-			sourceTree = "<group>";
-		};
 		D2B965671DD0D002000C71C1 /* NSManagedObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -948,6 +970,7 @@
 				1230C2D51DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift */,
 			);
 			name = NSManagedObject;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		D2B965681DD0D017000C71C1 /* NSManagedObjectContext */ = {
@@ -957,20 +980,7 @@
 				D2B965621DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift */,
 			);
 			name = NSManagedObjectContext;
-			sourceTree = "<group>";
-		};
-		D2CAF3371DA2A6ED00E6E843 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				D2CAF3381DA2A71300E6E843 /* NSFetchRequest+Utils.swift */,
-				D2B965671DD0D002000C71C1 /* NSManagedObject */,
-				D2B965681DD0D017000C71C1 /* NSManagedObjectContext */,
-				D262EF1D1DA5487F0061AB10 /* ModelVersion.swift */,
-				12431A5E1DCE2F5A00594940 /* FetchConfigurable.swift */,
-				D2B9655D1DD0C26E000C71C1 /* Collection+CoreData.swift */,
-				23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */,
-			);
-			name = CoreData;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
