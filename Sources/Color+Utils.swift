@@ -114,7 +114,7 @@ extension Color {
       guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) else { return nil }
       let compatibleSRGBColor = self.cgColor.converted(to: colorSpace, intent: CGColorRenderingIntent.defaultIntent, options: nil)!
       return Color(cgColor: compatibleSRGBColor)
-    #else
+    #elseif os(macOS)
       let compatibleSRGBColor = (self.colorSpaceName != NSColorSpaceName.calibratedRGB) ? self.usingColorSpace(NSColorSpace.sRGB) : self
       return compatibleSRGBColor
     #endif

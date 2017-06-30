@@ -94,10 +94,7 @@ extension DelayedDeletable where Self: NSManagedObject {
 extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletable {
 
   // TODO: work in progress
-  @available(iOS 9, *)
-  @available(tvOS 9, *)
-  @available(watchOS 2, *)
-  @available(OSX 10.11, *)
+  @available(iOS 9, tvOS 9, watchOS 2 ,OSX 10.12, *)
   private static func batchDeleteObjectsMarkedForDeletion(in context: NSManagedObjectContext) {
     guard context.persistentStoreCoordinator != nil else { fatalError("Persistent Store Coordinator missing. A NSBatchDeleteRequest instance operates directly on one or more persistent stores.") }
     let request = fetchRequest()

@@ -124,10 +124,7 @@ class ColorUtilsTests: XCTestCase {
     
   }
   
-  @available(iOS 10, *)
-  @available(tvOS 10, *)
-  @available(watchOS 3, *)
-  @available(OSX 10.12, *)
+  @available(iOS 10, tvOS 10, watchOS 3 ,OSX 10.12, *)
   func testConvertingToCompatibleSRGBColor() {
     // Given, When
     /// RGB{255, 0, 0} P3{234, 51, 35}
