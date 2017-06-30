@@ -30,9 +30,9 @@ extension NSFetchRequest {
   ///
   /// Creates a NSFetchRequest.
   ///
-  /// - parameter entity:    Core Data entity
-  /// - parameter predicate: Fetch request predicate
-  /// - parameter batchSize: Breaks the result set into batches
+  /// - parameter entity:    Core Data entity description.
+  /// - parameter predicate: Fetch request predicate.
+  /// - parameter batchSize: Breaks the result set into batches.
   ///
   /// - Returns: a `new` NSFetchRequest.
   @objc

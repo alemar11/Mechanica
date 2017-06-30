@@ -92,9 +92,9 @@ class NSManagedObjectContextCacheTests: XCTestCase {
       XCTAssertEqual(person3, backgroundContext.cachedManagedObject(forKey: "testKey")) // the previous cached object is not overwritten
       
       // Given
-      let description = NSEntityDescription.entity(forEntityName: EntityKey.person, in: mainContext)
-      XCTAssertNotNil(description)
-      let person5 = Person(entity: description!, insertInto: nil)
+      let entityDescription = NSEntityDescription.entity(forEntityName: EntityKey.person, in: mainContext)
+      XCTAssertNotNil(entityDescription)
+      let person5 = Person(entity: entityDescription!, insertInto: nil)
       XCTAssertNil(person5.managedObjectContext)
       person5.firstName = "Tin5"
       person5.lastName = "Robots5"
