@@ -129,6 +129,9 @@ class SequenceUtilsTests: XCTestCase {
 
       let dictionary =  Dictionary(grouping: array, by: { return $0 })
       XCTAssert(groupedDictionary.keys == dictionary.keys)
+      groupedDictionary.keys.forEach { key in
+        XCTAssertTrue(groupedDictionary[key]! == dictionary[key]!)
+      }
     }
 
     do {
@@ -148,7 +151,9 @@ class SequenceUtilsTests: XCTestCase {
 
       let dictionary =  Dictionary(grouping: array, by: { return $0.first })
       XCTAssert(groupedDictionary.keys == dictionary.keys)
-
+      groupedDictionary.keys.forEach { key in
+         XCTAssertTrue(groupedDictionary[key]! == dictionary[key]!)
+      }
     }
 
     do {
@@ -164,10 +169,13 @@ class SequenceUtilsTests: XCTestCase {
       XCTAssertNotNil(groupedDictionary["odd"])
       XCTAssertTrue(groupedDictionary["odd"]! == [1, 3, 5, 7, 9])
 
-      enum Parity {
+      enum Parity: CustomStringConvertible {
         case even, odd
         init(_ value: Int) {
           self = value % 2 == 0 ? .even : .odd
+        }
+        var description: String {
+          return self == .even ? "even" : "odd"
         }
       }
 
@@ -175,6 +183,10 @@ class SequenceUtilsTests: XCTestCase {
       XCTAssert(groupedDictionary.keys.count == dictionary.keys.count)
       XCTAssert(groupedDictionary["even"]! == dictionary[Parity.even]!)
       XCTAssert(groupedDictionary["odd"]! == dictionary[Parity.odd]!)
+      groupedDictionary.keys.forEach { key in
+        let parityKey = key == "even" ? Parity.even : Parity.odd
+        XCTAssertTrue(groupedDictionary[key]! == dictionary[parityKey]!)
+      }
     }
   }
 
