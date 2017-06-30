@@ -708,6 +708,8 @@
 		12B536EE1D33ED6A005C52A7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				235E0EDC1F065BEF00E7A4D8 /* NibTests */,
+				235E0EDD1F065C1400E7A4D8 /* StoryboardTests */,
 				23D926C11EFA679000629E17 /* CoreDataTests */,
 				2317E3901E8D14400087BB79 /* MechanicaTests */,
 			);
@@ -741,6 +743,12 @@
 		2317E3901E8D14400087BB79 /* MechanicaTests */ = {
 			isa = PBXGroup;
 			children = (
+				235E0EE21F065CEE00E7A4D8 /* PropertyListReadable */,
+				235E0EE11F065CD100E7A4D8 /* NSObject */,
+				235E0EE01F065CC100E7A4D8 /* Integer */,
+				235E0EDF1F065C9100E7A4D8 /* String */,
+				235E0EDB1F065BD400E7A4D8 /* Dictionary */,
+				235E0EDA1F065BA800E7A4D8 /* Color */,
 				2392CB4D1EE04A9900B955EC /* XCTest+Utils.swift */,
 				23F6A1671EC8DF6500D20502 /* AnyUtilsTests.swift */,
 				237F17361E90000800726553 /* AppTests.swift */,
@@ -748,25 +756,17 @@
 				237F17391E90000800726553 /* BoolUtilsTests.swift */,
 				237F173A1E90000800726553 /* BundleInfoTests.swift */,
 				237F173B1E90000800726553 /* CollectionUtiilsTests.swift */,
-				237F17DE1E9000A300726553 /* Color */,
-				237F17E01E9000B100726553 /* Dictionary */,
 				237F17421E90000800726553 /* FileManagerUtilsTests.swift */,
 				237F17431E90000800726553 /* FloatingPointUtilsTests.swift */,
-				237F17DD1E90009D00726553 /* Integer */,
 				237F17481E90000800726553 /* KeyboardObserverTests.swift */,
 				23F3F6FA1E9651AB002DAC89 /* KeyTests.swift */,
-				237F17DB1E90008700726553 /* Nib */,
 				237F174C1E90000800726553 /* NSAttributedStringOperatorsTests.swift */,
 				237F174D1E90000800726553 /* NSAttributedStringUtilsTests.swift */,
 				237F174E1E90000800726553 /* NSMutableAttributedStringOperatorsTests.swift */,
-				23B2ED761EC8D4F6006365BD /* NSObject */,
 				237F17501E90000800726553 /* NSPredicateOperatorsTests.swift */,
 				237F17511E90000800726553 /* OptionalUtilsTests.swift */,
-				237F17DF1E9000A800726553 /* PropertyListReadable */,
 				237F17521E90000800726553 /* RangeReplaceableCollectionUtilsTests.swift */,
 				237F17531E90000800726553 /* SequenceUtilsTests.swift */,
-				237F17DC1E90009000726553 /* Storyboard */,
-				237F17DA1E90007400726553 /* String */,
 				237F175E1E90000800726553 /* URLOperatorsTests.swift */,
 				23C27C371E9E5BAB006C235E /* UserDefaultsKeyTests.swift */,
 				2384BDB11E9170810036C128 /* UserDefaultsUtilsTests.swift */,
@@ -794,20 +794,25 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		237F17DA1E90007400726553 /* String */ = {
+		235E0EDA1F065BA800E7A4D8 /* Color */ = {
 			isa = PBXGroup;
 			children = (
-				237F17561E90000800726553 /* StringConversionsTests.swift */,
-				237F17571E90000800726553 /* StringNSStringTests.swift */,
-				237F17581E90000800726553 /* StringOperatorsTests.swift */,
-				237F17591E90000800726553 /* StringUtilsTests.swift */,
-				237F175A1E90000800726553 /* StringValidationTests.swift */,
-				230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */,
+				237F173C1E90000800726553 /* ColorFlatTests.swift */,
+				237F173D1E90000800726553 /* ColorUtilsTests.swift */,
 			);
-			name = String;
+			path = Color;
 			sourceTree = "<group>";
 		};
-		237F17DB1E90008700726553 /* Nib */ = {
+		235E0EDB1F065BD400E7A4D8 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				237F17401E90000800726553 /* DictionaryUtilsTests.swift */,
+				237F17411E90000800726553 /* DictionaryValidationTests.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		235E0EDC1F065BEF00E7A4D8 /* NibTests */ = {
 			isa = PBXGroup;
 			children = (
 				237F17461E90000800726553 /* iOS_NibDemo.xib */,
@@ -818,10 +823,10 @@
 				23D736741EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib */,
 				23D736761EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib */,
 			);
-			name = Nib;
+			path = NibTests;
 			sourceTree = "<group>";
 		};
-		237F17DC1E90009000726553 /* Storyboard */ = {
+		235E0EDD1F065C1400E7A4D8 /* StoryboardTests */ = {
 			isa = PBXGroup;
 			children = (
 				237F17471E90000800726553 /* iOS_StoryboardDemo.storyboard */,
@@ -829,10 +834,23 @@
 				237F17551E90000800726553 /* StoryboardTests.swift */,
 				237F175C1E90000800726553 /* tvOS_StoryboardDemo.storyboard */,
 			);
-			name = Storyboard;
+			path = StoryboardTests;
 			sourceTree = "<group>";
 		};
-		237F17DD1E90009D00726553 /* Integer */ = {
+		235E0EDF1F065C9100E7A4D8 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				237F17561E90000800726553 /* StringConversionsTests.swift */,
+				237F17571E90000800726553 /* StringNSStringTests.swift */,
+				237F17581E90000800726553 /* StringOperatorsTests.swift */,
+				237F17591E90000800726553 /* StringUtilsTests.swift */,
+				237F175A1E90000800726553 /* StringValidationTests.swift */,
+				230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		235E0EE01F065CC100E7A4D8 /* Integer */ = {
 			isa = PBXGroup;
 			children = (
 				237F175D1E90000800726553 /* UnsignedIntegerUtilsTests.swift */,
@@ -840,34 +858,25 @@
 				237F17451E90000800726553 /* BinaryIntegerUtilsTests.swift */,
 				237F17541E90000800726553 /* SignedIntegerUtilsTests.swift */,
 			);
-			name = Integer;
+			path = Integer;
 			sourceTree = "<group>";
 		};
-		237F17DE1E9000A300726553 /* Color */ = {
+		235E0EE11F065CD100E7A4D8 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
-				237F173C1E90000800726553 /* ColorFlatTests.swift */,
-				237F173D1E90000800726553 /* ColorUtilsTests.swift */,
+				237F174F1E90000800726553 /* NSObjectProtocolSwizzlingTests.swift */,
+				23B2ED711EC8CE28006365BD /* NSObjectProtocolUtils.swift */,
 			);
-			name = Color;
+			path = NSObject;
 			sourceTree = "<group>";
 		};
-		237F17DF1E9000A800726553 /* PropertyListReadable */ = {
+		235E0EE21F065CEE00E7A4D8 /* PropertyListReadable */ = {
 			isa = PBXGroup;
 			children = (
 				237F173E1E90000800726553 /* PropertyListDemo.plist */,
 				237F173F1E90000800726553 /* PropertyListReadableTests.swift */,
 			);
-			name = PropertyListReadable;
-			sourceTree = "<group>";
-		};
-		237F17E01E9000B100726553 /* Dictionary */ = {
-			isa = PBXGroup;
-			children = (
-				237F17401E90000800726553 /* DictionaryUtilsTests.swift */,
-				237F17411E90000800726553 /* DictionaryValidationTests.swift */,
-			);
-			name = Dictionary;
+			path = PropertyListReadable;
 			sourceTree = "<group>";
 		};
 		23839F831E93C737002D757B /* UserDefaults */ = {
@@ -894,15 +903,6 @@
 			children = (
 				239F8DD71E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift */,
 				23B2ED6C1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift */,
-			);
-			name = NSObject;
-			sourceTree = "<group>";
-		};
-		23B2ED761EC8D4F6006365BD /* NSObject */ = {
-			isa = PBXGroup;
-			children = (
-				237F174F1E90000800726553 /* NSObjectProtocolSwizzlingTests.swift */,
-				23B2ED711EC8CE28006365BD /* NSObjectProtocolUtils.swift */,
 			);
 			name = NSObject;
 			sourceTree = "<group>";
