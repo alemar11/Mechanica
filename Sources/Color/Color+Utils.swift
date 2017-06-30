@@ -76,7 +76,6 @@ extension Color {
   /// Alias for RGBA color space components
   public typealias RGBA = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
   
-
   /// **Mechanica**
   ///
   /// Returns the color's RGBA components as Ints.

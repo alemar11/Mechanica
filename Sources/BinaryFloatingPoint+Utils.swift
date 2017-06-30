@@ -60,4 +60,3 @@ extension Float64:  BinaryConvertible {}
 #if os(macOS)
 extension Float80:  BinaryConvertible {}
 #endif
-
