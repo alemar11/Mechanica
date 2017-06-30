@@ -1,15 +1,27 @@
 # Changelog
 
+### 1.0.0 ⭐
+
+- Mechanica is now completely migrated to **Swift 4**.  🤓
+- More tests.
+
+### 0.4.2
+
+- Bug fixes.
+- More tests.
+- Fixes on Core Data utils.
+- Removed unused API.
+
 ### 0.4.1
 
-- added NibIdentifiable protocol tests.
-- better descriptions here and there.
+- Added NibIdentifiable protocol tests.
+- Better descriptions here and there.
 
 ### 0.4.0
 
-- added SwiftLint.
-- more String extensions.
-- bugfixes.
+- Added SwiftLint.
+- More String extensions.
+- Bugfixes.
 
 ### 0.3.1
 
