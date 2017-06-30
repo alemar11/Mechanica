@@ -35,7 +35,6 @@ class AppTests: XCTestCase {
     #endif
   }
 
-
   func testIsRunningUnitTests() {
     XCTAssertTrue(App.isRunningUnitTests)
   }
