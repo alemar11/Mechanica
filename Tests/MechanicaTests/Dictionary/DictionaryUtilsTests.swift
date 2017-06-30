@@ -103,7 +103,6 @@ class DictionaryUtilsTests: XCTestCase {
     var dictionary = ["Key1":1, "key2":2, "kEY3":3]
     dictionary.lowercaseAllKeys()
     dictionary.keys.enumerated().forEach { (arg) in
-      
       let (_, k) = arg
       XCTAssertTrue(k.isLowercased)
     }
