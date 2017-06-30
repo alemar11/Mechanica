@@ -72,7 +72,7 @@ extension Sequence {
       array.append(element)
       dictionary.updateValue(array, forKey: key)
     }
-    //todo
+    // swift 4
     //dictionary =  Dictionary(grouping: self, by: { return criteria($0) })
     return dictionary
   }
