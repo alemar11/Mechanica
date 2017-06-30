@@ -28,12 +28,12 @@ import XCTest
 
 
 class NSObjectUtils: XCTestCase {
-  
+
   class Demo: NSObject{}
-  
+
   func testClassName(){
     XCTAssertEqual(Demo.type, "Demo")
     XCTAssertEqual(Demo().type, "Demo")
   }
-  
+
 }

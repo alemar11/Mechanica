@@ -428,12 +428,12 @@ extension UserDefaultsUtilsTests {
       aCoder.encode(firstname, forKey: #keyPath(Person.firstname))
       aCoder.encode(surname, forKey: #keyPath(Person.surname))
     }
-    
+
     static func ==(left: Person, right: Person) -> Bool {
       return left.firstname == right.firstname && left.surname == right.surname
     }
-    
+
   }
-  
+
 }
 

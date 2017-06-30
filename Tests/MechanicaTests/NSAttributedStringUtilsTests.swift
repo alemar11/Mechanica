@@ -65,8 +65,8 @@ class NSAttributedStringUtilsTests: XCTestCase {
       XCTAssertNotNil(s)
       XCTAssertTrue(s!.string.isEmpty)
     }
-    
+
   }
-  
+
 }
 

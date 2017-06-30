@@ -31,5 +31,5 @@ class ModelVersionTests: XCTestCase {
       XCTAssertTrue(DemoModelVersion.allVersions == [.version1])
       XCTAssertTrue(DemoModelVersion.version1.successor == nil)
     }
-        
+
 }

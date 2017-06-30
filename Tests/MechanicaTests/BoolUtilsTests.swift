@@ -47,7 +47,7 @@ class BoolUtilsTests: XCTestCase {
       XCTAssert(true)
     }
   }
-  
+
   func testToggle() {
     let b1 = true
     XCTAssertTrue(b1.toggled == false)
@@ -55,9 +55,9 @@ class BoolUtilsTests: XCTestCase {
     b2.toggle()
     XCTAssertTrue(b2)
   }
-  
+
   // MARK:- BinaryConvertible
-  
+
   func testBinaryString() {
     XCTAssertEqual(true.binaryString, "1")
     XCTAssertEqual(false.binaryString, "0")

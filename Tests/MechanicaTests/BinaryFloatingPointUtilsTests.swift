@@ -26,7 +26,7 @@ import XCTest
 @testable import Mechanica
 
 class BinaryFloatingPointUtilsTests: XCTestCase {
-  
+
   // MARK: - BinaryConvertible
 
   /// http://www.binaryconvert.com/result_signed_int.html?decimal=045049049049

@@ -25,7 +25,7 @@
 import Foundation
 
 public extension UserDefaults {
-  
+
   /// **Mechanica**
   ///
   /// Returns `true` if `key` exists.
@@ -33,7 +33,7 @@ public extension UserDefaults {
     //return object(forKey: key) != nil
     return dictionaryRepresentation().hasKey(key)
   }
-  
+
   /// **Mechanica**
   ///
   /// Removes all keys and values from user defaults.
@@ -45,7 +45,7 @@ public extension UserDefaults {
       removeObject(forKey: key)
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -53,7 +53,7 @@ public extension UserDefaults {
   public final func optionalInteger(forKey defaultName: String) -> Int? {
     return (object(forKey: defaultName) as? NSNumber)?.intValue
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -61,7 +61,7 @@ public extension UserDefaults {
   public final func optionalFloat(forKey defaultName: String) -> Float? {
     return (object(forKey: defaultName) as? NSNumber)?.floatValue
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -69,7 +69,7 @@ public extension UserDefaults {
   public final func optionalDouble(forKey defaultName: String) -> Double? {
     return (object(forKey: defaultName) as? NSNumber)?.doubleValue
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -77,20 +77,20 @@ public extension UserDefaults {
   public final func optionalBool(forKey defaultName: String) -> Bool? {
     return (object(forKey: defaultName) as? NSNumber)?.boolValue
   }
-  
+
 }
 
 // MARK: NSCoding
 
 extension UserDefaults {
-  
+
   /// **Mechanica**
   ///
   /// Returns the object conformig to `NSCoding` associated with the specified key, or nil if the key was not found.
   public final func archivableValue<T: NSCoding>(forKey key: String) -> T? {
     return data(forKey: key).flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) } as? T
   }
-  
+
   /// **Mechanica**
   ///
   /// Stores an object conformig to `NSCoding` (or removes the value if nil is passed as the value) for the provided key.

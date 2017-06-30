@@ -26,24 +26,24 @@ import XCTest
 @testable import Mechanica
 
 class NSMutableAttributedStringOperatorsTests: XCTestCase {
-  
+
   func testAddition() {
-    
+
     /// addition between NSMutableAttributedStrings
     do {
       let s1 = NSMutableAttributedString(string: "Hello")
       let s2 = NSMutableAttributedString(string: " ")
       let s3 = NSMutableAttributedString(string: "World")
-      
+
       let s4 = s1 + s2 + s3
       XCTAssertTrue(s4.string == "Hello World")
     }
-    
+
     do {
       let s1 = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
       let s2 = NSMutableAttributedString(string: " ")
       let s3 = NSMutableAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
-      
+
       let s4 = s1 + s2 + s3
       let firstCharAttributes = s4.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
       let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
@@ -56,13 +56,13 @@ class NSMutableAttributedStringOperatorsTests: XCTestCase {
       XCTAssertTrue(yellowColor! == .yellow)
       XCTAssertTrue(s4.string == "Hello World")
     }
-    
+
     /// addition between NSMutableAttributedStrings and NSAttributedString
     do {
       let s1 = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
       let s2 = NSMutableAttributedString(string: " ")
       let s3 = NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
-      
+
       let s4 = s1 + s2 + s3
       let firstCharAttributes = s4.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
       let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
@@ -75,13 +75,13 @@ class NSMutableAttributedStringOperatorsTests: XCTestCase {
       XCTAssertTrue(yellowColor! == .yellow)
       XCTAssertTrue(s4.string == "Hello World")
     }
-    
+
     /// addition between NSAttributedStrings and NSMutableAttributedString
     do {
       let s1 = NSAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
       let s2 = NSMutableAttributedString(string: " ")
       let s3 = NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
-      
+
       let s4 = s1 + s2 + s3
       let firstCharAttributes = s4.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
       let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
@@ -94,13 +94,13 @@ class NSMutableAttributedStringOperatorsTests: XCTestCase {
       XCTAssertTrue(yellowColor! == .yellow)
       XCTAssertTrue(s4.string == "Hello World")
     }
-    
+
     /// addition between NSAttributedString, String and NSMutableAttributedString
     do {
       let s1 = NSAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
       let s2 = " "
       let s3 = NSMutableAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
-      
+
       let s4 = s1 + s2 + s3
       let firstCharAttributes = s4.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
       let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
@@ -113,13 +113,13 @@ class NSMutableAttributedStringOperatorsTests: XCTestCase {
       XCTAssertTrue(yellowColor! == .yellow)
       XCTAssertTrue(s4.string == "Hello World")
     }
-    
+
     /// addition between NSMutableAttributedString and String
     do {
       let s1 = "Hello"
       let s2 = " "
       let s3 = NSMutableAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
-      
+
       let s4 = s1 + s2 + s3
       let firstCharAttributes = s4.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
       let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
@@ -129,15 +129,15 @@ class NSMutableAttributedStringOperatorsTests: XCTestCase {
       XCTAssertTrue(yellowColor! == .yellow)
       XCTAssertTrue(s4.string == "Hello World")
     }
-    
+
   }
-  
+
   func testCompoundAddition() {
     do {
       let s = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
       s += " "
       s += NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
-      
+
       let firstCharAttributes = s.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
       let lastCharAttributes = s.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
       let redColor = firstCharAttributes[NSAttributedStringKey.foregroundColor] as? Color
@@ -148,12 +148,12 @@ class NSMutableAttributedStringOperatorsTests: XCTestCase {
       XCTAssertTrue(yellowColor! == .yellow)
       XCTAssertTrue(s.string == "Hello World")
     }
-    
+
     do {
       let s = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
       s += NSMutableAttributedString(string: " ")
       s += NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
-      
+
       let firstCharAttributes = s.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
       let lastCharAttributes = s.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
       let redColor = firstCharAttributes[NSAttributedStringKey.foregroundColor] as? Color
@@ -165,7 +165,7 @@ class NSMutableAttributedStringOperatorsTests: XCTestCase {
       XCTAssertTrue(s.string == "Hello World")
     }
   }
-  
+
 }
 
 

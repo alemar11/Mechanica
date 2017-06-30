@@ -165,7 +165,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
   }
 
   func testOverflow() {
-    
+
     do {
       let range: CountableClosedRange<Int8> = -118...10
       var expectedAtLeastOnePositive = false
@@ -230,7 +230,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
       }
       XCTAssertTrue(expectedAtLeastOnePositive && !expectedAtLeastOneNegative)
     }
-    
+
     do {
       let range: CountableClosedRange<Int64> = Int64.min...0
       var expectedAtLeastOnePositive = false
@@ -256,7 +256,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
       }
       XCTAssertTrue(expectedAtLeastOnePositive && !expectedAtLeastOneNegative)
     }
-    
+
   }
 
   //  func testRandomPerformance() {
@@ -279,5 +279,5 @@ private extension Int {
   private static func _random(in range: ClosedRange<Int>) -> Int {
     return range.lowerBound + Int(arc4random_uniform(UInt32(range.upperBound - range.lowerBound + 1)))
   }
-  
+
 }

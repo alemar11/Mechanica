@@ -23,7 +23,7 @@
 // SOFTWARE.
 
 #if os(iOS)
-  
+
   import Foundation
   import UIKit
 
@@ -51,72 +51,72 @@
   ///
   /// To remove all event callbacks, call `clear()`.
   public final class KeyboardObserver {
-    
+
     /// **Mechanica**
     ///
     /// A `KeyboardObserver` callback.
     public typealias Callback = (Options) -> Void
-    
+
     // MARK: - Keyboard Options
-    
+
     /// **Mechanica**
     ///
     /// Struct containing all data that a keyboard has at the event of happening.
     public struct Options {
-      
+
       /// Identifies whether the keyboard belongs to the current app.
       public let belongsToCurrentApp: Bool
-      
+
       /// Identifies the start frame of the keyboard in screen coordinates.
       public let startFrame: CGRect
-      
+
       /// Identifies the end frame of the keyboard in screen coordinates.
       public let endFrame: CGRect
-      
+
       /// Defines how the keyboard will be animated onto or off the screen.
       public let animationCurve: UIViewAnimationCurve
-      
+
       /// Identifies the duration of the keyboard animation in seconds.
       public let animationDuration: Double
-      
+
       // MARK: - Factory
-      
+
       /// Creates a new `Keyboard.Options` struct for an `info` dicionary.
       fileprivate static func makeOptions(fromInfo info: [AnyHashable : Any]) -> Options {
-        
+
         var belongsToCurrentApp: Bool = true
         if let value = (info[UIKeyboardIsLocalUserInfoKey] as? NSNumber)?.boolValue {
           belongsToCurrentApp = value
         }
-        
+
         var startFrame = CGRect()
         if let value = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
           startFrame = value
         }
-        
+
         var endFrame = CGRect()
         if let value = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
           endFrame = value
         }
-        
+
         var animationCurve = UIViewAnimationCurve.linear
         if let index = (info[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
           let value = UIViewAnimationCurve(rawValue:index) {
           animationCurve = value
         }
-        
+
         var animationDuration: Double = 0.0
         if let value = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
           animationDuration = value
         }
-        
+
         return Options(belongsToCurrentApp: belongsToCurrentApp, startFrame: startFrame, endFrame: endFrame, animationCurve: animationCurve, animationDuration: animationDuration)
       }
-      
+
     }
-    
+
     // MARK: - Keyboard Events
-    
+
     /// **Mechanica**
     ///
     /// Keyboard events that can happen. Translates directly to `UIKeyboard` notifications from UIKit.
@@ -133,7 +133,7 @@
       case willChangeFrame
       /// Event raised by UIKit's `.UIKeyboardDidChangeFrame`.
       case didChangeFrame
-      
+
       /// Event `NSNotification.Name`.
       fileprivate var notificationName: NSNotification.Name {
         switch self {
@@ -151,7 +151,7 @@
           return .UIKeyboardDidChangeFrame
         }
       }
-      
+
       fileprivate var selector: Selector {
         switch self {
         case .willShow:
@@ -168,13 +168,13 @@
           return Selector.didChangeFrame
         }
       }
-      
+
     }
-    
+
     private var callbacks: [Event : Callback] = [:]
-    
+
     // MARK: Public functions
-    
+
     /// **Mechanica**
     ///
     /// Defines `KeyboardObserver` behaviours.
@@ -191,12 +191,12 @@
       callbacks[event] = callback
       return self
     }
-    
+
     /// **Mechanica**
     ///
     /// Initializes a new instance of `KeyboardObserver`.
     public init() {}
-    
+
     /// **Mechanica**
     ///
     /// Registers for `KeyboardObserver` events and starts calling corresponding event handlers.
@@ -206,14 +206,14 @@
         defaultCenter.addObserver(self, selector: event.selector, name: event.notificationName, object: nil)
       }
     }
-    
+
     /// **Mechanica**
     ///
     /// Remove all event callbacks.
     public final func clear() {
       callbacks.removeAll()
     }
-    
+
     /// **Mechanica**
     ///
     /// Unregister from `KeyboardObserver` events.
@@ -222,9 +222,9 @@
       let defaultCenter = NotificationCenter.default
       defaultCenter.removeObserver(self)
     }
-    
+
     // MARK: Private functions
-    
+
     /// Handler for `UIKeyboardWillShow` Notification.
     ///
     /// - parameter notification: keyboard notification
@@ -234,7 +234,7 @@
       let options = Options.makeOptions(fromInfo: notification.userInfo!)
       callback(options)
     }
-    
+
     /// Handler for `UIKeyboardDidShow` Notification.
     ///
     /// - parameter notification: keyboard notification
@@ -243,7 +243,7 @@
       guard let callback = callbacks[.didShow] else { return }
       let options = Options.makeOptions(fromInfo: notification.userInfo!)
       callback(options)  }
-    
+
     /// Handler for `UIKeyboardWillHide` Notification.
     ///
     /// - parameter notification: keyboard notification
@@ -253,7 +253,7 @@
       let options = Options.makeOptions(fromInfo: notification.userInfo!)
       callback(options)
     }
-    
+
     /// Handler for `UIKeyboardDidHide` Notification.
     ///
     /// - parameter notification: keyboard notification
@@ -263,7 +263,7 @@
       let options = Options.makeOptions(fromInfo: notification.userInfo!)
       callback(options)
     }
-    
+
     /// Handler for `UIKeyboardWillChangeFrame` Notification.
     ///
     /// - parameter notification: keyboard notification
@@ -273,7 +273,7 @@
       let options = Options.makeOptions(fromInfo: notification.userInfo!)
       callback(options)
     }
-    
+
     /// Handler for `UIKeyboardDidChangeFrame` Notification.
     ///
     /// - parameter notification: keyboard notification
@@ -283,11 +283,11 @@
       let options = Options.makeOptions(fromInfo: notification.userInfo!)
       callback(options)
     }
-    
+
   }
-  
+
   // MARK: - Selectors
-  
+
   fileprivate extension Selector {
     static let willShow         = #selector(KeyboardObserver.keyboardWillShow(_:))
     static let didShow          = #selector(KeyboardObserver.keyboardDidShow(_:))
@@ -296,5 +296,5 @@
     static let willChangeFrame  = #selector(KeyboardObserver.keyboardWillChangeFrame(_:))
     static let didChangeFrame   = #selector(KeyboardObserver.keyboardDidChangeFrame(_:))
   }
-  
+
 #endif

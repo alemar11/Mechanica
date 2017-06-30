@@ -214,8 +214,8 @@ class AssociatedObjectTests: XCTestCase {
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
-    
+
   }
-  
-  
+
+
 }

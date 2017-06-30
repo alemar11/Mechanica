@@ -70,4 +70,3 @@ extension Int16: BinaryConvertible {}
 extension Int32: BinaryConvertible {}
 extension Int64: BinaryConvertible {}
 extension Int:   BinaryConvertible {}
-

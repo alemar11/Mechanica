@@ -171,7 +171,7 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Stores a `Dictionary` [String:Any] (or removes the value if nil is passed as the value) for the provided key.
-  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary. 
+  /// - Note: The value parameter can be only property list objects: Data, String, NSNumber, SDate, NSArray, or NSDictionary.
   /// For NSArray and NSDictionary objects, their contents must be property list objects.
   public final func set<V>(dictionary: [String: V]?, forKey key: Key<[String: V]>) {
     set(object: dictionary, forKey: key)
@@ -442,5 +442,5 @@ extension UserDefaults {
 //  public final func rawRepresentable<T: RawRepresentable>(forKey key: Key<T>) -> T? {
 //    return object(forKey: key.value).flatMap { T(rawValue: $0 as! T.RawValue) }
 //  }
-//  
+//
 //}

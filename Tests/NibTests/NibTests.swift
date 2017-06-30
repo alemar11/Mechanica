@@ -65,9 +65,9 @@ extension Nib: NibEnumerable {
   @available(OSX 10.12.2, *)
   // NibIdentifiable
   extension NSTouchBar : NibLoadable {}
-  
+
   class macOS_ViewNibIdentifiable: NSView, NibIdentifiable {}
-  
+
 #endif
 
 
@@ -160,11 +160,11 @@ class NibTests: XCTestCase {
           XCTAssertNotNil(touchBar)
         }
       }
-      
+
     #endif
-    
+
   }
-  
+
   func testNibIdentifiable() {
     #if os(iOS)
       let view = iOS_ViewNibIdentifiable.instantiateFromNib(inBundle: unitTestBundle)
@@ -177,5 +177,5 @@ class NibTests: XCTestCase {
       XCTAssertNotNil(view)
     #endif
   }
-  
+
 }

@@ -127,5 +127,5 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       XCTAssertNotEqual(backgroundContext2.parent,stack.mainContext)
     }
   }
-  
+
 }

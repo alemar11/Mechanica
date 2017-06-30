@@ -63,7 +63,7 @@ extension FileManager {
   /// Returns the location of discardable cache files (*Library/Caches/*).
   /// - Note: Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file.
   ///
-  /// Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance. 
+  /// Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance.
   /// Examples of cache data include (but are not limited to) database cache files and transient, downloadable content.
   ///
   /// The contents of the *Library/Caches* are **not backed up by iTunes and iCloud**.

@@ -42,5 +42,5 @@ class AppTests: XCTestCase {
   func testIdentifier() {
     XCTAssert(App.identifier == "xctest")
   }
-  
+
 }

@@ -75,7 +75,7 @@ extension Color {
   ///
   /// Alias for RGBA color space components
   public typealias RGBA = (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
-  
+
   /// **Mechanica**
   ///
   /// Returns the color's RGBA components as Ints.
@@ -83,7 +83,7 @@ extension Color {
     guard let rgba = self.rgba else { return nil }
     return (Int(rgba.red * 255), Int(rgba.green * 255), Int(rgba.blue * 255), Int(rgba.alpha * 255))
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the color's RGBA components as CGFloats.

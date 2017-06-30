@@ -27,15 +27,15 @@ import XCTest
 
 @available(iOS 10, tvOS 10, watchOS 3, OSX 10.12, *)
 class FileManagerUtilsTests: XCTestCase {
-  
+
   func testClearOrDestroyDirectory() {
-    
+
     let directories = [FileManager.default.documentDirectory,
                        FileManager.default.libraryDirectory,
                        FileManager.default.cachesDirectory,
                        FileManager.default.applicationSupportDirectory,
                        FileManager.default.temporaryDirectory]
-    
+
     directories.enumerated().forEach { (arg) in
 
       let (_, directoryURL) = arg
@@ -45,24 +45,24 @@ class FileManagerUtilsTests: XCTestCase {
       let fakeBaseDirectoryAsFileyURL = containerURL.appendingPathComponent("fakeDemoFile", isDirectory: false) // org.tinrobots.tests/fakeDemoFile
       let testURL                     = baseDemoURL.appendingPathComponent("test", isDirectory: true)           // org.tinrobots.tests/demo/test/
       let testFileURL                 = testURL.appendingPathComponent("file", isDirectory: false)              // org.tinrobots.tests/demo/test/file
-      
+
       // creation
       do {
         try FileManager.default.createDirectory(at: testURL, withIntermediateDirectories: true, attributes: nil)
         XCTAssertTrue(FileManager.default.fileExists(atPath: containerURL.path))
-        
+
         XCTAssertFalse(FileManager.default.fileExists(atPath: testFileURL.path))
         XCTAssertTrue(FileManager.default.createFile(atPath: testFileURL.path, contents: Data(), attributes: nil))
         XCTAssertTrue(FileManager.default.fileExists(atPath: testFileURL.path))
-        
+
         XCTAssertFalse(FileManager.default.fileExists(atPath: fakeBaseDirectoryAsFileyURL.path))
         XCTAssertTrue(FileManager.default.createFile(atPath: fakeBaseDirectoryAsFileyURL.path, contents: Data(), attributes: nil))
         XCTAssertTrue(FileManager.default.fileExists(atPath: fakeBaseDirectoryAsFileyURL.path))
-        
+
       } catch {
         XCTFail(error.localizedDescription)
       }
-      
+
       // cleaning
       do {
         try FileManager.default.clearDirectory(atPath: baseDemoURL.path)
@@ -78,9 +78,9 @@ class FileManagerUtilsTests: XCTestCase {
         XCTFail(error.localizedDescription)
       }
     }
-    
+
   }
-  
+
   func testNewCachesSubdirectory() {
     let newCacheDirectory = FileManager.default.makeNewCachesSubDirectory
     XCTAssertTrue(FileManager.default.fileExists(atPath: newCacheDirectory.path))
@@ -90,7 +90,7 @@ class FileManagerUtilsTests: XCTestCase {
       XCTFail(error.localizedDescription)
     }
   }
-  
+
 //  #if os(macOS)
 //  func testApplicationSupportSubDirectory() {
 //    let url = FileManager.default.applicationSupportSubDirectory //~/Library/Application Support/xctest/
@@ -104,5 +104,5 @@ class FileManagerUtilsTests: XCTestCase {
 //    XCTAssertFalse(FileManager.default.fileExists(atPath: url2.path))
 //  }
 //  #endif
-  
+
 }

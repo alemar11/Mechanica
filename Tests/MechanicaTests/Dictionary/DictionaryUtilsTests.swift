@@ -107,5 +107,5 @@ class DictionaryUtilsTests: XCTestCase {
       XCTAssertTrue(k.isLowercased)
     }
   }
-  
+
 }
