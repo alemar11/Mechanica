@@ -666,6 +666,10 @@ class UserDefaultsUtilsTests: XCTestCase {
     userDefaults.set(archivableValue: nil, forKey: key)
     //  Then
     XCTAssertFalse(userDefaults.hasKey(key))
+    //  When
+    userDefaults[key] = value
+    //  Then
+    XCTAssertTrue(userDefaults.archivableValue(forKey: key)! == value)
   }
 
 //    func testUserDefaultsPerformance() {
