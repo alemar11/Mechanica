@@ -44,14 +44,14 @@ extension UserDefaults {
 }
 
 class UserDefaultsUtilsTests: XCTestCase {
-  
+
   let userDefaults = UserDefaults.standard
-  
+
   override func setUp() {
     super.setUp()
     userDefaults.removeAll()
   }
-  
+
   func testRemoveAll() {
     userDefaults.removeAll()
     XCTAssertNil(userDefaults[UserDefaults.TestKey.string1])
@@ -67,9 +67,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertNil(userDefaults[UserDefaults.TestKey.bool1])
     XCTAssertNil(userDefaults[UserDefaults.TestKey.url1])
   }
-  
+
   //  MARK: - String
-  
+
   func testString() {
     let value = "myString"
     let value2 = "myString2"
@@ -89,9 +89,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     userDefaults.set(string: nil, forKey: key)
     XCTAssertFalse(userDefaults.hasKey(key))
   }
-  
+
   // MARK: - Object
-  
+
   func testObject() {
     do {
       let x = UInt32(10)
@@ -103,7 +103,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       userDefaults.set(object: y, forKey: key)
       XCTAssert(userDefaults.object(forKey: key) == y)
     }
-    
+
     do {
       let x = "10" as NSString
       let y = "20" as NSString
@@ -114,13 +114,13 @@ class UserDefaultsUtilsTests: XCTestCase {
       userDefaults[key] = y
       XCTAssertTrue(userDefaults.hasKey(key))
     }
-    
+
   }
-  
+
   // MARK: - Array
-  
+
   func testArray() {
-    
+
     do {
       // Given
       let value =  ["one","two"]
@@ -148,7 +148,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       // Then
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
     do {
       // Given
       let value =  [1, 2]
@@ -176,7 +176,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       // Then
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
     do {
       // Given
       let value =  [1.1, 2.2]
@@ -204,7 +204,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       // Then
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
     do {
       // Given
       let value =  [Float(1), Float(2)]
@@ -232,7 +232,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       // Then
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
     do {
       // Given
       let value =  [true, false]
@@ -260,7 +260,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       // Then
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
     do {
       // Given
       let value =  [Date(timeInterval: 10, since: Date()), Date(timeInterval: 20, since: Date())]
@@ -288,14 +288,14 @@ class UserDefaultsUtilsTests: XCTestCase {
       // Then
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
     do {
       // Given
       let person1 = Person(firstname: "name1", surname: "surname1")
       let person2 = Person(firstname: "name2", surname: "surname2")
       let person3 = Person(firstname: "name3", surname: "surname3")
       let person4 = Person(firstname: "name4", surname: "surname4")
-      
+
       let value = [person1, person2]
       let value2 = [person3, person4]
       let valueData = value.map{ NSKeyedArchiver.archivedData(withRootObject:$0) }
@@ -327,7 +327,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       // Then
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
     do {
       let value: [Any] =  ["one", 2]
       let value2: [Any] = ["three", 4]
@@ -338,23 +338,23 @@ class UserDefaultsUtilsTests: XCTestCase {
       XCTAssertTrue(results[0] as! String == value[0] as! String)
       XCTAssertTrue(results[1] as! Int == value[1] as! Int)
       userDefaults[key] = value2
-      
+
       let result = userDefaults.array(forKey: key)
       XCTAssertNotNil(result)
       let i = result![1] as! Int
       XCTAssertTrue(i == 4)
-      
+
       XCTAssertTrue(userDefaults.hasKey(key))
       userDefaults.set(array: nil, forKey: key)
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
   }
-  
+
   // MARK: - Dictionary
-  
+
   func testDictionary() {
-    
+
     do {
       let value:  [String : Any] = ["1":1, "2":"two"]
       let key = Key<[String: Any]>("myDicationary")
@@ -371,7 +371,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       userDefaults[key] = nil
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
     do {
       let value:  [String : Any] = ["3":3, "4":"four"]
       let key = Key<[String: Any]>("myDicationary")
@@ -388,7 +388,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       userDefaults[key] = nil
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
     do {
       let value = ["3":3, "4":4]
       let key = Key<[String: Int]>("myDicationary")
@@ -405,11 +405,11 @@ class UserDefaultsUtilsTests: XCTestCase {
       userDefaults[key] = nil
       XCTAssertFalse(userDefaults.hasKey(key))
     }
-    
+
   }
-  
+
   // MARK: - Date
-  
+
   func testDate() {
     //  Given
     let value = Date()
@@ -436,9 +436,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     // Then
     XCTAssertFalse(userDefaults.hasKey(key))
   }
-  
+
   // MARK: - Data
-  
+
   func testData() {
     //  Given
     let value = Data(base64Encoded: "tin".base64Encoded!)
@@ -465,9 +465,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     // Then
     XCTAssertFalse(userDefaults.hasKey(key))
   }
-  
+
   // MARK: - NSNumber
-  
+
   func testNumber() {
     //  Given
     let value = NSNumber(integerLiteral: 10)
@@ -494,9 +494,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     // Then
     XCTAssertFalse(userDefaults.hasKey(key))
   }
-  
+
   // MARK: - Int
-  
+
   func testInt() {
     //  Given
     let value = 10
@@ -529,9 +529,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     // Then
     XCTAssertFalse(userDefaults.hasKey(key))
   }
-  
+
   // MARK: - Double
-  
+
   func testDouble() {
     //  Given
     let value = 10.10
@@ -558,9 +558,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     // Then
     XCTAssertFalse(userDefaults.hasKey(key))
   }
-  
+
   // MARK: - Float
-  
+
   func testFloat() {
     //  Given
     let value = Float(10.10)
@@ -587,9 +587,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     // Then
     XCTAssertFalse(userDefaults.hasKey(key))
   }
-  
+
   // MARK: - Bool
-  
+
   func testBoolean() {
     //  Given
     let value = true
@@ -616,9 +616,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     // Then
     XCTAssertFalse(userDefaults.hasKey(key))
   }
-  
+
   // MARK: - URL
-  
+
   func testURL() {
     // Given
     let value = URL(string: "tinrobot.com")
@@ -645,9 +645,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     // Then
     XCTAssertFalse(userDefaults.hasKey(key))
   }
-  
+
   // MARK: - NSCoding
-  
+
   func testArchive() {
     // Given
     let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
@@ -667,7 +667,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     //  Then
     XCTAssertFalse(userDefaults.hasKey(key))
   }
-  
+
 //    func testUserDefaultsPerformance() {
 //     let defaults = UserDefaults.standard
 //      //let v1 = Date(timeInterval: 10, since: Date())
@@ -684,37 +684,37 @@ class UserDefaultsUtilsTests: XCTestCase {
 //        }
 //      }
 //    }
-  
+
 }
 
 // MARK: - UserDefaultsUtilsTests Namespace
 
 extension UserDefaultsUtilsTests {
-  
+
   class Person: NSObject, NSCoding {
     @objc let surname: String
     @objc let firstname: String
-    
+
     required init(firstname:String, surname:String) {
       self.firstname = firstname
       self.surname = surname
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
       firstname = aDecoder.decodeObject(forKey: #keyPath(Person.firstname)) as! String
       surname = aDecoder.decodeObject(forKey: #keyPath(Person.surname)) as! String
     }
-    
+
     func encode(with aCoder: NSCoder) {
       aCoder.encode(firstname, forKey: #keyPath(Person.firstname))
       aCoder.encode(surname, forKey: #keyPath(Person.surname))
     }
-    
+
     static func ==(left: Person, right: Person) -> Bool {
       return left.firstname == right.firstname && left.surname == right.surname
     }
-    
+
   }
-  
+
 }
 
