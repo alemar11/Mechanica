@@ -137,6 +137,81 @@ class UserDefaultsUtilsTests: XCTestCase {
     }
 
     do {
+      let value =  [1, 2]
+      let value2 = [3, 4]
+      let key = Key<[Int]>("myArray")
+      userDefaults.set(array:value, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value)
+      userDefaults.set(array:value2, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value2)
+      XCTAssertTrue(userDefaults.hasKey(key))
+      userDefaults.set(array: nil, forKey: key)
+      XCTAssertFalse(userDefaults.hasKey(key))
+    }
+
+    do {
+      let value =  [1.1, 2.2]
+      let value2 = [3.3, 4.4]
+      let key = Key<[Double]>("myArray")
+      userDefaults.set(array:value, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value)
+      userDefaults.set(array:value2, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value2)
+      XCTAssertTrue(userDefaults.hasKey(key))
+      userDefaults.set(array: nil, forKey: key)
+      XCTAssertFalse(userDefaults.hasKey(key))
+    }
+
+    do {
+      let value =  [Float(1), Float(2)]
+      let value2 = [Float(3), Float(4)]
+      let key = Key<[Float]>("myArray")
+      userDefaults.set(array:value, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value)
+      userDefaults.set(array:value2, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value2)
+      XCTAssertTrue(userDefaults.hasKey(key))
+      userDefaults.set(array: nil, forKey: key)
+      XCTAssertFalse(userDefaults.hasKey(key))
+    }
+
+    do {
+      let value =  [true, false]
+      let value2 = [true, true]
+      let key = Key<[Bool]>("myArray")
+      userDefaults.set(array:value, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value)
+      userDefaults.set(array:value2, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value2)
+      XCTAssertTrue(userDefaults.hasKey(key))
+      userDefaults.set(array: nil, forKey: key)
+      XCTAssertFalse(userDefaults.hasKey(key))
+    }
+
+    do {
+      let value =  [Date(timeInterval: 10, since: Date()), Date(timeInterval: 20, since: Date())]
+      let value2 = [Date(timeInterval: 30, since: Date()), Date(timeInterval: -20, since: Date())]
+      let key = Key<[Date]>("myArray")
+      userDefaults.set(array:value, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value)
+      userDefaults.set(array:value2, forKey: key)
+      XCTAssertNotNil(userDefaults.array(forKey: key)!)
+      XCTAssertTrue(userDefaults.array(forKey: key)! == value2)
+      XCTAssertTrue(userDefaults.hasKey(key))
+      userDefaults.set(array: nil, forKey: key)
+      XCTAssertFalse(userDefaults.hasKey(key))
+    }
+
+    do {
       let person1 = Person(firstname: "name1", surname: "surname1")
       let person2 = Person(firstname: "name2", surname: "surname2")
       let person3 = Person(firstname: "name3", surname: "surname3")
