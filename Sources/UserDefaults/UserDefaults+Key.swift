@@ -150,11 +150,11 @@ extension UserDefaults {
   /// Accesses the `NSNumber` associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-  //  public final subscript(key: Key<NSNumber>) -> NSNumber? {
-  //    get { return object(forKey: key) }
-  //    set { set(object: newValue, forKey: key) }
-  //  }
-
+    public final subscript(key: Key<NSNumber>) -> NSNumber? {
+      get { return object(forKey: key) }
+      set { set(object: newValue, forKey: key) }
+    }
+  
   /// **Mechanica**
   ///
   /// Returns the `NSNumber` associated with the specified key, or nil if the key was not found.
@@ -412,6 +412,12 @@ extension UserDefaults {
   }
 
   // MARK: NSCoding
+  
+  // TODO: test
+  public final subscript<T: NSCoding>(key: Key<T>) -> T? {
+    get { return archivableValue(forKey: key) }
+    set { set(archivableValue: newValue, forKey: key) }
+  }
 
   /// **Mechanica**
   ///
