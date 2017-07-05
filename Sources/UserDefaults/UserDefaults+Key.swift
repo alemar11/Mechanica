@@ -381,40 +381,6 @@ extension UserDefaults {
 
 }
 
-//extension UserDefaults {
-//
-//  public final subscript(key: Key<[String]>) -> [String]? {
-//    get { return array(forKey: key) }
-//    set { set(newValue, forKey: key) }
-//  }
-//
-//  public final subscript(key: Key<[Int]>) -> [Int]? {
-//    get { return array(forKey: key) }
-//    set { set(newValue, forKey: key) }
-//  }
-//
-//  public final subscript(key: Key<[Double]>) -> [Double]? {
-//    get { return array(forKey: key) }
-//    set { set(newValue, forKey: key) }
-//  }
-//
-//  public final subscript(key: Key<[Bool]>) -> [Bool]? {
-//    get { return array(forKey: key) }
-//    set { set(newValue, forKey: key) }
-//  }
-//
-//  public final subscript(key: Key<[Data]>) -> [Data]? {
-//    get { return array(forKey: key) }
-//    set { set(newValue, forKey: key) }
-//  }
-//
-//  public final subscript(key: Key<[Date]>) -> [Date]? {
-//    get { return array(forKey: key) }
-//    set { set(newValue, forKey: key) }
-//  }
-//
-//}
-
 // MARK: RawRepresentable
 
 //extension UserDefaults {
