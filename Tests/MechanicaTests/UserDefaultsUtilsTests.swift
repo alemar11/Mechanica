@@ -96,7 +96,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     do {
       let x = UInt32(10)
       let y = UInt32(20)
-      let key =  Key<UInt32>("myColor")
+      let key =  Key<UInt32>("myObject")
       userDefaults.set(object: x, forKey: key)
       XCTAssertTrue(userDefaults.hasKey(key))
       XCTAssert(userDefaults.object(forKey: key) == x)
@@ -107,7 +107,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     do {
       let x = "10" as NSString
       let y = "20" as NSString
-      let key =  Key<Any>("myColor")
+      let key =  Key<Any>("myObject")
       userDefaults.set(object: x, forKey: key)
       let k = userDefaults[key] as? NSString
       XCTAssertEqual(x,k)
@@ -302,7 +302,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       let valueData2 = value2.map{ NSKeyedArchiver.archivedData(withRootObject:$0) }
       let key = Key<[Data]>("myArray")
       // When
-      userDefaults.set(array:valueData, forKey: key)
+      userDefaults.set(array: valueData, forKey: key)
       // Then
       XCTAssertNotNil(userDefaults.array(forKey: key)!)
       XCTAssertTrue(userDefaults.array(forKey: key)! == valueData)
@@ -648,46 +648,64 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   // MARK: - NSCoding
 
-  func testArchive() {
-    // Given
+  func testNSCoding() {
+    //  Given
     let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
-    let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
-    let key = Key<UserDefaultsUtilsTests.Person>("myPerson")
+    let key = Key<Data>("myPerson")
+    let archivedValue = NSKeyedArchiver.archivedData(withRootObject: value)
     //  When
-    userDefaults.set(archivableValue: value, forKey: key)
+    userDefaults[key] = archivedValue
     //  Then
-    XCTAssertTrue(userDefaults.archivableValue(forKey: key)! == value)
-    //  When
-    userDefaults.set(archivableValue: value2, forKey: key)
-    //  Then
-    XCTAssertTrue(userDefaults.archivableValue(forKey: key)! == value2)
-    XCTAssertTrue(userDefaults.hasKey(key))
-    //  When
-    userDefaults.set(archivableValue: nil, forKey: key)
-    //  Then
-    XCTAssertFalse(userDefaults.hasKey(key))
-    //  When
-    userDefaults[key] = value
-    //  Then
-    XCTAssertTrue(userDefaults.archivableValue(forKey: key)! == value)
+    if
+      let data =  userDefaults[key],
+      let unarchivedValue = NSKeyedUnarchiver.unarchiveObject(with: data) as? Person
+    {
+      XCTAssertTrue(unarchivedValue == value)
+    } else {
+      XCTAssertNotNil(userDefaults[key])
+    }
   }
 
-//    func testUserDefaultsPerformance() {
-//     let defaults = UserDefaults.standard
-//      //let v1 = Date(timeInterval: 10, since: Date())
-//      let v1 = "tinrobots"
-//      let k1 = Key<String>("string")
-//      self.measure {
-//        for i in 1...1_000_0 {
-//          if i % 2 == 0 {
-//            defaults[k1] = nil
-//          } else {
-//            defaults[k1] = v1
-//          }
-//          let _ = defaults[k1]
-//        }
-//      }
-//    }
+  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
+  func testCodable() {
+    do {
+      // Given
+      let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
+      let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
+      let key = Key<UserDefaultsUtilsTests.Person>("myPerson")
+      //  When
+      userDefaults.set(codableValue: value, forKey: key)
+      //  Then
+      if let codedValue = userDefaults.codableValue(forKey: key) {
+        XCTAssertTrue(codedValue == value)
+      } else {
+        XCTAssertNotNil(userDefaults.codableValue(forKey: key))
+      }
+      //  When
+      userDefaults[key] = value2
+      //  Then
+      XCTAssertTrue(userDefaults.hasKey(key))
+      if let codedValue = userDefaults.codableValue(forKey: key) {
+        XCTAssertTrue(codedValue == value2)
+      } else {
+        XCTAssertNotNil(userDefaults.codableValue(forKey: key))
+      }
+      if let codedValue = userDefaults[key] {
+        XCTAssertTrue(codedValue == value2)
+      } else {
+        XCTAssertNotNil(userDefaults[key])
+      }
+      // When
+      userDefaults.set(codableValue: nil, forKey: key)
+      // Then
+      XCTAssertFalse(userDefaults.hasKey(key))
+      // When
+      userDefaults.set(codableValue: value, forKey: key)
+      userDefaults[key] = nil
+      // Then
+      XCTAssertFalse(userDefaults.hasKey(key))
+    }
+  }
 
 }
 
@@ -695,9 +713,12 @@ class UserDefaultsUtilsTests: XCTestCase {
 
 extension UserDefaultsUtilsTests {
 
-  class Person: NSObject, NSCoding {
-    @objc let surname: String
-    @objc let firstname: String
+  class Person: NSObject, NSCoding, Codable {
+    @objc
+    let surname: String
+
+    @objc
+    let firstname: String
 
     required init(firstname:String, surname:String) {
       self.firstname = firstname
@@ -714,10 +735,9 @@ extension UserDefaultsUtilsTests {
       aCoder.encode(surname, forKey: #keyPath(Person.surname))
     }
 
-    static func ==(left: Person, right: Person) -> Bool {
+    static func == (left: Person, right: Person) -> Bool {
       return left.firstname == right.firstname && left.surname == right.surname
     }
-
   }
 
 }
