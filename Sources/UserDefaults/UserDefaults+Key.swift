@@ -48,57 +48,10 @@ extension UserDefaults {
   /// Accesses the object value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
+  /// - Warning: **non-property list** object are not allowed.
   public final subscript<T>(key: Key<T>) -> T? {
-    // swiftlint:disable force_cast
-    get {
-      switch T.self {
-      case is Bool.Type:
-        return bool(forKey: key as! Key<Bool>) as! T?
-      case is Int.Type:
-        return integer(forKey: key as! Key<Int>) as! T?
-      case is Data.Type:
-        return data(forKey: key as! Key<Data>) as! T?
-      case is Date.Type:
-        return date(forKey: key as! Key<Date>) as! T?
-      case is Double.Type:
-        return double(forKey: key as! Key<Double>) as! T?
-      case is Float.Type:
-        return float(forKey: key as! Key<Float>) as! T?
-      case is NSNumber.Type:
-        return number(forKey: key as! Key<NSNumber>) as! T?
-      case is String.Type:
-        return string(forKey: key as! Key<String>) as! T?
-      case is URL.Type:
-        return url(forKey: key as! Key<URL>) as! T?
-      default:
-        return object(forKey: key)
-      }
-    }
-    set {
-      switch T.self {
-      case is Bool.Type:
-        set(bool: newValue as? Bool, forKey: key as! Key<Bool>)
-      case is Int.Type:
-        set(integer: newValue as? Int, forKey: key as! Key<Int>)
-      case is Data.Type:
-        set(data: newValue as? Data, forKey: key as! Key<Data>)
-      case is Date.Type:
-        set(date: newValue as? Date, forKey: key as! Key<Date>)
-      case is Double.Type:
-        set(double: newValue as? Double, forKey: key as! Key<Double>)
-      case is Float.Type:
-        set(float: newValue as? Float, forKey: key as! Key<Float>)
-      case is NSNumber.Type:
-        set(number: newValue as? NSNumber, forKey: key as! Key<NSNumber>)
-      case is String.Type:
-         set(string: newValue as? String, forKey: key as! Key<String>)
-      case is URL.Type:
-         set(url: newValue as? URL, forKey: key as! Key<URL>)
-      default:
-        set(object: newValue, forKey: key)
-      }
-    }
-    // swiftlint:enable force_cast
+    get { return object(forKey: key) }
+    set { set(object: newValue, forKey: key) }
   }
 
   /// **Mechanica**
@@ -124,10 +77,10 @@ extension UserDefaults {
   /// Accesses the `String` associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-//    public final subscript(key: Key<String>) -> String? {
-//      get { return string(forKey: key) }
-//      set { set(object: newValue, forKey: key) }
-//    }
+  public final subscript(key: Key<String>) -> String? {
+    get { return string(forKey: key) }
+    set { set(object: newValue, forKey: key) }
+  }
 
   /// **Mechanica**
   ///
@@ -148,13 +101,13 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Accesses the `NSNumber` associated with the given key for reading and writing.
-  /// - Parameter key: The key to find.
+  /// - Parameter key: The key to  find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-    public final subscript(key: Key<NSNumber>) -> NSNumber? {
-      get { return object(forKey: key) }
-      set { set(object: newValue, forKey: key) }
-    }
-  
+  public final subscript(key: Key<NSNumber>) -> NSNumber? {
+    get { return object(forKey: key) }
+    set { set(object: newValue, forKey: key) }
+  }
+
   /// **Mechanica**
   ///
   /// Returns the `NSNumber` associated with the specified key, or nil if the key was not found.
@@ -232,10 +185,10 @@ extension UserDefaults {
   /// Accesses the `Date` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-//    public final subscript(key: Key<Date>) -> Date? {
-//      get { return object(forKey: key.value) as? Date }
-//      set { set(object: newValue, forKey: key) }
-//    }
+  public final subscript(key: Key<Date>) -> Date? {
+    get { return object(forKey: key.value) as? Date }
+    set { set(object: newValue, forKey: key) }
+  }
 
   /// **Mechanica**
   ///
@@ -258,10 +211,10 @@ extension UserDefaults {
   /// Accesses the `Data` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-  //  public final subscript(key: Key<Data>) -> Data? {
-  //    get { return data(forKey: key.value) }
-  //    set { set(object: newValue, forKey: key) }
-  //  }
+  public final subscript(key: Key<Data>) -> Data? {
+    get { return data(forKey: key.value) }
+    set { set(object: newValue, forKey: key) }
+  }
 
   /// **Mechanica**
   ///
@@ -284,10 +237,10 @@ extension UserDefaults {
   /// Accesses the `Int` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-  //  public final subscript(key: Key<Int>) -> Int? {
-  //    get { return integer(forKey: key) }
-  //    set { set(object: newValue, forKey: key) }
-  //  }
+  public final subscript(key: Key<Int>) -> Int? {
+    get { return integer(forKey: key) }
+    set { set(object: newValue, forKey: key) }
+  }
 
   /// **Mechanica**
   ///
@@ -310,10 +263,10 @@ extension UserDefaults {
   /// Accesses the `Double` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-//  public final subscript(key: Key<Double>) -> Double? {
-//    get { return double(forKey: key) }
-//    set { set(object: newValue, forKey: key) }
-//  }
+  public final subscript(key: Key<Double>) -> Double? {
+    get { return double(forKey: key) }
+    set { set(object: newValue, forKey: key) }
+  }
 
   /// **Mechanica**
   ///
@@ -336,10 +289,10 @@ extension UserDefaults {
   /// Accesses the `Flaoting-Point` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-  //  public final subscript(key: Key<Float>) -> Float? {
-  //    get { return float(forKey: key) }
-  //    set { set(object: newValue, forKey: key) }
-  //  }
+  public final subscript(key: Key<Float>) -> Float? {
+    get { return float(forKey: key) }
+    set { set(object: newValue, forKey: key) }
+  }
 
   /// **Mechanica**
   ///
@@ -362,10 +315,10 @@ extension UserDefaults {
   /// Accesses the `Bool` value associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-//  public final subscript(key: Key<Bool>) -> Bool? {
-//    get { return bool(forKey: key) }
-//    set { set(object: newValue, forKey: key) }
-//  }
+  public final subscript(key: Key<Bool>) -> Bool? {
+    get { return bool(forKey: key) }
+    set { set(object: newValue, forKey: key) }
+  }
 
   /// **Mechanica**
   ///
@@ -388,10 +341,10 @@ extension UserDefaults {
   /// Accesses the `URL` instance associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-  //  public final subscript(key: Key<URL>) -> URL? {
-  //    get { return url(forKey: key.value) }
-  //    set { set(url: newValue, forKey: key) }
-  //  }
+  public final subscript(key: Key<URL>) -> URL? {
+    get { return url(forKey: key.value) }
+    set { set(url: newValue, forKey: key) }
+  }
 
   /// **Mechanica**
   ///
@@ -411,26 +364,33 @@ extension UserDefaults {
     }
   }
 
-  // MARK: NSCoding
-  
-  // TODO: test
-  public final subscript<T: NSCoding>(key: Key<T>) -> T? {
-    get { return archivableValue(forKey: key) }
-    set { set(archivableValue: newValue, forKey: key) }
+  // MARK: Codable
+
+  /// **Mechanica**
+  ///
+  /// Accesses the instance conforming to `Codable` protocol associated with the given key for reading and writing.
+  /// - Parameter key: The key to find.
+  /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
+  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
+  public final subscript<T: Codable>(key: Key<T>) -> T? {
+    get { return codableValue(forKey: key) }
+    set { set(codableValue: newValue, forKey: key) }
   }
 
   /// **Mechanica**
   ///
-  /// Returns the object conformig to `NSCoding` associated with the specified key, or nil if the key was not found.
-  public final func archivableValue<T: NSCoding>(forKey key: Key<T>) -> T? {
-    return archivableValue(forKey: key.value)
+  /// Returns the object conformig to `Codable` associated with the specified key, or nil if the key was not found.
+  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
+  public final func codableValue<T: Codable>(forKey key: Key<T>) -> T? {
+    return codableValue(forKey: key.value)
   }
 
   /// **Mechanica**
   ///
-  /// Stores an object conformig to `NSCoding` (or removes the value if nil is passed as the value) for the provided key.
-  public final func set<T: NSCoding>(archivableValue value: T?, forKey key: Key<T>) {
-    set(archivableValue: value, forKey: key.value)
+  /// Stores an object conformig to `Codable` (or removes the value if nil is passed as the value) for the provided key.
+  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
+  public final func set<T: Codable>(codableValue value: T?, forKey key: Key<T>) {
+    set(codableValue: value, forKey: key.value)
   }
 
 }

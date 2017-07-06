@@ -84,22 +84,34 @@ public extension UserDefaults {
 
 extension UserDefaults {
 
+  // MARK: Codable
+
   /// **Mechanica**
   ///
-  /// Returns the object conformig to `NSCoding` associated with the specified key, or nil if the key was not found.
-  public final func archivableValue<T: NSCoding>(forKey key: String) -> T? {
-    return data(forKey: key).flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) } as? T
+  /// Returns the object conformig to `Codable` associated with the specified key, or nil if the key was not found.
+  ///
+  /// - Parameter defaultName: A key in the current user's defaults database.
+  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
+  public final func codableValue<T: Codable>(forKey defaultName: String) -> T? {
+    guard let encodedData = data(forKey: defaultName) else { return nil }
+    return try? PropertyListDecoder().decode(T.self, from: encodedData)
   }
 
   /// **Mechanica**
   ///
-  /// Stores an object conformig to `NSCoding` (or removes the value if nil is passed as the value) for the provided key.
-  public final func set<T: NSCoding>(archivableValue value: T?, forKey key: String) {
+  ///  /// Stores an object conformig to `Codable` (or removes the value if nil is passed as the value) for the provided key.
+  ///
+  /// - Parameters:
+  ///   - value: The object to store in the defaults database.
+  ///   - defaultName: The key with which to associate with the value.
+  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
+  public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String) {
     if let value = value {
-      let data = NSKeyedArchiver.archivedData(withRootObject: value)
-      set(data, forKey: key)
+      let encodedData = try! PropertyListEncoder().encode(value)
+      set(encodedData, forKey: defaultName)
     } else {
-      removeObject(forKey: key)
+      removeObject(forKey: defaultName)
     }
   }
+
 }
