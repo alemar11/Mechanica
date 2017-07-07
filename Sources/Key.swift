@@ -57,9 +57,9 @@ public enum Key<T>: CustomStringConvertible {
   /// - Parameters:
   ///   - string: key or key path value.
   ///   - namespace: optional namespace for the key to avoid collision with other keys with the same value defined in other libraries.
-  public init(_ string: String, namespace: String? = nil) {
-    if let namespace = namespace {
-      self = .namespaced(string, namespace: namespace)
+  public init(_ string: String, namespace: String...) {
+    if namespace.count > 0 {
+      self = .namespaced(string, namespace:  namespace.joined(separator: "."))
     } else {
       self = .simple(string)
     }

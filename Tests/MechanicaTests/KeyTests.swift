@@ -27,20 +27,42 @@ import XCTest
 
 
 class KeyTests: XCTestCase {
-
+  
   typealias stringKey = Key<String>
-
+  
   func testSimple() {
     let key = stringKey("test")
     XCTAssertEqual(key.value, "test")
   }
-
+  
   func testNamespace() {
-    let key = stringKey("test")
-    let key2 = stringKey("test", namespace: "namespace")
-    XCTAssertEqual(key.value, "test")
-    XCTAssertEqual(key2.value, "namespace.test")
-    XCTAssertNotEqual(key.value, key2.value)
+    do {
+      //  Given, When
+      let key = stringKey("test")
+      let key2 = stringKey("test", namespace: "namespace")
+      //  Then
+      XCTAssertEqual(key.value, "test")
+      XCTAssertEqual(key2.value, "namespace.test")
+      XCTAssertNotEqual(key.value, key2.value)
+    }
+    do {
+      //  Given, When
+      let key = stringKey("test")
+      let key2 = stringKey("test", namespace: "namespace1.namespace2")
+      //  Then
+      XCTAssertEqual(key.value, "test")
+      XCTAssertEqual(key2.value, "namespace1.namespace2.test")
+      XCTAssertNotEqual(key.value, key2.value)
+    }
+    do {
+      //  Given, When
+      let key = stringKey("test")
+      let key2 = stringKey("test", namespace: "namespace1", "namespace2")
+      //  Then
+      XCTAssertEqual(key.value, "test")
+      XCTAssertEqual(key2.value, "namespace1.namespace2.test")
+      XCTAssertNotEqual(key.value, key2.value)
+    }
   }
-
+  
 }
