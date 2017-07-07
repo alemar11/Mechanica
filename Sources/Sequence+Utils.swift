@@ -63,18 +63,17 @@ extension Sequence {
   ///
   /// - Parameter criteria: The criteria closure takes an `Iterator.Element` and returns its classification.
   /// - Returns: Returns a grouped dictionary with the keys that the criteria function returns.
-  @available(*, deprecated, message: "Use Dictionary(grouping:by:) instead.")
   public func grouped<Key>(by criteria: (Iterator.Element) -> (Key)) -> [Key : [Iterator.Element]] {
-    var dictionary: [Key : [Iterator.Element]] = [:]
-    for element in self {
-      let key = criteria(element)
-      var array = dictionary.removeValue(forKey: key) ?? []
-      array.append(element)
-      dictionary.updateValue(array, forKey: key)
-    }
-    // swift 4
-    //dictionary =  Dictionary(grouping: self, by: { return criteria($0) })
-    return dictionary
+//    var dictionary: [Key : [Iterator.Element]] = [:]
+//    for element in self {
+//      let key = criteria(element)
+//      var array = dictionary.removeValue(forKey: key) ?? []
+//      array.append(element)
+//      dictionary.updateValue(array, forKey: key)
+//    }
+//    return dictionary
+    // Swift 4
+    return Dictionary(grouping: self, by: { return criteria($0) })
   }
 
   /// **Mechanica**
