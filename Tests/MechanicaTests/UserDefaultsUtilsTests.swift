@@ -649,20 +649,39 @@ class UserDefaultsUtilsTests: XCTestCase {
   // MARK: - NSCoding
 
   func testNSCoding() {
-    //  Given
-    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
-    let key = Key<Data>("myPerson")
-    let archivedValue = NSKeyedArchiver.archivedData(withRootObject: value)
-    //  When
-    userDefaults[key] = archivedValue
-    //  Then
-    if
-      let data =  userDefaults[key],
-      let unarchivedValue = NSKeyedUnarchiver.unarchiveObject(with: data) as? Person
-    {
-      XCTAssertTrue(unarchivedValue == value)
-    } else {
-      XCTAssertNotNil(userDefaults[key])
+    do {
+      //  Given
+      let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
+      let key = Key<Data>("myPerson")
+      let archivedValue = NSKeyedArchiver.archivedData(withRootObject: value)
+      //  When
+      userDefaults[key] = archivedValue
+      //  Then
+      if
+        let data =  userDefaults[key],
+        let unarchivedValue = NSKeyedUnarchiver.unarchiveObject(with: data) as? Person
+      {
+        XCTAssertTrue(unarchivedValue == value)
+      } else {
+        XCTAssertNotNil(userDefaults[key])
+      }
+    }
+    do {
+      //  Given
+      let value = UserDefaultsUtilsTests.SecurePerson(firstname: "name1", surname: "surname1")
+      let key = Key<Data>("myPerson")
+      let archivedValue = NSKeyedArchiver.archivedData(withRootObject: value)
+      //  When
+      userDefaults[key] = archivedValue
+      //  Then
+      if
+        let data =  userDefaults[key],
+        let unarchivedValue = NSKeyedUnarchiver.unarchiveObject(with: data) as? SecurePerson
+      {
+        XCTAssertTrue(unarchivedValue == value)
+      } else {
+        XCTAssertNotNil(userDefaults[key])
+      }
     }
   }
 
@@ -707,50 +726,6 @@ class UserDefaultsUtilsTests: XCTestCase {
     }
   }
 
-  func testArchiviable() {
-    do {
-    // Given
-    let value = UserDefaultsUtilsTests.SecurePerson(firstname: "name1", surname: "surname1")
-    let value2 = UserDefaultsUtilsTests.SecurePerson(firstname: "name2", surname: "surname2")
-    let key = Key<UserDefaultsUtilsTests.SecurePerson>("mySecurePerson")
-//    userDefaults.set(archivableValue: value, forKey: "Ciao")
-//    let valueArchived: SecurePerson? = userDefaults.archivableValue(forKey: "Ciao")
-//    XCTAssertTrue(value == valueArchived!)
-      //  When
-      userDefaults.set(archivableValue: value, forKey: key)
-      //  Then
-      if let codedValue = userDefaults.archivableValue(forKey: key) {
-        XCTAssertTrue(codedValue == value)
-      } else {
-        XCTAssertNotNil(userDefaults.archivableValue(forKey: key))
-      }
-      //  When
-      userDefaults[key] = value2
-      //  Then
-      XCTAssertTrue(userDefaults.hasKey(key))
-      if let codedValue = userDefaults.archivableValue(forKey: key) {
-        XCTAssertTrue(codedValue == value2)
-      } else {
-        XCTAssertNotNil(userDefaults.archivableValue(forKey: key))
-      }
-      if let codedValue = userDefaults[key] {
-        XCTAssertTrue(codedValue == value2)
-      } else {
-        XCTAssertNotNil(userDefaults[key])
-      }
-      // When
-      userDefaults.set(archivableValue: nil, forKey: key)
-      // Then
-      XCTAssertFalse(userDefaults.hasKey(key))
-      // When
-      userDefaults.set(archivableValue: value, forKey: key)
-      userDefaults[key] = nil
-      // Then
-      XCTAssertFalse(userDefaults.hasKey(key))
-
-    }
-  }
-
 }
 
 // MARK: - UserDefaultsUtilsTests Namespace
@@ -782,9 +757,10 @@ extension UserDefaultsUtilsTests {
     static func == (left: Person, right: Person) -> Bool {
       return left.firstname == right.firstname && left.surname == right.surname
     }
+
   }
 
-  class SecurePerson: NSObject, UserDefaultsArchiviable, NSSecureCoding {
+  class SecurePerson: NSObject, NSSecureCoding, Codable {
 
     static var supportsSecureCoding = true
 
@@ -802,9 +778,9 @@ extension UserDefaultsUtilsTests {
     required init?(coder aDecoder: NSCoder) {
 
       guard
-      let firstnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(Person.firstname))), let surnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(Person.surname)))
-      else {
-        return nil
+        let firstnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(Person.firstname))), let surnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(Person.surname)))
+        else {
+          return nil
       }
 
       self.firstname = firstnameDecoded as String
@@ -819,6 +795,7 @@ extension UserDefaultsUtilsTests {
     static func == (left: SecurePerson, right: SecurePerson) -> Bool {
       return left.firstname == right.firstname && left.surname == right.surname
     }
+    
   }
 
 }
