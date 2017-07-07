@@ -364,7 +364,7 @@ extension UserDefaults {
     }
   }
 
-  // MARK: Codable
+  // MARK: -Codable
 
   /// **Mechanica**
   ///
@@ -393,9 +393,36 @@ extension UserDefaults {
     set(codableValue: value, forKey: key.value)
   }
 
+  // MARK: - UserDefaultsArchiviable
+
+  /// **Mechanica**
+  ///
+  /// Accesses the instance conforming to `UserDefaultsArchiviable` protocol associated with the given key for reading and writing.
+  /// - Parameter key: The key to find.
+  /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
+  public final subscript<T: UserDefaultsArchiviable>(key: Key<T>) -> T? {
+    get { return archivableValue(forKey: key) }
+    set { set(archivableValue: newValue, forKey: key) }
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns the object conformig to `UserDefaultsArchiviable` associated with the specified key, or nil if the key was not found.
+  public final func archivableValue<T: UserDefaultsArchiviable>(forKey key: Key<T>) -> T? {
+    return archivableValue(forKey: key.value)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Stores an object conformig to `UserDefaultsArchiviable` (or removes the value if nil is passed as the value) for the provided key.
+  public final func set<T: UserDefaultsArchiviable>(archivableValue value: T?, forKey key: Key<T>) {
+    set(archivableValue: value, forKey: key.value)
+  }
+  
+
 }
 
-// MARK: RawRepresentable
+// MARK: -RawRepresentable
 
 //extension UserDefaults {
 //

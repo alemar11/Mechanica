@@ -27,14 +27,14 @@ import XCTest
 
 
 class KeyTests: XCTestCase {
-  
+
   typealias stringKey = Key<String>
-  
+
   func testSimple() {
     let key = stringKey("test")
     XCTAssertEqual(key.value, "test")
   }
-  
+
   func testNamespace() {
     do {
       //  Given, When
@@ -64,5 +64,5 @@ class KeyTests: XCTestCase {
       XCTAssertNotEqual(key.value, key2.value)
     }
   }
-  
+
 }

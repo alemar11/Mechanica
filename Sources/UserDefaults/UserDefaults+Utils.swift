@@ -115,3 +115,30 @@ extension UserDefaults {
   }
 
 }
+
+// MARK: UserDefaultsArchiviable
+
+public protocol UserDefaultsArchiviable: NSCoding {}
+
+extension UserDefaults {
+
+  /// **Mechanica**
+  ///
+  /// Returns the object conformig to `UserDefaultsArchiviable` associated with the specified key, or nil if the key was not found.
+  public final func archivableValue<T: UserDefaultsArchiviable>(forKey key: String) -> T? {
+    return data(forKey: key).flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) } as? T
+  }
+
+  /// **Mechanica**
+  ///
+  /// Stores an object conformig to `UserDefaultsArchiviable` (or removes the value if nil is passed as the value) for the provided key.
+  public final func set<T: UserDefaultsArchiviable>(archivableValue value: T?, forKey key: String) {
+    if let value = value {
+      let data = NSKeyedArchiver.archivedData(withRootObject: value)
+      set(data, forKey: key)
+    } else {
+      removeObject(forKey: key)
+    }
+  }
+
+}
