@@ -1,4 +1,3 @@
-language: objective-c
 env:
   global:
   - LC_CTYPE=en_US.UTF-8
@@ -14,7 +13,7 @@ env:
   include:
     - os: osx
       osx_image: xcode8.3
-      osx_image: xcode8.3
+      language: objective-c
       - IOS_SDK=iphonesimulator10.3
       - MACOS_SDK=macosx10.12
       - TVOS_SDK=appletvsimulator10.2
@@ -25,43 +24,43 @@ env:
       # - DESTINATION="OS=10.2,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="tvos"
       # - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="$MACOS_SDK"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos"
 
-      # skip release group defined in Gemfile
-      bundler_args: --without release
+# skip release group defined in Gemfile
+bundler_args: --without release
 
-      before_install:
-        - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
-        - brew install swiftlint
-        # fix for watchOS until https://github.com/travis-ci/travis-ci/issues/7580 is fixed
-        - xcrun simctl delete 38C891AB-EC79-43E4-9311-6FDEB12DCF11 || true
+before_install:
+  - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
+  - brew install swiftlint
+  # fix for watchOS until https://github.com/travis-ci/travis-ci/issues/7580 is fixed
+  - xcrun simctl delete 38C891AB-EC79-43E4-9311-6FDEB12DCF11 || true
 
-      before_script:
-        - swiftlint --reporter "emoji"
+before_script:
+  - swiftlint --reporter "emoji"
 
-      script:
-        - set -o pipefail
-        - xcodebuild -version
-        - xcodebuild -showsdks
-        - swift --version
+script:
+  - set -o pipefail
+  - xcodebuild -version
+  - xcodebuild -showsdks
+  - swift --version
 
-        # Build Framework in Debug and Run Tests if specified
-        - if [ $RUN_TESTS == "YES" ]; then
-            xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
-            bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG"
-          else
-            xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
-          fi
+  # Build Framework in Debug and Run Tests if specified
+  - if [ $RUN_TESTS == "YES" ]; then
+      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
+      bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG"
+    else
+      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
+    fi
 
-        # Build Framework in Release and Run Tests if specified
-        - if [ $RUN_TESTS == "YES" ]; then
-            xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
-          else
-            xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
-          fi
+  # Build Framework in Release and Run Tests if specified
+  - if [ $RUN_TESTS == "YES" ]; then
+      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
+    else
+      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
+    fi
 
-        # Run `pod lib lint` if specified
-        - if [ $POD_LINT == "YES" ]; then
-            pod lib lint;
-          fi
+  # Run `pod lib lint` if specified
+  - if [ $POD_LINT == "YES" ]; then
+      pod lib lint;
+    fi
 
-      after_success:
-        - sleep 5
+after_success:
+  - sleep 5
