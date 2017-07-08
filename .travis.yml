@@ -26,7 +26,9 @@ env:
 
     # - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="$MACOS_SDK"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos"
 
-    - DESTINATION="OS=11.0,name=iPhone 7 Plus"    SCHEME="$IOS_FRAMEWORK_SCHEME"  SDK="iphonesimulator11.0" RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="YES"   CODECOV_FLAG="ios"
+    #TOOD: enable pod lint in the future
+    - DESTINATION="OS=11.0,name=iPhone 7 Plus"    SCHEME="$IOS_FRAMEWORK_SCHEME"  SDK="iphonesimulator11.0" RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"   CODECOV_FLAG="ios"
+    - DESTINATION="arch=x86_64"                   SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="macosx10.13"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos"
 # skip release group defined in Gemfile
 bundler_args: --without release
 
@@ -61,9 +63,9 @@ script:
     fi
 
   # Run `pod lib lint` if specified
-  # - if [ $POD_LINT == "YES" ]; then
-  #     pod lib lint;
-  #   fi
+  - if [ $POD_LINT == "YES" ]; then
+      pod lib lint;
+    fi
 
 after_success:
   - sleep 5
