@@ -30,15 +30,22 @@ matrix:
     - osx_image: xcode9
       #xcode_sdk: macosx10.13
       env: DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"    SDK="macosx10.13"           RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos"
-    # - osx_image: xcode7.3
-    #   xcode_sdk: iphonesimulator9.3
-    #   env: DESTINATION="OS=8.2,name=iPhone 5"
-    # - osx_image: xcode7.3
-    #   xcode_sdk: iphonesimulator9.3
-    #   env: DESTINATION="OS=8.3,name=iPhone 5S"
-    # - osx_image: xcode7.3
-    #   xcode_sdk: iphonesimulator9.3
-    #   env: DESTINATION="OS=8.4,name=iPhone 6"
+    # For now, continue testing with Xcode 8.3 and Swift 3.1
+    - osx_image: xcode8.3
+      #xcode_sdk: iphonesimulator10.3
+      env: DESTINATION="OS=10.3.1,name=iPhone 7 Plus"    SCHEME="$IOS_FRAMEWORK_SCHEME"      SDK="iphonesimulator10.3"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="YES"   CODECOV_FLAG="ios"
+    - osx_image: xcode8.3
+      #xcode_sdk: iphonesimulator10.3
+      env: DESTINATION="S=10.3.1,name=iPhone 5"          SCHEME="$IOS_FRAMEWORK_SCHEME"      SDK="iphonesimulator10.3"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="YES"   CODECOV_FLAG="ios"
+    - osx_image: xcode8.3
+      #xcode_sdk: watchsimulator3.2
+      env: DESTINATION="OS=3.2,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  SDK="watchsimulator3.2"     RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="watchos"
+    - osx_image: xcode8.3
+      #xcode_sdk: appletvsimulator10.2
+      env: DESTINATION="OS=11.0,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"     SDK="appletvsimulator10.2"  RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="tvos"
+    - osx_image: xcode8.3
+      #xcode_sdk: macosx10.12
+      env: DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"    SDK="macosx10.12"           RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos"
 
   #matrix:
     # - DESTINATION="OS=3.2,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="watchos"
