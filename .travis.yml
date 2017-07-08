@@ -69,6 +69,8 @@ before_script:
 
 script:
   - set -o pipefail
+  # The xcrun with devices here will print out a list of available devices you can snag the UDIDs for
+  - xcrun instruments -s devices
   - xcodebuild -version
   - xcodebuild -showsdks
   - swift --version
