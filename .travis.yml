@@ -1,30 +1,30 @@
 language: objective-c
-osx_image: xcode9
+osx_image: xcode8.3
 env:
   global:
   - LC_CTYPE=en_US.UTF-8
   - LANG=en_US.UTF-8
   #- WORKSPACE=Mechanica.xcworkspace
-  - IOS_FRAMEWORK_SCHEME="Mechanica iOS"
-  - MACOS_FRAMEWORK_SCHEME="Mechanica macOS"
-  - TVOS_FRAMEWORK_SCHEME="Mechanica tvOS"
-  - WATCHOS_FRAMEWORK_SCHEME="Mechanica watchOS"
-  - IOS_SDK=iphonesimulator10.3
-  - MACOS_SDK=macosx10.12
-  - TVOS_SDK=appletvsimulator10.2
-  - WATCHOS_SDK=watchsimulator3.2
   #- EXAMPLE_SCHEME="Mechanica Example"
   
   matrix:
-    - DESTINATION="OS=3.2,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="watchos"
+  include:
+    - os: osx
+      osx_image: xcode8.3
+      - IOS_FRAMEWORK_SCHEME="Mechanica iOS"
+      - MACOS_FRAMEWORK_SCHEME="Mechanica macOS"
+      - TVOS_FRAMEWORK_SCHEME="Mechanica tvOS"
+      - WATCHOS_FRAMEWORK_SCHEME="Mechanica watchOS"
+      - IOS_SDK=iphonesimulator10.3
+      - MACOS_SDK=macosx10.12
+      - TVOS_SDK=appletvsimulator10.2
+      - WATCHOS_SDK=watchsimulator3.2
 
-    - DESTINATION="OS=10.3.1,name=iPhone 5"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="YES"   CODECOV_FLAG="ios-32bit"
-
-    - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"    SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="YES"   CODECOV_FLAG="ios"
-
-    - DESTINATION="OS=10.2,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="tvos"
-
-    - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="$MACOS_SDK"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos"
+      - DESTINATION="OS=3.2,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="watchos"
+      - DESTINATION="OS=10.3.1,name=iPhone 5"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="YES"   CODECOV_FLAG="ios-32bit"
+      - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"    SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="YES"   CODECOV_FLAG="ios"
+      - DESTINATION="OS=10.2,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="tvos"
+      - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="$MACOS_SDK"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos"
 
 # skip release group defined in Gemfile
 bundler_args: --without release
