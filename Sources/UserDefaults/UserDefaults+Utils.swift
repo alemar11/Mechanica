@@ -107,7 +107,9 @@ extension UserDefaults {
   @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
   public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String) {
     if let value = value {
+      // swiftlint:disable force_try
       let encodedData = try! PropertyListEncoder().encode(value)
+      // swiftlint:enable force_try
       set(encodedData, forKey: defaultName)
     } else {
       removeObject(forKey: defaultName)
@@ -115,4 +117,3 @@ extension UserDefaults {
   }
 
 }
-
