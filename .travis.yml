@@ -4,27 +4,28 @@ env:
   global:
   - LC_CTYPE=en_US.UTF-8
   - LANG=en_US.UTF-8
+  #- WORKSPACE=Mechanica.xcworkspace
   - IOS_FRAMEWORK_SCHEME="Mechanica iOS"
   - MACOS_FRAMEWORK_SCHEME="Mechanica macOS"
   - TVOS_FRAMEWORK_SCHEME="Mechanica tvOS"
   - WATCHOS_FRAMEWORK_SCHEME="Mechanica watchOS"
-  #- WORKSPACE=Mechanica.xcworkspace
+  - IOS_SDK=iphonesimulator11.0
+  - MACOS_SDK=macosx10.13
+  - TVOS_SDK=appletvsimulator11.0
+  - WATCHOS_SDK=watchsimulator4.0
   #- EXAMPLE_SCHEME="Mechanica Example"
   
-
-
-matrix:
-  - DESTINATION="OS=3.2,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="watchsimulator4.0"        RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="watchos3"
-  - DESTINATION="OS=10.3.1,name=iPhone 5"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="iphonesimulator11.0"      RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"   CODECOV_FLAG="ios10-32bit"
-  - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"    SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="iphonesimulator11.0"      RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"   CODECOV_FLAG="ios10"
-  - DESTINATION="OS=10.2,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="appletvsimulator11.0"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="tvos10"
-  - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="macosx10.13"              RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos10_12"
-
-  #TOOD: enable pod lint for iOS destination in the future
-  - DESTINATION="OS=11.0,name=iPhone 7 Plus"      SCHEME="$IOS_FRAMEWORK_SCHEME"      SDK="iphonesimulator11.0"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="ios"
-  - DESTINATION="OS=4.0,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  SDK="watchsimulator4.0"     RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="watchos"
-  - DESTINATION="OS=11.0,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"     SDK="appletvsimulator11.0"  RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="tvos"
-  - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"    SDK="macosx10.13"           RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos"
+  matrix:
+    - DESTINATION="OS=3.2,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="watchos3"
+    - DESTINATION="OS=10.3.1,name=iPhone 5"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"   CODECOV_FLAG="ios10-32bit"
+    - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"    SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"   CODECOV_FLAG="ios10"
+    - DESTINATION="OS=10.2,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="tvos10"
+    - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="$MACOS_SDK"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos10_12"
+    
+    - DESTINATION="OS=11.0,name=iPhone 7 Plus"      SCHEME="$IOS_FRAMEWORK_SCHEME"      SDK="iphonesimulator11.0"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="ios"
+    - DESTINATION="OS=4.0,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  SDK="watchsimulator4.0"     RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="watchos"
+    - DESTINATION="OS=11.0,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"     SDK="appletvsimulator11.0"  RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="tvos"
+    - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"    SDK="macosx10.13"           RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos"
 
 # skip release group defined in Gemfile
 bundler_args: --without release
@@ -40,21 +41,19 @@ before_script:
 
 script:
   - set -o pipefail
-  # The xcrun with devices here will print out a list of available devices you can snag the UDIDs for
-  - xcrun instruments -s devices
   - xcodebuild -version
   - xcodebuild -showsdks
   - swift --version
 
-  # Build Framework in DEBUG and Run Tests if specified
+  # Build Framework in Debug and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug -enableCodeCoverage YES ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
+      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
       bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG"
     else
       xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
     fi
 
-  # Build Framework in RELEASE and Run Tests if specified
+  # Build Framework in Release and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
       xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
     else
