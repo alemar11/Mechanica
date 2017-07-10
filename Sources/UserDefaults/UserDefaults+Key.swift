@@ -371,7 +371,6 @@ extension UserDefaults {
   /// Accesses the instance conforming to `Codable` protocol associated with the given key for reading and writing.
   /// - Parameter key: The key to find.
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
-  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
   public final subscript<T: Codable>(key: Key<T>) -> T? {
     get { return codableValue(forKey: key) }
     set { set(codableValue: newValue, forKey: key) }
@@ -380,7 +379,6 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Returns the object conformig to `Codable` associated with the specified key, or nil if the key was not found.
-  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
   public final func codableValue<T: Codable>(forKey key: Key<T>) -> T? {
     return codableValue(forKey: key.value)
   }
@@ -388,7 +386,6 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Stores an object conformig to `Codable` (or removes the value if nil is passed as the value) for the provided key.
-  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
   public final func set<T: Codable>(codableValue value: T?, forKey key: Key<T>) {
     set(codableValue: value, forKey: key.value)
   }

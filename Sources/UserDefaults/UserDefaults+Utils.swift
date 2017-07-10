@@ -91,7 +91,6 @@ extension UserDefaults {
   /// Returns the object conformig to `Codable` associated with the specified key, or nil if the key was not found.
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
-  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
   public final func codableValue<T: Codable>(forKey defaultName: String) -> T? {
     guard let encodedData = data(forKey: defaultName) else { return nil }
     return try? PropertyListDecoder().decode(T.self, from: encodedData)
@@ -104,7 +103,6 @@ extension UserDefaults {
   /// - Parameters:
   ///   - value: The object to store in the defaults database.
   ///   - defaultName: The key with which to associate with the value.
-  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
   public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String) {
     if let value = value {
       // swiftlint:disable force_try
