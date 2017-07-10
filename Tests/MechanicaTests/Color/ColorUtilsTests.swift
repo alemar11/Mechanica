@@ -148,9 +148,9 @@ class ColorUtilsTests: XCTestCase {
       let (r_p3, g_p3, b_p3, a_p3) = brownP3.rgba!
       let (r, g, b, a) = brownRGBA.rgba!
       // Then
-      XCTAssertEqualWithAccuracy(Double(r_p3) * 255, Double(r) * 255, accuracy: 1.0)
-      XCTAssertEqualWithAccuracy(Double(g_p3) * 255, Double(g) * 255, accuracy: 1.0)
-      XCTAssertEqualWithAccuracy(Double(b_p3) * 255, Double(b) * 255, accuracy: 1.0)
+      XCTAssertEqual(Double(r_p3) * 255, Double(r) * 255, accuracy: 1.0)
+      XCTAssertEqual(Double(g_p3) * 255, Double(g) * 255, accuracy: 1.0)
+      XCTAssertEqual(Double(b_p3) * 255, Double(b) * 255, accuracy: 1.0)
       XCTAssertTrue(a == a_p3)
     }
 
@@ -180,9 +180,9 @@ class ColorUtilsTests: XCTestCase {
       let (r_p3, g_p3, b_p3, a_p3) = wisteriaP3.rgba!
       let (r, g, b, a) = wisteriaRGBA.rgba!
       // Then
-      XCTAssertEqualWithAccuracy(Double(r_p3) * 255, Double(r) * 255, accuracy: 1.0)
-      XCTAssertEqualWithAccuracy(Double(g_p3) * 255, Double(g) * 255, accuracy: 1.0)
-      XCTAssertEqualWithAccuracy(Double(b_p3) * 255, Double(b) * 255, accuracy: 1.0)
+      XCTAssertEqual(Double(r_p3) * 255, Double(r) * 255, accuracy: 1.0)
+      XCTAssertEqual(Double(g_p3) * 255, Double(g) * 255, accuracy: 1.0)
+      XCTAssertEqual(Double(b_p3) * 255, Double(b) * 255, accuracy: 1.0)
       XCTAssertTrue(a == a_p3)
     }
 
@@ -263,8 +263,8 @@ class ColorUtilsTests: XCTestCase {
       let color = Color(hue: hsba!.hue, saturation: hsba!.saturation, brightness: hsba!.brightness, alpha: hsba!.alpha)
       let peterRiverRGBA = Color.Flat.peterRiver.rgba!
       let colorRGBA = color.rgba!
-      XCTAssertEqualWithAccuracy(Double(peterRiverRGBA.red) * 255, Double(colorRGBA.red) * 255, accuracy: 1.0)
-      XCTAssertEqualWithAccuracy(Double(peterRiverRGBA.green) * 255, Double(colorRGBA.green) * 255, accuracy: 1.0)
+      XCTAssertEqual(Double(peterRiverRGBA.red) * 255, Double(colorRGBA.red) * 255, accuracy: 1.0)
+      XCTAssertEqual(Double(peterRiverRGBA.green) * 255, Double(colorRGBA.green) * 255, accuracy: 1.0)
       XCTAssertTrue(peterRiverRGBA.blue * 255 == colorRGBA.blue * 255)
       XCTAssertTrue(peterRiverRGBA.alpha * 255 == colorRGBA.alpha * 255)
     }

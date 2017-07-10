@@ -732,6 +732,7 @@ class UserDefaultsUtilsTests: XCTestCase {
 
 extension UserDefaultsUtilsTests {
 
+  @objc(ObjCPerson)
   class Person: NSObject, NSCoding, Codable {
     @objc
     let surname: String
@@ -760,6 +761,7 @@ extension UserDefaultsUtilsTests {
 
   }
 
+  @objc(ObjCSecurePerspn)
   class SecurePerson: NSObject, NSSecureCoding, Codable {
 
     static var supportsSecureCoding = true
