@@ -4,7 +4,6 @@ env:
   global:
   - LC_CTYPE=en_US.UTF-8
   - LANG=en_US.UTF-8
-  #- WORKSPACE=Mechanica.xcworkspace
   - IOS_FRAMEWORK_SCHEME="Mechanica iOS"
   - MACOS_FRAMEWORK_SCHEME="Mechanica macOS"
   - TVOS_FRAMEWORK_SCHEME="Mechanica tvOS"
@@ -13,19 +12,20 @@ env:
   - MACOS_SDK=macosx10.13
   - TVOS_SDK=appletvsimulator11.0
   - WATCHOS_SDK=watchsimulator4.0
+  #- WORKSPACE=Mechanica.xcworkspace
   #- EXAMPLE_SCHEME="Mechanica Example"
   
   matrix:
-    - DESTINATION="OS=3.2,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="watchos3"
-    - DESTINATION="OS=10.3.1,name=iPhone 5"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"   CODECOV_FLAG="ios10-32bit"
-    - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"    SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"   CODECOV_FLAG="ios10"
-    - DESTINATION="OS=10.2,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="tvos10"
-    - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="$MACOS_SDK"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos10_12"
-    
-    - DESTINATION="OS=11.0,name=iPhone 7 Plus"      SCHEME="$IOS_FRAMEWORK_SCHEME"      SDK="iphonesimulator11.0"   RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="ios"
-    - DESTINATION="OS=4.0,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  SDK="watchsimulator4.0"     RUN_TESTS="NO"  BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="watchos"
-    - DESTINATION="OS=11.0,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"     SDK="appletvsimulator11.0"  RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="tvos"
-    - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"    SDK="macosx10.13"           RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"    CODECOV_FLAG="macos"
+    - DESTINATION="OS=10.3.1,name=iPhone 5"         SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"   POD_LINT="NO"   CODECOV_FLAG="ios10-32bit"
+    - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"    SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"   POD_LINT="NO"   CODECOV_FLAG="ios10"
+    - DESTINATION="OS=3.2,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"    POD_LINT="NO"   CODECOV_FLAG="watchos3"
+    - DESTINATION="OS=10.2,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="YES"   POD_LINT="NO"   CODECOV_FLAG="tvos10"
+    - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"   SDK="$MACOS_SDK"   RUN_TESTS="YES"   POD_LINT="NO"   CODECOV_FLAG="macos10_12"
+
+    - DESTINATION="OS=11.0,name=iPhone 7 Plus"      SCHEME="$IOS_FRAMEWORK_SCHEME"      SDK="$IOS_SDK"      RUN_TESTS="YES"   POD_LINT="NO"    CODECOV_FLAG="ios"
+    - DESTINATION="OS=4.0,name=Apple Watch - 42mm"  SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  SDK="$WATCHOS_SDK"  RUN_TESTS="NO"    POD_LINT="NO"    CODECOV_FLAG="watchos"
+    - DESTINATION="OS=11.0,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"     SDK="$TVOS_SDK"     RUN_TESTS="YES"   POD_LINT="NO"    CODECOV_FLAG="tvos"
+    - DESTINATION="arch=x86_64"                     SCHEME="$MACOS_FRAMEWORK_SCHEME"    SDK="$MACOS_SDK"    RUN_TESTS="YES"   POD_LINT="NO"    CODECOV_FLAG="macos"
 
 # skip release group defined in Gemfile
 bundler_args: --without release
