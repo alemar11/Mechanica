@@ -116,6 +116,9 @@
 		235DCB911E89B40F006AFEBE /* UnsignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8F1E89B40F006AFEBE /* UnsignedInteger+Utils.swift */; };
 		235DCB921E89B40F006AFEBE /* UnsignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8F1E89B40F006AFEBE /* UnsignedInteger+Utils.swift */; };
 		235DCB931E89B40F006AFEBE /* UnsignedInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8F1E89B40F006AFEBE /* UnsignedInteger+Utils.swift */; };
+		236D5C551F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D5C541F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift */; };
+		236D5C561F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D5C541F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift */; };
+		236D5C571F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D5C541F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift */; };
 		237274BF1E7C41790017B127 /* BinaryInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */; };
 		237274C01E7C41790017B127 /* BinaryInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */; };
 		237274C11E7C41790017B127 /* BinaryInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */; };
@@ -491,6 +494,7 @@
 		235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryConvertible.swift; sourceTree = "<group>"; };
 		235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BinaryFloatingPoint+Utils.swift"; sourceTree = "<group>"; };
 		235DCB8F1E89B40F006AFEBE /* UnsignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UnsignedInteger+Utils.swift"; sourceTree = "<group>"; };
+		236D5C541F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectUtilsTests.swift; sourceTree = "<group>"; };
 		237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BinaryInteger+Utils.swift"; sourceTree = "<group>"; };
 		237CED451EE209360074E141 /* iOS_ViewNibIdentifiable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iOS_ViewNibIdentifiable.xib; sourceTree = "<group>"; };
 		237F17361E90000800726553 /* AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTests.swift; sourceTree = "<group>"; };
@@ -950,6 +954,7 @@
 				2340B7FC1EFC50C70017E423 /* NSManagedObjectContextCacheTests.swift */,
 				23C8BFD81EFC6D0100ED2BE0 /* CoreDataStack.swift */,
 				234EF3391F064A1300345DD4 /* NSFetchRequestUtilsTests.swift */,
+				236D5C541F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift */,
 			);
 			path = CoreDataTests;
 			sourceTree = "<group>";
@@ -1601,6 +1606,7 @@
 				237F17681E90000900726553 /* BoolUtilsTests.swift in Sources */,
 				237F17B31E90000900726553 /* RangeReplaceableCollectionUtilsTests.swift in Sources */,
 				237F178C1E90000900726553 /* BinaryIntegerUtilsTests.swift in Sources */,
+				236D5C551F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift in Sources */,
 				23F3F6FB1E9651AB002DAC89 /* KeyTests.swift in Sources */,
 				237F17C21E90000900726553 /* StringNSStringTests.swift in Sources */,
 				23F6A1681EC8DF6500D20502 /* AnyUtilsTests.swift in Sources */,
@@ -1636,6 +1642,7 @@
 				23D926C51EFA67E900629E17 /* DemoModel.xcdatamodeld in Sources */,
 				23C27C391E9E5BAB006C235E /* UserDefaultsUtilsTests.swift in Sources */,
 				237F17A51E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
+				236D5C561F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift in Sources */,
 				237F17CC1E90000900726553 /* StringValidationTests.swift in Sources */,
 				237F17C01E90000900726553 /* StringConversionsTests.swift in Sources */,
 				237F17B71E90000900726553 /* SequenceUtilsTests.swift in Sources */,
@@ -1690,6 +1697,7 @@
 				23D926C61EFA67E900629E17 /* DemoModel.xcdatamodeld in Sources */,
 				23C27C3A1E9E5BAB006C235E /* UserDefaultsUtilsTests.swift in Sources */,
 				237F17A61E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
+				236D5C571F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift in Sources */,
 				237F17CD1E90000900726553 /* StringValidationTests.swift in Sources */,
 				237F17C11E90000900726553 /* StringConversionsTests.swift in Sources */,
 				237F17B81E90000900726553 /* SequenceUtilsTests.swift in Sources */,
