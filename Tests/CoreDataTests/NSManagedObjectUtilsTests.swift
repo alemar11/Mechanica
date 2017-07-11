@@ -82,33 +82,62 @@ class NSManagedObjectUtilsTests: XCTestCase {
   }
 
 
-  func testChangedValue() {
+  func testChangedAndCommittedValue() {
     // Given
     let mainContext = NSManagedObjectUtilsTests.stack.mainContext
+    // https://cocoacasts.com/how-to-observe-a-managed-object-context/
+    // http://mentalfaculty.tumblr.com/post/65682908577/how-does-core-data-save
     do {
       // When
       let car = Car(context: mainContext)
       let person = Person(context: mainContext)
       XCTAssertNil(car.changedValue(forKey:  #keyPath(Car.numberPlate)))
       XCTAssertNil(car.changedValue(forKey:  #keyPath(Car.model)))
-      mainContext.performAndWait {
-        car.model = "MyModel"
-        car.numberPlate = "123456"
-        person.firstName = "CarOwner"
-        person.lastName = "Test"
-        car.owner = person
-      }
+      car.model = "MyModel"
+      car.numberPlate = "123456"
+      person.firstName = "Alessandro"
+      person.lastName = "Marzoli"
+      car.owner = person
       // Then
-      let numberPlateChanged = car.changedValue(forKey: #keyPath(Car.numberPlate))
-      let modelChanged = car.changedValue(forKey: #keyPath(Car.model))
-      XCTAssertNotNil(numberPlateChanged as? String)
-      XCTAssertNotNil(modelChanged as? String)
-      XCTAssertEqual(numberPlateChanged as! String, "123456")
+      XCTAssertNotNil(car.changedValue(forKey: #keyPath(Car.numberPlate)) as? String)
+      XCTAssertNotNil(car.changedValue(forKey: #keyPath(Car.model)) as? String)
+      XCTAssertEqual(car.changedValue(forKey: #keyPath(Car.numberPlate)) as! String, "123456")
+      //XCTAssertEqual(person.changedValue(forKey: (#keyPath(Person.firstName))), "Alessandro")
+
+      XCTAssertNil(car.committedValue(forKey: #keyPath(Car.numberPlate)))
+      XCTAssertNil(car.committedValue(forKey: #keyPath(Car.model)))
+
+      // When
+      try! mainContext.save()
+      XCTAssertNotNil(car.committedValue(forKey: #keyPath(Car.numberPlate)))
+      XCTAssertNotNil(car.committedValue(forKey: #keyPath(Car.model)))
+       XCTAssertEqual(car.committedValue(forKey: #keyPath(Car.numberPlate)) as! String, "123456")
+      XCTAssertEqual(car.committedValue(forKey: #keyPath(Car.numberPlate)) as! String, "123456")
+      XCTAssertEqual(car.committedValue(forKey: #keyPath(Car.model)) as! String, "MyModel")
+      //XCTAssertEqual(car.committedValue(forKey: #keyPath(Car.owner.firstName)) as! String, "MyModel")
+      // Then
+      XCTAssertNil(car.changedValue(forKey: #keyPath(Car.numberPlate)))
+      XCTAssertNil(car.changedValue(forKey: #keyPath(Car.model)))
+
+      // When
       car.numberPlate = "101"
+      // Then
       XCTAssertEqual(car.changedValue(forKey: #keyPath(Car.numberPlate)) as! String, "101")
-      mainContext.performAndWait { car.numberPlate = "202" }
-      XCTAssertNotNil(numberPlateChanged as? String)
+      XCTAssertNotNil(car.committedValue(forKey: #keyPath(Car.numberPlate)))
+
+      // When
+      car.numberPlate = "202"
+      // Then
       XCTAssertEqual(car.changedValue(forKey: #keyPath(Car.numberPlate)) as! String, "202")
+      XCTAssertNotNil(car.committedValue(forKey: #keyPath(Car.numberPlate)))
+
+      // When
+      try! mainContext.save()
+      // Then
+      XCTAssertNil(car.changedValue(forKey: #keyPath(Car.numberPlate)))
+      XCTAssertNotNil(car.committedValue(forKey: #keyPath(Car.numberPlate)))
+
+
 
       //let backgroundContext = mainContext.newBackgroundContext(asChildContext: true)
 
@@ -123,7 +152,7 @@ class NSManagedObjectUtilsTests: XCTestCase {
         //TODO
         print(fetchedCar.committedValues(forKeys: nil))
         print(fetchedCar.committedValues(forKeys: [#keyPath(Car.numberPlate)]))
-        print(fetchedCar.changedValue(forKey: #keyPath(Car.numberPlate)))
+        //print(fetchedCar.changedValue(forKey: #keyPath(Car.numberPlate)))
       } else {
         XCTFail("No cars found for request: \(request.description)")
       }
