@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13154.30" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Car" representedClassName=".Car" syncable="YES" codeGenerationType="class">
         <attribute name="maker" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numberPlate" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="cars" inverseEntity="Person" syncable="YES"/>
+        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="cars" inverseEntity="Person" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="numberPlate"/>
