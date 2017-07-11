@@ -137,7 +137,6 @@ extension NSManagedObjectContext {
       try save()
     } catch {
       rollback()
-      assert(false, error.localizedDescription)
       throw error
     }
   }
