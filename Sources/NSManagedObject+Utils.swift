@@ -41,14 +41,16 @@ extension NSManagedObject {
 
   /// **Mechanica**
   ///
-  /// Returns the value of a persistent property that has been changed since last fetching or saving operation.
+  /// Returns the value of a persistent property that has been changed since **last fetching** or **saving operation**.
+  /// - Note: This method only reports changes to properties that are defined as persistent properties of the receiver, not changes to transient properties or custom instance variables. 
   public final func changedValue(forKey key: String) -> Any? {
     return changedValues()[key]
   }
 
   /// **Mechanica**
   ///
-  /// Returns of the last fetched or saved value of the propery specified by the given key.
+  /// Returns of the **last fetched** or **saved** value of the propery specified by the given key.
+  /// - Note: This method only reports values of properties that are defined as persistent properties of the receiver, not values of transient properties or of custom instance variables.
   public final func committedValue(forKey key: String) -> Any? {
     return committedValues(forKeys: [key])[key]
   }
