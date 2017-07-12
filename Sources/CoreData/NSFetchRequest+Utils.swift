@@ -45,7 +45,7 @@ extension NSFetchRequest {
 
   //TODO: work in progress
   @objc
-  func addingAndPredicate(predicate: NSPredicate) {
+  func andPredicate(predicate: NSPredicate) {
     guard let currentPredicate = self.predicate else {
       self.predicate = predicate
       return
@@ -55,7 +55,7 @@ extension NSFetchRequest {
 
   //TODO: work in progress
   @objc
-  func addingOrPredicate(predicate: NSPredicate) {
+  func orPredicate(predicate: NSPredicate) {
     guard let currentPredicate = self.predicate else {
       self.predicate = predicate
       return
