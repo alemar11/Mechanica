@@ -45,7 +45,7 @@ extension NSFetchRequest {
 
   //TODO: work in progress
   @objc
-  func andPredicate(predicate: NSPredicate) {
+  public func andPredicate(_ predicate: NSPredicate) {
     guard let currentPredicate = self.predicate else {
       self.predicate = predicate
       return
@@ -55,7 +55,7 @@ extension NSFetchRequest {
 
   //TODO: work in progress
   @objc
-  func orPredicate(predicate: NSPredicate) {
+  public func orPredicate(_ predicate: NSPredicate) {
     guard let currentPredicate = self.predicate else {
       self.predicate = predicate
       return
@@ -65,7 +65,7 @@ extension NSFetchRequest {
 
   //TODO: work in progress
   @objc
-  func appendingSortDescriptors(descriptors: [NSSortDescriptor]) {
+  public func addSortDescriptors(_ descriptors: [NSSortDescriptor]) {
     if self.sortDescriptors != nil {
       self.sortDescriptors?.append(contentsOf: descriptors)
     } else {
@@ -73,4 +73,18 @@ extension NSFetchRequest {
     }
   }
 
+}
+
+extension NSPredicate {
+  //TODO: work in progress
+  @objc
+  public func andPredicate(_ predicate: NSPredicate) -> NSPredicate {
+    return NSCompoundPredicate(andPredicateWithSubpredicates: [self, predicate])
+  }
+
+  //TODO: work in progress
+  @objc
+  public func orPredicate(_ predicate: NSPredicate) -> NSPredicate {
+    return NSCompoundPredicate(orPredicateWithSubpredicates: [self, predicate])
+  }
 }
