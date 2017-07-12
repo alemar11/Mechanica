@@ -305,6 +305,10 @@
 		23EE2F4C1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
 		23EE2F4D1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
 		23EE2F4E1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
+		23EE2F501F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */; };
+		23EE2F511F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */; };
+		23EE2F521F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */; };
+		23EE2F531F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */; };
 		23EE9B191E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */; };
 		23EE9B1A1E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */; };
 		23EE9B1B1E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */; };
@@ -566,6 +570,7 @@
 		23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Utils.swift"; sourceTree = "<group>"; };
 		23E7D94D1F0681E80070240F /* Sequence+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Utils.swift"; sourceTree = "<group>"; };
 		23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPredicateUtilsTests.swift; sourceTree = "<group>"; };
+		23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
 		23F3F6FA1E9651AB002DAC89 /* KeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTests.swift; sourceTree = "<group>"; };
 		23F6A1621EC8DBD400D20502 /* AnyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyUtils.swift; sourceTree = "<group>"; };
@@ -709,6 +714,7 @@
 				D26C6C291DEC83B800B7D26A /* Storyboard.swift */,
 				D220818C1E07FEB700BE4268 /* URL+Operators.swift */,
 				23E7D94D1F0681E80070240F /* Sequence+Utils.swift */,
+				23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1365,6 +1371,7 @@
 				23F6A1631EC8DBD400D20502 /* AnyUtils.swift in Sources */,
 				235DCB8B1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
 				235DCB901E89B40F006AFEBE /* UnsignedInteger+Utils.swift in Sources */,
+				23EE2F501F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
 				D2B9655E1DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
 				D208D1821DF07103009687BB /* String+Operators.swift in Sources */,
 				D240944A1E4C802B00EB4163 /* NSPredicate+Operators.swift in Sources */,
@@ -1434,6 +1441,7 @@
 				D2234A631E002D2600252551 /* String+NSString.swift in Sources */,
 				1230C2D71DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */,
 				23F6A1641EC8DBD400D20502 /* AnyUtils.swift in Sources */,
+				23EE2F511F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
 				23FF8F231ECC92AB00A9ADD8 /* String+RegularExpressions.swift in Sources */,
 				12B956401D8820CA00F75DD5 /* String+Validation.swift in Sources */,
 				23839F871E93CCE4002D757B /* Key.swift in Sources */,
@@ -1476,6 +1484,7 @@
 				23839F811E93C70F002D757B /* UserDefaults+Utils.swift in Sources */,
 				235DCB881E89B35A006AFEBE /* BinaryConvertible.swift in Sources */,
 				D2B965601DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
+				23EE2F521F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
 				1230C2D81DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */,
 				D273A59C1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				D262EF201DA5487F0061AB10 /* ModelVersion.swift in Sources */,
@@ -1536,6 +1545,7 @@
 				235DCB891E89B35A006AFEBE /* BinaryConvertible.swift in Sources */,
 				12B956301D880B3B00F75DD5 /* Optional+Utils.swift in Sources */,
 				1230C2D91DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */,
+				23EE2F531F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
 				12B9563D1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				D20544FD1DDC508B007DCE97 /* PropertyListReadable.swift in Sources */,
 				23B2ED701EC8CDBB006365BD /* NSObjectProtocol+Utils.swift in Sources */,

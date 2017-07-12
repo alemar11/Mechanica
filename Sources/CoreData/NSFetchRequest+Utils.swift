@@ -75,16 +75,4 @@ extension NSFetchRequest {
 
 }
 
-extension NSPredicate {
-  //TODO: work in progress
-  @objc
-  public func andPredicate(_ predicate: NSPredicate) -> NSPredicate {
-    return NSCompoundPredicate(andPredicateWithSubpredicates: [self, predicate])
-  }
 
-  //TODO: work in progress
-  @objc
-  public func orPredicate(_ predicate: NSPredicate) -> NSPredicate {
-    return NSCompoundPredicate(orPredicateWithSubpredicates: [self, predicate])
-  }
-}
