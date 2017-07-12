@@ -43,7 +43,10 @@ extension NSFetchRequest {
     self.fetchBatchSize = batchSize
   }
 
-  //TODO: work in progress
+  /// **Mechanica**
+  ///
+  /// - Parameter predicate: A NSPredicate object.
+  /// Associates to `self` a `new` compound NSPredicate formed by **AND**-ing the current predicate with a given `predicate`.
   @objc
   public func andPredicate(_ predicate: NSPredicate) {
     guard let currentPredicate = self.predicate else {
@@ -53,7 +56,10 @@ extension NSFetchRequest {
     self.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [currentPredicate, predicate])
   }
 
-  //TODO: work in progress
+  /// **Mechanica**
+  ///
+  /// - Parameter predicate: A NSPredicate object.
+  /// Associates to `self` a `new` compound NSPredicate formed by **OR**-ing the current predicate with a given `predicate`.
   @objc
   public func orPredicate(_ predicate: NSPredicate) {
     guard let currentPredicate = self.predicate else {
@@ -63,7 +69,10 @@ extension NSFetchRequest {
     self.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [currentPredicate, predicate])
   }
 
-  //TODO: work in progress
+  /// **Mechanica**
+  ///
+  /// - Parameter descriptors: An array of NSSortDescriptor objects.
+  /// Appends to the current sort descriptors an array of `descriptors`.
   @objc
   public func addSortDescriptors(_ descriptors: [NSSortDescriptor]) {
     if self.sortDescriptors != nil {
@@ -74,5 +83,3 @@ extension NSFetchRequest {
   }
 
 }
-
-
