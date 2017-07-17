@@ -186,6 +186,8 @@
   extension NSWindowController : StoryboardInitializable {}
 #endif
 
+ // MARK: - Storyboard extensions
+
   extension Storyboard {
 
     #if os(iOS) || os(tvOS)
