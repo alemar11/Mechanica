@@ -32,7 +32,7 @@
   ///
   /// Alias for UIStoryboard.
   public typealias Storyboard = UIKit.UIStoryboard
-  #elseif os(macOS)
+#elseif os(macOS)
   import Cocoa
   /// **Mechanica**
   ///
@@ -88,7 +88,7 @@
     ///     let mainStoryboard = Storyboard(storyboard: Storyboard.StoryboardName.main)
     ///
     fileprivate convenience init<T: RawRepresentable>(storyboard: T, bundle: Bundle? = nil) where T.RawValue == String {
-       #if os(iOS) || os(tvOS)
+      #if os(iOS) || os(tvOS)
         self.init(name: storyboard.rawValue, bundle: bundle)
       #elseif os(macOS)
         self.init(name: NSStoryboard.Name(rawValue: storyboard.rawValue), bundle: bundle)
@@ -121,37 +121,69 @@
       #if os(iOS) || os(tvOS)
         return Storyboard(name: mainStoryboardName, bundle: Bundle.main)
       #elseif os(macOS)
-         return Storyboard(name: NSStoryboard.Name(rawValue: mainStoryboardName), bundle: Bundle.main)
+        return Storyboard(name: NSStoryboard.Name(rawValue: mainStoryboardName), bundle: Bundle.main)
       #endif
 
     }
   }
 
-  // MARK: - StoryboardIdentifiable
+  // MARK: - StoryboardInitializable
 
   /// **Mechanica**
   ///
-  /// Objects adopting the `StoryboardIdentifiable` protocol have an unique Storyboard ID.
-  public protocol StoryboardIdentifiable: class {
-    static var storyboardIdentifier: String { get }
-  }
-
-  extension StoryboardIdentifiable {
+  /// The protocol `StoryboardInitializable` can be used to fetch the appropriate storyboard and construct a view/window controller instance.
+  public protocol StoryboardInitializable: class {
+    /// **Mechanica**
+    ///
+    /// The name of the storyboard resource file without the filename extension.
+    /// By default the *storyboardName* is *Main*.
+    static var storyboardName: String { get }
 
     /// **Mechanica**
     ///
+    /// The bundle containing the storyboard file and its related resources.
+    /// By default the *storyboardBundle* is *nil*.
+    static var storyboardBundle: Bundle? { get }
+
+    /// **Mechanica**
+    ///
+    /// An identifier string that uniquely identifies the view/window controller in the storyboard file.
     /// By default the *storyboardIdentifier* (**Storyboard ID**) is the name of the class.
+    static var storyboardIdentifier: String { get }
+
+    //static func makeFromStoryboard() -> Self
+  }
+
+  extension StoryboardInitializable {
+
+    public static var storyboardName: String {
+      return "Main"
+    }
+
+    public static var storyboardBundle: Bundle? {
+      return nil
+    }
+
     public static var storyboardIdentifier: String {
       return String(describing: self)
+    }
+
+    /// **Mechanica**
+    ///
+    /// Constructs a view/window controller instance fetching the appropriate storyboard.
+    public static func makeFromStoryboard() -> Self {
+      let storyboard = UIStoryboard(name: storyboardName, bundle: storyboardBundle)
+      return storyboard.instantiateViewController (
+        withIdentifier: storyboardIdentifier) as! Self
     }
 
   }
 
 #if os(iOS) || os(tvOS)
-  extension UIViewController : StoryboardIdentifiable {}
+  extension UIViewController : StoryboardInitializable {}
   #elseif os(macOS)
-  extension NSViewController : StoryboardIdentifiable {}
-  extension NSWindowController : StoryboardIdentifiable {}
+  extension NSViewController : StoryboardInitializable {}
+  extension NSWindowController : StoryboardInitializable {}
 #endif
 
   extension Storyboard {
@@ -160,7 +192,7 @@
 
     /// **Mechanica**
     ///
-    ///   Instantiates and returns a UIViewController conforming to `StoryboardIdentifiable`.
+    ///   Instantiates and returns a UIViewController conforming to `StoryboardInitializable`.
     ///   - Note: In Xcode, set the UIViewController class name as **Storyboard ID**.
     ///
     ///   ```
@@ -177,7 +209,7 @@
 
     /// **Mechanica**
     ///
-    ///   Instantiates and returns a NSViewController conforming to `StoryboardIdentifiable`.
+    ///   Instantiates and returns a NSViewController conforming to `StoryboardInitializable`.
     ///   - Note: In Xcode, set as **Storyboard ID** the NSViewController class name.
     ///
     ///   ```
@@ -192,7 +224,7 @@
 
     /// **Mechanica**
     ///
-    ///   Instantiates and returns a NSWindowController conforming to `StoryboardIdentifiable`.
+    ///   Instantiates and returns a NSWindowController conforming to `StoryboardInitializable`.
     ///   - Note: In Xcode, set the NSWindowController class name as **Storyboard ID**.
     ///
     ///   ```
