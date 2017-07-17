@@ -116,6 +116,7 @@
         if #available(macOS 10.13, *) { return Storyboard.main }
         let mainStoryboardFileName = MainStoryboard.nsMainStoryboardFileKey
       #endif
+      
       guard let mainStoryboardName = Bundle.main.infoDictionary?[mainStoryboardFileName] as? String else { return nil }
 
       #if os(iOS) || os(tvOS)
@@ -172,16 +173,25 @@
     ///
     /// Constructs a view/window controller instance fetching the appropriate storyboard.
     public static func makeFromStoryboard() -> Self {
-      let storyboard = UIStoryboard(name: storyboardName, bundle: storyboardBundle)
-      return storyboard.instantiateViewController (
-        withIdentifier: storyboardIdentifier) as! Self
+      #if os(iOS) || os(tvOS)
+        let storyboard = UIStoryboard(name: storyboardName, bundle: storyboardBundle)
+        guard let controller = storyboard.instantiateViewController (withIdentifier: storyboardIdentifier) as? Self else {
+          fatalError("Couldn't instantiate a Controller with identifier \(storyboardIdentifier) ")
+        }
+      #elseif os(macOS)
+        let storyboard = NSStoryboard(name: NSStoryboard.Name(storyboardName), bundle: storyboardBundle)
+        guard let controller = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: storyboardIdentifier)) as? Self else {
+          fatalError("Couldn't instantiate a Controller with identifier \(storyboardIdentifier) ")
+        }
+      #endif
+        return controller
     }
 
   }
 
 #if os(iOS) || os(tvOS)
   extension UIViewController : StoryboardInitializable {}
-  #elseif os(macOS)
+#elseif os(macOS)
   extension NSViewController : StoryboardInitializable {}
   extension NSWindowController : StoryboardInitializable {}
 #endif
@@ -192,52 +202,52 @@
 
     #if os(iOS) || os(tvOS)
 
-    /// **Mechanica**
-    ///
-    ///   Instantiates and returns a UIViewController conforming to `StoryboardInitializable`.
-    ///   - Note: In Xcode, set the UIViewController class name as **Storyboard ID**.
-    ///
-    ///   ```
-    ///   let vc = myStoryboard.instantiateViewController() as TestViewController
-    ///   ```
-    public final func instantiateViewController<T: UIViewController>() -> T {
-      guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
-        fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
+      /// **Mechanica**
+      ///
+      ///   Instantiates and returns a UIViewController conforming to `StoryboardInitializable`.
+      ///   - Note: In Xcode, set the UIViewController class name as **Storyboard ID**.
+      ///
+      ///   ```
+      ///   let vc = myStoryboard.instantiateViewController() as TestViewController
+      ///   ```
+      public final func instantiateViewController<T: UIViewController>() -> T {
+        guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
+          fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
+        }
+        return viewController
       }
-      return viewController
-    }
 
     #elseif os(macOS)
 
-    /// **Mechanica**
-    ///
-    ///   Instantiates and returns a NSViewController conforming to `StoryboardInitializable`.
-    ///   - Note: In Xcode, set as **Storyboard ID** the NSViewController class name.
-    ///
-    ///   ```
-    ///   let vc = myStoryboard.instantiateViewController() as TestViewController
-    ///
-    public final func instantiateViewController<T: NSViewController>() -> T {
-      guard let viewController = self.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: T.storyboardIdentifier)) as? T else {
-        fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
+      /// **Mechanica**
+      ///
+      ///   Instantiates and returns a NSViewController conforming to `StoryboardInitializable`.
+      ///   - Note: In Xcode, set as **Storyboard ID** the NSViewController class name.
+      ///
+      ///   ```
+      ///   let vc = myStoryboard.instantiateViewController() as TestViewController
+      ///
+      public final func instantiateViewController<T: NSViewController>() -> T {
+        guard let viewController = self.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: T.storyboardIdentifier)) as? T else {
+          fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
+        }
+        return viewController
       }
-      return viewController
-    }
 
-    /// **Mechanica**
-    ///
-    ///   Instantiates and returns a NSWindowController conforming to `StoryboardInitializable`.
-    ///   - Note: In Xcode, set the NSWindowController class name as **Storyboard ID**.
-    ///
-    ///   ```
-    ///   let vc = myStoryboard.instantiateViewController() as TestViewController
-    ///
-    public final func instantiateWindowController<T: NSWindowController>() -> T {
-      guard let windowController = self.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: T.storyboardIdentifier)) as? T else {
-        fatalError("Couldn't instantiate a Window Controller with identifier \(T.storyboardIdentifier) ")
+      /// **Mechanica**
+      ///
+      ///   Instantiates and returns a NSWindowController conforming to `StoryboardInitializable`.
+      ///   - Note: In Xcode, set the NSWindowController class name as **Storyboard ID**.
+      ///
+      ///   ```
+      ///   let vc = myStoryboard.instantiateViewController() as TestViewController
+      ///
+      public final func instantiateWindowController<T: NSWindowController>() -> T {
+        guard let windowController = self.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: T.storyboardIdentifier)) as? T else {
+          fatalError("Couldn't instantiate a Window Controller with identifier \(T.storyboardIdentifier) ")
+        }
+        return windowController
       }
-      return windowController
-    }
 
     #endif
 
