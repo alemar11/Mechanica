@@ -32,7 +32,7 @@
   ///
   /// Alias for UIStoryboard.
   public typealias Storyboard = UIKit.UIStoryboard
-  #elseif os(macOS)
+#elseif os(macOS)
   import Cocoa
   /// **Mechanica**
   ///
@@ -88,7 +88,7 @@
     ///     let mainStoryboard = Storyboard(storyboard: Storyboard.StoryboardName.main)
     ///
     fileprivate convenience init<T: RawRepresentable>(storyboard: T, bundle: Bundle? = nil) where T.RawValue == String {
-       #if os(iOS) || os(tvOS)
+      #if os(iOS) || os(tvOS)
         self.init(name: storyboard.rawValue, bundle: bundle)
       #elseif os(macOS)
         self.init(name: NSStoryboard.Name(rawValue: storyboard.rawValue), bundle: bundle)
@@ -113,7 +113,9 @@
       #if os(iOS) || os(tvOS)
         let mainStoryboardFileName = MainStoryboard.uiMainStoryboardFileKey
       #elseif os(macOS)
-        if #available(macOS 10.13, *) { return Storyboard.main }
+        if #available(macOS 10.13, *) {
+          return Storyboard.main
+        }
         let mainStoryboardFileName = MainStoryboard.nsMainStoryboardFileKey
       #endif
       guard let mainStoryboardName = Bundle.main.infoDictionary?[mainStoryboardFileName] as? String else { return nil }
