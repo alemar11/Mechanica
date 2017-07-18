@@ -24,7 +24,7 @@
 
 import CoreData
 
-extension Collection where Iterator.Element: NSManagedObject {
+extension Collection where Element: NSManagedObject {
 
   /// **Mechanica**
   ///

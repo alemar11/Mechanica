@@ -24,7 +24,7 @@
 
 import Foundation
 
-extension Collection where Self.Index == Int, Iterator.Element: Equatable {
+extension Collection where Self.Index == Int, Element: Equatable {
 
   /// **Mechanica**
   ///
@@ -33,7 +33,7 @@ extension Collection where Self.Index == Int, Iterator.Element: Equatable {
   /// - Parameter element: Index of the first element found (if any).
   /// - Note: Same as `index(of:)`.
   /// - SeeAlso: `index(of:)`
-  public func firstIndex(of element: Iterator.Element) -> Self.Index? {
+  public func firstIndex(of element: Element) -> Self.Index? {
     return index(of: element)
   }
 
@@ -42,7 +42,7 @@ extension Collection where Self.Index == Int, Iterator.Element: Equatable {
   ///  Returns the last index where the specified value appears in the collection.
   ///  After using lastIndex(of:) to find the last position of a particular element in a collection, you can use it to access the element by subscripting.
   /// - Parameter element: Index of the last element found (if any).
-  public func lastIndex(of element: Iterator.Element) -> Self.Index? {
+  public func lastIndex(of element: Element) -> Self.Index? {
     for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
       guard (element == self[idx]) else { continue }
       return idx
