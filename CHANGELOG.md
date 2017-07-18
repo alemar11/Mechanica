@@ -4,6 +4,8 @@
 
 - Mechanica is now completely migrated to **Swift 4**.  🤓
 - More tests.
+- Better Core Data api.
+- Added % operator.
 
 ### 0.4.2
 
