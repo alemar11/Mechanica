@@ -33,7 +33,7 @@ extension Sequence {
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   /// - Note: Same as `first(where:)`.
   /// - SeeAlso: `first(where:)`
-  public func findFirst(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
+  public func findFirst(where predicate: (Element) -> Bool) -> Element? {
     //return first(where: predicate)
     for element in self where predicate(element) {
       return element
@@ -46,7 +46,7 @@ extension Sequence {
   /// Returns true if there is at least one element `matching` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func hasSome(where predicate: (Iterator.Element) -> Bool) -> Bool {
+  public func hasSome(where predicate: (Element) -> Bool) -> Bool {
     return findFirst(where: predicate) != nil
   }
 
@@ -55,24 +55,15 @@ extension Sequence {
   /// Returns true if all the elements `match` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func hasAll(where predicate: (Iterator.Element) -> Bool) -> Bool {
+  public func hasAll(where predicate: (Element) -> Bool) -> Bool {
     return findFirst { !predicate($0) } == nil
   }
 
   /// **Mechanica**
   ///
-  /// - Parameter criteria: The criteria closure takes an `Iterator.Element` and returns its classification.
+  /// - Parameter criteria: The criteria closure takes an `Element` and returns its classification.
   /// - Returns: Returns a grouped dictionary with the keys that the criteria function returns.
-  public func grouped<Key>(by criteria: (Iterator.Element) -> (Key)) -> [Key : [Iterator.Element]] {
-//    var dictionary: [Key : [Iterator.Element]] = [:]
-//    for element in self {
-//      let key = criteria(element)
-//      var array = dictionary.removeValue(forKey: key) ?? []
-//      array.append(element)
-//      dictionary.updateValue(array, forKey: key)
-//    }
-//    return dictionary
-    // Swift 4
+  public func grouped<Key>(by criteria: (Element) -> (Key)) -> [Key : [Element]] {
     return Dictionary(grouping: self, by: { return criteria($0) })
   }
 
@@ -80,7 +71,7 @@ extension Sequence {
   ///
   /// Returns the elements count matching a predicate.
   /// - Parameter shouldCount: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.
-  public func count(_ shouldCount: (Iterator.Element) -> Bool) -> Int {
+  public func count(_ shouldCount: (Element) -> Bool) -> Int {
     var count = 0
     for element in self {
       if (shouldCount(element)) {
@@ -94,7 +85,7 @@ extension Sequence {
 
 // MARK: - AnyObject
 
-extension Sequence where Iterator.Element: AnyObject {
+extension Sequence where Element: AnyObject {
 
   /// **Mechanica**
   ///
@@ -104,3 +95,4 @@ extension Sequence where Iterator.Element: AnyObject {
   }
 
 }
+
