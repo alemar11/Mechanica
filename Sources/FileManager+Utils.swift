@@ -101,7 +101,7 @@ extension FileManager {
   /// Creates and returns always a `new` directory in Library/Caches for discardable cache files.
   public var makeNewCachesSubDirectory: URL {
     let url = cachesDirectory.appendingPathComponent(UUID().uuidString)
-    if (!fileExists(atPath: url.path)) {
+    if !fileExists(atPath: url.path) {
       // swiftlint:disable force_try
       try! createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
       // swiftlint:enable force_try

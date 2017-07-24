@@ -30,7 +30,6 @@ import Foundation
   import AppKit
 #endif
 
-
 // MARK: - Percent
 
 postfix operator %
@@ -38,21 +37,20 @@ postfix operator %
 /// **Mechanica**
 ///
 /// 'CGFloat' percent operator.
-public postfix func %(value: CGFloat) -> CGFloat {
+public postfix func % (value: CGFloat) -> CGFloat {
   return value / 100
 }
 
 /// **Mechanica**
 ///
 /// 'Float' percent operator.
-public postfix func %(value: Float) -> Float {
+public postfix func % (value: Float) -> Float {
   return value / 100
 }
 
 /// **Mechanica**
 ///
 /// 'Double' percent operator.
-public postfix func %(value: Double) -> Double {
+public postfix func % (value: Double) -> Double {
   return value / 100
 }
-

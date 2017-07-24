@@ -4,7 +4,6 @@ excluded:
   - Tests
 
 disabled_rules: # rule identifiers to exclude from running
-  - control_statement
   - large_tuple
   - todo
 

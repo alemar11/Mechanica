@@ -80,7 +80,7 @@ extension String {
   ///
   ///  - Returns: *true* if contains match, otherwise false.
   public func contains(_ string: String, caseSensitive: Bool) -> Bool {
-    if (caseSensitive) {
+    if caseSensitive {
       return contains(string)
     } else {
       return range(of: string, options: .caseInsensitive) != nil
@@ -185,7 +185,7 @@ extension String {
   ///
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
   public func capitalizedFirstCharacter() -> String {
-    guard (!isEmpty) else { return self }
+    guard !isEmpty else { return self }
     let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
     let result = capitalizedFirstCharacher + String(dropFirst())
     return result
@@ -195,7 +195,7 @@ extension String {
   ///
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
   public func decapitalizedFirstCharacter() -> String {
-    guard (!isEmpty) else { return self }
+    guard !isEmpty else { return self }
     let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
     let result = capitalizedFirstCharacher + String(dropFirst())
     return result
@@ -254,7 +254,7 @@ extension String {
   ///
   ///  - parameter upToPosition: position (included) up to which remove the prefix.
   public func removingPrefix(upToPosition: Int = 1) -> String {
-    guard (upToPosition >= 0 && upToPosition <= length) else { return "" }
+    guard upToPosition >= 0 && upToPosition <= length else { return "" }
     let startIndex = index(self.startIndex, offsetBy: upToPosition)
     return substring(from: startIndex)
   }
@@ -283,7 +283,7 @@ extension String {
   ///
   ///  - parameter fromPosition: position (included) from which remove the suffix
   public func removingSuffix(fromPosition: Int = 1) -> String {
-    guard (fromPosition >= 0 && fromPosition <= length) else { return "" }
+    guard fromPosition >= 0 && fromPosition <= length else { return "" }
     let startIndex = index(endIndex, offsetBy: -fromPosition)
     return substring(to: startIndex)
   }
@@ -377,7 +377,7 @@ extension String {
   ///
   ///  - Returns: Character as String or nil if the index is out of bounds
   public subscript (index: Int) -> String? {
-    guard (0..<count ~= index) else { return nil }
+    guard 0..<count ~= index else { return nil }
     return String(Array(characters)[index])
   }
 
@@ -407,8 +407,8 @@ extension String {
   ///
   ///  - Returns: Substring in Range or nil.
   public subscript (range: Range<Int>) -> String? {
-    guard (0...length ~= range.lowerBound) else { return nil }
-    guard (0...length ~= range.upperBound) else { return nil }
+    guard 0...length ~= range.lowerBound else { return nil }
+    guard 0...length ~= range.upperBound else { return nil }
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(startIndex, offsetBy: range.upperBound)
     return substring(with: Range(uncheckedBounds: (lower: start, upper: end)))
@@ -522,7 +522,7 @@ extension String {
   ///
   /// - Returns: The swap cased copy of the `String`.
   public func swapCased() -> String {
-    return map( {String($0).isLowercased ? String($0).uppercased() : String($0).lowercased()} ).joined()
+    return map({String($0).isLowercased ? String($0).uppercased() : String($0).lowercased()}).joined()
   }
 
 }

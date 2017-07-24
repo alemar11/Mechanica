@@ -86,7 +86,7 @@ extension UInt {
   ///   - max: max value (default UInt)
   /// - Returns: Returns a random UInt between `min` and `max` values.
   public static func random(min: UInt = min, max: UInt = max) -> UInt {
-    switch (_wordSize) {
+    switch _wordSize {
     case 32: return UInt(UInt32.random(min: UInt32(min), max: UInt32(max)))
     case 64: return UInt(UInt64.random(min: UInt64(min), max: UInt64(max)))
     default: return min
@@ -111,7 +111,7 @@ extension UInt64 {
   ///   - max: max value (default UInt64)
   /// - Returns: Returns a random UInt64 between `min` and `max` values.
   public static func random(min: UInt64 = min, max: UInt64 = max) -> UInt64 {
-    guard (min != max) else { return min }
+    guard min != max else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     var m: UInt64
     let u = max - min
@@ -149,7 +149,7 @@ extension UInt32 {
   ///   - max: max value (default UInt32)
   /// - Returns: Returns a random UInt32 between `min` and `max` values.
   public static func random(min: UInt32 = min, max: UInt32 = max) -> UInt32 {
-    guard (min != max) else { return min }
+    guard min != max else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     return arc4random_uniform(max - min) + min
   }
@@ -172,7 +172,7 @@ extension UInt16 {
   ///   - max: max value (default UInt16)
   /// - Returns: Returns a random UInt16 between `min` and `max` values.
   public static func random(min: UInt16 = min, max: UInt16 = max) -> UInt16 {
-    guard (min != max) else { return min }
+    guard min != max else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     return UInt16(arc4random_uniform(UInt32(max) - UInt32(min)) + UInt32(min))
   }
@@ -195,7 +195,7 @@ extension UInt8 {
   ///   - max: max value (default UInt8)
   /// - Returns: Returns a random UInt8 between `min` and `max` values.
   public static func random(min: UInt8 = min, max: UInt8 = max) -> UInt8 {
-    guard (min != max) else { return min }
+    guard min != max else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     return UInt8(arc4random_uniform(UInt32(max) - UInt32(min)) + UInt32(min))
   }
@@ -220,7 +220,7 @@ extension Int {
   ///   - max: max value (default Int.max)
   /// - Returns: Returns a random Int between `min` and `max` values.
   public static func random(min: Int = min, max: Int = max) -> Int {
-    switch (_wordSize) {
+    switch _wordSize {
     case 32: return Int(Int32.random(min: Int32(min), max: Int32(max)))
     case 64: return Int(Int64.random(min: Int64(min), max: Int64(max)))
     default: return min
@@ -245,7 +245,7 @@ extension Int64 {
   ///   - max: max value (default Int64.max)
   /// - Returns: Returns a random Int64 between `min` and `max` values.
   public static func random(min: Int64 = min, max: Int64 = max) -> Int64 {
-    guard (min != max) else { return min }
+    guard min != max else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     let (partialValue, overflow) = max.subtractingReportingOverflow(min) //Int64.subtractWithOverflow(max, min)
     let u = (overflow == ArithmeticOverflow.overflow) ? UInt64.max - UInt64(~partialValue) : UInt64(partialValue)
@@ -276,7 +276,7 @@ extension Int32 {
   ///   - max: max value (default Int32.max)
   /// - Returns: Returns a random Int32 between `min` and `max` values.
   public static func random(min: Int32 = min, max: Int32 = max) -> Int32 {
-    guard (min != max) else { return min }
+    guard min != max else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     let r = arc4random_uniform(UInt32(Int64(max) - Int64(min)))
     return Int32(Int64(r) + Int64(min))
@@ -300,7 +300,7 @@ extension Int16 {
   ///   - max: max value (default Int16.max)
   /// - Returns: Returns a random Int16 between `min` and `max` values.
   public static func random(min: Int16 = min, max: Int16 = max) -> Int16 {
-    guard (min != max) else { return min }
+    guard min != max else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     let r = arc4random_uniform(UInt32(Int32(max) - Int32(min)))
     return Int16(Int32(r) + Int32(min))
@@ -324,7 +324,7 @@ extension Int8 {
   ///   - max: max value (default Int8.max)
   /// - Returns: Returns a random Int8 between `min` and `max` values.
   public static func random(min: Int8 = min, max: Int8 = max) -> Int8 {
-    guard (min != max) else { return min }
+    guard min != max else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     let r = arc4random_uniform(UInt32(Int32(max) - Int32(min)))
     return Int8(Int32(r) + Int32(min))

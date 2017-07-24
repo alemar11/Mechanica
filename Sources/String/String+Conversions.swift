@@ -31,7 +31,7 @@ extension String {
   /// Return a Bool value by parsing `self`.
   public var bool: Bool? {
     let string = self.trimmed().lowercased()
-    switch (string) {
+    switch string {
       case "true", "yes", "1":
         return true
       case "false", "no", "0":

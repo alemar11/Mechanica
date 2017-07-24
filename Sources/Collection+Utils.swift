@@ -44,7 +44,7 @@ extension Collection where Self.Index == Int, Element: Equatable {
   /// - Parameter element: Index of the last element found (if any).
   public func lastIndex(of element: Element) -> Self.Index? {
     for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
-      guard (element == self[idx]) else { continue }
+      guard element == self[idx] else { continue }
       return idx
     }
     return nil
