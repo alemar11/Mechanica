@@ -27,24 +27,23 @@ import Foundation
 // MARK: - Regular Expression
 
 extension String {
-  
+
   /// **Mechanica**
   ///
   /// Returns a range equivalent to the given `NSRange` or `nil` if the range can't be converted.
   private func range(from nsRange: NSRange) -> Range<Index>? {
     guard let range = Range(nsRange) else { return nil }
-    
     let utf16Start = UTF16Index(encodedOffset: range.lowerBound)
     let utf16End = UTF16Index(encodedOffset: range.upperBound)
-    
+
     guard
       let start = Index(utf16Start, within: self),
       let end = Index(utf16End, within: self)
       else { return nil }
-    
+
     return start..<end
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameters:
@@ -53,12 +52,12 @@ extension String {
   /// - Returns: returns a list of matched ranges for `self` or empy. Defaults to [].
   public func ranges(matching pattern: String, options: NSRegularExpression.Options = []) -> [Range<String.Index>] {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return [] }
-    
+
     let matches = regex.matches(in: self, options: [], range: NSRange(location: 0, length: count))
     let ranges = matches.flatMap { return self.range(from: $0.range) }
     return ranges
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameters:
@@ -67,12 +66,12 @@ extension String {
   /// - Returns: returns a the first matched range for `self` or nil.
   public func firstRange(matching pattern: String, options: NSRegularExpression.Options = []) -> Range<String.Index>? {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return nil }
-    
+
     let range = regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)).flatMap { return self.range(from: $0.range) }
-    
+
     return range
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameters:
@@ -80,15 +79,15 @@ extension String {
   ///   - options: a list of `NSRegularExpression.Options`.
   /// - Returns: returns a list of matched strings for `self`.
   func matches(for pattern: String, options: NSRegularExpression.Options = []) -> [String] {
-    var strings: [String] = []
-    
+    var strings = [String]()
+
     for range in ranges(matching: pattern, options: options) {
       strings.append(self.substring(with: range))
     }
-    
+
     return strings
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameters:
@@ -97,8 +96,8 @@ extension String {
   /// - Returns: returns the first matched string for `self`.
   func firstMatch(for pattern: String, options: NSRegularExpression.Options = []) -> String? {
     guard let range = firstRange(matching: pattern) else { return nil }
-    
+
     return self.substring(with: range)
   }
-  
+
 }

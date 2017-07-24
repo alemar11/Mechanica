@@ -38,6 +38,7 @@ extension Sequence {
     for element in self where predicate(element) {
       return element
     }
+
     return nil
   }
 
@@ -74,7 +75,7 @@ extension Sequence {
   public func count(_ shouldCount: (Element) -> Bool) -> Int {
     var count = 0
     for element in self {
-      if (shouldCount(element)) {
+      if shouldCount(element) {
         count += 1
       }
     }
@@ -95,4 +96,3 @@ extension Sequence where Element: AnyObject {
   }
 
 }
-
