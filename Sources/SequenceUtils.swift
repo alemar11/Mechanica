@@ -28,27 +28,11 @@ extension Sequence {
 
   /// **Mechanica**
   ///
-  /// Returns: the first element (if any) `matching` the predicate.
-  /// - Parameters:
-  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  /// - Note: Same as `first(where:)`.
-  /// - SeeAlso: `first(where:)`
-  public func findFirst(where predicate: (Element) -> Bool) -> Element? {
-    //return first(where: predicate)
-    for element in self where predicate(element) {
-      return element
-    }
-
-    return nil
-  }
-
-  /// **Mechanica**
-  ///
   /// Returns true if there is at least one element `matching` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func hasSome(where predicate: (Element) -> Bool) -> Bool {
-    return findFirst(where: predicate) != nil
+  public func hasSomeElements(where predicate: (Element) -> Bool) -> Bool {
+    return first { predicate($0) } != nil
   }
 
   /// **Mechanica**
@@ -56,28 +40,27 @@ extension Sequence {
   /// Returns true if all the elements `match` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func hasAll(where predicate: (Element) -> Bool) -> Bool {
-    return findFirst { !predicate($0) } == nil
+  public func hasAllElements(where predicate: (Element) -> Bool) -> Bool {
+    return first { !predicate($0) } == nil
   }
 
   /// **Mechanica**
   ///
   /// - Parameter criteria: The criteria closure takes an `Element` and returns its classification.
   /// - Returns: Returns a grouped dictionary with the keys that the criteria function returns.
-  public func grouped<Key>(by criteria: (Element) -> (Key)) -> [Key : [Element]] {
-    return Dictionary(grouping: self, by: { return criteria($0) })
+  public func grouped<Key>(by criteria: (Element) -> (Key)) -> [Key:[Element]] {
+    return Dictionary(grouping: self, by: {return criteria($0)})
   }
 
   /// **Mechanica**
   ///
   /// Returns the elements count matching a predicate.
   /// - Parameter shouldCount: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.
-  public func count(_ shouldCount: (Element) -> Bool) -> Int {
+  public func count(where predicate: (Element) -> Bool) -> Int {
     var count = 0
+
     for element in self {
-      if shouldCount(element) {
-        count += 1
-      }
+      if predicate(element) { count += 1 }
     }
     return count
   }
@@ -92,7 +75,7 @@ extension Sequence where Element: AnyObject {
   ///
   /// Returns true if the `Sequence` contains an element identical (referential equality) to an `object`.
   public func containsObjectIdentical(to object: AnyObject) -> Bool {
-    return contains { $0 === object }
+    return contains {$0 === object}
   }
 
 }

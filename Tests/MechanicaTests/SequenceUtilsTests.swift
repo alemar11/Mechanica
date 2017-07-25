@@ -57,30 +57,19 @@ class SequenceUtilsTests: XCTestCase {
                        Demo(value1: "demo1",value2: 1),
                        Demo(value1: "demo1",value2: 1)]
 
-  func testFindFirstOccurrence() {
-
-    let occurrence1 = list.findFirst(where: {$0.value2 == 3})
-    XCTAssertTrue(occurrence1 != nil)
-    XCTAssertTrue(occurrence1!.value1 == "demo3")
-
-    let occurrence2 = list.findFirst(where: {$0.value2 == 11})
-    XCTAssertFalse(occurrence2 != nil)
-
-  }
-
   func testHasSome() {
-    XCTAssertTrue(list.hasSome(where: {$0.value1 == "demo5"}))
-    XCTAssertTrue(list.hasSome(where: {$0.value2 == 1}))
-    XCTAssertTrue(list2.hasSome(where: {$0.value1 == "demo1"}))
+    XCTAssertTrue(list.hasSomeElements(where: {$0.value1 == "demo5"}))
+    XCTAssertTrue(list.hasSomeElements(where: {$0.value2 == 1}))
+    XCTAssertTrue(list2.hasSomeElements(where: {$0.value1 == "demo1"}))
 
-    XCTAssertFalse(list.hasSome(where: {$0.value1 == "demo11"}))
-    XCTAssertFalse(list.hasSome(where: { $0.value1 == "demo1" && $0.value2 == 4}))
+    XCTAssertFalse(list.hasSomeElements(where: {$0.value1 == "demo11"}))
+    XCTAssertFalse(list.hasSomeElements(where: { $0.value1 == "demo1" && $0.value2 == 4}))
   }
 
   func testHasAll() {
-    XCTAssertTrue(list2.hasAll{$0.value1 == "demo1"})
-    XCTAssertFalse(list2.hasAll{$0.value1 == "demo11"})
-    XCTAssertFalse(list.hasAll{$0.value1 == "demo12"})
+    XCTAssertTrue(list2.hasAllElements{$0.value1 == "demo1"})
+    XCTAssertFalse(list2.hasAllElements{$0.value1 == "demo11"})
+    XCTAssertFalse(list.hasAllElements{$0.value1 == "demo12"})
   }
 
   // MARK: - AnyObject
