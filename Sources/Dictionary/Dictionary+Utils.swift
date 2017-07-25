@@ -83,3 +83,16 @@ public extension Dictionary where Key: ExpressibleByStringLiteral {
   }
 
 }
+
+// MARK: - Validation
+
+public extension Dictionary {
+
+  /// **Mechanica**
+  ///
+  /// Returns true if the `key` exists in the dictionary.
+  public func hasKey(_ key: Key) -> Bool {
+    return index(forKey: key) != nil
+  }
+
+}

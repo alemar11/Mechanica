@@ -107,5 +107,18 @@ class DictionaryUtilsTests: XCTestCase {
       XCTAssertTrue(k.isLowercased)
     }
   }
+  
+  func testHasKey() {
+    do {
+      let dictionary: [String:Int] = [:]
+      XCTAssertFalse(dictionary.hasKey(""))
+      XCTAssertFalse(dictionary.hasKey("robot"))
+    }
+    do {
+      let dictionary: [String:Int] = ["robot":1, "robot2":2]
+      XCTAssertFalse(dictionary.hasKey(""))
+      XCTAssertTrue(dictionary.hasKey("robot"))
+    }
+  }
 
 }
