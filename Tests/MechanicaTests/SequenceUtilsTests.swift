@@ -56,6 +56,8 @@ class SequenceUtilsTests: XCTestCase {
                        Demo(value1: "demo1",value2: 1),
                        Demo(value1: "demo1",value2: 1)]
 
+  private let list3 = ["a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "l": 9, "m": 10]
+
   func testHasSome() {
     XCTAssertTrue(list.hasSomeElements(where: {$0.value1 == "demo5"}))
     XCTAssertTrue(list.hasSomeElements(where: {$0.value2 == 1}))
@@ -91,10 +93,17 @@ class SequenceUtilsTests: XCTestCase {
   }
 
   func testCount() {
-    XCTAssertEqual(list.count{ $0.value2 == 1}, 2)
-    XCTAssertEqual(list.count{ $0.value2 == 3}, 2)
-    XCTAssertEqual(list.count{ $0.value2 == 4}, 0)
-    XCTAssertEqual(list.count{ $0.value1 == "demo1"}, 1)
+    XCTAssertEqual(list.count{ $0.value2 == 1 }, 2)
+    XCTAssertEqual(list.count{ $0.value2 == 3 }, 2)
+    XCTAssertEqual(list.count{ $0.value2 == 4 }, 0)
+    XCTAssertEqual(list.count{ $0.value1 == "demo1" }, 1)
+
+    XCTAssertEqual(list3.count { $0.0 == "a" }, 1)
+    XCTAssertEqual(list3.count { $0.0 == "z" }, 0)
+    XCTAssertEqual(list3.count { $0.0 == "a" &&  $0.1 == 0 }, 1)
+    XCTAssertEqual(list3.count { $0.0 == "a" &&  $0.1 == 1 }, 0)
+    XCTAssertEqual(list3.count { $0.1 % 2 == 0 }, 6)
+    XCTAssertEqual(list3.count { $0.1 % 2 != 0 }, 5)
   }
 
   func testGroupedBy() {
@@ -140,7 +149,7 @@ class SequenceUtilsTests: XCTestCase {
       let dictionary =  Dictionary(grouping: array, by: { return $0.first })
       XCTAssert(groupedDictionary.keys == dictionary.keys)
       groupedDictionary.keys.forEach { key in
-         XCTAssertTrue(groupedDictionary[key]! == dictionary[key]!)
+        XCTAssertTrue(groupedDictionary[key]! == dictionary[key]!)
       }
     }
 
@@ -177,17 +186,5 @@ class SequenceUtilsTests: XCTestCase {
       }
     }
   }
-
-  //    func testFindFirstPerformance() {
-  //      var array = [Int]()
-  //      for i in stride(from: 0, to: 1_000_000, by: 1) {
-  //        array.append(i)
-  //      }
-  //      self.measure {
-  //        for _ in 1...100{
-  //          let _ = array.findFirstOccurence(where: {$0 == 1_000})
-  //        }
-  //      }
-  //    }
 
 }
