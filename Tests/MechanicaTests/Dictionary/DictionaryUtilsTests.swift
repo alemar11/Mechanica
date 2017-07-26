@@ -120,4 +120,42 @@ class DictionaryUtilsTests: XCTestCase {
     }
   }
 
+  func testRemoveAll() {
+    var dictionary = ["a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "l": 9, "m": 10]
+
+    do {
+      let removed = dictionary.removeAll(forKeys: ["a", "b", "c"])
+      if removed != nil {
+        XCTAssertTrue(removed!.count == 3)
+      } else {
+        XCTAssertNotNil(dictionary)
+      }
+    }
+
+    do {
+      let removed = dictionary.removeAll(forKeys: ["a", "b", "c", "d"])
+      if removed != nil {
+        XCTAssertTrue(removed!.count == 1)
+      } else {
+        XCTAssertNotNil(dictionary)
+      }
+    }
+
+    do {
+      let removed = dictionary.removeAll(forKeys: ["k"])
+      XCTAssertNil(removed)
+    }
+
+    do {
+      let removed = dictionary.removeAll(forKeys: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "l", "m"])
+      XCTAssertNotNil(removed)
+      XCTAssertNil(removed!["a"])
+      XCTAssertNil(dictionary["a"])
+      XCTAssertNotNil(removed!["l"])
+      XCTAssertNil(dictionary["l"])
+      XCTAssert(dictionary.isEmpty)
+    }
+
+  }
+
 }

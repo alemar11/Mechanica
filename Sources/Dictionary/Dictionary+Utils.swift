@@ -68,6 +68,36 @@ extension Dictionary {
 
 // MARK: - Utils
 
+public extension Dictionary {
+
+  /// **Mechanica**
+  ///
+  /// Returns true if the `key` exists in the dictionary.
+  public func hasKey(_ key: Key) -> Bool {
+    return index(forKey: key) != nil
+  }
+
+  /// **Mechanica**
+  ///
+  /// Removes the given kesy and theris associated values from the dictionary.
+  ///
+  /// - Parameter keys: The keys to remove along with theirs associated values.
+  /// - Returns: The key’s associated values (if any).
+  public mutating func removeAll(forKeys keys: [Key]) -> [Key: Value]? {
+    var removedElements: [Key: Value]?
+    keys.forEach {
+      if let removed = removeValue(forKey: $0) {
+        removedElements = removedElements == nil ? [Key: Value]() : removedElements
+        removedElements?[$0] = removed
+      }
+    }
+    return removedElements
+  }
+
+}
+
+// MARK: - ExpressibleByStringLiteral
+
 public extension Dictionary where Key: ExpressibleByStringLiteral {
 
   /// **Mechanica**
@@ -79,19 +109,6 @@ public extension Dictionary where Key: ExpressibleByStringLiteral {
         self[lowercaseKey] = removeValue(forKey: key)
       }
     }
-  }
-
-}
-
-// MARK: - Validation
-
-public extension Dictionary {
-
-  /// **Mechanica**
-  ///
-  /// Returns true if the `key` exists in the dictionary.
-  public func hasKey(_ key: Key) -> Bool {
-    return index(forKey: key) != nil
   }
 
 }

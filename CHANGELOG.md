@@ -3,9 +3,10 @@
 ### 1.0.0 ⭐
 
 - Mechanica is now completely migrated to **Swift 4**.  🤓
+- Better Core Data API.
+- Added dictionary extensions.
+- Added % unary operator.
 - More tests.
-- Better Core Data api.
-- Added % operator.
 
 ### 0.4.2
 
