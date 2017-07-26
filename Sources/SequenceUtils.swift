@@ -54,7 +54,7 @@ extension Sequence {
   /// **Mechanica**
   ///
   /// Returns the elements count matching a predicate.
-  /// - Parameter shouldCount: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.
+  /// - Parameter where: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.
   public func count(where predicate: (Element) -> Bool) -> Int {
     var count = 0
 
