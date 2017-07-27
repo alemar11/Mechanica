@@ -30,6 +30,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns a range equivalent to the given `NSRange` or `nil` if the range can't be converted.
+  @available(*, deprecated, message: "Swift 4 supports conversion between NSRange and Range ( Range.init?(_:in) )")
   private func range(from nsRange: NSRange) -> Range<Index>? {
     guard let range = Range(nsRange) else { return nil }
     let utf16Start = UTF16Index(encodedOffset: range.lowerBound)
@@ -48,12 +49,12 @@ extension String {
   /// - Parameters:
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
-  /// - Returns: returns a list of matched ranges for `self` or empy. Defaults to [].
+  /// - Returns: returns a list of matched ranges for `self`.
   public func ranges(matching pattern: String, options: NSRegularExpression.Options = []) -> [Range<String.Index>] {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return [] }
+    let matches = regex.matches(in: self, options: [], range: NSRange(startIndex..<endIndex, in: self))
+    let ranges = matches.flatMap { Range($0.range, in: self) }
 
-    let matches = regex.matches(in: self, options: [], range: NSRange(location: 0, length: count))
-    let ranges = matches.flatMap { return self.range(from: $0.range) }
     return ranges
   }
 
@@ -66,7 +67,7 @@ extension String {
   public func firstRange(matching pattern: String, options: NSRegularExpression.Options = []) -> Range<String.Index>? {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return nil }
 
-    let range = regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)).flatMap { return self.range(from: $0.range) }
+    let range = regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)).flatMap { Range($0.range, in: self) }
 
     return range
   }
