@@ -29,11 +29,19 @@ public enum DemoModelVersion: String {
 }
 
 extension DemoModelVersion: ModelVersion {
+
   public static var allVersions: [DemoModelVersion] { return [.version1] }
+
   public static var currentVersion: DemoModelVersion { return .version1 }
+
   public var versionName: String { return rawValue }
-  public var modelBundle: Bundle { return Bundle(for: type(of: DummyObject())) }
+
+  public var modelBundle: Bundle {
+    class Object {} // used to get the current bundle 🤓
+    return Bundle(for: Object.self)
+  }
+
   public var modelName: String { return "DemoModel" }
+
 }
 
-private class DummyObject {} // used to get the current bundle 🤓
