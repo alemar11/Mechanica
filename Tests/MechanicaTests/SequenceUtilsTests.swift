@@ -62,7 +62,6 @@ class SequenceUtilsTests: XCTestCase {
     XCTAssertTrue(list.hasSomeElements(where: {$0.value1 == "demo5"}))
     XCTAssertTrue(list.hasSomeElements(where: {$0.value2 == 1}))
     XCTAssertTrue(list2.hasSomeElements(where: {$0.value1 == "demo1"}))
-
     XCTAssertFalse(list.hasSomeElements(where: {$0.value1 == "demo11"}))
     XCTAssertFalse(list.hasSomeElements(where: { $0.value1 == "demo1" && $0.value2 == 4}))
   }
@@ -76,8 +75,7 @@ class SequenceUtilsTests: XCTestCase {
   // MARK: - AnyObject
 
   func testContatinsObjectIdentical() {
-
-
+    // Given, When
     var list = [DemoObject(value1: "demo1",value2: 1),
                 DemoObject(value1: "demo2",value2: 2),
                 DemoObject(value1: "demo3",value2: 3),
@@ -86,10 +84,16 @@ class SequenceUtilsTests: XCTestCase {
                 DemoObject(value1: "demo6",value2: 3)]
 
     let demoObject = DemoObject(value1: "demo1",value2: 1)
+    // Then
     XCTAssertFalse(list.containsObjectIdentical(to: demoObject))
+    // When
     list.append(demoObject)
+    // Then
     XCTAssertTrue(list.containsObjectIdentical(to: demoObject))
-
+    // When
+    list.append(demoObject)
+    // Then
+    XCTAssertTrue(list.containsObjectIdentical(to: demoObject))
   }
 
   func testCount() {
@@ -97,7 +101,6 @@ class SequenceUtilsTests: XCTestCase {
     XCTAssertEqual(list.count{ $0.value2 == 3 }, 2)
     XCTAssertEqual(list.count{ $0.value2 == 4 }, 0)
     XCTAssertEqual(list.count{ $0.value1 == "demo1" }, 1)
-
     XCTAssertEqual(list3.count { $0.0 == "a" }, 1)
     XCTAssertEqual(list3.count { $0.0 == "z" }, 0)
     XCTAssertEqual(list3.count { $0.0 == "a" &&  $0.1 == 0 }, 1)
