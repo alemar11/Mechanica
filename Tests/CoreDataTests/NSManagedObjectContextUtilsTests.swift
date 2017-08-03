@@ -191,7 +191,77 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
   }
   
   func testSave() {
-    
+    // Given, When
+    let stack = CoreDataStack(type: .sqlite)
+    if let stack = stack {
+      let context = stack.mainContext.newBackgroundContext()
+
+      // Then
+
+      let saveExpectation1 = expectation(description: "Save 1")
+      context.performSave(after: {
+        let person = Person(context: context)
+        person.firstName = "T"
+        person.lastName = "R"
+      }){ error in
+        XCTAssertNil(error)
+        saveExpectation1.fulfill()
+      }
+
+      wait(for: [saveExpectation1], timeout: 10)
+
+      let saveExpectation2 = expectation(description: "Save 2")
+      context.performSave(after: {
+        let person = Person(context: context)
+        person.firstName = "Tin"
+        person.lastName = "Robots"
+      }){ error in
+        XCTAssertNil(error)
+        saveExpectation2.fulfill()
+      }
+
+      wait(for: [saveExpectation2], timeout: 10)
+
+      let saveExpectation3 = expectation(description: "Save 3")
+      context.performSave(after: {
+        let person = Person(context: context)
+        person.firstName = "Tin"
+        person.lastName = "Robots"
+      }){ error in
+        XCTAssertNotNil(error)
+        saveExpectation3.fulfill()
+      }
+
+      wait(for: [saveExpectation3], timeout: 10)
+
+      let saveExpectation4 = expectation(description: "Save 4")
+      context.performSave(after: {
+        let person = Person(context: context)
+        person.firstName = "Tin_"
+        person.lastName = "Robots"
+      }){ error in
+        XCTAssertNil(error)
+        saveExpectation4.fulfill()
+      }
+
+      wait(for: [saveExpectation4], timeout: 10)
+
+      let saveExpectation5 = expectation(description: "Save 5")
+      context.performSave(after: {
+        let person = Person(context: context)
+        person.firstName = "Tin"
+        person.lastName = "Robots_"
+      }){ error in
+        XCTAssertNil(error)
+        saveExpectation5.fulfill()
+      }
+
+      wait(for: [saveExpectation5], timeout: 10)
+
+
+    } else {
+      XCTAssertNotNil(stack)
+    }
   }
   
 }
