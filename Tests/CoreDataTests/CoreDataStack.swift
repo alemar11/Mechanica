@@ -49,7 +49,7 @@ class CoreDataStack {
         XCTFail("\(error)")
       }
     case .sqlite:
-      let storeURL = URL(fileURLWithPath: "\(NSTemporaryDirectory())\(DemoModelVersion.currentVersion.modelName).\(Date().timeIntervalSince1970).sqlite" )
+      let storeURL = URL(fileURLWithPath: "\(NSTemporaryDirectory())\(UUID().uuidString).\(Date().timeIntervalSince1970).sqlite" )
       let persistentStoreDescription = NSPersistentStoreDescription(url: storeURL)
       persistentStoreDescription.type = NSSQLiteStoreType
       persistentStoreDescription.shouldMigrateStoreAutomatically = true // default behaviour
