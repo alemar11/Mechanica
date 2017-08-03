@@ -55,7 +55,7 @@ extension Color {
   ///
   /// Initializes and returns a **random** color object in the sRGB space.
   public class func random() -> Self {
-    //drand48() generates a random number between 0 to 1
+    // drand48() generates a random number between 0 to 1
     let red = CGFloat(drand48()), green = CGFloat(drand48()), blue = CGFloat(drand48()), alpha = CGFloat(drand48())
     #if os(iOS) || os(tvOS) || os(watchOS)
       return self.init(red: red, green: green, blue: blue, alpha: alpha)
