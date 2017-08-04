@@ -25,7 +25,7 @@ import XCTest
 @testable import Mechanica
 
 class NSPredicateUtilsTests: XCTestCase {
-    
+
   func testPredicateComposition() {
     do {
       let predicate = NSPredicate(format: "X = 10").andPredicate(NSPredicate(format: "Y = 30"))
@@ -54,5 +54,5 @@ class NSPredicateUtilsTests: XCTestCase {
       XCTAssertTrue(predicate3.description == "((X == 10 AND V == 11) AND (Y == 30 OR W == 5)) OR (Z == 20 OR (K == 40 AND C == 11))")
     }
   }
-    
+
 }

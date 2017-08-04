@@ -733,7 +733,7 @@ extension UserDefaultsUtilsTests {
 
   @objc(Person)
   class Person: NSObject, NSCoding, Codable {
-    
+
     @objc
     let surname: String
 
@@ -797,7 +797,7 @@ extension UserDefaultsUtilsTests {
     static func == (left: SecurePerson, right: SecurePerson) -> Bool {
       return left.firstname == right.firstname && left.surname == right.surname
     }
-    
+
   }
 
 }

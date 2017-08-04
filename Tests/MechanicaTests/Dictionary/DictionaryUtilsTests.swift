@@ -106,7 +106,7 @@ class DictionaryUtilsTests: XCTestCase {
       XCTAssertTrue(k.isLowercased)
     }
   }
-  
+
   func testHasKey() {
     do {
       let dictionary: [String:Int] = [:]

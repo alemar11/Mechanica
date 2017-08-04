@@ -27,7 +27,7 @@ import CoreData
 @testable import Mechanica
 
 class NSManagedObjectContextUtilsTests: XCTestCase {
-  
+
   func testSinglePersistentStore() {
     // Given, When
     let stack = CoreDataStack()
@@ -39,13 +39,13 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       XCTAssertNotNil(stack)
     }
   }
-  
+
   func testMetaData() {
     do {
       // Given
       let stack = CoreDataStack(type: .sqlite)
       if let stack = stack {
-        
+
         // When
         guard let firstPersistentStore = stack.mainContext.persistentStores.first else {
           XCTAssertNotNil(stack.mainContext.persistentStores.first)
@@ -56,7 +56,7 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
         XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.car])
         XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.person])
         XCTAssertNotNil(metaData["NSStoreType"] as? String)
-        
+
         let addMetaDataExpectation = expectation(description: "Add MetaData Expectation")
         stack.mainContext.setMetaDataObject("Test", with: "testKey", for: firstPersistentStore){ error in
           XCTAssertNil(error)
@@ -70,12 +70,12 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
         XCTAssertNotNil(stack)
       }
     }
-    
+
     do {
       // Given
       let stack = CoreDataStack(type: .inMemory)
       if let stack = stack {
-        
+
         // When
         guard let firstPersistentStore = stack.mainContext.persistentStores.first else {
           XCTAssertNotNil(stack.mainContext.persistentStores.first)
@@ -86,7 +86,7 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
         XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.car])
         XCTAssertNotNil((metaData["NSStoreModelVersionHashes"] as? [String: Any])?[EntityKey.person])
         XCTAssertNotNil(metaData["NSStoreType"] as? String)
-        
+
         let addMetaDataExpectation = expectation(description: "Add MetaData Expectation")
         stack.mainContext.setMetaDataObject("Test", with: "testKey", for: firstPersistentStore){ error in
           XCTAssertNil(error)
@@ -100,9 +100,9 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
         XCTAssertNotNil(stack)
       }
     }
-    
+
   }
-  
+
   func testEntityDescription() {
     // Given, When
     let stack = CoreDataStack()
@@ -114,7 +114,7 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       XCTAssertNotNil(stack)
     }
   }
-  
+
   func testNewBackgroundContext() {
     // Given, When
     let stack = CoreDataStack()
@@ -123,7 +123,7 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       let backgroundContext = stack.mainContext.newBackgroundContext(asChildContext: true)
       XCTAssertEqual(backgroundContext.concurrencyType,.privateQueueConcurrencyType)
       XCTAssertEqual(backgroundContext.parent,stack.mainContext)
-      
+
       let backgroundContext2 = stack.mainContext.newBackgroundContext()
       XCTAssertEqual(backgroundContext2.concurrencyType,.privateQueueConcurrencyType)
       XCTAssertNotEqual(backgroundContext2.parent,stack.mainContext)
@@ -131,13 +131,13 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       XCTAssertNotNil(stack)
     }
   }
-  
+
   func testSaveAndWait() {
     // Given, When
     let stack = CoreDataStack(type: .sqlite)
     if let stack = stack {
       let context = stack.mainContext
-      
+
       // Then
 
       XCTAssertNoThrow(
@@ -189,7 +189,7 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       XCTAssertNotNil(stack)
     }
   }
-  
+
   func testSave() {
     // Given, When
     let stack = CoreDataStack(type: .sqlite)
@@ -263,6 +263,6 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       XCTAssertNotNil(stack)
     }
   }
-  
+
 }
 
