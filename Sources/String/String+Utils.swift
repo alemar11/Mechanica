@@ -206,16 +206,20 @@ extension String {
   ///
   /// Returns a `new` string containing the first character of the `String`.
   public var first: String {
-    let first = substring(to: index(after: startIndex))
-    return first
+    // swift 4 beta
+    //let first = substring(to: index(after: startIndex))
+    let first = self[..<index(after: startIndex)]
+    return String(first)
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` string containing the last character of the `String`.
   public var last: String {
-    let last = substring(from: index(before: endIndex))
-    return last
+    // swift 4 beta
+    //let last = substring(from: index(before: endIndex))
+    let last = self[index(before: endIndex)...]
+    return String(last)
   }
 
   /// **Mechanica**
@@ -255,7 +259,9 @@ extension String {
   public func removingPrefix(upToPosition: Int = 1) -> String {
     guard upToPosition >= 0 && upToPosition <= length else { return "" }
     let startIndex = index(self.startIndex, offsetBy: upToPosition)
-    return substring(from: startIndex)
+    // swift 4 beta
+    //return substring(from: startIndex)
+    return String(self[startIndex...])
   }
 
   /// **Mechanica**
@@ -284,7 +290,9 @@ extension String {
   public func removingSuffix(fromPosition: Int = 1) -> String {
     guard fromPosition >= 0 && fromPosition <= length else { return "" }
     let startIndex = index(endIndex, offsetBy: -fromPosition)
-    return substring(to: startIndex)
+    // swift 4 beta
+    //return substring(to: startIndex)
+    return String(self[..<startIndex])
   }
 
   /// **Mechanica**
@@ -410,7 +418,10 @@ extension String {
     guard 0...length ~= range.upperBound else { return nil }
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(startIndex, offsetBy: range.upperBound)
-    return substring(with: Range(uncheckedBounds: (lower: start, upper: end)))
+    // swift 4 beta
+    //return substring(with: Range(uncheckedBounds: (lower: start, upper: end)))
+    let range = Range(uncheckedBounds: (lower: start, upper: end))
+    return String(self[range])
   }
 
   /// **Mechanica**

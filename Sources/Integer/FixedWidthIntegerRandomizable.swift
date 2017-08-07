@@ -247,7 +247,7 @@ extension Int64 {
     guard min != max else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
     let (partialValue, overflow) = max.subtractingReportingOverflow(min) //Int64.subtractWithOverflow(max, min)
-    let u = (overflow == ArithmeticOverflow.overflow) ? UInt64.max - UInt64(~partialValue) : UInt64(partialValue)
+    let u = (overflow) ? UInt64.max - UInt64(~partialValue) : UInt64(partialValue)
     let r = UInt64.random(max: u)
 
     if r > UInt64(Int64.max) {
