@@ -24,7 +24,7 @@
 import Foundation
 
 extension Collection where Self.Index == Int, Element: Equatable {
-
+  
   /// **Mechanica**
   ///
   ///  Returns the first index where the specified value appears in the collection.
@@ -35,7 +35,7 @@ extension Collection where Self.Index == Int, Element: Equatable {
   public func firstIndex(of element: Element) -> Self.Index? {
     return index(of: element)
   }
-
+  
   /// **Mechanica**
   ///
   ///  Returns the last index where the specified value appears in the collection.
@@ -48,7 +48,11 @@ extension Collection where Self.Index == Int, Element: Equatable {
     }
     return nil
   }
+  
+}
 
+extension Collection where Self.Index == Int {
+  
   /// **Mechanica**
   ///
   /// Returns a random element from `self`.
