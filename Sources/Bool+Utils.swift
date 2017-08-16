@@ -24,18 +24,6 @@
 import Foundation
 
 extension Bool {
-
-  /// **Mechanica**
-  ///
-  /// Instantiates a `new` Bool given an `input` value.
-  public init(input: String) {
-    switch input.lowercased() {
-    case "1", "true", "t", "yes", "y", "👍🏻", "👍", "👍🏼", "👍🏽", "👍🏾", "👍🏿":
-      self = true
-    default:
-      self = false
-    }
-  }
   
   /// **Mechanica**
   ///
