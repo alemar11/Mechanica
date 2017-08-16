@@ -66,7 +66,6 @@ class CollectionUtilsTests: XCTestCase {
       let collection = [1, 2]
       for _ in 1...100 {
         let value = collection.random()
-        print(value)
         XCTAssertTrue(value == 1 || value == 2)
       }
     }
@@ -78,6 +77,14 @@ class CollectionUtilsTests: XCTestCase {
 
     do {
       let collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+      for _ in 1...100 {
+        let value = collection.random()
+        XCTAssertTrue(collection.contains(value))
+      }
+    }
+    
+    do {
+      let collection = ["a", "b", "c", "d", "e", "z", "1", "👻"]
       for _ in 1...100 {
         let value = collection.random()
         XCTAssertTrue(collection.contains(value))
