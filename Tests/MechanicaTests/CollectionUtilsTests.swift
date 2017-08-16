@@ -24,13 +24,13 @@
 import XCTest
 @testable import Mechanica
 
-class CollectionUtiilsTests: XCTestCase {
-
-  // MARK - Equatable
-
-  private let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
+class CollectionUtilsTests: XCTestCase {
 
   func testFirstIndex() {
+    // Given
+    let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
+
+    // When, Then
     let index1 = array.firstIndex(of: 1)
     XCTAssertTrue(index1 == 0)
     let index2 = array.firstIndex(of: 8)
@@ -42,6 +42,10 @@ class CollectionUtiilsTests: XCTestCase {
   }
 
   func testLastIndex() {
+    // Given
+    let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
+
+    // When, Then
     let index1 = array.lastIndex(of: 1)
     XCTAssertTrue(index1 == 2)
     let index2 = array.lastIndex(of: 8)
@@ -50,6 +54,35 @@ class CollectionUtiilsTests: XCTestCase {
     XCTAssertTrue(index3 == 6)
     let index4 = array.lastIndex(of: 11)
     XCTAssertTrue(index4 == nil)
+  }
+
+  func testRandom() {
+    do {
+      let collection = [1]
+      XCTAssertTrue(collection.random() == 1)
+    }
+
+    do {
+      let collection = [1, 2]
+      for _ in 1...100 {
+        let value = collection.random()
+        print(value)
+        XCTAssertTrue(value == 1 || value == 2)
+      }
+    }
+
+    do {
+      let collection = Array(repeating: 3, count: 300)
+      XCTAssertTrue(collection.random() == 3)
+    }
+
+    do {
+      let collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+      for _ in 1...100 {
+        let value = collection.random()
+        XCTAssertTrue(collection.contains(value))
+      }
+    }
   }
 
 }

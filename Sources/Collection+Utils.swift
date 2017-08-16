@@ -42,11 +42,19 @@ extension Collection where Self.Index == Int, Element: Equatable {
   ///  After using lastIndex(of:) to find the last position of a particular element in a collection, you can use it to access the element by subscripting.
   /// - Parameter element: Index of the last element found (if any).
   public func lastIndex(of element: Element) -> Self.Index? {
-    for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
+    for idx in stride(from: endIndex-1, through: 0, by: -1) {
       guard element == self[idx] else { continue }
       return idx
     }
     return nil
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a random element from `self`.
+  public func random() -> Element {
+    let index = Int.random(min: startIndex, max: endIndex)
+    return self[index]
   }
 
 }
