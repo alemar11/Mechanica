@@ -24,7 +24,7 @@
 import Foundation
 
 extension String {
-  
+
   /// **Mechanica**
   ///
   /// Return a Bool value by parsing `self`.
@@ -38,77 +38,77 @@ extension String {
       return nil
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a Double value by parsing `self`.
   public var double: Double? {
     return Double(self)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a Float value by parsing `self`.
   public var float: Float? {
     return Float(self)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a Float32 value by parsing `self`.
   public var float32: Float32? {
     return Float32(self)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a Float64 value by parsing `self`.
   public var float64: Float64? {
     return Float64(self)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a Int value by parsing `self`.
   public var int: Int? {
     return Int(self)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a Int8 value by parsing `self`.
   public var int8: Int8? {
     return Int8(self)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a Int16 value by parsing `self`.
   public var int16: Int16? {
     return Int16(self)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a Int32 value by parsing `self`.
   public var int32: Int32? {
     return Int32(self)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a Int64 value by parsing `self`.
   public var int64: Int64? {
     return Int64(self)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns an URL initialized with `self`.
   public var url: URL? {
     return URL(string: self)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string decoded from base64.
@@ -118,7 +118,7 @@ extension String {
     }
     return String(data: decodedData, encoding: .utf8)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string encoded in base64.

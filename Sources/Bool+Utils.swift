@@ -24,7 +24,7 @@
 import Foundation
 
 extension Bool {
-  
+
   /// **Mechanica**
   ///
   /// Returns 1 if true, or 0 if false.

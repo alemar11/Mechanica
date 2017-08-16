@@ -100,7 +100,7 @@ extension FileManager {
   /// Creates and returns always a `new` directory in Library/Caches for discardable cache files.
   public var makeNewCachesSubDirectory: URL {
     let url = cachesDirectory.appendingPathComponent(UUID().uuidString)
-    
+
     if !fileExists(atPath: url.path) {
       // swiftlint:disable force_try
       try! createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
@@ -125,12 +125,12 @@ extension FileManager {
   /// - Parameter path: **directory** path (if it's not a directory path, nothing is done).
   public final func clearDirectory(atPath path: String) throws {
     var isDirectory: ObjCBool = false
-    
+
     guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
     guard isDirectory.boolValue == true else { return }
-    
+
     let contents = try contentsOfDirectory(atPath: path)
-    
+
     for file in contents {
       let path = URL(fileURLWithPath: path).appendingPathComponent(file).path
       try removeItem(atPath: path)
@@ -144,7 +144,7 @@ extension FileManager {
   /// - Parameter path: directory or file path.
   public final func destroyFileOrDirectory(atPath path: String) throws {
     guard fileExists(atPath: path) == true else { return }
-    
+
     try removeItem(atPath: path)
   }
 
