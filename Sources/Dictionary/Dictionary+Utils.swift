@@ -121,7 +121,6 @@ extension Dictionary {
   ///
   /// Returns a random pair of (key,value) from `self`.
   public func random() -> Element {
-    // TODO: create a random function for a collection
     let index = Int.random(min: 0, max: count-1)
     let key =  Array(keys)[index]
     let value = self[key]!

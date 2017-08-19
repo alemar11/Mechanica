@@ -197,7 +197,6 @@ class NSManagedObjectContextUtilsTests: XCTestCase {
       let context = stack.mainContext.newBackgroundContext()
 
       // Then
-
       let saveExpectation1 = expectation(description: "Save 1")
       context.performSave(after: {
         let person = Person(context: context)
