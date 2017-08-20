@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -1222,7 +1222,7 @@
 				};
 			};
 			buildConfigurationList = 12B5369C1D33EB6B005C52A7 /* Build configuration list for PBXProject "Mechanica" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
