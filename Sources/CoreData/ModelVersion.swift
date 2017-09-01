@@ -100,9 +100,8 @@ extension ModelVersion {
     let omoURL = modelBundle.url(forResource: versionName, withExtension: "\(ModelVersionKey.omo)", subdirectory: momd)
     let momURL = modelBundle.url(forResource: versionName, withExtension: "\(ModelVersionKey.mom)", subdirectory: momd)
     guard let url = omoURL ?? momURL else { fatalError("Model version \(self) not found.") }
-    // swift 4 beta
-    // guard let model = NSManagedObjectModel(contentsOf: url) else { fatalError("Error initializing Managed Object Model: cannot open model at \(url).") }
-    let model = NSManagedObjectModel(contentsOf: url)
+    guard let model = NSManagedObjectModel(contentsOf: url) else { fatalError("Error initializing Managed Object Model: cannot open model at \(url).") }
+  
     return model
   }
 
