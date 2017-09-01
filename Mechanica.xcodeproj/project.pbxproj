@@ -689,6 +689,7 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				238B34171F59C35200FCB62F /* CoreData */,
 				23F6A1621EC8DBD400D20502 /* Utils.swift */,
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */,
@@ -869,9 +870,9 @@
 		23793D721F067F42002987C4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				238B34191F59C39B00FCB62F /* NSManagedObjectContext */,
+				238B34181F59C38B00FCB62F /* NSManagedObject */,
 				D2CAF3381DA2A71300E6E843 /* NSFetchRequest+Utils.swift */,
-				D2B965671DD0D002000C71C1 /* NSManagedObject */,
-				D2B965681DD0D017000C71C1 /* NSManagedObjectContext */,
 				D262EF1D1DA5487F0061AB10 /* ModelVersion.swift */,
 				12431A5E1DCE2F5A00594940 /* FetchConfigurable.swift */,
 				D2B9655D1DD0C26E000C71C1 /* Collection+CoreData.swift */,
@@ -950,6 +951,33 @@
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
+		238B34171F59C35200FCB62F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CoreData;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		238B34181F59C38B00FCB62F /* NSManagedObject */ = {
+			isa = PBXGroup;
+			children = (
+				D2CAF3391DA2A71300E6E843 /* NSManagedObject+Utils.swift */,
+				D2C149941DCCE04000376031 /* NSManagedObject+Deletable.swift */,
+				1230C2D51DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift */,
+			);
+			path = NSManagedObject;
+			sourceTree = "<group>";
+		};
+		238B34191F59C39B00FCB62F /* NSManagedObjectContext */ = {
+			isa = PBXGroup;
+			children = (
+				D2CAF33A1DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift */,
+				D2B965621DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift */,
+			);
+			path = NSManagedObjectContext;
+			sourceTree = "<group>";
+		};
 		23D922981EFA670900629E17 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -974,27 +1002,6 @@
 				236D5C541F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift */,
 			);
 			path = CoreDataTests;
-			sourceTree = "<group>";
-		};
-		D2B965671DD0D002000C71C1 /* NSManagedObject */ = {
-			isa = PBXGroup;
-			children = (
-				D2CAF3391DA2A71300E6E843 /* NSManagedObject+Utils.swift */,
-				D2C149941DCCE04000376031 /* NSManagedObject+Deletable.swift */,
-				1230C2D51DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift */,
-			);
-			name = NSManagedObject;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		D2B965681DD0D017000C71C1 /* NSManagedObjectContext */ = {
-			isa = PBXGroup;
-			children = (
-				D2CAF33A1DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift */,
-				D2B965621DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift */,
-			);
-			name = NSManagedObjectContext;
-			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
