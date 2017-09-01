@@ -97,7 +97,7 @@ extension UserDefaults {
 
   /// **Mechanica**
   ///
-  ///  /// Stores an object conformig to `Codable` (or removes the value if nil is passed as the value) for the provided key.
+  /// Stores an object conformig to `Codable` (or removes the value if nil is passed as the value) for the provided key.
   ///
   /// - Parameters:
   ///   - value: The object to store in the defaults database.
