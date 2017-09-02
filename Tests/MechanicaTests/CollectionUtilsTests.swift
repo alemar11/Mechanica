@@ -82,7 +82,7 @@ class CollectionUtilsTests: XCTestCase {
         XCTAssertTrue(collection.contains(value))
       }
     }
-    
+
     do {
       let collection = ["a", "b", "c", "d", "e", "z", "1", "👻"]
       for _ in 1...100 {
