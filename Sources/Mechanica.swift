@@ -26,4 +26,4 @@ import Foundation
 /// **Mechanica**
 ///
 /// Mechanica Bundle Identifier
-internal let mechanicaBundleIdentifier = "org.tinrobots.Mechanica"
+internal let bundleIdentifier = "org.tinrobots.Mechanica"

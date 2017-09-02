@@ -25,7 +25,7 @@ import CoreData
 
 // MARK: - Cache
 
-private let managedObjectsCacheKey = "\(mechanicaBundleIdentifier).CoreData.ManagedObjectsCache"
+private let managedObjectsCacheKey = "\(bundleIdentifier).CoreData.ManagedObjectsCache"
 private typealias ManagedObjectsCache = [String: NSManagedObject]
 
 extension NSManagedObjectContext {
