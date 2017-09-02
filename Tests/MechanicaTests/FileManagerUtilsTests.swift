@@ -29,13 +29,17 @@ class FileManagerUtilsTests: XCTestCase {
 
   func testClearOrDestroyDirectory() {
 
-    let directories = [FileManager.default.documentDirectory,
-                       FileManager.default.libraryDirectory,
-                       FileManager.default.cachesDirectory,
-                       FileManager.default.applicationSupportDirectory,
-                       FileManager.default.temporaryDirectory]
+    // Given
+    let directories = [FileManager.default.userDocumentDirectory,
+                       FileManager.default.userLibraryDirectory,
+                       FileManager.default.userCachesDirectory,
+                       FileManager.default.userApplicationSupportDirectory,
+                       FileManager.default.temporaryDirectory].flatMap {$0}
 
-    directories.enumerated().forEach { (arg) in
+    XCTAssertTrue(directories.count == 5)
+
+    // When
+    directories.enumerated().forEach { arg in
 
       let (_, directoryURL) = arg
       let containerURL                = directoryURL.appendingPathComponent("org.tinrobots.tests", isDirectory: true)
@@ -45,7 +49,9 @@ class FileManagerUtilsTests: XCTestCase {
       let testURL                     = baseDemoURL.appendingPathComponent("test", isDirectory: true)           // org.tinrobots.tests/demo/test/
       let testFileURL                 = testURL.appendingPathComponent("file", isDirectory: false)              // org.tinrobots.tests/demo/test/file
 
-      // creation
+      // Then
+
+      /// creation
       do {
         try FileManager.default.createDirectory(at: testURL, withIntermediateDirectories: true, attributes: nil)
         XCTAssertTrue(FileManager.default.fileExists(atPath: containerURL.path))
@@ -62,7 +68,7 @@ class FileManagerUtilsTests: XCTestCase {
         XCTFail(error.localizedDescription)
       }
 
-      // cleaning
+      /// cleaning
       do {
         try FileManager.default.clearDirectory(atPath: baseDemoURL.path)
         try FileManager.default.clearDirectory(atPath: fakeBaseDirectoryURL.path)
@@ -81,27 +87,22 @@ class FileManagerUtilsTests: XCTestCase {
   }
 
   func testNewCachesSubdirectory() {
-    let newCacheDirectory = FileManager.default.makeNewCachesSubDirectory
+    // Given
+    let newCacheDirectory = FileManager.default.makeNewUserCachesSubDirectory
+    // When
+    if let newCacheDirectory = newCacheDirectory {
+
     XCTAssertTrue(FileManager.default.fileExists(atPath: newCacheDirectory.path))
+
+    // Then
     do {
       try FileManager.default.destroyFileOrDirectory(atPath: newCacheDirectory.path)
     } catch {
       XCTFail(error.localizedDescription)
     }
+    } else {
+      XCTAssertNotNil(newCacheDirectory)
+    }
   }
-
-//  #if os(macOS)
-//  func testApplicationSupportSubDirectory() {
-//    let url = FileManager.default.applicationSupportSubDirectory //~/Library/Application Support/xctest/
-//    let url2 = FileManager.default.applicationSupportSubDirectory
-//    XCTAssertTrue(url == url2)
-//    do {
-//      try FileManager.default.destroyFileOrDirectory(atPath: url.path)
-//    } catch {
-//      XCTAssertTrue(false, error.localizedDescription)
-//    }
-//    XCTAssertFalse(FileManager.default.fileExists(atPath: url2.path))
-//  }
-//  #endif
 
 }

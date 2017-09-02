@@ -372,7 +372,12 @@ extension UserDefaults {
   /// - Returns: The value associated with `key` if `key` is in the dictionary otherwise, `nil`.
   public final subscript<T: Codable>(key: Key<T>) -> T? {
     get { return codableValue(forKey: key) }
-    set { set(codableValue: newValue, forKey: key) }
+    set {
+      // swiftlint:disable force_try
+      // https://bugs.swift.org/browse/SR-238
+      try! set(codableValue: newValue, forKey: key)
+      // swiftlint:enable force_try
+    }
   }
 
   /// **Mechanica**
@@ -385,8 +390,13 @@ extension UserDefaults {
   /// **Mechanica**
   ///
   /// Stores an object conformig to `Codable` (or removes the value if nil is passed as the value) for the provided key.
-  public final func set<T: Codable>(codableValue value: T?, forKey key: Key<T>) {
-    set(codableValue: value, forKey: key.value)
+  /// - Throws: An error if any value throws an error during encoding.
+  public final func set<T: Codable>(codableValue value: T?, forKey key: Key<T>) throws {
+    do {
+      try set(codableValue: value, forKey: key.value)
+    } catch {
+      throw error
+    }
   }
 
 }

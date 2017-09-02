@@ -102,12 +102,16 @@ extension UserDefaults {
   /// - Parameters:
   ///   - value: The object to store in the defaults database.
   ///   - defaultName: The key with which to associate with the value.
-  public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String) {
+  /// - Throws: An error if any value throws an error during encoding.
+  public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String) throws {
     if let value = value {
-      // swiftlint:disable force_try
-      let encodedData = try! PropertyListEncoder().encode(value)
-      // swiftlint:enable force_try
-      set(encodedData, forKey: defaultName)
+      do {
+        let encodedData = try PropertyListEncoder().encode(value)
+        set(encodedData, forKey: defaultName)
+      } catch {
+        throw error
+      }
+
     } else {
       removeObject(forKey: defaultName)
     }

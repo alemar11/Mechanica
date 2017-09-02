@@ -692,7 +692,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
       let key = Key<UserDefaultsUtilsTests.Person>("myPerson")
       //  When
-      userDefaults.set(codableValue: value, forKey: key)
+      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
       //  Then
       if let codedValue = userDefaults.codableValue(forKey: key) {
         XCTAssertTrue(codedValue == value)
@@ -714,11 +714,11 @@ class UserDefaultsUtilsTests: XCTestCase {
         XCTAssertNotNil(userDefaults[key])
       }
       // When
-      userDefaults.set(codableValue: nil, forKey: key)
+      XCTAssertNoThrow(try userDefaults.set(codableValue: nil, forKey: key))
       // Then
       XCTAssertFalse(userDefaults.hasKey(key))
       // When
-      userDefaults.set(codableValue: value, forKey: key)
+      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
       userDefaults[key] = nil
       // Then
       XCTAssertFalse(userDefaults.hasKey(key))
