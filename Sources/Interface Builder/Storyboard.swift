@@ -22,34 +22,34 @@
 // SOFTWARE.
 
 #if !os(watchOS)
-
+  
   import Foundation
-
+  
 #if os(iOS) || os(tvOS)
   import UIKit
   /// **Mechanica**
   ///
   /// Alias for UIStoryboard.
   public typealias Storyboard = UIKit.UIStoryboard
-#elseif os(macOS)
+  #elseif os(macOS)
   import Cocoa
   /// **Mechanica**
   ///
   /// Alias for NSStoryboard.
   public typealias Storyboard = AppKit.NSStoryboard
 #endif
-
-  // MARK: - StoryboardKeyCodable
-
+  
+  // MARK: - StoryboardEnumerable
+  
   /// **Mechanica**
   ///
   /// Types adopting the `StoryboardEnumerable` protocol can be used to define Storyboard names.
   public protocol StoryboardEnumerable {
     associatedtype StoryboardName: RawRepresentable
   }
-
+  
   extension StoryboardEnumerable where StoryboardName.RawValue == String {
-
+    
     /// **Mechanica**
     /// Creates and returns a storyboard object for a specified storyboard enum case.
     ///
@@ -67,11 +67,11 @@
     public static func storyboard(forKey key: StoryboardName, bundle: Bundle? = nil) -> Storyboard {
       return Storyboard(storyboard: key, bundle: bundle)
     }
-
+    
   }
-
+  
   extension Storyboard {
-
+    
     /// **Mechanica**
     ///
     /// Creates and returns a storyboard object for a specified storyboard enum case.
@@ -92,73 +92,74 @@
       #elseif os(macOS)
         self.init(name: NSStoryboard.Name(rawValue: storyboard.rawValue), bundle: bundle)
       #endif
-
+      
     }
   }
-
+  
   // MARK: - Storyboard Main (default)
-
+  
   extension Storyboard {
-
+    
     private enum MainStoryboard {
       static let uiMainStoryboardFileKey = "UIMainStoryboardFile"
       static let nsMainStoryboardFileKey = "NSMainStoryboardFile"
     }
-
+    
     /// **Mechanica**
     ///
     /// Returns the main storyboard defined in an Xcode project under *General* > *Deployment info* > *main interface*.
     public static var defaultStoryboard: Storyboard? {
       #if os(iOS) || os(tvOS)
         let mainStoryboardFileName = MainStoryboard.uiMainStoryboardFileKey
+        
       #elseif os(macOS)
-        if #available(macOS 10.13, *) {
-          return Storyboard.main
-        }
+        if #available(macOS 10.13, *) { return Storyboard.main }
+        
         let mainStoryboardFileName = MainStoryboard.nsMainStoryboardFileKey
       #endif
+      
       guard let mainStoryboardName = Bundle.main.infoDictionary?[mainStoryboardFileName] as? String else { return nil }
-
+      
       #if os(iOS) || os(tvOS)
         return Storyboard(name: mainStoryboardName, bundle: Bundle.main)
       #elseif os(macOS)
-         return Storyboard(name: NSStoryboard.Name(rawValue: mainStoryboardName), bundle: Bundle.main)
+        return Storyboard(name: NSStoryboard.Name(rawValue: mainStoryboardName), bundle: Bundle.main)
       #endif
-
+      
     }
   }
-
+  
   // MARK: - StoryboardIdentifiable
-
+  
   /// **Mechanica**
   ///
   /// Objects adopting the `StoryboardIdentifiable` protocol have an unique Storyboard ID.
   public protocol StoryboardIdentifiable: class {
     static var storyboardIdentifier: String { get }
   }
-
+  
   extension StoryboardIdentifiable {
-
+    
     /// **Mechanica**
     ///
     /// By default the *storyboardIdentifier* (**Storyboard ID**) is the name of the class.
     public static var storyboardIdentifier: String {
       return String(describing: self)
     }
-
+    
   }
-
+  
 #if os(iOS) || os(tvOS)
   extension UIViewController : StoryboardIdentifiable {}
   #elseif os(macOS)
   extension NSViewController : StoryboardIdentifiable {}
   extension NSWindowController : StoryboardIdentifiable {}
 #endif
-
+  
   extension Storyboard {
-
+    
     #if os(iOS) || os(tvOS)
-
+    
     /// **Mechanica**
     ///
     ///   Instantiates and returns a UIViewController conforming to `StoryboardIdentifiable`.
@@ -173,9 +174,9 @@
       }
       return viewController
     }
-
+    
     #elseif os(macOS)
-
+    
     /// **Mechanica**
     ///
     ///   Instantiates and returns a NSViewController conforming to `StoryboardIdentifiable`.
@@ -183,6 +184,7 @@
     ///
     ///   ```
     ///   let vc = myStoryboard.instantiateViewController() as TestViewController
+    ///   ```
     ///
     public final func instantiateViewController<T: NSViewController>() -> T {
       guard let viewController = self.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: T.storyboardIdentifier)) as? T else {
@@ -190,7 +192,7 @@
       }
       return viewController
     }
-
+    
     /// **Mechanica**
     ///
     ///   Instantiates and returns a NSWindowController conforming to `StoryboardIdentifiable`.
@@ -198,6 +200,7 @@
     ///
     ///   ```
     ///   let vc = myStoryboard.instantiateViewController() as TestViewController
+    ///   ```
     ///
     public final func instantiateWindowController<T: NSWindowController>() -> T {
       guard let windowController = self.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: T.storyboardIdentifier)) as? T else {
@@ -205,9 +208,9 @@
       }
       return windowController
     }
-
+    
     #endif
-
+    
   }
-
+  
 #endif

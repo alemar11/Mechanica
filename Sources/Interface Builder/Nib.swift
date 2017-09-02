@@ -90,15 +90,16 @@ extension Nib {
   /// Instantiates and returns an object conforming to `NibLoadable` from a Nib.
   public final func instantiate<T>(withOwner owner: Any? = nil, options: [AnyHashable : Any]? = nil) -> T where T: NibLoadable {
     #if os(iOS) || os(tvOS)
-      let contents = self.instantiate(withOwner: owner, options: options).filter { $0 is T }
+      let contents = self.instantiate(withOwner: owner, options: options).flatMap { $0 as? T }
+      
     #elseif os(macOS)
       var objects: NSArray?
+      
       guard (self.instantiate(withOwner: owner, topLevelObjects: &objects)), let array = objects else {
         fatalError("\(String(describing: self)) could not be instantiated.")
       }
-      // swiftlint:disable force_cast
-      let contents = (array as! [Any]).filter { $0 is T }
-      // swiftlint:enable force_cast
+      let contents = array.flatMap { $0 as? T }
+      
     #endif
 
     switch contents.count {
@@ -106,8 +107,8 @@ extension Nib {
       fatalError("\(String(describing: T.self)) could not be found in \(String(describing: self)).")
     case 1:
       // swiftlint:disable force_cast
-      return contents.first as! T
-    // swiftlint:enable force_cast
+      return contents.first!
+      // swiftlint:enable force_cast
     default:
       fatalError("More than one \(String(describing: T.self)) has been found in \(String(describing: self)).")
     }
@@ -187,6 +188,7 @@ public extension NibIdentifiable {
       }
       let content = contents.first as? Self
     #endif
+    
     guard let rootContent = content else {
       fatalError("\(String(describing: self)) could not be instantiated. Please verify if \(nibIdentifier).xib exists and contains only a top object whose class is \(String(describing: self)).")
     }
