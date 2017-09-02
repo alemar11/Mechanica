@@ -94,7 +94,7 @@ class AssociatedObjectTests: XCTestCase {
 
   func testProtocolValueAssociableClass() {
 
-    class Demo: ValueAssociable {
+    class Demo: AssociatedValueSupporting {
       let var1: String
       let var2: Int
       init(var1: String, var2: Int) {

@@ -265,10 +265,10 @@
 		239B92661F274E55009A9433 /* Sequence+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B92641F274E55009A9433 /* Sequence+Utils.swift */; };
 		239B92671F274E55009A9433 /* Sequence+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B92641F274E55009A9433 /* Sequence+Utils.swift */; };
 		239B92681F274E55009A9433 /* Sequence+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B92641F274E55009A9433 /* Sequence+Utils.swift */; };
-		239F8DD31E55B03900E3DF33 /* ValueAssociable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* ValueAssociable.swift */; };
-		239F8DD41E55B03900E3DF33 /* ValueAssociable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* ValueAssociable.swift */; };
-		239F8DD51E55B03900E3DF33 /* ValueAssociable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* ValueAssociable.swift */; };
-		239F8DD61E55B03900E3DF33 /* ValueAssociable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* ValueAssociable.swift */; };
+		239F8DD31E55B03900E3DF33 /* AssociatedValueSupporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */; };
+		239F8DD41E55B03900E3DF33 /* AssociatedValueSupporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */; };
+		239F8DD51E55B03900E3DF33 /* AssociatedValueSupporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */; };
+		239F8DD61E55B03900E3DF33 /* AssociatedValueSupporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */; };
 		239F8DD81E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD71E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift */; };
 		239F8DD91E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD71E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift */; };
 		239F8DDA1E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F8DD71E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift */; };
@@ -557,7 +557,7 @@
 		23949C591E4B979D00BD9EC8 /* NSAttributedString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Utils.swift"; sourceTree = "<group>"; };
 		23964A011E5B034800C8E0DF /* Collection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Collection+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		239B92641F274E55009A9433 /* Sequence+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Utils.swift"; sourceTree = "<group>"; };
-		239F8DD21E55B03900E3DF33 /* ValueAssociable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ValueAssociable.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AssociatedValueSupporting.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		239F8DD71E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObjectProtocol+Swizzling.swift"; sourceTree = "<group>"; };
 		23B2ED6C1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObjectProtocol+Utils.swift"; sourceTree = "<group>"; };
 		23B2ED711EC8CE28006365BD /* NSObjectProtocolUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectProtocolUtils.swift; sourceTree = "<group>"; };
@@ -921,7 +921,7 @@
 			isa = PBXGroup;
 			children = (
 				D20544F91DDC508B007DCE97 /* PropertyListReadable.swift */,
-				239F8DD21E55B03900E3DF33 /* ValueAssociable.swift */,
+				239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */,
 				235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */,
 			);
 			path = Protocols;
@@ -1383,7 +1383,7 @@
 				D205B0601DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */,
 				239F8DD81E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift in Sources */,
 				23949C551E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */,
-				239F8DD31E55B03900E3DF33 /* ValueAssociable.swift in Sources */,
+				239F8DD31E55B03900E3DF33 /* AssociatedValueSupporting.swift in Sources */,
 				12431A5F1DCE2F5A00594940 /* FetchConfigurable.swift in Sources */,
 				D278BD9A1DEF1061006FAD83 /* Color+Utils.swift in Sources */,
 				235DCB861E89B35A006AFEBE /* BinaryConvertible.swift in Sources */,
@@ -1469,7 +1469,7 @@
 				23839F871E93CCE4002D757B /* Key.swift in Sources */,
 				233B48BC1E6F1398003D5341 /* Dictionary+Utils.swift in Sources */,
 				12D9DEFE1E085B6A000799C6 /* Bool+Utils.swift in Sources */,
-				239F8DD41E55B03900E3DF33 /* ValueAssociable.swift in Sources */,
+				239F8DD41E55B03900E3DF33 /* AssociatedValueSupporting.swift in Sources */,
 				D2CAF3451DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift in Sources */,
 				23839F801E93C70F002D757B /* UserDefaults+Utils.swift in Sources */,
 				23949C561E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */,
@@ -1486,7 +1486,7 @@
 				237395D01F20C47E007E2796 /* UIButton+Utils.swift in Sources */,
 				D21A31F21DEDC9DA00E4A609 /* String+Conversions.swift in Sources */,
 				23949C5C1E4B979D00BD9EC8 /* NSAttributedString+Utils.swift in Sources */,
-				239F8DD51E55B03900E3DF33 /* ValueAssociable.swift in Sources */,
+				239F8DD51E55B03900E3DF33 /* AssociatedValueSupporting.swift in Sources */,
 				D214026E1D5379AE00BCF2E7 /* Bundle+Info.swift in Sources */,
 				23DC26D41F1E3F090093F7EE /* Operators.swift in Sources */,
 				12B956331D880B3B00F75DD5 /* String+Utils.swift in Sources */,
@@ -1547,7 +1547,7 @@
 				1230E3DE1E0FDAE500DACC7E /* Nib.swift in Sources */,
 				D21A31F31DEDC9DA00E4A609 /* String+Conversions.swift in Sources */,
 				23949C5D1E4B979D00BD9EC8 /* NSAttributedString+Utils.swift in Sources */,
-				239F8DD61E55B03900E3DF33 /* ValueAssociable.swift in Sources */,
+				239F8DD61E55B03900E3DF33 /* AssociatedValueSupporting.swift in Sources */,
 				D214026F1D5379AE00BCF2E7 /* Bundle+Info.swift in Sources */,
 				23DC26D51F1E3F090093F7EE /* Operators.swift in Sources */,
 				D2CAF3471DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift in Sources */,

@@ -28,7 +28,7 @@ import Foundation
 /// **Mechanica**
 ///
 /// Classes adopting this protocol can associate values to the object itself.
-public protocol ValueAssociable {
+public protocol AssociatedValueSupporting {
   /// **Mechanica**
   ///
   /// Sets an associated value using a given key and association policy.
@@ -57,18 +57,33 @@ public protocol ValueAssociable {
   func removeAssociatedValue(forKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy)
 }
 
-extension NSObject: ValueAssociable {}
+extension NSObject: AssociatedValueSupporting {}
 
-extension ValueAssociable {
+extension AssociatedValueSupporting {
 
+  /// **Mechanica**
+  ///
+  /// - Parameters:
+  ///   - value: The value to associate with the key key for object. Pass nil to clear an existing association.
+  ///   - key: The key for the association.
+  ///   - policy: The policy for the association.
   public func set<T>(associatedValue value: T?, forKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
-    setAssociatedValue(value, forObject: self, usingKey: key)
+     Mechanica.setAssociatedValue(value, forObject: self, usingKey: key)
   }
-
+  
+  /// **Mechanica**
+  ///
+  /// - Parameter key: The key for the association.
+  /// - Returns: The value associated with the key for object.
   public func getAssociatedValue<T>(forKey key: UnsafeRawPointer) -> T? {
     return Mechanica.getAssociatedValue(forObject: self, usingKey: key)
   }
-
+  
+  /// **Mechanica**
+  ///
+  /// - Parameters:
+  ///   - key: The key for the association.
+  ///   - policy: The policy for the association.
   public func removeAssociatedValue(forKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
     Mechanica.removeAssociatedValue(forObject: self, usingKey: key, andPolicy: policy)
   }
@@ -97,7 +112,7 @@ public func setAssociatedValue<T>(_ value: T?, forObject object: Any, usingKey k
 /// - Parameters:
 ///   - object: The source object for the association.
 ///   - key: The key for the association.
-/// - Returns: the value associated with the key for object.
+/// - Returns: The value associated with the key for object.
 public func getAssociatedValue<T>(forObject object: Any, usingKey key: UnsafeRawPointer) -> T? {
   return objc_getAssociatedObject(object, key) as? T
 }
