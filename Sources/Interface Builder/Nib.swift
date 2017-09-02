@@ -91,15 +91,15 @@ extension Nib {
   public final func instantiate<T>(withOwner owner: Any? = nil, options: [AnyHashable : Any]? = nil) -> T where T: NibLoadable {
     #if os(iOS) || os(tvOS)
       let contents = self.instantiate(withOwner: owner, options: options).flatMap { $0 as? T }
-      
+
     #elseif os(macOS)
       var objects: NSArray?
-      
+
       guard (self.instantiate(withOwner: owner, topLevelObjects: &objects)), let array = objects else {
         fatalError("\(String(describing: self)) could not be instantiated.")
       }
       let contents = array.flatMap { $0 as? T }
-      
+
     #endif
 
     switch contents.count {
@@ -188,7 +188,7 @@ public extension NibIdentifiable {
       }
       let content = contents.first as? Self
     #endif
-    
+
     guard let rootContent = content else {
       fatalError("\(String(describing: self)) could not be instantiated. Please verify if \(nibIdentifier).xib exists and contains only a top object whose class is \(String(describing: self)).")
     }

@@ -70,7 +70,7 @@ extension AssociatedValueSupporting {
   public func set<T>(associatedValue value: T?, forKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
      Mechanica.setAssociatedValue(value, forObject: self, usingKey: key)
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter key: The key for the association.
@@ -78,7 +78,7 @@ extension AssociatedValueSupporting {
   public func getAssociatedValue<T>(forKey key: UnsafeRawPointer) -> T? {
     return Mechanica.getAssociatedValue(forObject: self, usingKey: key)
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameters:
