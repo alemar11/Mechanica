@@ -689,7 +689,6 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				238B34171F59C35200FCB62F /* CoreData */,
 				23F6A1621EC8DBD400D20502 /* Utils.swift */,
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */,
@@ -711,7 +710,7 @@
 				23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */,
 				239B92641F274E55009A9433 /* Sequence+Utils.swift */,
 				D26C6C291DEC83B800B7D26A /* Storyboard.swift */,
-				237395CD1F20C47E007E2796 /* UIButton+Utils.swift */,
+				23AAE0461F5AB1B000ECF302 /* UIKit */,
 				D220818C1E07FEB700BE4268 /* URL+Operators.swift */,
 				23793D701F067F22002987C4 /* Color */,
 				23793D721F067F42002987C4 /* CoreData */,
@@ -951,14 +950,6 @@
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
-		238B34171F59C35200FCB62F /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CoreData;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		238B34181F59C38B00FCB62F /* NSManagedObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -976,6 +967,14 @@
 				D2B965621DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift */,
 			);
 			path = NSManagedObjectContext;
+			sourceTree = "<group>";
+		};
+		23AAE0461F5AB1B000ECF302 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				237395CD1F20C47E007E2796 /* UIButton+Utils.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		23D922981EFA670900629E17 /* Support */ = {
