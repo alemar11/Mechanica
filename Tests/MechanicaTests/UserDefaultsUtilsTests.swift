@@ -22,6 +22,7 @@
 // SOFTWARE.
 
 import XCTest
+@testable import Mechanica
 
 class UserDefaultsKeyTests: XCTestCase {
 
