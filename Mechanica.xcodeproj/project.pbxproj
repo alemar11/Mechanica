@@ -689,7 +689,6 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				23F6A1621EC8DBD400D20502 /* Utils.swift */,
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */,
 				12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */,
@@ -708,17 +707,18 @@
 				D2ABD0061E004F8D006859B9 /* ProcessInfo+Utils.swift */,
 				23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */,
 				239B92641F274E55009A9433 /* Sequence+Utils.swift */,
-				23AAE0471F5AB5F100ECF302 /* Interface Builder */,
-				23AAE0461F5AB1B000ECF302 /* UIKit */,
 				D220818C1E07FEB700BE4268 /* URL+Operators.swift */,
+				23F6A1621EC8DBD400D20502 /* Utils.swift */,
 				23793D701F067F22002987C4 /* Color */,
 				23793D721F067F42002987C4 /* CoreData */,
 				23793D741F067F63002987C4 /* Dictionary */,
 				23793D751F067F71002987C4 /* Integer */,
+				23AAE0471F5AB5F100ECF302 /* Interface Builder */,
 				23793D761F067F84002987C4 /* NSAttributedString */,
 				23793D771F067F9B002987C4 /* NSObject */,
 				23793D781F067FB1002987C4 /* Protocols */,
 				23793D791F067FC3002987C4 /* String */,
+				23AAE0461F5AB1B000ECF302 /* UIKit */,
 				23793D7A1F067FD7002987C4 /* UserDefaults */,
 			);
 			path = Sources;
@@ -738,15 +738,6 @@
 		2317E3901E8D14400087BB79 /* MechanicaTests */ = {
 			isa = PBXGroup;
 			children = (
-				235E0EE21F065CEE00E7A4D8 /* PropertyListReadable */,
-				235E0EE11F065CD100E7A4D8 /* NSObject */,
-				235E0EE01F065CC100E7A4D8 /* Integer */,
-				235E0EDF1F065C9100E7A4D8 /* String */,
-				235E0EDB1F065BD400E7A4D8 /* Dictionary */,
-				235E0EDA1F065BA800E7A4D8 /* Color */,
-				2392CB4D1EE04A9900B955EC /* XCTest+Utils.swift */,
-				23F6A1671EC8DF6500D20502 /* UtilsTests.swift */,
-				23078BEB1F20E1480074D955 /* OperatorsTests.swift */,
 				237F17361E90000800726553 /* AppTests.swift */,
 				237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */,
 				237F17391E90000800726553 /* BoolUtilsTests.swift */,
@@ -760,14 +751,23 @@
 				237F174D1E90000800726553 /* NSAttributedStringUtilsTests.swift */,
 				237F174E1E90000800726553 /* NSMutableAttributedStringOperatorsTests.swift */,
 				237F17501E90000800726553 /* NSPredicateOperatorsTests.swift */,
+				23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */,
+				23078BEB1F20E1480074D955 /* OperatorsTests.swift */,
 				237F17511E90000800726553 /* OptionalUtilsTests.swift */,
 				237F17521E90000800726553 /* RangeReplaceableCollectionUtilsTests.swift */,
 				237F17531E90000800726553 /* SequenceUtilsTests.swift */,
 				237F175E1E90000800726553 /* URLOperatorsTests.swift */,
-				23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */,
 				2384BDB11E9170810036C128 /* UserDefaultsKeyTests.swift */,
+				23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */,
+				23F6A1671EC8DF6500D20502 /* UtilsTests.swift */,
 				237F17371E90000800726553 /* ValueAssociableTests.swift */,
-				23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */,
+				2392CB4D1EE04A9900B955EC /* XCTest+Utils.swift */,
+				235E0EDA1F065BA800E7A4D8 /* Color */,
+				235E0EDB1F065BD400E7A4D8 /* Dictionary */,
+				235E0EE01F065CC100E7A4D8 /* Integer */,
+				235E0EE11F065CD100E7A4D8 /* NSObject */,
+				235E0EE21F065CEE00E7A4D8 /* PropertyListReadable */,
+				235E0EDF1F065C9100E7A4D8 /* String */,
 			);
 			path = MechanicaTests;
 			sourceTree = "<group>";
@@ -792,12 +792,12 @@
 		235E0EDC1F065BEF00E7A4D8 /* NibTests */ = {
 			isa = PBXGroup;
 			children = (
-				237F17461E90000800726553 /* iOS_NibDemo.xib */,
-				237F17491E90000800726553 /* macOS_NibDemo.xib */,
 				237F174B1E90000800726553 /* NibTests.swift */,
-				237F175B1E90000800726553 /* tvOS_NibDemo.xib */,
+				237F17461E90000800726553 /* iOS_NibDemo.xib */,
 				237CED451EE209360074E141 /* iOS_ViewNibIdentifiable.xib */,
+				237F17491E90000800726553 /* macOS_NibDemo.xib */,
 				23D736741EE2C223007D6E51 /* macOS_ViewNibIdentifiable.xib */,
+				237F175B1E90000800726553 /* tvOS_NibDemo.xib */,
 				23D736761EE2C2CC007D6E51 /* tvOS_ViewNibIdentifiable.xib */,
 			);
 			path = NibTests;
@@ -808,8 +808,8 @@
 			children = (
 				237F17471E90000800726553 /* iOS_StoryboardDemo.storyboard */,
 				237F174A1E90000800726553 /* macOS_StoryboardDemo.storyboard */,
-				237F17551E90000800726553 /* StoryboardTests.swift */,
 				237F175C1E90000800726553 /* tvOS_StoryboardDemo.storyboard */,
+				237F17551E90000800726553 /* StoryboardTests.swift */,
 			);
 			path = StoryboardTests;
 			sourceTree = "<group>";
@@ -999,14 +999,14 @@
 		23D926C11EFA679000629E17 /* CoreDataTests */ = {
 			isa = PBXGroup;
 			children = (
-				23D926C21EFA67E900629E17 /* DemoModel.xcdatamodeld */,
-				23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */,
-				23D926DB1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift */,
-				23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */,
-				2340B7FC1EFC50C70017E423 /* NSManagedObjectContextCacheTests.swift */,
 				23C8BFD81EFC6D0100ED2BE0 /* CoreDataStack.swift */,
+				23D926D71EFA6E6C00629E17 /* DemoModelVersion.swift */,
+				23D926DF1EFA795F00629E17 /* ModelVersionTests.swift */,
 				234EF3391F064A1300345DD4 /* NSFetchRequestUtilsTests.swift */,
+				2340B7FC1EFC50C70017E423 /* NSManagedObjectContextCacheTests.swift */,
+				23D926DB1EFA6FC800629E17 /* NSManagedObjectContextUtilsTests.swift */,
 				236D5C541F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift */,
+				23D926C21EFA67E900629E17 /* DemoModel.xcdatamodeld */,
 			);
 			path = CoreDataTests;
 			sourceTree = "<group>";
