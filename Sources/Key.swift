@@ -36,7 +36,8 @@ import Foundation
 /// ```
 /// Key<String>("myKey1") // value: myKey1
 /// Key<Int>("myKey2", namespace: "org.tinrobots")  // value: org.tinrobots.myKey2
-/// Key<Bool>("myKey2", namespace: "org.tinrobots") // value: org.tinrobots.myKey3
+/// Key<Bool>("myKey3", namespace: "org.tinrobots") // value: org.tinrobots.myKey3
+/// Key<Double>("myKey4", namespace: "org", "tinrobots") // value: org.tinrobots.myKey4
 /// ```
 ///
 public enum Key<T>: CustomStringConvertible {
