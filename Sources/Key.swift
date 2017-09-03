@@ -48,7 +48,7 @@ public enum Key<T>: CustomStringConvertible {
 
   /// **Mechanica**
   ///
-  /// A namespaced String key.
+  /// A namespaced `String` key.
   case namespaced(String, namespace: String)
 
   /// Create a new Key.
