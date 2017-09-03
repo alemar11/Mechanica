@@ -92,7 +92,7 @@ extension UserDefaults {
   /// - Parameter defaultName: A key in the current user's defaults database.
   public final func codableValue<T: Codable>(forKey defaultName: String) -> T? {
     guard let encodedData = data(forKey: defaultName) else { return nil }
-    return try? PropertyListDecoder().decode(T.self, from: encodedData)
+    return try? JSONDecoder().decode(T.self, from: encodedData)
   }
 
   /// **Mechanica**
@@ -106,7 +106,7 @@ extension UserDefaults {
   public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String) throws {
     if let value = value {
       do {
-        let encodedData = try PropertyListEncoder().encode(value)
+        let encodedData = try JSONEncoder().encode(value)
         set(encodedData, forKey: defaultName)
       } catch {
         throw error
