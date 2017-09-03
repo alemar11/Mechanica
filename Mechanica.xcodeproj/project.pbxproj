@@ -46,7 +46,6 @@
 		12431A601DCE2F5A00594940 /* FetchConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12431A5E1DCE2F5A00594940 /* FetchConfigurable.swift */; };
 		12431A611DCE2F5A00594940 /* FetchConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12431A5E1DCE2F5A00594940 /* FetchConfigurable.swift */; };
 		12431A621DCE2F5A00594940 /* FetchConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12431A5E1DCE2F5A00594940 /* FetchConfigurable.swift */; };
-		129BE0001DE4AB9600191F96 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */; };
 		12B536F71D33ED6A005C52A7 /* Mechanica.h in Headers */ = {isa = PBXBuildFile; fileRef = 12B536ED1D33ED6A005C52A7 /* Mechanica.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12B536F81D33ED6A005C52A7 /* Mechanica.h in Headers */ = {isa = PBXBuildFile; fileRef = 12B536ED1D33ED6A005C52A7 /* Mechanica.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12B536F91D33ED6A005C52A7 /* Mechanica.h in Headers */ = {isa = PBXBuildFile; fileRef = 12B536ED1D33ED6A005C52A7 /* Mechanica.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -176,7 +175,6 @@
 		237F178E1E90000900726553 /* BinaryIntegerUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17451E90000800726553 /* BinaryIntegerUtilsTests.swift */; };
 		237F178F1E90000900726553 /* iOS_NibDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237F17461E90000800726553 /* iOS_NibDemo.xib */; };
 		237F17921E90000900726553 /* iOS_StoryboardDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237F17471E90000800726553 /* iOS_StoryboardDemo.storyboard */; };
-		237F17951E90000900726553 /* KeyboardObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17481E90000800726553 /* KeyboardObserverTests.swift */; };
 		237F179A1E90000900726553 /* macOS_NibDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237F17491E90000800726553 /* macOS_NibDemo.xib */; };
 		237F179D1E90000900726553 /* macOS_StoryboardDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237F174A1E90000800726553 /* macOS_StoryboardDemo.storyboard */; };
 		237F179E1E90000900726553 /* NibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F174B1E90000800726553 /* NibTests.swift */; };
@@ -477,7 +475,6 @@
 /* Begin PBXFileReference section */
 		1230C2D51DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSManagedObject+UpdateTimestampable.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		12431A5E1DCE2F5A00594940 /* FetchConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchConfigurable.swift; sourceTree = "<group>"; };
-		129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = KeyboardObserver.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		12B536B21D33ECEC005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536BF1D33ECFB005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536D51D33ED1C005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -526,7 +523,6 @@
 		237F17451E90000800726553 /* BinaryIntegerUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryIntegerUtilsTests.swift; sourceTree = "<group>"; };
 		237F17461E90000800726553 /* iOS_NibDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iOS_NibDemo.xib; sourceTree = "<group>"; };
 		237F17471E90000800726553 /* iOS_StoryboardDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iOS_StoryboardDemo.storyboard; sourceTree = "<group>"; };
-		237F17481E90000800726553 /* KeyboardObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardObserverTests.swift; sourceTree = "<group>"; };
 		237F17491E90000800726553 /* macOS_NibDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = macOS_NibDemo.xib; sourceTree = "<group>"; };
 		237F174A1E90000800726553 /* macOS_StoryboardDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = macOS_StoryboardDemo.storyboard; sourceTree = "<group>"; };
 		237F174B1E90000800726553 /* NibTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTests.swift; sourceTree = "<group>"; };
@@ -698,7 +694,6 @@
 				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
 				235B5EBE1E4F68E000DBBE0D /* Font+Utils.swift */,
 				23839F851E93CCE4002D757B /* Key.swift */,
-				129BDFFF1DE4AB9600191F96 /* KeyboardObserver.swift */,
 				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
 				D24094491E4C802B00EB4163 /* NSPredicate+Operators.swift */,
 				23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */,
@@ -745,7 +740,6 @@
 				237F173B1E90000800726553 /* CollectionUtilsTests.swift */,
 				237F17421E90000800726553 /* FileManagerUtilsTests.swift */,
 				237F17431E90000800726553 /* FloatingPointUtilsTests.swift */,
-				237F17481E90000800726553 /* KeyboardObserverTests.swift */,
 				23F3F6FA1E9651AB002DAC89 /* KeyTests.swift */,
 				237F174C1E90000800726553 /* NSAttributedStringOperatorsTests.swift */,
 				237F174D1E90000800726553 /* NSAttributedStringUtilsTests.swift */,
@@ -1398,7 +1392,6 @@
 				23EE9B191E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */,
 				237274BF1E7C41790017B127 /* BinaryInteger+Utils.swift in Sources */,
 				D28CAEE61E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift in Sources */,
-				129BE0001DE4AB9600191F96 /* KeyboardObserver.swift in Sources */,
 				239B92651F274E55009A9433 /* Sequence+Utils.swift in Sources */,
 				D26C6C2A1DEC83B800B7D26A /* Storyboard.swift in Sources */,
 				D273A59A1DD5FB8B0007796F /* Mechanica.swift in Sources */,
@@ -1611,7 +1604,6 @@
 				2340B7FD1EFC50C70017E423 /* NSManagedObjectContextCacheTests.swift in Sources */,
 				237F17651E90000900726553 /* BinaryFloatingPointUtilsTests.swift in Sources */,
 				237F17B91E90000900726553 /* SignedIntegerUtilsTests.swift in Sources */,
-				237F17951E90000900726553 /* KeyboardObserverTests.swift in Sources */,
 				23B2ED721EC8CE28006365BD /* NSObjectProtocolUtils.swift in Sources */,
 				2392CB4E1EE04A9900B955EC /* XCTest+Utils.swift in Sources */,
 				23C8BFD91EFC6D0100ED2BE0 /* CoreDataStack.swift in Sources */,
