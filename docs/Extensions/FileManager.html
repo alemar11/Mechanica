@@ -14,7 +14,7 @@
     <a title="FileManager Extension Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Mechanica Docs</a> (98% documented)</p>
+        <p><a href="../index.html">Mechanica Docs</a> (97% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -27,20 +27,6 @@
     <div class="content-wrapper">
       <nav class="sidebar">
         <ul class="nav-groups">
-          <li class="nav-group-name">
-            <a href="../Classes.html">Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Classes/KeyboardObserver.html">KeyboardObserver</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/KeyboardObserver/Options.html">– Options</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/KeyboardObserver/Event.html">– Event</a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-group-name">
             <a href="../Enums.html">Enums</a>
             <ul class="nav-group-tasks">
@@ -69,9 +55,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Color.html">Color</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Color/Flat.html">– Flat</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Dictionary.html">Dictionary</a>
@@ -210,6 +193,9 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Protocols/AssociatedValueSupporting.html">AssociatedValueSupporting</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/BinaryConvertible.html">BinaryConvertible</a>
               </li>
               <li class="nav-group-task">
@@ -247,9 +233,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/UpdateTimestampable.html">UpdateTimestampable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/ValueAssociable.html">ValueAssociable</a>
               </li>
             </ul>
           </li>
@@ -299,9 +282,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So11FileManagerC9MechanicaE17documentDirectory10Foundation3URLVv"></a>
-                    <a name="//apple_ref/swift/Property/documentDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE17documentDirectory10Foundation3URLVv">documentDirectory</a>
+                    <a name="/s:So11FileManagerC9MechanicaE21userDocumentDirectory10Foundation3URLVSgv"></a>
+                    <a name="//apple_ref/swift/Property/userDocumentDirectory" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So11FileManagerC9MechanicaE21userDocumentDirectory10Foundation3URLVSgv">userDocumentDirectory</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -311,7 +294,7 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns the location of the document directory (<em>Documents/</em>).
+<p>Returns the location of the document directory (<em>Documents/</em>) in the user&rsquo;s home directory.
 The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
@@ -326,7 +309,7 @@ The contents of this directory can be made available to the user through file sh
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">documentDirectory</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">userDocumentDirectory</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -336,9 +319,9 @@ The contents of this directory can be made available to the user through file sh
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So11FileManagerC9MechanicaE16libraryDirectory10Foundation3URLVv"></a>
-                    <a name="//apple_ref/swift/Property/libraryDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE16libraryDirectory10Foundation3URLVv">libraryDirectory</a>
+                    <a name="/s:So11FileManagerC9MechanicaE20userLibraryDirectory10Foundation3URLVSgv"></a>
+                    <a name="//apple_ref/swift/Property/userLibraryDirectory" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So11FileManagerC9MechanicaE20userLibraryDirectory10Foundation3URLVSgv">userLibraryDirectory</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -348,7 +331,7 @@ The contents of this directory can be made available to the user through file sh
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns the location of the library directory (<em>Library/</em>).</p>
+<p>Returns the location of the library directory (<em>Library/</em>) in the user&rsquo;s home directory.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     Use the Library subdirectories for any files you don’t want exposed to the user. Your app should not use these directories for user data files.
@@ -364,7 +347,7 @@ The contents of this directory can be made available to the user through file sh
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">libraryDirectory</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">userLibraryDirectory</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -374,9 +357,9 @@ The contents of this directory can be made available to the user through file sh
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So11FileManagerC9MechanicaE15cachesDirectory10Foundation3URLVv"></a>
-                    <a name="//apple_ref/swift/Property/cachesDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE15cachesDirectory10Foundation3URLVv">cachesDirectory</a>
+                    <a name="/s:So11FileManagerC9MechanicaE19userCachesDirectory10Foundation3URLVSgv"></a>
+                    <a name="//apple_ref/swift/Property/userCachesDirectory" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So11FileManagerC9MechanicaE19userCachesDirectory10Foundation3URLVSgv">userCachesDirectory</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -386,7 +369,7 @@ The contents of this directory can be made available to the user through file sh
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns the location of discardable cache files (<em>Library/Caches/</em>).</p>
+<p>Returns the location of discardable cache files (<em>Library/Caches/</em>) in the user&rsquo;s home directory.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file.
@@ -410,7 +393,7 @@ Examples of cache data include (but are not limited to) database cache files and
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cachesDirectory</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">userCachesDirectory</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -420,9 +403,9 @@ Examples of cache data include (but are not limited to) database cache files and
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So11FileManagerC9MechanicaE27applicationSupportDirectory10Foundation3URLVv"></a>
-                    <a name="//apple_ref/swift/Property/applicationSupportDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE27applicationSupportDirectory10Foundation3URLVv">applicationSupportDirectory</a>
+                    <a name="/s:So11FileManagerC9MechanicaE31userApplicationSupportDirectory10Foundation3URLVSgv"></a>
+                    <a name="//apple_ref/swift/Property/userApplicationSupportDirectory" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So11FileManagerC9MechanicaE31userApplicationSupportDirectory10Foundation3URLVSgv">userApplicationSupportDirectory</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -432,7 +415,7 @@ Examples of cache data include (but are not limited to) database cache files and
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns the location of application support files (<em>Library/Application Support/</em>).</p>
+<p>Returns the location of application support files (<em>Library/Application Support/</em>) in the user&rsquo;s home directory.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     Put app-created support files in the <em>Library/Application support/</em> directory.
@@ -459,7 +442,7 @@ This directory can also include data files, configuration files, templates and m
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">applicationSupportDirectory</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">userApplicationSupportDirectory</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -469,9 +452,9 @@ This directory can also include data files, configuration files, templates and m
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So11FileManagerC9MechanicaE25makeNewCachesSubDirectory10Foundation3URLVv"></a>
-                    <a name="//apple_ref/swift/Property/makeNewCachesSubDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE25makeNewCachesSubDirectory10Foundation3URLVv">makeNewCachesSubDirectory</a>
+                    <a name="/s:So11FileManagerC9MechanicaE29makeNewUserCachesSubDirectory10Foundation3URLVSgv"></a>
+                    <a name="//apple_ref/swift/Property/makeNewUserCachesSubDirectory" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So11FileManagerC9MechanicaE29makeNewUserCachesSubDirectory10Foundation3URLVSgv">makeNewUserCachesSubDirectory</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -481,14 +464,14 @@ This directory can also include data files, configuration files, templates and m
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Creates and returns always a <code>new</code> directory in Library/Caches for discardable cache files.</p>
+<p>Creates and returns always a <code>new</code> directory in Library/Caches in the user&rsquo;s home directory for discardable cache files.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">makeNewCachesSubDirectory</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">makeNewUserCachesSubDirectory</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -636,7 +619,7 @@ This directory can also include data files, configuration files, templates and m
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-07-26)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-09-04)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
