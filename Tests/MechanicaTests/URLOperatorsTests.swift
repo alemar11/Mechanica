@@ -34,11 +34,13 @@ class URLOperatorsTests: XCTestCase {
     let url4  = URL(fileURLWithPath: "http://www.tinrobots.org/demo")
 
     do {
+      // Given, When
       let additionalPath = "test"
       let newURL = url + additionalPath
       let newURL2 = url2 + additionalPath
       let newURL3 = url3 + additionalPath
       let newURL4 = url4 + additionalPath
+      // Then
       XCTAssertTrue(newURL.lastPathComponent == "test")
       XCTAssertTrue(newURL.pathExtension == "")
       XCTAssertTrue(newURL2.lastPathComponent == "test")
@@ -50,11 +52,13 @@ class URLOperatorsTests: XCTestCase {
     }
 
     do {
+      // Given, When
       let additionalPath = "test.png"
       let newURL = url + additionalPath
       let newURL2 = url2 + additionalPath
       let newURL3 = url3 + additionalPath
       let newURL4 = url4 + additionalPath
+      // Then
       XCTAssertTrue(newURL.lastPathComponent == "test.png")
       XCTAssertTrue(newURL.pathExtension == "png")
       XCTAssertTrue(newURL2.lastPathComponent == "test.png")
@@ -66,11 +70,13 @@ class URLOperatorsTests: XCTestCase {
     }
 
     do {
+      // Given, When
       let additionalPath = "/demo/test.png"
       let newURL = url + additionalPath
       let newURL2 = url2 + additionalPath
       let newURL3 = url3 + additionalPath
       let newURL4 = url4 + additionalPath
+      // Then
       XCTAssertTrue(newURL.lastPathComponent == "test.png")
       XCTAssertTrue(newURL.pathExtension == "png")
       XCTAssertTrue(newURL2.lastPathComponent == "test.png")
@@ -82,11 +88,13 @@ class URLOperatorsTests: XCTestCase {
     }
 
     do {
+      // Given, When
       let additionalPath = ""
       let newURL = url + additionalPath
       let newURL2 = url2 + additionalPath
       let newURL3 = url3 + additionalPath
       let newURL4 = url4 + additionalPath
+      // Then
       XCTAssertTrue(newURL.lastPathComponent == url.lastPathComponent)
       XCTAssertTrue(newURL.pathExtension == "")
       XCTAssertTrue(newURL2.lastPathComponent == url2.lastPathComponent)
