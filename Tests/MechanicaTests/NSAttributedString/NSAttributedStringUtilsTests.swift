@@ -31,46 +31,112 @@ class NSAttributedStringUtilsTests: XCTestCase {
   #if os(iOS) || os(macOS)
 
   func testBold() {
-    // Given, When
-    let boldString = testAttributedString.bold()
-    // Then
-    for value in 0...boldString.string.length {
-      let attributes = boldString.attributes(at: value, longestEffectiveRange: nil, in: boldString.string.nsRange)
-      XCTAssertEqual(attributes[NSAttributedStringKey.font] as! Font, Font.boldSystemFont(ofSize: Font.systemFontSize))
+
+    do {
+      // Given, When
+      let boldString = testAttributedString.bold()
+      // Then
+      for value in 0...boldString.string.length {
+        let attributes = boldString.attributes(at: value, longestEffectiveRange: nil, in: boldString.string.nsRange)
+        XCTAssertEqual(attributes[.font] as! Font, Font.boldSystemFont(ofSize: Font.systemFontSize))
+      }
     }
+
+    do {
+      // Given, When
+      let boldString = testAttributedString.bold(range: NSMakeRange(0, 5))
+      // Then
+      for value in 0...boldString.string.length {
+        let attributes = boldString.attributes(at: value, longestEffectiveRange: nil, in: boldString.string.nsRange)
+        if value < 5 {
+          XCTAssertEqual(attributes[.font] as! Font, Font.boldSystemFont(ofSize: Font.systemFontSize))
+        } else {
+          XCTAssertNil(attributes[.font])
+        }
+      }
+    }
+
   }
 
   #endif
 
   func testUnderLine() {
-    // Given, When
-    let underLineString = testAttributedString.underline()
-    // Then
-    for value in 0...underLineString.string.length {
-      let attributes = underLineString.attributes(at: value, longestEffectiveRange: nil, in: underLineString.string.nsRange)
-      XCTAssertEqual(attributes[NSAttributedStringKey.underlineStyle] as! Int, NSUnderlineStyle.styleSingle.rawValue)
+    do {
+      // Given, When
+      let underLineString = testAttributedString.underline()
+      // Then
+      for value in 0...underLineString.string.length {
+        let attributes = underLineString.attributes(at: value, longestEffectiveRange: nil, in: underLineString.string.nsRange)
+        XCTAssertEqual(attributes[.underlineStyle] as! Int, NSUnderlineStyle.styleSingle.rawValue)
+      }
+    }
+
+    do {
+      // Given, When
+      let underLineString = testAttributedString.underline(range: NSMakeRange(0, 5), style: .patternDashDot)
+      // Then
+      for value in 0...underLineString.string.length {
+        let attributes = underLineString.attributes(at: value, longestEffectiveRange: nil, in: underLineString.string.nsRange)
+        if value < 5 {
+          XCTAssertEqual(attributes[.underlineStyle] as! Int, NSUnderlineStyle.patternDashDot.rawValue)
+        } else {
+          XCTAssertNil(attributes[.underlineStyle])
+        }
+      }
     }
   }
 
   func testStrikethrough() {
+    do {
     // Given, When
     let strikeThroughString = testAttributedString.strikethrough()
     // Then
     for value in 0...strikeThroughString.string.length {
       let attributes = strikeThroughString.attributes(at: value, longestEffectiveRange: nil, in: strikeThroughString.string.nsRange)
-      XCTAssertEqual(attributes[NSAttributedStringKey.strikethroughStyle] as! NSNumber, NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int))
+      XCTAssertEqual(attributes[.strikethroughStyle] as! NSNumber, NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int))
+    }
+    }
+
+    do {
+      // Given, When
+      let strikeThroughString = testAttributedString.strikethrough(range: NSMakeRange(0, 5))
+      // Then
+      for value in 0...strikeThroughString.string.length {
+        let attributes = strikeThroughString.attributes(at: value, longestEffectiveRange: nil, in: strikeThroughString.string.nsRange)
+        if value < 5 {
+           XCTAssertEqual(attributes[.strikethroughStyle] as! NSNumber, NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int))
+        } else {
+          XCTAssertNil(attributes[.strikethroughStyle])
+        }
+      }
     }
   }
 
   #if os(iOS)
 
   func testItalic() {
+    do {
     // Given, When
     let italicString = testAttributedString.italic()
     // Then
     for value in 0...italicString.string.length {
       let attributes = italicString.attributes(at: value, longestEffectiveRange: nil, in: italicString.string.nsRange)
-       XCTAssertEqual(attributes[NSAttributedStringKey.font] as! Font, Font.italicSystemFont(ofSize: UIFont.systemFontSize))
+      XCTAssertEqual(attributes[NSAttributedStringKey.font] as! Font, Font.italicSystemFont(ofSize: UIFont.systemFontSize))
+    }
+    }
+
+    do {
+      // Given, When
+      let italicString = testAttributedString.italic(range: NSMakeRange(0, 5))
+      // Then
+      for value in 0...italicString.string.length {
+        let attributes = italicString.attributes(at: value, longestEffectiveRange: nil, in: italicString.string.nsRange)
+        if value < 5 {
+           XCTAssertEqual(attributes[NSAttributedStringKey.font] as! Font, Font.italicSystemFont(ofSize: UIFont.systemFontSize))
+        } else {
+          XCTAssertNil(attributes[.font])
+        }
+      }
     }
   }
 

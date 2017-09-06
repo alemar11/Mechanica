@@ -38,10 +38,10 @@ extension NSAttributedString {
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString adding the bold attribute.
-  public func bold() -> NSAttributedString {
+  public func bold(range: NSRange? = nil) -> NSAttributedString {
     guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
-    attributedString.addAttributes([NSAttributedStringKey.font: Font.boldSystemFont(ofSize: Font.systemFontSize)], range: string.nsRange)
+    attributedString.addAttributes([.font: Font.boldSystemFont(ofSize: Font.systemFontSize)], range: range.hasValue ? range! : string.nsRange)
 
     return attributedString
   }
@@ -51,10 +51,10 @@ extension NSAttributedString {
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString adding the underline attribute.
-  public func underline() -> NSAttributedString {
+  public func underline(range: NSRange? = nil, style: NSUnderlineStyle = .styleSingle) -> NSAttributedString {
     guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
-    attributedString.addAttributes([NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: string.nsRange)
+    attributedString.addAttributes([.underlineStyle: style.rawValue], range: range.hasValue ? range! : string.nsRange)
 
     return attributedString
   }
@@ -62,13 +62,11 @@ extension NSAttributedString {
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString adding the strikethrough attribute.
-  public func strikethrough() -> NSAttributedString {
+  public func strikethrough(range: NSRange? = nil, style: NSUnderlineStyle = .styleSingle) -> NSAttributedString {
     guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
-    let range = string.startIndex...
-    let nsRange = NSRange(range, in: string)
-    let attributes = [NSAttributedStringKey.strikethroughStyle: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int)]
-    attributedString.addAttributes(attributes, range: nsRange)
+    let attributes = [NSAttributedStringKey.strikethroughStyle: NSNumber(value: style.rawValue as Int)]
+    attributedString.addAttributes(attributes, range: range.hasValue ? range! : string.nsRange)
 
     return attributedString
   }
@@ -78,10 +76,10 @@ extension NSAttributedString {
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString adding the italic attribute.
-  public func italic() -> NSAttributedString {
+  public func italic(range: NSRange? = nil) -> NSAttributedString {
     guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
-    attributedString.addAttributes([NSAttributedStringKey.font: Font.italicSystemFont(ofSize: Font.systemFontSize)], range: string.nsRange)
+    attributedString.addAttributes([.font: Font.italicSystemFont(ofSize: Font.systemFontSize)], range: range.hasValue ? range! : string.nsRange)
 
     return attributedString
   }
