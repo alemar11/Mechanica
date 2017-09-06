@@ -28,24 +28,24 @@ import Foundation
 #endif
 
 extension Double {
-  
+
   /// **Mechanica**
   ///
   /// Converts `self` to `String`.
   public var toString: String { return String(self) }
-  
+
   /// **Mechanica**
   ///
   /// Converts `self` to `Int`.
   public var toInt: Int { return Int(self) }
-  
+
   #if os(iOS) || os(tvOS) || os(watchOS)
-  
+
   /// **Mechanica**
   ///
   /// Converts `self` to `CGFloat`.
   public var toCGFloat: CGFloat { return CGFloat(self) }
-  
+
   #endif
-  
+
 }
