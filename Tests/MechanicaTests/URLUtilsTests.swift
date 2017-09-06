@@ -24,7 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-class URLOperatorsTests: XCTestCase {
+class URLUtilsTests: XCTestCase {
 
   func testAddition() {
 
@@ -105,6 +105,23 @@ class URLOperatorsTests: XCTestCase {
       XCTAssertTrue(newURL4.pathExtension == "")
     }
 
+  }
+
+  func testQueryParameters() {
+    do {
+      let url = URL(string: "http://tinrobots.org/services/test/demo?v=1.1&q=hello")
+
+      if let queryParameters = url?.queryParameters {
+        XCTAssertEqual(queryParameters["v"], Optional("1.1"))
+        XCTAssertEqual(queryParameters["q"], Optional("hello"))
+        XCTAssertEqual(queryParameters["other"], nil)
+      }
+    }
+
+    do {
+      let url = URL(string: "http://tinrobots.org/services/test/demo?")
+      XCTAssertNil(url!.queryParameters)
+    }
   }
 
 }

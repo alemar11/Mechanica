@@ -24,12 +24,37 @@
 import Foundation
 
 extension URL {
+  
+  /// **Mechanica**
+  ///
+  /// Returns a Dictionary containing the query parameters (is any).
+  public var queryParameters: [String: String]? {
+    guard
+      let components = URLComponents(url: self, resolvingAgainstBaseURL: true),
+      let queryItems = components.queryItems,
+      queryItems.count > 0
+      else {
+        return nil
+    }
+    
+    var parameters = [String: String]()
+    for item in queryItems {
+      parameters[item.name] = item.value
+    }
+    
+    return parameters
+  }
+}
 
+// MARK: - Operators
+
+extension URL {
+  
   /// **Mechanica**
   ///
   /// Creates a `new` URL constructed by appending the *rhs* path to the *lhs* URL.
   static public func + (lhs: URL, rhs: String) -> URL {
     return lhs.appendingPathComponent(rhs)
   }
-
+  
 }
