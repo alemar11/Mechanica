@@ -25,9 +25,7 @@ import CoreData
 
 // MARK: - Local Deletion
 
-private let markedForDeletionKey = "markedForDeletionAsOf"
-/// Objects marked for local deletion more than this time (in seconds) ago will get permanently deleted.
-private let timeBeforePermanentlyDeletingObjects = TimeInterval(120)
+fileprivate let markedForDeletionKey = "markedForDeletionAsOf"
 
 /// **Mechanica**
 ///
@@ -93,18 +91,27 @@ extension DelayedDeletable where Self: NSManagedObject {
 extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletable {
 
   // TODO: work in progress
+  /// **Mechanica**
+  ///
+  /// Makes a batch delete for object conforming to `DelayedDeletable` older than the `cutOffDate` date.
+  /// - Parameters:
+  ///   - context: The NSManagedObjectContext where is executed the batch delete request.
+  ///   - cutOffDate: Objects marked for local deletion more than this time (in seconds) ago will get permanently deleted.
+  /// - Throws: An error in cases of a batch delete operation failure.
   @available(iOS 9, tvOS 9, watchOS 2, OSX 10.12, *)
-  private static func batchDeleteObjectsMarkedForDeletion(in context: NSManagedObjectContext) {
+  public static func batchDeleteObjectsMarkedForDeletion(in context: NSManagedObjectContext, olderThan cutOffDate: Date = Date(timeIntervalSinceNow: -TimeInterval(120))) throws {
     guard context.persistentStoreCoordinator != nil else { fatalError("Persistent Store Coordinator missing. A NSBatchDeleteRequest instance operates directly on one or more persistent stores.") }
+
     let request = fetchRequest()
-    let cutOff = Date(timeIntervalSinceNow: -timeBeforePermanentlyDeletingObjects)
-    request.predicate = NSPredicate(format: "%K < %@", markedForDeletionKey, [cutOff])
+    request.predicate = NSPredicate(format: "%K <= %@", markedForDeletionKey, cutOffDate as NSDate)
+    
     let batchRequest = NSBatchDeleteRequest(fetchRequest: request)
     batchRequest.resultType = .resultTypeStatusOnly
+    
     do {
       try context.execute(batchRequest)
     } catch {
-      fatalError(error.localizedDescription)
+      throw error
     }
   }
 

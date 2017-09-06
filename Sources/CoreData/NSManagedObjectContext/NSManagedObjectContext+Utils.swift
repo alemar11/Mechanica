@@ -124,7 +124,7 @@ extension NSManagedObjectContext {
   ///
   /// Synchronously performs changes and then saves them or **rollbacks** if any error occurs.
   ///
-  /// - Throws: throws an error in cases of a saving operation failure.
+  /// - Throws: An error in cases of a saving operation failure.
   public final func performSaveAndWait(after changes: () -> Void) throws {
     try withoutActuallyEscaping(changes) { work in
       var saveError: Error? = nil
