@@ -440,8 +440,8 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   func testData() {
     //  Given
-    let value = Data(base64Encoded: "tin".base64Encoded!)
-    let value2 = Data(base64Encoded: "robots".base64Encoded!)
+    let value = Data(base64Encoded: "tin".toBase64Encoded!)
+    let value2 = Data(base64Encoded: "robots".toBase64Encoded!)
     let key = Key<Data>("myData")
     // When
     userDefaults.set(data: value, forKey: key)
