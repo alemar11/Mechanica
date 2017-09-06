@@ -41,9 +41,8 @@ extension NSAttributedString {
   public func bold() -> NSAttributedString {
     guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
-    let range = string.startIndex...
-    let nsRange = NSRange(range, in: string)
-    attributedString.addAttributes([NSAttributedStringKey.font: Font.boldSystemFont(ofSize: Font.systemFontSize)], range: nsRange)
+    attributedString.addAttributes([NSAttributedStringKey.font: Font.boldSystemFont(ofSize: Font.systemFontSize)], range: string.nsRange)
+
     return attributedString
   }
 
@@ -55,9 +54,8 @@ extension NSAttributedString {
   public func underline() -> NSAttributedString {
     guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
-    let range = string.startIndex...
-    let nsRange = NSRange(range, in: string)
-    attributedString.addAttributes([NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: nsRange)
+    attributedString.addAttributes([NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: string.nsRange)
+
     return attributedString
   }
 
@@ -81,12 +79,11 @@ extension NSAttributedString {
   ///
   /// Returns a `new` NSAttributedString adding the italic attribute.
   public func italic() -> NSAttributedString {
-  guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
+    guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
-  let range = string.startIndex...
-  let nsRange = NSRange(range, in: string)
-  attributedString.addAttributes([NSAttributedStringKey.font: Font.italicSystemFont(ofSize: Font.systemFontSize)], range: nsRange)
-  return attributedString
+    attributedString.addAttributes([NSAttributedStringKey.font: Font.italicSystemFont(ofSize: Font.systemFontSize)], range: string.nsRange)
+
+    return attributedString
   }
 
   #endif

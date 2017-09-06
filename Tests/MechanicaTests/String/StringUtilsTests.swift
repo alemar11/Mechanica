@@ -581,5 +581,13 @@ class StringUtilsTests: XCTestCase {
     XCTAssertEqual("Hell0W0rld".swapCased(), "hELL0w0RLD")
   }
 
+  func testNSRange() {
+    let string = "Hello World 👩🏽‍🌾👨🏼‍🚒💃🏾"
+    let range = string.startIndex...
+
+    XCTAssert(string.nsRange.length == string[range].utf16.count)
+
+  }
+
 }
 

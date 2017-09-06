@@ -535,4 +535,14 @@ extension String {
     return map({String($0).isLowercased ? String($0).uppercased() : String($0).lowercased()}).joined()
   }
 
+  // MARK: - Utilities
+
+  /// **Mechanica**
+  ///
+  /// Returns the `NSRange` of `self`.
+  public var nsRange: NSRange {
+    let range = self.startIndex...
+    return NSRange(range, in: self)
+  }
+
 }
