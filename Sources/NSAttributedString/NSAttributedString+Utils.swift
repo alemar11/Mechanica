@@ -29,6 +29,72 @@ import Foundation
   import Cocoa
 #endif
 
+// MARK: - Attributes
+
+extension NSAttributedString {
+
+  #if os(iOS) || os(macOS)
+
+  /// **Mechanica**
+  ///
+  /// Adds bold attribute to NSAttributedString and returns it
+  public func bold() -> NSAttributedString {
+    guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
+
+    let range = string.startIndex...
+    let nsRange = NSRange(range, in: string)
+    attributedString.addAttributes([NSAttributedStringKey.font: Font.boldSystemFont(ofSize: Font.systemFontSize)], range: nsRange)
+    return attributedString
+  }
+
+  #endif
+
+  /// **Mechanica**
+  ///
+  /// Adds underline attribute to NSAttributedString and returns it
+  public func underline() -> NSAttributedString {
+    guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
+
+    let range = string.startIndex...
+    let nsRange = NSRange(range, in: string)
+    attributedString.addAttributes([NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: nsRange)
+    return attributedString
+  }
+
+  /// **Mechanica**
+  ///
+  /// Adds strikethrough attribute to NSAttributedString and returns it
+  public func strikethrough() -> NSAttributedString {
+    guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
+
+    let range = string.startIndex...
+    let nsRange = NSRange(range, in: string)
+    let attributes = [NSAttributedStringKey.strikethroughStyle: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int)]
+    attributedString.addAttributes(attributes, range: nsRange)
+
+    return attributedString
+  }
+
+  #if os(iOS)
+
+  /// **Mechanica**
+  ///
+  /// Adds italic attribute to NSAttributedString and returns it
+  public func italic() -> NSAttributedString {
+  guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
+
+  let range = string.startIndex...
+  let nsRange = NSRange(range, in: string)
+  attributedString.addAttributes([NSAttributedStringKey.font: Font.italicSystemFont(ofSize: Font.systemFontSize)], range: nsRange)
+  return attributedString
+  }
+
+  #endif
+
+}
+
+// MARK: - Initializers
+
 extension NSAttributedString {
 
   /// **Mechanica**

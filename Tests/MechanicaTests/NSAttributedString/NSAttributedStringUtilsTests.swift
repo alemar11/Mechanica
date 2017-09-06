@@ -26,8 +26,51 @@ import XCTest
 
 class NSAttributedStringUtilsTests: XCTestCase {
 
+  let testAttributedString = NSAttributedString(string: "Tin Robots Attributed String 🤖", attributes: [NSAttributedStringKey:Any]())
+
+  #if os(iOS) || os(macOS)
+
+  func testBold() {
+    // Given, When
+    let boldString = testAttributedString.bold()
+    let newAttributesSeen = boldString.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, boldString.length))
+    // Then
+    XCTAssertEqual(newAttributesSeen[NSAttributedStringKey.font] as! Font, Font.boldSystemFont(ofSize: Font.systemFontSize))
+  }
+
+  #endif
+
+  func testUnderLine() {
+    // Given, When
+    let underLineString = testAttributedString.underline()
+    let newAttributesSeen = underLineString.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, underLineString.length))
+    // Then
+    XCTAssertEqual(newAttributesSeen[NSAttributedStringKey.underlineStyle] as! Int, NSUnderlineStyle.styleSingle.rawValue)
+  }
+
+  func testStrikethrough() {
+    // Given, When
+    let strikeThroughString = testAttributedString.strikethrough()
+    let newAttributesSeen = strikeThroughString.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, strikeThroughString.length))
+    // Then
+    XCTAssertEqual(newAttributesSeen[NSAttributedStringKey.strikethroughStyle] as! NSNumber, NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int))
+  }
+
+  #if os(iOS)
+
+  func testItalic() {
+    // Given, When
+    let italicString = testAttributedString.italic()
+    let newAttributesSeen = italicString.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, italicString.length))
+    // Then
+    XCTAssertEqual(newAttributesSeen[NSAttributedStringKey.font] as! Font, Font.italicSystemFont(ofSize: UIFont.systemFontSize))
+  }
+
+  #endif
+
   func testInitHTML(){
     do {
+      // Given, When
       let html = """
                   <html>
                     <head><style type=\"text/css\">@font-face {font-family: Avenir-Roman}body {font-family: Avenir-Roman;font-size:15;margin: 0;padding: 0}</style>
@@ -35,6 +78,7 @@ class NSAttributedStringUtilsTests: XCTestCase {
                   <body style=\"background-color: #E6E6FA;\"><span style=\"background-color: #9999ff;\">Hello World</span></body>
                   """
       let s = NSAttributedString(html: html)
+      // Then
       XCTAssertNotNil(s)
 
       XCTAssertTrue(s!.string == "Hello World")
