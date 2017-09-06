@@ -32,13 +32,13 @@ extension UnsignedInteger where Self: BinaryConvertible & FixedWidthInteger {
   /// Creates a string representing the given value in the binary base.
   ///
   /// ```
-  /// Int8(10).binaryString //"00001010"
+  /// Int8(10).toBinaryString //"00001010"
   /// ```
   ///
-  public var binaryString: String {
-    let binaryString = String(self, radix:2)
+  public var toBinaryString: String {
+    let toBinaryString = String(self, radix:2)
     let size = MemoryLayout.size(ofValue: self) * 8
-    return String(repeating: "0", count: (size - binaryString.count)) + binaryString
+    return String(repeating: "0", count: (size - toBinaryString.count)) + toBinaryString
   }
 
 }

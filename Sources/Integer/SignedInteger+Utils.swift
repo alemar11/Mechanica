@@ -33,32 +33,32 @@ extension SignedInteger where Self: BinaryConvertible {
   ///
   /// Example:
   ///
-  ///     255.binaryString //"11111111"
-  ///     Int16(-1).binaryString //"1111111111111111"
-  ///     1.binaryString  //"0000000000000000000000000000000000000000000000000000000000000001" (Int 64 bit)
-  ///     1.binaryString  //"00000000000000000000000000000001" (Int 32 bit)
+  ///     255.toBinaryString //"11111111"
+  ///     Int16(-1).toBinaryString //"1111111111111111"
+  ///     1.toBinaryString  //"0000000000000000000000000000000000000000000000000000000000000001" (Int 64 bit)
+  ///     1.toBinaryString  //"00000000000000000000000000000001" (Int 32 bit)
   ///
   /// - Note: Negative integers are converted with the **two's complement operation**. For signed binary use `String(:,radix:)`
   ///
   /// Example:
   ///
   ///     String(Int8(-127), radix: 2) // -1111111
-  ///     Int8(-127).binaryString // 10000001
+  ///     Int8(-127).toBinaryString // 10000001
   ///
-  public var binaryString: String {
+  public var toBinaryString: String {
     let size = MemoryLayout.size(ofValue: self) * 8
     let signed = Int(self)
     let unsigned = UInt(bitPattern: signed)
-    var binaryString = String(unsigned, radix:2)
-    switch binaryString.count {
+    var toBinaryString = String(unsigned, radix:2)
+    switch toBinaryString.count {
     case let count where count > size:
-      let startIndex = binaryString.index(binaryString.startIndex, offsetBy: count-size)
-      let endIndex   = binaryString.index(startIndex, offsetBy: count, limitedBy: binaryString.endIndex) ?? binaryString.endIndex
-      binaryString = String(binaryString[startIndex..<endIndex])
+      let startIndex = toBinaryString.index(toBinaryString.startIndex, offsetBy: count-size)
+      let endIndex   = toBinaryString.index(startIndex, offsetBy: count, limitedBy: toBinaryString.endIndex) ?? toBinaryString.endIndex
+      toBinaryString = String(toBinaryString[startIndex..<endIndex])
     default:
-      binaryString = String(repeating: "0", count: (size - binaryString.count)) + binaryString
+      toBinaryString = String(repeating: "0", count: (size - toBinaryString.count)) + toBinaryString
     }
-    return binaryString
+    return toBinaryString
 
   }
 
