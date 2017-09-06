@@ -88,6 +88,10 @@
 		230A4EEF1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */; };
 		230A4EF01ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */; };
 		230A4EF11ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */; };
+		232CD5791F5FEA9800DC84A0 /* Double+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */; };
+		232CD57A1F5FEA9800DC84A0 /* Double+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */; };
+		232CD57B1F5FEA9800DC84A0 /* Double+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */; };
+		232CD57C1F5FEA9800DC84A0 /* Double+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */; };
 		233B48BB1E6F1398003D5341 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */; };
 		233B48BC1E6F1398003D5341 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */; };
 		233B48BD1E6F1398003D5341 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */; };
@@ -493,6 +497,7 @@
 		23078BEB1F20E1480074D955 /* OperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperatorsTests.swift; sourceTree = "<group>"; };
 		230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StringRegularExpressionsTests.swift; sourceTree = "<group>"; };
 		23280BE21F28C492008B6196 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = IDETemplateMacros.plist; path = Mechanica.xcodeproj/xcshareddata/IDETemplateMacros.plist; sourceTree = SOURCE_ROOT; };
+		232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Utils.swift"; sourceTree = "<group>"; };
 		233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2340B7FC1EFC50C70017E423 /* NSManagedObjectContextCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NSManagedObjectContextCacheTests.swift; sourceTree = "<group>"; };
 		234EF3391F064A1300345DD4 /* NSFetchRequestUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NSFetchRequestUtilsTests.swift; sourceTree = "<group>"; };
@@ -714,6 +719,7 @@
 				23793D791F067FC3002987C4 /* String */,
 				23AAE0461F5AB1B000ECF302 /* UIKit */,
 				23793D7A1F067FD7002987C4 /* UserDefaults */,
+				232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -740,9 +746,7 @@
 				237F17421E90000800726553 /* FileManagerUtilsTests.swift */,
 				237F17431E90000800726553 /* FloatingPointUtilsTests.swift */,
 				23F3F6FA1E9651AB002DAC89 /* KeyTests.swift */,
-				237F174C1E90000800726553 /* NSAttributedStringOperatorsTests.swift */,
-				237F174D1E90000800726553 /* NSAttributedStringUtilsTests.swift */,
-				237F174E1E90000800726553 /* NSMutableAttributedStringOperatorsTests.swift */,
+				232CD57D1F5FF30F00DC84A0 /* NSAttributedString */,
 				237F17501E90000800726553 /* NSPredicateOperatorsTests.swift */,
 				23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */,
 				23078BEB1F20E1480074D955 /* OperatorsTests.swift */,
@@ -763,6 +767,16 @@
 				235E0EDF1F065C9100E7A4D8 /* String */,
 			);
 			path = MechanicaTests;
+			sourceTree = "<group>";
+		};
+		232CD57D1F5FF30F00DC84A0 /* NSAttributedString */ = {
+			isa = PBXGroup;
+			children = (
+				237F174C1E90000800726553 /* NSAttributedStringOperatorsTests.swift */,
+				237F174D1E90000800726553 /* NSAttributedStringUtilsTests.swift */,
+				237F174E1E90000800726553 /* NSMutableAttributedStringOperatorsTests.swift */,
+			);
+			path = NSAttributedString;
 			sourceTree = "<group>";
 		};
 		235E0EDA1F065BA800E7A4D8 /* Color */ = {
@@ -1366,6 +1380,7 @@
 				23839F7F1E93C70F002D757B /* UserDefaults+Utils.swift in Sources */,
 				23949C5A1E4B979D00BD9EC8 /* NSAttributedString+Utils.swift in Sources */,
 				23FF8F221ECC92AB00A9ADD8 /* String+RegularExpressions.swift in Sources */,
+				232CD5791F5FEA9800DC84A0 /* Double+Utils.swift in Sources */,
 				12CAB72E1E00707D00CFE42C /* App.swift in Sources */,
 				D2CAF3401DA2A71300E6E843 /* NSManagedObject+Utils.swift in Sources */,
 				D2C149951DCCE04000376031 /* NSManagedObject+Deletable.swift in Sources */,
@@ -1437,6 +1452,7 @@
 				D208D1831DF07103009687BB /* String+Operators.swift in Sources */,
 				D2B9655F1DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
 				23DC26D31F1E3F090093F7EE /* Operators.swift in Sources */,
+				232CD57A1F5FEA9800DC84A0 /* Double+Utils.swift in Sources */,
 				D273A59B1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				239F8DD91E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift in Sources */,
 				12CAB72F1E00707D00CFE42C /* App.swift in Sources */,
@@ -1485,6 +1501,7 @@
 				23F6A1651EC8DBD400D20502 /* Utils.swift in Sources */,
 				23053ECC1E51CE020056E460 /* NSFetchRequestResult+CoreData.swift in Sources */,
 				D2CAF3421DA2A71300E6E843 /* NSManagedObject+Utils.swift in Sources */,
+				232CD57B1F5FEA9800DC84A0 /* Double+Utils.swift in Sources */,
 				233B48BD1E6F1398003D5341 /* Dictionary+Utils.swift in Sources */,
 				D205B0621DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */,
 				235DCB921E89B40F006AFEBE /* UnsignedInteger+Utils.swift in Sources */,
@@ -1568,6 +1585,7 @@
 				23949C581E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */,
 				239B92681F274E55009A9433 /* Sequence+Utils.swift in Sources */,
 				235DCB8E1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
+				232CD57C1F5FEA9800DC84A0 /* Double+Utils.swift in Sources */,
 				23964A051E5B034800C8E0DF /* Collection+Utils.swift in Sources */,
 				D240944D1E4C802B00EB4163 /* NSPredicate+Operators.swift in Sources */,
 				23FF8F251ECC92AB00A9ADD8 /* String+RegularExpressions.swift in Sources */,
