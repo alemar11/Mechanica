@@ -32,10 +32,10 @@ extension BinaryFloatingPoint where Self: BinaryConvertible {
   /// Creates a string representing the given value in the binary base.
   ///
   /// ```
-  /// Float(-5.625).binaryString //"11000000101101000000000000000000
+  /// Float(-5.625).toBinaryString //"11000000101101000000000000000000
   /// ```
   ///
-  public var binaryString: String {
+  public var toBinaryString: String {
     let floatingPointSign = (sign == FloatingPointSign.minus) ? "1" : "0"
     let exponentBitCount = Self.exponentBitCount
     let mantissaBitCount = Self.significandBitCount
