@@ -71,6 +71,11 @@ extension DelayedDeletable {
 
 extension DelayedDeletable where Self: NSManagedObject {
 
+  /// **Mechanica**
+  ///
+  /// Protocol `DelayedDeletable`.
+  ///
+  /// Returns true if `self` has been marked for deletion.
   public var hasChangedForDelayedDeletion: Bool {
     return changedValue(forKey: markedForDeletionKey) as? Date != nil
   }
@@ -90,7 +95,6 @@ extension DelayedDeletable where Self: NSManagedObject {
 
 extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletable {
 
-  // TODO: work in progress
   /// **Mechanica**
   ///
   /// Makes a batch delete for object conforming to `DelayedDeletable` older than the `cutOffDate` date.
@@ -184,6 +188,11 @@ extension RemoteDeletable {
 
 extension RemoteDeletable where Self: NSManagedObject {
 
+  /// **Mechanica**
+  ///
+  /// Protocol `RemoteDeletable`.
+  ///
+  /// Returns true if `self` has been marked for remote deletion.
   public var hasChangedForRemoteDeletion: Bool {
     return changedValue(forKey: markedForRemoteDeletionKey) as? Bool == true
   }
@@ -192,6 +201,11 @@ extension RemoteDeletable where Self: NSManagedObject {
 
 extension RemoteDeletable where Self: DelayedDeletable {
 
+  /// **Mechanica**
+  ///
+  /// Protocol `RemoteDeletable`.
+  ///
+  /// Predicate to filter for objects that are marked for remote deletion.
   public static var notMarkedForDeletionPredicate: NSPredicate {
     return NSCompoundPredicate(andPredicateWithSubpredicates: [notMarkedForLocalDeletionPredicate, notMarkedForRemoteDeletionPredicate])
   }
