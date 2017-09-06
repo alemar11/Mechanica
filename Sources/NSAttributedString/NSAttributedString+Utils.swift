@@ -37,7 +37,7 @@ extension NSAttributedString {
 
   /// **Mechanica**
   ///
-  /// Adds bold attribute to NSAttributedString and returns it
+  /// Returns a `new` NSAttributedString adding the bold attribute.
   public func bold() -> NSAttributedString {
     guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
@@ -51,7 +51,7 @@ extension NSAttributedString {
 
   /// **Mechanica**
   ///
-  /// Adds underline attribute to NSAttributedString and returns it
+  /// Returns a `new` NSAttributedString adding the underline attribute.
   public func underline() -> NSAttributedString {
     guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
@@ -63,7 +63,7 @@ extension NSAttributedString {
 
   /// **Mechanica**
   ///
-  /// Adds strikethrough attribute to NSAttributedString and returns it
+  /// Returns a `new` NSAttributedString adding the strikethrough attribute.
   public func strikethrough() -> NSAttributedString {
     guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
@@ -79,7 +79,7 @@ extension NSAttributedString {
 
   /// **Mechanica**
   ///
-  /// Adds italic attribute to NSAttributedString and returns it
+  /// Returns a `new` NSAttributedString adding the italic attribute.
   public func italic() -> NSAttributedString {
   guard let attributedString = self.mutableCopy() as? NSMutableAttributedString else { return self }
 
