@@ -1,7 +1,13 @@
-excluded:
+included:
+  - Sources
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
   - Tests
+  - Support
+  - docs
+  - build
 
 disabled_rules: # rule identifiers to exclude from running
   - large_tuple
