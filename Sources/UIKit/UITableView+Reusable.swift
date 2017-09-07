@@ -26,24 +26,24 @@
 import UIKit
 
 extension UITableView {
-  
+
   // MARK: UITableViewCell
-  
+
   /**
    **Mechanica**
-   
+
    Registers a nib object containing an `UITableViewCell` subclass conforming to `Reusable` & `NibIdentifiable`.
 
    - parameter cellType: The `UITableViewCell` subclass to register,
    - seealso: `register(_:forCellReuseIdentifier:)`
    */
   public final func register<T: UITableViewCell>(cellType: T.Type) where T: NibReusable {
-    register(T.nib(), forCellReuseIdentifier:  T.reuseIdentifier)
+    register(T.nib(), forCellReuseIdentifier: T.reuseIdentifier)
   }
-  
+
   /**
    **Mechanica**
-   
+
    Registers a class conforming to `Reusable` for use in creating new table cells.
    - parameter cellType: The `UITableViewCell` subclass to register.
    - seealso: `register(_:forCellReuseIdentifier:)`
@@ -51,10 +51,10 @@ extension UITableView {
   public final func register<T: UITableViewCell>(cellType: T.Type) where T: Reusable {
       self.register(cellType.self, forCellReuseIdentifier: cellType.reuseIdentifier)
   }
-  
+
   /**
    **Mechanica**
-   
+
    Returns a reusable `UITableViewCell` object for the class inferred by the specified return-type.
    - parameter indexPath: The index path specifying the location of the cell.
    - parameter cellType: The cell class to dequeue.
@@ -70,10 +70,10 @@ extension UITableView {
       }
       return cell
   }
-  
+
   /**
    **Mechanica**
-   
+
    Returns a reusable `UITableViewCell` object located by its identifier.
    - parameter cellType: The cell class to dequeue.
    - returns: A `Reusable` `UITableViewCell` object or nil;
@@ -84,12 +84,12 @@ extension UITableView {
     let cell = self.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier) as? T
     return cell
   }
-  
+
   // MARK: UITableViewHeaderFooterView
-  
+
   /**
    **Mechanica**
-   
+
    Registers a nib object containing a cell `UITableViewHeaderFooterView` subclass conforming to `Reusable` & `NibIdentifiable`.
    - parameter headerFooterViewType: The `UITableViewHeaderFooterView` subclass to register.
    - seealso: `register(_:forHeaderFooterViewReuseIdentifier:)`
@@ -98,10 +98,10 @@ extension UITableView {
     where T: NibReusable {
       self.register(headerFooterViewType.nib(), forHeaderFooterViewReuseIdentifier: headerFooterViewType.reuseIdentifier)
   }
-  
+
   /**
    **Mechanica**
-   
+
    Registers a class conforming to `Reusable` for use in creating new table header or footer views.
    - parameter headerFooterViewType: The `UITableViewHeaderFooterView` subclass to register.
    - seealso: `register(_:forHeaderFooterViewReuseIdentifier:)`
@@ -110,10 +110,10 @@ extension UITableView {
     where T: Reusable {
       self.register(headerFooterViewType.self, forHeaderFooterViewReuseIdentifier: headerFooterViewType.reuseIdentifier)
   }
-  
+
   /**
    **Mechanica**
-   
+
    Returns a reusable `UITableViewHeaderFooterView` object for the class inferred by the return-type.
    - parameter viewType: The view class to dequeue
    - returns: A `Reusable` `UITableViewHeaderFooterView` instance.

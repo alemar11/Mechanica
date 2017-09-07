@@ -26,38 +26,38 @@
 import UIKit
 
 extension UICollectionView {
-  
+
   // MARK: UICollectionViewCell
-  
+
   /**
    **Mechanica**
-   
+
    Registers a nib object containing an `UICollectionViewCell` subclass conforming to `Reusable` & `NibIdentifiable`.
-   
+
    - parameter cellType: the `UICollectionViewCell` subclass to register.
    - seealso: `register(_:forCellWithReuseIdentifier:)`
    */
   public final func register<T: UICollectionViewCell>(cellType: T.Type) where T: NibReusable {
       self.register(cellType.nib(), forCellWithReuseIdentifier: cellType.reuseIdentifier)
   }
-  
+
   /**
    **Mechanica**
-   
+
    Registers a class conforming to `Reusable` for use in creating new collection view cells.
-   
+
    - parameter cellType: The `UICollectionViewCell` subclass to register.
    - seealso: `register(_:forCellWithReuseIdentifier:)`
    */
   public final func register<T: UICollectionViewCell>(cellType: T.Type) where T: Reusable {
       self.register(cellType.self, forCellWithReuseIdentifier: cellType.reuseIdentifier)
   }
-  
+
   /**
    **Mechanica**
-   
+
    Returns a reusable `UICollectionViewCell` object for the class inferred by the specified return-type.
-   
+
    - parameter indexPath: The index path specifying the location of the cell.
    - parameter cellType: The cell class to dequeue.
    - returns: A `Reusable` `UICollectionViewCell` instance
@@ -73,14 +73,14 @@ extension UICollectionView {
       }
       return cell
   }
-  
+
   // MARK: UICollectionReusableView
-  
+
   /**
    **Mechanica**
-   
+
    Registers a nib object containing an `UICollectionReusableView` subclass conforming to `Reusable` & `NibIdentifiable` as a supplementary view.
-   
+
    - parameter supplementaryViewType: The `UIView` subclass to register as *supplementary view*.
    - parameter elementKind: The kind of supplementary view to create.
    - seealso: `register(_:,forSupplementaryViewOfKind:withReuseIdentifier:)`
@@ -89,12 +89,12 @@ extension UICollectionView {
       self.register(supplementaryViewType.nib(), forSupplementaryViewOfKind: kind, withReuseIdentifier: supplementaryViewType.reuseIdentifier
       )
   }
-  
+
   /**
    **Mechanica**
-   
+
    Registers a class conforming to `Reusable` for use in creating supplementary views for the collection view..
-   
+
    - parameter supplementaryViewType: the `UIView` (`Reusable`-conforming) subclass to register as *supplementary view*.
    - parameter elementKind: The kind of supplementary view to create.
    - seealso: `register(_:,forSupplementaryViewOfKind:withReuseIdentifier:)`
@@ -102,12 +102,12 @@ extension UICollectionView {
   public final func register<T: UICollectionReusableView>(supplementaryViewType: T.Type, forSupplementaryViewOfKind kind: String) where T: Reusable {
       self.register(supplementaryViewType.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: supplementaryViewType.reuseIdentifier)
   }
-  
+
   /**
    **Mechanica**
-   
+
    Returns a reusable supplementary view for the class inferred by the return-type.
-   
+
    - parameter elementKind: The kind of supplementary view to retrieve.
    - parameter indexPath:   The index path specifying the location of the cell.
    - parameter viewType: The view class to dequeue

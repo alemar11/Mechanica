@@ -27,7 +27,7 @@
 ///
 /// Objects conforming to `Reusable` can be can be reused/dequeued in a type-safe manner.
 public protocol Reusable: class {
-  
+
   /// **Mechanica**
   ///
   /// The reuse identifier to use when registering and later dequeuing a reusable object.
@@ -35,14 +35,14 @@ public protocol Reusable: class {
 }
 
 public extension Reusable {
-  
+
   /// **Mechanica**
   ///
   /// By default the *reuseIdentifier* is the name of the class.
   static var reuseIdentifier: String {
     return String(describing: self)
   }
-  
+
 }
 
 // MARK: NibReusable

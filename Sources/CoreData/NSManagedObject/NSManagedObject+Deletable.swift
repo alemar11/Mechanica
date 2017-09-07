@@ -108,10 +108,10 @@ extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletab
 
     let request = fetchRequest()
     request.predicate = NSPredicate(format: "%K <= %@", markedForDeletionKey, cutOffDate as NSDate)
-    
+
     let batchRequest = NSBatchDeleteRequest(fetchRequest: request)
     batchRequest.resultType = .resultTypeStatusOnly
-    
+
     do {
       try context.execute(batchRequest)
     } catch {
