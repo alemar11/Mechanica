@@ -118,6 +118,8 @@ extension Nib {
 
 // MARK: - NibIdentifiable
 
+#if os(iOS) || os(tvOS) || os(macOS)
+
 /// **Mechanica**
 ///
 /// Objects adopting the `NibIdentifiable` protocol are nib based and are the only XIB root object.
@@ -196,3 +198,5 @@ public extension NibIdentifiable {
   }
 
 }
+
+#endif
