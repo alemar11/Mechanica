@@ -82,8 +82,6 @@ extension String {
     var strings = [String]()
 
     for range in ranges(matching: pattern, options: options) {
-      // swift 4 beta
-      //strings.append(self.substring(with: range))
       strings.append(String(self[range]))
     }
 
@@ -99,8 +97,6 @@ extension String {
   func firstMatch(for pattern: String, options: NSRegularExpression.Options = []) -> String? {
     guard let range = firstRange(matching: pattern) else { return nil }
 
-    //swift 4 beta
-    //return self.substring(with: range)
     return String(self[range])
   }
 

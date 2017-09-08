@@ -56,6 +56,7 @@ extension String {
     if !caseSensitive {
       return lowercased().hasPrefix(prefix.lowercased())
     }
+
     return hasPrefix(prefix)
   }
 
@@ -66,6 +67,7 @@ extension String {
     if !caseSensitive {
       return lowercased().hasSuffix(suffix.lowercased())
     }
+
     return hasSuffix(suffix)
   }
 
@@ -97,6 +99,7 @@ extension String {
     for scalar in unicodeScalars {
       guard characterSet.contains(scalar) else { return false }
     }
+
     return true
   }
 
@@ -110,6 +113,7 @@ extension String {
   ///   - caseSensitive:  `*true*` (default) for a case-sensitive replacemente
   public func replace(_ target: String, with replacement: String, caseSensitive: Bool = true) -> String {
     let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
+
     return replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
   }
 
@@ -132,6 +136,7 @@ extension String {
       let randomValue = arc4random_uniform(UInt32(base.count))
       randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
     }
+
     return randomString
   }
 
@@ -163,6 +168,7 @@ extension String {
     if let range = rangeOfCharacter(from: set.inverted) {
       return String(self[range.lowerBound..<endIndex])
     }
+
     return ""
   }
 
@@ -177,6 +183,7 @@ extension String {
     if let range = rangeOfCharacter(from: set.inverted, options: .backwards) {
       return String(self[..<range.upperBound])
     }
+
     return ""
   }
 
@@ -187,6 +194,7 @@ extension String {
     guard !isEmpty else { return self }
     let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
     let result = capitalizedFirstCharacher + String(dropFirst())
+
     return result
   }
 
@@ -195,8 +203,10 @@ extension String {
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
   public func decapitalizedFirstCharacter() -> String {
     guard !isEmpty else { return self }
+
     let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
     let result = capitalizedFirstCharacher + String(dropFirst())
+
     return result
   }
 
@@ -206,9 +216,8 @@ extension String {
   ///
   /// Returns a `new` string containing the first character of the `String`.
   public var first: String {
-    // swift 4 beta
-    //let first = substring(to: index(after: startIndex))
     let first = self[..<index(after: startIndex)]
+
     return String(first)
   }
 
@@ -216,9 +225,8 @@ extension String {
   ///
   /// Returns a `new` string containing the last character of the `String`.
   public var last: String {
-    // swift 4 beta
-    //let last = substring(from: index(before: endIndex))
     let last = self[index(before: endIndex)...]
+
     return String(last)
   }
 
@@ -231,6 +239,7 @@ extension String {
   ///
   public func prefix(maxLength: Int) -> String {
     guard maxLength > 0 else { return "" }
+
     return String(prefix(maxLength))
   }
 
@@ -241,9 +250,8 @@ extension String {
   ///  - Warning: If maxLength exceeds `String` character count, the result contains all the elements of `String`.
   ///  - parameter maxLength: substring max lenght
   public func suffix(maxLength: Int) -> String {
-    guard maxLength > 0 else {
-      return ""
-    }
+    guard maxLength > 0 else { return "" }
+
     return String(suffix(maxLength))
   }
 
@@ -258,9 +266,9 @@ extension String {
   ///  - parameter upToPosition: position (included) up to which remove the prefix.
   public func removingPrefix(upToPosition: Int = 1) -> String {
     guard upToPosition >= 0 && upToPosition <= length else { return "" }
+
     let startIndex = index(self.startIndex, offsetBy: upToPosition)
-    // swift 4 beta
-    //return substring(from: startIndex)
+
     return String(self[startIndex...])
   }
 
@@ -275,6 +283,7 @@ extension String {
   ///  - parameter prefix: prefix to be removed.
   public func removingPrefix(_ prefix: String) -> String {
     guard hasPrefix(prefix) else { return self }
+
     return removingPrefix(upToPosition: prefix.length)
   }
 
@@ -289,9 +298,9 @@ extension String {
   ///  - parameter fromPosition: position (included) from which remove the suffix
   public func removingSuffix(fromPosition: Int = 1) -> String {
     guard fromPosition >= 0 && fromPosition <= length else { return "" }
+
     let startIndex = index(endIndex, offsetBy: -fromPosition)
-    // swift 4 beta
-    //return substring(to: startIndex)
+
     return String(self[..<startIndex])
   }
 
@@ -306,6 +315,7 @@ extension String {
   ///  - parameter prefix: prefix to be removed.
   public func removingSuffix(_ suffix: String) -> String {
     guard hasSuffix(suffix) else { return self }
+
     return removingSuffix(fromPosition: suffix.length)
   }
 
@@ -358,7 +368,8 @@ extension String {
   ///  - Returns: A `new` string where all white spaces repetitions are replaced with a single white space.
   public func condensingExcessiveSpaces() -> String {
     let components = self.components(separatedBy: .whitespaces)
-    let filtered = components.filter({!$0.isEmpty})
+    let filtered = components.filter {!$0.isEmpty}
+
     return filtered.joined(separator: " ")
   }
 
@@ -370,7 +381,8 @@ extension String {
   ///  - Returns: A `new` string where all white spaces and new lines repetitions are replaced with a single white space.
   public func condensingExcessiveSpacesAndNewlines() -> String {
     let components = self.components(separatedBy: .whitespacesAndNewlines)
-    let filtered = components.filter({!$0.isBlank})
+    let filtered = components.filter {!$0.isBlank}
+
     return filtered.joined(separator: " ")
   }
 
@@ -385,6 +397,7 @@ extension String {
   ///  - Returns: Character as String or nil if the index is out of bounds
   public subscript (index: Int) -> String? {
     guard 0..<count ~= index else { return nil }
+
     return String(Array(characters)[index])
   }
 
@@ -394,6 +407,7 @@ extension String {
   public func replacingCharacters(in range: CountableClosedRange<Int>, with replacement: String) -> String {
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end   = index(start, offsetBy: range.count)
+
     return replacingCharacters(in: start ..< end, with: replacement)
   }
 
@@ -403,6 +417,7 @@ extension String {
   public func replacingCharacters(in range: CountableRange<Int>, with replacement: String) -> String {
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end   = index(start, offsetBy: range.count)
+
     return replacingCharacters(in: start ..< end, with: replacement)
   }
 
@@ -416,11 +431,11 @@ extension String {
   public subscript (range: Range<Int>) -> String? {
     guard 0...length ~= range.lowerBound else { return nil }
     guard 0...length ~= range.upperBound else { return nil }
+
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(startIndex, offsetBy: range.upperBound)
-    // swift 4 beta
-    //return substring(with: Range(uncheckedBounds: (lower: start, upper: end)))
     let range = Range(uncheckedBounds: (lower: start, upper: end))
+    
     return String(self[range])
   }
 
@@ -433,6 +448,7 @@ extension String {
   ///  - Returns: Substring in NSRange or nil.
   public subscript (nsRange: NSRange) -> String? {
     guard let range = Range(nsRange) else { return nil }
+
     return self[range]
   }
 
@@ -445,6 +461,7 @@ extension String {
   ///  - Returns: range of the first occurrence or nil.
   public subscript (substring: String) -> Range<String.Index>? {
     let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex) )
+
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
 
@@ -542,6 +559,7 @@ extension String {
   /// Returns the `NSRange` of `self`.
   public var nsRange: NSRange {
     let range = self.startIndex...
+
     return NSRange(range, in: self)
   }
 
