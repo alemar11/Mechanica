@@ -416,8 +416,11 @@ class StringUtilsTests: XCTestCase {
 
   func testSubscript() {
     let string = "∆Test😗🇮🇹"
+
     XCTAssertTrue(string[0] == "∆")
     XCTAssertTrue(string[1] == "T")
+    XCTAssertTrue(string[5] == "😗")
+    XCTAssertTrue(string[6] == "🇮🇹")
     XCTAssertNil(string[-1])
     XCTAssertNil(string[7])
     XCTAssertNil(string[10])
@@ -435,6 +438,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(string[Range(0..<string.length)] == "∆Test😗🇮🇹")
     XCTAssertNil(string[Range(string.length ..< string.length+1)])
     XCTAssertTrue(string[Range(string.length ..< string.length)] == "")
+
     XCTAssertNil(string[Range(1 ..< 100)])
     XCTAssertNil(string[Range(-1 ..< 1)])
     XCTAssertNil(string[Range(1 ..< string.length+1)])
@@ -479,7 +483,7 @@ class StringUtilsTests: XCTestCase {
   func testReplacingCharacters() {
 
     let s = "Hello World" //10 characters
-    do{
+    do {
       let countableRange = CountableRange(uncheckedBounds: (lower: 0, upper: 2)) //[0,2[
       let newString = s.replacingCharacters(in: countableRange, with: "1")
       XCTAssertTrue(newString == "1llo World")
@@ -488,7 +492,7 @@ class StringUtilsTests: XCTestCase {
       let newString2 = s.replacingCharacters(in: countableClosedRange, with: "1")
       XCTAssertTrue(newString2 == "1lo World")
     }
-    do{
+    do {
       let countableRange = CountableRange(uncheckedBounds: (lower: 0, upper: 11)) //[0,11[
       let newString = s.replacingCharacters(in: countableRange, with: "1")
       XCTAssertTrue(newString == "1")

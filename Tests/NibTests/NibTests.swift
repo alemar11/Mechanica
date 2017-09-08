@@ -148,13 +148,13 @@ class NibTests: XCTestCase {
         let view2: macOS_NibDemo_View_2 = nib.instantiate()
         XCTAssertNotNil(view2)
       }
-      do{
+      do {
         if #available(OSX 10.12.2, *) {
           let touchBar = nib.instantiate() as NSTouchBar
           XCTAssertNotNil(touchBar)
         }
       }
-      do{
+      do {
         if #available(OSX 10.12.2, *) {
           let touchBar: NSTouchBar = nib.instantiate()
           XCTAssertNotNil(touchBar)
