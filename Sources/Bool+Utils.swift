@@ -70,9 +70,9 @@ extension Bool: BinaryConvertible {
   ///
   /// Creates a string representing the given value in the binary base.
   ///
-  /// ```
-  /// true.toBinaryString // "1"
-  /// ```
+  /// Example:
+  ///
+  ///     true.toBinaryString // "1"
   ///
   public var toBinaryString: String {
     return self ? "1" : "0"

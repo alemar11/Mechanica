@@ -33,12 +33,12 @@ import Foundation
 /// - namespaced: a namespaced `String` key or key path.
 ///
 ///
-/// ```
-/// Key<String>("myKey1") // value: myKey1
-/// Key<Int>("myKey2", namespace: "org.tinrobots")  // value: org.tinrobots.myKey2
-/// Key<Bool>("myKey3", namespace: "org.tinrobots") // value: org.tinrobots.myKey3
-/// Key<Double>("myKey4", namespace: "org", "tinrobots") // value: org.tinrobots.myKey4
-/// ```
+/// Example:
+///
+///     Key<String>("myKey1") // value: myKey1
+///     Key<Int>("myKey2", namespace: "org.tinrobots")  // value: org.tinrobots.myKey2
+///     Key<Bool>("myKey3", namespace: "org.tinrobots") // value: org.tinrobots.myKey3
+///     Key<Double>("myKey4", namespace: "org", "tinrobots") // value: org.tinrobots.myKey4
 ///
 public enum Key<T>: CustomStringConvertible {
 

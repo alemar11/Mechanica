@@ -31,9 +31,9 @@ extension UnsignedInteger where Self: BinaryConvertible & FixedWidthInteger {
   ///
   /// Creates a string representing the given value in the binary base.
   ///
-  /// ```
-  /// Int8(10).toBinaryString //"00001010"
-  /// ```
+  /// Example:
+  ///
+  ///     Int8(10).toBinaryString //"00001010"
   ///
   public var toBinaryString: String {
     let toBinaryString = String(self, radix:2)
@@ -43,7 +43,6 @@ extension UnsignedInteger where Self: BinaryConvertible & FixedWidthInteger {
 
 }
 
-// FixedWidthInteger & UnsignedInteger
 extension UInt8:  BinaryConvertible {}
 extension UInt16: BinaryConvertible {}
 extension UInt32: BinaryConvertible {}

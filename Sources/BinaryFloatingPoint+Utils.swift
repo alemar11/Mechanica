@@ -31,9 +31,9 @@ extension BinaryFloatingPoint where Self: BinaryConvertible {
   ///
   /// Creates a string representing the given value in the binary base.
   ///
-  /// ```
-  /// Float(-5.625).toBinaryString //"11000000101101000000000000000000
-  /// ```
+  /// Example:
+  ///
+  ///     Float(-5.625).toBinaryString //"11000000101101000000000000000000
   ///
   public var toBinaryString: String {
     let floatingPointSign = (sign == FloatingPointSign.minus) ? "1" : "0"

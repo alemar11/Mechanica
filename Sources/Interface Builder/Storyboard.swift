@@ -165,9 +165,10 @@
     ///   Instantiates and returns a UIViewController conforming to `StoryboardIdentifiable`.
     ///   - Note: In Xcode, set the UIViewController class name as **Storyboard ID**.
     ///
-    ///   ```
-    ///   let vc = myStoryboard.instantiateViewController() as TestViewController
-    ///   ```
+    /// Example:
+    ///
+    ///     let vc = myStoryboard.instantiateViewController() as TestViewController
+    ///
     public final func instantiateViewController<T: UIViewController>() -> T {
       guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
         fatalError("Couldn't instantiate a View Controller with identifier \(T.storyboardIdentifier) ")
@@ -182,9 +183,9 @@
     ///   Instantiates and returns a NSViewController conforming to `StoryboardIdentifiable`.
     ///   - Note: In Xcode, set as **Storyboard ID** the NSViewController class name.
     ///
-    ///   ```
-    ///   let vc = myStoryboard.instantiateViewController() as TestViewController
-    ///   ```
+    /// Example:
+    ///
+    ///     let vc = myStoryboard.instantiateViewController() as TestViewController
     ///
     public final func instantiateViewController<T: NSViewController>() -> T {
       guard let viewController = self.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: T.storyboardIdentifier)) as? T else {
@@ -198,9 +199,9 @@
     ///   Instantiates and returns a NSWindowController conforming to `StoryboardIdentifiable`.
     ///   - Note: In Xcode, set the NSWindowController class name as **Storyboard ID**.
     ///
-    ///   ```
-    ///   let vc = myStoryboard.instantiateViewController() as TestViewController
-    ///   ```
+    /// Example:
+    ///
+    ///     let vc = myStoryboard.instantiateViewController() as TestViewController
     ///
     public final func instantiateWindowController<T: NSWindowController>() -> T {
       guard let windowController = self.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: T.storyboardIdentifier)) as? T else {
