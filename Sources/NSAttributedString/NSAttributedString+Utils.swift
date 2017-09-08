@@ -71,6 +71,21 @@ extension NSAttributedString {
     return attributedString
   }
 
+  public func colorForeground(_ color: Color, range: NSRange? = nil) -> NSAttributedString {
+    guard let coloredString = self.mutableCopy() as? NSMutableAttributedString else { return self }
+
+    coloredString.addAttributes([NSAttributedStringKey.foregroundColor: color], range: range.hasValue ? range! : string.nsRange)
+    return coloredString
+  }
+
+  public func colorBackground(_ color: Color, range: NSRange? = nil) -> NSAttributedString {
+    guard let coloredString = self.mutableCopy() as? NSMutableAttributedString else { return self }
+
+    coloredString.addAttributes([NSAttributedStringKey.backgroundColor: color], range: range.hasValue ? range! : string.nsRange)
+
+    return coloredString
+  }
+
   #if os(iOS)
 
   /// **Mechanica**

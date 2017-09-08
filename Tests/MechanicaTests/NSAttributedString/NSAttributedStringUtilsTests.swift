@@ -58,6 +58,66 @@ class NSAttributedStringUtilsTests: XCTestCase {
 
   }
 
+  func testForegroundColor() {
+
+    do {
+      // Given, When
+      let color = Color.red
+      let boldString = testAttributedString.colorForeground(color)
+      // Then
+      for value in 0...boldString.string.length {
+        let attributes = boldString.attributes(at: value, longestEffectiveRange: nil, in: boldString.string.nsRange)
+        XCTAssertEqual(attributes[.foregroundColor] as! Color, Color.red)
+      }
+    }
+
+    do {
+      // Given, When
+      let color = Color.red
+      let boldString = testAttributedString.colorForeground(color, range: NSMakeRange(0, 5))
+      // Then
+      for value in 0...boldString.string.length {
+        let attributes = boldString.attributes(at: value, longestEffectiveRange: nil, in: boldString.string.nsRange)
+        if value < 5 {
+           XCTAssertEqual(attributes[.foregroundColor] as! Color, Color.red)
+        } else {
+          XCTAssertNil(attributes[.foregroundColor])
+        }
+      }
+    }
+
+  }
+
+  func testBackgroundColor() {
+
+    do {
+      // Given, When
+      let color = Color.red
+      let boldString = testAttributedString.colorBackground(color)
+      // Then
+      for value in 0...boldString.string.length {
+        let attributes = boldString.attributes(at: value, longestEffectiveRange: nil, in: boldString.string.nsRange)
+        XCTAssertEqual(attributes[.backgroundColor] as! Color, Color.red)
+      }
+    }
+
+    do {
+      // Given, When
+      let color = Color.red
+      let boldString = testAttributedString.colorBackground(color, range: NSMakeRange(0, 5))
+      // Then
+      for value in 0...boldString.string.length {
+        let attributes = boldString.attributes(at: value, longestEffectiveRange: nil, in: boldString.string.nsRange)
+        if value < 5 {
+          XCTAssertEqual(attributes[.backgroundColor] as! Color, Color.red)
+        } else {
+          XCTAssertNil(attributes[.backgroundColor])
+        }
+      }
+    }
+
+  }
+
   #endif
 
   func testUnderLine() {
