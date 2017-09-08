@@ -761,7 +761,7 @@ extension UserDefaultsUtilsTests {
 
   }
 
-  @objc(SecurePerspn)
+  @objc(SecurePerson)
   class SecurePerson: NSObject, NSSecureCoding, Codable {
 
     static var supportsSecureCoding = true
