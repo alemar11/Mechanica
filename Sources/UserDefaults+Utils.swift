@@ -79,11 +79,9 @@ public extension UserDefaults {
 
 }
 
-// MARK: NSCoding
+// MARK: Codable
 
 extension UserDefaults {
-
-  // MARK: Codable
 
   /// **Mechanica**
   ///
