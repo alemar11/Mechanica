@@ -1,8 +1,7 @@
 //
-//  ValueAssociableTests.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +28,7 @@ class AssociatedObjectTests: XCTestCase {
 
   // MARK:- Associated Objects
 
-  func test_valueAssociation() {
+  func testValueAssociation() {
 
     class Demo {
       let var1: String
@@ -93,9 +92,9 @@ class AssociatedObjectTests: XCTestCase {
 
   // MARK:- ValueAssociable Protocol
 
-  func test_protocolValueAssociableClass() {
+  func testProtocolValueAssociableClass() {
 
-    class Demo: ValueAssociable {
+    class Demo: AssociatedValueSupporting {
       let var1: String
       let var2: Int
       init(var1: String, var2: Int) {
@@ -155,7 +154,7 @@ class AssociatedObjectTests: XCTestCase {
 
   }
 
-  func test_protocolValueAssociableNSObject() {
+  func testProtocolValueAssociableNSObject() {
 
     class Demo: NSObject {
       let var1: String
@@ -214,8 +213,8 @@ class AssociatedObjectTests: XCTestCase {
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
-    
+
   }
-  
-  
+
+
 }

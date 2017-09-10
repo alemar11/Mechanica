@@ -1,8 +1,7 @@
 //
-//  FileManager+Utils.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,37 +32,33 @@ extension FileManager {
 
   /// **Mechanica**
   ///
-  /// Returns the location of the document directory (*Documents/*).
+  /// Returns the location of the document directory (*Documents/*) in the user's home directory.
   /// The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.
   /// - Note: Use this directory to store user-generated content.
   ///
   /// The contents of *Documents* directory are **backed up by iTunes and iCloud**.
-  public var documentDirectory: URL {
-    // swiftlint:disable force_try
-    return try! url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    // swiftlint:enable force_try
+  public var userDocumentDirectory: URL? {
+    return try? url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
 
   /// **Mechanica**
   ///
-  /// Returns the location of the library directory (*Library/*).
+  /// Returns the location of the library directory (*Library/*) in the user's home directory.
   /// - Note: Use the Library subdirectories for any files you don’t want exposed to the user. Your app should not use these directories for user data files.
   ///
   /// You typically put files in one of several standard subdirectories. iOS apps commonly use the *Application Support* and *Caches subdirectories*; however, you can create custom subdirectories.
   ///
   /// The contents of the *Library* directory are **backed up by iTunes and iCloud** (with the exception of the *Caches subdirectory*).
-  public var libraryDirectory: URL {
-    // swiftlint:disable force_try
-    return try! url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    // swiftlint:enable force_try
+  public var userLibraryDirectory: URL? {
+    return try? url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
 
   /// **Mechanica**
   ///
-  /// Returns the location of discardable cache files (*Library/Caches/*).
+  /// Returns the location of discardable cache files (*Library/Caches/*) in the user's home directory.
   /// - Note: Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file.
   ///
-  /// Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance. 
+  /// Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance.
   /// Examples of cache data include (but are not limited to) database cache files and transient, downloadable content.
   ///
   /// The contents of the *Library/Caches* are **not backed up by iTunes and iCloud**.
@@ -71,15 +66,13 @@ extension FileManager {
   /// Note that the system may delete the Caches/ directory to free up disk space, so your app must be able to re-create or download these files as needed.
   ///
   /// - Important: Sandboxed *macOS* apps have all their *Caches* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
-  public var cachesDirectory: URL {
-    // swiftlint:disable force_try
-    return try! url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    // swiftlint:enable force_try
+  public var userCachesDirectory: URL? {
+    return try? url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
 
   /// **Mechanica**
   ///
-  /// Returns the location of application support files (*Library/Application Support/*).
+  /// Returns the location of application support files (*Library/Application Support/*) in the user's home directory.
   /// - Note: Put app-created support files in the *Library/Application support/* directory.
   ///
   /// In general, this directory includes files that the app uses to run but that should remain hidden from the user.
@@ -90,22 +83,24 @@ extension FileManager {
   /// - Warning: On *macOS* all content in this directory should be placed in a **custom subdirectory** whose name is that of your app’s bundle identifier or your company.
   ///
   /// - Important: Sandboxed *macOS* apps have all their *Application Support* directory located at a system-defined path (typically found at *~/Library/Containers/<bundle_id>*).
-  public var applicationSupportDirectory: URL {
-    // swiftlint:disable force_try
-    return try! url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    // swiftlint:enable force_try
+  public var userApplicationSupportDirectory: URL? {
+    return try? url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
   }
 
   /// **Mechanica**
   ///
-  /// Creates and returns always a `new` directory in Library/Caches for discardable cache files.
-  public var makeNewCachesSubDirectory: URL {
-    let url = cachesDirectory.appendingPathComponent(UUID().uuidString)
-    if (!fileExists(atPath: url.path)) {
-      // swiftlint:disable force_try
-      try! createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
-      // swiftlint:enable force_try
+  /// Creates and returns always a `new` directory in Library/Caches in the user's home directory for discardable cache files.
+  public var makeNewUserCachesSubDirectory: URL? {
+    guard let url = userCachesDirectory?.appendingPathComponent(UUID().uuidString) else { return nil }
+
+    if !fileExists(atPath: url.path) {
+      do {
+        try createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
+      } catch {
+        return nil
+      }
     }
+
     return url
   }
 
@@ -125,9 +120,12 @@ extension FileManager {
   /// - Parameter path: **directory** path (if it's not a directory path, nothing is done).
   public final func clearDirectory(atPath path: String) throws {
     var isDirectory: ObjCBool = false
+
     guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
     guard isDirectory.boolValue == true else { return }
+
     let contents = try contentsOfDirectory(atPath: path)
+
     for file in contents {
       let path = URL(fileURLWithPath: path).appendingPathComponent(file).path
       try removeItem(atPath: path)
@@ -141,6 +139,7 @@ extension FileManager {
   /// - Parameter path: directory or file path.
   public final func destroyFileOrDirectory(atPath path: String) throws {
     guard fileExists(atPath: path) == true else { return }
+
     try removeItem(atPath: path)
   }
 

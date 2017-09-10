@@ -1,8 +1,7 @@
 //
-//  BundleInfoTests.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +28,7 @@ class BundleInfoTests: XCTestCase {
 
     func testBundle() {
       // Given, When
-      let bundle = Bundle(identifier: mechanicaBundleIdentifier)
+      let bundle = Bundle(identifier: Mechanica.bundleIdentifier)
       // Then
       XCTAssertTrue(bundle?.version != nil)
       XCTAssertTrue(bundle?.shortVersionString != nil)

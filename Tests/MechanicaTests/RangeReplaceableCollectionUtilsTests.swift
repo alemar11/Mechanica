@@ -1,8 +1,7 @@
 //
-//  RangeReplaceableCollectionUtilsTests.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +26,7 @@ import XCTest
 
 class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
-  func test_removeFirst() {
+  func testRemoveFirst() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     /// removes the first even Int
@@ -43,7 +42,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     XCTAssertTrue(all == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
   }
 
-  func test_removingFirst() {
+  func testRemovingFirst() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     do {
@@ -61,7 +60,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   }
 
-  func test_removeLast() {
+  func testRemoveLast() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     /// removes the first even Int
@@ -77,7 +76,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     XCTAssertTrue(all == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
   }
 
-  func test_removingLast() {
+  func testRemovingLast() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     do {
@@ -95,7 +94,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   }
 
-  func test_removeAll() {
+  func testRemoveAll() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     /// removes the first even Int
@@ -111,7 +110,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
     XCTAssertTrue(all == [1, 3, 5, 7, 9])
   }
 
-  func test_removingAll() {
+  func testRemovingAll() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 
     do {
@@ -131,7 +130,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   // MARK - Equatable
 
-  func test_removeFirstOccurrence() {
+  func testRemoveFirstOccurrence() {
 
     do {
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
@@ -142,7 +141,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
       XCTAssertTrue(occurrence2 == "c")
       XCTAssertTrue(array == ["b", "c", "d", "e", "f", "g", "a", "a"])
     }
-    
+
     do {
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
       let occurrence = array.removeFirstOccurrence(of: "k")
@@ -165,7 +164,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   }
 
-  func test_removeLastOccurrence() {
+  func testRemoveLastOccurrence() {
 
     do {
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
@@ -186,7 +185,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
       XCTAssertTrue(occurrence2 == "a")
       XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a"])
     }
-    
+
     do {
       var array = [1, 2, 3, 4, 3, 1, 1, 5, 2, 6]
       let occurrence = array.removeLastOccurrence(of: 3)
@@ -199,7 +198,7 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
   }
 
-  //  func test_removingLastPerformance() {
+  //  func testRemovingLastPerformance() {
   //    var array = [Int]()
   //    for i in stride(from: 0, to: 1_000_000, by: 1) {
   //      array.append(i)
@@ -210,5 +209,5 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
   //      }
   //    }
   //  }
-  
+
 }

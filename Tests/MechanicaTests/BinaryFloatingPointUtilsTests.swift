@@ -1,8 +1,7 @@
 //
-//  BinaryFloatingPointUtilsTests.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,23 +25,25 @@ import XCTest
 @testable import Mechanica
 
 class BinaryFloatingPointUtilsTests: XCTestCase {
-  
+
   // MARK: - BinaryConvertible
-  
+
   /// http://www.binaryconvert.com/result_signed_int.html?decimal=045049049049
-  func testBinaryString() {
-    XCTAssertEqual(Float(-5.625).binaryString,"11000000101101000000000000000000")
-    XCTAssertEqual(Float(329.390625).binaryString,"01000011101001001011001000000000")
-    XCTAssertEqual(Float64(-100.1235).binaryString,"1100000001011001000001111110011101101100100010110100001110010110")
-    XCTAssertEqual(Float32(923.52).binaryString,"01000100011001101110000101001000")
-    XCTAssertEqual(Float64(923.52).binaryString,"0100000010001100110111000010100011110101110000101000111101011100")
-    XCTAssertEqual(Float64(-3.14e-3202).binaryString,"1000000000000000000000000000000000000000000000000000000000000000")
-    XCTAssertEqual(Float64(5e-324).binaryString,"0000000000000000000000000000000000000000000000000000000000000001")
-    XCTAssertEqual(Float64.pi.binaryString,"0100000000001001001000011111101101010100010001000010110100011000")
-    XCTAssertEqual(Float32(-1234.5678).binaryString,"11000100100110100101001000101011")
-    XCTAssertEqual(Float32(50).binaryString,"01000010010010000000000000000000")
-    XCTAssertEqual(Float32(-50).binaryString,"11000010010010000000000000000000")
+  func testToBinaryString() {
+    XCTAssertEqual(Float(-5.625).toBinaryString,"11000000101101000000000000000000")
+    XCTAssertEqual(Float(329.390625).toBinaryString,"01000011101001001011001000000000")
+    XCTAssertEqual(Float32(923.52).toBinaryString,"01000100011001101110000101001000")
+    XCTAssertEqual(Float32(-1234.5678).toBinaryString,"11000100100110100101001000101011")
+    XCTAssertEqual(Float32(50).toBinaryString,"01000010010010000000000000000000")
+    XCTAssertEqual(Float32(-50).toBinaryString,"11000010010010000000000000000000")
+    #if (arch(x86_64) || arch(arm64))
+      XCTAssertEqual(Float64(-100.1235).toBinaryString,"1100000001011001000001111110011101101100100010110100001110010110")
+      XCTAssertEqual(Float64(923.52).toBinaryString,"0100000010001100110111000010100011110101110000101000111101011100")
+      XCTAssertEqual(Float64(-3.14e-3202).toBinaryString,"1000000000000000000000000000000000000000000000000000000000000000")
+      XCTAssertEqual(Float64(5e-324).toBinaryString,"0000000000000000000000000000000000000000000000000000000000000001")
+      XCTAssertEqual(Float64.pi.toBinaryString,"0100000000001001001000011111101101010100010001000010110100011000")
+    #endif
   }
-  
+
 }
 

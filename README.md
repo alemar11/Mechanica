@@ -1,6 +1,6 @@
 ![Mechanica: Swift Utils](https://raw.githubusercontent.com/tinrobots/Mechanica/assets/mechanica.png)
 
-[![Swift 3.1.0](https://img.shields.io/badge/Swift-3.1.0-orange.svg?style=flat)](https://developer.apple.com/swift) 
+[![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat)](https://developer.apple.com/swift)
 ![Platforms](https://img.shields.io/badge/Platform-iOS%2010%2B%20|%20macOS%2010.12+%20|%20tvOS%2010+%20|%20watchOS%203+-blue.svg) 
 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -24,8 +24,8 @@ A library of Swift utils to ease your iOS | macOS | watchOS | tvOS development.
 ## Requirements
 
 - iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+
-- Xcode 8.3
-- Swift 3.1
+- Xcode 9.0
+- Swift 4.0
 
 ## Documentation
 
@@ -43,7 +43,7 @@ Documentation is [available online](http://www.tinrobots.org/Mechanica/).
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.1.0+ is required to build Mechanica 0.1.0+.
+> CocoaPods 1.1.0+ is required to build Mechanica 1.0.0+.
 
 To integrate Mechanica into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -53,7 +53,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Mechanica', '~> 0.4'
+    pod 'Mechanica', '~> 1.0'
 end
 ```
 
@@ -77,7 +77,7 @@ $ brew install carthage
 To integrate Mechanica into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "tinrobots/Mechanica" ~> 0.4.0
+github "tinrobots/Mechanica" ~> 1.0.0
 ```
 
 Run `carthage update` to build the framework and drag the built `Mechanica.framework` into your Xcode project.

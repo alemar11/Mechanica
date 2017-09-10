@@ -1,8 +1,7 @@
 //
-//  BinaryFloatingPoint+Utils.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,21 +31,21 @@ extension BinaryFloatingPoint where Self: BinaryConvertible {
   ///
   /// Creates a string representing the given value in the binary base.
   ///
-  /// ```
-  /// Float(-5.625).binaryString //"11000000101101000000000000000000
-  /// ```
+  /// Example:
   ///
-  public var binaryString: String {
+  ///     Float(-5.625).toBinaryString //"11000000101101000000000000000000
+  ///
+  public var toBinaryString: String {
     let floatingPointSign = (sign == FloatingPointSign.minus) ? "1" : "0"
     let exponentBitCount = Self.exponentBitCount
     let mantissaBitCount = Self.significandBitCount
-    var exponent = String(self.exponentBitPattern, radix: 2)
-    var mantissa = String(self.significandBitPattern, radix: 2)
-    if (exponentBitCount > exponent.characters.count) {
-      exponent = String(repeating: "0", count: (exponentBitCount - exponent.characters.count)) + exponent
+    var exponent = String(Int(self.exponentBitPattern), radix: 2)
+    var mantissa = String(Int(self.significandBitPattern), radix: 2)
+    if exponentBitCount > exponent.count {
+      exponent = String(repeating: "0", count: (exponentBitCount - exponent.count)) + exponent
     }
-    if (mantissaBitCount > mantissa.characters.count) {
-      mantissa = String(repeating: "0", count: (mantissaBitCount - mantissa.characters.count)) + mantissa
+    if mantissaBitCount > mantissa.characters.count {
+      mantissa = String(repeating: "0", count: (mantissaBitCount - mantissa.count)) + mantissa
     }
     return "\(floatingPointSign)\(exponent)\(mantissa)"
   }

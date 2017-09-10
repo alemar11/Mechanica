@@ -1,8 +1,7 @@
 //
-//  Key.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,11 +33,12 @@ import Foundation
 /// - namespaced: a namespaced `String` key or key path.
 ///
 ///
-/// ```
-/// Key<String>("myKey1") // value: myKey1
-/// Key<Int>("myKey2", namespace: "org.tinrobots")  // value: org.tinrobots.myKey2
-/// Key<Bool>("myKey2", namespace: "org.tinrobots") // value: org.tinrobots.myKey3
-/// ```
+/// Example:
+///
+///     Key<String>("myKey1") // value: myKey1
+///     Key<Int>("myKey2", namespace: "org.tinrobots")  // value: org.tinrobots.myKey2
+///     Key<Bool>("myKey3", namespace: "org.tinrobots") // value: org.tinrobots.myKey3
+///     Key<Double>("myKey4", namespace: "org", "tinrobots") // value: org.tinrobots.myKey4
 ///
 public enum Key<T>: CustomStringConvertible {
 
@@ -49,7 +49,7 @@ public enum Key<T>: CustomStringConvertible {
 
   /// **Mechanica**
   ///
-  /// A namespaced String key.
+  /// A namespaced `String` key.
   case namespaced(String, namespace: String)
 
   /// Create a new Key.
@@ -57,9 +57,9 @@ public enum Key<T>: CustomStringConvertible {
   /// - Parameters:
   ///   - string: key or key path value.
   ///   - namespace: optional namespace for the key to avoid collision with other keys with the same value defined in other libraries.
-  public init(_ string: String, namespace: String? = nil) {
-    if let namespace = namespace {
-      self = .namespaced(string, namespace: namespace)
+  public init(_ string: String, namespace: String...) {
+    if namespace.count > 0 {
+      self = .namespaced(string, namespace:  namespace.joined(separator: "."))
     } else {
       self = .simple(string)
     }

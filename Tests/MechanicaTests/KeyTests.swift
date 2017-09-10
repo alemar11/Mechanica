@@ -1,8 +1,7 @@
 //
-//  KeyTests.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,17 +29,39 @@ class KeyTests: XCTestCase {
 
   typealias stringKey = Key<String>
 
-  func test_simple() {
+  func testSimple() {
     let key = stringKey("test")
     XCTAssertEqual(key.value, "test")
   }
 
-  func test_namespace() {
-    let key = stringKey("test")
-    let key2 = stringKey("test", namespace: "namespace")
-    XCTAssertEqual(key.value, "test")
-    XCTAssertEqual(key2.value, "namespace.test")
-    XCTAssertNotEqual(key.value, key2.value)
+  func testNamespace() {
+    do {
+      //  Given, When
+      let key = stringKey("test")
+      let key2 = stringKey("test", namespace: "namespace")
+      //  Then
+      XCTAssertEqual(key.value, "test")
+      XCTAssertEqual(key2.value, "namespace.test")
+      XCTAssertNotEqual(key.value, key2.value)
+    }
+    do {
+      //  Given, When
+      let key = stringKey("test")
+      let key2 = stringKey("test", namespace: "namespace1.namespace2")
+      //  Then
+      XCTAssertEqual(key.value, "test")
+      XCTAssertEqual(key2.value, "namespace1.namespace2.test")
+      XCTAssertNotEqual(key.value, key2.value)
+    }
+    do {
+      //  Given, When
+      let key = stringKey("test")
+      let key2 = stringKey("test", namespace: "namespace1", "namespace2")
+      //  Then
+      XCTAssertEqual(key.value, "test")
+      XCTAssertEqual(key2.value, "namespace1.namespace2.test")
+      XCTAssertNotEqual(key.value, key2.value)
+    }
   }
 
 }
