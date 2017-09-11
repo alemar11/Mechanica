@@ -30,19 +30,19 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    
+
     userDefaults.removeAll()
   }
 
   func testOptionalInt() {
     let key = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key))
-    
+
     userDefaults.set(10, forKey: key)
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalInteger(forKey: key))
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), 10)
-    
+
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
   }
@@ -50,12 +50,12 @@ class UserDefaultsUtilsTests: XCTestCase {
   func testOptionalDouble() {
     let key = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key))
-    
+
     userDefaults.set(Double(10), forKey: key)
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalDouble(forKey: key))
     XCTAssertEqual(userDefaults.optionalDouble(forKey: key), Double(10))
-    
+
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
   }
@@ -63,25 +63,25 @@ class UserDefaultsUtilsTests: XCTestCase {
   func testOptionalFloat() {
     let key = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key))
-    
+
     userDefaults.set(10.1, forKey: key)
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalFloat(forKey: key))
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), 10.1)
-    
+
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
   }
-  
+
   func testOptionalBool() {
     let key = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key))
-    
+
     userDefaults.set(true, forKey: key)
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalBool(forKey: key))
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), true)
-    
+
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
@@ -90,29 +90,29 @@ class UserDefaultsUtilsTests: XCTestCase {
   func testRemoveAll() {
     let key = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key))
-    
+
     userDefaults.set(10, forKey: key)
     XCTAssertNotNil(userDefaults.value(forKey: key))
-    
+
     let key2 = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key2))
-    
+
     userDefaults.set(Double(10), forKey: key2)
     XCTAssertNotNil(userDefaults.value(forKey: key2))
-    
+
     let key3 = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key3))
-    
+
     userDefaults.set(10.0, forKey: key3)
     XCTAssertNotNil(userDefaults.value(forKey: key3))
-    
+
     userDefaults.removeAll()
-    
+
     XCTAssertNil(userDefaults.value(forKey: key))
     XCTAssertNil(userDefaults.value(forKey: key2))
     XCTAssertNil(userDefaults.value(forKey: key3))
   }
-  
+
   @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
   func testCodable() {
     do {
@@ -129,7 +129,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       } else {
         XCTAssertNotNil(codedValue)
       }
-      
+
       //  When
       XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
       //  Then
@@ -140,7 +140,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       } else {
         XCTAssertNotNil(codedValue2)
       }
-      
+
       // When
       let nilValue: UserDefaultsUtilsTests.Person? = nil
       XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
@@ -197,53 +197,53 @@ class UserDefaultsUtilsTests: XCTestCase {
 // MARK: - UserDefaultsUtilsTests Namespace
 
 extension UserDefaultsUtilsTests {
-  
+
   @objc(Person)
   class Person: NSObject, NSCoding, Codable {
-    
+
     @objc
     let surname: String
-    
+
     @objc
     let firstname: String
-    
+
     required init(firstname:String, surname:String) {
       self.firstname = firstname
       self.surname = surname
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
       firstname = aDecoder.decodeObject(forKey: #keyPath(Person.firstname)) as! String
       surname = aDecoder.decodeObject(forKey: #keyPath(Person.surname)) as! String
     }
-    
+
     func encode(with aCoder: NSCoder) {
       aCoder.encode(firstname, forKey: #keyPath(Person.firstname))
       aCoder.encode(surname, forKey: #keyPath(Person.surname))
     }
-    
+
     static func == (left: Person, right: Person) -> Bool {
       return left.firstname == right.firstname && left.surname == right.surname
     }
-    
+
   }
-  
+
   @objc(SecurePerson)
   class SecurePerson: NSObject, NSSecureCoding, Codable {
-    
+
     static var supportsSecureCoding = true
-    
+
     @objc
     let surname: String
-    
+
     @objc
     let firstname: String
-    
+
     required init(firstname:String, surname:String) {
       self.firstname = firstname
       self.surname = surname
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
       guard
         let firstnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecurePerson.firstname))),
@@ -251,20 +251,20 @@ extension UserDefaultsUtilsTests {
         else {
           return nil
       }
-      
+
       self.firstname = firstnameDecoded as String
       self.surname = surnameDecoded as String
     }
-    
+
     func encode(with aCoder: NSCoder) {
       aCoder.encode(firstname, forKey: #keyPath(SecurePerson.firstname))
       aCoder.encode(surname, forKey: #keyPath(SecurePerson.surname))
     }
-    
+
     static func == (left: SecurePerson, right: SecurePerson) -> Bool {
       return left.firstname == right.firstname && left.surname == right.surname
     }
-    
+
   }
-  
+
 }

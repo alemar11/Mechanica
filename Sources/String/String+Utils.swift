@@ -435,7 +435,7 @@ extension String {
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(startIndex, offsetBy: range.upperBound)
     let range = Range(uncheckedBounds: (lower: start, upper: end))
-    
+
     return String(self[range])
   }
 
