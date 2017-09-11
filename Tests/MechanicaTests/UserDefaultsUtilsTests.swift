@@ -35,7 +35,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testOptionalInt() {
-    let key = "intKey"
+    let key = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key))
     
     userDefaults.set(10, forKey: key)
@@ -48,7 +48,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testOptionalDouble() {
-    let key = "doubleKey"
+    let key = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key))
     
     userDefaults.set(Double(10), forKey: key)
@@ -61,7 +61,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testOptionalFloat() {
-    let key = "floatKey"
+    let key = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key))
     
     userDefaults.set(10.1, forKey: key)
@@ -74,7 +74,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   }
   
   func testOptionalBool() {
-    let key = "boolKey"
+    let key = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key))
     
     userDefaults.set(true, forKey: key)
@@ -88,20 +88,20 @@ class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testRemoveAll() {
-    let key = "intKey"
+    let key = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key))
     
     userDefaults.set(10, forKey: key)
     XCTAssertNotNil(userDefaults.value(forKey: key))
     
-    let key2 = "doubleKey"
+    let key2 = UUID().uuidString
     XCTAssertTrue(!userDefaults.hasKey(key2))
     
     userDefaults.set(Double(10), forKey: key2)
     XCTAssertNotNil(userDefaults.value(forKey: key2))
     
-    let key3 = "doubleKey"
-    XCTAssertTrue(userDefaults.hasKey(key3))
+    let key3 = UUID().uuidString
+    XCTAssertTrue(!userDefaults.hasKey(key3))
     
     userDefaults.set(10.0, forKey: key3)
     XCTAssertNotNil(userDefaults.value(forKey: key3))
