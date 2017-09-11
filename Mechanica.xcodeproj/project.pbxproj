@@ -669,15 +669,15 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */,
-				23928B801F5DAC5E00FB74AE /* Font+Utils.swift */,
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */,
 				12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */,
 				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
 				23964A011E5B034800C8E0DF /* Collection+Utils.swift */,
+				232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */,
 				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
 				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
+				23928B801F5DAC5E00FB74AE /* Font+Utils.swift */,
 				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
 				D24094491E4C802B00EB4163 /* NSPredicate+Operators.swift */,
 				23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */,
@@ -687,6 +687,7 @@
 				23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */,
 				239B92641F274E55009A9433 /* Sequence+Utils.swift */,
 				D220818C1E07FEB700BE4268 /* URL+Utils.swift */,
+				23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */,
 				23F6A1621EC8DBD400D20502 /* Utils.swift */,
 				23793D701F067F22002987C4 /* Color */,
 				23793D721F067F42002987C4 /* CoreData */,
@@ -698,7 +699,6 @@
 				23793D781F067FB1002987C4 /* Protocols */,
 				23793D791F067FC3002987C4 /* String */,
 				23AAE0461F5AB1B000ECF302 /* UIKit */,
-				232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";

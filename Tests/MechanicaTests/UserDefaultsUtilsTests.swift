@@ -152,6 +152,44 @@ class UserDefaultsUtilsTests: XCTestCase {
       // Then
       XCTAssertFalse(userDefaults.hasKey(key))
     }
+
+    do {
+      // Given
+      let value = UserDefaultsUtilsTests.SecurePerson(firstname: "name1", surname: "surname1")
+      let value2 = UserDefaultsUtilsTests.SecurePerson(firstname: "name2", surname: "surname2")
+      let key = "personKey"
+      //  When
+      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+      //  Then
+      let codedValue: UserDefaultsUtilsTests.SecurePerson? = userDefaults.codableValue(forKey: key)
+      if let codedValue = codedValue {
+        XCTAssertTrue(codedValue == value)
+      } else {
+        XCTAssertNotNil(codedValue)
+      }
+
+      //  When
+      XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
+      //  Then
+      XCTAssertTrue(userDefaults.hasKey(key))
+      let codedValue2: UserDefaultsUtilsTests.SecurePerson? = userDefaults.codableValue(forKey: key)
+      if let codedValue2 = codedValue2 {
+        XCTAssertTrue(codedValue2 == value2)
+      } else {
+        XCTAssertNotNil(codedValue2)
+      }
+
+      // When
+      let nilValue: UserDefaultsUtilsTests.SecurePerson? = nil
+      XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
+      // Then
+      XCTAssertFalse(userDefaults.hasKey(key))
+      // When
+      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+      XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
+      // Then
+      XCTAssertFalse(userDefaults.hasKey(key))
+    }
   }
 
 }
@@ -208,8 +246,8 @@ extension UserDefaultsUtilsTests {
     
     required init?(coder aDecoder: NSCoder) {
       guard
-        let firstnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(Person.firstname))),
-        let surnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(Person.surname)))
+        let firstnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecurePerson.firstname))),
+        let surnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecurePerson.surname)))
         else {
           return nil
       }
@@ -219,8 +257,8 @@ extension UserDefaultsUtilsTests {
     }
     
     func encode(with aCoder: NSCoder) {
-      aCoder.encode(firstname, forKey: #keyPath(Person.firstname))
-      aCoder.encode(surname, forKey: #keyPath(Person.surname))
+      aCoder.encode(firstname, forKey: #keyPath(SecurePerson.firstname))
+      aCoder.encode(surname, forKey: #keyPath(SecurePerson.surname))
     }
     
     static func == (left: SecurePerson, right: SecurePerson) -> Bool {
