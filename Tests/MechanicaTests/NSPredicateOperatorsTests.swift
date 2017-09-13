@@ -1,8 +1,7 @@
 //
-//  NSPredicateOperatorsTests.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,24 +25,24 @@ import XCTest
 @testable import Mechanica
 
 class NSPredicateOperatorsTests: XCTestCase {
-    
-  
-  func test_operators() {
-    
+
+
+  func testOperators() {
+
     final class TestClass: NSObject {
-      let id: Int
-      let text: String
-      
+      @objc let id: Int
+      @objc let text: String
+
       init(id: Int, text: String) {
         self.id = id
         self.text = text
       }
-      
+
       override var description: String {
         return ("\(id),\(text)")
       }
     }
-    
+
     let tests = [
       TestClass(id:1, text: "one"),
       TestClass(id:2, text: "two"),
@@ -56,93 +55,93 @@ class NSPredicateOperatorsTests: XCTestCase {
       TestClass(id:9, text: "nine"),
       TestClass(id:10, text: "ten")
     ]
-    
+
     let textEqualToOne_predicate = NSPredicate(format: "text = %@", "one");
     let idGreaterThan5_predicate = NSPredicate(format: "id > 5")
     let textsStartWithF_predicate = NSPredicate(format: "text BEGINSWITH[cd] 'f'")
     let textEndsWithE_predicate = NSPredicate(format: "text ENDSWITH[cd] 'e'")
 
     do {
-    let result = (tests as NSArray).filtered(using: textEqualToOne_predicate)
+      let result = (tests as NSArray).filtered(using: textEqualToOne_predicate)
       XCTAssert(result.count == 1)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: idGreaterThan5_predicate)
       XCTAssert(result.count == 5)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: textsStartWithF_predicate)
       XCTAssert(result.count == 2)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: textEndsWithE_predicate)
       XCTAssert(result.count == 4)
     }
-    
+
     /// ! Operator
     do {
       let result = (tests as NSArray).filtered(using: !textEqualToOne_predicate)
       XCTAssert(result.count == 9)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: !idGreaterThan5_predicate)
       XCTAssert(result.count == 5)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate)
       XCTAssert(result.count == 8)
     }
-    
-    
+
+
     /// && Operator
-    
+
     do {
       let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate && idGreaterThan5_predicate)
       XCTAssert(result.count == 5)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate && !idGreaterThan5_predicate)
       XCTAssert(result.count == 3)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: textsStartWithF_predicate && textEndsWithE_predicate)
       XCTAssert(result.count == 1)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: textEqualToOne_predicate && idGreaterThan5_predicate)
       XCTAssert(result.count == 0)
     }
-    
+
     /// || Operator
-    
+
     do {
       let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate || idGreaterThan5_predicate)
       XCTAssert(result.count == 8)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: textsStartWithF_predicate || !idGreaterThan5_predicate)
       XCTAssert(result.count == 5)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: textEqualToOne_predicate || textEndsWithE_predicate)
       XCTAssert(result.count == 4)
     }
-    
+
     do {
       let result = (tests as NSArray).filtered(using: !textEqualToOne_predicate || textEndsWithE_predicate)
       XCTAssert(result.count == 10)
     }
-    
+
   }
-    
+
 }

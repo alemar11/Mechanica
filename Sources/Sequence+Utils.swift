@@ -1,8 +1,7 @@
 //
-//  Sequence+Utils.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,26 +27,11 @@ extension Sequence {
 
   /// **Mechanica**
   ///
-  /// Returns: the first element (if any) `matching` the predicate.
-  /// - Parameters:
-  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  /// - Note: Same as `first(where:)`.
-  /// - SeeAlso: `first(where:)`
-  public final func findFirst(where predicate: (Iterator.Element) -> Bool) -> Iterator.Element? {
-    //return first(where: predicate)
-    for element in self where predicate(element) {
-      return element
-    }
-    return nil
-  }
-
-  /// **Mechanica**
-  ///
   /// Returns true if there is at least one element `matching` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public final func hasSome(where predicate: (Iterator.Element) -> Bool) -> Bool {
-    return findFirst(where: predicate) != nil
+  public func hasSomeElements(where predicate: (Element) -> Bool) -> Bool {
+    return first { predicate($0) } != nil
   }
 
   /// **Mechanica**
@@ -55,35 +39,27 @@ extension Sequence {
   /// Returns true if all the elements `match` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public final func hasAll(where predicate: (Iterator.Element) -> Bool) -> Bool {
-    return findFirst { !predicate($0) } == nil
+  public func hasAllElements(where predicate: (Element) -> Bool) -> Bool {
+    return first { !predicate($0) } == nil
   }
 
   /// **Mechanica**
   ///
-  /// - Parameter criteria: The criteria closure takes an `Iterator.Element` and returns its classification.
+  /// - Parameter criteria: The criteria closure takes an `Element` and returns its classification.
   /// - Returns: Returns a grouped dictionary with the keys that the criteria function returns.
-  public final func grouped<Key: Hashable>(by criteria: (Iterator.Element) -> (Key)) -> [Key : [Iterator.Element]] {
-    var dictionary: [Key : [Iterator.Element]] = [:]
-    for element in self {
-      let key = criteria(element)
-      var array = dictionary.removeValue(forKey: key) ?? []
-      array.append(element)
-      dictionary.updateValue(array, forKey: key)
-    }
-    return dictionary
+  public func grouped<Key>(by criteria: (Element) -> (Key)) -> [Key:[Element]] {
+    return Dictionary(grouping: self, by: {return criteria($0)})
   }
 
   /// **Mechanica**
   ///
   /// Returns the elements count matching a predicate.
-  /// - Parameter shouldCount: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.
-  public final func count(_ shouldCount: (Iterator.Element) -> Bool) -> Int {
+  /// - Parameter where: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.
+  public func count(where predicate: (Element) -> Bool) -> Int {
     var count = 0
+
     for element in self {
-      if (shouldCount(element)) {
-        count += 1
-      }
+      if predicate(element) { count += 1 }
     }
     return count
   }
@@ -92,13 +68,13 @@ extension Sequence {
 
 // MARK: - AnyObject
 
-extension Sequence where Iterator.Element: AnyObject {
+extension Sequence where Element: AnyObject {
 
   /// **Mechanica**
   ///
   /// Returns true if the `Sequence` contains an element identical (referential equality) to an `object`.
-  public final func containsObjectIdentical(to object: AnyObject) -> Bool {
-    return contains { $0 === object }
+  public func containsObjectIdentical(to object: AnyObject) -> Bool {
+    return contains {$0 === object}
   }
 
 }

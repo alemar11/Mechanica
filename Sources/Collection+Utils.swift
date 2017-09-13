@@ -1,8 +1,7 @@
 //
-//  Collection+Utils.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +23,7 @@
 
 import Foundation
 
-extension Collection where Self.Index == Int, Iterator.Element: Equatable {
+extension Collection where Self.Index == Int, Element: Equatable {
 
   /// **Mechanica**
   ///
@@ -33,7 +32,7 @@ extension Collection where Self.Index == Int, Iterator.Element: Equatable {
   /// - Parameter element: Index of the first element found (if any).
   /// - Note: Same as `index(of:)`.
   /// - SeeAlso: `index(of:)`
-  public final func firstIndex(of element: Iterator.Element) -> Self.Index? {
+  public func firstIndex(of element: Element) -> Self.Index? {
     return index(of: element)
   }
 
@@ -42,12 +41,24 @@ extension Collection where Self.Index == Int, Iterator.Element: Equatable {
   ///  Returns the last index where the specified value appears in the collection.
   ///  After using lastIndex(of:) to find the last position of a particular element in a collection, you can use it to access the element by subscripting.
   /// - Parameter element: Index of the last element found (if any).
-  public final func lastIndex(of element: Iterator.Element) -> Self.Index? {
-    for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
-      guard (element == self[idx]) else { continue }
+  public func lastIndex(of element: Element) -> Self.Index? {
+    for idx in stride(from: endIndex-1, through: 0, by: -1) {
+      guard element == self[idx] else { continue }
       return idx
     }
     return nil
+  }
+
+}
+
+extension Collection where Self.Index == Int {
+
+  /// **Mechanica**
+  ///
+  /// Returns a random element from `self`.
+  public func random() -> Element {
+    let index = Int.random(min: startIndex, max: endIndex)
+    return self[index]
   }
 
 }

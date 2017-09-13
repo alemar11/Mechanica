@@ -1,8 +1,7 @@
 //
-//  BoolUtilsTests.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,13 +27,13 @@ import XCTest
 class BoolUtilsTests: XCTestCase {
 
   func testInt() {
-    XCTAssert(true.int == 1)
-    XCTAssert(false.int == 0)
+    XCTAssert(true.toInt == 1)
+    XCTAssert(false.toInt == 0)
   }
 
   func testString() {
-    XCTAssert(true.string == "true")
-    XCTAssert(false.string == "false")
+    XCTAssert(true.toString == "true")
+    XCTAssert(false.toString == "false")
   }
 
   func testRandom() {
@@ -47,7 +46,7 @@ class BoolUtilsTests: XCTestCase {
       XCTAssert(true)
     }
   }
-  
+
   func testToggle() {
     let b1 = true
     XCTAssertTrue(b1.toggled == false)
@@ -55,11 +54,11 @@ class BoolUtilsTests: XCTestCase {
     b2.toggle()
     XCTAssertTrue(b2)
   }
-  
+
   // MARK:- BinaryConvertible
-  
-  func testBinaryString() {
-    XCTAssertEqual(true.binaryString, "1")
-    XCTAssertEqual(false.binaryString, "0")
+
+  func testToBinaryString() {
+    XCTAssertEqual(true.toBinaryString, "1")
+    XCTAssertEqual(false.toBinaryString, "0")
   }
 }

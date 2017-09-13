@@ -1,8 +1,7 @@
 //
-//  Bool+Utils.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,14 +28,14 @@ extension Bool {
   /// **Mechanica**
   ///
   /// Returns 1 if true, or 0 if false.
-  public var int: Int {
+  public var toInt: Int {
     return self ? 1 : 0
   }
 
   /// **Mechanica**
   ///
   /// Returns `true` if true, or `false` if false.
-  public var string: String {
+  public var toString: String {
     return description
   }
 
@@ -71,11 +70,11 @@ extension Bool: BinaryConvertible {
   ///
   /// Creates a string representing the given value in the binary base.
   ///
-  /// ```
-  /// true.binaryString //"1"
-  /// ```
+  /// Example:
   ///
-  public var binaryString: String {
+  ///     true.toBinaryString // "1"
+  ///
+  public var toBinaryString: String {
     return self ? "1" : "0"
   }
 

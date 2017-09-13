@@ -1,8 +1,7 @@
 //
-//  FloatingPoint+Utils.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,16 +28,32 @@ extension FloatingPoint {
   /// **Mechanica**
   ///
   /// Returns a `new` rounded `FloatingPoint` to specified number of decimal `places`.
-  public final func rounded(to decimalPlaces: Int) -> Self {
+  ///
+  /// Example:
+  ///
+  ///     var piFloat = Float(3.141_592_653_589_793_238_46)
+  ///
+  ///     piFloat.rounded(to: 0) // 3.0
+  ///     piFloat.rounded(to: 7) // 3.1415927
+  ///
+  public func rounded(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
-    for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
+    for _ in 0..<decimalPlaces { divisor *= 10 }
     return (self * divisor).rounded() / divisor
   }
 
   /// **Mechanica**
   ///
   /// Rounds `self` to specified number of decimal `places`.
+  ///
+  /// Example:
+  ///
+  ///     var piFloat = Float(3.141_592_653_589_793_238_46)
+  ///
+  ///     piFloat.round(to: 3) // piFloat is 3.142
+  ///     piFloat.round(to: 7) // piFloat is 3.1415927
+  ///
   public mutating func round(to decimalPlaces: Int) {
     self = rounded(to: decimalPlaces)
   }
@@ -46,16 +61,32 @@ extension FloatingPoint {
   /// **Mechanica**
   ///
   /// Returns a `new` ceiled `FloatingPoint` to specified number of decimal `places`.
-  public final func ceiled(to decimalPlaces: Int) -> Self {
+  ///
+  /// Example:
+  ///
+  ///     var piFloat = Float(3.141_592_653_589_793_238_46)
+  ///
+  ///     piFloat.ceiled(to: 0) // 4.0
+  ///     piFloat.ceiled(to: 5) // 3.1416
+  ///
+  public func ceiled(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
-    for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
+    for _ in 0..<decimalPlaces { divisor *= 10  }
     return Darwin.ceil(self * divisor) / divisor // equals to (self * divisor).rounded(.up) / divisor
   }
 
   /// **Mechanica**
   ///
   /// Ceils `self` to specified number of decimal `places`.
+  ///
+  /// Example:
+  ///
+  ///     var piFloat = Float(3.141_592_653_589_793_238_46)
+  ///
+  ///     piFloat.ceil(to: 0) // piFloat is 4.0
+  ///     piFloat.ceil(to: 5) // piFloat is 3.1416
+  ///
   public mutating func ceil(to decimalPlaces: Int) {
     self = ceiled(to: decimalPlaces)
   }
@@ -63,16 +94,32 @@ extension FloatingPoint {
   /// **Mechanica**
   ///
   /// Returns a `new` floored `FloatingPoint` to specified number of decimal `places`.
-  public final func floored(to decimalPlaces: Int) -> Self {
+  ///
+  /// Example:
+  ///
+  ///     var piFloat = Float(3.141_592_653_589_793_238_46)
+  ///
+  ///     piFloat.floored(to: 0) // 3.0
+  ///     piFloat.floored(to: 5) // 3.14159
+  ///
+  public func floored(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
-    for _ in 0..<decimalPlaces { divisor.multiply(by: 10) }
+    for _ in 0..<decimalPlaces { divisor *= 10 }
     return Darwin.floor(self * divisor) / divisor // equals to (self * divisor).rounded(.down) / divisor
   }
 
   /// **Mechanica**
   ///
   /// Floors `self` to specified number of decimal `places`.
+  ///
+  /// Example:
+  ///
+  ///     var piFloat = Float(3.141_592_653_589_793_238_46)
+  ///
+  ///     piFloat.floor(to: 0) // piFloat is 3.0
+  ///     piFloat.floor(to: 5) // piFloat is 3.14159
+  ///
   public mutating func floor(to decimalPlaces: Int) {
     self = floored(to: decimalPlaces)
   }

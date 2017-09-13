@@ -1,8 +1,7 @@
 //
-//  App.swift
-//  Mechanica
+// Mechanica
 //
-//  Copyright © 2016-2017 Tinrobots.
+// Copyright © 2016-2017 Tinrobots.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +34,6 @@ class AppTests: XCTestCase {
     #endif
   }
 
-
   func testIsRunningUnitTests() {
     XCTAssertTrue(App.isRunningUnitTests)
   }
@@ -43,5 +41,5 @@ class AppTests: XCTestCase {
   func testIdentifier() {
     XCTAssert(App.identifier == "xctest")
   }
-  
+
 }

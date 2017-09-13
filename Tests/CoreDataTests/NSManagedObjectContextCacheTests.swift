@@ -27,11 +27,11 @@ import CoreData
 @testable import Mechanica
 
 class NSManagedObjectContextCacheTests: XCTestCase {
-  
+
   func testManagedContextCachingSystem() {
     let stack = CoreDataStack()
     if let stack = stack {
-      
+
       let mainContext = stack.mainContext
       let backgroundContext = mainContext.newBackgroundContext()
 
@@ -54,7 +54,7 @@ class NSManagedObjectContextCacheTests: XCTestCase {
       XCTAssertNotNil(cachedFirstCarForPerson1)
       XCTAssertNotNil(cachedCar1)
       XCTAssertEqual(person1, cachedPerson1)
-      
+
       // Given
       let person2 = Person(context: stack.mainContext)
       person2.firstName = "Tin2"
@@ -66,7 +66,7 @@ class NSManagedObjectContextCacheTests: XCTestCase {
       XCTAssertNotNil(cachedPerson2)
       XCTAssertNotEqual(person1, cachedPerson2)
       XCTAssertEqual(person2, cachedPerson2)
-      
+
       // Given
       let person3 = Person(context: backgroundContext)
       person3.firstName = "Tin3"
@@ -77,7 +77,7 @@ class NSManagedObjectContextCacheTests: XCTestCase {
       /// different contexts have different caches
       XCTAssertNotNil(backgroundContext.cachedManagedObject(forKey: "testKey")) // person3
       XCTAssertNotNil(mainContext.cachedManagedObject(forKey: "testKey")) // person2
-      
+
       // Given
       let person4 = Person(context: mainContext)
       person4.firstName = "Tin4"
@@ -89,11 +89,11 @@ class NSManagedObjectContextCacheTests: XCTestCase {
       /// caching an object in a different context should be impossible
       XCTAssertNil(backgroundContext.cachedManagedObject(forKey: "testKey3"))
       XCTAssertEqual(person3, backgroundContext.cachedManagedObject(forKey: "testKey")) // the previous cached object is not overwritten
-      
+
       // Given
-      let description = NSEntityDescription.entity(forEntityName: EntityKey.person, in: mainContext)
-      XCTAssertNotNil(description)
-      let person5 = Person(entity: description!, insertInto: nil)
+      let entityDescription = NSEntityDescription.entity(forEntityName: EntityKey.person, in: mainContext)
+      XCTAssertNotNil(entityDescription)
+      let person5 = Person(entity: entityDescription!, insertInto: nil)
       XCTAssertNil(person5.managedObjectContext)
       person5.firstName = "Tin5"
       person5.lastName = "Robots5"
@@ -122,15 +122,15 @@ class NSManagedObjectContextCacheTests: XCTestCase {
       // Then
       XCTAssertNil(mainContext.cachedManagedObject(forKey: "testKey"))
       XCTAssertNil(mainContext.cachedManagedObject(forKey: "testKey2"))
-      
+
       // Given, When
       backgroundContext.clearCachedManagedObjects()
       // Then
       XCTAssertNil(backgroundContext.cachedManagedObject(forKey: "testKey"))
-      
+
     } else {
       XCTAssertNotNil(stack)
     }
-    
+
   }
 }
