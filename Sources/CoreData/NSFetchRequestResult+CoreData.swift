@@ -28,15 +28,18 @@ extension NSFetchRequestResult where Self: NSManagedObject {
 
   /// **Mechanica**
   ///
-  /// The NSEntityDescription object.
-  @available(iOS 10, tvOS 10, watchOS 3, OSX 10.12, *)
-  public static var entity: NSEntityDescription { return entity() }
-
-  /// **Mechanica**
-  ///
   /// The entity name.
   @available(iOS 10, tvOS 10, watchOS 3, OSX 10.12, *)
-  public static var entityName: String { return entity.name! }
+  public static var entityName: String {
+    if let name = entity().name {
+      return name
+    }
+    // Attention: entity() returns nil due to a CoreData bug occurring in the Unit Test targets or when Generics are used.
+    // https://forums.developer.apple.com/message/203409#203409
+    // https://stackoverflow.com/questions/37909392/exc-bad-access-when-calling-new-entity-method-in-ios-10-macos-sierra-core-da
+    // https://stackoverflow.com/questions/43231873/nspersistentcontainer-unittests-with-ios10/43286175
+    return String(describing: Self.self)
+  }
 
   /// **Mechanica**
   ///
