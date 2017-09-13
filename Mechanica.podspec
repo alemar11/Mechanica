@@ -13,5 +13,6 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target    = '10.0'
   s.watchos.deployment_target = '3.0'
   s.source_files = 'Sources/*.swift', 'Sources/*.{h,m}'
-  s.watchos.exclude_files = 'Sources/Storyboard.swift', 'Sources/Nib.swift'
+  s.osx.exclude_files = 'Sources/UIKit/*.swift'
+  s.watchos.exclude_files = 'Sources/Interface Builder/Storyboard.swift', 'Sources/Interface Builder/Nib.swift', 'Sources/UIKit/*.swift'
 end
