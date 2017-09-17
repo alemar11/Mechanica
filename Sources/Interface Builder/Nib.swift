@@ -106,9 +106,7 @@ extension Nib {
     case 0:
       fatalError("\(String(describing: T.self)) could not be found in \(String(describing: self)).")
     case 1:
-      // swiftlint:disable force_cast
       return contents.first!
-      // swiftlint:enable force_cast
     default:
       fatalError("More than one \(String(describing: T.self)) has been found in \(String(describing: self)).")
     }

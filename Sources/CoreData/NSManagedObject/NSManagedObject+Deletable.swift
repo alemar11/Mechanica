@@ -25,7 +25,7 @@ import CoreData
 
 // MARK: - Local Deletion
 
-fileprivate let markedForDeletionKey = "markedForDeletionAsOf"
+private let markedForDeletionKey = "markedForDeletionAsOf"
 
 /// **Mechanica**
 ///

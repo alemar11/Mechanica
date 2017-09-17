@@ -21,28 +21,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || watchOS
 
 import UIKit
 
-extension UIButton {
+extension UIImage {
 
   /// **Mechanica**
   ///
-  /// Sets the background `color` to use for the specified button `state`.
-  public func setBackgroundColor(_ color: UIColor, for state: UIControlState) {
+  /// Returns an image (1x1) with a given `color`.
+  public convenience init?(color: UIColor) {
+    // TODO: pass size as parameter?
     let size = CGSize(width: 1, height: 1)
     let rect = CGRect(origin: .zero, size: size)
 
-    UIGraphicsBeginImageContext(size)
+    UIGraphicsBeginImageContextWithOptions(size, false, 0)
+    defer { UIGraphicsEndImageContext() }
 
-    let context = UIGraphicsGetCurrentContext()!
-    context.setFillColor(color.cgColor)
-    context.fill(rect)
+    color.setFill()
+    UIRectFill(rect)
 
-    let colorImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    setBackgroundImage(colorImage, for: state)
+    guard let image = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return nil }
+
+    self.init(cgImage: image)
   }
 
 }
