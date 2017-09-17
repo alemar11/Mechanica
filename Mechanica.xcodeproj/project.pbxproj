@@ -683,6 +683,7 @@
 				12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */,
 				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
 				23964A011E5B034800C8E0DF /* Collection+Utils.swift */,
+				233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */,
 				232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */,
 				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
 				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
@@ -700,7 +701,6 @@
 				23F6A1621EC8DBD400D20502 /* Utils.swift */,
 				23793D701F067F22002987C4 /* Color */,
 				23793D721F067F42002987C4 /* CoreData */,
-				23793D741F067F63002987C4 /* Dictionary */,
 				23793D751F067F71002987C4 /* Integer */,
 				23AAE0471F5AB5F100ECF302 /* Interface Builder */,
 				23793D761F067F84002987C4 /* NSAttributedString */,
@@ -731,9 +731,9 @@
 				237F17391E90000800726553 /* BoolUtilsTests.swift */,
 				237F173A1E90000800726553 /* BundleInfoTests.swift */,
 				237F173B1E90000800726553 /* CollectionUtilsTests.swift */,
+				237F17401E90000800726553 /* DictionaryUtilsTests.swift */,
 				237F17421E90000800726553 /* FileManagerUtilsTests.swift */,
 				237F17431E90000800726553 /* FloatingPointUtilsTests.swift */,
-				232CD57D1F5FF30F00DC84A0 /* NSAttributedString */,
 				237F17501E90000800726553 /* NSPredicateOperatorsTests.swift */,
 				23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */,
 				23078BEB1F20E1480074D955 /* OperatorsTests.swift */,
@@ -746,8 +746,8 @@
 				237F17371E90000800726553 /* ValueAssociableTests.swift */,
 				2392CB4D1EE04A9900B955EC /* XCTest+Utils.swift */,
 				235E0EDA1F065BA800E7A4D8 /* Color */,
-				235E0EDB1F065BD400E7A4D8 /* Dictionary */,
 				235E0EE01F065CC100E7A4D8 /* Integer */,
+				232CD57D1F5FF30F00DC84A0 /* NSAttributedString */,
 				235E0EE11F065CD100E7A4D8 /* NSObject */,
 				235E0EDF1F065C9100E7A4D8 /* String */,
 			);
@@ -773,14 +773,6 @@
 				237F173D1E90000800726553 /* ColorUtilsTests.swift */,
 			);
 			path = Color;
-			sourceTree = "<group>";
-		};
-		235E0EDB1F065BD400E7A4D8 /* Dictionary */ = {
-			isa = PBXGroup;
-			children = (
-				237F17401E90000800726553 /* DictionaryUtilsTests.swift */,
-			);
-			path = Dictionary;
 			sourceTree = "<group>";
 		};
 		235E0EDC1F065BEF00E7A4D8 /* NibTests */ = {
@@ -861,14 +853,6 @@
 				23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		23793D741F067F63002987C4 /* Dictionary */ = {
-			isa = PBXGroup;
-			children = (
-				233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */,
-			);
-			path = Dictionary;
 			sourceTree = "<group>";
 		};
 		23793D751F067F71002987C4 /* Integer */ = {
