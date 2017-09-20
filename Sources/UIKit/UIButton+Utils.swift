@@ -31,17 +31,8 @@ extension UIButton {
   ///
   /// Sets the background `color` to use for the specified button `state`.
   public func setBackgroundColor(_ color: UIColor, for state: UIControlState) {
-    let size = CGSize(width: 1, height: 1)
-    let rect = CGRect(origin: .zero, size: size)
+    let colorImage = UIImage(color: color, size: CGSize(width: 1, height: 1))
 
-    UIGraphicsBeginImageContext(size)
-
-    let context = UIGraphicsGetCurrentContext()!
-    context.setFillColor(color.cgColor)
-    context.fill(rect)
-
-    let colorImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
     setBackgroundImage(colorImage, for: state)
   }
 
