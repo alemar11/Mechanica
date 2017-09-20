@@ -29,10 +29,8 @@ extension UIImage {
 
   /// **Mechanica**
   ///
-  /// Returns an image (1x1) with a given `color`.
-  public convenience init?(color: UIColor) {
-    // TODO: pass size as parameter?
-    let size = CGSize(width: 1, height: 1)
+  /// Returns an image with a given `color` and `size`.
+  public convenience init?(color: UIColor, size: CGSize) {
     let rect = CGRect(origin: .zero, size: size)
 
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
