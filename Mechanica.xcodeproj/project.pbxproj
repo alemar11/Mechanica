@@ -88,6 +88,8 @@
 		230A4EEF1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */; };
 		230A4EF01ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */; };
 		230A4EF11ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */; };
+		231B2EF31F72808900854AA1 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231B2EF21F72808900854AA1 /* UIView+Utils.swift */; };
+		231B2EF51F72808900854AA1 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231B2EF21F72808900854AA1 /* UIView+Utils.swift */; };
 		232CD5791F5FEA9800DC84A0 /* Double+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */; };
 		232CD57A1F5FEA9800DC84A0 /* Double+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */; };
 		232CD57B1F5FEA9800DC84A0 /* Double+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */; };
@@ -490,6 +492,7 @@
 		23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSFetchRequestResult+CoreData.swift"; sourceTree = "<group>"; };
 		23078BEB1F20E1480074D955 /* OperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperatorsTests.swift; sourceTree = "<group>"; };
 		230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StringRegularExpressionsTests.swift; sourceTree = "<group>"; };
+		231B2EF21F72808900854AA1 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		23280BE21F28C492008B6196 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = IDETemplateMacros.plist; path = Mechanica.xcodeproj/xcshareddata/IDETemplateMacros.plist; sourceTree = SOURCE_ROOT; };
 		232CD5781F5FEA9800DC84A0 /* Double+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Utils.swift"; sourceTree = "<group>"; };
 		233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -939,6 +942,7 @@
 				235934A41F60212200EA44DF /* UICollectionView+Reusable.swift */,
 				237395CD1F20C47E007E2796 /* UIButton+Utils.swift */,
 				2363FED41F6E76EC0067257A /* UIImage+Utils.swift */,
+				231B2EF21F72808900854AA1 /* UIView+Utils.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1355,6 +1359,7 @@
 				D220818D1E07FEB700BE4268 /* URL+Utils.swift in Sources */,
 				23F6A1631EC8DBD400D20502 /* Utils.swift in Sources */,
 				235DCB8B1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
+				231B2EF31F72808900854AA1 /* UIView+Utils.swift in Sources */,
 				235DCB901E89B40F006AFEBE /* UnsignedInteger+Utils.swift in Sources */,
 				23EE2F501F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
 				235934A21F60210200EA44DF /* Reusable.swift in Sources */,
@@ -1478,6 +1483,7 @@
 				23EE2F521F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
 				235934AB1F60212200EA44DF /* UICollectionView+Reusable.swift in Sources */,
 				1230C2D81DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */,
+				231B2EF51F72808900854AA1 /* UIView+Utils.swift in Sources */,
 				239B92671F274E55009A9433 /* Sequence+Utils.swift in Sources */,
 				D273A59C1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				D262EF201DA5487F0061AB10 /* ModelVersion.swift in Sources */,
