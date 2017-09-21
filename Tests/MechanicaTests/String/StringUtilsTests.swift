@@ -276,6 +276,14 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("test\n\n spaces \n\n too many ".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
   }
 
+  func testRemovingAccentsOrDiacritics() {
+    XCTAssertTrue("äöüÄÖÜ".removingAccentsOrDiacritics() == "aouAOU")
+    XCTAssertTrue("1".removingAccentsOrDiacritics() == "1")
+    XCTAssertTrue("🇮🇹".removingAccentsOrDiacritics() == "🇮🇹")
+    XCTAssertTrue("Hello World!".removingAccentsOrDiacritics() == "Hello World!")
+    XCTAssertTrue("è".removingAccentsOrDiacritics() == "e")
+  }
+
   func testFirst(){
     XCTAssertTrue("Hello".first == "H")
     XCTAssertTrue("∂Hello".first == "∂")

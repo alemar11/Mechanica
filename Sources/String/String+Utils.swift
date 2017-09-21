@@ -386,6 +386,20 @@ extension String {
     return filtered.joined(separator: " ")
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns a `new` String stripped of all accents and diacritics.
+  ///
+  /// Example:
+  ///
+  ///     let string = "äöüÄÖÜ" //ÄÖÜ
+  ///     let stripped = string.stripCombiningMarks //aouAOU
+  ///
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
+  func removingAccentsOrDiacritics() -> String {
+    return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
+  }
+
   // MARK: - Subscript Methods
 
   /// **Mechanica**
