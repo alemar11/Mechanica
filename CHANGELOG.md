@@ -2,6 +2,7 @@
 
 ### 1.1.0
 - More UIKit utils.
+- More String utils.
 
 ### 1.0.0 ⭐
 
