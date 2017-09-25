@@ -112,10 +112,6 @@
 		235934A81F60212200EA44DF /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235934A31F60212200EA44DF /* UITableView+Reusable.swift */; };
 		235934AB1F60212200EA44DF /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235934A41F60212200EA44DF /* UICollectionView+Reusable.swift */; };
 		235934AC1F60212200EA44DF /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235934A41F60212200EA44DF /* UICollectionView+Reusable.swift */; };
-		235DCB861E89B35A006AFEBE /* BinaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */; };
-		235DCB871E89B35A006AFEBE /* BinaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */; };
-		235DCB881E89B35A006AFEBE /* BinaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */; };
-		235DCB891E89B35A006AFEBE /* BinaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */; };
 		235DCB8B1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
 		235DCB8C1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
 		235DCB8D1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
@@ -501,7 +497,6 @@
 		2359349E1F60210200EA44DF /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		235934A31F60212200EA44DF /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		235934A41F60212200EA44DF /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
-		235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BinaryConvertible.swift; sourceTree = "<group>"; };
 		235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "BinaryFloatingPoint+Utils.swift"; sourceTree = "<group>"; };
 		235DCB8F1E89B40F006AFEBE /* UnsignedInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UnsignedInteger+Utils.swift"; sourceTree = "<group>"; };
 		2363FED41F6E76EC0067257A /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
@@ -898,7 +893,6 @@
 			children = (
 				2359349E1F60210200EA44DF /* Reusable.swift */,
 				239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */,
-				235DCB851E89B35A006AFEBE /* BinaryConvertible.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1354,7 +1348,6 @@
 				239F8DD31E55B03900E3DF33 /* AssociatedValueSupporting.swift in Sources */,
 				12431A5F1DCE2F5A00594940 /* FetchConfigurable.swift in Sources */,
 				D278BD9A1DEF1061006FAD83 /* Color+Utils.swift in Sources */,
-				235DCB861E89B35A006AFEBE /* BinaryConvertible.swift in Sources */,
 				235934AC1F60212200EA44DF /* UICollectionView+Reusable.swift in Sources */,
 				D220818D1E07FEB700BE4268 /* URL+Utils.swift in Sources */,
 				23F6A1631EC8DBD400D20502 /* Utils.swift in Sources */,
@@ -1410,7 +1403,6 @@
 				D205B0611DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */,
 				23EE9B1A1E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */,
 				235DCB8C1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
-				235DCB871E89B35A006AFEBE /* BinaryConvertible.swift in Sources */,
 				D240944B1E4C802B00EB4163 /* NSPredicate+Operators.swift in Sources */,
 				235DCB911E89B40F006AFEBE /* UnsignedInteger+Utils.swift in Sources */,
 				D208D1831DF07103009687BB /* String+Operators.swift in Sources */,
@@ -1478,7 +1470,6 @@
 				235934A71F60212200EA44DF /* UITableView+Reusable.swift in Sources */,
 				12D9DEFF1E085B6A000799C6 /* Bool+Utils.swift in Sources */,
 				23839F811E93C70F002D757B /* UserDefaults+Utils.swift in Sources */,
-				235DCB881E89B35A006AFEBE /* BinaryConvertible.swift in Sources */,
 				D2B965601DD0C26E000C71C1 /* Collection+CoreData.swift in Sources */,
 				23EE2F521F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
 				235934AB1F60212200EA44DF /* UICollectionView+Reusable.swift in Sources */,
@@ -1539,7 +1530,6 @@
 				D2234A651E002D2600252551 /* String+NSString.swift in Sources */,
 				12D9DF001E085B6A000799C6 /* Bool+Utils.swift in Sources */,
 				23839F821E93C70F002D757B /* UserDefaults+Utils.swift in Sources */,
-				235DCB891E89B35A006AFEBE /* BinaryConvertible.swift in Sources */,
 				12B956301D880B3B00F75DD5 /* Optional+Utils.swift in Sources */,
 				1230C2D91DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */,
 				23EE2F531F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,

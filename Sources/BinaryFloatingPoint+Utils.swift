@@ -25,7 +25,7 @@ import Foundation
 
 // MARK: - BinaryConvertible
 
-extension BinaryFloatingPoint where Self: BinaryConvertible {
+extension BinaryFloatingPoint {
 
   /// **Mechanica**
   ///
@@ -51,11 +51,3 @@ extension BinaryFloatingPoint where Self: BinaryConvertible {
   }
 
 }
-
-extension Float:    BinaryConvertible {}
-extension Float64:  BinaryConvertible {}
-
-// Float80 is apparently only available on macOS, but it will compile on the iOS/tvOS/watchOS simulator because that's run in macOS.
-#if os(macOS)
-extension Float80:  BinaryConvertible {}
-#endif

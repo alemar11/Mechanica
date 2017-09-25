@@ -60,12 +60,6 @@ extension Bool {
     return arc4random_uniform(2) == 0
   }
 
-}
-
-// MARK: - BinaryConvertible
-
-extension Bool: BinaryConvertible {
-
   /// **Mechanica**
   ///
   /// Creates a string representing the given value in the binary base.

@@ -25,7 +25,7 @@ import Foundation
 
 // MARK: - BinaryConvertible
 
-extension SignedInteger where Self: BinaryConvertible {
+extension SignedInteger {
 
   /// **Mechanica**
   ///
@@ -63,9 +63,3 @@ extension SignedInteger where Self: BinaryConvertible {
   }
 
 }
-
-extension Int8:  BinaryConvertible {}
-extension Int16: BinaryConvertible {}
-extension Int32: BinaryConvertible {}
-extension Int64: BinaryConvertible {}
-extension Int:   BinaryConvertible {}

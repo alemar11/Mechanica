@@ -25,7 +25,7 @@ import Foundation
 
 // MARK: - BinaryConvertible
 
-extension UnsignedInteger where Self: BinaryConvertible & FixedWidthInteger {
+extension UnsignedInteger where Self: FixedWidthInteger {
 
   /// **Mechanica**
   ///
@@ -42,9 +42,3 @@ extension UnsignedInteger where Self: BinaryConvertible & FixedWidthInteger {
   }
 
 }
-
-extension UInt8:  BinaryConvertible {}
-extension UInt16: BinaryConvertible {}
-extension UInt32: BinaryConvertible {}
-extension UInt64: BinaryConvertible {}
-extension UInt:   BinaryConvertible {}
