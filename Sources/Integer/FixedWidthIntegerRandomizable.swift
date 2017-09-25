@@ -115,12 +115,12 @@ extension UInt64 {
     var m: UInt64
     let u = max - min
     var r = arc4random(type: UInt64.self)
-
+    //TODO: fix this
     if u > UInt64(Int64.max) {
       m = 1 + ~u
     } else {
-      //m = ((max - (u * 2)) + 1) % u //crashes if min = 0
-      m = ((max - u) + 1) % u
+      m = ((max - (u * 2)) + 1) % u //crashes if min = 0 and max a lower value (i.e. 99), test with min=1 and max = 99
+      //m = ((max - u) + 1) % u
     }
 
     while r < m {
@@ -128,6 +128,57 @@ extension UInt64 {
     }
 
     return (r % u) + min
+
+//    var m: UInt64
+//    let u = max - min
+//    var r = arc4random(type: UInt64.self)
+//
+//    if u > UInt64(Int64.max) {
+//      m = 1 + ~u
+//    } else {
+//      m = ((max - (u * 2)) + 1) % u
+//    }
+//
+//    while r < m {
+//      r = arc4random(type: UInt64.self)
+//    }
+//
+//    return (r % u) + min
+
+    // https://en.wikipedia.org/wiki/Xorshift#xorshift.2B
+    //xorshift128plus
+//    var state0 : UInt64 = min
+//    var state1 : UInt64 = max
+//
+//
+//      var s1 : UInt64 = state0
+//      let s0 : UInt64 = state1
+//      state0 = s0
+//      s1 ^= s1 << 23
+//      s1 ^= s1 >> 17
+//      s1 ^= s0
+//      s1 ^= s0 >> 26
+//      state1 = s1
+//      return state0.addingReportingOverflow(state1).0
+
+
+
+//    var s0 : UInt64 = min
+//    var s1 : UInt64 = max
+//
+//
+//
+//      var x = s0
+//      let y = s1
+//      s0 = y
+//      x ^= x << 23
+//      x ^= x >> 17
+//      x ^= y
+//      x ^= y >> 26
+//      s1 = x
+//      return s0 &+ s1
+
+
   }
 
   /// **Mechanica**
@@ -246,7 +297,7 @@ extension Int64 {
   public static func random(min: Int64 = min, max: Int64 = max) -> Int64 {
     guard min != max else { return min }
     precondition(min < max, "\(max) should be greater than \(min).")
-    let (partialValue, overflow) = max.subtractingReportingOverflow(min) //Int64.subtractWithOverflow(max, min)
+    let (partialValue, overflow) = max.subtractingReportingOverflow(min)
     let u = (overflow) ? UInt64.max - UInt64(~partialValue) : UInt64(partialValue)
     let r = UInt64.random(max: u)
 

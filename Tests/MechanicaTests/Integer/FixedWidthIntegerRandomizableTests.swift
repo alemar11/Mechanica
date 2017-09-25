@@ -164,7 +164,8 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
   }
 
   func testOverflow() {
-
+    let range = UInt64.min..<UInt64(100)
+    let x = UInt64.random(in: range) //TODO fix this
     do {
       let range: CountableClosedRange<Int8> = -118...10
       var expectedAtLeastOnePositive = false
@@ -218,11 +219,14 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
     }
 
     do {
-      let range = UInt64.min..<UInt64.max
+      let min: UInt64 = 0
+      let max: UInt64 = 3
+      let range = min..<max
       var expectedAtLeastOnePositive = false
       var expectedAtLeastOneNegative = false
       for _ in 1...100 {
         let value = UInt64.random(in: range)
+        print(value)
         XCTAssertTrue(range ~= value, "\(value) should be contained in \(range)")
         if (value.isPositive) { expectedAtLeastOnePositive = true }
         if (value.isNegative) { expectedAtLeastOneNegative = true }
