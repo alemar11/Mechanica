@@ -124,6 +124,7 @@
 		2363FED61F6E779A0067257A /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363FED41F6E76EC0067257A /* UIImage+Utils.swift */; };
 		2363FED71F6E779C0067257A /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363FED41F6E76EC0067257A /* UIImage+Utils.swift */; };
 		23690FE51F836F4A008C0B7E /* UILayoutPriority+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23690FE41F836F4A008C0B7E /* UILayoutPriority+Utils.swift */; };
+		23690FE61F837213008C0B7E /* UILayoutPriority+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23690FE41F836F4A008C0B7E /* UILayoutPriority+Utils.swift */; };
 		236D5C551F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D5C541F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift */; };
 		236D5C561F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D5C541F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift */; };
 		236D5C571F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D5C541F14C7DF00621EA3 /* NSManagedObjectUtilsTests.swift */; };
@@ -1466,6 +1467,7 @@
 				D205B0621DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */,
 				235DCB921E89B40F006AFEBE /* UnsignedInteger+Utils.swift in Sources */,
 				D2C149971DCCE04000376031 /* NSManagedObject+Deletable.swift in Sources */,
+				23690FE61F837213008C0B7E /* UILayoutPriority+Utils.swift in Sources */,
 				23928B811F5DAC5E00FB74AE /* Font+Utils.swift in Sources */,
 				12B9563C1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				12CAB7301E00707D00CFE42C /* App.swift in Sources */,

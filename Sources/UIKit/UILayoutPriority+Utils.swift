@@ -23,6 +23,8 @@
 
 import UIKit
 
+#if os(iOS) || os(tvOS)
+
 extension UILayoutPriority {
 
   /// **Mechanica**
@@ -56,3 +58,5 @@ extension UILayoutPriority {
   }
 
 }
+
+#endif

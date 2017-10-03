@@ -64,7 +64,6 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
     XCTAssertFalse(Int16.random(min: 50, max: 100) > 100)
     XCTAssertFalse(Int16.random(min: 40, max: 50) < 40)
 
-
     /// Int8
     XCTAssertTrue(Int8.random(min: 1, max: 1) == 1)
     XCTAssertTrue(Int8.random(min: 11, max: 12) == 11)
@@ -94,7 +93,6 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
     /// UInt64
     XCTAssertTrue(UInt64.random(min: UInt64.max, max: UInt64.max) == UInt64.max)
-
 
     /// UInt32
     XCTAssertTrue(UInt32.min...UInt32.max ~= UInt32.random())
