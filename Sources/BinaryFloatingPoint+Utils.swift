@@ -39,14 +39,17 @@ extension BinaryFloatingPoint {
     let floatingPointSign = (sign == FloatingPointSign.minus) ? "1" : "0"
     let exponentBitCount = Self.exponentBitCount
     let mantissaBitCount = Self.significandBitCount
+
     var exponent = String(Int(self.exponentBitPattern), radix: 2)
     var mantissa = String(Int(self.significandBitPattern), radix: 2)
+
     if exponentBitCount > exponent.count {
       exponent = String(repeating: "0", count: (exponentBitCount - exponent.count)) + exponent
     }
     if mantissaBitCount > mantissa.characters.count {
       mantissa = String(repeating: "0", count: (mantissaBitCount - mantissa.count)) + mantissa
     }
+    
     return "\(floatingPointSign)\(exponent)\(mantissa)"
   }
 
