@@ -33,6 +33,20 @@ import Foundation
 
 extension NSMutableAttributedString {
 
+  /// **Mechanica**
+  ///
+  /// Removes all the attributes from `self`.
+  public func removeAllAttributes() {
+    setAttributes([:], range: NSRange(location: 0, length: string.length))
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSMutableAttributedString removing all the attributes.
+  public func removingAllAttributes() -> NSMutableAttributedString {
+    return NSMutableAttributedString(string: string)
+  }
+
   #if os(iOS) || os(macOS)
 
   /// **Mechanica**
