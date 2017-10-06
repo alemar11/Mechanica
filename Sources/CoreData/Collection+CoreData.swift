@@ -32,12 +32,16 @@ extension Collection where Element: NSManagedObject {
   public func fetchFaultedObjects() {
     guard !self.isEmpty else { return }
     guard let context = self.first?.managedObjectContext else { fatalError("The managed object must have a context.") }
+
     let faults = self.filter { $0.isFault }
+
     guard let mo = faults.first else { return }
+
     let request = NSFetchRequest<NSFetchRequestResult>()
     request.entity = mo.entity
     request.returnsObjectsAsFaults = false
     request.predicate = NSPredicate(format: "self in %@", faults)
+
     do {
       try context.fetch(request)
     } catch {

@@ -60,10 +60,21 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   ///   - predicate: Matching predicate.
   ///   - configuration: Configuration closure called only when creating a new object.
   /// - Returns: A matching object or a configured new one.
+  // TODO: rename findOrCreateObject
   @available(iOS 10, tvOS 10, watchOS 3, OSX 10.12, *)
   public static func findOrCreate(in context: NSManagedObjectContext, where predicate: NSPredicate, with configuration: (Self) -> Void) -> Self {
     guard let object = findOrFetch(in: context, where: predicate) else {
       let newObject: Self = Self(context: context) // context.insertObject()
+      configuration(newObject)
+      return newObject
+    }
+    return object
+  }
+
+  // TODO: to be implemented
+  private static func findOrCreateUniqueObject(in context: NSManagedObjectContext, where predicate: NSPredicate, with configuration: (Self) -> Void) -> Self {
+    guard let object = findOrFetchUniqueObject(in: context, where: predicate) else {
+      let newObject: Self = Self(context: context)
       configuration(newObject)
       return newObject
     }
@@ -79,6 +90,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   ///   - context: Searched context.
   ///   - predicate: Matching predicate.
   /// - Returns: A matching object (if any).
+  // TODO: rename findOrFetchFirstObject
   @available(iOS 10, tvOS 10, watchOS 3, OSX 10.12, *)
   public static func findOrFetch(in context: NSManagedObjectContext, where predicate: NSPredicate) -> Self? {
     // first we should fetch an existing object in the context as a performance optimization
@@ -93,6 +105,11 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     return object
   }
 
+  // TODO: to be implemented
+  private static func findOrFetchUniqueObject(in context: NSManagedObjectContext, where predicate: NSPredicate) -> Self? {
+    return nil
+  }
+
   /// **Mechanica**
   ///
   /// Performs a configurable fetch request in a context.
@@ -101,6 +118,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     let request = NSFetchRequest<Self>(entityName: entityName)
     configuration(request)
     guard let result = try? context.fetch(request) else { fatalError("Fetched objects have wrong type.") }
+
     return result
   }
 
@@ -149,8 +167,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
 
   /// **Mechanica**
   ///
-  /// Iterates over the context’s registeredObjects set (which contains all managed objects the context currently knows about) until it finds one that is not a fault matching a given predicate.
+  /// Iterates over the context’s registeredObjects set (which contains all managed objects the context currently knows about) until it finds one that is not a fault matching for a given predicate.
   /// Faulted objects are not considered to to prevent Core Data to make a round trip to the persistent store.
+  // TODO: rename findFirstMaterializedObject
   public static func findMaterializedObject(in context: NSManagedObjectContext, where predicate: NSPredicate) -> Self? {
     for object in context.registeredObjects where !object.isFault {
       guard let result = object as? Self, predicate.evaluate(with: result) else { continue }
@@ -159,9 +178,17 @@ extension NSFetchRequestResult where Self: NSManagedObject {
     return nil
   }
 
+  // TODO: to be implemented
+  private static func findMaterializedObjects(in context: NSManagedObjectContext, where predicate: NSPredicate) -> Set<Self> {
+    let results = context.registeredObjects.filter { !$0.isFault }.filter { predicate.evaluate(with: $0) }.map { $0 }
+
+    return Set<Self>()
+  }
+
   /// **Mechanica**
   ///
   /// Executes a fetch request where only a single object is expected as result, otherwhile a fatal error occurs.
+  // TODO: to be renamed fetchSingleUniqueObject
   @available(iOS 10, tvOS 10, watchOS 3, OSX 10.12, *)
   public static func fetchSingleObject(in context: NSManagedObjectContext, with configuration: @escaping (NSFetchRequest<Self>) -> Void) -> Self? {
     let result = fetch(in: context) { request in
