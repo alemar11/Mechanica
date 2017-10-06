@@ -28,190 +28,58 @@ import XCTest
 
 class NSMutableAttributedStringUtilsTests: XCTestCase {
 
-#if os(iOS) || os(macOS)
+  func testRemovingAttrbiutes() {
+    // Given
+    let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
+    attributedString += " "
+    attributedString += NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+    let range = NSRange(location: 0, length: attributedString.length)
 
-  func testBold() {
+    var attributesCount = 0
+    var attributesCount2 = 0
 
-    do {
-      // Given, When
-      let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-      testAttributedString.setBoldFont()
-      // Then
-      for value in 0...testAttributedString.string.length {
-        let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-        XCTAssertEqual(attributes[.font] as! Font, Font.boldSystemFont(ofSize: Font.systemFontSize))
-      }
+    attributedString.enumerateAttributes(in: range, options: []) { (attributes, _, _) in
+      if !attributes.keys.isEmpty { attributesCount += 1 }
     }
 
-    do {
-      // Given, When
-      let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-      testAttributedString.setBoldFont(in: NSMakeRange(0, 5))
-      // Then
-      for value in 0...testAttributedString.string.length {
-        let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-        if value < 5 {
-          XCTAssertEqual(attributes[.font] as! Font, Font.boldSystemFont(ofSize: Font.systemFontSize))
-        } else {
-          XCTAssertNil(attributes[.font])
-        }
-      }
-    }
+    // When
+    let notAttributedString = attributedString.removingAllAttributes()
+    let range2 = NSRange(location: 0, length: notAttributedString.length)
 
-  }
-
-  func testForegroundColor() {
-
-    do {
-      // Given, When
-      let color = Color.red
-      let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-      testAttributedString.setColorForeground(color)
-      // Then
-      for value in 0...testAttributedString.string.length {
-        let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-        XCTAssertEqual(attributes[.foregroundColor] as! Color, Color.red)
-      }
-    }
-
-    do {
-      // Given, When
-      let color = Color.red
-      let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-      testAttributedString.setColorForeground(color, in: NSMakeRange(0, 5))
-      // Then
-      for value in 0...testAttributedString.string.length {
-        let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-        if value < 5 {
-          XCTAssertEqual(attributes[.foregroundColor] as! Color, Color.red)
-        } else {
-          XCTAssertNil(attributes[.foregroundColor])
-        }
-      }
-    }
-
-  }
-
-  func testBackgroundColor() {
-
-    do {
-      // Given, When
-      let color = Color.red
-       let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-      testAttributedString.setColorBackground(color)
-      // Then
-      for value in 0...testAttributedString.string.length {
-        let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-        XCTAssertEqual(attributes[.backgroundColor] as! Color, Color.red)
-      }
-    }
-
-    do {
-      // Given, When
-      let color = Color.red
-       let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-      testAttributedString.setColorBackground(color, in: NSMakeRange(0, 5))
-      // Then
-      for value in 0...testAttributedString.string.length {
-        let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-        if value < 5 {
-          XCTAssertEqual(attributes[.backgroundColor] as! Color, Color.red)
-        } else {
-          XCTAssertNil(attributes[.backgroundColor])
-        }
-      }
-    }
-
-  }
-
-#endif
-
-func testUnderLine() {
-  do {
-    // Given, When
-     let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-    testAttributedString.setUnderline()
     // Then
-    for value in 0...testAttributedString.string.length {
-      let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-      XCTAssertEqual(attributes[.underlineStyle] as! Int, NSUnderlineStyle.styleSingle.rawValue)
+    notAttributedString.enumerateAttributes(in: range2, options: []) { (attributes, _, _) in
+      if !attributes.keys.isEmpty { attributesCount2 += 1 }
     }
+
+    XCTAssertTrue(attributesCount != attributesCount2)
+    XCTAssertTrue(attributesCount2 == 0)
   }
 
-  do {
-    // Given, When
-     let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-    testAttributedString.setUnderline(in: NSMakeRange(0, 5), style: .patternDashDot)
+  func testRemoveAttrbiutes() {
+    // Given
+    let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
+    attributedString += " "
+    attributedString += NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+    let range = NSRange(location: 0, length: attributedString.length)
+
+    var attributesCount = 0
+    var attributesCount2 = 0
+
+    attributedString.enumerateAttributes(in: range, options: []) { (attributes, _, _) in
+      if !attributes.keys.isEmpty { attributesCount += 1 }
+    }
+
+    // When
+    attributedString.removeAllAttributes()
+    let range2 = NSRange(location: 0, length: attributedString.length)
+
     // Then
-    for value in 0...testAttributedString.string.length {
-      let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-      if value < 5 {
-        XCTAssertEqual(attributes[.underlineStyle] as! Int, NSUnderlineStyle.patternDashDot.rawValue)
-      } else {
-        XCTAssertNil(attributes[.underlineStyle])
-      }
+    attributedString.enumerateAttributes(in: range2, options: []) { (attributes, _, _) in
+      if !attributes.keys.isEmpty { attributesCount2 += 1 }
     }
+
+    XCTAssertTrue(attributesCount != attributesCount2)
+    XCTAssertTrue(attributesCount2 == 0)
   }
-}
-
-func testStrikethrough() {
-  do {
-    // Given, When
-     let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-    testAttributedString.setStrikethrough()
-    // Then
-    for value in 0...testAttributedString.string.length {
-      let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-      XCTAssertEqual(attributes[.strikethroughStyle] as! NSNumber, NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int))
-    }
-  }
-
-  do {
-    // Given, When
-     let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-    testAttributedString.setStrikethrough(in: NSMakeRange(0, 5))
-    // Then
-    for value in 0...testAttributedString.string.length {
-      let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-      if value < 5 {
-        XCTAssertEqual(attributes[.strikethroughStyle] as! NSNumber, NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int))
-      } else {
-        XCTAssertNil(attributes[.strikethroughStyle])
-      }
-    }
-  }
-}
-
-#if os(iOS)
-
-  func testItalic() {
-    do {
-      // Given, When
-      let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-      testAttributedString.setItalicFont()
-      // Then
-      for value in 0...testAttributedString.string.length {
-        let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-        XCTAssertEqual(attributes[NSAttributedStringKey.font] as! Font, Font.italicSystemFont(ofSize: UIFont.systemFontSize))
-      }
-    }
-
-    do {
-      // Given, When
-       let testAttributedString = NSMutableAttributedString(string: "Tin Robots Attributed String 🤖👍🏽", attributes: [NSAttributedStringKey:Any]())
-       testAttributedString.setItalicFont(in: NSMakeRange(0, 5))
-      // Then
-      for value in 0...testAttributedString.string.length {
-        let attributes = testAttributedString.attributes(at: value, longestEffectiveRange: nil, in: testAttributedString.string.nsRange)
-        if value < 5 {
-          XCTAssertEqual(attributes[NSAttributedStringKey.font] as! Font, Font.italicSystemFont(ofSize: UIFont.systemFontSize))
-        } else {
-          XCTAssertNil(attributes[.font])
-        }
-      }
-    }
-  }
-
-#endif
 
 }
