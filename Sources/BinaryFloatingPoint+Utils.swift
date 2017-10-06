@@ -49,7 +49,7 @@ extension BinaryFloatingPoint {
     if mantissaBitCount > mantissa.characters.count {
       mantissa = String(repeating: "0", count: (mantissaBitCount - mantissa.count)) + mantissa
     }
-    
+
     return "\(floatingPointSign)\(exponent)\(mantissa)"
   }
 

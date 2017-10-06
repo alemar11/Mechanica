@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -31,11 +31,11 @@ class UILayoutPriorityUtilsTests: XCTestCase {
     func testIncreaseLayoutPriority() {
       XCTAssertTrue(UILayoutPriority.defaultLow + 1 == UILayoutPriority(UILayoutPriority.defaultLow.rawValue + 1))
     }
-    
+
     func testDecreaseLayoutPriority() {
       XCTAssertTrue(UILayoutPriority.defaultLow - 1 == UILayoutPriority(UILayoutPriority.defaultLow.rawValue - 1))
     }
-    
+
 }
 
 #endif

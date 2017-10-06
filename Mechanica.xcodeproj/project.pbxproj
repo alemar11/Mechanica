@@ -748,6 +748,7 @@
 				237F17511E90000800726553 /* OptionalUtilsTests.swift */,
 				237F17521E90000800726553 /* RangeReplaceableCollectionUtilsTests.swift */,
 				237F17531E90000800726553 /* SequenceUtilsTests.swift */,
+				23690FE71F837295008C0B7E /* UILayoutPriorityUtilsTests.swift */,
 				237F175E1E90000800726553 /* URLUtilsTests.swift */,
 				23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */,
 				23F6A1671EC8DF6500D20502 /* UtilsTests.swift */,
@@ -758,7 +759,6 @@
 				232CD57D1F5FF30F00DC84A0 /* NSAttributedString */,
 				235E0EE11F065CD100E7A4D8 /* NSObject */,
 				235E0EDF1F065C9100E7A4D8 /* String */,
-				23690FE71F837295008C0B7E /* UILayoutPriorityUtilsTests.swift */,
 			);
 			path = MechanicaTests;
 			sourceTree = "<group>";

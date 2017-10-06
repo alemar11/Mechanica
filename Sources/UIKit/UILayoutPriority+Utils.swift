@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -38,7 +38,7 @@ extension UILayoutPriority {
   ///
   ///     label.setContentHuggingPriority(.defaultLow + 1, for: .horizontal)
   ///
-  static func +(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
+  static func + (lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
     return UILayoutPriority(lhs.rawValue + rhs)
   }
 
@@ -53,7 +53,7 @@ extension UILayoutPriority {
   ///
   ///     view.setContentCompressionResistancePriority(.defaultHigh - 1, for: .vertical)
   ///
-  static func -(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
+  static func - (lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
     return UILayoutPriority(lhs.rawValue - rhs)
   }
 

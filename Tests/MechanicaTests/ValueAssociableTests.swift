@@ -33,6 +33,7 @@ class AssociatedObjectTests: XCTestCase {
     class Demo {
       let var1: String
       let var2: Int
+
       init(var1: String, var2: Int) {
         self.var1 = var1
         self.var2 = var2
@@ -97,6 +98,7 @@ class AssociatedObjectTests: XCTestCase {
     class Demo: AssociatedValueSupporting {
       let var1: String
       let var2: Int
+
       init(var1: String, var2: Int) {
         self.var1 = var1
         self.var2 = var2
@@ -159,6 +161,7 @@ class AssociatedObjectTests: XCTestCase {
     class Demo: NSObject {
       let var1: String
       let var2: Int
+
       init(var1: String, var2: Int) {
         self.var1 = var1
         self.var2 = var2

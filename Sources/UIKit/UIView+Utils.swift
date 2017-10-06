@@ -31,7 +31,7 @@ extension UIView {
   ///
   /// Take sceenshot with the current device's screen scale.
   func screenshot() -> UIImage {
-    // By default UIGraphicsImageRenderer sets the scale to the device's screen scale.
+    // note: by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
     return UIGraphicsImageRenderer(size: bounds.size).image { _ in
       drawHierarchy(in: CGRect(origin: .zero, size: bounds.size), afterScreenUpdates: true)
     }
