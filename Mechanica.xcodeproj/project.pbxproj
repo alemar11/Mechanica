@@ -140,9 +140,9 @@
 		237F175F1E90000800726553 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17361E90000800726553 /* AppTests.swift */; };
 		237F17601E90000900726553 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17361E90000800726553 /* AppTests.swift */; };
 		237F17611E90000900726553 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17361E90000800726553 /* AppTests.swift */; };
-		237F17621E90000900726553 /* ValueAssociableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17371E90000800726553 /* ValueAssociableTests.swift */; };
-		237F17631E90000900726553 /* ValueAssociableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17371E90000800726553 /* ValueAssociableTests.swift */; };
-		237F17641E90000900726553 /* ValueAssociableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17371E90000800726553 /* ValueAssociableTests.swift */; };
+		237F17621E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */; };
+		237F17631E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */; };
+		237F17641E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */; };
 		237F17651E90000900726553 /* BinaryFloatingPointUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */; };
 		237F17661E90000900726553 /* BinaryFloatingPointUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */; };
 		237F17671E90000900726553 /* BinaryFloatingPointUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */; };
@@ -511,7 +511,7 @@
 		237395CD1F20C47E007E2796 /* UIButton+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIButton+Utils.swift"; sourceTree = "<group>"; };
 		237CED451EE209360074E141 /* iOS_ViewNibIdentifiable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iOS_ViewNibIdentifiable.xib; sourceTree = "<group>"; };
 		237F17361E90000800726553 /* AppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppTests.swift; sourceTree = "<group>"; };
-		237F17371E90000800726553 /* ValueAssociableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ValueAssociableTests.swift; sourceTree = "<group>"; };
+		237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AssociatedValueSupportingTests.swift; sourceTree = "<group>"; };
 		237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BinaryFloatingPointUtilsTests.swift; sourceTree = "<group>"; };
 		237F17391E90000800726553 /* BoolUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BoolUtilsTests.swift; sourceTree = "<group>"; };
 		237F173A1E90000800726553 /* BundleInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BundleInfoTests.swift; sourceTree = "<group>"; };
@@ -686,6 +686,7 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */,
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */,
 				12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */,
@@ -752,7 +753,7 @@
 				237F175E1E90000800726553 /* URLUtilsTests.swift */,
 				23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */,
 				23F6A1671EC8DF6500D20502 /* UtilsTests.swift */,
-				237F17371E90000800726553 /* ValueAssociableTests.swift */,
+				237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */,
 				2392CB4D1EE04A9900B955EC /* XCTest+Utils.swift */,
 				235E0EDA1F065BA800E7A4D8 /* Color */,
 				235E0EE01F065CC100E7A4D8 /* Integer */,
@@ -899,7 +900,6 @@
 			isa = PBXGroup;
 			children = (
 				2359349E1F60210200EA44DF /* Reusable.swift */,
-				239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1588,7 +1588,7 @@
 				23B2ED721EC8CE28006365BD /* NSObjectProtocolUtils.swift in Sources */,
 				2392CB4E1EE04A9900B955EC /* XCTest+Utils.swift in Sources */,
 				23C8BFD91EFC6D0100ED2BE0 /* CoreDataStack.swift in Sources */,
-				237F17621E90000900726553 /* ValueAssociableTests.swift in Sources */,
+				237F17621E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */,
 				237F17C51E90000900726553 /* StringOperatorsTests.swift in Sources */,
 				237F17861E90000900726553 /* FloatingPointUtilsTests.swift in Sources */,
 				230A4EEF1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */,
@@ -1645,7 +1645,7 @@
 				2392CB4F1EE04A9900B955EC /* XCTest+Utils.swift in Sources */,
 				23F6A1691EC8DF6500D20502 /* UtilsTests.swift in Sources */,
 				237F17BA1E90000900726553 /* SignedIntegerUtilsTests.swift in Sources */,
-				237F17631E90000900726553 /* ValueAssociableTests.swift in Sources */,
+				237F17631E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */,
 				23078BED1F20E1480074D955 /* OperatorsTests.swift in Sources */,
 				237F17C61E90000900726553 /* StringOperatorsTests.swift in Sources */,
 				237F17871E90000900726553 /* FloatingPointUtilsTests.swift in Sources */,
@@ -1701,7 +1701,7 @@
 				2392CB501EE04A9900B955EC /* XCTest+Utils.swift in Sources */,
 				23F6A16A1EC8DF6500D20502 /* UtilsTests.swift in Sources */,
 				237F17BB1E90000900726553 /* SignedIntegerUtilsTests.swift in Sources */,
-				237F17641E90000900726553 /* ValueAssociableTests.swift in Sources */,
+				237F17641E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */,
 				23078BEE1F20E1480074D955 /* OperatorsTests.swift in Sources */,
 				237F17C71E90000900726553 /* StringOperatorsTests.swift in Sources */,
 				237F17881E90000900726553 /* FloatingPointUtilsTests.swift in Sources */,

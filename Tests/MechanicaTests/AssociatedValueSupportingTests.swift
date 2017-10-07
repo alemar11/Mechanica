@@ -24,76 +24,76 @@
 import XCTest
 @testable import Mechanica
 
-class AssociatedObjectTests: XCTestCase {
+class AssociatedValueSupportingTests: XCTestCase {
 
-  // MARK:- Associated Objects
-
-  func testValueAssociation() {
-
-    class Demo {
-      let var1: String
-      let var2: Int
-
-      init(var1: String, var2: Int) {
-        self.var1 = var1
-        self.var2 = var2
-      }
-    }
-
-    do {
-      let demo  = Demo(var1: "demo", var2: 1)
-      var key   = UInt8(1)
-      let value = "value"
-      setAssociatedValue(value, forObject: demo, usingKey: &key)
-      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == value)
-    }
-
-    do {
-      let demo  = Demo(var1: "demo", var2: 1)
-      var key   = UInt8(1)
-      let value = UInt32(100_000_000)
-      setAssociatedValue(value, forObject: demo, usingKey: &key)
-      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == value)
-      Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
-      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
-    }
-
-    do {
-      let demo  = Demo(var1: "demo", var2: 1)
-      var key   = UInt8(1)
-      let value = "value"
-      setAssociatedValue(value, forObject: demo, usingKey: &key)
-      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == value)
-      Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
-      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
-    }
-
-    do {
-      let demo  = Demo(var1: "demo", var2: 1)
-      var key   = Demo(var1: "key", var2: 2)
-      let value = Demo(var1: "value", var2: 3)
-      setAssociatedValue(value, forObject: demo, usingKey: &key)
-      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) === value)
-      Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
-      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
-    }
-
-    do {
-      struct DemoStruct { var var1: String }
-      let demo = Demo(var1: "demo", var2: 1)
-      var key = DemoStruct(var1: "key").var1
-      let value = Demo(var1: "value", var2: 3)
-      setAssociatedValue(value, forObject: demo, usingKey: &key)
-      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) === value)
-      Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
-      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
-    }
-
-  }
+//  // MARK:- Associated Objects
+//
+//  func testValueAssociation() {
+//
+//    class Demo {
+//      let var1: String
+//      let var2: Int
+//
+//      init(var1: String, var2: Int) {
+//        self.var1 = var1
+//        self.var2 = var2
+//      }
+//    }
+//
+//    do {
+//      let demo  = Demo(var1: "demo", var2: 1)
+//      var key   = UInt8(1)
+//      let value = "value"
+//      _setAssociatedValue(value, forObject: demo, usingKey: &key)
+//      XCTAssert(Mechanica._getAssociatedValue(forObject: demo, usingKey: &key) == value)
+//    }
+//
+//    do {
+//      let demo  = Demo(var1: "demo", var2: 1)
+//      var key   = UInt8(1)
+//      let value = UInt32(100_000_000)
+//      _setAssociatedValue(value, forObject: demo, usingKey: &key)
+//      XCTAssert(Mechanica._getAssociatedValue(forObject: demo, usingKey: &key) == value)
+//      Mechanica._removeAssociatedValue(forObject: demo, usingKey: &key)
+//      XCTAssert(Mechanica._getAssociatedValue(forObject: demo, usingKey: &key) == nil)
+//    }
+//
+//    do {
+//      let demo  = Demo(var1: "demo", var2: 1)
+//      var key   = UInt8(1)
+//      let value = "value"
+//      _setAssociatedValue(value, forObject: demo, usingKey: &key)
+//      XCTAssert(Mechanica._getAssociatedValue(forObject: demo, usingKey: &key) == value)
+//      Mechanica._removeAssociatedValue(forObject: demo, usingKey: &key)
+//      XCTAssert(Mechanica._getAssociatedValue(forObject: demo, usingKey: &key) == nil)
+//    }
+//
+//    do {
+//      let demo  = Demo(var1: "demo", var2: 1)
+//      var key   = Demo(var1: "key", var2: 2)
+//      let value = Demo(var1: "value", var2: 3)
+//      _setAssociatedValue(value, forObject: demo, usingKey: &key)
+//      XCTAssert(Mechanica._getAssociatedValue(forObject: demo, usingKey: &key) === value)
+//      Mechanica._removeAssociatedValue(forObject: demo, usingKey: &key)
+//      XCTAssert(Mechanica._getAssociatedValue(forObject: demo, usingKey: &key) == nil)
+//    }
+//
+//    do {
+//      struct DemoStruct { var var1: String }
+//      let demo = Demo(var1: "demo", var2: 1)
+//      var key = DemoStruct(var1: "key").var1
+//      let value = Demo(var1: "value", var2: 3)
+//      _setAssociatedValue(value, forObject: demo, usingKey: &key)
+//      XCTAssert(Mechanica._getAssociatedValue(forObject: demo, usingKey: &key) === value)
+//      Mechanica._removeAssociatedValue(forObject: demo, usingKey: &key)
+//      XCTAssert(Mechanica._getAssociatedValue(forObject: demo, usingKey: &key) == nil)
+//    }
+//
+//  }
 
   // MARK:- ValueAssociable Protocol
 
-  func testProtocolValueAssociableClass() {
+  func testAssociatedValueSupportingClass() {
 
     class Demo: AssociatedValueSupporting {
       let var1: String
@@ -109,7 +109,7 @@ class AssociatedObjectTests: XCTestCase {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
       let value = "value"
-      demo.set(associatedValue: value, forKey: &key)
+      demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == value )
     }
 
@@ -117,7 +117,7 @@ class AssociatedObjectTests: XCTestCase {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
       let value = UInt32(100_000_000)
-      demo.set(associatedValue: value, forKey: &key)
+      demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == value )
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
@@ -127,7 +127,7 @@ class AssociatedObjectTests: XCTestCase {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
       let value = "value"
-      demo.set(associatedValue: value, forKey: &key)
+      demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == value )
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
@@ -137,9 +137,9 @@ class AssociatedObjectTests: XCTestCase {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = Demo(var1: "key", var2: 2)
       let value = Demo(var1: "value", var2: 3)
-      demo.set(associatedValue: value, forKey: &key)
+      demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) === value )
-      Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
+      demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
 
@@ -148,7 +148,7 @@ class AssociatedObjectTests: XCTestCase {
       let demo = Demo(var1: "demo", var2: 1)
       var key = DemoStruct(var1: "key").var1
       let value = Demo(var1: "value", var2: 3)
-      demo.set(associatedValue: value, forKey: &key)
+      demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) === value )
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
@@ -156,7 +156,7 @@ class AssociatedObjectTests: XCTestCase {
 
   }
 
-  func testProtocolValueAssociableNSObject() {
+  func testAssociatedValueSupportingNSObject() {
 
     class Demo: NSObject {
       let var1: String
@@ -172,15 +172,28 @@ class AssociatedObjectTests: XCTestCase {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
       let value = "value"
-      demo.set(associatedValue: value, forKey: &key)
+      demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == value )
     }
 
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
+      var key2   = UInt8(2)
+      let value = "value"
+      let value2 = "value2"
+      demo.setAssociatedValue(value, forKey: &key)
+      demo.setAssociatedValue(value2, forKey: &key2)
+      demo.removeAllAssociatedValues()
+      XCTAssert(demo.getAssociatedValue(forKey: &key) == nil )
+      XCTAssert(demo.getAssociatedValue(forKey: &key2) == nil )
+    }
+
+    do {
+      let demo  = Demo(var1: "demo", var2: 1)
+      var key   = UInt8(1)
       let value = UInt32(100_000_000)
-      demo.set(associatedValue: value, forKey: &key)
+      demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == value )
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
@@ -190,7 +203,7 @@ class AssociatedObjectTests: XCTestCase {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
       let value = "value"
-      demo.set(associatedValue: value, forKey: &key)
+      demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == value )
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
@@ -200,9 +213,9 @@ class AssociatedObjectTests: XCTestCase {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = Demo(var1: "key", var2: 2)
       let value = Demo(var1: "value", var2: 3)
-      demo.set(associatedValue: value, forKey: &key)
+      demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) === value )
-      Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
+      demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
 
@@ -211,7 +224,7 @@ class AssociatedObjectTests: XCTestCase {
       let demo = Demo(var1: "demo", var2: 1)
       var key = DemoStruct(var1: "key").var1
       let value = Demo(var1: "value", var2: 3)
-      demo.set(associatedValue: value, forKey: &key)
+      demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) === value )
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
