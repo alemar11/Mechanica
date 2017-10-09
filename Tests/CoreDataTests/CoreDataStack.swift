@@ -42,19 +42,23 @@ class CoreDataStack {
     let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
 
     switch (type) {
+
     case .inMemory:
       do {
         try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
       } catch {
         XCTFail("\(error)")
       }
+
     case .sqlite:
       let storeURL = URL(fileURLWithPath: "\(NSTemporaryDirectory())\(UUID().uuidString).sqlite" )
       let persistentStoreDescription = NSPersistentStoreDescription(url: storeURL)
+
       persistentStoreDescription.type = NSSQLiteStoreType
       persistentStoreDescription.shouldMigrateStoreAutomatically = true // default behaviour
       persistentStoreDescription.shouldInferMappingModelAutomatically = true // default behaviour
       persistentStoreDescription.shouldAddStoreAsynchronously = false // default
+
       var hasFailed = false
       persistentStoreCoordinator.addPersistentStore(with: persistentStoreDescription, completionHandler: { (persistentStoreDescription, error) in
         if let error = error {
