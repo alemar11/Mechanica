@@ -98,19 +98,27 @@ public extension String {
   /// **Mechanica**
   ///
   /// Returns true if the `String` is a valid email format.
+  /// - Seealso: [link 1](https://medium.com/@darthpelo/email-validation-in-swift-3-0-acfebe4d879a)
+  /// - Seealso: [link 2](http://www.cocoawithlove.com/2009/06/verifying-that-string-is-email-address.html)
   public var isValidEmail: Bool {
-    //    guard !self.lowercased().hasPrefix("mailto:") else { return false }
-    //    guard let emailDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return false }
-    //    let matches = emailDetector.matches(in: self, options: NSRegularExpression.MatchingOptions.anchored, range: NSRange(location: 0, length: length))
-    //    guard matches.count == 1 else { return false }
-    //    return matches[0].url?.absoluteString == "mailto:\(self)"
-
-    /// credits: https://medium.com/@darthpelo/email-validation-in-swift-3-0-acfebe4d879a
-    /// credits: http://www.cocoawithlove.com/2009/06/verifying-that-string-is-email-address.html
     // swiftlint:disable line_length
     let emailPattern = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
     // swiftlint:enable line_length
     return NSPredicate(format:"SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Different implementation for `isValidEmail` computed property.
+  private var _isValidEmail: Bool {
+    guard !self.lowercased().hasPrefix("mailto:") else { return false }
+    guard let emailDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return false }
+
+    let matches = emailDetector.matches(in: self, options: NSRegularExpression.MatchingOptions.anchored, range: NSRange(location: 0, length: length))
+
+    guard matches.count == 1 else { return false }
+
+    return matches[0].url?.absoluteString == "mailto:\(self)"
   }
 
 }
