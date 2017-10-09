@@ -79,6 +79,7 @@
 		12D9DEFF1E085B6A000799C6 /* Bool+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */; };
 		12D9DF001E085B6A000799C6 /* Bool+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */; };
 		23024C891F8B64A800024885 /* UIWindow+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23024C881F8B64A800024885 /* UIWindow+Utils.swift */; };
+		23024CAC1F8B674100024885 /* UIWindow+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23024C881F8B64A800024885 /* UIWindow+Utils.swift */; };
 		23053ECA1E51CE020056E460 /* NSFetchRequestResult+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */; };
 		23053ECB1E51CE020056E460 /* NSFetchRequestResult+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */; };
 		23053ECC1E51CE020056E460 /* NSFetchRequestResult+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */; };
@@ -1510,6 +1511,7 @@
 				D220818F1E07FEB700BE4268 /* URL+Utils.swift in Sources */,
 				237274C11E7C41790017B127 /* BinaryInteger+Utils.swift in Sources */,
 				23EE9B1B1E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */,
+				23024CAC1F8B674100024885 /* UIWindow+Utils.swift in Sources */,
 				D26C6C2C1DEC83B800B7D26A /* Storyboard.swift in Sources */,
 				D2ABD0091E004F8D006859B9 /* ProcessInfo+Utils.swift in Sources */,
 				D2CAF3461DA2A71300E6E843 /* NSManagedObjectContext+Utils.swift in Sources */,
