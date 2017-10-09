@@ -121,4 +121,42 @@ public extension String {
     return matches[0].url?.absoluteString == "mailto:\(self)"
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns `true` if `self` is an emoji flag.
+  ///
+  /// - Note: to check if a string contains a flag use: `self.contains { $0.isFlag }`
+  /// - Note: to extrapolate the flags in a string use: `self.filter { $0.isFlag }`
+  public var isEmojiFlag: Bool {
+    guard characters.count == 1 else { return false }
+    return characters.first!.isFlag
+  }
+
 }
+
+// MARK: - EXTRAs
+
+extension Character {
+
+  /// **Mechanica**
+  ///
+  /// Returns `true` if `self` is a flag.
+  public var isFlag: Bool {
+    let scalars = unicodeScalars
+    return scalars.count == 2 && scalars.first!.isRegionalIndicator && scalars.last!.isRegionalIndicator
+  }
+
+}
+
+extension Unicode.Scalar {
+
+  /// **Mechanica**
+  ///
+  /// Returns `true` if `self` is a regional indicator.
+  public var isRegionalIndicator: Bool {
+    return ("🇦"..."🇿").contains(self)
+  }
+
+}
+
+
