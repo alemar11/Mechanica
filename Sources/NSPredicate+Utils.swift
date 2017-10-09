@@ -30,7 +30,6 @@ extension NSPredicate {
   ///
   /// - Parameter predicate: A NSPredicate object.
   /// - Returns: a `new` compound NSPredicate formed by **AND**-ing `self` with `predicate`.
-  @objc
   public func andPredicate(_ predicate: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(andPredicateWithSubpredicates: [self, predicate])
   }
@@ -40,7 +39,6 @@ extension NSPredicate {
   ///
   /// - Parameter predicate: A NSPredicate object.
   /// - Returns: a `new` compound NSPredicate formed by **OR**-ing `self` with `predicate`.
-  @objc
   public func orPredicate(_ predicate: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(orPredicateWithSubpredicates: [self, predicate])
   }
