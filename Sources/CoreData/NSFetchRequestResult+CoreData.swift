@@ -179,10 +179,9 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   }
 
   // TODO: to be implemented
-  private static func findMaterializedObjects(in context: NSManagedObjectContext, where predicate: NSPredicate) -> Set<Self> {
-    let results = context.registeredObjects.filter { !$0.isFault }.filter { predicate.evaluate(with: $0) }.map { $0 }
-
-    return Set<Self>()
+  private static func findMaterializedObjects(in context: NSManagedObjectContext, where predicate: NSPredicate) -> [Self] {
+    let results = context.registeredObjects.filter { !$0.isFault }.filter { predicate.evaluate(with: $0) }.flatMap { $0 as? Self}
+    return results
   }
 
   /// **Mechanica**
