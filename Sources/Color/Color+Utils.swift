@@ -197,7 +197,7 @@ extension Color {
 
     #else
       self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
-      
+
     #endif
   }
 

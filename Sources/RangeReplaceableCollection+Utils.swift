@@ -32,10 +32,10 @@ extension RangeReplaceableCollection where Self.Index == Int {
   public func appending(_ element: Element) -> Self {
     var copy = self
     copy.append(element)
-    
+
     return copy
   }
-  
+
   /// **Mechanica**
   ///
   /// Removes the first element that matches the given `condition`.
@@ -44,7 +44,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   @discardableResult
   public mutating func removeFirst(where condition: (Element) -> Bool) -> Element? {
     guard let idx = index(where: condition) else { return nil }
-    
+
     return remove(at: idx)
   }
 
@@ -56,7 +56,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   public func removingFirst(where condition: (Element) -> Bool) -> Self {
     var copy = self
     copy.removeFirst(where: condition)
-    
+
     return copy
   }
 
@@ -69,10 +69,10 @@ extension RangeReplaceableCollection where Self.Index == Int {
   public mutating func removeLast(where condition: (Element) -> Bool) -> Element? {
     for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
       guard condition(self[idx]) else { continue }
-      
+
       return remove(at: idx)
     }
-    
+
     return nil
   }
 
@@ -84,7 +84,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   public func removingLast(where condition: (Element) -> Bool) -> Self {
     var items = self
     items.removeLast(where: condition)
-    
+
     return items
   }
 
@@ -101,11 +101,11 @@ extension RangeReplaceableCollection where Self.Index == Int {
     for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
       let element = self[idx]
       guard condition(element) else { continue }
-      
+
       remove(at: idx)
       removedElements.insert(element, at: 0)
     }
-    
+
     return removedElements
   }
 
@@ -117,7 +117,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   public func removingAll(where condition: (Element) -> Bool) -> Self {
     var copy = self
     copy.removeAll(where: condition)
-    
+
     return copy
   }
 
@@ -132,7 +132,7 @@ extension RangeReplaceableCollection where Self.Index == Int, Element: Equatable
   @discardableResult
   public mutating func removeFirstOccurrence(of element: Element) -> Element? {
     guard let idx = index(of: element) else { return nil }
-    
+
     return remove(at: idx)
   }
 
@@ -144,7 +144,7 @@ extension RangeReplaceableCollection where Self.Index == Int, Element: Equatable
   @discardableResult
   public mutating func removeLastOccurrence(of element: Element) -> Element? {
     if let idx = lastIndex(of: element) { return remove(at: idx) }
-    
+
     return nil
   }
 

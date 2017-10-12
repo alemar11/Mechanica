@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -29,5 +29,5 @@ class LocaleUtilsTests: XCTestCase {
     func testCountries() {
       XCTAssertTrue(Locale.countries().count == Locale.isoRegionCodes.count)
     }
-    
+
 }

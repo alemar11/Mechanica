@@ -64,7 +64,7 @@ extension NSFetchRequestResult where Self: NSManagedObject {
   @available(iOS 10, tvOS 10, watchOS 3, OSX 10.12, *)
   public static func findOrCreate(in context: NSManagedObjectContext, where predicate: NSPredicate, with configuration: (Self) -> Void) -> Self {
     guard let object = findOrFetch(in: context, where: predicate) else {
-      let newObject: Self = Self(context: context) 
+      let newObject: Self = Self(context: context)
       configuration(newObject)
       return newObject
     }
