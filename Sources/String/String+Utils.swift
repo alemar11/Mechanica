@@ -313,15 +313,24 @@ extension String {
 
   /// **Mechanica**
   ///
-  ///  Returns a new `String` removing the characters in the given set.
-  public func removingCharacters(in set: CharacterSet) -> String {
-    var chars = characters
+  ///  Remove the characters in the given set.
+  public mutating func removeCharacters(in set: CharacterSet) {
     for idx in indices.reversed() {
-      if set.contains(String(chars[idx]).unicodeScalars.first!) {
-        chars.remove(at: idx)
+      if set.contains(String(self[idx]).unicodeScalars.first!) {
+        remove(at: idx)
       }
     }
-    return String(chars)
+
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Returns a new `String` removing the characters in the given set.
+  public func removingCharacters(in set: CharacterSet) -> String {
+    var copy = self
+    copy.removeCharacters(in: set)
+
+    return copy
   }
 
   /// **Mechanica**
@@ -392,8 +401,6 @@ extension String {
     return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
   }
 
-  // MARK: - Subscript Methods
-
   /// **Mechanica**
   ///
   ///  Gets the character at the specified index as String.
@@ -404,7 +411,7 @@ extension String {
   public subscript (index: Int) -> String? {
     guard 0..<count ~= index else { return nil }
 
-    return String(Array(characters)[index])
+    return String(Array(self)[index])
   }
 
   /// **Mechanica**
@@ -426,6 +433,8 @@ extension String {
 
     return replacingCharacters(in: start ..< end, with: replacement)
   }
+
+  // MARK: - Subscript Methods
 
   /// **Mechanica**
   ///
