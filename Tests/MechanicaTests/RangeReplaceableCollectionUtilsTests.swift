@@ -210,31 +210,52 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
   func testRemoveLastOccurrence() {
     
     do {
+      // Given
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
+      
+      // When
       let occurrence = array.removeLastOccurrence(of: "a")
+      // Then
       XCTAssertTrue(occurrence == "a")
       XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a"])
+      
+      // When
       let occurrence2 = array.removeLastOccurrence(of: "c")
+      // Then
       XCTAssertTrue(occurrence2 == "c")
       XCTAssertTrue(array == ["a", "b", "c", "d", "e", "f", "g", "a"])
     }
     
     do {
+      // Given
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
+      
+      // When
       let occurrence = array.removeLastOccurrence(of: "k")
+      // Then
       XCTAssertNil(occurrence)
       XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"])
+      
+      // When
       let occurrence2 = array.removeLastOccurrence(of: "a")
+      // Then
       XCTAssertTrue(occurrence2 == "a")
       XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a"])
     }
     
     do {
+      // Given
       var array = [1, 2, 3, 4, 3, 1, 1, 5, 2, 6]
+      
+      // When
       let occurrence = array.removeLastOccurrence(of: 3)
+      // Then
       XCTAssertTrue(occurrence == 3)
       XCTAssertTrue(array == [1, 2, 3, 4, 1, 1, 5, 2, 6])
+      
+      // When
       let occurrence2 = array.removeLastOccurrence(of: 3)
+      // Then
       XCTAssertTrue(occurrence2 == 3)
       XCTAssertTrue(array == [1, 2, 4, 1, 1, 5, 2, 6])
     }
