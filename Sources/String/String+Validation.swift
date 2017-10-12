@@ -131,28 +131,3 @@ public extension String {
   }
 
 }
-
-// MARK: - EXTRAs
-
-extension Character {
-
-  /// **Mechanica**
-  ///
-  /// Returns `true` if `self` is a flag.
-  public var isFlag: Bool {
-    let scalars = unicodeScalars
-    return scalars.count == 2 && scalars.first!.isRegionalIndicator && scalars.last!.isRegionalIndicator
-  }
-
-}
-
-extension Unicode.Scalar {
-
-  /// **Mechanica**
-  ///
-  /// Returns `true` if `self` is a regional indicator.
-  public var isRegionalIndicator: Bool {
-    return ("🇦"..."🇿").contains(self)
-  }
-
-}
