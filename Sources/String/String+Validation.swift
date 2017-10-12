@@ -156,4 +156,3 @@ extension Unicode.Scalar {
   }
 
 }
-
