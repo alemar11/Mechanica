@@ -66,6 +66,7 @@ class StringValidationTests: XCTestCase {
     XCTAssertTrue("🤔🤔".isHomogeneous)
     XCTAssertTrue("🤓".isHomogeneous)
     XCTAssertTrue("".isHomogeneous)
+    XCTAssertTrue(" ".isHomogeneous)
 
     XCTAssertFalse("AAa".isHomogeneous)
     XCTAssertFalse("as".isHomogeneous)
