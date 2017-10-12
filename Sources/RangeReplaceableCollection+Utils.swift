@@ -27,79 +27,83 @@ extension RangeReplaceableCollection where Self.Index == Int {
 
   /// **Mechanica**
   ///
-  /// Removes the first element that matches the given `predicate`.
-  /// - Parameters:
-  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  /// Appends a new `element`.
   @discardableResult
-  public mutating func removeFirst(where predicate: (Element) -> Bool) -> Element? {
-    guard let idx = index(where: predicate) else { return nil }
-    return remove(at: idx)
+  public func appending(_ element: Element) -> Self {
+    var copy = self
+    copy.append(element)
+
+    return copy
   }
 
   /// **Mechanica**
   ///
-  /// Removes the first element that matches the given `predicate` and returns a `new` collection.
+  /// Removes all the elements that matches the given `condition`.
   /// - Parameters:
-  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func removingFirst(where predicate: (Element) -> Bool) -> Self {
-    var items = self
-    items.removeFirst(where: predicate)
-    return items
+  ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  public mutating func remove(where condition: (Element) -> Bool ) {
+    self = filter { !condition($0) }
+
   }
 
   /// **Mechanica**
   ///
-  /// Removes the last element that matches the given `predicate`.
+  /// Removes all the elements that matches the given `condition` and returns a `new` collection.
   /// - Parameters:
-  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   @discardableResult
-  public mutating func removeLast(where predicate: (Element) -> Bool) -> Element? {
-    //guard let idx = reversed().index(where: predicate) else { return nil }
-    //return remove(at: (endIndex-1) - idx)
+  public func removing(where condition: (Element) -> Bool ) -> Self {
+    var copy = self
+    copy.remove(where: condition)
+
+    return copy
+  }
+
+  /// **Mechanica**
+  ///
+  /// Removes the first element that matches the given `condition`.
+  /// - Parameters:
+  ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  public mutating func removeFirst(where condition: (Element) -> Bool) {
+    guard let idx = index(where: condition) else { return }
+
+    remove(at: idx)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Removes the first element that matches the given `condition` and returns a `new` collection.
+  /// - Parameters:
+  ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  public func removingFirst(where condition: (Element) -> Bool) -> Self {
+    var copy = self
+    copy.removeFirst(where: condition)
+
+    return copy
+  }
+
+  public mutating func removeLast(where condition: (Element) -> Bool) {
     for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
-      guard predicate(self[idx]) else { continue }
-      return remove(at: idx)
+      if condition(self[idx]) {
+        remove(at: idx)
+
+        return
+      }
     }
-    return nil
+
   }
 
   /// **Mechanica**
   ///
-  /// Removes the last element that matches the given `predicate` and returns a `new` collection.
+  /// Removes the last element that matches the given `condition` and returns a `new` collection.
   /// - Parameters:
-  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func removingLast(where predicate: (Element) -> Bool) -> Self {
-    var items = self
-    items.removeLast(where: predicate)
-    return items
-  }
-
-  /// **Mechanica**
-  ///
-  /// Removes all the elements that matches the given `predicate` and returns all the removed element (if any).
-  /// - Parameters:
-  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   @discardableResult
-  public mutating func removeAll(where predicate: (Element) -> Bool) -> [Element] {
-    var removedElements: [Element]  = []
-    for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
-      let element = self[idx]
-      guard predicate(element) else { continue }
-      remove(at: idx)
-      removedElements.insert(element, at: 0)
-    }
-    return removedElements
-  }
+  public func removingLast(where condition: (Element) -> Bool) -> Self {
+    var copy = self
+    copy.removeLast(where: condition)
 
-  /// **Mechanica**
-  ///
-  /// Removes all the elements that matches the given `predicate` and returns a `new` array.
-  /// - Parameters:
-  ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  public func removingAll(where predicate: (Element) -> Bool) -> Self {
-    var items = self
-    items.removeAll(where: predicate)
-    return items
+    return copy
   }
 
 }
@@ -108,25 +112,23 @@ extension RangeReplaceableCollection where Self.Index == Int, Element: Equatable
 
   /// **Mechanica**
   /// Removes the first specified element from the collection (if exists).
-  /// - Returns: The element removed (if any).
   /// - Parameter element: The element to remove the last occurrence.
-  @discardableResult
-  public mutating func removeFirstOccurrence(of element: Element) -> Element? {
-    guard let idx = index(of: element) else { return nil }
-    return remove(at: idx)
+  public mutating func removeFirstOccurrence(of element: Element) {
+    guard let idx = index(of: element) else { return }
+
+    remove(at: idx)
   }
 
   /// **Mechanica**
   ///
   /// Removes the last specified element from the array (if exists).
-  /// - Returns: The element removed (if any).
   /// - Parameter element: The element to remove the collection occurrence.
-  @discardableResult
-  public mutating func removeLastOccurrence(of element: Element) -> Element? {
+  public mutating func removeLastOccurrence(of element: Element) {
     if let idx = lastIndex(of: element) {
-      return remove(at: idx)
+      remove(at: idx)
+      return
     }
-    return nil
+
   }
 
 }
