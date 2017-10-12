@@ -68,24 +68,17 @@ class StringUtilsTests: XCTestCase {
 
   func testReverse() {
     var a = "a"
-    a.reverseString()
+    a.reverse()
     XCTAssertTrue(a == "a")
     var aa = "aa"
-    aa.reverseString()
+    aa.reverse()
     XCTAssertTrue(aa == "aa")
     var abc = "abc"
-    abc.reverseString()
+    abc.reverse()
     XCTAssertTrue(abc == "cba")
     var 🤔aa = "🤔aa"
-    🤔aa.reverseString()
+    🤔aa.reverse()
     XCTAssertTrue(🤔aa == "aa🤔")
-  }
-
-  func testReversed() {
-    XCTAssertTrue("a".reversedString() == "a")
-    XCTAssertTrue("aa".reversedString() == "aa")
-    XCTAssertTrue("abc".reversedString() == "cba")
-    XCTAssertTrue("🤔aa".reversedString() == "aa🤔")
   }
 
   func testFirstCharacterOfEachWord() {

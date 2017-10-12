@@ -46,7 +46,7 @@ extension BinaryFloatingPoint {
     if exponentBitCount > exponent.count {
       exponent = String(repeating: "0", count: (exponentBitCount - exponent.count)) + exponent
     }
-    if mantissaBitCount > mantissa.characters.count {
+    if mantissaBitCount > mantissa.count {
       mantissa = String(repeating: "0", count: (mantissaBitCount - mantissa.count)) + mantissa
     }
 

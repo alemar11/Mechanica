@@ -37,16 +37,8 @@ extension String {
   /// **Mechanica**
   ///
   /// Reverse `self`.
-  public mutating func reverseString() {
-    self = String(characters.reversed())
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a `new` reversed `String`.
-  /// Shorthand for *self.characters.reverse()*.
-  public func reversedString() -> String {
-    return String(characters.reversed())
+  public mutating func reverse() {
+    self = String(reversed())
   }
 
   /// **Mechanica**
@@ -324,7 +316,7 @@ extension String {
   ///  Returns a new `String` removing the characters in the given set.
   public func removingCharacters(in set: CharacterSet) -> String {
     var chars = characters
-    for idx in chars.indices.reversed() {
+    for idx in indices.reversed() {
       if set.contains(String(chars[idx]).unicodeScalars.first!) {
         chars.remove(at: idx)
       }

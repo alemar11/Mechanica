@@ -88,7 +88,7 @@ public extension String {
   /// Checks if all of the characters in a string are all the same.
   public var isHomogeneous: Bool {
     if let firstChar = characters.first {
-      for char in characters.dropFirst() where char != firstChar {
+      for char in dropFirst() where char != firstChar {
         return false
       }
     }
@@ -128,8 +128,8 @@ public extension String {
   /// - Note: to check if a string contains a flag use: `self.contains { $0.isFlag }`
   /// - Note: to extrapolate the flags in a string use: `self.filter { $0.isFlag }`
   public var isEmojiFlag: Bool {
-    guard characters.count == 1 else { return false }
-    return characters.first!.isFlag
+    guard count == 1 else { return false }
+    return first!.isFlag
   }
 
 }
