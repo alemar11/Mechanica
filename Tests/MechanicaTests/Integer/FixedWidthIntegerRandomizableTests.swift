@@ -93,6 +93,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
     /// UInt64
     XCTAssertTrue(UInt64.random(min: UInt64.max, max: UInt64.max) == UInt64.max)
+    XCTAssertTrue(UInt64.random() <= UInt64.max)
 
     /// UInt32
     XCTAssertTrue(UInt32.min...UInt32.max ~= UInt32.random())

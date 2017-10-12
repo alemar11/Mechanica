@@ -88,6 +88,10 @@
 		2302A2D31F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */; };
 		2302A2D41F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */; };
 		2302A2D51F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */; };
+		2302A2D71F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302A2D61F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift */; };
+		2302A2D81F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302A2D61F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift */; };
+		2302A2D91F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302A2D61F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift */; };
+		2302A2DA1F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2302A2D61F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift */; };
 		23053ECA1E51CE020056E460 /* NSFetchRequestResult+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */; };
 		23053ECB1E51CE020056E460 /* NSFetchRequestResult+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */; };
 		23053ECC1E51CE020056E460 /* NSFetchRequestResult+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */; };
@@ -509,6 +513,7 @@
 		23024C881F8B64A800024885 /* UIWindow+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Utils.swift"; sourceTree = "<group>"; };
 		2302A2CC1F8FFE7A001A92A8 /* Character+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Utils.swift"; sourceTree = "<group>"; };
 		2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unicode+Utils.swift"; sourceTree = "<group>"; };
+		2302A2D61F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpressibleByIntegerLiteral+Utils.swift"; sourceTree = "<group>"; };
 		23053EC91E51CE020056E460 /* NSFetchRequestResult+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSFetchRequestResult+CoreData.swift"; sourceTree = "<group>"; };
 		23078BEB1F20E1480074D955 /* OperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperatorsTests.swift; sourceTree = "<group>"; };
 		2307D0691F8FA15500FDBA2A /* Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locale.swift; sourceTree = "<group>"; };
@@ -898,6 +903,7 @@
 				23DA86FE1E65C42C009C5CFE /* SignedInteger+Utils.swift */,
 				D28CAEE51E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift */,
 				237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */,
+				2302A2D61F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift */,
 			);
 			path = Integer;
 			sourceTree = "<group>";
@@ -1391,6 +1397,7 @@
 				D220818D1E07FEB700BE4268 /* URL+Utils.swift in Sources */,
 				23F6A1631EC8DBD400D20502 /* Utils.swift in Sources */,
 				235DCB8B1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
+				2302A2D71F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift in Sources */,
 				231B2EF31F72808900854AA1 /* UIView+Utils.swift in Sources */,
 				235DCB901E89B40F006AFEBE /* UnsignedInteger+Utils.swift in Sources */,
 				23EE2F501F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
@@ -1464,6 +1471,7 @@
 				D28CAEE71E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift in Sources */,
 				D2B965641DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift in Sources */,
 				D2CAF33D1DA2A71300E6E843 /* NSFetchRequest+Utils.swift in Sources */,
+				2302A2D81F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift in Sources */,
 				D2234A631E002D2600252551 /* String+NSString.swift in Sources */,
 				1230C2D71DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */,
 				23F6A1641EC8DBD400D20502 /* Utils.swift in Sources */,
@@ -1521,6 +1529,7 @@
 				23EE2F521F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
 				235934AB1F60212200EA44DF /* UICollectionView+Reusable.swift in Sources */,
 				1230C2D81DFB013E004A1A6B /* NSManagedObject+UpdateTimestampable.swift in Sources */,
+				2302A2D91F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift in Sources */,
 				231B2EF51F72808900854AA1 /* UIView+Utils.swift in Sources */,
 				239B92671F274E55009A9433 /* Sequence+Utils.swift in Sources */,
 				D273A59C1DD5FB8B0007796F /* Mechanica.swift in Sources */,
@@ -1597,6 +1606,7 @@
 				23FF8F251ECC92AB00A9ADD8 /* String+RegularExpressions.swift in Sources */,
 				D2CAF3431DA2A71300E6E843 /* NSManagedObject+Utils.swift in Sources */,
 				D28CAEE91E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift in Sources */,
+				2302A2DA1F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift in Sources */,
 				23928B841F5DAC5E00FB74AE /* Font+Utils.swift in Sources */,
 				D2C149981DCCE04000376031 /* NSManagedObject+Deletable.swift in Sources */,
 				D2B965661DD0CB94000C71C1 /* NSManagedObjectContext+Cache.swift in Sources */,
