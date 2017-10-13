@@ -25,43 +25,43 @@ import XCTest
 @testable import Mechanica
 
 class DictionaryUtilsTests: XCTestCase {
-
+  
   func testInitFromJSON() {
-
+    
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
       XCTAssertNotNil(dictionary)
       let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
       let expectedDictionary2: Dictionary<String, Any> = ["foo": "bar", "val": Date()]
-
+      
       XCTAssertTrue(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary))
       XCTAssertFalse(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary2))
     }
-
+    
     do {
       let string = "{\"foo\":\"bar\",\"val\":null}"
       let dictionary = Dictionary<String, Any?>(json: string)
       XCTAssertNotNil(dictionary)
       XCTAssertTrue(dictionary!["val"]! == nil)
     }
-
+    
     do {
       let invalidJSON = "tinrobots"
       let invalidDictionary = Dictionary<String, Any>(json: invalidJSON)
       XCTAssertNil(invalidDictionary)
     }
-
+    
     do {
       let invalidJSON = "{\"foo\", \"bar\"}"
       let invalidDictionary = Dictionary<String, Any>(json: invalidJSON)
       XCTAssertNil(invalidDictionary)
     }
-
+    
   }
-
+  
   func testJSONString() {
-
+    
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
@@ -71,18 +71,18 @@ class DictionaryUtilsTests: XCTestCase {
       let jsonPretty = dictionary!.jsonString(prettify: true)
       XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}") || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}") )
     }
-
+    
     do {
       let dictionary2: [String: Any?] = ["key1":"val1", "key2": nil]
       let jsonString = dictionary2.jsonString()
       XCTAssertNotNil(jsonString)
       XCTAssertTrue(jsonString == "{\"key2\":null,\"key1\":\"val1\"}" || jsonString == "{\"key1\":\"val1\",\"key2\":null}")
     }
-
+    
   }
-
+  
   func testJSONData() {
-
+    
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
@@ -90,14 +90,14 @@ class DictionaryUtilsTests: XCTestCase {
       XCTAssertNotNil(dictionary!.jsonData())
       XCTAssertNotNil(dictionary!.jsonData(prettify: true))
     }
-
+    
     do {
       let dictionary: [String: Any?] = ["key1":"val1", "key2": nil]
       XCTAssertNotNil(dictionary.jsonData())
     }
-
+    
   }
-
+  
   func testLowercaseAllKeys() {
     var dictionary = ["Key1":1, "key2":2, "kEY3":3]
     dictionary.lowercaseAllKeys()
@@ -106,7 +106,7 @@ class DictionaryUtilsTests: XCTestCase {
       XCTAssertTrue(k.isLowercased)
     }
   }
-
+  
   func testHasKey() {
     do {
       let dictionary: [String:Int] = [:]
@@ -119,10 +119,10 @@ class DictionaryUtilsTests: XCTestCase {
       XCTAssertTrue(dictionary.hasKey("robot"))
     }
   }
-
+  
   func testRemoveAll() {
     var dictionary = ["a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "l": 9, "m": 10]
-
+    
     do {
       let removed = dictionary.removeAll(forKeys: ["a", "b", "c"])
       if removed != nil {
@@ -131,7 +131,7 @@ class DictionaryUtilsTests: XCTestCase {
         XCTAssertNotNil(dictionary)
       }
     }
-
+    
     do {
       let removed = dictionary.removeAll(forKeys: ["a", "b", "c", "d"])
       if removed != nil {
@@ -140,12 +140,12 @@ class DictionaryUtilsTests: XCTestCase {
         XCTAssertNotNil(dictionary)
       }
     }
-
+    
     do {
       let removed = dictionary.removeAll(forKeys: ["k"])
       XCTAssertNil(removed)
     }
-
+    
     do {
       let removed = dictionary.removeAll(forKeys: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "l", "m"])
       XCTAssertNotNil(removed)
@@ -155,23 +155,56 @@ class DictionaryUtilsTests: XCTestCase {
       XCTAssertNil(dictionary["l"])
       XCTAssert(dictionary.isEmpty)
     }
-
+    
   }
-
+  
   func testRandom() {
-    let dictionary = ["a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "l": 9, "m": 10]
-
-    for _ in 1...100 {
-      let randomElement = dictionary.random()
-      let randomValue = randomElement.value
-      let dictionaryValue = dictionary[randomElement.key]
-      if let dictionaryValue = dictionaryValue {
-        XCTAssertTrue(randomValue == dictionaryValue)
-      } else {
-        XCTAssertNotNil(dictionaryValue)
+    
+    do {
+      let dictionary = ["a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "l": 9, "m": 10]
+      
+      for _ in 1...100 {
+        let randomElement = dictionary.random()
+        let randomValue = randomElement.value
+        let dictionaryValue = dictionary[randomElement.key]
+        if let dictionaryValue = dictionaryValue {
+          XCTAssertTrue(randomValue == dictionaryValue)
+        } else {
+          XCTAssertNotNil(dictionaryValue)
+        }
+        
       }
+    }
+    
+    do {
+      let dictionary = ["a": 0]
+      for _ in 1...100 {
+        let randomElement = dictionary.random()
+        XCTAssertTrue(randomElement.key == "a")
+        XCTAssertTrue(randomElement.value == 0)
+      }
+    }
 
+    do {
+      let dictionary = ["a": 0, "b": 1, "c": 2]
+      var foundFirst = false
+      var foundSecond = false
+      var foundThird = false
+      
+      repeat {
+        let randomElement = dictionary.random()
+        
+        if randomElement.key == "a" {
+          foundFirst = true
+
+        } else if randomElement.key == "b" {
+          foundSecond = true
+        } else if randomElement.key == "c" {
+          foundThird = true
+        }
+
+      } while foundFirst == false || foundSecond == false || foundThird == false
     }
   }
-
+  
 }

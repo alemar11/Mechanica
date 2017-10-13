@@ -59,7 +59,9 @@ class CollectionUtilsTests: XCTestCase {
   func testRandom() {
     do {
       let collection = [1]
+      for _ in 1...100 {
       XCTAssertTrue(collection.random() == 1)
+      }
     }
 
     do {
@@ -90,6 +92,29 @@ class CollectionUtilsTests: XCTestCase {
         XCTAssertTrue(collection.contains(value))
       }
     }
+
+    do {
+      let dictionary = [1, 2, 3]
+      var foundFirst = false
+      var foundSecond = false
+      var foundThird = false
+
+      repeat {
+        let randomElement = dictionary.random()
+        
+        if randomElement == 1 {
+          foundFirst = true
+
+        } else if randomElement == 2 {
+          foundSecond = true
+        } else if randomElement == 3 {
+          foundThird = true
+        }
+
+      } while foundFirst == false || foundSecond == false || foundThird == false
+    }
   }
 
-}
+  }
+
+

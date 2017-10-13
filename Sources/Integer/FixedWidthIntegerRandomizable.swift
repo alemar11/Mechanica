@@ -32,8 +32,8 @@ public protocol FixedWidthIntegerRandomizable {
 
   /// **Mechanica**
   ///
-  /// Returns a random value between `min` and `max` values.
-  static func random(min: Self, max: Self) -> Self
+  /// Returns a random value between `lowerBound` and `upperBound` -1 values.
+  static func random(lowerBound: Self, upperBound: Self) -> Self
 
 }
 
@@ -57,15 +57,15 @@ extension UInt {
   /// **Mechanica**
   ///
   /// - Parameters:
-  ///   - min: min value
-  ///   - max: max value
-  /// - Returns: Returns a random UInt between `min` and `max` values. [min, max)
-  /// - Warning: The range is exclusive [min, max).
-  public static func random(min: UInt, max: UInt) -> UInt {
+  ///   - lowerBound: lowerBound value
+  ///   - upperBound: upperBound value
+  /// - Returns: Returns a random UInt between `lowerBound` and `upperBound` -1 values. [lowerBound, upperBound)
+  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  public static func random(lowerBound: UInt, upperBound: UInt) -> UInt {
     switch _wordSize {
-    case 32: return UInt(UInt32.random(min: UInt32(min), max: UInt32(max)))
-    case 64: return UInt(UInt64.random(min: UInt64(min), max: UInt64(max)))
-    default: return min
+    case 32: return UInt(UInt32.random(lowerBound: UInt32(lowerBound), upperBound: UInt32(upperBound)))
+    case 64: return UInt(UInt64.random(lowerBound: UInt64(lowerBound), upperBound: UInt64(upperBound)))
+    default: return lowerBound
     }
   }
 
@@ -76,33 +76,33 @@ extension UInt64 {
   /// **Mechanica**
   ///
   /// - Parameters:
-  ///   - min: min value
-  ///   - max: max value
-  /// - Returns: Returns a random UInt64 between `min` and `max` values.
-  /// - Warning: The range is exclusive [min, max).
-  public static func random(min: UInt64, max: UInt64) -> UInt64 {
-    guard min != max else { return min }
-    precondition(min < max, "\(max) should be greater than \(min).")
+  ///   - lowerBound: lowerBound value
+  ///   - upperBound: upperBound value
+  /// - Returns: Returns a random UInt64 between `lowerBound` and `upperBound` -1 values.
+  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  public static func random(lowerBound: UInt64, upperBound: UInt64) -> UInt64 {
+    guard lowerBound != upperBound else { return lowerBound }
+    precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
-    guard max > UInt64(UInt32.max) else {
-      return UInt64(UInt32.random(min: UInt32(min), max: UInt32(max)))
+    guard upperBound > UInt64(UInt32.max ) else {
+      return UInt64(UInt32.random(lowerBound: UInt32(lowerBound), upperBound: UInt32(upperBound)))
     }
 
     var m: UInt64
-    let u = max - min
+    let u = upperBound - lowerBound
     var r = UInt64.random()
 
     if u > UInt64(Int64.max) {
       m = 1 + ~u
     } else {
-      m = ((max - (u * 2)) + 1) % u
+      m = ((upperBound - (u * 2)) + 1) % u
     }
 
     while r < m {
       r = UInt64.random()
     }
 
-    return (r % u) + min
+    return (r % u) + lowerBound
   }
 
 }
@@ -112,15 +112,15 @@ extension UInt32 {
   /// **Mechanica**
   ///
   /// - Parameters:
-  ///   - min: min value
-  ///   - max: max value
-  /// - Returns: Returns a random UInt32 between `min` and `max` values.
-  /// - Warning: The range is exclusive [min, max).
-  public static func random(min: UInt32, max: UInt32) -> UInt32 {
-    guard min != max else { return min }
-    precondition(min < max, "\(max) should be greater than \(min).")
+  ///   - lowerBound: lowerBound value
+  ///   - upperBound: upperBound value
+  /// - Returns: Returns a random UInt32 between `lowerBound` and `upperBound` -1 values.
+  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  public static func random(lowerBound: UInt32, upperBound: UInt32) -> UInt32 {
+    guard lowerBound != upperBound else { return lowerBound }
+    precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
-    return arc4random_uniform(max - min) + min
+    return arc4random_uniform(upperBound - lowerBound) + lowerBound
   }
 
 }
@@ -130,15 +130,15 @@ extension UInt16 {
   /// **Mechanica**
   ///
   /// - Parameters:
-  ///   - min: min value
-  ///   - max: max value
-  /// - Returns: Returns a random UInt16 between `min` and `max` values.
-  /// - Warning: The range is exclusive [min, max).
-  public static func random(min: UInt16, max: UInt16) -> UInt16 {
-    guard min != max else { return min }
-    precondition(min < max, "\(max) should be greater than \(min).")
+  ///   - lowerBound: lowerBound value
+  ///   - upperBound: upperBound value
+  /// - Returns: Returns a random UInt16 between `lowerBound` and `upperBound` -1 values.
+  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  public static func random(lowerBound: UInt16, upperBound: UInt16) -> UInt16 {
+    guard lowerBound != upperBound else { return lowerBound }
+    precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
-    return UInt16(arc4random_uniform(UInt32(max) - UInt32(min)) + UInt32(min))
+    return UInt16(arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
   }
 
 }
@@ -148,15 +148,15 @@ extension UInt8 {
   /// **Mechanica**
   ///
   /// - Parameters:
-  ///   - min: min value
-  ///   - max: max value
-  /// - Returns: Returns a random UInt8 between `min` and `max` values.
-  /// - Warning: The range is exclusive [min, max).
-  public static func random(min: UInt8, max: UInt8) -> UInt8 {
-    guard min != max else { return min }
-    precondition(min < max, "\(max) should be greater than \(min).")
+  ///   - lowerBound: lowerBound value
+  ///   - upperBound: upperBound value
+  /// - Returns: Returns a random UInt8 between `lowerBound` and `upperBound` -1 values.
+  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  public static func random(lowerBound: UInt8, upperBound: UInt8) -> UInt8 {
+    guard lowerBound != upperBound else { return lowerBound }
+    precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
     
-    return UInt8(arc4random_uniform(UInt32(max) - UInt32(min)) + UInt32(min))
+    return UInt8(arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
   }
 
 }
@@ -168,15 +168,15 @@ extension Int {
   /// **Mechanica**
   ///
   /// - Parameters:
-  ///   - min: min value
-  ///   - max: max value
-  /// - Returns: Returns a random Int between `min` and `max` values.
-  /// - Warning: The range is exclusive [min, max).
-  public static func random(min: Int, max: Int) -> Int {
+  ///   - lowerBound: lowerBound value
+  ///   - upperBound: upperBound value
+  /// - Returns: Returns a random Int between `lowerBound` and `upperBound` -1 values.
+  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  public static func random(lowerBound: Int, upperBound: Int) -> Int {
     switch _wordSize {
-    case 32: return Int(Int32.random(min: Int32(min), max: Int32(max)))
-    case 64: return Int(Int64.random(min: Int64(min), max: Int64(max)))
-    default: return min
+    case 32: return Int(Int32.random(lowerBound: Int32(lowerBound), upperBound: Int32(upperBound)))
+    case 64: return Int(Int64.random(lowerBound: Int64(lowerBound), upperBound: Int64(upperBound)))
+    default: return lowerBound
     }
   }
 
@@ -187,22 +187,22 @@ extension Int64 {
   /// **Mechanica**
   ///
   /// - Parameters:
-  ///   - min: min value
-  ///   - max: max value
-  /// - Returns: Returns a random Int64 between `min` and `max` values.
-  /// - Warning: The range is exclusive [min, max).
-  public static func random(min: Int64, max: Int64) -> Int64 {
-    guard min != max else { return min }
-    precondition(min < max, "\(max) should be greater than \(min).")
+  ///   - lowerBound: lowerBound value
+  ///   - upperBound: upperBound value
+  /// - Returns: Returns a random Int64 between `lowerBound` and `upperBound` -1 values.
+  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  public static func random(lowerBound: Int64, upperBound: Int64) -> Int64 {
+    guard lowerBound != upperBound else { return lowerBound }
+    precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
     
-    let (partialValue, overflow) = max.subtractingReportingOverflow(min)
+    let (partialValue, overflow) = upperBound.subtractingReportingOverflow(lowerBound)
     let u = (overflow) ? UInt64.max - UInt64(~partialValue) : UInt64(partialValue)
-    let r = UInt64.random(min: UInt64.min, max: u)
+    let r = UInt64.random(lowerBound: UInt64.min, upperBound: u)
 
     if r > UInt64(Int64.max) {
-      return Int64(r - (UInt64(~min) + 1))
+      return Int64(r - (UInt64(~lowerBound) + 1))
     } else {
-      return Int64(r) + min
+      return Int64(r) + lowerBound
     }
   }
 
@@ -213,16 +213,16 @@ extension Int32 {
   /// **Mechanica**
   ///
   /// - Parameters:
-  ///   - min: min value
-  ///   - max: max value
-  /// - Returns: Returns a random Int32 between `min` and `max` values.
-  /// - Warning: The range is exclusive [min, max).
-  public static func random(min: Int32, max: Int32) -> Int32 {
-    guard min != max else { return min }
-    precondition(min < max, "\(max) should be greater than \(min).")
+  ///   - lowerBound: lowerBound value
+  ///   - upperBound: upperBound value
+  /// - Returns: Returns a random Int32 between `lowerBound` and `upperBound` -1 values.
+  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  public static func random(lowerBound: Int32, upperBound: Int32) -> Int32 {
+    guard lowerBound != upperBound else { return lowerBound }
+    precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
     
-    let r = arc4random_uniform(UInt32(Int64(max) - Int64(min)))
-    return Int32(Int64(r) + Int64(min))
+    let r = arc4random_uniform(UInt32(Int64(upperBound) - Int64(lowerBound)))
+    return Int32(Int64(r) + Int64(lowerBound))
   }
 
 }
@@ -232,16 +232,16 @@ extension Int16 {
   /// **Mechanica**
   ///
   /// - Parameters:
-  ///   - min: min value
-  ///   - max: max value
-  /// - Returns: Returns a random Int16 between `min` and `max` values.
-  /// - Warning: The range is exclusive [min, max).
-  public static func random(min: Int16, max: Int16) -> Int16 {
-    guard min != max else { return min }
-    precondition(min < max, "\(max) should be greater than \(min).")
+  ///   - lowerBound: lowerBound value
+  ///   - upperBound: upperBound value
+  /// - Returns: Returns a random Int16 between `lowerBound` and `upperBound` -1 values.
+  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  public static func random(lowerBound: Int16, upperBound: Int16) -> Int16 {
+    guard lowerBound != upperBound else { return lowerBound }
+    precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
     
-    let r = arc4random_uniform(UInt32(Int32(max) - Int32(min)))
-    return Int16(Int32(r) + Int32(min))
+    let r = arc4random_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
+    return Int16(Int32(r) + Int32(lowerBound))
   }
 
 }
@@ -251,16 +251,16 @@ extension Int8 {
   /// **Mechanica**
   ///
   /// - Parameters:
-  ///   - min: min value
-  ///   - max: max value
-  /// - Returns: Returns a random Int8 between `min` and `max` values.
-  /// - Warning: The range is exclusive [min, max).
-  public static func random(min: Int8, max: Int8) -> Int8 {
-    guard min != max else { return min }
-    precondition(min < max, "\(max) should be greater than \(min).")
-    
-    let r = arc4random_uniform(UInt32(Int32(max) - Int32(min)))
-    return Int8(Int32(r) + Int32(min))
+  ///   - lowerBound: lowerBound value
+  ///   - upperBound: upperBound value
+  /// - Returns: Returns a random Int8 between `lowerBound` and `upperBound` -1 values.
+  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  public static func random(lowerBound: Int8, upperBound: Int8) -> Int8 {
+    guard lowerBound != upperBound else { return lowerBound }
+    precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
+
+    let r = arc4random_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
+    return Int8(Int32(r) + Int32(lowerBound))
   }
 
 }

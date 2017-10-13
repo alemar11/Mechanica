@@ -57,7 +57,7 @@ extension Collection where Self.Index == Int {
   ///
   /// Returns a random element from `self`.
   public func random() -> Element {
-    let index = Int.random(min: startIndex, max: endIndex)
+    let index = Int.random(lowerBound: startIndex, upperBound: endIndex)
     return self[index]
   }
 

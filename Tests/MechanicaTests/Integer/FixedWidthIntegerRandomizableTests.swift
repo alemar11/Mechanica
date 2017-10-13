@@ -26,58 +26,58 @@ import XCTest
 
 class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
-  func testRandomInt() {
+  func testRandolowerBoundt() {
 
     /// Int
-    XCTAssertTrue(Int.random(min: 1, max: 1) == 1)
-    XCTAssertTrue(Int.random(min: Int.max, max: Int.max) == Int.max)
+    XCTAssertTrue(Int.random(lowerBound: 1, upperBound: 1) == 1)
+    XCTAssertTrue(Int.random(lowerBound: Int.max, upperBound: Int.max) == Int.max)
 
     do {
-      let randomInt = Int.random(min: 0, max: 1)
-      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
+      let randolowerBoundt = Int.random(lowerBound: 0, upperBound: 1)
+      XCTAssertTrue((randolowerBoundt == 0) || (randolowerBoundt == 1))
     }
 
-    XCTAssertTrue(Int.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(Int.random(lowerBound: 1, upperBound: 100) <= 100)
     XCTAssertTrue(Int.min...Int.max ~= Int.random())
     XCTAssertTrue(Int32.min...Int32.max ~= Int32.random())
-    XCTAssertFalse(Int.random(min: 50, max: 100) > 100)
-    XCTAssertFalse(Int.random(min: 40, max: 50) < 40)
+    XCTAssertFalse(Int.random(lowerBound: 50, upperBound: 100) > 100)
+    XCTAssertFalse(Int.random(lowerBound: 40, upperBound: 50) < 40)
 
     /// Int64
     XCTAssertTrue(Int64.min...Int64.max ~= Int64.random())
-    XCTAssertTrue(Int64.random(min: Int64.max, max: Int64.max) == Int64.max)
+    XCTAssertTrue(Int64.random(lowerBound: Int64.max, upperBound: Int64.max) == Int64.max)
 
     /// Int32
-    XCTAssertTrue(Int32.random(min: Int32.max, max: Int32.max) == Int32.max)
+    XCTAssertTrue(Int32.random(lowerBound: Int32.max, upperBound: Int32.max) == Int32.max)
 
     /// Int16
-    XCTAssertTrue(Int16.random(min: 1, max: 1) == 1)
-    XCTAssertTrue(Int16.random(min: Int16.max, max: Int16.max) == Int16.max)
+    XCTAssertTrue(Int16.random(lowerBound: 1, upperBound: 1) == 1)
+    XCTAssertTrue(Int16.random(lowerBound: Int16.max, upperBound: Int16.max) == Int16.max)
 
     do {
-      let randomInt = Int16.random(min: 0, max: 1)
-      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
+      let randolowerBoundt = Int16.random(lowerBound: 0, upperBound: 1)
+      XCTAssertTrue((randolowerBoundt == 0) || (randolowerBoundt == 1))
     }
 
-    XCTAssertTrue(Int16.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(Int16.random(lowerBound: 1, upperBound: 100) <= 100)
     XCTAssertTrue(Int16.min...Int16.max ~= Int16.random())
-    XCTAssertFalse(Int16.random(min: 50, max: 100) > 100)
-    XCTAssertFalse(Int16.random(min: 40, max: 50) < 40)
+    XCTAssertFalse(Int16.random(lowerBound: 50, upperBound: 100) > 100)
+    XCTAssertFalse(Int16.random(lowerBound: 40, upperBound: 50) < 40)
 
     /// Int8
-    XCTAssertTrue(Int8.random(min: 1, max: 1) == 1)
-    XCTAssertTrue(Int8.random(min: 11, max: 12) == 11)
-    XCTAssertTrue(Int8.random(min: Int8.min, max: Int8.min) == Int8.min)
+    XCTAssertTrue(Int8.random(lowerBound: 1, upperBound: 1) == 1)
+    XCTAssertTrue(Int8.random(lowerBound: 11, upperBound: 12) == 11)
+    XCTAssertTrue(Int8.random(lowerBound: Int8.min, upperBound: Int8.min) == Int8.min)
 
     do {
-      let randomInt = Int8.random(min: 0, max: 1)
-      XCTAssertTrue((randomInt == 0) || (randomInt == 1))
+      let randolowerBoundt = Int8.random(lowerBound: 0, upperBound: 1)
+      XCTAssertTrue((randolowerBoundt == 0) || (randolowerBoundt == 1))
     }
 
-    XCTAssertTrue(Int8.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(Int8.random(lowerBound: 1, upperBound: 100) <= 100)
     XCTAssertTrue(Int8.min...Int8.max ~= Int8.random())
-    XCTAssertFalse(Int8.random(min: 50, max: 100) > 100)
-    XCTAssertFalse(Int8.random(min: 40, max: 50) < 40)
+    XCTAssertFalse(Int8.random(lowerBound: 50, upperBound: 100) > 100)
+    XCTAssertFalse(Int8.random(lowerBound: 40, upperBound: 50) < 40)
 
   }
 
@@ -85,38 +85,38 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
     /// UInt
     XCTAssertTrue(UInt.min...UInt.max ~= UInt.random())
-    XCTAssertTrue(UInt.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(UInt.random(lowerBound: 1, upperBound: 100) <= 100)
     XCTAssertTrue(UInt.min...UInt.max ~= UInt.random())
-    XCTAssertFalse(UInt.random(min: 50, max: 100) > 100)
-    XCTAssertFalse(UInt.random(min: 40, max: 50) < 40)
-    XCTAssertTrue(UInt.random(min: UInt.max, max: UInt.max) == UInt.max)
+    XCTAssertFalse(UInt.random(lowerBound: 50, upperBound: 100) > 100)
+    XCTAssertFalse(UInt.random(lowerBound: 40, upperBound: 50) < 40)
+    XCTAssertTrue(UInt.random(lowerBound: UInt.max, upperBound: UInt.max) == UInt.max)
 
     /// UInt64
-    XCTAssertTrue(UInt64.random(min: UInt64.max, max: UInt64.max) == UInt64.max)
+    XCTAssertTrue(UInt64.random(lowerBound: UInt64.max, upperBound: UInt64.max) == UInt64.max)
     XCTAssertTrue(UInt64.random() <= UInt64.max)
 
     /// UInt32
     XCTAssertTrue(UInt32.min...UInt32.max ~= UInt32.random())
-    XCTAssertTrue(UInt32.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(UInt32.random(lowerBound: 1, upperBound: 100) <= 100)
     XCTAssertTrue(UInt32.min...UInt32.max ~= UInt32.random())
-    XCTAssertFalse(UInt32.random(min: 50, max: 100) > 100)
-    XCTAssertFalse(UInt32.random(min: 4000, max: 5000) < 4000)
-    XCTAssertTrue(UInt32.random(min: UInt32.max, max: UInt32.max) == UInt32.max)
+    XCTAssertFalse(UInt32.random(lowerBound: 50, upperBound: 100) > 100)
+    XCTAssertFalse(UInt32.random(lowerBound: 4000, upperBound: 5000) < 4000)
+    XCTAssertTrue(UInt32.random(lowerBound: UInt32.max, upperBound: UInt32.max) == UInt32.max)
 
     /// UInt16
     XCTAssertTrue(UInt16.min...UInt16.max ~= UInt16.random())
-    XCTAssertTrue(UInt16.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(UInt16.random(lowerBound: 1, upperBound: 100) <= 100)
     XCTAssertTrue(UInt16.min...UInt16.max ~= UInt16.random())
-    XCTAssertFalse(UInt16.random(min: 50, max: 100) > 100)
-    XCTAssertFalse(UInt16.random(min: 4000, max: 5000) < 4000)
-    XCTAssertTrue(UInt16.random(min: UInt16.max, max: UInt16.max) == UInt16.max)
+    XCTAssertFalse(UInt16.random(lowerBound: 50, upperBound: 100) > 100)
+    XCTAssertFalse(UInt16.random(lowerBound: 4000, upperBound: 5000) < 4000)
+    XCTAssertTrue(UInt16.random(lowerBound: UInt16.max, upperBound: UInt16.max) == UInt16.max)
 
     /// UInt8
-    XCTAssertTrue(UInt8.random(min: 1, max: 100) <= 100)
+    XCTAssertTrue(UInt8.random(lowerBound: 1, upperBound: 100) <= 100)
     XCTAssertTrue(UInt8.min...UInt8.max ~= UInt8.random())
-    XCTAssertFalse(UInt8.random(min: 50, max: 100) > 100)
-    XCTAssertFalse(UInt8.random(min: 40, max: 50) < 40)
-    XCTAssertTrue(UInt8.random(min: UInt8.max, max: UInt8.max) == UInt8.max)
+    XCTAssertFalse(UInt8.random(lowerBound: 50, upperBound: 100) > 100)
+    XCTAssertFalse(UInt8.random(lowerBound: 40, upperBound: 50) < 40)
+    XCTAssertTrue(UInt8.random(lowerBound: UInt8.max, upperBound: UInt8.max) == UInt8.max)
 
   }
 
@@ -126,7 +126,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
       var expectedAtLeastOnePositive = false
       var expectedAtLeastOneNegative = false
       for _ in 1...100 {
-        let value = Int8.random(min: -118, max: 10)
+        let value = Int8.random(lowerBound: -118, upperBound: 10)
         if (value.isNegative) { expectedAtLeastOnePositive = true }
         if (value.isPositive ){ expectedAtLeastOneNegative = true }
       }
@@ -137,7 +137,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
       var expectedAtLeastOnePositive = false
       var expectedAtLeastOneNegative = false
       for _ in 1...100 {
-        let value = Int8.random(min: -100, max: 100)
+        let value = Int8.random(lowerBound: -100, upperBound: 100)
         if (value.isPositive) { expectedAtLeastOnePositive = true }
         if (value.isNegative) { expectedAtLeastOneNegative = true }
       }
@@ -148,7 +148,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
       var expectedAtLeastOnePositive = false
       var expectedAtLeastOneNegative = false
       for _ in 1...100 {
-        let value = Int8.random(min: -128, max: 127)
+        let value = Int8.random(lowerBound: -128, upperBound: 127)
         if (value.isPositive) { expectedAtLeastOnePositive = true }
         if (value.isNegative) { expectedAtLeastOneNegative = true }
       }
@@ -170,7 +170,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
       var expectedAtLeastOnePositive = false
       var expectedAtLeastOneNegative = false
       for _ in 1...100 {
-        let value = UInt64.random(min: 0, max: 3)
+        let value = UInt64.random(lowerBound: 0, upperBound: 3)
         if (value.isPositive) { expectedAtLeastOnePositive = true }
         if (value.isNegative) { expectedAtLeastOneNegative = true }
       }
@@ -181,7 +181,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
       var expectedAtLeastOnePositive = false
       var expectedAtLeastOneNegative = false
       for _ in 1...100 {
-        let value = Int64.random(min: .min, max: 0)
+        let value = Int64.random(lowerBound: .min, upperBound: 0)
         if (value.isPositive) { expectedAtLeastOnePositive = true }
         if (value.isNegative) { expectedAtLeastOneNegative = true }
       }
@@ -192,7 +192,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
       var expectedAtLeastOnePositive = false
       var expectedAtLeastOneNegative = false
       for _ in 1...100 {
-        let value = Int32.random(min: 0, max: .max)
+        let value = Int32.random(lowerBound: 0, upperBound: .max)
         if (value.isPositive) { expectedAtLeastOnePositive = true }
         if (value.isNegative) { expectedAtLeastOneNegative = true }
       }
