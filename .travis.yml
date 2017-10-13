@@ -8,10 +8,10 @@ env:
   - MACOS_FRAMEWORK_SCHEME="Mechanica macOS"
   - TVOS_FRAMEWORK_SCHEME="Mechanica tvOS"
   - WATCHOS_FRAMEWORK_SCHEME="Mechanica watchOS"
-  - IOS_SDK=iphonesimulator11.0
+  - IOS_SDK=iphonesimulator11.1
   - MACOS_SDK=macosx10.13
-  - TVOS_SDK=appletvsimulator11.0
-  - WATCHOS_SDK=watchsimulator4.0
+  - TVOS_SDK=appletvsimulator11.1
+  - WATCHOS_SDK=watchsimulator4.1
   #- WORKSPACE=Mechanica.xcworkspace
   #- EXAMPLE_SCHEME="Mechanica Example"
   
