@@ -66,6 +66,25 @@ extension Sequence {
 
 }
 
+// MARK: - Hashable
+
+extension Sequence where Element: Hashable {
+  
+  /// **Mechanica**
+  ///
+  /// Returns a collection of tuples where it's indicated the frequencies of the elements in the sequence.
+  public var frequencies: [(Element, Int)] {
+    var result =  [Element:Int]()
+    
+    for element in self {
+      result[element] = (result[element] ?? 0) + 1
+    }
+    
+    return result.sorted { $0.1 > $1.1 }
+  }
+  
+}
+
 // MARK: - AnyObject
 
 extension Sequence where Element: AnyObject {
