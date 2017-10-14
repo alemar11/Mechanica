@@ -51,6 +51,17 @@ extension Collection where Self.Index == Int, Element: Equatable {
 
 }
 
+extension Collection where Element: Hashable {
+  
+  /// **Mechanica**
+  ///
+  /// Returns an unique array of elements.
+  public var uniqueElements: [Element] {
+    return Array(Set<Element>(self))
+  }
+  
+}
+
 extension Collection where Self.Index == Int {
 
   /// **Mechanica**

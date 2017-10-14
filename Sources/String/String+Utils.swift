@@ -115,6 +115,13 @@ extension String {
   func firstCharacterOfEachWord() -> [String] {
     return components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.map { String($0.prefix(1)) }
   }
+  
+  /// **Mechanica**
+  ///
+  /// Returns a percent-escaped string following RFC 3986 for a query string key or value.
+  public var urlEscaped: String? {
+    return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+  }
 
   // MARK: - Random
 
