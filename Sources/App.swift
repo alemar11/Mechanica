@@ -23,7 +23,7 @@
 
 import Foundation
 
-public struct App {
+public enum App {
 
   /// **Mechanica**
   ///
