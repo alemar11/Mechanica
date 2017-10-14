@@ -106,6 +106,9 @@
 		2307D06F1F8FA35D00FDBA2A /* LocaleUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307D06E1F8FA35D00FDBA2A /* LocaleUtilsTests.swift */; };
 		2307D0701F8FA35D00FDBA2A /* LocaleUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307D06E1F8FA35D00FDBA2A /* LocaleUtilsTests.swift */; };
 		2307D0711F8FA35D00FDBA2A /* LocaleUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2307D06E1F8FA35D00FDBA2A /* LocaleUtilsTests.swift */; };
+		230949071F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230949061F9236FF00CA5895 /* UIDevice+Utils.swift */; };
+		230949081F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230949061F9236FF00CA5895 /* UIDevice+Utils.swift */; };
+		230949091F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230949061F9236FF00CA5895 /* UIDevice+Utils.swift */; };
 		230A4EEF1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */; };
 		230A4EF01ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */; };
 		230A4EF11ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */; };
@@ -518,6 +521,7 @@
 		23078BEB1F20E1480074D955 /* OperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OperatorsTests.swift; sourceTree = "<group>"; };
 		2307D0691F8FA15500FDBA2A /* Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locale.swift; sourceTree = "<group>"; };
 		2307D06E1F8FA35D00FDBA2A /* LocaleUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleUtilsTests.swift; sourceTree = "<group>"; };
+		230949061F9236FF00CA5895 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
 		230A4EEE1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StringRegularExpressionsTests.swift; sourceTree = "<group>"; };
 		231B2EF21F72808900854AA1 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		23280BE21F28C492008B6196 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = IDETemplateMacros.plist; path = Mechanica.xcodeproj/xcshareddata/IDETemplateMacros.plist; sourceTree = SOURCE_ROOT; };
@@ -978,6 +982,7 @@
 				231B2EF21F72808900854AA1 /* UIView+Utils.swift */,
 				23690FE41F836F4A008C0B7E /* UILayoutPriority+Utils.swift */,
 				23024C881F8B64A800024885 /* UIWindow+Utils.swift */,
+				230949061F9236FF00CA5895 /* UIDevice+Utils.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1387,6 +1392,7 @@
 				D205B0601DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */,
 				2302A2D21F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */,
 				239F8DD81E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift in Sources */,
+				230949071F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */,
 				235934A81F60212200EA44DF /* UITableView+Reusable.swift in Sources */,
 				23949C551E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */,
 				2307D06A1F8FA15500FDBA2A /* Locale.swift in Sources */,
@@ -1433,6 +1439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D214026D1D5379AE00BCF2E7 /* Bundle+Info.swift in Sources */,
+				230949081F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */,
 				12B956321D880B3B00F75DD5 /* String+Utils.swift in Sources */,
 				D220818E1E07FEB700BE4268 /* URL+Utils.swift in Sources */,
 				12B9562E1D880B3B00F75DD5 /* Optional+Utils.swift in Sources */,
@@ -1519,6 +1526,7 @@
 				12B9563C1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				2302A2D41F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */,
 				12CAB7301E00707D00CFE42C /* App.swift in Sources */,
+				230949091F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */,
 				12431A611DCE2F5A00594940 /* FetchConfigurable.swift in Sources */,
 				D2234A641E002D2600252551 /* String+NSString.swift in Sources */,
 				2307D06C1F8FA15500FDBA2A /* Locale.swift in Sources */,
