@@ -1,6 +1,7 @@
 # Changelog
 
 ### 1.1.0
+
 - More UIKit utils.
 - More String utils.
 - Better random functions.
