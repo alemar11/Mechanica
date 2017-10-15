@@ -26,40 +26,22 @@ import UIKit
 
 extension UIDevice {
   
+  // MARK: - Device Type
+  
   public var isPhone: Bool {
-    return userInterfaceIdiom == UIUserInterfaceIdiom.phone
+    return userInterfaceIdiom == .phone
   }
   
   public var isPad: Bool {
-    return userInterfaceIdiom == UIUserInterfaceIdiom.pad
+    return userInterfaceIdiom == .pad
   }
   
   public var isTV: Bool {
-    return userInterfaceIdiom == UIUserInterfaceIdiom.tv
+    return userInterfaceIdiom == .tv
   }
   
   public var isCarplay: Bool {
-    return userInterfaceIdiom == UIUserInterfaceIdiom.carPlay
-  }
-  
-  public func isSystemVersionEqual(to version: String) -> Bool {
-    return systemVersion.compare(version, options: .numeric) == .orderedSame
-  }
-  
-  public func isSystemVersionGreather(than version: String) -> Bool {
-    return UIDevice.current.systemVersion.compare(version, options: .numeric) == .orderedDescending
-  }
-  
-  public func isSystemVersionGreatherOrEqual(to version: String) -> Bool {
-    return systemVersion.compare(version,options: .numeric) != .orderedAscending
-  }
-  
-  public func isSystemVersionLesser(than version: String) -> Bool {
-    return systemVersion.compare(version,options: .numeric) == .orderedAscending
-  }
-  
-  public func isSystemVersionLesserOrEqual(to version: String) -> Bool {
-    return systemVersion.compare(version,options: .numeric) != .orderedDescending
+    return userInterfaceIdiom == .carPlay
   }
   
 }
