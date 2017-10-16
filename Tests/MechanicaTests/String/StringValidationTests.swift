@@ -220,7 +220,6 @@ class StringValidationTests: XCTestCase {
     XCTAssertTrue("\(UInt.max)".isSemanticVersionGreater(than: ""))
     
     /// false
-    
     XCTAssertFalse("1".isSemanticVersionGreater(than: "10.1"))
     XCTAssertFalse("1.00".isSemanticVersionGreater(than: "1.00.1"))
     XCTAssertFalse("1.1".isSemanticVersionGreater(than: "1.1.100"))
@@ -281,7 +280,6 @@ class StringValidationTests: XCTestCase {
     XCTAssertTrue("\(UInt.max)".isSemanticVersionGreaterOrEqual(to: "\(UInt.max)"))
 
     /// false
-
     XCTAssertFalse("1".isSemanticVersionGreaterOrEqual(to: "10.1"))
     XCTAssertFalse("1.00".isSemanticVersionGreaterOrEqual(to: "1.00.1"))
     XCTAssertFalse("1.1".isSemanticVersionGreaterOrEqual(to: "1.1.100"))
@@ -294,7 +292,7 @@ class StringValidationTests: XCTestCase {
 
 
     // Lesser or Equal
-    
+
     /// true
     XCTAssertTrue("1".isSemanticVersionLesserOrEqual(to: "10.1"))
     XCTAssertTrue("1.00".isSemanticVersionLesserOrEqual(to: "1.00.1"))
