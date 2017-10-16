@@ -22,40 +22,24 @@
 // SOFTWARE.
 
 #if os(iOS) || os(tvOS)
-import UIKit
 
-extension UIDevice {
-  
-  // MARK: - Device Interface Type
+import XCTest
+@testable import Mechanica
 
-  /// **Mechanica**
-  ///
-  /// Returns `true` if the interface is designed for iPhone or iPod.
-  public var hasPhoneInterface: Bool {
-    return userInterfaceIdiom == .phone
+class UIDeviceUtilsTests: XCTestCase {
+
+  func testDeviceInterface() {
+    #if os(iOS)
+      XCTAssertTrue(UIDevice.current.hasPhoneInterface || UIDevice.current.hasPadInterface)
+      XCTAssertFalse(UIDevice.current.hasTVInterface)
+    #elseif os(tvOS)
+      XCTAssertTrue(UIDevice.current.hasTVInterface)
+      XCTAssertFalse(UIDevice.current.hasPhoneInterface || UIDevice.current.hasPadInterface)
+    #endif
+
+    XCTAssertFalse(UIDevice.current.hasCarplayInterface)
   }
 
-  /// **Mechanica**
-  ///
-  /// Returns `true` if the interface is designed for iPad.
-  public var hasPadInterface: Bool {
-    return userInterfaceIdiom == .pad
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns `true` if the interface is designed for Apple TV.
-  public var hasTVInterface: Bool {
-    return userInterfaceIdiom == .tv
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns `true` if the interface is designed for Apple CarPlay.
-  public var hasCarplayInterface: Bool {
-    return userInterfaceIdiom == .carPlay
-  }
-  
 }
 
 #endif
