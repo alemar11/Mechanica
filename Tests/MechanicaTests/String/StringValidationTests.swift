@@ -165,6 +165,17 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("test@tinrobots.org.🤓".isValidEmail)
     XCTAssertFalse("test@tinrobots.🤓.org".isValidEmail)
   }
+
+  func testIsEmojiCountryFlag() {
+    XCTAssertFalse("🚩".isEmojiCountryFlag)
+    XCTAssertFalse("🏳️‍🌈".isEmojiCountryFlag)
+    XCTAssertFalse("🎌".isEmojiCountryFlag)
+    XCTAssertFalse("🇯🇵🇯🇵".isEmojiCountryFlag)
+
+    XCTAssertTrue("🇯🇵".isEmojiCountryFlag)
+    XCTAssertTrue("🇮🇹".isEmojiCountryFlag)
+    XCTAssertTrue("🇺🇸".isEmojiCountryFlag)
+  }
   
   func testSemanticVersion() {
     

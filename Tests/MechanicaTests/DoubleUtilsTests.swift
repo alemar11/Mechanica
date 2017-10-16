@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -21,31 +21,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import Mechanica
 
-#if os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit
-#endif
-
-extension Double {
-
-  /// **Mechanica**
-  ///
-  /// Converts `self` to `String`.
-  public var toString: String { return String(self) }
-
-  /// **Mechanica**
-  ///
-  /// Converts `self` to `Int`.
-  public var toInt: Int? { return Int(exactly: self) }
-
-  #if os(iOS) || os(tvOS) || os(watchOS)
-
-  /// **Mechanica**
-  ///
-  /// Converts `self` to `CGFloat`.
-  public var toCGFloat: CGFloat { return CGFloat(self) }
-
-  #endif
-
+class DoubleUtilsTests: XCTestCase {
+  
+  func testString() {
+    XCTAssertTrue(2.0.toString == "2.0")
+    XCTAssertTrue(0.0.toString == "0.0")
+    XCTAssertTrue(1.000.toString == "1.0")
+  }
+  
+  func testInt() {
+    XCTAssertTrue(2.0.toInt == 2)
+    XCTAssertTrue(0.0.toInt == 0)
+    XCTAssertTrue(1.000.toInt == 1)
+    XCTAssertTrue(1.100.toInt == nil)
+  }
+  
+  func testCGFloat() {
+    XCTAssertTrue(2.0.toCGFloat == CGFloat(exactly: 2.0))
+    XCTAssertTrue(0.0.toCGFloat == CGFloat(exactly: 0.0))
+    XCTAssertTrue(1.000.toCGFloat == CGFloat(exactly: 1.0))
+  }
+  
 }

@@ -121,12 +121,13 @@ public extension String {
   
   /// **Mechanica**
   ///
-  /// Returns `true` if `self` is an emoji flag.
+  /// Returns `true` if `self` is a country emoji flag.
   ///
   /// - Note: to check if a string contains a flag use: `self.contains { $0.isFlag }`
   /// - Note: to extrapolate the flags in a string use: `self.filter { $0.isFlag }`
-  public var isEmojiFlag: Bool {
+  public var isEmojiCountryFlag: Bool {
     guard count == 1 else { return false }
+    
     return first!.isFlag
   }
   
