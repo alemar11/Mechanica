@@ -138,6 +138,8 @@ class StringValidationTests: XCTestCase {
   func testIsValideEmail() {
     //valid emails
     XCTAssertTrue("test@tinrobots.org".isValidEmail)
+    XCTAssertTrue("test123@tinrobots.org".isValidEmail)
+    XCTAssertTrue("123test@tinrobots.org".isValidEmail)
     XCTAssertTrue("test.test@tinrobots.org".isValidEmail)
     XCTAssertTrue("test.test.test@tinrobots.org".isValidEmail)
     XCTAssertTrue("testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobots.org".isValidEmail)
@@ -193,6 +195,8 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("1.0.0".isSemanticVersionEqual(to: "2"))
     XCTAssertFalse("1.0.0".isSemanticVersionEqual(to: "2.0.0"))
     XCTAssertFalse("0.1".isSemanticVersionEqual(to: "0.1.1"))
+    XCTAssertFalse("0.1".isSemanticVersionEqual(to: "0.10"))
+    XCTAssertFalse("0.1".isSemanticVersionEqual(to: "0.10000.0"))
     XCTAssertFalse("0.1.0".isSemanticVersionEqual(to: "0.9.0"))
     XCTAssertFalse("".isSemanticVersionEqual(to: "100"))
     XCTAssertFalse("0".isSemanticVersionEqual(to: "0.100.0"))
@@ -253,12 +257,77 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("\(UInt.max)".isSemanticVersionLesser(than: ""))
     
     // Greater or Equal
-    
-    // TODO: - add more tests
-    
+
+    /// true
+    XCTAssertTrue("1".isSemanticVersionGreaterOrEqual(to: "0.1"))
+    XCTAssertTrue("1.00".isSemanticVersionGreaterOrEqual(to: "000.1"))
+    XCTAssertTrue("1.1".isSemanticVersionGreaterOrEqual(to: "1.0.100"))
+    XCTAssertTrue("1.1".isSemanticVersionGreaterOrEqual(to: "1.0.01"))
+    XCTAssertTrue("1.0.1".isSemanticVersionGreaterOrEqual(to: "0.10.01"))
+    XCTAssertTrue("100".isSemanticVersionGreaterOrEqual(to: "1"))
+    XCTAssertTrue("9.0.1".isSemanticVersionGreaterOrEqual(to: "9"))
+    XCTAssertTrue("0.0.1".isSemanticVersionGreaterOrEqual(to: ""))
+    XCTAssertTrue("\(Int.max)".isSemanticVersionGreaterOrEqual(to: ""))
+    XCTAssertTrue("\(UInt.max)".isSemanticVersionGreaterOrEqual(to: ""))
+
+    XCTAssertTrue("1".isSemanticVersionGreaterOrEqual(to: "1"))
+    XCTAssertTrue("1.00".isSemanticVersionGreaterOrEqual(to: "1"))
+    XCTAssertTrue("1.1".isSemanticVersionGreaterOrEqual(to: "1.1"))
+    XCTAssertTrue("1.1".isSemanticVersionGreaterOrEqual(to: "1.1.00"))
+    XCTAssertTrue("100".isSemanticVersionGreaterOrEqual(to: "100"))
+    XCTAssertTrue("9.0.1".isSemanticVersionGreaterOrEqual(to: "9.0.1"))
+    XCTAssertTrue("".isSemanticVersionGreaterOrEqual(to: ""))
+    XCTAssertTrue("\(Int.max)".isSemanticVersionGreaterOrEqual(to: "\(Int.max)"))
+    XCTAssertTrue("\(UInt.max)".isSemanticVersionGreaterOrEqual(to: "\(UInt.max)"))
+
+    /// false
+
+    XCTAssertFalse("1".isSemanticVersionGreaterOrEqual(to: "10.1"))
+    XCTAssertFalse("1.00".isSemanticVersionGreaterOrEqual(to: "1.00.1"))
+    XCTAssertFalse("1.1".isSemanticVersionGreaterOrEqual(to: "1.1.100"))
+    XCTAssertFalse("1.1".isSemanticVersionGreaterOrEqual(to: "1.1.01"))
+    XCTAssertFalse("1.0.1".isSemanticVersionGreaterOrEqual(to: "1.10.01"))
+    XCTAssertFalse("0.100".isSemanticVersionGreaterOrEqual(to: "1"))
+    XCTAssertFalse("9.0.1".isSemanticVersionGreaterOrEqual(to: "9.1"))
+    XCTAssertFalse("".isSemanticVersionGreaterOrEqual(to: "0.0.1"))
+    XCTAssertFalse("\(Int.max)".isSemanticVersionGreaterOrEqual(to: "\(UInt.max)"))
+
+
     // Lesser or Equal
     
-    // TODO: - add more tests
+    /// true
+    XCTAssertTrue("1".isSemanticVersionLesserOrEqual(to: "10.1"))
+    XCTAssertTrue("1.00".isSemanticVersionLesserOrEqual(to: "1.00.1"))
+    XCTAssertTrue("1.1".isSemanticVersionLesserOrEqual(to: "1.1.100"))
+    XCTAssertTrue("1.1".isSemanticVersionLesserOrEqual(to: "1.1.01"))
+    XCTAssertTrue("1.0.1".isSemanticVersionLesserOrEqual(to: "1.10.01"))
+    XCTAssertTrue("0.100".isSemanticVersionLesserOrEqual(to: "1"))
+    XCTAssertTrue("9.0.1".isSemanticVersionLesserOrEqual(to: "9.1"))
+    XCTAssertTrue("".isSemanticVersionLesserOrEqual(to: "0.0.1"))
+    XCTAssertTrue("\(Int.max)".isSemanticVersionLesserOrEqual(to: "\(UInt.max)"))
+
+    XCTAssertTrue("1".isSemanticVersionLesserOrEqual(to: "1"))
+    XCTAssertTrue("1.00".isSemanticVersionLesserOrEqual(to: "1.0"))
+    XCTAssertTrue("1.1".isSemanticVersionLesserOrEqual(to: "1.1.00"))
+    XCTAssertTrue("1.1".isSemanticVersionLesserOrEqual(to: "1.1"))
+    XCTAssertTrue("1.0.1".isSemanticVersionLesserOrEqual(to: "1.0.1"))
+    XCTAssertTrue("0.100".isSemanticVersionLesserOrEqual(to: "0.100"))
+    XCTAssertTrue("9.0.1".isSemanticVersionLesserOrEqual(to: "9.0.1"))
+    XCTAssertTrue("".isSemanticVersionLesserOrEqual(to: "0.0.0"))
+    XCTAssertTrue("\(Int.max)".isSemanticVersionLesserOrEqual(to: "\(UInt.max)"))
+    XCTAssertTrue("\(UInt.max)".isSemanticVersionLesserOrEqual(to: "\(UInt.max)"))
+
+    /// false
+    XCTAssertFalse("1".isSemanticVersionLesserOrEqual(to: "0.1"))
+    XCTAssertFalse("1.00".isSemanticVersionLesserOrEqual(to: "000.1"))
+    XCTAssertFalse("1.1".isSemanticVersionLesserOrEqual(to: "1.0.100"))
+    XCTAssertFalse("1.1".isSemanticVersionLesserOrEqual(to: "1.0.01"))
+    XCTAssertFalse("1.0.1".isSemanticVersionLesserOrEqual(to: "0.10.01"))
+    XCTAssertFalse("100".isSemanticVersionLesserOrEqual(to: "1"))
+    XCTAssertFalse("9.0.1".isSemanticVersionLesserOrEqual(to: "9"))
+    XCTAssertFalse("0.0.1".isSemanticVersionLesserOrEqual(to: ""))
+    XCTAssertFalse("\(Int.max)".isSemanticVersionLesserOrEqual(to: ""))
+    XCTAssertFalse("\(UInt.max)".isSemanticVersionLesserOrEqual(to: ""))
     
   }
   
