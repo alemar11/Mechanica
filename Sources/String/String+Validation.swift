@@ -167,38 +167,5 @@ public extension String {
   public func isSemanticVersionLesserOrEqual(to version: String) -> Bool {
     return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedDescending
   }
-  
-  /// **Mechanica**
-  ///
-  /// Makes sure that we always have a semantic version in the form MAJOR.MINOR.PATCH
-  func ensureSemanticVersionCorrectness() -> String {
-    if self.isEmpty { return "0.0.0" }
     
-    var copy = self
-    
-    let versionComponents = components(separatedBy:".")
-    guard 1 ... 3 ~= versionComponents.count else { fatalError("Invalid number of semantic version components (\(versionComponents.count)).") }
-    
-    let notNumericComponents = versionComponents.filter { !$0.isNumeric }
-    guard notNumericComponents.isEmpty else { fatalError("Each semantic version component should have a numeric value.") }
-    
-    for _ in versionComponents.count..<3 {
-      copy += ".0"
-    }
-    
-    return copy
-  }
-  
-  /// **Mechanica**
-  ///
-  /// If `self` is a semantic version, returns a tuple with major, minor and patch components.
-  public var semanticVersion: (Int, Int, Int) {
-    let versionComponents = ensureSemanticVersionCorrectness().components(separatedBy:".")
-    let major = Int(versionComponents[0]) ?? 0
-    let minor = Int(versionComponents[1]) ?? 0
-    let patch = Int(versionComponents[2]) ?? 0
-    
-    return (major, minor, patch)
-  }
-  
 }
