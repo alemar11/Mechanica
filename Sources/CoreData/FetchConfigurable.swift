@@ -56,7 +56,7 @@ extension FetchConfigurable where Self: NSManagedObject {
   /// **Mechanica**
   ///
   /// Fetch Request with the `defaultPredicate` and the default `defaultSortDescriptors`.
-  @available(iOS 10, tvOS 10, watchOS 3, OSX 10.12, *)
+  @available(iOS 10, tvOS 10, watchOS 3, macOS 10.12, *)
   public static var sortedFetchRequest: NSFetchRequest<Self> {
     // swiftlint:disable force_cast
     let request = Self.fetchRequest() as! NSFetchRequest<Self>
@@ -69,7 +69,7 @@ extension FetchConfigurable where Self: NSManagedObject {
   /// **Mechanica**
   ///
   /// Creates a `new` sorted fetch request using `sortedFetchRequest` *AND* `predicate`.
-  @available(iOS 10, tvOS 10, watchOS 3, OSX 10.12, *)
+  @available(iOS 10, tvOS 10, watchOS 3, macOS 10.12, *)
   public static func sortedFetchRequest(with predicate: NSPredicate) -> NSFetchRequest<Self> {
     let request = sortedFetchRequest
     guard let existingPredicate = request.predicate else { fatalError("Must have a predicate.") }

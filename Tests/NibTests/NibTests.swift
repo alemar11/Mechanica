@@ -62,7 +62,7 @@ extension Nib: NibEnumerable {
   class macOS_NibDemo_View_1: NSView {}
   class macOS_NibDemo_View_2: NSView {}
   /// NSTouchBar is now nib loadable.
-  @available(OSX 10.12.2, *)
+  @available(macOS 10.12.2, *)
   // NibIdentifiable
   extension NSTouchBar : NibLoadable {}
 
@@ -149,13 +149,13 @@ class NibTests: XCTestCase {
         XCTAssertNotNil(view2)
       }
       do {
-        if #available(OSX 10.12.2, *) {
+        if #available(macOS 10.12.2, *) {
           let touchBar = nib.instantiate() as NSTouchBar
           XCTAssertNotNil(touchBar)
         }
       }
       do {
-        if #available(OSX 10.12.2, *) {
+        if #available(macOS 10.12.2, *) {
           let touchBar: NSTouchBar = nib.instantiate()
           XCTAssertNotNil(touchBar)
         }

@@ -102,7 +102,7 @@ extension NSFetchRequestResult where Self: NSManagedObject, Self: DelayedDeletab
   ///   - context: The NSManagedObjectContext where is executed the batch delete request.
   ///   - cutOffDate: Objects marked for local deletion more than this time (in seconds) ago will get permanently deleted.
   /// - Throws: An error in cases of a batch delete operation failure.
-  @available(iOS 9, tvOS 9, watchOS 2, OSX 10.12, *)
+  @available(iOS 9, tvOS 9, watchOS 2, macOS 10.12, *)
   public static func batchDeleteObjectsMarkedForDeletion(in context: NSManagedObjectContext, olderThan cutOffDate: Date = Date(timeIntervalSinceNow: -TimeInterval(120))) throws {
     guard context.persistentStoreCoordinator != nil else { fatalError("Persistent Store Coordinator missing. A NSBatchDeleteRequest instance operates directly on one or more persistent stores.") }
 

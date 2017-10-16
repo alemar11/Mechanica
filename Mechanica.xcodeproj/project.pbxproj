@@ -507,7 +507,7 @@
 		12B536BF1D33ECFB005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536D51D33ED1C005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536E21D33ED29005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		12B536ED1D33ED6A005C52A7 /* Mechanica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Mechanica.h; path = Sources/Mechanica.h; sourceTree = "<group>"; };
+		12B536ED1D33ED6A005C52A7 /* Mechanica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Mechanica.h; sourceTree = "<group>"; };
 		12B537001D33F16E005C52A7 /* Mechanica iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mechanica iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B5370F1D33F186005C52A7 /* Mechanica tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mechanica tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B5371E1D33F192005C52A7 /* Mechanica macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mechanica macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -699,7 +699,6 @@
 		12B536981D33EB6B005C52A7 = {
 			isa = PBXGroup;
 			children = (
-				12B536ED1D33ED6A005C52A7 /* Mechanica.h */,
 				12B536A31D33EB6B005C52A7 /* Products */,
 				12B536EA1D33ED6A005C52A7 /* Sources */,
 				23D922981EFA670900629E17 /* Support */,
@@ -1008,6 +1007,7 @@
 		23D922981EFA670900629E17 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				12B536ED1D33ED6A005C52A7 /* Mechanica.h */,
 				23280BE21F28C492008B6196 /* IDETemplateMacros.plist */,
 				23D922991EFA670900629E17 /* Info-Tests.plist */,
 				23D9229A1EFA670900629E17 /* Info-tvOS.plist */,

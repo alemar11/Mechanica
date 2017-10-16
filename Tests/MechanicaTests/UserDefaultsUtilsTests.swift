@@ -113,7 +113,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertNil(userDefaults.value(forKey: key3))
   }
 
-  @available(iOS 11, tvOS 11, watchOS 4, OSX 10.13, *)
+  @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
   func testCodable() {
     do {
       // Given
