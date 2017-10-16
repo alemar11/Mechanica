@@ -183,9 +183,30 @@ class SequenceUtilsTests: XCTestCase {
       XCTAssert(groupedDictionary.keys.count == dictionary.keys.count)
       XCTAssert(groupedDictionary["even"]! == dictionary[Parity.even]!)
       XCTAssert(groupedDictionary["odd"]! == dictionary[Parity.odd]!)
+
       groupedDictionary.keys.forEach { key in
         let parityKey = key == "even" ? Parity.even : Parity.odd
         XCTAssertTrue(groupedDictionary[key]! == dictionary[parityKey]!)
+      }
+    }
+  }
+
+  func testFrequencies() {
+    do {
+      // Given
+      let array = [1, 2, 3, 4, 5, 3, 6, 1]
+      // When
+      let frequencies = array.frequencies
+      // Then
+      XCTAssertTrue(frequencies.count == 6)
+
+      for tuple in frequencies {
+        switch tuple {
+        case (3, 2), (1, 2), (5, 1), (6, 1), (2, 1), (4, 1):
+          continue
+        default:
+          XCTFail("This frequency \(tuple) should not be present.")
+        }
       }
     }
   }
