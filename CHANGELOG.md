@@ -17,6 +17,8 @@
 - Added % unary operator.
 - Added more UIKit extensions.
 - More tests.
+- CoreData utils moved in a separated repository: [CoreDataPlus](https://github.com/tinrobots/coredataplus).
+- Removed useless utils.
 
 ### 0.4.2
 
