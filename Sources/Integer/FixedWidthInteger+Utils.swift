@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -23,10 +23,8 @@
 
 import Foundation
 
-// MARK: - BinaryConvertible
-
-extension UnsignedInteger where Self: FixedWidthInteger {
-
+extension FixedWidthInteger {
+  
   /// **Mechanica**
   ///
   /// Creates a string representing the given value in the binary base.
@@ -34,11 +32,30 @@ extension UnsignedInteger where Self: FixedWidthInteger {
   /// Example:
   ///
   ///     Int8(10).toBinaryString //"00001010"
+  ///     255.toBinaryString //"11111111"
+  ///     Int16(-1).toBinaryString //"1111111111111111"
+  ///     1.toBinaryString  //"0000000000000000000000000000000000000000000000000000000000000001" (Int 64 bit)
+  ///     1.toBinaryString  //"00000000000000000000000000000001" (Int 32 bit)
   ///
-  public var toBinaryString: String {
-    let toBinaryString = String(self, radix:2)
-    let size = MemoryLayout.size(ofValue: self) * 8
-    return String(repeating: "0", count: (size - toBinaryString.count)) + toBinaryString
+  /// - Note: Negative integers are converted with the **two's complement operation**. For signed binary use `String(:radix:)`
+  ///
+  /// Example:
+  ///
+  ///     String(Int8(-127), radix: 2) // -1111111
+  ///     Int8(-127).toBinaryString // 10000001
+  ///
+  var toBinaryString: String {
+    var result: [String] = []
+    for i in 0..<(Self.bitWidth / 8) {
+      let byte = UInt8(truncatingIfNeeded: self >> (i * 8))
+      let byteString = String(byte, radix: 2)
+      let padding = String(repeating: "0",
+                           count: 8 - byteString.count)
+      result.append(padding + byteString)
+    }
+    
+    //return "0b" + result.reversed().joined(separator: "_")
+     return result.reversed().joined(separator: "")
   }
-
+  
 }
