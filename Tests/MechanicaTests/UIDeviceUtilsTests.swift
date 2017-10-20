@@ -37,7 +37,7 @@ class UIDeviceUtilsTests: XCTestCase {
       XCTAssertFalse(UIDevice.current.hasPhoneInterface || UIDevice.current.hasPadInterface)
     #endif
 
-    XCTAssertFalse(UIDevice.current.hasCarplayInterface)
+    XCTAssertFalse(UIDevice.current.hasCarPlayInterface)
   }
 
 }
