@@ -52,7 +52,7 @@ extension UIDevice {
   /// **Mechanica**
   ///
   /// Returns `true` if the interface is designed for Apple CarPlay.
-  public var hasCarplayInterface: Bool {
+  public var hasCarPlayInterface: Bool {
     return userInterfaceIdiom == .carPlay
   }
   
