@@ -101,13 +101,13 @@ class CollectionUtilsTests: XCTestCase {
 
       repeat {
         let randomElement = dictionary.random()
-        
+
         if randomElement == 1 {
           foundFirst = true
 
         } else if randomElement == 2 {
           foundSecond = true
-          
+
         } else if randomElement == 3 {
           foundThird = true
         }

@@ -29,6 +29,13 @@ extension UIImage {
 
   /// **Mechanica**
   ///
+  /// Returns the image aspect ratio.
+  var aspectRatio: CGFloat {
+    return size.height / size.width
+  }
+
+  /// **Mechanica**
+  ///
   /// Returns an image with a given `color` and `size`.
   public convenience init?(color: UIColor, size: CGSize) {
     let rect = CGRect(origin: .zero, size: size)

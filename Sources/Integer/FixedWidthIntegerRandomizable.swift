@@ -155,7 +155,7 @@ extension UInt8 {
   public static func random(lowerBound: UInt8, upperBound: UInt8) -> UInt8 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
-    
+
     return UInt8(arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
   }
 
@@ -194,7 +194,7 @@ extension Int64 {
   public static func random(lowerBound: Int64, upperBound: Int64) -> Int64 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
-    
+
     let (partialValue, overflow) = upperBound.subtractingReportingOverflow(lowerBound)
     let u = (overflow) ? UInt64.max - UInt64(~partialValue) : UInt64(partialValue)
     let r = UInt64.random(lowerBound: UInt64.min, upperBound: u)
@@ -220,7 +220,7 @@ extension Int32 {
   public static func random(lowerBound: Int32, upperBound: Int32) -> Int32 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
-    
+
     let r = arc4random_uniform(UInt32(Int64(upperBound) - Int64(lowerBound)))
     return Int32(Int64(r) + Int64(lowerBound))
   }
@@ -239,7 +239,7 @@ extension Int16 {
   public static func random(lowerBound: Int16, upperBound: Int16) -> Int16 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
-    
+
     let r = arc4random_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
     return Int16(Int32(r) + Int32(lowerBound))
   }

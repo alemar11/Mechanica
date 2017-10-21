@@ -48,7 +48,7 @@ extension NSPredicate {
 // MARK: Operators
 
 extension NSPredicate {
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` predicate formed by **AND-ing** the two predicates.
@@ -58,7 +58,7 @@ extension NSPredicate {
   public static func && (lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(andPredicateWithSubpredicates: [lhs, rhs])
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` predicate formed by **OR-ing** the two predicates.
@@ -68,7 +68,7 @@ extension NSPredicate {
   public static func || (lhs: NSPredicate, rhs: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(orPredicateWithSubpredicates: [lhs, rhs])
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` predicate forme d by **NOT-ing** a given predicate.
@@ -76,5 +76,5 @@ extension NSPredicate {
   public static prefix func ! (predicate: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(notPredicateWithSubpredicate: predicate)
   }
-  
+
 }

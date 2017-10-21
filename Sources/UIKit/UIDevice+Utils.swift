@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -25,7 +25,7 @@
 import UIKit
 
 extension UIDevice {
-  
+
   // MARK: - Device Interface Type
 
   /// **Mechanica**
@@ -55,7 +55,7 @@ extension UIDevice {
   public var hasCarPlayInterface: Bool {
     return userInterfaceIdiom == .carPlay
   }
-  
+
 }
 
 #endif

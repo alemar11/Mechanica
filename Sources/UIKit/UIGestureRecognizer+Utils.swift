@@ -21,25 +21,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Darwin
+#if os(iOS) || os(tvOS)
+import UIKit
 
-public extension ExpressibleByIntegerLiteral {
+extension UIGestureRecognizer {
 
   /// **Mechanica**
   ///
-  /// Returns a random integer value.
-  public static func random() -> Self {
-    var random: Self = 0
-    arc4random_buf(&random, MemoryLayout<Self>.size)
-
-    return random
+  /// Cancels the gesture recognizer.
+  func cancel() {
+    isEnabled = false
+    isEnabled = true
   }
 
 }
-
-private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
-  var result: T = 0
-  arc4random_buf(&result, Int(MemoryLayout<T>.size))
-
-  return result
-}
+#endif
