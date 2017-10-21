@@ -21,6 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if os(iOS) || os(tvOS)
+  
 import UIKit
 
 extension UIViewController {
@@ -33,3 +35,5 @@ extension UIViewController {
   }
 
 }
+
+#endif
