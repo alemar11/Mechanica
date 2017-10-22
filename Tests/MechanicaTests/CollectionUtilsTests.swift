@@ -116,28 +116,6 @@ class CollectionUtilsTests: XCTestCase {
     }
   }
 
-  func testUniqueElement() {
-
-    do {
-      let array = [1, 2, 3, 4, 5, 3, 6, 1]
-      let uniqueArray = array.uniqueElements
-      XCTAssertTrue(uniqueArray.count == 6)
-    }
-
-    do {
-      let array = [Int]()
-      let uniqueArray = array.uniqueElements
-      XCTAssertTrue(uniqueArray.count == 0)
-    }
-
-    do {
-      let array = [1, 1, 1, 1, 1, 1, 1]
-      let uniqueArray = array.uniqueElements
-      XCTAssertTrue(uniqueArray.count == 1)
-    }
-
-  }
-
 }
 
 

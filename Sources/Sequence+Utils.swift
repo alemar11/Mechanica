@@ -64,24 +64,6 @@ extension Sequence {
     return count
   }
 
-  /// **Mechanica**
-  ///
-  /// Returns a collection of unique elements preserving their original order.
-  /// - Parameter elementsEqual: The comparing function.
-  /// - Returns: Returns a collection of unique elements preserving their original order.
-  func uniqueElements(by elementsEqual: (Element, Element) -> Bool) -> [Element] {
-    var result: [Element] = []
-    
-    for element in self {
-      if !result.contains(where: { resultElement in
-        elementsEqual(element, resultElement)}) {
-        result.append(element)
-      }
-    }
-    
-    return result
-  }
-
 }
 
 extension Sequence where Element: Equatable {
@@ -90,7 +72,13 @@ extension Sequence where Element: Equatable {
   ///
   /// Returns a collection of unique elements preserving their original order.
   func uniqueElements() -> [Element] {
-    return uniqueElements(by: ==)
+    var result: [Element] = []
+    
+    for element in self {
+      if !result.contains(where: { $0 == element }) { result.append(element) }
+    }
+    
+    return result
   }
 
 }
