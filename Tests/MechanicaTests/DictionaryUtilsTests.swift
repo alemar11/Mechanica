@@ -90,6 +90,12 @@ class DictionaryUtilsTests: XCTestCase {
       XCTAssertNotNil(dictionary!.jsonData())
       XCTAssertNotNil(dictionary!.jsonData(prettify: true))
     }
+    
+    do {
+      let string = "{\"foo\"bar\",\"val\":1}"
+      let dictionary = Dictionary<String, Any>(json: string)
+      XCTAssertNil(dictionary)
+    }
 
     do {
       let dictionary: [String: Any?] = ["key1":"val1", "key2": nil]

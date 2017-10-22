@@ -504,6 +504,11 @@ class StringUtilsTests: XCTestCase {
     }
   }
   
+  func testURLEscaped() {
+    XCTAssertTrue("Hello_World".urlEscaped == "Hello_World")
+    XCTAssertTrue("Hello Günter".urlEscaped == "Hello%20G%C3%BCnter")
+  }
+  
   func testSemanticVersion() {
     XCTAssertTrue("1".semanticVersion == (1,0,0))
     XCTAssertTrue("1.0".semanticVersion == (1,0,0))
