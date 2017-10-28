@@ -73,11 +73,11 @@ extension Sequence where Element: Equatable {
   /// Returns a collection of unique elements preserving their original order.
   func uniqueElements() -> [Element] {
     var result: [Element] = []
-    
+
     for element in self {
       if !result.contains(where: { $0 == element }) { result.append(element) }
     }
-    
+
     return result
   }
 
@@ -91,7 +91,7 @@ extension Sequence where Element: Hashable {
   ///
   /// Returns a collection of tuples where it's indicated the frequencies of the elements in the sequence.
   public var frequencies: [(Element, Int)] {
-    var result = [Element:Int]()
+    var result = [Element: Int]()
 
     for element in self {
       result[element] = (result[element] ?? 0) + 1

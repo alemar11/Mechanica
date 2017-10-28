@@ -40,14 +40,14 @@ extension ProcessInfo {
   public static var isRunningUnitTests: Bool {
     return isRunningXcodeUnitTests || isRunningSwiftPackageTests
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns true if Xcode Unit Tests are running.
   public static var isRunningXcodeUnitTests: Bool {
     return processInfo.environment["XCTestConfigurationFilePath"].hasValue
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns true if SwiftPackage tests are running.

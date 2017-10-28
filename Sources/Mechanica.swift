@@ -36,5 +36,4 @@ internal let bundle = Bundle(for: Object.self)
 /// **Mechanica**
 ///
 /// Dummy object used to get the current bundle.
-fileprivate class Object { }
-
+private class Object { }

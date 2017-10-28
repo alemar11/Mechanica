@@ -24,7 +24,7 @@
 #if os(iOS) || os(tvOS)
 
 import UIKit
-  
+
 extension UILayoutPriority {
 
   /// **Mechanica**

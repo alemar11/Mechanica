@@ -22,7 +22,7 @@
 // SOFTWARE.
 
 #if os(iOS) || os(tvOS)
-  
+
 import UIKit
 
 extension UIGestureRecognizer {
@@ -36,5 +36,5 @@ extension UIGestureRecognizer {
   }
 
 }
-  
+
 #endif

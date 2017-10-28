@@ -78,7 +78,7 @@ extension UIImage {
       if pixel1 != pixel2 { misses += 1 }
     }
 
-    return (Double(misses / pixelsToCompare) <= accuracy);
+    return (Double(misses / pixelsToCompare) <= accuracy)
   }
 
 }

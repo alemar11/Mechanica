@@ -35,15 +35,16 @@ class BundleInfoTests: XCTestCase {
       XCTAssertTrue(bundle.shortVersionString != nil)
       XCTAssertTrue(bundle.displayName == nil)
       XCTAssertTrue(bundle.executableFileName == "Mechanica" || bundle.executableFileName == "MechanicaPackageTests")
+      
     } else if ProcessInfo.isRunningSwiftPackageTests {
       XCTAssertTrue(bundle.version == nil)
       XCTAssertTrue(bundle.shortVersionString == nil)
       XCTAssertTrue(bundle.displayName == nil)
       XCTAssertTrue(bundle.executableFileName == "MechanicaPackageTests")
+      
     } else {
       XCTFail("Missing ProcessInfo details.")
     }
-    
   }
   
 }
