@@ -36,16 +36,24 @@ extension ProcessInfo {
 
   /// **Mechanica**
   ///
-  ///  Returns true if Unit Tests are running.
+  ///  Returns true if Xcode or SwiftPackage Unit Tests are running.
   public static var isRunningUnitTests: Bool {
-    return processInfo.environment["XCTestConfigurationFilePath"].hasValue
+    return isRunningXcodeUnitTests || isRunningSwiftPackageTests
   }
-
+  
   /// **Mechanica**
   ///
-  ///  Returns true if UI Tests are running.
-  internal static var isRunningUITests: Bool {
-    return processInfo.arguments.contains("-ui_testing")
+  ///  Returns true if Xcode Unit Tests are running.
+  public static var isRunningXcodeUnitTests: Bool {
+    return processInfo.environment["XCTestConfigurationFilePath"].hasValue
+  }
+  
+  /// **Mechanica**
+  ///
+  ///  Returns true if SwiftPackage tests are running.
+  public static var isRunningSwiftPackageTests: Bool {
+    let testArguments = processInfo.arguments.filter { $0.ends(with: "xctest")}
+    return processInfo.environment["XCTestConfigurationFilePath"] == nil && testArguments.count > 0
   }
 
 }

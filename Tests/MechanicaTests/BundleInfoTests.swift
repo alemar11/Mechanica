@@ -25,15 +25,25 @@ import XCTest
 @testable import Mechanica
 
 class BundleInfoTests: XCTestCase {
-
-    func testBundle() {
-      // Given, When
-      let bundle = Mechanica.bundle
-      // Then
+  
+  func testBundle() {
+    // Given, When
+    let bundle = Mechanica.bundle
+    // Then
+    if ProcessInfo.isRunningXcodeUnitTests {
       XCTAssertTrue(bundle.version != nil)
       XCTAssertTrue(bundle.shortVersionString != nil)
       XCTAssertTrue(bundle.displayName == nil)
-      XCTAssertTrue(bundle.executableFileName == "Mechanica")
+      XCTAssertTrue(bundle.executableFileName == "Mechanica" || bundle.executableFileName == "MechanicaPackageTests")
+    } else if ProcessInfo.isRunningSwiftPackageTests {
+      XCTAssertTrue(bundle.version == nil)
+      XCTAssertTrue(bundle.shortVersionString == nil)
+      XCTAssertTrue(bundle.displayName == nil)
+      XCTAssertTrue(bundle.executableFileName == "MechanicaPackageTests")
+    } else {
+      XCTFail("Missing ProcessInfo details.")
     }
-
+    
+  }
+  
 }

@@ -38,10 +38,6 @@ class AppTests: XCTestCase {
     XCTAssertTrue(App.isRunningUnitTests)
   }
 
-  func testIsRunningUITests() {
-    XCTAssertFalse(App.isRunningUITests)
-  }
-
   func testIdentifier() {
     XCTAssert(App.identifier == "xctest")
   }

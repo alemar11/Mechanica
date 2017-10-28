@@ -45,13 +45,6 @@ public enum App {
 
   /// **Mechanica**
   ///
-  /// Returns `true` if the current app is running UI Tests.
-  public static var isRunningUITests: Bool {
-    return ProcessInfo.isRunningUITests
-  }
-
-  /// **Mechanica**
-  ///
   /// Returns the app identifier (`bundleIdenfier` or its `executable` file name).
   public static var identifier: String? {
     if let identifier = Bundle.main.bundleIdentifier, !identifier.isBlank { //i.e. org.tinrobots.App
