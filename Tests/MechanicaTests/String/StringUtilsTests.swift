@@ -269,6 +269,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("test\n\n spaces \n\n too many ".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
   }
   
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
   func testRemovingAccentsOrDiacritics() {
     XCTAssertTrue("äöüÄÖÜ".removingAccentsOrDiacritics() == "aouAOU")
     XCTAssertTrue("1".removingAccentsOrDiacritics() == "1")

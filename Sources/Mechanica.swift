@@ -27,3 +27,14 @@ import Foundation
 ///
 /// Mechanica Bundle Identifier
 internal let bundleIdentifier = "org.tinrobots.Mechanica"
+
+/// **Mechanica**
+///
+/// Mechanica Bundle
+internal let bundle = Bundle(for: Object.self)
+
+/// **Mechanica**
+///
+/// Dummy object used to get the current bundle.
+fileprivate class Object { }
+

@@ -28,12 +28,12 @@ class BundleInfoTests: XCTestCase {
 
     func testBundle() {
       // Given, When
-      let bundle = Bundle(identifier: Mechanica.bundleIdentifier)
+      let bundle = Mechanica.bundle
       // Then
-      XCTAssertTrue(bundle?.version != nil)
-      XCTAssertTrue(bundle?.shortVersionString != nil)
-      XCTAssertTrue(bundle?.displayName == nil)
-      XCTAssertTrue(bundle?.executableFileName == "Mechanica")
+      XCTAssertTrue(bundle.version != nil)
+      XCTAssertTrue(bundle.shortVersionString != nil)
+      XCTAssertTrue(bundle.displayName == nil)
+      XCTAssertTrue(bundle.executableFileName == "Mechanica")
     }
 
 }
