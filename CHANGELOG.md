@@ -6,7 +6,7 @@
 - More String utils.
 - Better random functions.
 - Added Sequence utils.
-- Added Characted and Unicode Utils.
+- Added Character and Unicode Utils.
 
 ### 1.0.0 ⭐
 
@@ -18,7 +18,7 @@
 - Added more UIKit extensions.
 - More tests.
 - CoreData utils moved in a separated repository: [CoreDataPlus](https://github.com/tinrobots/coredataplus).
-- Removed useless utils.
+- Removed Interface Builder utils (not in the scope of this library).
 
 ### 0.4.2
 
