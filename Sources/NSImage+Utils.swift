@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -21,30 +21,43 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+#if os(macOS)
+  
+import AppKit
 
-#if os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit
-#elseif os(macOS)
-  import AppKit
-#endif
-
-// MARK: - Attributes
-
-extension NSMutableAttributedString {
-
+extension NSImage {
+  
   /// **Mechanica**
   ///
-  /// Removes all the attributes from `self`.
-  public func removeAllAttributes() {
-    setAttributes([:], range: NSRange(location: 0, length: string.length))
+  /// Checks if the image has alpha component.
+  var hasAlpha: Bool {
+    var imageRect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+    
+    guard let imageRef = cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return false }
+    
+    let result: Bool
+    let alpha = imageRef.alphaInfo
+    
+    switch alpha {
+    case .none, .noneSkipFirst, .noneSkipLast:
+      result = false
+    default:
+      result = true
+    }
+    
+    return result
   }
-
+  
   /// **Mechanica**
   ///
-  /// Returns a `new` NSMutableAttributedString removing all the attributes.
-  public func removingAllAttributes() -> NSMutableAttributedString {
-    return NSMutableAttributedString(string: string)
+  /// Convert the image to data.
+  func cache_toData() -> Data? {
+    guard let data = tiffRepresentation else { return nil }
+    
+    let imageFileType: NSBitmapImageRep.FileType = hasAlpha ? .png : .jpeg
+    
+    return NSBitmapImageRep(data: data)? .representation(using: imageFileType, properties: [:])
   }
-
 }
+
+#endif

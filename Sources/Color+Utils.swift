@@ -21,8 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
 #if os(iOS) || os(tvOS) || os(watchOS)
   import UIKit
   /// **Mechanica**
@@ -30,7 +28,7 @@ import Foundation
   /// Alias for UIColor.
   public typealias Color = UIKit.UIColor
 #elseif os(macOS)
-  import Cocoa
+  import AppKit
   /// **Mechanica**
   ///
   /// Alias for NSColor.

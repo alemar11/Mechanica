@@ -103,6 +103,7 @@
 		233B48BC1E6F1398003D5341 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */; };
 		233B48BD1E6F1398003D5341 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */; };
 		233B48BE1E6F1398003D5341 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */; };
+		23463B111FA6819300149574 /* NSImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23463B101FA6819300149574 /* NSImage+Utils.swift */; };
 		235DCB8B1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
 		235DCB8C1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
 		235DCB8D1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
@@ -423,6 +424,7 @@
 		231B2EF21F72808900854AA1 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		23280BE21F28C492008B6196 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = IDETemplateMacros.plist; path = Mechanica.xcodeproj/xcshareddata/IDETemplateMacros.plist; sourceTree = SOURCE_ROOT; };
 		233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		23463B101FA6819300149574 /* NSImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Utils.swift"; sourceTree = "<group>"; };
 		235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "BinaryFloatingPoint+Utils.swift"; sourceTree = "<group>"; };
 		2363FED41F6E76EC0067257A /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		23690FE41F836F4A008C0B7E /* UILayoutPriority+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILayoutPriority+Utils.swift"; sourceTree = "<group>"; };
@@ -591,11 +593,10 @@
 				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
 				2302A2CC1F8FFE7A001A92A8 /* Character+Utils.swift */,
 				23964A011E5B034800C8E0DF /* Collection+Utils.swift */,
-				D278BD951DEF1061006FAD83 /* Color+Utils.swift */,
+				23463B131FA6825400149574 /* Shared */,
 				233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */,
 				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
 				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
-				23928B801F5DAC5E00FB74AE /* Font+Utils.swift */,
 				2307D0691F8FA15500FDBA2A /* Locale.swift */,
 				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
 				23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */,
@@ -613,6 +614,7 @@
 				23793D771F067F9B002987C4 /* NSObject */,
 				23793D791F067FC3002987C4 /* String */,
 				23AAE0461F5AB1B000ECF302 /* UIKit */,
+				23463B121FA6823800149574 /* AppKit */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -668,6 +670,23 @@
 				23D779331F6671B600724053 /* NSMutableAttributedStringUtilsTests.swift */,
 			);
 			path = NSAttributedString;
+			sourceTree = "<group>";
+		};
+		23463B121FA6823800149574 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				23463B101FA6819300149574 /* NSImage+Utils.swift */,
+			);
+			name = AppKit;
+			sourceTree = "<group>";
+		};
+		23463B131FA6825400149574 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				23928B801F5DAC5E00FB74AE /* Font+Utils.swift */,
+				D278BD951DEF1061006FAD83 /* Color+Utils.swift */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		235E0EDA1F065BA800E7A4D8 /* Color */ = {
@@ -1282,6 +1301,7 @@
 			files = (
 				D208D1851DF07103009687BB /* String+Operators.swift in Sources */,
 				2302A2D51F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */,
+				23463B111FA6819300149574 /* NSImage+Utils.swift in Sources */,
 				D21A31F31DEDC9DA00E4A609 /* String+Conversions.swift in Sources */,
 				23949C5D1E4B979D00BD9EC8 /* NSAttributedString+Utils.swift in Sources */,
 				239F8DD61E55B03900E3DF33 /* AssociatedValueSupporting.swift in Sources */,

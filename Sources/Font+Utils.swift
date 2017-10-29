@@ -21,8 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
 #if os(iOS) || os(tvOS) || os(watchOS)
   import UIKit
   /// **Mechanica**
@@ -30,7 +28,7 @@ import Foundation
   /// Alias for UIFont.
   public typealias Font = UIKit.UIFont
 #elseif os(macOS)
-  import Cocoa
+  import AppKit
   /// **Mechanica**
   ///
   /// Alias for NSFont.
