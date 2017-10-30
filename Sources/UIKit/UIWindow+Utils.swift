@@ -29,15 +29,25 @@ extension UIWindow {
 
   /// **Mechanica**
   ///
-  /// Returns the topmost view controller.
-  var topViewController: UIViewController? {
-    guard var top = rootViewController else { return nil }
+  /// Returns the topmost UIViewController.
+  public var topViewController: UIViewController? {
+    guard var topViewController = rootViewController else { return nil }
 
-    while let next = top.presentedViewController {
-      top = next
+    func visibleViewController(from viewController: UIViewController?) -> UIViewController? {
+      if let tabBarController = (viewController as? UITabBarController)?.selectedViewController {
+        return visibleViewController(from: tabBarController)
+        
+      } else if let navigationController = (viewController as? UINavigationController)?.visibleViewController {
+        return visibleViewController(from: navigationController)
+        
+      } else if let presentingViewController = viewController?.presentedViewController {
+        return visibleViewController(from: presentingViewController)
+      }
+      return viewController
     }
-
-    return top
+    
+    return visibleViewController(from: topViewController)
+    
   }
 
 }
