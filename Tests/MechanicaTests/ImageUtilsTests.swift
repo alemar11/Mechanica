@@ -24,6 +24,7 @@
 import XCTest
 @testable import Mechanica
 
+#if os(macOS)
 class ImageUtilsTests: XCTestCase {
   
   func testHasAlpha() {
@@ -50,3 +51,4 @@ extension NSImage {
     return nil
   }
 }
+#endif
