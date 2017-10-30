@@ -29,8 +29,8 @@ extension UIGestureRecognizer {
 
   /// **Mechanica**
   ///
-  /// Cancels the gesture recognizer.
-  func cancel() {
+  /// The gesture recognizer transitions to a cancelled state.
+  public func cancel() {
     isEnabled = false
     isEnabled = true
   }
