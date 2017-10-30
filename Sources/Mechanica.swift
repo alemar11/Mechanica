@@ -31,9 +31,7 @@ internal let bundleIdentifier = "org.tinrobots.Mechanica"
 /// **Mechanica**
 ///
 /// Mechanica Bundle
-internal let bundle = Bundle(for: Object.self)
-
-/// **Mechanica**
-///
-/// Dummy object used to get the current bundle.
-private class Object { }
+internal var bundle: Bundle {
+  class Object {}
+  return Bundle(for: Object.self)
+}
