@@ -258,6 +258,9 @@
 		23CC6B241FA71E04004D062B /* Image+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC6B221FA71E04004D062B /* Image+Utils.swift */; };
 		23CC6B251FA71E04004D062B /* Image+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC6B221FA71E04004D062B /* Image+Utils.swift */; };
 		23CC6B261FA71E04004D062B /* Image+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC6B221FA71E04004D062B /* Image+Utils.swift */; };
+		23CC6B291FA72051004D062B /* ImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC6B281FA72051004D062B /* ImageUtilsTests.swift */; };
+		23CC6B2A1FA72051004D062B /* ImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC6B281FA72051004D062B /* ImageUtilsTests.swift */; };
+		23CC6B2B1FA72051004D062B /* ImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC6B281FA72051004D062B /* ImageUtilsTests.swift */; };
 		23D12CDE1F9A649400720D4F /* FixedWidthInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D12CDD1F9A649400720D4F /* FixedWidthInteger+Utils.swift */; };
 		23D12CDF1F9A649400720D4F /* FixedWidthInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D12CDD1F9A649400720D4F /* FixedWidthInteger+Utils.swift */; };
 		23D12CE01F9A649400720D4F /* FixedWidthInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D12CDD1F9A649400720D4F /* FixedWidthInteger+Utils.swift */; };
@@ -477,6 +480,7 @@
 		23B5805D1F94E64600A365C0 /* UIDeviceUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceUtilsTests.swift; sourceTree = "<group>"; };
 		23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UserDefaultsUtilsTests.swift; sourceTree = "<group>"; };
 		23CC6B221FA71E04004D062B /* Image+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Utils.swift"; sourceTree = "<group>"; };
+		23CC6B281FA72051004D062B /* ImageUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtilsTests.swift; sourceTree = "<group>"; };
 		23D12CDD1F9A649400720D4F /* FixedWidthInteger+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FixedWidthInteger+Utils.swift"; sourceTree = "<group>"; };
 		23D6A8511F9B72DF00AEC35A /* UIGestureRecognizer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Utils.swift"; sourceTree = "<group>"; };
 		23D6A8561F9B73BD00AEC35A /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
@@ -633,6 +637,7 @@
 		2317E3901E8D14400087BB79 /* MechanicaTests */ = {
 			isa = PBXGroup;
 			children = (
+				23CC6B271FA72017004D062B /* Shared */,
 				237F17361E90000800726553 /* AppTests.swift */,
 				237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */,
 				237F17391E90000800726553 /* BoolUtilsTests.swift */,
@@ -653,7 +658,6 @@
 				23F6A1671EC8DF6500D20502 /* UtilsTests.swift */,
 				237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */,
 				2392CB4D1EE04A9900B955EC /* XCTest+Utils.swift */,
-				235E0EDA1F065BA800E7A4D8 /* Color */,
 				235E0EE01F065CC100E7A4D8 /* Integer */,
 				232CD57D1F5FF30F00DC84A0 /* NSAttributedString */,
 				235E0EE11F065CD100E7A4D8 /* NSObject */,
@@ -690,16 +694,6 @@
 				23CC6B221FA71E04004D062B /* Image+Utils.swift */,
 			);
 			name = Shared;
-			sourceTree = "<group>";
-		};
-		235E0EDA1F065BA800E7A4D8 /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				D278BD941DEF1061006FAD83 /* Color+Flat.swift */,
-				237F173C1E90000800726553 /* ColorFlatTests.swift */,
-				237F173D1E90000800726553 /* ColorUtilsTests.swift */,
-			);
-			path = Color;
 			sourceTree = "<group>";
 		};
 		235E0EDF1F065C9100E7A4D8 /* String */ = {
@@ -792,6 +786,17 @@
 				23D6A8561F9B73BD00AEC35A /* UIViewController+Utils.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		23CC6B271FA72017004D062B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D278BD941DEF1061006FAD83 /* Color+Flat.swift */,
+				237F173C1E90000800726553 /* ColorFlatTests.swift */,
+				237F173D1E90000800726553 /* ColorUtilsTests.swift */,
+				23CC6B281FA72051004D062B /* ImageUtilsTests.swift */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		23D922981EFA670900629E17 /* Support */ = {
@@ -1370,6 +1375,7 @@
 				230A4EEF1ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */,
 				237F17A41E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
 				237F17CB1E90000900726553 /* StringValidationTests.swift in Sources */,
+				23CC6B291FA72051004D062B /* ImageUtilsTests.swift in Sources */,
 				237F17BF1E90000900726553 /* StringConversionsTests.swift in Sources */,
 				23078BEC1F20E1480074D955 /* OperatorsTests.swift in Sources */,
 				237F17B61E90000900726553 /* SequenceUtilsTests.swift in Sources */,
@@ -1418,6 +1424,7 @@
 				23C27C391E9E5BAB006C235E /* UserDefaultsUtilsTests.swift in Sources */,
 				237F17A51E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
 				237F17CC1E90000900726553 /* StringValidationTests.swift in Sources */,
+				23CC6B2A1FA72051004D062B /* ImageUtilsTests.swift in Sources */,
 				237F17C01E90000900726553 /* StringConversionsTests.swift in Sources */,
 				237F17B71E90000900726553 /* SequenceUtilsTests.swift in Sources */,
 				237F177E1E90000900726553 /* DictionaryUtilsTests.swift in Sources */,
@@ -1456,6 +1463,7 @@
 				237F17A31E90000900726553 /* NSAttributedStringOperatorsTests.swift in Sources */,
 				237F17671E90000900726553 /* BinaryFloatingPointUtilsTests.swift in Sources */,
 				2392CB501EE04A9900B955EC /* XCTest+Utils.swift in Sources */,
+				23CC6B2B1FA72051004D062B /* ImageUtilsTests.swift in Sources */,
 				23F6A16A1EC8DF6500D20502 /* UtilsTests.swift in Sources */,
 				2307D0711F8FA35D00FDBA2A /* LocaleUtilsTests.swift in Sources */,
 				237F17BB1E90000900726553 /* SignedIntegerUtilsTests.swift in Sources */,
