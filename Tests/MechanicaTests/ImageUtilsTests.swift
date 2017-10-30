@@ -24,31 +24,27 @@
 import XCTest
 @testable import Mechanica
 
-#if os(macOS)
 class ImageUtilsTests: XCTestCase {
   
   func testHasAlpha() {
+    let url = URL(string:"https://raw.githubusercontent.com/tinrobots/Mechanica/test-resources/pic.png")!
+    let url2 = URL(string: "https://raw.githubusercontent.com/tinrobots/Mechanica/test-resources/pic_no_alpha.jpeg")!
     
-    let image = NSImage(contentsOf: URL(string: "https://qph.ec.quoracdn.net/main-qimg-968f41225522207012dd378705832939")!)!
+    let image: Image
+    let imageNoAlpha: Image
+    
+    #if os(macOS)
+      image = NSImage(contentsOf: url)!
+      imageNoAlpha = NSImage(contentsOf: url2)!
+    #elseif os(iOS) || os(tvOS) || os(watchOS)
+      let data = try! Data(contentsOf: url)
+      let data2 = try! Data(contentsOf: url2)
+      image = Image(data: data)!
+      imageNoAlpha = Image(data: data2)!
+    #endif
+    
     XCTAssertTrue(image.hasAlpha)
+    XCTAssertFalse(imageNoAlpha.hasAlpha)
   }
   
 }
-
-extension NSImage {
-  class func imageNamed(name: String, inBundle bundle: Bundle?) -> NSImage? {
-    var image = NSImage(named: NSImage.Name(rawValue: name))
-    
-    if let image = image { return image }
-    
-    image = bundle?.image(forResource: NSImage.Name(rawValue: name))
-    
-    if let image = image {
-      image.setName(NSImage.Name(rawValue: name))
-      return image
-    }
-    
-    return nil
-  }
-}
-#endif
