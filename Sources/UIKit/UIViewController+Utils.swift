@@ -30,7 +30,7 @@ extension UIViewController {
   /// **Mechanica**
   ///
   /// Returns `true` if the UIViewController is on the screen.
-  var isVisible: Bool {
+  public var isVisible: Bool {
     return isViewLoaded && view.window != nil
   }
 
