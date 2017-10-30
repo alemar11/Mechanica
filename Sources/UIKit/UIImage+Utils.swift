@@ -51,60 +51,6 @@
       self.init(cgImage: image)
     }
     
-    /// **Mechanica**
-    ///
-    /// Checks if the image has alpha component.
-    var hasAlpha: Bool {
-      let result: Bool
-      guard let alpha = cgImage?.alphaInfo else { return false }
-      
-      switch alpha {
-      case .none, .noneSkipFirst, .noneSkipLast:
-        result = false
-      default:
-        result = true
-      }
-      
-      return result
-    }
-    
-    /// **Mechanica**
-    ///
-    /// Convert the image to data.
-    var toData: Data? {
-      return hasAlpha ? UIImagePNGRepresentation(self) : UIImageJPEGRepresentation(self, 1.0)
-    }
-    
-    // WIP
-    // https://stackoverflow.com/questions/11342897/how-to-compare-two-uiimage-objects
-    // https://gist.github.com/SheffieldKevin/566dc048dd6f36716bcd
-    func isEqual(to image: UIImage, density: CGFloat = 0.001, accuracy: Double = 0.01) -> Bool {
-      if !self.size.equalTo(image.size) { return false }
-      
-      let pixelsWidth: Int = self.cgImage!.width
-      let pixelsHeight: Int = self.cgImage!.height
-      let pixelsToCompare: Int  = Int(CGFloat(pixelsWidth * pixelsHeight) * density)
-      
-      var pixel1 = UInt()
-      let context1 = CGContext(data: &pixel1, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
-      
-      var pixel2 = UInt()
-      let context2 = CGContext(data: &pixel2, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
-      
-      var misses = 0
-      for _ in 0..<pixelsToCompare {
-        let pixelX = Int(arc4random()) % pixelsWidth
-        let pixelY = Int(arc4random()) % pixelsHeight
-        
-        context1?.draw(self.cgImage!, in: CGRect(x: CGFloat(-pixelX), y: CGFloat(-pixelY), width: CGFloat(pixelsWidth), height: CGFloat(pixelsHeight)))
-        context2?.draw(image.cgImage!, in: CGRect(x: CGFloat(-pixelX), y: CGFloat(-pixelY), width: CGFloat(pixelsWidth), height: CGFloat(pixelsHeight)))
-        
-        if pixel1 != pixel2 { misses += 1 }
-      }
-      
-      return (Double(misses / pixelsToCompare) <= accuracy)
-    }
-    
   }
   
 #endif

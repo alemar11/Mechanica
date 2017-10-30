@@ -21,22 +21,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(macOS)
-  
-import AppKit
+#if os(iOS) || os(tvOS) || os(watchOS)
+  import UIKit
+  /// **Mechanica**
+  ///
+  /// Alias for UIImage.
+  public typealias Image = UIKit.UIImage
+#elseif os(macOS)
+  import AppKit
+  /// **Mechanica**
+  ///
+  /// Alias for NSImage.
+  public typealias Image = AppKit.NSImage
+#endif
 
-extension NSImage {
+extension Image {
   
   /// **Mechanica**
   ///
   /// Checks if the image has alpha component.
   var hasAlpha: Bool {
-    var imageRect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-    
-    guard let imageRef = cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return false }
-    
     let result: Bool
-    let alpha = imageRef.alphaInfo
+    #if os(iOS) || os(tvOS) || os(watchOS)
+      guard let alpha = cgImage?.alphaInfo else { return false }
+      
+    #elseif os(macOS)
+      var imageRect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+      guard let imageRef = cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return false }
+      
+      let alpha = imageRef.alphaInfo
+    #endif
     
     switch alpha {
     case .none, .noneSkipFirst, .noneSkipLast:
@@ -51,13 +65,16 @@ extension NSImage {
   /// **Mechanica**
   ///
   /// Convert the image to data.
-  func cache_toData() -> Data? {
-    guard let data = tiffRepresentation else { return nil }
-    
-    let imageFileType: NSBitmapImageRep.FileType = hasAlpha ? .png : .jpeg
-    
-    return NSBitmapImageRep(data: data)? .representation(using: imageFileType, properties: [:])
+  var toData: Data? {
+    #if os(iOS) || os(tvOS) || os(watchOS)
+      return hasAlpha ? UIImagePNGRepresentation(self) : UIImageJPEGRepresentation(self, 1.0)
+      
+    #elseif os(macOS)
+      guard let data = tiffRepresentation else { return nil }
+      let imageFileType: NSBitmapImageRep.FileType = hasAlpha ? .png : .jpeg
+      
+      return NSBitmapImageRep(data: data)? .representation(using: imageFileType, properties: [:])
+    #endif
   }
+  
 }
-
-#endif
