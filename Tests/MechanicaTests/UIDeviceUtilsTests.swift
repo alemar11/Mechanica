@@ -30,11 +30,11 @@ class UIDeviceUtilsTests: XCTestCase {
 
   func testDeviceInterface() {
     #if os(iOS)
-      XCTAssertTrue(UIDevice.current.hasPhoneInterface || UIDevice.current.hasPadInterface)
+      XCTAssertTrue(UIDevice.current.hasPadInterface || UIDevice.current.hasPhoneInterface)
       XCTAssertFalse(UIDevice.current.hasTVInterface)
     #elseif os(tvOS)
       XCTAssertTrue(UIDevice.current.hasTVInterface)
-      XCTAssertFalse(UIDevice.current.hasPhoneInterface || UIDevice.current.hasPadInterface)
+      XCTAssertFalse(UIDevice.current.hasPadInterface || UIDevice.current.hasPhoneInterface)
     #endif
 
     XCTAssertFalse(UIDevice.current.hasCarPlayInterface)
