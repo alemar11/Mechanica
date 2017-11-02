@@ -36,8 +36,8 @@
     
     /// **Mechanica**
     ///
-    /// Returns an image with a given `color` and `size`.
-    public convenience init?(color: UIColor, size: CGSize) {
+    /// Returns an image with a given `color` and `size` (default: 1x1).
+    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
       let rect = CGRect(origin: .zero, size: size)
       
       UIGraphicsBeginImageContextWithOptions(size, false, 0)
