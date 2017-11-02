@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -21,22 +21,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if os(macOS)
 
-import UIKit
+import AppKit
 
-extension UIView {
+extension NSImage {
 
-  /// **Mechanica**
-  ///
-  /// Take sceenshot with the current device's screen scale.
-  func screenshot() -> UIImage {
-    // note: by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
-    return UIGraphicsImageRenderer(size: bounds.size).image { _ in
-      drawHierarchy(in: CGRect(origin: .zero, size: bounds.size), afterScreenUpdates: true)
-    }
-  }
-
+//  class func imageNamed(name: String, inBundle bundle: Bundle?) -> NSImage? {
+//    if let image = NSImage(named: NSImage.Name(rawValue: name)) { return image }
+//    
+//    if let image = bundle?.image(forResource: NSImage.Name(rawValue: name)) {
+//      image.setName(NSImage.Name(rawValue: name))
+//      return image
+//    }
+//    
+//    return nil
+//  }
+  
 }
 
 #endif
+

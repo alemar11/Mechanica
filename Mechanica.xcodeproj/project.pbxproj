@@ -598,6 +598,7 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				23D9C5071FAB435100BF5D7C /* UI */,
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */,
 				235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */,
@@ -605,7 +606,6 @@
 				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
 				2302A2CC1F8FFE7A001A92A8 /* Character+Utils.swift */,
 				23964A011E5B034800C8E0DF /* Collection+Utils.swift */,
-				23463B131FA6825400149574 /* Shared */,
 				233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */,
 				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
 				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
@@ -625,8 +625,6 @@
 				23793D761F067F84002987C4 /* NSAttributedString */,
 				23793D771F067F9B002987C4 /* NSObject */,
 				23793D791F067FC3002987C4 /* String */,
-				23AAE0461F5AB1B000ECF302 /* UIKit */,
-				23463B121FA6823800149574 /* AppKit */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -642,7 +640,7 @@
 		2317E3901E8D14400087BB79 /* MechanicaTests */ = {
 			isa = PBXGroup;
 			children = (
-				23CC6B271FA72017004D062B /* Shared */,
+				23D9C5081FAB444700BF5D7C /* UI */,
 				237F17361E90000800726553 /* AppTests.swift */,
 				237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */,
 				237F17391E90000800726553 /* BoolUtilsTests.swift */,
@@ -683,24 +681,6 @@
 				23D779331F6671B600724053 /* NSMutableAttributedStringUtilsTests.swift */,
 			);
 			path = NSAttributedString;
-			sourceTree = "<group>";
-		};
-		23463B121FA6823800149574 /* AppKit */ = {
-			isa = PBXGroup;
-			children = (
-				231874BB1FA78CE000FA797F /* NSImage+Utils.swift */,
-			);
-			name = AppKit;
-			sourceTree = "<group>";
-		};
-		23463B131FA6825400149574 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				23928B801F5DAC5E00FB74AE /* Font+Utils.swift */,
-				D278BD951DEF1061006FAD83 /* Color+Utils.swift */,
-				23CC6B221FA71E04004D062B /* Image+Utils.swift */,
-			);
-			name = Shared;
 			sourceTree = "<group>";
 		};
 		235E0EDF1F065C9100E7A4D8 /* String */ = {
@@ -780,32 +760,6 @@
 			path = String;
 			sourceTree = "<group>";
 		};
-		23AAE0461F5AB1B000ECF302 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				237395CD1F20C47E007E2796 /* UIButton+Utils.swift */,
-				2363FED41F6E76EC0067257A /* UIImage+Utils.swift */,
-				231B2EF21F72808900854AA1 /* UIView+Utils.swift */,
-				23690FE41F836F4A008C0B7E /* UILayoutPriority+Utils.swift */,
-				23024C881F8B64A800024885 /* UIWindow+Utils.swift */,
-				230949061F9236FF00CA5895 /* UIDevice+Utils.swift */,
-				23D6A8511F9B72DF00AEC35A /* UIGestureRecognizer+Utils.swift */,
-				23D6A8561F9B73BD00AEC35A /* UIViewController+Utils.swift */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
-		23CC6B271FA72017004D062B /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				D278BD941DEF1061006FAD83 /* Color+Flat.swift */,
-				237F173C1E90000800726553 /* ColorFlatTests.swift */,
-				237F173D1E90000800726553 /* ColorUtilsTests.swift */,
-				23CC6B281FA72051004D062B /* ImageUtilsTests.swift */,
-			);
-			name = Shared;
-			sourceTree = "<group>";
-		};
 		23D922981EFA670900629E17 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,6 +771,68 @@
 				23D9229B1EFA670900629E17 /* Info.plist */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		23D9C5071FAB435100BF5D7C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				23D9C50C1FAB448400BF5D7C /* AppKit */,
+				23D9C50B1FAB448000BF5D7C /* UIKit */,
+				23D9C50A1FAB447E00BF5D7C /* Shared */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		23D9C5081FAB444700BF5D7C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				23D9C5091FAB445D00BF5D7C /* Shared */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		23D9C5091FAB445D00BF5D7C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D278BD941DEF1061006FAD83 /* Color+Flat.swift */,
+				237F173C1E90000800726553 /* ColorFlatTests.swift */,
+				237F173D1E90000800726553 /* ColorUtilsTests.swift */,
+				23CC6B281FA72051004D062B /* ImageUtilsTests.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		23D9C50A1FAB447E00BF5D7C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				23928B801F5DAC5E00FB74AE /* Font+Utils.swift */,
+				D278BD951DEF1061006FAD83 /* Color+Utils.swift */,
+				23CC6B221FA71E04004D062B /* Image+Utils.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		23D9C50B1FAB448000BF5D7C /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				237395CD1F20C47E007E2796 /* UIButton+Utils.swift */,
+				2363FED41F6E76EC0067257A /* UIImage+Utils.swift */,
+				231B2EF21F72808900854AA1 /* UIView+Utils.swift */,
+				23690FE41F836F4A008C0B7E /* UILayoutPriority+Utils.swift */,
+				23024C881F8B64A800024885 /* UIWindow+Utils.swift */,
+				230949061F9236FF00CA5895 /* UIDevice+Utils.swift */,
+				23D6A8511F9B72DF00AEC35A /* UIGestureRecognizer+Utils.swift */,
+				23D6A8561F9B73BD00AEC35A /* UIViewController+Utils.swift */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		23D9C50C1FAB448400BF5D7C /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				231874BB1FA78CE000FA797F /* NSImage+Utils.swift */,
+			);
+			name = AppKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

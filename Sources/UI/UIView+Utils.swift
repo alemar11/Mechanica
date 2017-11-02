@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -21,35 +21,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(macOS)
+#if os(iOS) || os(tvOS)
 
-import AppKit
+import UIKit
 
-extension NSImage {
+extension UIView {
+
+  /// **Mechanica**
+  ///
+  /// A Boolean value that determines whether the view’s autoresizing mask is translated into Auto Layout constraints.
+  var usesAutoLayout: Bool {
+    get { return !translatesAutoresizingMaskIntoConstraints }
+    set { translatesAutoresizingMaskIntoConstraints = !newValue }
+  }
   
-//  convenience init?(base64EncodedString: String) {
-//    guard
-//      let url = URL(string: base64EncodedString),
-//      let data = try? Data(contentsOf: url)
-//      else {
-//        return nil
-//    }
-//    
-//    self.init(data: data)
-//  }
-//  
-//  class func imageNamed(name: String, inBundle bundle: Bundle?) -> NSImage? {
-//    if let image = NSImage(named: NSImage.Name(rawValue: name)) { return image }
-//    
-//    if let image = bundle?.image(forResource: NSImage.Name(rawValue: name)) {
-//      image.setName(NSImage.Name(rawValue: name))
-//      return image
-//    }
-//    
-//    return nil
-//  }
-  
+  /// **Mechanica**
+  ///
+  /// Take sceenshot with the current device's screen scale.
+  func screenshot() -> UIImage {
+    // note: by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
+    return UIGraphicsImageRenderer(size: bounds.size).image { _ in
+      drawHierarchy(in: CGRect(origin: .zero, size: bounds.size), afterScreenUpdates: true)
+    }
+  }
+
 }
 
 #endif
-

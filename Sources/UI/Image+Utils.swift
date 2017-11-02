@@ -39,8 +39,22 @@ extension Image {
   
   /// **Mechanica**
   ///
+  /// Initializes and returns the image object with the specified base64 data.
+  public convenience init?(base64EncodedString: String) {
+    guard
+      let url = URL(string: base64EncodedString),
+      let data = try? Data(contentsOf: url)
+      else {
+        return nil
+    }
+    
+    self.init(data: data)
+  }
+  
+  /// **Mechanica**
+  ///
   /// Checks if the image has alpha component.
-  var hasAlpha: Bool {
+  public var hasAlpha: Bool {
     let result: Bool
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard let alpha = cgImage?.alphaInfo else { return false }
@@ -65,7 +79,7 @@ extension Image {
   /// **Mechanica**
   ///
   /// Convert the image to data.
-  var toData: Data? {
+  public var toData: Data? {
     #if os(iOS) || os(tvOS) || os(watchOS)
       return hasAlpha ? UIImagePNGRepresentation(self) : UIImageJPEGRepresentation(self, 1.0)
       
