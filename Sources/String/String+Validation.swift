@@ -95,7 +95,7 @@ public extension String {
 
   /// **Mechanica**
   ///
-  /// Returns true if the `String` is a valid email format.
+  /// Returns true if the `String` is a valid email.
   /// - Seealso: [link 1](https://medium.com/@darthpelo/email-validation-in-swift-3-0-acfebe4d879a)
   /// - Seealso: [link 2](http://www.cocoawithlove.com/2009/06/verifying-that-string-is-email-address.html)
   public var isValidEmail: Bool {
