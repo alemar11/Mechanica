@@ -27,7 +27,6 @@ import AppKit
 
 extension NSImage {
 
-
   /// **Mechanica**
   ///
   /// - Parameters:
