@@ -27,18 +27,28 @@ import AppKit
 
 extension NSImage {
 
-//  class func imageNamed(name: String, inBundle bundle: Bundle?) -> NSImage? {
-//    if let image = NSImage(named: NSImage.Name(rawValue: name)) { return image }
-//    
-//    if let image = bundle?.image(forResource: NSImage.Name(rawValue: name)) {
-//      image.setName(NSImage.Name(rawValue: name))
-//      return image
-//    }
-//    
-//    return nil
-//  }
-  
+
+  /// **Mechanica**
+  ///
+  /// - Parameters:
+  ///   - name: The name of the image.
+  ///   - bundle: The bundle containing the image file or asset catalog, if nil the behavior is identical to `init(named:)`.
+  /// - Returns: Returns the image object associated with the specified filename.
+  class func imageNamed(name: String, in bundle: Bundle?) -> NSImage? {
+    let imageName = NSImage.Name(rawValue: name)
+
+    guard let bundle = bundle else { return NSImage(named: imageName) }
+
+    if let image = bundle.image(forResource: imageName) {
+      image.setName(imageName)
+      return image
+    }
+
+    return nil
+  }
+
 }
 
 #endif
+
 

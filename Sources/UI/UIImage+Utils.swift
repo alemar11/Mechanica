@@ -26,14 +26,15 @@
   import UIKit
   
   extension UIImage {
-    
+
+    // TODO: review
     /// **Mechanica**
     ///
     /// Returns the image aspect ratio.
-    var aspectRatio: CGFloat {
-      return size.height / size.width
-    }
-    
+//    var aspectRatio: CGFloat {
+//      return size.height / size.width
+//    }
+
     /// **Mechanica**
     ///
     /// Returns an image with a given `color` and `size` (default: 1x1).
