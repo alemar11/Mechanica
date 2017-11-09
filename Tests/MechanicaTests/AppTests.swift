@@ -26,18 +26,6 @@ import XCTest
 
 class AppTests: XCTestCase {
 
-  func testIsSandboxed() {
-    #if os(macOS)
-      XCTAssertFalse(App.isSandboxed)
-    #else
-      XCTAssertTrue(App.isSandboxed)
-    #endif
-  }
-
-  func testIsRunningUnitTests() {
-    XCTAssertTrue(App.isRunningUnitTests)
-  }
-
   func testIdentifier() {
     XCTAssert(App.identifier == "xctest")
   }

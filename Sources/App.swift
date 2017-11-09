@@ -27,24 +27,6 @@ public enum App {
 
   /// **Mechanica**
   ///
-  /// **macOS**: Returns `true` if the current app is sandboxed. **iOS**, **tvOS**, **watchOS** returns always `true`.
-  public static var isSandboxed: Bool {
-    #if os(macOS)
-      return ProcessInfo.isSandboxed
-    #else
-      return true
-    #endif
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns `true` if the current app is running Unit Tests.
-  public static var isRunningUnitTests: Bool {
-    return ProcessInfo.isRunningUnitTests
-  }
-
-  /// **Mechanica**
-  ///
   /// Returns the app identifier (`bundleIdenfier` or its `executable` file name).
   public static var identifier: String? {
     if let identifier = Bundle.main.bundleIdentifier, !identifier.isBlank { //i.e. org.tinrobots.App

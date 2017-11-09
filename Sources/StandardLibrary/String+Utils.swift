@@ -25,7 +25,7 @@ import Foundation
 
 extension String {
 
-  -> MARK: - Helper Methods
+  // MARK: - Helper Methods
 
   /// **Mechanica**
   ///
