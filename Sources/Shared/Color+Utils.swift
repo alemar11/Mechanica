@@ -140,6 +140,58 @@ extension Color {
 
   /// **Mechanica**
   ///
+  /// Blends two colors.
+  ///
+  /// - Parameters:
+  ///   - color1: First color to blend.
+  ///   - intensity1: Intensity of first color (default is 0.5)
+  ///   - color2: Second color to blend.
+  ///   - intensity2: Intensity of second color (default is 0.5)
+  /// - Returns: a `new color` blending the two colors.
+  public static func blend(_ color1: Color, intensity1: CGFloat = 0.5, with color2: Color, intensity2: CGFloat = 0.5) -> Color? {
+    // http://stackoverflow.com/questions/27342715/blend-uicolors-in-swift
+
+    let total = intensity1 + intensity2
+    let level1 = intensity1/total
+    let level2 = intensity2/total
+
+    guard level1 > 0 else { return color2 }
+    guard level2 > 0 else { return color1 }
+
+    let _components1: [CGFloat]? = {
+      guard let c = color1.cgColor.components else { return nil }
+      return c.count == 4 ? c : [c[0], c[0], c[0], c[1]]
+    }()
+    let _components2: [CGFloat]? = {
+      guard let c = color1.cgColor.components else { return nil }
+      return c.count == 4 ? c : [c[0], c[0], c[0], c[1]]
+    }()
+
+    guard let components1 = _components1, let components2 = _components2 else { return nil }
+
+    let r1 = components1[0]
+    let r2 = components2[0]
+
+    let g1 = components1[1]
+    let g2 = components2[1]
+
+    let b1 = components1[2]
+    let b2 = components2[2]
+
+    let a1 = color1.cgColor.alpha
+    let a2 = color2.cgColor.alpha
+
+    let r = (level1 * r1) + (level2 * r2)
+    let g = (level1 * g1) + (level2 * g2)
+    let b = (level1 * b1) + (level2 * b2)
+    let a = (level1 * a1) + (level2 * a2)
+
+    return Color(red: r, green: g, blue: b, alpha: a)
+  }
+
+
+  /// **Mechanica**
+  ///
   /// Returns a `new` color derived from `self` darkened by the given percentage in the RGBA color space.
   /// - Note: The `new` color is obtained mixing `self` with the black color.
   public final func darkened(by percentage: CGFloat = 0.25) -> Color? {
