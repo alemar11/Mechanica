@@ -627,9 +627,8 @@
 		2317E3901E8D14400087BB79 /* MechanicaTests */ = {
 			isa = PBXGroup;
 			children = (
-				237F17511E90000800726553 /* OptionalUtilsTests.swift */,
-				23D9C5081FAB444700BF5D7C /* UI */,
 				237F17361E90000800726553 /* AppTests.swift */,
+				237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */,
 				237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */,
 				237F17391E90000800726553 /* BoolUtilsTests.swift */,
 				237F173A1E90000800726553 /* BundleInfoTests.swift */,
@@ -637,24 +636,25 @@
 				237F17401E90000800726553 /* DictionaryUtilsTests.swift */,
 				237F17421E90000800726553 /* FileManagerUtilsTests.swift */,
 				237F17431E90000800726553 /* FloatingPointUtilsTests.swift */,
+				2307D06E1F8FA35D00FDBA2A /* LocaleUtilsTests.swift */,
 				237F17501E90000800726553 /* NSPredicateOperatorsTests.swift */,
 				23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */,
 				23078BEB1F20E1480074D955 /* OperatorsTests.swift */,
+				237F17511E90000800726553 /* OptionalUtilsTests.swift */,
 				237F17521E90000800726553 /* RangeReplaceableCollectionUtilsTests.swift */,
 				237F17531E90000800726553 /* SequenceUtilsTests.swift */,
+				23B5805D1F94E64600A365C0 /* UIDeviceUtilsTests.swift */,
 				23690FE71F837295008C0B7E /* UILayoutPriorityUtilsTests.swift */,
+				231874C01FA78EF600FA797F /* UIWindowUtilsTests.swift */,
 				237F175E1E90000800726553 /* URLUtilsTests.swift */,
 				23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */,
 				23F6A1671EC8DF6500D20502 /* UtilsTests.swift */,
-				237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */,
 				2392CB4D1EE04A9900B955EC /* XCTest+Utils.swift */,
 				235E0EE01F065CC100E7A4D8 /* Integer */,
 				232CD57D1F5FF30F00DC84A0 /* NSAttributedString */,
 				235E0EE11F065CD100E7A4D8 /* NSObject */,
 				235E0EDF1F065C9100E7A4D8 /* String */,
-				2307D06E1F8FA35D00FDBA2A /* LocaleUtilsTests.swift */,
-				23B5805D1F94E64600A365C0 /* UIDeviceUtilsTests.swift */,
-				231874C01FA78EF600FA797F /* UIWindowUtilsTests.swift */,
+				23D9C5081FAB444700BF5D7C /* UI */,
 			);
 			path = MechanicaTests;
 			sourceTree = "<group>";
