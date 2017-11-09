@@ -620,7 +620,6 @@
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
 				23DC26D11F1E3F090093F7EE /* Operators.swift */,
-				23793D791F067FC3002987C4 /* String */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -713,17 +712,6 @@
 			path = NSObject;
 			sourceTree = "<group>";
 		};
-		23793D791F067FC3002987C4 /* String */ = {
-			isa = PBXGroup;
-			children = (
-				12B9563E1D8820CA00F75DD5 /* String+Validation.swift */,
-				D21A31EF1DEDC9DA00E4A609 /* String+Conversions.swift */,
-				D2234A611E002D2600252551 /* String+NSString.swift */,
-				23FF8F211ECC92AB00A9ADD8 /* String+RegularExpressions.swift */,
-			);
-			path = String;
-			sourceTree = "<group>";
-		};
 		23C796641FB44742006766FD /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -763,10 +751,8 @@
 				23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */,
 				239B92641F274E55009A9433 /* Sequence+Utils.swift */,
 				23C7967C1FB44E74006766FD /* SignedInteger.swift */,
-				D208D1811DF07103009687BB /* String+Operators.swift */,
-				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
+				23C7968A1FB47254006766FD /* String */,
 				2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */,
-				23C796811FB458E6006766FD /* String+Padding.swift */,
 			);
 			path = StandardLibrary;
 			sourceTree = "<group>";
@@ -802,6 +788,20 @@
 				23CC6B221FA71E04004D062B /* Image+Utils.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		23C7968A1FB47254006766FD /* String */ = {
+			isa = PBXGroup;
+			children = (
+				D21A31EF1DEDC9DA00E4A609 /* String+Conversions.swift */,
+				D2234A611E002D2600252551 /* String+NSString.swift */,
+				D208D1811DF07103009687BB /* String+Operators.swift */,
+				23C796811FB458E6006766FD /* String+Padding.swift */,
+				23FF8F211ECC92AB00A9ADD8 /* String+RegularExpressions.swift */,
+				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
+				12B9563E1D8820CA00F75DD5 /* String+Validation.swift */,
+			);
+			name = String;
 			sourceTree = "<group>";
 		};
 		23D922981EFA670900629E17 /* Support */ = {
