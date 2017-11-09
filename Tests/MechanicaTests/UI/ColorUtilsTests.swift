@@ -36,9 +36,9 @@ class ColorUtilsTests: XCTestCase {
   }
 
   func testRGBAInt() {
-    XCTAssertTrue(Color.red.rgbaInt! == (255, 0, 0, 255))
-    XCTAssertTrue(Color.yellow.rgbaInt! == (255, 255, 0, 255))
-    XCTAssertTrue(Color.black.rgbaInt! == (0, 0, 0, 255))
+    XCTAssertTrue(Color.red.rgbaComponents! == (255, 0, 0, 255))
+    XCTAssertTrue(Color.yellow.rgbaComponents! == (255, 255, 0, 255))
+    XCTAssertTrue(Color.black.rgbaComponents! == (0, 0, 0, 255))
   }
 
   func testHex() {
@@ -281,7 +281,7 @@ class ColorUtilsTests: XCTestCase {
       XCTAssertTrue(redRGBA.green * 255 == colorRGBA.green * 255)
       XCTAssertTrue(redRGBA.blue * 255 == colorRGBA.blue * 255)
       XCTAssertTrue(redRGBA.alpha * 255 == colorRGBA.alpha * 255)
-      XCTAssertTrue(Color.red.rgbaInt! == color.rgbaInt!)
+      XCTAssertTrue(Color.red.rgbaComponents! == color.rgbaComponents!)
     }
 
     do {
@@ -297,7 +297,7 @@ class ColorUtilsTests: XCTestCase {
       XCTAssertTrue(whiteRGBA.green * 255 == colorRGBA.green * 255)
       XCTAssertTrue(whiteRGBA.blue * 255 == colorRGBA.blue * 255)
       XCTAssertTrue(whiteRGBA.alpha * 255 == colorRGBA.alpha * 255)
-      XCTAssertTrue(white.rgbaInt! == color.rgbaInt!)
+      XCTAssertTrue(white.rgbaComponents! == color.rgbaComponents!)
     }
 
   }

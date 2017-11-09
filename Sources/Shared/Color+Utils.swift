@@ -37,15 +37,11 @@
 
 extension Color {
 
-  private typealias ColorConverter = (Color) -> Color?
-
-  private final func processingColor(using converter: ColorConverter) -> Color? { return converter(self) }
-
   /// **Mechanica**
   ///
   /// Returns the hexadecimal string representation of `self` in the sRGB space.
-  public final var hexString: String {
-    guard let components = rgba else { fatalError("Couldn't calculate RGBA values") }
+  public final var hexString: String? {
+    guard let components = rgba else { return nil }
 
     return String(format: "#%02X%02X%02X", Int(components.red * 0xff), Int(components.green * 0xff), Int(components.blue * 0xff))
   }
@@ -78,7 +74,7 @@ extension Color {
   /// **Mechanica**
   ///
   /// Returns the color's RGBA components as Ints.
-  public final var rgbaInt: (red: Int, green: Int, blue: Int, alpha: Int)? {
+  public final var rgbaComponents: (red: Int, green: Int, blue: Int, alpha: Int)? {
     guard let rgba = self.rgba else { return nil }
 
     return (Int(rgba.red * 255), Int(rgba.green * 255), Int(rgba.blue * 255), Int(rgba.alpha * 255))
@@ -137,13 +133,8 @@ extension Color {
   /// - Returns: a `new color` mixing `self` with the given `color`.
   /// - Note: See [lighter and darker color](http://stackoverflow.com/questions/11598043/get-slightly-lighter-and-darker-color-from-uicolor/23120676#23120676)
   public final func mixing(with color: Color, by percentage: CGFloat = 0.5) -> Color? {
-    let converter: ColorConverter = {
-      guard let (r1, g1, b1, a1) = $0.rgba, let (r2, g2, b2, a2) = color.rgba else { return nil }
-
-      return Color(red: r1+percentage*(r2-r1), green: g1+percentage*(g2-g1), blue: b1+percentage*(b2-b1), alpha: a1+percentage*(a2-a1))
-    }
-
-    return processingColor(using: converter)
+    guard let (r1, g1, b1, a1) = rgba, let (r2, g2, b2, a2) = color.rgba else { return nil }
+    return Color(red: r1 + percentage * (r2 - r1), green: g1 + percentage * (g2 - g1), blue: b1 + percentage * (b2 - b1), alpha: a1 + percentage * (a2 - a1))
   }
 
   /// **Mechanica**
@@ -154,7 +145,7 @@ extension Color {
     //return mixing(with: .black, by: percentage)
     guard let (r, g, b, a) = rgba else { return nil }
 
-    return Color(red: r - percentage, green: g - percentage, blue: b - percentage, alpha: a)
+    return Color(red: (r - percentage), green: (g - percentage), blue: (b - percentage), alpha: a)
   }
 
   /// **Mechanica**
@@ -165,7 +156,7 @@ extension Color {
     //return mixing(with: .white, by: percentage)
     guard let (r, g, b, a) = rgba else { return nil }
 
-    return Color(red: r + percentage, green: g + percentage, blue: b + percentage, alpha: a)
+    return Color(red: (r + percentage), green: (g + percentage), blue: (b + percentage), alpha: a)
   }
 }
 
@@ -267,30 +258,22 @@ extension Color {
   ///
   /// Returns a `new` color derived from `self` lightened increasing the brightness by a `percentage` in the HSB color space.
   public final func lightened(byIncreasingBrightness percentage: CGFloat = 0.25) -> Color? {
-    if percentage == 0 { return self.copy() as? Color }
+    guard percentage != 0 else { return self.copy() as? Color }
+    guard let hsba = hsba else { return nil }
 
-    let converter: ColorConverter = {
-      guard let hsba = $0.hsba else { return nil }
-      //let percentage: CGFloat = min(max(percentage, -1), 1)
-      //let newBrightness = min(max(hsba.brightness + percentage, -1), 1)
-      return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: hsba.brightness + percentage, alpha: hsba.alpha)
-    }
-
-    return processingColor(using: converter)
+    //let percentage: CGFloat = min(max(percentage, -1), 1)
+    //let newBrightness = min(max(hsba.brightness + percentage, -1), 1)
+    return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: (hsba.brightness + percentage), alpha: hsba.alpha)
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` darkened decreasing the brightness by a `percentage` in the HSB color space.
   public final func darkened(byDecreasingBrightness percentage: CGFloat = 0.25) -> Color? {
-    if percentage == 0 { return self.copy() as? Color }
+    guard percentage != 0 else { return self.copy() as? Color }
+    guard let hsba = hsba else { return nil }
 
-    let converter: ColorConverter = {
-      guard let hsba = $0.hsba else { return nil }
-      return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: hsba.brightness - percentage, alpha: hsba.alpha)
-    }
-
-    return processingColor(using: converter)
+    return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: (hsba.brightness - percentage), alpha: hsba.alpha)
   }
 
   /// **Mechanica**
@@ -298,14 +281,10 @@ extension Color {
   /// Returns a `new` color derived from `self` saturating the hue (increasing the saturation) by a `percentage` in the HSB color space, making it more intense and darker.
   /// - Note: Increasing the saturation makes the color less closer to white.
   public final func shaded(byIncreasingSaturation percentage: CGFloat = 0.25) -> Color? {
-    if percentage == 0 { return self.copy() as? Color }
+    guard percentage != 0 else { return self.copy() as? Color }
+    guard let hsba = hsba else { return nil }
 
-    let converter: ColorConverter = {
-      guard let hsba = $0.hsba else { return nil }
-      return Color(hue: hsba.hue, saturation: hsba.saturation + percentage, brightness: hsba.brightness, alpha: hsba.alpha)
-    }
-
-    return processingColor(using: converter)
+    return Color(hue: hsba.hue, saturation: (hsba.saturation + percentage), brightness: hsba.brightness, alpha: hsba.alpha)
   }
 
   /// **Mechanica**
@@ -313,14 +292,10 @@ extension Color {
   /// Returns a `new` color derived from `self` desaturating the hue (decreasing the saturation) by a `percentage` in the HSB color space, making it less intense.
   /// - Note: Decreasing the saturation makes the color closer to white.
   public final func tinted(byDecreasingSaturation percentage: CGFloat = 0.25) -> Color? {
-    if percentage == 0 { return self.copy() as? Color }
+    guard percentage != 0 else { return self.copy() as? Color }
+    guard let hsba = hsba else { return nil }
 
-    let converter: ColorConverter = {
-      guard let hsba = $0.hsba else { return nil }
-      return Color(hue: hsba.hue, saturation: hsba.saturation - percentage, brightness: hsba.brightness, alpha: hsba.alpha)
-    }
-
-    return processingColor(using: converter)
+    return Color(hue: hsba.hue, saturation: (hsba.saturation - percentage), brightness: hsba.brightness, alpha: hsba.alpha)
   }
 
 }
