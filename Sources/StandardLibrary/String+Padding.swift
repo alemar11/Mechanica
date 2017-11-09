@@ -41,7 +41,7 @@ public extension String {
   ///
   /// - Parameters:
   ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned.
-  ///   - token: The string used to pad the String (Defaults to a white space).
+  ///   - token: The string used to pad the String (defaults to a white space).
   /// - Returns: The padded copy of the string.
   /// - Note: If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
   public func padding(length: Int, with token: String = " ") -> String {
@@ -57,7 +57,7 @@ public extension String {
   ///
   /// - Parameters:
   ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned. If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
-  ///   - token: The string used to pad the String (Defaults to a white space).
+  ///   - token: The string used to pad the String (defaults to a white space).
   /// - Note: If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
   public mutating func pad(length: Int, with token: String = " ") {
     self = padding(length: length, with: token)
@@ -78,8 +78,8 @@ public extension String {
   ///     string.paddingStart(length: 13, withToken: "*") -> "**Hello World"
   ///
   /// - Parameters:
-  ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned. If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
-  ///   - token: The string used to pad the String (Defaults to a white space).
+  ///   - length: The final length of your string.
+  ///   - token: The string used to pad the String (defaults to a white space).
   /// - Returns: The left-padded copy of the string.
   public func paddingStart(length: Int, with token: String = " ") -> String {
     guard count < length else { return self }
@@ -101,8 +101,8 @@ public extension String {
   /// Pads `self` on the left side if it's shorter than `length` using a `token`. Padding characters are truncated if they exceed length.
   ///
   /// - Parameters:
-  ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned. If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
-  ///   - token: The string used to pad the String (Defaults to a white space).
+  ///   - length: The final length of your string.
+  ///   - token: The string used to pad the String (defaults to a white space).
   public mutating func padStart(length: Int, with token: String = " ") {
     self = paddingStart(length: length, with: token)
   }
@@ -122,8 +122,8 @@ public extension String {
   ///     string.paddingEnd(length: 13, withToken: "*", ) -> "Hello World**"
   ///
   /// - Parameters:
-  ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned.
-  ///   - token: The string used to pad the String. Must be 1 character in length (Defaults to a white space).
+  ///   - length: The final length of your string.
+  ///   - token: The string used to pad the String (defaults to a white space).
   /// - Returns: The right-padded copy of the string.
   public func paddingEnd(length: Int, with token: String = " ") -> String {
     guard count < length else { return self }
@@ -145,8 +145,8 @@ public extension String {
   /// Pads `self` on the right side if it's shorter than `length` using a `token`. Padding characters are truncated if they exceed length.
   ///
   /// - Parameters:
-  ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned. If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
-  ///   - token: The string used to pad the String (Defaults to a white space).
+  ///   - length: The final length of your string.
+  ///   - token: The string used to pad the String (defaults to a white space).
   public mutating func padEnd(length: Int, with token: String = " ") {
     self = paddingEnd(length: length, with: token)
   }

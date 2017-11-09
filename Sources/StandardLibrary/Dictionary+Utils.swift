@@ -43,7 +43,7 @@ extension Dictionary {
   ///
   /// Returns a JSON Data from dictionary.
   ///
-  /// - Parameter prettify: *true* to prettify data (default is *false*).
+  /// - Parameter prettify: *true* to prettify data (defaults to *false*).
   /// - Returns: optional JSON Data.
   public func jsonData(prettify: Bool = false) -> Data? {
     guard JSONSerialization.isValidJSONObject(self) else { return nil }
@@ -55,7 +55,7 @@ extension Dictionary {
   ///
   /// Returns a JSON String from dictionary.
   ///
-  /// - Parameter prettify: *true* to prettify string (default is *false*).
+  /// - Parameter prettify: *true* to prettify string (defaults to *false*).
   /// - Returns: optional JSON String.
   public func jsonString(prettify: Bool = false) -> String? {
     guard let jsonData = jsonData(prettify: prettify) else { return nil }
