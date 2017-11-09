@@ -117,6 +117,9 @@
                 <a href="../Extensions/Sequence.html">Sequence</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/SignedInteger.html">SignedInteger</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
               </li>
               <li class="nav-group-task">
@@ -1061,7 +1064,7 @@
 <p>Returns a new <code>String</code> containing the characters of the String from the one at a given position to the end.</p>
 
 <p>Example:</p>
-<pre class="highlight plaintext"><code>"hello".removingPrefix(upToPosition: 1) // "ello"
+<pre class="highlight plaintext"><code>"hello".removingPrefix(upToPosition: 1) -&gt; "ello"
 </code></pre>
 
                       </div>
@@ -1113,7 +1116,7 @@
 <p>Returns a new <code>String</code> removing the spcified prefix (if the string has it).</p>
 
 <p>Example:</p>
-<pre class="highlight plaintext"><code>"hello".removingPrefix("hel") // "lo"
+<pre class="highlight plaintext"><code>"hello".removingPrefix("hel") -&gt; "lo"
 </code></pre>
 
                       </div>
@@ -1165,7 +1168,7 @@
 <p>Returns a new <code>String</code> containing the characters of the String up to, but not including, the one at a given position.</p>
 
 <p>Example:</p>
-<pre class="highlight plaintext"><code>"hello".removingSuffix(fromPosition: 1) == "hell"
+<pre class="highlight plaintext"><code>"hello".removingSuffix(fromPosition: 1) -&gt; "hell"
 </code></pre>
 
                       </div>
@@ -1217,7 +1220,7 @@
 <p>Returns a new <code>String</code> removing the spcified suffix (if the string has it).</p>
 
 <p>Example:</p>
-<pre class="highlight plaintext"><code>"hello".removingSuffix("0") // "hell"
+<pre class="highlight plaintext"><code>"hello".removingSuffix("0") -&gt; "hell"
 </code></pre>
 
                       </div>
@@ -1401,7 +1404,7 @@ The default trailing is the ellipsis (…).</p>
 
 <p>Example:</p>
 <pre class="highlight plaintext"><code>let aString = "test    too many    spaces"
-aString.removeExcessiveSpaces //test too many spaces
+aString.removeExcessiveSpaces  -&gt; test too many spaces
 </code></pre>
 
                       </div>
@@ -1761,7 +1764,7 @@ White space and new lines at the beginning or ending of the <code>String</code> 
 
 <p>Example:</p>
 <pre class="highlight plaintext"><code>let string = "HelloWorld"
-print(string.camelCased()) // "helloWorld"
+print(string.camelCased()) -&gt; "helloWorld"
 </code></pre>
 
                       </div>
@@ -1799,7 +1802,7 @@ print(string.camelCased()) // "helloWorld"
 
 <p>Example:</p>
 <pre class="highlight plaintext"><code>let string = "Hello World"
-print(string.kebabCased()) // "-Hello-World-"
+print(string.kebabCased()) -&gt; "-Hello-World-"
 </code></pre>
 
                       </div>
@@ -1837,7 +1840,7 @@ print(string.kebabCased()) // "-Hello-World-"
 
 <p>Example:</p>
 <pre class="highlight plaintext"><code>let string = "HELLO WORLD"
-print(string.pascalCased()) // "HelloWorld"
+print(string.pascalCased()) -&gt; "HelloWorld"
 </code></pre>
 
                       </div>
@@ -1875,7 +1878,7 @@ print(string.pascalCased()) // "HelloWorld"
 
 <p>Example:</p>
 <pre class="highlight plaintext"><code>let string = "Hello World"
-print(string.slugCased()) // "Hello-World"
+print(string.slugCased()) -&gt; "Hello-World"
 </code></pre>
 
                       </div>
@@ -1914,7 +1917,7 @@ print(string.slugCased()) // "Hello-World"
 <p>Example:</p>
 <pre class="highlight plaintext"><code>let string = "hello world"
 print(string.snakeCased())
-// Prints "hello_world"
+-&gt; Prints "hello_world"
 </code></pre>
 
                       </div>
@@ -1952,7 +1955,7 @@ print(string.snakeCased())
 
 <p>Example:</p>
 <pre class="highlight plaintext"><code>let string = "Hello World"
-print(string.swapCased()) // "hELLO wORLD"
+print(string.swapCased()) -&gt; "hELLO wORLD"
 </code></pre>
 
                       </div>
@@ -2857,6 +2860,172 @@ print(string.swapCased()) // "hELLO wORLD"
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:SS9MechanicaE10isValidUrlSbv"></a>
+                    <a name="//apple_ref/swift/Property/isValidUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE10isValidUrlSbv">isValidUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Checks if string is a valid URL.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>"https://tinrobots.org".isValidUrl -&gt; true
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isValidUrl</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE17isValidSchemedUrlSbv"></a>
+                    <a name="//apple_ref/swift/Property/isValidSchemedUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE17isValidSchemedUrlSbv">isValidSchemedUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Check if the <code>String</code> is a valid schemed URL.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>"https://tinrobots.org".isValidSchemedUrl -&gt; true
+"tinrobots.org".isValidSchemedUrl -&gt; false
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isValidSchemedUrl</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE15isValidHttpsUrlSbv"></a>
+                    <a name="//apple_ref/swift/Property/isValidHttpsUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE15isValidHttpsUrlSbv">isValidHttpsUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Checks if string is a valid https URL.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>"https://tinrobots.org".isValidHttpsUrl -&gt; true
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isValidHttpsUrl</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE14isValidHttpUrlSbv"></a>
+                    <a name="//apple_ref/swift/Property/isValidHttpUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE14isValidHttpUrlSbv">isValidHttpUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Checks if string is a valid http URL.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>"http://tinrobots.org".isValidHttpUrl -&gt; true
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isValidHttpUrl</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE14isValidFileUrlSbv"></a>
+                    <a name="//apple_ref/swift/Property/isValidFileUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE14isValidFileUrlSbv">isValidFileUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Checks if string is a valid file URL.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>"file://Documents/file.txt".isValidFileUrl -&gt; true
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isValidFileUrl</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:SS9MechanicaE12isValidEmailSbv"></a>
                     <a name="//apple_ref/swift/Property/isValidEmail" class="dashAnchor"></a>
                     <a class="token" href="#/s:SS9MechanicaE12isValidEmailSbv">isValidEmail</a>
@@ -2869,7 +3038,7 @@ print(string.swapCased()) // "hELLO wORLD"
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns true if the <code>String</code> is a valid email format.</p>
+<p>Returns true if the <code>String</code> is a valid email.</p>
 <div class="aside aside-seealso">
     <p class="aside-title">Seealso</p>
     <a href="https://medium.com/@darthpelo/email-validation-in-swift-3-0-acfebe4d879a">link 1</a>
@@ -3093,7 +3262,7 @@ print(string.swapCased()) // "hELLO wORLD"
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-11-02)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-11-09)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -72,6 +72,9 @@
                 <a href="../Extensions/FloatingPoint.html">FloatingPoint</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/Image.html">Image</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/Int.html">Int</a>
               </li>
               <li class="nav-group-task">
@@ -102,9 +105,6 @@
                 <a href="../Extensions/NSPredicate.html">NSPredicate</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Nib.html">Nib</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Extensions/Optional.html">Optional</a>
               </li>
               <li class="nav-group-task">
@@ -120,25 +120,25 @@
                 <a href="../Extensions/SignedInteger.html">SignedInteger</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Storyboard.html">Storyboard</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UIButton.html">UIButton</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/UICollectionView.html">UICollectionView</a>
+                <a href="../Extensions/UIDevice.html">UIDevice</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/UIDevice.html">UIDevice</a>
+                <a href="../Extensions/UIGestureRecognizer.html">UIGestureRecognizer</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UIImage.html">UIImage</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/UITableView.html">UITableView</a>
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIWindow.html">UIWindow</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UInt.html">UInt</a>
@@ -163,9 +163,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Unicode/Scalar.html">– Scalar</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/UnsignedInteger.html">UnsignedInteger</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UserDefaults.html">UserDefaults</a>
@@ -201,24 +198,6 @@
               <li class="nav-group-task">
                 <a href="../Protocols/FixedWidthIntegerRandomizable.html">FixedWidthIntegerRandomizable</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/NibEnumerable.html">NibEnumerable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/NibIdentifiable.html">NibIdentifiable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols.html#/s:9Mechanica11NibLoadableP">NibLoadable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/Reusable.html">Reusable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/StoryboardEnumerable.html">StoryboardEnumerable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/StoryboardIdentifiable.html">StoryboardIdentifiable</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -231,13 +210,7 @@
                 <a href="../Typealiases.html#/s:9Mechanica4Fonta">Font</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Mechanica3Niba">Nib</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Mechanica11NibReusablea">NibReusable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Mechanica10Storyboarda">Storyboard</a>
+                <a href="../Typealiases.html#/s:9Mechanica5Imagea">Image</a>
               </li>
             </ul>
           </li>
@@ -261,9 +234,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s13SignedIntegerP9MechanicaE14toBinaryStringSSv"></a>
-                    <a name="//apple_ref/swift/Property/toBinaryString" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s13SignedIntegerP9MechanicaE14toBinaryStringSSv">toBinaryString</a>
+                    <a name="/s:s13SignedIntegerP9MechanicaE10isPositiveSbv"></a>
+                    <a name="//apple_ref/swift/Property/isPositive" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s13SignedIntegerP9MechanicaE10isPositiveSbv">isPositive</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -273,31 +246,43 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Creates a string representing the given value in the binary base.</p>
-
-<p>Example:</p>
-<pre class="highlight plaintext"><code>255.toBinaryString //"11111111"
-Int16(-1).toBinaryString //"1111111111111111"
-1.toBinaryString  //"0000000000000000000000000000000000000000000000000000000000000001" (Int 64 bit)
-1.toBinaryString  //"00000000000000000000000000000001" (Int 32 bit)
-</code></pre>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    Negative integers are converted with the <strong>two&rsquo;s complement operation</strong>. For signed binary use <code>String(:,radix:)</code>
-
-</div>
-
-<p>Example:</p>
-<pre class="highlight plaintext"><code>String(Int8(-127), radix: 2) // -1111111
-Int8(-127).toBinaryString // 10000001
-</code></pre>
+<p>Determine if self is positive (equivalent to <code>self &gt; 0</code>).</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">toBinaryString</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isPositive</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s13SignedIntegerP9MechanicaE10isNegativeSbv"></a>
+                    <a name="//apple_ref/swift/Property/isNegative" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s13SignedIntegerP9MechanicaE10isNegativeSbv">isNegative</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Determine if self is negative (equivalent to <code>self &lt; 0</code>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isNegative</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -309,8 +294,8 @@ Int8(-127).toBinaryString // 10000001
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-10-17)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-11-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
