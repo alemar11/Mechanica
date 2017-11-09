@@ -606,7 +606,6 @@
 				12CAB72D1E00707D00CFE42C /* App.swift */,
 				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
 				23DC26D11F1E3F090093F7EE /* Operators.swift */,
-				23793D751F067F71002987C4 /* Integer */,
 				23793D791F067FC3002987C4 /* String */,
 			);
 			path = Sources;
@@ -697,13 +696,6 @@
 				23B2ED711EC8CE28006365BD /* NSObjectProtocolUtils.swift */,
 			);
 			path = NSObject;
-			sourceTree = "<group>";
-		};
-		23793D751F067F71002987C4 /* Integer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Integer;
 			sourceTree = "<group>";
 		};
 		23793D791F067FC3002987C4 /* String */ = {
