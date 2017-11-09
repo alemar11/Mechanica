@@ -717,21 +717,21 @@
 		23C796641FB44742006766FD /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */,
-				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
-				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
-				23F6A1621EC8DBD400D20502 /* Utils.swift */,
-				23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */,
-				D220818C1E07FEB700BE4268 /* URL+Utils.swift */,
 				239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */,
-				D2ABD0061E004F8D006859B9 /* ProcessInfo+Utils.swift */,
+				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
+				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
 				2307D0691F8FA15500FDBA2A /* Locale.swift */,
-				239F8DD71E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift */,
-				23B2ED6C1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift */,
-				D24745AC1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift */,
 				23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */,
 				23949C591E4B979D00BD9EC8 /* NSAttributedString+Utils.swift */,
+				D24745AC1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift */,
 				23D7792E1F66706200724053 /* NSMutableAttributedString+Utils.swift */,
+				239F8DD71E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift */,
+				23B2ED6C1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift */,
+				23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */,
+				D2ABD0061E004F8D006859B9 /* ProcessInfo+Utils.swift */,
+				D220818C1E07FEB700BE4268 /* URL+Utils.swift */,
+				23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */,
+				23F6A1621EC8DBD400D20502 /* Utils.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -739,23 +739,23 @@
 		23C796651FB4477A006766FD /* StandardLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				D208D1811DF07103009687BB /* String+Operators.swift */,
-				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
-				D28CAEE51E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift */,
-				237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */,
-				2302A2D61F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift */,
-				23D12CDD1F9A649400720D4F /* FixedWidthInteger+Utils.swift */,
-				23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */,
-				233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */,
 				235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */,
-				12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */,
-				2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */,
-				239B92641F274E55009A9433 /* Sequence+Utils.swift */,
-				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
+				237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */,
 				12D9DEFC1E085B6A000799C6 /* Bool+Utils.swift */,
 				2302A2CC1F8FFE7A001A92A8 /* Character+Utils.swift */,
 				23964A011E5B034800C8E0DF /* Collection+Utils.swift */,
+				233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */,
+				2302A2D61F9006A8001A92A8 /* ExpressibleByIntegerLiteral+Utils.swift */,
+				23D12CDD1F9A649400720D4F /* FixedWidthInteger+Utils.swift */,
+				D28CAEE51E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift */,
+				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
+				12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */,
+				23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */,
+				239B92641F274E55009A9433 /* Sequence+Utils.swift */,
 				23C7967C1FB44E74006766FD /* SignedInteger.swift */,
+				D208D1811DF07103009687BB /* String+Operators.swift */,
+				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
+				2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */,
 			);
 			path = StandardLibrary;
 			sourceTree = "<group>";
