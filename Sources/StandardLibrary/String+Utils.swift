@@ -185,7 +185,6 @@ extension String {
   ///
   ///  Returns a `new` String made by removing spaces and new lines from both ends.
   public func trimmed() -> String {
-    //return trimmedLeft().trimmedRight()
     return trimmingCharacters(in: .whitespacesAndNewlines)
   }
 
@@ -196,7 +195,7 @@ extension String {
   ///  - parameter set: characters to strip
   ///
   ///  - Returns: stripped string
-  public func trimmedLeft(characterSet set: CharacterSet = .whitespacesAndNewlines) -> String {
+  public func trimmedStart(characterSet set: CharacterSet = .whitespacesAndNewlines) -> String {
     if let range = rangeOfCharacter(from: set.inverted) {
       return String(self[range.lowerBound..<endIndex])
     }
@@ -211,7 +210,7 @@ extension String {
   ///  - parameter set: characters to strip
   ///
   ///  - Returns: stripped string
-  public func trimmedRight(characterSet set: CharacterSet = .whitespacesAndNewlines) -> String {
+  public func trimmedEnd(characterSet set: CharacterSet = .whitespacesAndNewlines) -> String {
     if let range = rangeOfCharacter(from: set.inverted, options: .backwards) {
       return String(self[..<range.upperBound])
     }

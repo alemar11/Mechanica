@@ -156,26 +156,26 @@ class StringUtilsTests: XCTestCase {
   
   func testTrimmed() {
     let s1 = "   Hello World   "
-    XCTAssertTrue(s1.trimmedLeft() == "Hello World   ")
-    XCTAssertTrue(s1.trimmedRight() == "   Hello World")
+    XCTAssertTrue(s1.trimmedStart() == "Hello World   ")
+    XCTAssertTrue(s1.trimmedEnd() == "   Hello World")
     XCTAssertTrue(s1.trimmed() == "Hello World")
     
     let s2 = "   \u{200B} Hello World   "
-    XCTAssertTrue(s2.trimmedLeft() == "Hello World   ")
+    XCTAssertTrue(s2.trimmedStart() == "Hello World   ")
     XCTAssertTrue(s2.trimmed() == "Hello World")
     
     let s3 = "Hello World\n\n   "
-    XCTAssertTrue(s3.trimmedRight() == "Hello World")
+    XCTAssertTrue(s3.trimmedEnd() == "Hello World")
     XCTAssertTrue(s3.trimmed() == "Hello World")
     
     
     let s4 = "abcdefg"
-    XCTAssertTrue(s4.trimmedRight(characterSet: .alphanumerics) == "")
-    XCTAssertTrue(s4.trimmedLeft(characterSet: .alphanumerics) == "")
+    XCTAssertTrue(s4.trimmedEnd(characterSet: .alphanumerics) == "")
+    XCTAssertTrue(s4.trimmedStart(characterSet: .alphanumerics) == "")
     
     let s5 = "  abcdefg  "
-    XCTAssertTrue(s5.trimmedRight(characterSet: .alphanumerics) == "  abcdefg  ")
-    XCTAssertTrue(s5.trimmedLeft(characterSet: .alphanumerics) == "  abcdefg  ")
+    XCTAssertTrue(s5.trimmedEnd(characterSet: .alphanumerics) == "  abcdefg  ")
+    XCTAssertTrue(s5.trimmedStart(characterSet: .alphanumerics) == "  abcdefg  ")
     XCTAssertTrue(s5.trimmed() == "abcdefg")
   }
   
