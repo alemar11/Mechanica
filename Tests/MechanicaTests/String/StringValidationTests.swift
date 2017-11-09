@@ -135,6 +135,39 @@ class StringValidationTests: XCTestCase {
     XCTAssertFalse("123A!?)".isLowercased)
   }
 
+  func testIsValidUrl() {
+    XCTAssert("https://tinrobots.org".isValidUrl)
+    XCTAssert("http://tinrobots.org".isValidUrl)
+    XCTAssert("ftp://tinrobots.org".isValidUrl)
+  }
+
+  func testIsValidSchemedUrl() {
+    XCTAssertFalse("Tin Robots".isValidSchemedUrl)
+    XCTAssert("https://tinrobots.org".isValidSchemedUrl)
+    XCTAssert("ftp://tinrobots.org".isValidSchemedUrl)
+    XCTAssertFalse("tinrobots.org".isValidSchemedUrl)
+  }
+
+  func testIsValidHttpsUrl() {
+    XCTAssertFalse("Hello world!".isValidHttpsUrl)
+    XCTAssert("https://tinrobots.org".isValidHttpsUrl)
+    XCTAssertFalse("http://tinrobots.org".isValidHttpsUrl)
+    XCTAssertFalse("tinrobots.org".isValidHttpsUrl)
+  }
+
+  func testIsValidHttpUrl() {
+    XCTAssertFalse("Hello world!".isValidHttpUrl)
+    XCTAssert("http://tinrobots.org".isValidHttpUrl)
+    XCTAssertFalse("tinrobots.org".isValidHttpUrl)
+  }
+
+  func testIsValidFileURL() {
+    XCTAssertFalse("Hello world!".isValidFileUrl)
+    XCTAssert("file://path/to/folder/file.swift".isValidFileUrl)
+    XCTAssert("file://path/to/folder/file".isValidFileUrl)
+    XCTAssertFalse("tinrobots.org".isValidFileUrl)
+  }
+
   func testIsValideEmail() {
     //valid emails
     XCTAssertTrue("test@tinrobots.org".isValidEmail)

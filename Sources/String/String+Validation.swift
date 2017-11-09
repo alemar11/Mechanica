@@ -95,6 +95,70 @@ public extension String {
 
   /// **Mechanica**
   ///
+  /// Checks if string is a valid URL.
+  ///
+  /// Example:
+  ///
+  ///     "https://tinrobots.org".isValidUrl -> true
+  ///
+  public var isValidUrl: Bool {
+    return URL(string: self) != nil
+  }
+
+  /// **Mechanica**
+  ///
+  /// Check if the `String` is a valid schemed URL.
+  ///
+  /// Example:
+  ///
+  ///     "https://tinrobots.org".isValidSchemedUrl -> true
+  ///     "tinrobots.org".isValidSchemedUrl -> false
+  ///
+  public var isValidSchemedUrl: Bool {
+    guard let url = URL(string: self) else { return false }
+    return url.scheme != nil
+  }
+
+  /// **Mechanica**
+  ///
+  /// Checks if string is a valid https URL.
+  ///
+  /// Example:
+  ///
+  ///     "https://tinrobots.org".isValidHttpsUrl -> true
+  ///
+  public var isValidHttpsUrl: Bool {
+    guard let url = URL(string: self) else { return false }
+    return url.scheme == "https"
+  }
+
+  /// **Mechanica**
+  ///
+  /// Checks if string is a valid http URL.
+  ///
+  /// Example:
+  ///
+  ///     "http://tinrobots.org".isValidHttpUrl -> true
+  ///
+  public var isValidHttpUrl: Bool {
+    guard let url = URL(string: self) else { return false }
+    return url.scheme == "http"
+  }
+
+  /// **Mechanica**
+  ///
+  /// Checks if string is a valid file URL.
+  ///
+  /// Example:
+  ///
+  ///     "file://Documents/file.txt".isValidFileUrl -> true
+  ///
+  public var isValidFileUrl: Bool {
+    return URL(string: self)?.isFileURL ?? false
+  }
+
+  /// **Mechanica**
+  ///
   /// Returns true if the `String` is a valid email.
   /// - Seealso: [link 1](https://medium.com/@darthpelo/email-validation-in-swift-3-0-acfebe4d879a)
   /// - Seealso: [link 2](http://www.cocoawithlove.com/2009/06/verifying-that-string-is-email-address.html)
