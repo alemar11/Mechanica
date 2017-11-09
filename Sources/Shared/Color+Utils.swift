@@ -129,7 +129,7 @@ extension Color {
   ///
   /// - Parameters:
   ///   - color: color to be mixed.
-  ///   - percentage: mixing weight. (default: 0.5) takes the average of each of the RGBA components.
+  ///   - percentage: mixing weight. (default is 0.5) takes the average of each of the RGBA components.
   /// - Returns: a `new color` mixing `self` with the given `color`.
   /// - Note: See [lighter and darker color](http://stackoverflow.com/questions/11598043/get-slightly-lighter-and-darker-color-from-uicolor/23120676#23120676)
   public final func mixing(with color: Color, by percentage: CGFloat = 0.5) -> Color? {
