@@ -189,7 +189,6 @@ extension Color {
     return Color(red: r, green: g, blue: b, alpha: a)
   }
 
-
   /// **Mechanica**
   ///
   /// Returns a `new` color derived from `self` darkened by the given percentage in the RGBA color space.
