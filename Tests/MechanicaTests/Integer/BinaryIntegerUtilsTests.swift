@@ -28,21 +28,31 @@ class IntegerUtilsTests: XCTestCase {
 
   func testIsEven() {
     XCTAssertTrue(2.isEven)
+    XCTAssertTrue((-2).isEven)
     XCTAssertTrue(22.isEven)
+    XCTAssertTrue((-22).isEven)
     XCTAssertTrue(202220.isEven)
     XCTAssertFalse(3.isEven)
     XCTAssertFalse(27.isEven)
+    XCTAssertFalse((-27).isEven)
     XCTAssertFalse(202221.isEven)
+    XCTAssertFalse((-202221).isEven)
   }
 
   func testIsOdd() {
     XCTAssertTrue(1.isOdd)
+    XCTAssertTrue((-1).isOdd)
     XCTAssertTrue(11.isOdd)
+    XCTAssertTrue((-11).isOdd)
     XCTAssertTrue(171717.isOdd)
+    XCTAssertTrue((-171717).isOdd)
 
     XCTAssertFalse(2.isOdd)
+    XCTAssertFalse((-2).isOdd)
     XCTAssertFalse(22.isOdd)
+    XCTAssertFalse((-22).isOdd)
     XCTAssertFalse(202220.isOdd)
+    XCTAssertFalse((-202220).isOdd)
   }
 
   func testIsPositive() {
