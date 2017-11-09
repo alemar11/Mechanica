@@ -66,7 +66,7 @@ extension Bool {
   ///
   /// Example:
   ///
-  ///     true.toBinaryString // "1"
+  ///     true.toBinaryString -> "1"
   ///
   public var toBinaryString: String {
     return self ? "1" : "0"

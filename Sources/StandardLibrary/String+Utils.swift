@@ -25,7 +25,7 @@ import Foundation
 
 extension String {
 
-  // MARK: - Helper Methods
+  -> MARK: - Helper Methods
 
   /// **Mechanica**
   ///
@@ -293,7 +293,7 @@ extension String {
   ///
   /// Example:
   ///
-  ///     "hello".removingPrefix(upToPosition: 1) // "ello"
+  ///     "hello".removingPrefix(upToPosition: 1) -> "ello"
   ///
   ///  - parameter upToPosition: position (included) up to which remove the prefix.
   public func removingPrefix(upToPosition: Int = 1) -> String {
@@ -310,7 +310,7 @@ extension String {
   ///
   /// Example:
   ///
-  ///     "hello".removingPrefix("hel") // "lo"
+  ///     "hello".removingPrefix("hel") -> "lo"
   ///
   ///  - parameter prefix: prefix to be removed.
   public func removingPrefix(_ prefix: String) -> String {
@@ -322,12 +322,12 @@ extension String {
   /// **Mechanica**
   ///
   ///  Returns a new `String` containing the characters of the String up to, but not including, the one at a given position.
+  ///  - parameter fromPosition: position (included) from which remove the suffix
   ///
   /// Example:
   ///
-  ///     "hello".removingSuffix(fromPosition: 1) == "hell"
+  ///     "hello".removingSuffix(fromPosition: 1) -> "hell"
   ///
-  ///  - parameter fromPosition: position (included) from which remove the suffix
   public func removingSuffix(fromPosition: Int = 1) -> String {
     guard fromPosition >= 0 && fromPosition <= length else { return "" }
 
@@ -342,7 +342,7 @@ extension String {
   ///
   /// Example:
   ///
-  ///     "hello".removingSuffix("0") // "hell"
+  ///     "hello".removingSuffix("0") -> "hell"
   ///
   ///  - parameter prefix: prefix to be removed.
   public func removingSuffix(_ suffix: String) -> String {
@@ -403,7 +403,7 @@ extension String {
   /// Example:
   ///
   ///     let aString = "test    too many    spaces"
-  ///     aString.removeExcessiveSpaces //test too many spaces
+  ///     aString.removeExcessiveSpaces  -> test too many spaces
   ///
   ///
   ///  - Returns: A `new` string where all white spaces repetitions are replaced with a single white space.
@@ -433,8 +433,8 @@ extension String {
   ///
   /// Example:
   ///
-  ///     let string = "äöüÄÖÜ" //ÄÖÜ
-  ///     let stripped = string.stripCombiningMarks //aouAOU
+  ///     let string = "äöüÄÖÜ" -> ÄÖÜ
+  ///     let stripped = string.stripCombiningMarks -> aouAOU
   ///
   @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
   func removingAccentsOrDiacritics() -> String {
@@ -529,7 +529,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "HelloWorld"
-  ///     print(string.camelCased()) // "helloWorld"
+  ///     print(string.camelCased()) -> "helloWorld"
   ///
   /// - Returns: A camel cased copy of the `String`.
   public func camelCased() -> String {
@@ -543,7 +543,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "Hello World"
-  ///     print(string.kebabCased()) // "-Hello-World-"
+  ///     print(string.kebabCased()) -> "-Hello-World-"
   ///
   /// - Returns: The kebab cased copy of the `String`.
   public func kebabCased() -> String {
@@ -557,7 +557,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "HELLO WORLD"
-  ///     print(string.pascalCased()) // "HelloWorld"
+  ///     print(string.pascalCased()) -> "HelloWorld"
   ///
   /// - Returns: A pascal cased copy of the `String`.
   public func pascalCased() -> String {
@@ -571,7 +571,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "Hello World"
-  ///     print(string.slugCased()) // "Hello-World"
+  ///     print(string.slugCased()) -> "Hello-World"
   ///
   /// - Returns: The slug copy of the `String`.
   public func slugCased() -> String {
@@ -586,7 +586,7 @@ extension String {
   ///
   ///     let string = "hello world"
   ///     print(string.snakeCased())
-  ///     // Prints "hello_world"
+  ///     -> Prints "hello_world"
   ///
   /// - Returns: The slug copy of the `String`.
   public func snakeCased() -> String {
@@ -600,7 +600,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "Hello World"
-  ///     print(string.swapCased()) // "hELLO wORLD"
+  ///     print(string.swapCased()) -> "hELLO wORLD"
   ///
   /// - Returns: The swap cased copy of the `String`.
   public func swapCased() -> String {
