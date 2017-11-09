@@ -159,28 +159,6 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
       var expectedAtLeastOnePositive = false
       var expectedAtLeastOneNegative = false
       for _ in 1...100 {
-        let value = UInt64.random()
-        if (value.isPositive) { expectedAtLeastOnePositive = true }
-        if (value.isNegative) { expectedAtLeastOneNegative = true }
-      }
-      XCTAssertTrue(expectedAtLeastOnePositive && !expectedAtLeastOneNegative)
-    }
-
-    do {
-      var expectedAtLeastOnePositive = false
-      var expectedAtLeastOneNegative = false
-      for _ in 1...100 {
-        let value = UInt64.random(lowerBound: 0, upperBound: 3)
-        if (value.isPositive) { expectedAtLeastOnePositive = true }
-        if (value.isNegative) { expectedAtLeastOneNegative = true }
-      }
-      XCTAssertTrue(expectedAtLeastOnePositive && !expectedAtLeastOneNegative)
-    }
-
-    do {
-      var expectedAtLeastOnePositive = false
-      var expectedAtLeastOneNegative = false
-      for _ in 1...100 {
         let value = Int64.random(lowerBound: .min, upperBound: 0)
         if (value.isPositive) { expectedAtLeastOnePositive = true }
         if (value.isNegative) { expectedAtLeastOneNegative = true }

@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -23,20 +23,20 @@
 
 import Foundation
 
-extension BinaryInteger {
+extension SignedInteger {
 
   /// **Mechanica**
   ///
-  /// Determine if self is even (equivalent to `self % 2 == 0`).
-  public var isEven: Bool {
-    return self % 2 == 0
+  /// Determine if self is positive (equivalent to `self > 0`).
+  public var isPositive: Bool {
+    return self > 0
   }
 
   /// **Mechanica**
   ///
-  /// Determine if self is odd (equivalent to `self % 2 != 0`).
-  public var isOdd: Bool {
-    return self % 2 != 0
+  /// Determine if self is negative (equivalent to `self < 0`).
+  public var isNegative: Bool {
+    return self < 0
   }
 
 }
