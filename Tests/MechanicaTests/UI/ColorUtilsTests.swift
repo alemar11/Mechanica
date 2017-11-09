@@ -302,40 +302,130 @@ class ColorUtilsTests: XCTestCase {
 
   }
 
+  func testChangingHue() {
+
+    do {
+      let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
+      XCTAssertEqual(gray.changingHue(by: 0.0), gray)
+    }
+
+    do {
+      /// HSBA: 0,1,1,1
+      let color = Color.red.changingHue(by: 0.5)!
+      XCTAssertTrue(color.hsba!.hue == 0.5)
+    }
+
+    do {
+      /// HSBA: 0,1,1,1
+      let color = Color.red.changingHue(by: -0.1)!
+      XCTAssertTrue(color.hsba!.hue == CGFloat(0 - 0.1))
+
+    }
+  }
+
   func testChangingBrightness() {
-    // Given
-    let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
 
-    // When, Then
-    XCTAssertEqual(gray.changingBrightness(by: 0.0), gray)
-    XCTAssertEqual(gray.changingBrightness(by: 0.5), Color(red: 1.0, green: 1.0, blue: 1.0, alpha:1))
-    XCTAssertEqual(Color.red.changingBrightness(by: 0.5), Color(red: 1.5, green: 0, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.green.changingBrightness(by: 0.5), Color(red: 0, green: 1.5, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.blue.changingBrightness(by: 0.5), Color(red: 0, green: 0, blue: 1.5, alpha: 1))
+    do {
+      let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
+      XCTAssertEqual(gray.changingBrightness(by: 0.0), gray)
+      XCTAssertEqual(gray.changingBrightness(by: 0.5), Color(red: 1.0, green: 1.0, blue: 1.0, alpha:1))
+      XCTAssertEqual(gray.changingBrightness(by: -0.0), gray)
+      XCTAssertEqual(gray.changingBrightness(by: -0.5), Color(red: 0, green: 0, blue: 0, alpha: 1))
+    }
 
-    XCTAssertEqual(gray.changingBrightness(by: -0.0), gray)
-    XCTAssertEqual(gray.changingBrightness(by: -0.5), Color(red: 0, green: 0, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.red.changingBrightness(by: -0.5), Color(red: 0.5, green: 0, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.green.changingBrightness(by: -0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.blue.changingBrightness(by: -0.5), Color(red: 0, green: 0, blue: 0.5, alpha: 1))
+    do {
+      /// HSBA: 0,1,1,1
+      let color = Color.red.changingBrightness(by: 0.3)!
+      let hsba = color.hsba!
+      XCTAssertTrue(hsba.hue == 0)
+      XCTAssertTrue(hsba.saturation == 1)
+      XCTAssertTrue(hsba.brightness == 1.3)
+      XCTAssertTrue(hsba.alpha == 1)
+    }
+
+    do {
+      /// HSBA: 0,1,1,1
+      let color = Color.red.changingBrightness(by: 1.3)!
+      let hsba = color.hsba!
+      print(hsba)
+      XCTAssertTrue(hsba.hue == 0)
+      XCTAssertTrue(hsba.saturation == 1)
+      XCTAssertTrue(hsba.brightness == 2.3)
+      XCTAssertTrue(hsba.alpha == 1)
+    }
+
+    do {
+      /// HSBA: 0,1,1,1
+      let color = Color.red.changingBrightness(by: -0.3)!
+      let hsba = color.hsba!
+      XCTAssertTrue(hsba.hue == 0)
+      XCTAssertTrue(hsba.saturation == 1)
+      XCTAssertTrue(hsba.brightness == 0.7)
+      XCTAssertTrue(hsba.alpha == 1)
+    }
+
+    do {
+      /// HSBA: 0,1,1,1
+//      let color = Color.red.changingBrightness(by: -1.3)!.convertingToCompatibleSRGBColor()!
+//
+//      let hsba = color.hsba!
+//      print(hsba)
+//      XCTAssertTrue(hsba.hue == 0)
+//      XCTAssertTrue(hsba.saturation == 1)
+//      XCTAssertTrue(hsba.brightness == 0)
+//      XCTAssertTrue(hsba.alpha == 1)
+    }
+
+    //
+    //    XCTAssertEqual(Color.red.changingBrightness(by: 0.5), Color(red: 1.5, green: 0, blue: 0, alpha: 1))
+    //    XCTAssertEqual(Color.green.changingBrightness(by: 0.5), Color(red: 0, green: 1.5, blue: 0, alpha: 1))
+    //    XCTAssertEqual(Color.blue.changingBrightness(by: 0.5), Color(red: 0, green: 0, blue: 1.5, alpha: 1))
+    //
+    //
+    //    XCTAssertEqual(Color.red.changingBrightness(by: -0.5), Color(red: 0.5, green: 0, blue: 0, alpha: 1))
+    //    XCTAssertEqual(Color.green.changingBrightness(by: -0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
+    //    XCTAssertEqual(Color.blue.changingBrightness(by: -0.5), Color(red: 0, green: 0, blue: 0.5, alpha: 1))
   }
 
   func testChangingSaturation() {
-    // Given
-    let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
 
-    // When, Then
-    XCTAssertEqual(gray.changingSaturation(by: 0.0), gray)
-    XCTAssertEqual(gray.changingSaturation(by: 0.5), Color(red: 0.5, green: 0.25, blue: 0.25, alpha: 1))
-    XCTAssertEqual(Color.red.changingSaturation(by: 0.5), Color(red: 1, green: -0.5, blue: -0.5, alpha: 1))
-    XCTAssertEqual(Color.green.changingSaturation(by: 0.5), Color(red: -0.5, green: 1.0, blue:-0.5, alpha: 1))
-    XCTAssertEqual(Color.blue.changingSaturation(by: 0.5), Color(red: -0.5, green: -0.5, blue: 1.0, alpha: 1))
+    do {
+      let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
+      XCTAssertEqual(gray.changingSaturation(by: 0.0), gray)
+      XCTAssertEqual(gray.changingSaturation(by: 0.5), Color(red: 0.5, green: 0.25, blue: 0.25, alpha: 1))
+      XCTAssertEqual(gray.changingSaturation(by: -0.0), gray)
+      XCTAssertEqual(gray.changingSaturation(by: -0.5), Color(red: 0.5, green: 0.75, blue: 0.75, alpha: 1))
+    }
 
-    XCTAssertEqual(gray.changingSaturation(by: -0.0), gray)
-    XCTAssertEqual(gray.changingSaturation(by: -0.5), Color(red: 0.5, green: 0.75, blue: 0.75, alpha: 1))
-    XCTAssertEqual(Color.red.changingSaturation(by: -0.5), Color(red: 1, green: 0.5, blue: 0.5, alpha: 1))
-    XCTAssertEqual(Color.green.changingSaturation(by: -0.5), Color(red: 0.5, green: 1.0, blue:0.5, alpha: 1))
-    XCTAssertEqual(Color.blue.changingSaturation(by: -0.5), Color(red: 0.5, green: 0.5, blue: 1.0, alpha: 1))
+    do {
+      /// HSBA: 0,1,1,1
+      let color = Color.red.changingSaturation(by: 0.3)!
+      let hsba = color.hsba!
+      XCTAssertTrue(hsba.hue == 0)
+      XCTAssertTrue(hsba.saturation == 1.3)
+      XCTAssertTrue(hsba.brightness == 1)
+      XCTAssertTrue(hsba.alpha == 1)
+    }
+
+    do {
+      /// HSBA: 0,1,1,1
+      let color = Color.red.changingSaturation(by: -0.3)!
+      let hsba = color.hsba!
+      XCTAssertTrue(hsba.hue == 0)
+      XCTAssertTrue(hsba.saturation == 0.7)
+      XCTAssertTrue(hsba.brightness == 1)
+      XCTAssertTrue(hsba.alpha == 1)
+    }
+
+
+    //    XCTAssertEqual(Color.red.changingSaturation(by: 0.5), Color(red: 1, green: -0.5, blue: -0.5, alpha: 1))
+    //    XCTAssertEqual(Color.green.changingSaturation(by: 0.5), Color(red: -0.5, green: 1.0, blue:-0.5, alpha: 1))
+    //    XCTAssertEqual(Color.blue.changingSaturation(by: 0.5), Color(red: -0.5, green: -0.5, blue: 1.0, alpha: 1))
+    //
+    //
+    //    XCTAssertEqual(Color.red.changingSaturation(by: -0.5), Color(red: 1, green: 0.5, blue: 0.5, alpha: 1))
+    //    XCTAssertEqual(Color.green.changingSaturation(by: -0.5), Color(red: 0.5, green: 1.0, blue:0.5, alpha: 1))
+    //    XCTAssertEqual(Color.blue.changingSaturation(by: -0.5), Color(red: 0.5, green: 0.5, blue: 1.0, alpha: 1))
   }
 
 }

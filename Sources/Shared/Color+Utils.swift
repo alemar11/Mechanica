@@ -82,13 +82,13 @@ extension Color {
 
   /// **Mechanica**
   ///
-  /// Returns the color's RGBA components as CGFloats.
+  /// Returns the color's RGBA components as a tuple of `CGFloat`.
   public final var rgba: RGBA? {
     var red: CGFloat = .nan, green: CGFloat = .nan, blue: CGFloat = .nan, alpha: CGFloat = .nan
 
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard let space = cgColor.colorSpace, let colorSpaceName = space.name else { return nil }
-      let compatibleSRGBColor = (colorSpaceName == CGColorSpace.sRGB) ? self: self.convertingToCompatibleSRGBColor()
+      let compatibleSRGBColor = (colorSpaceName == CGColorSpace.sRGB) ? self: self.convertedToCompatibleSRGBColor()
       guard let color = compatibleSRGBColor else { return nil }
       guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else { return nil } // could not be converted
 
@@ -108,10 +108,10 @@ extension Color {
   /// Creates a `new` color in the **sRGB** color space that matches (or *closely approximates*) the current color.
   /// Although the new color might have different component values, it looks the same as the original.
   /// - Note: [WWDC 2016 - 712](https://developer.apple.com/videos/play/wwdc2016/712/?time=2368)
-  public final func convertingToCompatibleSRGBColor() -> Color? {
+  public final func convertedToCompatibleSRGBColor() -> Color? {
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) else { return nil }
-      let compatibleSRGBColor = self.cgColor.converted(to: colorSpace, intent: CGColorRenderingIntent.defaultIntent, options: nil)!
+      let compatibleSRGBColor = self.cgColor.converted(to: colorSpace, intent: .defaultIntent, options: nil)!
 
       return Color(cgColor: compatibleSRGBColor)
 
@@ -133,6 +133,7 @@ extension Color {
   /// - Returns: a `new color` mixing `self` with the given `color`.
   /// - Note: See [lighter and darker color](http://stackoverflow.com/questions/11598043/get-slightly-lighter-and-darker-color-from-uicolor/23120676#23120676)
   public final func mixing(with color: Color, by percentage: CGFloat = 0.5) -> Color? {
+    // TODO: range [0, 1]?
     guard let (r1, g1, b1, a1) = rgba, let (r2, g2, b2, a2) = color.rgba else { return nil }
     return Color(red: r1 + percentage * (r2 - r1), green: g1 + percentage * (g2 - g1), blue: b1 + percentage * (b2 - b1), alpha: a1 + percentage * (a2 - a1))
   }
@@ -142,6 +143,7 @@ extension Color {
   /// Returns a `new` color derived from `self` darkened by the given percentage in the RGBA color space.
   /// - Note: The `new` color is obtained mixing `self` with the black color.
   public final func darkened(by percentage: CGFloat = 0.25) -> Color? {
+    // TODO: range [0, 1]?
     //return mixing(with: .black, by: percentage)
     guard let (r, g, b, a) = rgba else { return nil }
 
@@ -153,6 +155,7 @@ extension Color {
   /// Returns a `new` color derived from `self` lightened by the given percentage in the RGBA color space.
   /// - Note: The `new` color is obtained mixing `self` with the white color.
   public final func lightened(by percentage: CGFloat = 0.25) -> Color? {
+    // TODO: range [0, 1]?
     //return mixing(with: .white, by: percentage)
     guard let (r, g, b, a) = rgba else { return nil }
 
@@ -250,7 +253,7 @@ extension Color {
       self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
 
     #endif
-
+    // TODO: range [0, 1]?
     return (hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
   }
 
@@ -260,7 +263,7 @@ extension Color {
   public final func changingHue(by percentage: CGFloat = 0.25) -> Color? {
     guard percentage != 0 else { return self.copy() as? Color }
     guard let hsba = hsba else { return nil }
-
+    // TODO: range [0, 1]?
     return Color(hue: (hsba.hue + percentage), saturation: hsba.saturation, brightness: hsba.brightness, alpha: hsba.alpha)
   }
 
@@ -271,7 +274,7 @@ extension Color {
   public final func changingBrightness(by percentage: CGFloat = 0.25) -> Color? {
     guard percentage != 0 else { return self.copy() as? Color }
     guard let hsba = hsba else { return nil }
-
+    // TODO: range [0, 1]?
     return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: (hsba.brightness + percentage), alpha: hsba.alpha)
   }
 
@@ -282,52 +285,8 @@ extension Color {
   public final func changingSaturation(by percentage: CGFloat = 0.25) -> Color? {
     guard percentage != 0 else { return self.copy() as? Color }
     guard let hsba = hsba else { return nil }
-
+    // TODO: range [0, 1]?
     return Color(hue: hsba.hue, saturation: (hsba.saturation + percentage), brightness: hsba.brightness, alpha: hsba.alpha)
   }
-
-//  /// **Mechanica**
-//  ///
-//  /// Returns a `new` color derived from `self` lightened increasing the brightness by a `percentage` in the HSB color space.
-//  public final func lightened(byIncreasingBrightness percentage: CGFloat = 0.25) -> Color? {
-//    guard percentage != 0 else { return self.copy() as? Color }
-//    guard let hsba = hsba else { return nil }
-//
-//    //let percentage: CGFloat = min(max(percentage, -1), 1)
-//    //let newBrightness = min(max(hsba.brightness + percentage, -1), 1)
-//    return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: (hsba.brightness + percentage), alpha: hsba.alpha)
-//  }
-//
-//  /// **Mechanica**
-//  ///
-//  /// Returns a `new` color derived from `self` darkened decreasing the brightness by a `percentage` in the HSB color space.
-//  public final func darkened(byDecreasingBrightness percentage: CGFloat = 0.25) -> Color? {
-//    guard percentage != 0 else { return self.copy() as? Color }
-//    guard let hsba = hsba else { return nil }
-//
-//    return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: (hsba.brightness - percentage), alpha: hsba.alpha)
-//  }
-//
-//  /// **Mechanica**
-//  ///
-//  /// Returns a `new` color derived from `self` saturating the hue (increasing the saturation) by a `percentage` in the HSB color space, making it more intense and darker.
-//  /// - Note: Increasing the saturation makes the color less closer to white.
-//  public final func shaded(byIncreasingSaturation percentage: CGFloat = 0.25) -> Color? {
-//    guard percentage != 0 else { return self.copy() as? Color }
-//    guard let hsba = hsba else { return nil }
-//
-//    return Color(hue: hsba.hue, saturation: (hsba.saturation + percentage), brightness: hsba.brightness, alpha: hsba.alpha)
-//  }
-//
-//  /// **Mechanica**
-//  ///
-//  /// Returns a `new` color derived from `self` desaturating the hue (decreasing the saturation) by a `percentage` in the HSB color space, making it less intense.
-//  /// - Note: Decreasing the saturation makes the color closer to white.
-//  public final func tinted(byDecreasingSaturation percentage: CGFloat = 0.25) -> Color? {
-//    guard percentage != 0 else { return self.copy() as? Color }
-//    guard let hsba = hsba else { return nil }
-//
-//    return Color(hue: hsba.hue, saturation: (hsba.saturation - percentage), brightness: hsba.brightness, alpha: hsba.alpha)
-//  }
 
 }
