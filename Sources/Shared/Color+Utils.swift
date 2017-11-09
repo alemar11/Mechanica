@@ -256,46 +256,78 @@ extension Color {
 
   /// **Mechanica**
   ///
-  /// Returns a `new` color derived from `self` lightened increasing the brightness by a `percentage` in the HSB color space.
-  public final func lightened(byIncreasingBrightness percentage: CGFloat = 0.25) -> Color? {
+  /// Returns a new color with che hue changed by a `percentage`.
+  public final func changingHue(by percentage: CGFloat = 0.25) -> Color? {
     guard percentage != 0 else { return self.copy() as? Color }
     guard let hsba = hsba else { return nil }
 
-    //let percentage: CGFloat = min(max(percentage, -1), 1)
-    //let newBrightness = min(max(hsba.brightness + percentage, -1), 1)
+    return Color(hue: (hsba.hue + percentage), saturation: hsba.saturation, brightness: hsba.brightness, alpha: hsba.alpha)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a new color with che brightness changed by a `percentage`.
+  /// - Note: A positive percentage returns a lighented color, while a negative percentage returns a darkened color.
+  public final func changingBrightness(by percentage: CGFloat = 0.25) -> Color? {
+    guard percentage != 0 else { return self.copy() as? Color }
+    guard let hsba = hsba else { return nil }
+
     return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: (hsba.brightness + percentage), alpha: hsba.alpha)
   }
 
   /// **Mechanica**
   ///
-  /// Returns a `new` color derived from `self` darkened decreasing the brightness by a `percentage` in the HSB color space.
-  public final func darkened(byDecreasingBrightness percentage: CGFloat = 0.25) -> Color? {
-    guard percentage != 0 else { return self.copy() as? Color }
-    guard let hsba = hsba else { return nil }
-
-    return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: (hsba.brightness - percentage), alpha: hsba.alpha)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a `new` color derived from `self` saturating the hue (increasing the saturation) by a `percentage` in the HSB color space, making it more intense and darker.
-  /// - Note: Increasing the saturation makes the color less closer to white.
-  public final func shaded(byIncreasingSaturation percentage: CGFloat = 0.25) -> Color? {
+  /// Returns a new color with che brightness changed by a `percentage`.
+  /// - Note: A positive percentage returns a shaded color, while a negative percentage returns a tinted color.
+  public final func changingSaturation(by percentage: CGFloat = 0.25) -> Color? {
     guard percentage != 0 else { return self.copy() as? Color }
     guard let hsba = hsba else { return nil }
 
     return Color(hue: hsba.hue, saturation: (hsba.saturation + percentage), brightness: hsba.brightness, alpha: hsba.alpha)
   }
 
-  /// **Mechanica**
-  ///
-  /// Returns a `new` color derived from `self` desaturating the hue (decreasing the saturation) by a `percentage` in the HSB color space, making it less intense.
-  /// - Note: Decreasing the saturation makes the color closer to white.
-  public final func tinted(byDecreasingSaturation percentage: CGFloat = 0.25) -> Color? {
-    guard percentage != 0 else { return self.copy() as? Color }
-    guard let hsba = hsba else { return nil }
-
-    return Color(hue: hsba.hue, saturation: (hsba.saturation - percentage), brightness: hsba.brightness, alpha: hsba.alpha)
-  }
+//  /// **Mechanica**
+//  ///
+//  /// Returns a `new` color derived from `self` lightened increasing the brightness by a `percentage` in the HSB color space.
+//  public final func lightened(byIncreasingBrightness percentage: CGFloat = 0.25) -> Color? {
+//    guard percentage != 0 else { return self.copy() as? Color }
+//    guard let hsba = hsba else { return nil }
+//
+//    //let percentage: CGFloat = min(max(percentage, -1), 1)
+//    //let newBrightness = min(max(hsba.brightness + percentage, -1), 1)
+//    return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: (hsba.brightness + percentage), alpha: hsba.alpha)
+//  }
+//
+//  /// **Mechanica**
+//  ///
+//  /// Returns a `new` color derived from `self` darkened decreasing the brightness by a `percentage` in the HSB color space.
+//  public final func darkened(byDecreasingBrightness percentage: CGFloat = 0.25) -> Color? {
+//    guard percentage != 0 else { return self.copy() as? Color }
+//    guard let hsba = hsba else { return nil }
+//
+//    return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: (hsba.brightness - percentage), alpha: hsba.alpha)
+//  }
+//
+//  /// **Mechanica**
+//  ///
+//  /// Returns a `new` color derived from `self` saturating the hue (increasing the saturation) by a `percentage` in the HSB color space, making it more intense and darker.
+//  /// - Note: Increasing the saturation makes the color less closer to white.
+//  public final func shaded(byIncreasingSaturation percentage: CGFloat = 0.25) -> Color? {
+//    guard percentage != 0 else { return self.copy() as? Color }
+//    guard let hsba = hsba else { return nil }
+//
+//    return Color(hue: hsba.hue, saturation: (hsba.saturation + percentage), brightness: hsba.brightness, alpha: hsba.alpha)
+//  }
+//
+//  /// **Mechanica**
+//  ///
+//  /// Returns a `new` color derived from `self` desaturating the hue (decreasing the saturation) by a `percentage` in the HSB color space, making it less intense.
+//  /// - Note: Decreasing the saturation makes the color closer to white.
+//  public final func tinted(byDecreasingSaturation percentage: CGFloat = 0.25) -> Color? {
+//    guard percentage != 0 else { return self.copy() as? Color }
+//    guard let hsba = hsba else { return nil }
+//
+//    return Color(hue: hsba.hue, saturation: (hsba.saturation - percentage), brightness: hsba.brightness, alpha: hsba.alpha)
+//  }
 
 }

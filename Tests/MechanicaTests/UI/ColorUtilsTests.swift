@@ -302,40 +302,40 @@ class ColorUtilsTests: XCTestCase {
 
   }
 
-  func testLightenedByIncreasingBrightness() {
+  func testChangingBrightness() {
+    // Given
     let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
-    XCTAssertEqual(gray.lightened(byIncreasingBrightness: 0.0), gray)
-    XCTAssertEqual(gray.lightened(byIncreasingBrightness: 0.5), Color(red: 1.0, green: 1.0, blue: 1.0, alpha:1))
-    XCTAssertEqual(Color.red.lightened(byIncreasingBrightness: 0.5), Color(red: 1.5, green: 0, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.green.lightened(byIncreasingBrightness: 0.5), Color(red: 0, green: 1.5, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.blue.lightened(byIncreasingBrightness: 0.5), Color(red: 0, green: 0, blue: 1.5, alpha: 1))
+
+    // When, Then
+    XCTAssertEqual(gray.changingBrightness(by: 0.0), gray)
+    XCTAssertEqual(gray.changingBrightness(by: 0.5), Color(red: 1.0, green: 1.0, blue: 1.0, alpha:1))
+    XCTAssertEqual(Color.red.changingBrightness(by: 0.5), Color(red: 1.5, green: 0, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.green.changingBrightness(by: 0.5), Color(red: 0, green: 1.5, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.blue.changingBrightness(by: 0.5), Color(red: 0, green: 0, blue: 1.5, alpha: 1))
+
+    XCTAssertEqual(gray.changingBrightness(by: -0.0), gray)
+    XCTAssertEqual(gray.changingBrightness(by: -0.5), Color(red: 0, green: 0, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.red.changingBrightness(by: -0.5), Color(red: 0.5, green: 0, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.green.changingBrightness(by: -0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
+    XCTAssertEqual(Color.blue.changingBrightness(by: -0.5), Color(red: 0, green: 0, blue: 0.5, alpha: 1))
   }
 
-  func testDarkenedByDecreasingBrightness() {
+  func testChangingSaturation() {
+    // Given
     let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
-    XCTAssertEqual(gray.darkened(byDecreasingBrightness: 0.0), gray)
-    XCTAssertEqual(gray.darkened(byDecreasingBrightness: 0.5), Color(red: 0, green: 0, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.red.darkened(byDecreasingBrightness: 0.5), Color(red: 0.5, green: 0, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.green.darkened(byDecreasingBrightness: 0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.blue.darkened(byDecreasingBrightness: 0.5), Color(red: 0, green: 0, blue: 0.5, alpha: 1))
-  }
 
-  func testShadedByIncreasingSaturation() {
-    let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
-    XCTAssertEqual(gray.shaded(byIncreasingSaturation: 0.0), gray)
-    XCTAssertEqual(gray.shaded(byIncreasingSaturation: 0.5), Color(red: 0.5, green: 0.25, blue: 0.25, alpha: 1))
-    XCTAssertEqual(Color.red.shaded(byIncreasingSaturation: 0.5), Color(red: 1, green: -0.5, blue: -0.5, alpha: 1))
-    XCTAssertEqual(Color.green.shaded(byIncreasingSaturation: 0.5), Color(red: -0.5, green: 1.0, blue:-0.5, alpha: 1))
-    XCTAssertEqual(Color.blue.shaded(byIncreasingSaturation: 0.5), Color(red: -0.5, green: -0.5, blue: 1.0, alpha: 1))
-  }
+    // When, Then
+    XCTAssertEqual(gray.changingSaturation(by: 0.0), gray)
+    XCTAssertEqual(gray.changingSaturation(by: 0.5), Color(red: 0.5, green: 0.25, blue: 0.25, alpha: 1))
+    XCTAssertEqual(Color.red.changingSaturation(by: 0.5), Color(red: 1, green: -0.5, blue: -0.5, alpha: 1))
+    XCTAssertEqual(Color.green.changingSaturation(by: 0.5), Color(red: -0.5, green: 1.0, blue:-0.5, alpha: 1))
+    XCTAssertEqual(Color.blue.changingSaturation(by: 0.5), Color(red: -0.5, green: -0.5, blue: 1.0, alpha: 1))
 
-  func testTintedByDecreasingSaturation() {
-    let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
-    XCTAssertEqual(gray.tinted(byDecreasingSaturation: 0.0), gray)
-    XCTAssertEqual(gray.tinted(byDecreasingSaturation: 0.5), Color(red: 0.5, green: 0.75, blue: 0.75, alpha: 1))
-    XCTAssertEqual(Color.red.tinted(byDecreasingSaturation: 0.5), Color(red: 1, green: 0.5, blue: 0.5, alpha: 1))
-    XCTAssertEqual(Color.green.tinted(byDecreasingSaturation: 0.5), Color(red: 0.5, green: 1.0, blue:0.5, alpha: 1))
-    XCTAssertEqual(Color.blue.tinted(byDecreasingSaturation: 0.5), Color(red: 0.5, green: 0.5, blue: 1.0, alpha: 1))
+    XCTAssertEqual(gray.changingSaturation(by: -0.0), gray)
+    XCTAssertEqual(gray.changingSaturation(by: -0.5), Color(red: 0.5, green: 0.75, blue: 0.75, alpha: 1))
+    XCTAssertEqual(Color.red.changingSaturation(by: -0.5), Color(red: 1, green: 0.5, blue: 0.5, alpha: 1))
+    XCTAssertEqual(Color.green.changingSaturation(by: -0.5), Color(red: 0.5, green: 1.0, blue:0.5, alpha: 1))
+    XCTAssertEqual(Color.blue.changingSaturation(by: -0.5), Color(red: 0.5, green: 0.5, blue: 1.0, alpha: 1))
   }
 
 }
