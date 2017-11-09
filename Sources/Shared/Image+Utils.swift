@@ -79,7 +79,7 @@ extension Image {
   /// **Mechanica**
   ///
   /// Convert the image to data.
-  public var toData: Data? {
+  public var data: Data? {
     #if os(iOS) || os(tvOS) || os(watchOS)
       return hasAlpha ? UIImagePNGRepresentation(self) : UIImageJPEGRepresentation(self, 1.0)
       

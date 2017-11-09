@@ -31,7 +31,7 @@ extension BinaryFloatingPoint {
   ///
   ///     Float(-5.625).toBinaryString -> "11000000101101000000000000000000
   ///
-  public var toBinaryString: String {
+  public var binaryString: String {
     let floatingPointSign = (sign == FloatingPointSign.minus) ? "1" : "0"
     let exponentBitCount = Self.exponentBitCount
     let mantissaBitCount = Self.significandBitCount

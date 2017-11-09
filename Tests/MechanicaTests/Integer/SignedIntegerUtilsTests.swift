@@ -48,12 +48,12 @@ class SignedIntegerTests: XCTestCase {
       XCTAssertEqual(Int.max.toBinaryString,"0111111111111111111111111111111111111111111111111111111111111111")
     #elseif (arch(i386) || arch(arm))
       // For 32-bit systems
-      XCTAssertEqual((-3).toBinaryString, "11111111111111111111111111111101")
-      XCTAssertEqual(255.toBinaryString, "00000000000000000000000011111111")
-      XCTAssertEqual(1.toBinaryString, "00000000000000000000000000000001")
-      XCTAssertEqual(11.toBinaryString,"00000000000000000000000000001011")
-      XCTAssertEqual(111.toBinaryString,"00000000000000000000000001101111")
-      XCTAssertEqual(Int.max.toBinaryString,"01111111111111111111111111111111")
+      XCTAssertEqual((-3).binaryString, "11111111111111111111111111111101")
+      XCTAssertEqual(255.binaryString, "00000000000000000000000011111111")
+      XCTAssertEqual(1.binaryString, "00000000000000000000000000000001")
+      XCTAssertEqual(11.binaryString,"00000000000000000000000000001011")
+      XCTAssertEqual(111.binaryString,"00000000000000000000000001101111")
+      XCTAssertEqual(Int.max.binaryString,"01111111111111111111111111111111")
     #endif
   }
 

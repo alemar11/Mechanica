@@ -28,15 +28,8 @@ extension Bool {
   /// **Mechanica**
   ///
   /// Returns 1 if true, or 0 if false.
-  public var toInt: Int {
+  public var int: Int {
     return self ? 1 : 0
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns `true` if true, or `false` if false.
-  public var toString: String {
-    return description
   }
 
   /// **Mechanica**

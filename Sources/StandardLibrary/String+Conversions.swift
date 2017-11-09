@@ -28,7 +28,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Return a Bool value by parsing `self`.
-  public var toBool: Bool? {
+  public var bool: Bool? {
     switch self.trimmed().lowercased() {
     case "1", "true", "t", "yes", "y", "👍", "👍🏻", "👍🏼", "👍🏽", "👍🏾", "👍🏿":
       return true
@@ -42,77 +42,77 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns a Double value by parsing `self`.
-  public var toDouble: Double? {
+  public var double: Double? {
     return Double(self)
   }
 
   /// **Mechanica**
   ///
   /// Returns a Float value by parsing `self`.
-  public var toFloat: Float? {
+  public var float: Float? {
     return Float(self)
   }
 
   /// **Mechanica**
   ///
   /// Returns a Float32 value by parsing `self`.
-  public var toFloat32: Float32? {
+  public var float32: Float32? {
     return Float32(self)
   }
 
   /// **Mechanica**
   ///
   /// Returns a Float64 value by parsing `self`.
-  public var toFloat64: Float64? {
+  public var float64: Float64? {
     return Float64(self)
   }
 
   /// **Mechanica**
   ///
   /// Returns a Int value by parsing `self`.
-  public var toInt: Int? {
+  public var int: Int? {
     return Int(self)
   }
 
   /// **Mechanica**
   ///
   /// Returns a Int8 value by parsing `self`.
-  public var toInt8: Int8? {
+  public var int8: Int8? {
     return Int8(self)
   }
 
   /// **Mechanica**
   ///
   /// Returns a Int16 value by parsing `self`.
-  public var toInt16: Int16? {
+  public var int16: Int16? {
     return Int16(self)
   }
 
   /// **Mechanica**
   ///
   /// Returns a Int32 value by parsing `self`.
-  public var toInt32: Int32? {
+  public var int32: Int32? {
     return Int32(self)
   }
 
   /// **Mechanica**
   ///
   /// Returns a Int64 value by parsing `self`.
-  public var toInt64: Int64? {
+  public var int64: Int64? {
     return Int64(self)
   }
 
   /// **Mechanica**
   ///
   /// Returns an URL initialized with `self`.
-  public var toUrl: URL? {
+  public var url: URL? {
     return URL(string: self)
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` string decoded from base64.
-  public var toBase64Decoded: String? {
+  public var base64Decoded: String? {
     guard let decodedData = Data(base64Encoded: self) else {
       return nil
     }
@@ -122,7 +122,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns a `new` string encoded in base64.
-  public var toBase64Encoded: String? {
+  public var base64Encoded: String? {
     let plainData = self.data(using: .utf8)
     return plainData?.base64EncodedString()
   }
