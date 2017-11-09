@@ -29,7 +29,7 @@ class SignedIntegerTests: XCTestCase {
   // MARK: - BinaryConvertible
 
   /// http://www.binaryconvert.com/result_signed_int.html?decimal=045049049049
-  func testToBinaryString() {
+  func testBinaryString() {
     XCTAssertEqual(Int8(10).toBinaryString, "00001010")
     XCTAssertEqual(Int8(-1).toBinaryString, "11111111")
     XCTAssertEqual(Int8(0).toBinaryString, "00000000")
