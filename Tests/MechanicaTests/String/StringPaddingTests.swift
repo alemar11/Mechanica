@@ -25,8 +25,11 @@ import XCTest
 @testable import Mechanica
 
 class StringPaddingTests: XCTestCase {
-    
-  func testPaddingLeft() {
+
+  func testPaddingStart() {
+    XCTAssertEqual("Hello World".paddingStart(length: 15), "    Hello World")
+    XCTAssertEqual("Hello World".paddingStart(length: 15, with: "*"), "****Hello World")
+
     XCTAssertEqual("Tin".paddingStart(length: 0), "Tin")
     XCTAssertEqual("Tin".paddingStart(length: 1), "Tin")
     XCTAssertEqual("Tin".paddingStart(length: 2), "Tin")
@@ -50,7 +53,61 @@ class StringPaddingTests: XCTestCase {
     XCTAssertEqual("a".paddingStart(length: 6, with: "123"), "12312a")
   }
 
-  func testPaddingRight() {
+  func testPadStart() {
+    do {
+      var string = "Tin"
+      string.padStart(length: 1)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padStart(length: 2)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padStart(length: 3)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padStart(length: 4)
+      XCTAssertEqual(string, " Tin")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.padStart(length: 15)
+      XCTAssertEqual(string, "    Tin Robots!")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.padStart(length: 15, with: "*")
+      XCTAssertEqual(string, "****Tin Robots!")
+    }
+
+    do {
+      var string = " _T1n R0bots!_ "
+      string.padStart(length: 20, with: "*")
+      print(string)
+      XCTAssertEqual(string, "***** _T1n R0bots!_ ")
+    }
+
+    do {
+      var string = "a"
+      string.padStart(length: 6, with: "123")
+      XCTAssertEqual(string, "12312a")
+    }
+  }
+
+  func testPaddingEnd() {
+    XCTAssertEqual("Hello World".paddingEnd(length: 15), "Hello World    ")
+    XCTAssertEqual("Hello World".paddingEnd(length: 15, with: "*"), "Hello World****")
+
     XCTAssertEqual("Tin".paddingEnd(length: 0), "Tin")
     XCTAssertEqual("Tin".paddingEnd(length: 1), "Tin")
     XCTAssertEqual("Tin".paddingEnd(length: 2), "Tin")
@@ -74,7 +131,61 @@ class StringPaddingTests: XCTestCase {
     XCTAssertEqual("a".paddingEnd(length: 6, with: "123"), "a12312")
   }
 
+  func testPadEnd() {
+    do {
+      var string = "Tin"
+      string.padEnd(length: 1)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padEnd(length: 2)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padEnd(length: 3)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padEnd(length: 4)
+      XCTAssertEqual(string, "Tin ")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.padEnd(length: 15)
+      XCTAssertEqual(string, "Tin Robots!    ")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.padEnd(length: 15, with: "*")
+      XCTAssertEqual(string, "Tin Robots!****")
+    }
+
+    do {
+      var string = " _T1n R0bots!_ "
+      string.padEnd(length: 20, with: "*")
+      print(string)
+      XCTAssertEqual(string, " _T1n R0bots!_ *****")
+    }
+
+    do {
+      var string = "a"
+      string.padEnd(length: 6, with: "123")
+      XCTAssertEqual(string, "a12312")
+    }
+  }
+
   func testPadding() {
+    XCTAssertEqual("Hello World".padding(length: 15), "  Hello World  ")
+    XCTAssertEqual("Hello World".padding(length: 15, with: "*"), "**Hello World**")
+
     XCTAssertEqual("Tin".padding(length: 0), "Tin")
     XCTAssertEqual("Tin".padding(length: 1), "Tin")
     XCTAssertEqual("Tin".padding(length: 2), "Tin")
@@ -99,6 +210,57 @@ class StringPaddingTests: XCTestCase {
     XCTAssertEqual("abc".padding(length: 6, with: "123"), "1abc12")
     XCTAssertEqual("ab".padding(length: 6, with: "123"), "12ab12")
     XCTAssertEqual("a".padding(length: 6, with: "123"), "12a123")
+  }
+
+  func testPad() {
+    do {
+      var string = "Tin"
+      string.pad(length: 1)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.pad(length: 2)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.pad(length: 3)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.pad(length: 4)
+      XCTAssertEqual(string, "Tin ")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.pad(length: 15)
+      XCTAssertEqual(string, "  Tin Robots!  ")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.pad(length: 15, with: "*")
+      XCTAssertEqual(string, "**Tin Robots!**")
+    }
+
+    do {
+      var string = " _T1n R0bots!_ "
+      string.pad(length: 20, with: "*")
+      print(string)
+      XCTAssertEqual(string, "** _T1n R0bots!_ ***")
+    }
+
+    do {
+      var string = "a"
+      string.pad(length: 6, with: "123")
+      XCTAssertEqual(string, "12a123")
+    }
   }
     
 }

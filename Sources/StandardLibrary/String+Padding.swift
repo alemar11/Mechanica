@@ -32,12 +32,12 @@ public extension String {
   /// Example 1:
   ///
   ///     let string = "Hello World"
-  ///     string.padding(length: 13) -> " Hello World "
+  ///     string.padding(length: 15) -> "  Hello World  "
   ///
   /// Example 2:
   ///
   ///     let string = "Hello World"
-  ///     string.padding(length: 13, withToken: "*") -> "*Hello World*"
+  ///     string.padding(length: 15, withToken: "*") -> "**Hello World**"
   ///
   /// - Parameters:
   ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned.
@@ -55,6 +55,16 @@ public extension String {
   ///
   /// Pads `self on the left and right sides if it's shorter than `length` using a `token`. Padding characters are truncated if they can't be evenly divided by length.
   ///
+  /// Example 1:
+  ///
+  ///     let string = "Hello World"
+  ///     string.pad(length: 15) -> "  Hello World  "
+  ///
+  /// Example 2:
+  ///
+  ///     let string = "Hello World"
+  ///     string.pad(length: 15, withToken: "*") -> "**Hello World**"
+  ///
   /// - Parameters:
   ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned. If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
   ///   - token: The string used to pad the String (defaults to a white space).
@@ -70,12 +80,12 @@ public extension String {
   /// Example 1:
   ///
   ///     let string = "Hello World"
-  ///     string.paddingStart(length: 13) -> "  Hello World"
+  ///     string.paddingStart(length: 15) -> "    Hello World"
   ///
   /// Example 2:
   ///
   ///     let string = "Hello World"
-  ///     string.paddingStart(length: 13, withToken: "*") -> "**Hello World"
+  ///     string.paddingStart(length: 15, withToken: "*") -> "****Hello World"
   ///
   /// - Parameters:
   ///   - length: The final length of your string.
@@ -100,6 +110,16 @@ public extension String {
   ///
   /// Pads `self` on the left side if it's shorter than `length` using a `token`. Padding characters are truncated if they exceed length.
   ///
+  /// Example 1:
+  ///
+  ///     let string = "Hello World"
+  ///     string.padStart(length: 15) -> "    Hello World"
+  ///
+  /// Example 2:
+  ///
+  ///     let string = "Hello World"
+  ///     string.padStart(length: 15, withToken: "*") -> "****Hello World"
+  ///
   /// - Parameters:
   ///   - length: The final length of your string.
   ///   - token: The string used to pad the String (defaults to a white space).
@@ -114,12 +134,12 @@ public extension String {
   /// Example 1:
   ///
   ///     let string = "Hello World"
-  ///     string.paddingEnd(length: 13) -> "Hello World  "
+  ///     string.paddingEnd(length: 15) -> "Hello World    "
   ///
   /// Example 2:
   ///
   ///     let string = "Hello World"
-  ///     string.paddingEnd(length: 13, withToken: "*", ) -> "Hello World**"
+  ///     string.paddingEnd(length: 15, withToken: "*", ) -> "Hello World****"
   ///
   /// - Parameters:
   ///   - length: The final length of your string.
@@ -143,6 +163,16 @@ public extension String {
   /// **Mechanica**
   ///
   /// Pads `self` on the right side if it's shorter than `length` using a `token`. Padding characters are truncated if they exceed length.
+  ///
+  /// Example 1:
+  ///
+  ///     let string = "Hello World"
+  ///     string.padEnd(length: 15) -> "Hello World    "
+  ///
+  /// Example 2:
+  ///
+  ///     let string = "Hello World"
+  ///     string.padEnd(length: 15, withToken: "*", ) -> "Hello World****"
   ///
   /// - Parameters:
   ///   - length: The final length of your string.
