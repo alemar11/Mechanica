@@ -442,19 +442,6 @@ extension String {
 
   /// **Mechanica**
   ///
-  ///  Gets the character at the specified index as String.
-  ///
-  ///  - parameter index: index Position of the character to get
-  ///
-  ///  - Returns: Character as String or nil if the index is out of bounds
-  public subscript (index: Int) -> String? {
-    guard 0..<count ~= index else { return nil }
-
-    return String(Array(self)[index])
-  }
-
-  /// **Mechanica**
-  ///
   /// Returns a `new` string in which the characters in a specified `CountableClosedRange` range of the String are replaced by a given string.
   public func replacingCharacters(in range: CountableClosedRange<Int>, with replacement: String) -> String {
     let start = index(startIndex, offsetBy: range.lowerBound)
@@ -474,6 +461,19 @@ extension String {
   }
 
   // MARK: - Subscript Methods
+
+  /// **Mechanica**
+  ///
+  ///  Gets the character at the specified index as String.
+  ///
+  ///  - parameter index: index Position of the character to get
+  ///
+  ///  - Returns: Character as String or nil if the index is out of bounds
+  public subscript (index: Int) -> String? {
+    guard 0..<count ~= index else { return nil }
+
+    return String(Array(self)[index])
+  }
 
   /// **Mechanica**
   ///
