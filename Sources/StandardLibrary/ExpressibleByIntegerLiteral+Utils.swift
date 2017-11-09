@@ -37,6 +37,7 @@ public extension ExpressibleByIntegerLiteral {
 
 }
 
+// TODO: keep or delete?
 private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   var result: T = 0
   arc4random_buf(&result, Int(MemoryLayout<T>.size))
