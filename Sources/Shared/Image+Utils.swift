@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -36,7 +36,7 @@
 #endif
 
 extension Image {
-  
+
   /// **Mechanica**
   ///
   /// Initializes and returns the image object with the specified base64 data.
@@ -47,10 +47,10 @@ extension Image {
       else {
         return nil
     }
-    
+
     self.init(data: data)
   }
-  
+
   /// **Mechanica**
   ///
   /// Checks if the image has alpha component.
@@ -58,37 +58,37 @@ extension Image {
     let result: Bool
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard let alpha = cgImage?.alphaInfo else { return false }
-      
+
     #elseif os(macOS)
       var imageRect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
       guard let imageRef = cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return false }
-      
+
       let alpha = imageRef.alphaInfo
     #endif
-    
+
     switch alpha {
     case .none, .noneSkipFirst, .noneSkipLast:
       result = false
     default:
       result = true
     }
-    
+
     return result
   }
-  
+
   /// **Mechanica**
   ///
   /// Convert the image to data.
   public var data: Data? {
     #if os(iOS) || os(tvOS) || os(watchOS)
       return hasAlpha ? UIImagePNGRepresentation(self) : UIImageJPEGRepresentation(self, 1.0)
-      
+
     #elseif os(macOS)
       guard let data = tiffRepresentation else { return nil }
       let imageFileType: NSBitmapImageRep.FileType = hasAlpha ? .png : .jpeg
-      
+
       return NSBitmapImageRep(data: data)? .representation(using: imageFileType, properties: [:])
     #endif
   }
-  
+
 }

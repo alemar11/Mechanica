@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -25,14 +25,14 @@ import XCTest
 @testable import Mechanica
 
 class ImageUtilsTests: XCTestCase {
-  
+
   func testHasAlpha() {
     let url = URL(string:"https://raw.githubusercontent.com/tinrobots/Mechanica/test-resources/pic.png")!
     let url2 = URL(string: "https://raw.githubusercontent.com/tinrobots/Mechanica/test-resources/pic_no_alpha.jpeg")!
-    
+
     let image: Image
     let imageNoAlpha: Image
-    
+
     #if os(macOS)
       image = NSImage(contentsOf: url)!
       imageNoAlpha = NSImage(contentsOf: url2)!
@@ -42,9 +42,9 @@ class ImageUtilsTests: XCTestCase {
       image = Image(data: data)!
       imageNoAlpha = Image(data: data2)!
     #endif
-    
+
     XCTAssertTrue(image.hasAlpha)
     XCTAssertFalse(imageNoAlpha.hasAlpha)
   }
-  
+
 }

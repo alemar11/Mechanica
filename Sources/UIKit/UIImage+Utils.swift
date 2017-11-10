@@ -22,9 +22,9 @@
 // SOFTWARE.
 
 #if os(iOS) || os(tvOS) || watchOS
-  
+
   import UIKit
-  
+
   extension UIImage {
 
     // TODO: review
@@ -40,18 +40,18 @@
     /// Returns an image with a given `color` and `size` (default is 1x1).
     public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
       let rect = CGRect(origin: .zero, size: size)
-      
+
       UIGraphicsBeginImageContextWithOptions(size, false, 0)
       defer { UIGraphicsEndImageContext() }
-      
+
       color.setFill()
       UIRectFill(rect)
-      
+
       guard let image = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return nil }
-      
+
       self.init(cgImage: image)
     }
-    
+
   }
-  
+
 #endif

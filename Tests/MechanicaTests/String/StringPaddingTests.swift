@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -262,5 +262,5 @@ class StringPaddingTests: XCTestCase {
       XCTAssertEqual(string, "12a123")
     }
   }
-    
+
 }

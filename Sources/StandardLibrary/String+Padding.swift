@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -66,7 +66,8 @@ public extension String {
   ///     string.pad(length: 15, withToken: "*") -> "**Hello World**"
   ///
   /// - Parameters:
-  ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned. If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
+  ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned.
+  /// If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
   ///   - token: The string used to pad the String (defaults to a white space).
   /// - Note: If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
   public mutating func pad(length: Int, with token: String = " ") {

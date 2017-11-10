@@ -25,7 +25,7 @@ import XCTest
 @testable import Mechanica
 
 class BundleInfoTests: XCTestCase {
-  
+
   func testBundle() {
     // Given, When
     let bundle = Mechanica.bundle
@@ -35,16 +35,16 @@ class BundleInfoTests: XCTestCase {
       XCTAssertTrue(bundle.shortVersionString != nil)
       XCTAssertTrue(bundle.displayName == nil)
       XCTAssertTrue(bundle.executableFileName == "Mechanica")
-      
+
     } else if ProcessInfo.isRunningSwiftPackageTests {
       XCTAssertTrue(bundle.version == nil)
       XCTAssertTrue(bundle.shortVersionString == nil)
       XCTAssertTrue(bundle.displayName == nil)
       XCTAssertTrue(bundle.executableFileName == "MechanicaPackageTests")
-      
+
     } else {
       XCTFail("Missing ProcessInfo details.")
     }
   }
-  
+
 }

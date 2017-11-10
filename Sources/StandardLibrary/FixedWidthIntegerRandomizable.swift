@@ -38,15 +38,15 @@ public protocol FixedWidthIntegerRandomizable {
 }
 
 extension UInt64: FixedWidthIntegerRandomizable {}
-extension Int64:  FixedWidthIntegerRandomizable {}
+extension Int64: FixedWidthIntegerRandomizable {}
 extension UInt32: FixedWidthIntegerRandomizable {}
-extension Int32:  FixedWidthIntegerRandomizable {}
+extension Int32: FixedWidthIntegerRandomizable {}
 extension UInt16: FixedWidthIntegerRandomizable {}
-extension Int16:  FixedWidthIntegerRandomizable {}
-extension UInt8:  FixedWidthIntegerRandomizable {}
-extension Int8:   FixedWidthIntegerRandomizable {}
-extension UInt:   FixedWidthIntegerRandomizable {}
-extension Int:    FixedWidthIntegerRandomizable {}
+extension Int16: FixedWidthIntegerRandomizable {}
+extension UInt8: FixedWidthIntegerRandomizable {}
+extension Int8: FixedWidthIntegerRandomizable {}
+extension UInt: FixedWidthIntegerRandomizable {}
+extension Int: FixedWidthIntegerRandomizable {}
 
 private let _wordSize = __WORDSIZE
 

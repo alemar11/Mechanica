@@ -223,7 +223,7 @@ extension Color {
 
 }
 
-//MARK: - Editing
+// MARK: - Editing
 
 extension Color {
 

@@ -34,7 +34,7 @@ extension UIView {
     get { return !translatesAutoresizingMaskIntoConstraints }
     set { translatesAutoresizingMaskIntoConstraints = !newValue }
   }
-  
+
   /// **Mechanica**
   ///
   /// Take sceenshot with the current device's screen scale.
