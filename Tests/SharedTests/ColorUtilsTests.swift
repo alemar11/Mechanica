@@ -270,7 +270,8 @@ class ColorUtilsTests: XCTestCase {
 
   func testBlending() {
     let orange = Color.blend(.red, with: .yellow)
-    XCTAssertTrue(orange == Color.orange)
+    XCTAssertNotNil(orange)
+    XCTAssertTrue(orange! == Color.orange)
 
     let gray = Color.blend(.white, with: .black)
     XCTAssertNotNil(gray)
