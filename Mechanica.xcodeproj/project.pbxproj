@@ -135,9 +135,6 @@
 		237F176E1E90000900726553 /* CollectionUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F173B1E90000800726553 /* CollectionUtilsTests.swift */; };
 		237F176F1E90000900726553 /* CollectionUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F173B1E90000800726553 /* CollectionUtilsTests.swift */; };
 		237F17701E90000900726553 /* CollectionUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F173B1E90000800726553 /* CollectionUtilsTests.swift */; };
-		237F17711E90000900726553 /* ColorFlatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F173C1E90000800726553 /* ColorFlatTests.swift */; };
-		237F17721E90000900726553 /* ColorFlatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F173C1E90000800726553 /* ColorFlatTests.swift */; };
-		237F17731E90000900726553 /* ColorFlatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F173C1E90000800726553 /* ColorFlatTests.swift */; };
 		237F17741E90000900726553 /* ColorUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F173D1E90000800726553 /* ColorUtilsTests.swift */; };
 		237F17751E90000900726553 /* ColorUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F173D1E90000800726553 /* ColorUtilsTests.swift */; };
 		237F17761E90000900726553 /* ColorUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F173D1E90000800726553 /* ColorUtilsTests.swift */; };
@@ -459,7 +456,6 @@
 		237F17391E90000800726553 /* BoolUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BoolUtilsTests.swift; sourceTree = "<group>"; };
 		237F173A1E90000800726553 /* BundleInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BundleInfoTests.swift; sourceTree = "<group>"; };
 		237F173B1E90000800726553 /* CollectionUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CollectionUtilsTests.swift; sourceTree = "<group>"; };
-		237F173C1E90000800726553 /* ColorFlatTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ColorFlatTests.swift; sourceTree = "<group>"; };
 		237F173D1E90000800726553 /* ColorUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ColorUtilsTests.swift; sourceTree = "<group>"; };
 		237F17401E90000800726553 /* DictionaryUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DictionaryUtilsTests.swift; sourceTree = "<group>"; };
 		237F17421E90000800726553 /* FileManagerUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FileManagerUtilsTests.swift; sourceTree = "<group>"; };
@@ -829,7 +825,6 @@
 			isa = PBXGroup;
 			children = (
 				238E5B091FB5B2CC00331C85 /* Color+Flat.swift */,
-				237F173C1E90000800726553 /* ColorFlatTests.swift */,
 				237F173D1E90000800726553 /* ColorUtilsTests.swift */,
 				23CC6B281FA72051004D062B /* ImageUtilsTests.swift */,
 			);
@@ -1432,7 +1427,6 @@
 				237F17A71E90000900726553 /* NSMutableAttributedStringOperatorsTests.swift in Sources */,
 				237F17831E90000900726553 /* FileManagerUtilsTests.swift in Sources */,
 				23690FE81F837295008C0B7E /* UILayoutPriorityUtilsTests.swift in Sources */,
-				237F17711E90000900726553 /* ColorFlatTests.swift in Sources */,
 				237F176E1E90000900726553 /* CollectionUtilsTests.swift in Sources */,
 				23EE2F4C1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */,
 			);
@@ -1483,7 +1477,6 @@
 				237F17841E90000900726553 /* FileManagerUtilsTests.swift in Sources */,
 				23690FE91F837295008C0B7E /* UILayoutPriorityUtilsTests.swift in Sources */,
 				230A4EF01ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */,
-				237F17721E90000900726553 /* ColorFlatTests.swift in Sources */,
 				237F176F1E90000900726553 /* CollectionUtilsTests.swift in Sources */,
 				23B2ED731EC8CE28006365BD /* NSObjectProtocolUtils.swift in Sources */,
 			);
@@ -1531,7 +1524,6 @@
 				237F17A91E90000900726553 /* NSMutableAttributedStringOperatorsTests.swift in Sources */,
 				237F17851E90000900726553 /* FileManagerUtilsTests.swift in Sources */,
 				230A4EF11ECCC55500C4DFCF /* StringRegularExpressionsTests.swift in Sources */,
-				237F17731E90000900726553 /* ColorFlatTests.swift in Sources */,
 				237F17701E90000900726553 /* CollectionUtilsTests.swift in Sources */,
 				23B2ED741EC8CE28006365BD /* NSObjectProtocolUtils.swift in Sources */,
 			);
