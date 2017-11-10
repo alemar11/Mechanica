@@ -162,6 +162,9 @@
                 <a href="../Extensions/Unicode.html">Unicode</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/Unicode/Scalar.html">– Scalar</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/UserDefaults.html">UserDefaults</a>
               </li>
             </ul>
@@ -198,7 +201,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Typealiases.html">Typealiases</a>
+            <a href="../Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Typealiases.html#/s:9Mechanica5Colora">Color</a>
@@ -318,6 +321,25 @@
                         </div>
                       </div>
                       <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>defaultName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A key in the current user&rsquo;s defaults database.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
                         <h4>Return Value</h4>
                         <p>The integer value associated with the specified key. If the specified key does not exist, this method returns nil.</p>
                       </div>
@@ -347,6 +369,25 @@
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">optionalFloat</span><span class="p">(</span><span class="n">forKey</span> <span class="n">defaultName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>defaultName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A key in the current user&rsquo;s defaults database.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                       <div>
                         <h4>Return Value</h4>
@@ -380,6 +421,25 @@
                         </div>
                       </div>
                       <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>defaultName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A key in the current user&rsquo;s defaults database.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
                         <h4>Return Value</h4>
                         <p>The double value associated with the specified key. If the specified key does not exist, this method returns nil.</p>
                       </div>
@@ -409,6 +469,25 @@
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">optionalBool</span><span class="p">(</span><span class="n">forKey</span> <span class="n">defaultName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>defaultName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A key in the current user&rsquo;s defaults database.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                       <div>
                         <h4>Return Value</h4>
@@ -447,6 +526,25 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>defaultName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A key in the current user&rsquo;s defaults database.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -481,6 +579,37 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The object to store in the defaults database.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>defaultName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key with which to associate with the value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -490,7 +619,7 @@
         </section>
         <section id="footer">
           <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-11-10)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
