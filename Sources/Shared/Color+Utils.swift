@@ -90,7 +90,7 @@ extension Color {
     guard let color = compatibleSRGBColor else { return nil }
 
     #if os(iOS) || os(tvOS) || os(watchOS)
-      guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else { return nil } // could not be converted
+      guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else { return nil }
     #elseif os(macOS)
       color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
     #endif
