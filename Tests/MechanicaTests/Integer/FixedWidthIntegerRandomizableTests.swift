@@ -130,6 +130,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
         if (value.isNegative) { expectedAtLeastOnePositive = true }
         if (value.isPositive ){ expectedAtLeastOneNegative = true }
       }
+      //TODO fix on macOS
       XCTAssertTrue(expectedAtLeastOnePositive && expectedAtLeastOneNegative)
     }
 
