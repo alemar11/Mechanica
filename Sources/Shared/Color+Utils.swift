@@ -85,19 +85,14 @@ extension Color {
   /// Returns the color's RGBA components as a tuple of `CGFloat`.
   public final var rgba: RGBA? {
     var red: CGFloat = .nan, green: CGFloat = .nan, blue: CGFloat = .nan, alpha: CGFloat = .nan
+    let compatibleSRGBColor = convertedToCompatibleSRGBColor()
+
+    guard let color = compatibleSRGBColor else { return nil }
 
     #if os(iOS) || os(tvOS) || os(watchOS)
-      guard let space = cgColor.colorSpace, let colorSpaceName = space.name else { return nil }
-      let compatibleSRGBColor = (colorSpaceName == CGColorSpace.sRGB) ? self: self.convertedToCompatibleSRGBColor()
-      guard let color = compatibleSRGBColor else { return nil }
       guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else { return nil } // could not be converted
-
     #elseif os(macOS)
-      let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
-      let compatibleSRGBColor = (rgbColorSpaces.contains(self.colorSpace)) ? self : self.usingColorSpace(.sRGB)
-      guard let color = compatibleSRGBColor else { return nil } // could not be converted
       color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-
     #endif
 
     return (red, green, blue, alpha)
@@ -105,22 +100,25 @@ extension Color {
 
   /// **Mechanica**
   ///
-  /// Creates a `new` color in the **sRGB** color space that matches (or *closely approximates*) the current color.
+  /// Creates a `new` color in the **sRGB** color space (if needed)  guard letthat matches (or *closely approximates*) the current color.
   /// Although the new color might have different component values, it looks the same as the original.
   /// - Note: [WWDC 2016 - 712](https://developer.apple.com/videos/play/wwdc2016/712/?time=2368)
   public final func convertedToCompatibleSRGBColor() -> Color? {
+    let convertedColor: Color?
+
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) else { return nil }
       let compatibleSRGBColor = self.cgColor.converted(to: colorSpace, intent: .defaultIntent, options: nil)!
-
-      return Color(cgColor: compatibleSRGBColor)
+      convertedColor =  Color(cgColor: compatibleSRGBColor)
 
     #elseif os(macOS)
-      let compatibleSRGBColor = (self.colorSpaceName != NSColorSpaceName.calibratedRGB) ? self.usingColorSpace(NSColorSpace.sRGB) : self
-
-      return compatibleSRGBColor
+      let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
+      let compatibleSRGBColor = rgbColorSpaces.contains(colorSpace) ? self : usingColorSpace(.sRGB)
+      convertedColor =  compatibleSRGBColor
 
     #endif
+
+    return convertedColor
   }
 
 }
