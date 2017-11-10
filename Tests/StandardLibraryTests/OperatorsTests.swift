@@ -21,35 +21,40 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import Mechanica
 
-#if os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit
-#elseif os(macOS)
-  import AppKit
-#endif
+class OperatorsTests: XCTestCase {
 
-// MARK: - Percent
+  func testPercent() {
+    do {
+      let value1 = 20.0%
+      XCTAssertTrue(value1 == 0.2)
 
-postfix operator %
+      let value2 = 11.1%
+      XCTAssertTrue(value2 == 0.111)
 
-/// **Mechanica**
-///
-/// 'CGFloat' percent operator.
-public postfix func % (value: CGFloat) -> CGFloat {
-  return value / 100
-}
+      let value3 = Double(0)%
+      XCTAssertTrue(value3 == 0)
 
-/// **Mechanica**
-///
-/// 'Float' percent operator.
-public postfix func % (value: Float) -> Float {
-  return value / 100
-}
+      let value4 = Double(100)%
+      XCTAssertTrue(value4 == 1)
+    }
 
-/// **Mechanica**
-///
-/// 'Double' percent operator.
-public postfix func % (value: Double) -> Double {
-  return value / 100
+    do {
+      let value1 = Float(20)%
+      XCTAssertTrue(value1 == 0.2)
+
+      let value2 = Float(11.1)%
+      XCTAssertTrue(value2 == 0.111)
+
+      let value3 = Float(0)%
+      XCTAssertTrue(value3 == 0)
+
+      let value4 = Float(100)%
+      XCTAssertTrue(value4 == 1)
+    }
+
+  }
+
 }

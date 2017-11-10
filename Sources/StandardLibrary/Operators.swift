@@ -21,18 +21,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-extension Optional {
+// MARK: - Percent
 
-  /// **Mechanica**
-  ///
-  /// Returns `true` if `self` has a value.
-  public var hasValue: Bool {
-    switch self {
-    case .none:
-      return false
-    case .some:
-      return true
-    }
-  }
+postfix operator %
 
+/// **Mechanica**
+///
+/// 'Float' percent operator.
+public postfix func % (value: Float) -> Float {
+  return value / 100
+}
+
+/// **Mechanica**
+///
+/// 'Double' percent operator.
+public postfix func % (value: Double) -> Double {
+  return value / 100
 }

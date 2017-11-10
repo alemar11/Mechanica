@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -24,12 +24,8 @@
 import XCTest
 @testable import Mechanica
 
-class AnyUtilsTests: XCTestCase {
+class StandardLibraryUtilsTests: XCTestCase {
   
-  func testAppIdentifier() {
-    XCTAssert(appIdentifier == "xctest")
-  }
-
   private class Demo {}
   
   class Demo2: CustomStringConvertible, CustomDebugStringConvertible {
@@ -89,4 +85,3 @@ class AnyUtilsTests: XCTestCase {
   }
   
 }
-
