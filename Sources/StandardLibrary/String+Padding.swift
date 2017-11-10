@@ -23,6 +23,8 @@
 
 // MARK: - Padding Operations
 
+import Darwin
+
 public extension String {
 
   /// **Mechanica**
