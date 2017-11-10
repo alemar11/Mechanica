@@ -29,7 +29,7 @@ class BinaryFloatingPointUtilsTests: XCTestCase {
   // MARK: - BinaryConvertible
 
   /// http://www.binaryconvert.com/result_signed_int.html?decimal=045049049049
-  func testToBinaryString() {
+  func testbinaryString() {
     XCTAssertEqual(Float(-5.625).binaryString,"11000000101101000000000000000000")
     XCTAssertEqual(Float(329.390625).binaryString,"01000011101001001011001000000000")
     XCTAssertEqual(Float32(923.52).binaryString,"01000100011001101110000101001000")

@@ -52,8 +52,8 @@ class BoolUtilsTests: XCTestCase {
 
   // MARK:- BinaryConvertible
 
-  func testToBinaryString() {
-    XCTAssertEqual(true.toBinaryString, "1")
-    XCTAssertEqual(false.toBinaryString, "0")
+  func testbinaryString() {
+    XCTAssertEqual(true.binaryString, "1")
+    XCTAssertEqual(false.binaryString, "0")
   }
 }

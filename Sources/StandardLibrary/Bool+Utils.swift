@@ -59,9 +59,9 @@ extension Bool {
   ///
   /// Example:
   ///
-  ///     true.toBinaryString -> "1"
+  ///     true.binaryString -> "1"
   ///
-  public var toBinaryString: String {
+  public var binaryString: String {
     return self ? "1" : "0"
   }
 

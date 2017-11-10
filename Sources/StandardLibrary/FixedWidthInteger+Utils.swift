@@ -29,20 +29,20 @@ extension FixedWidthInteger {
   ///
   /// Example:
   ///
-  ///     Int8(10).toBinaryString -> "00001010"
-  ///     255.toBinaryString -> "11111111"
-  ///     Int16(-1).toBinaryString -> "1111111111111111"
-  ///     1.toBinaryString -> "0000000000000000000000000000000000000000000000000000000000000001" (Int 64 bit)
-  ///     1.toBinaryString -> "00000000000000000000000000000001" (Int 32 bit)
+  ///     Int8(10).binaryString -> "00001010"
+  ///     255.binaryString -> "11111111"
+  ///     Int16(-1).binaryString -> "1111111111111111"
+  ///     1.binaryString -> "0000000000000000000000000000000000000000000000000000000000000001" (Int 64 bit)
+  ///     1.binaryString -> "00000000000000000000000000000001" (Int 32 bit)
   ///
   /// - Note: Negative integers are converted with the **two's complement operation**. For signed binary use `String(:radix:)`
   ///
   /// Example:
   ///
   ///     String(Int8(-127), radix: 2) -> -1111111
-  ///     Int8(-127).toBinaryString -> 10000001
+  ///     Int8(-127).binaryString -> 10000001
   ///
-  var toBinaryString: String {
+  var binaryString: String {
     var result: [String] = []
 
     for i in 0..<(Self.bitWidth / 8) {
