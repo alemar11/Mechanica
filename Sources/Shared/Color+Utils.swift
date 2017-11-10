@@ -213,7 +213,7 @@ extension Color {
       self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
 
     #endif
-    // TODO: range [0, 1]?
+    
     return (hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
   }
 
