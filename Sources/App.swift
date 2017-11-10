@@ -23,6 +23,8 @@
 
 import Foundation
 
+
+//TODO: remove?
 public enum App {
 
   /// **Mechanica**
