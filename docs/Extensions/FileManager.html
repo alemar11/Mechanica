@@ -224,213 +224,7 @@
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/URL"></a>
-                <a name="//apple_ref/swift/Section/URL" class="dashAnchor"></a>
-                <a href="#/URL">
-                  <h3 class="section-name">URL</h3>
-                </a>
-              </div>
               <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So11FileManagerC9MechanicaE21userDocumentDirectory10Foundation3URLVSgv"></a>
-                    <a name="//apple_ref/swift/Property/userDocumentDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE21userDocumentDirectory10Foundation3URLVSgv">userDocumentDirectory</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-<p>Returns the location of the document directory (<em>Documents/</em>) in the user&rsquo;s home directory.
-The contents of this directory can be made available to the user through file sharing; therefore, his directory should only contain files that you may wish to expose to the user.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    Use this directory to store user-generated content.
-
-</div>
-
-<p>The contents of <em>Documents</em> directory are <strong>backed up by iTunes and iCloud</strong>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">userDocumentDirectory</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So11FileManagerC9MechanicaE20userLibraryDirectory10Foundation3URLVSgv"></a>
-                    <a name="//apple_ref/swift/Property/userLibraryDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE20userLibraryDirectory10Foundation3URLVSgv">userLibraryDirectory</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-<p>Returns the location of the library directory (<em>Library/</em>) in the user&rsquo;s home directory.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    Use the Library subdirectories for any files you don’t want exposed to the user. Your app should not use these directories for user data files.
-
-</div>
-
-<p>You typically put files in one of several standard subdirectories. iOS apps commonly use the <em>Application Support</em> and <em>Caches subdirectories</em>; however, you can create custom subdirectories.</p>
-
-<p>The contents of the <em>Library</em> directory are <strong>backed up by iTunes and iCloud</strong> (with the exception of the <em>Caches subdirectory</em>).</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">userLibraryDirectory</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So11FileManagerC9MechanicaE19userCachesDirectory10Foundation3URLVSgv"></a>
-                    <a name="//apple_ref/swift/Property/userCachesDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE19userCachesDirectory10Foundation3URLVSgv">userCachesDirectory</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-<p>Returns the location of discardable cache files (<em>Library/Caches/</em>) in the user&rsquo;s home directory.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    Put data cache files in the Library/Caches/ directory. Cache data can be used for any data that needs to persist longer than temporary data, but not as long as a support file.
-
-</div>
-
-<p>Generally speaking, the application does not require cache data to operate properly, but it can use cache data to improve performance.
-Examples of cache data include (but are not limited to) database cache files and transient, downloadable content.</p>
-
-<p>The contents of the <em>Library/Caches</em> are <strong>not backed up by iTunes and iCloud</strong>.</p>
-
-<p>Note that the system may delete the Caches/ directory to free up disk space, so your app must be able to re-create or download these files as needed.</p>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
-    Sandboxed <em>macOS</em> apps have all their <em>Caches</em> directory located at a system-defined path (typically found at <em>~/Library/Containers/<bundle_id></em>).
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">userCachesDirectory</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So11FileManagerC9MechanicaE31userApplicationSupportDirectory10Foundation3URLVSgv"></a>
-                    <a name="//apple_ref/swift/Property/userApplicationSupportDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE31userApplicationSupportDirectory10Foundation3URLVSgv">userApplicationSupportDirectory</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-<p>Returns the location of application support files (<em>Library/Application Support/</em>) in the user&rsquo;s home directory.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    Put app-created support files in the <em>Library/Application support/</em> directory.
-
-</div>
-
-<p>In general, this directory includes files that the app uses to run but that should remain hidden from the user.
-This directory can also include data files, configuration files, templates and modified versions of resources loaded from the app bundle.</p>
-
-<p>The contents of the <em>Library/Application Support/</em> are <strong>backed up by iTunes and iCloud</strong>.</p>
-<div class="aside aside-warning">
-    <p class="aside-title">Warning</p>
-    <p>On <em>macOS</em> all content in this directory should be placed in a <strong>custom subdirectory</strong> whose name is that of your app’s bundle identifier or your company.</p>
-
-</div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
-    <p>Sandboxed <em>macOS</em> apps have all their <em>Application Support</em> directory located at a system-defined path (typically found at <em>~/Library/Containers/<bundle_id></em>).</p>
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">userApplicationSupportDirectory</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So11FileManagerC9MechanicaE29makeNewUserCachesSubDirectory10Foundation3URLVSgv"></a>
-                    <a name="//apple_ref/swift/Property/makeNewUserCachesSubDirectory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE29makeNewUserCachesSubDirectory10Foundation3URLVSgv">makeNewUserCachesSubDirectory</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-<p>Creates and returns always a <code>new</code> directory in Library/Caches in the user&rsquo;s home directory for discardable cache files.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">makeNewUserCachesSubDirectory</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -474,9 +268,9 @@ This directory can also include data files, configuration files, templates and m
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So11FileManagerC9MechanicaE14clearDirectoryySS6atPath_tKF"></a>
-                    <a name="//apple_ref/swift/Method/clearDirectory(atPath:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So11FileManagerC9MechanicaE14clearDirectoryySS6atPath_tKF">clearDirectory(atPath:)</a>
+                    <a name="/s:So11FileManagerC9MechanicaE14cleanDirectoryySS6atPath_tKF"></a>
+                    <a name="//apple_ref/swift/Method/cleanDirectory(atPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So11FileManagerC9MechanicaE14cleanDirectoryySS6atPath_tKF">cleanDirectory(atPath:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -486,14 +280,19 @@ This directory can also include data files, configuration files, templates and m
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Clears all contents in a directory <code>path</code>; throws an error in cases of failure.</p>
+<p>Cleans all contents in a directory <code>path</code>.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    throws an error in cases of failure.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">clearDirectory</span><span class="p">(</span><span class="n">atPath</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">cleanDirectory</span><span class="p">(</span><span class="n">atPath</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -572,7 +371,7 @@ This directory can also include data files, configuration files, templates and m
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-11-09)</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-11-10)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
