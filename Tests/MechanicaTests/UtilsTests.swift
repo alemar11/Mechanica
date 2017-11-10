@@ -27,7 +27,7 @@ import XCTest
 class AnyUtilsTests: XCTestCase {
   
   func testAppIdentifier() {
-    XCTAssert(App.appIdentifier == "xctest")
+    XCTAssert(appIdentifier == "xctest")
   }
 
   private class Demo {}

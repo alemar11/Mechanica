@@ -26,10 +26,6 @@ import XCTest
 
 class LocaleUtilsTests: XCTestCase {
 
-  func testCountries() {
-    XCTAssertTrue(Locale.countries().count == Locale.isoRegionCodes.count)
-  }
-
   func testPosix() {
     let test: Locale = .posix
     XCTAssertEqual(test.identifier, "en_US_POSIX")

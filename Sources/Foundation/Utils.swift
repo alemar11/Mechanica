@@ -39,6 +39,7 @@ public func typeName(of some: Any) -> String {
   return value
 }
 
+// TODO: review
 /// **Mechanica**
 ///
 /// Returns the app identifier (`bundleIdenfier` or its `executable` file name).

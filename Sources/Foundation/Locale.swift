@@ -25,22 +25,6 @@ import Foundation
 
 extension Locale {
 
-  // TODO: add an example in the description
-  /// **Mechanica**
-  ///
-  ///  Returns all the countries as a pair of region code and localized name.
-  public static func countries(_ locale: Locale = .current) -> [(regionCode: String, localizedName: String)] {
-    var countries = [(regionCode: String, localizedName: String)]()
-
-    for regionCode in Locale.isoRegionCodes {
-      guard let localizedName = locale.localizedString(forRegionCode: regionCode) else { continue }
-
-      countries.append( (regionCode: regionCode, localizedName: localizedName) )
-    }
-
-    return countries
-  }
-
   /// **Mechanica**
   ///
   /// UNIX representation of locale usually used for normalizing.

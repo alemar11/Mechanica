@@ -29,15 +29,11 @@ public extension ExpressibleByIntegerLiteral {
   ///
   /// Returns a random integer value.
   public static func random() -> Self {
-    var random: Self = 0
-    arc4random_buf(&random, MemoryLayout<Self>.size)
-
-    return random
+    return arc4random(type: Self.self)
   }
 
 }
 
-// TODO: keep or delete?
 private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   var result: T = 0
   arc4random_buf(&result, Int(MemoryLayout<T>.size))
