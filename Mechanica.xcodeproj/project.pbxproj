@@ -595,12 +595,12 @@
 		12B536EA1D33ED6A005C52A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				23C796681FB4479A006766FD /* Shared */,
-				23C796671FB44793006766FD /* UIKit */,
-				23C796661FB4478E006766FD /* AppKit */,
-				23C796651FB4477A006766FD /* StandardLibrary */,
-				23C796641FB44742006766FD /* Foundation */,
 				D273A5991DD5FB8B0007796F /* Mechanica.swift */,
+				23C796661FB4478E006766FD /* AppKit */,
+				23C796641FB44742006766FD /* Foundation */,
+				23C796681FB4479A006766FD /* Shared */,
+				23C796651FB4477A006766FD /* StandardLibrary */,
+				23C796671FB44793006766FD /* UIKit */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
