@@ -108,8 +108,12 @@ extension Color {
 
     #if os(iOS) || os(tvOS) || os(watchOS)
       guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) else { return nil }
-      let compatibleSRGBColor = self.cgColor.converted(to: colorSpace, intent: .defaultIntent, options: nil)!
-      convertedColor =  Color(cgColor: compatibleSRGBColor)
+      if cgColor.colorSpace == colorSpace {
+        convertedColor  = self
+      } else {
+        guard let compatibleSRGBColor = cgColor.converted(to: colorSpace, intent: .defaultIntent, options: nil) else { return nil }
+         convertedColor =  Color(cgColor: compatibleSRGBColor)
+      }
 
     #elseif os(macOS)
       let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
@@ -213,7 +217,7 @@ extension Color {
       self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
 
     #endif
-    
+
     return (hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
   }
 
