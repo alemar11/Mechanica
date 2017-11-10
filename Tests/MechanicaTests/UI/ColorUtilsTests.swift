@@ -125,7 +125,7 @@ class ColorUtilsTests: XCTestCase {
   }
 
   @available(iOS 10, tvOS 10, watchOS 3, macOS 10.12, *)
-  func testConvertingToCompatibleSRGBColor() {
+  func testConvertingToSRGBColor() {
     // Given, When
     /// RGB{255, 0, 0} P3{234, 51, 35}
     let redP3 = Color(displayP3Red: 234/255, green: 51/255, blue: 35/255, alpha: 255/255)
@@ -188,28 +188,6 @@ class ColorUtilsTests: XCTestCase {
 
   }
 
-  func testLightened() {
-    // Given, When
-    let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
-    // Then
-
-    XCTAssertEqual(gray.lightened(by: 0.5), Color(red: 1.0, green: 1.0, blue: 1.0, alpha: 1))
-    XCTAssertEqual(Color.red.lightened(by: 0.5), Color(red: 1.5, green: 0.5, blue: 0.5, alpha: 1))
-    XCTAssertEqual(Color.green.lightened(by: 0.5), Color(red: 0.5, green: 1.5, blue: 0.5, alpha: 1))
-    XCTAssertEqual(Color.blue.lightened(by: 0.5), Color(red: 0.5, green: 0.5, blue: 1.5, alpha: 1))
-  }
-
-  func testDarkened() {
-    // Given, When
-    let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
-    // Then
-    XCTAssertEqual(gray.darkened(by: 0.5), Color(red: 0, green: 0, blue: 0, alpha: 1))
-    XCTAssertEqual(Color.red.darkened(by: 0.5), Color(red: 0.5, green: -0.5, blue: -0.5, alpha: 1))
-    XCTAssertEqual(Color.green.darkened(by: 0.5), Color(red: -0.5, green: 0.5, blue: -0.5, alpha: 1))
-    XCTAssertEqual(Color.blue.darkened(by: 0.5), Color(red: -0.5, green: -0.5, blue: 0.5, alpha: 1))
-  }
-
-
   func testRandomColor() {
     let randomColor = Color.random()
     let colorSpace = randomColor.cgColor.colorSpace
@@ -223,18 +201,6 @@ class ColorUtilsTests: XCTestCase {
       XCTAssert(colorSpaceName! == CGColorSpace.sRGB)
     #endif
   }
-
-  func testMixingColor() {
-    // Given, When
-    let red = Color(red: 1.0, green: 0, blue: 0, alpha: 1.0)
-    let yellow = Color(red: 1.0, green: 1.0, blue: 0, alpha: 1.0)
-    let expectedOrange = Color(red: 1.0, green: 0.5, blue: 0, alpha: 1.0)
-    let orange = red.mixing(with: yellow, by: 0.5) //half red and half yellow
-    // Then
-    XCTAssertNotNil(orange)
-    XCTAssertTrue(orange! == expectedOrange)
-  }
-
 
   // MARK - Initializers
 
@@ -302,130 +268,28 @@ class ColorUtilsTests: XCTestCase {
 
   }
 
-//  func testChangingHue() {
-//
-//    do {
-//      let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
-//      XCTAssertEqual(gray.changingHue(by: 0.0), gray)
-//    }
-//
-//    do {
-//      /// HSBA: 0,1,1,1
-//      let color = Color.red.changingHue(by: 0.5)!
-//      XCTAssertTrue(color.hsba!.hue == 0.5)
-//    }
-//
-//    do {
-//      /// HSBA: 0,1,1,1
-//      let color = Color.red.changingHue(by: -0.1)!
-//      XCTAssertTrue(color.hsba!.hue == CGFloat(0 - 0.1))
-//
-//    }
-//  }
+  func testBlending() {
+    let orange = Color.blend(.red, with: .yellow)
+    XCTAssertTrue(orange == Color.orange)
 
-  func testChangingBrightness() {
+    let gray = Color.blend(.white, with: .black)
+    XCTAssertNotNil(gray)
+    let grayRGBA = gray!.rgba!
+    XCTAssertTrue(grayRGBA.red == 0.5)
+    XCTAssertTrue(grayRGBA.blue == 0.5)
+    XCTAssertTrue(grayRGBA.green == 0.5)
+    XCTAssertTrue(grayRGBA.alpha == 1.0)
 
-//    do {
-//      let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
-//      XCTAssertEqual(gray.changingBrightness(by: 0.0), gray)
-//      XCTAssertEqual(gray.changingBrightness(by: 0.5), Color(red: 1.0, green: 1.0, blue: 1.0, alpha:1))
-//      XCTAssertEqual(gray.changingBrightness(by: -0.0), gray)
-//      XCTAssertEqual(gray.changingBrightness(by: -0.5), Color(red: 0, green: 0, blue: 0, alpha: 1))
-//    }
-//
-//    do {
-//      /// HSBA: 0,1,1,1
-//      let color = Color.red.changingBrightness(by: 0.3)!
-//      let hsba = color.hsba!
-//      XCTAssertTrue(hsba.hue == 0)
-//      XCTAssertTrue(hsba.saturation == 1)
-//      XCTAssertTrue(hsba.brightness == 1.3)
-//      XCTAssertTrue(hsba.alpha == 1)
-//    }
-//
-//    do {
-//      /// HSBA: 0,1,1,1
-//      let color = Color.red.changingBrightness(by: 1.3)!
-//      let hsba = color.hsba!
-//      print(hsba)
-//      XCTAssertTrue(hsba.hue == 0)
-//      XCTAssertTrue(hsba.saturation == 1)
-//      XCTAssertTrue(hsba.brightness == 2.3)
-//      XCTAssertTrue(hsba.alpha == 1)
-//    }
-//
-//    do {
-//      /// HSBA: 0,1,1,1
-//      let color = Color.red.changingBrightness(by: -0.3)!
-//      let hsba = color.hsba!
-//      XCTAssertTrue(hsba.hue == 0)
-//      XCTAssertTrue(hsba.saturation == 1)
-//      XCTAssertTrue(hsba.brightness == 0.7)
-//      XCTAssertTrue(hsba.alpha == 1)
-//    }
+    XCTAssertNil(Color.blend(.red, percentage: 0.6, with: .yellow))
+    XCTAssertNil(Color.blend(.red, percentage: 0.6, with: .yellow, percentage: 2))
+    XCTAssertNil(Color.blend(.red, percentage: 0.6, with: .yellow, percentage: 0.1))
+    XCTAssertNil(Color.blend(.red, percentage: 0.6, with: .yellow, percentage: -0.4))
+    XCTAssertNil(Color.blend(.red, percentage: -0.6, with: .yellow, percentage: 0.4))
+    XCTAssertNil(Color.blend(.red, percentage: 0.6, with: .yellow, percentage: 0))
+    XCTAssertNil(Color.blend(.red, percentage: 2.0, with: .yellow, percentage: 0.1))
 
-    do {
-      /// HSBA: 0,1,1,1
-//      let color = Color.red.changingBrightness(by: -1.3)!.convertingToCompatibleSRGBColor()!
-//
-//      let hsba = color.hsba!
-//      print(hsba)
-//      XCTAssertTrue(hsba.hue == 0)
-//      XCTAssertTrue(hsba.saturation == 1)
-//      XCTAssertTrue(hsba.brightness == 0)
-//      XCTAssertTrue(hsba.alpha == 1)
-    }
-
-    //
-    //    XCTAssertEqual(Color.red.changingBrightness(by: 0.5), Color(red: 1.5, green: 0, blue: 0, alpha: 1))
-    //    XCTAssertEqual(Color.green.changingBrightness(by: 0.5), Color(red: 0, green: 1.5, blue: 0, alpha: 1))
-    //    XCTAssertEqual(Color.blue.changingBrightness(by: 0.5), Color(red: 0, green: 0, blue: 1.5, alpha: 1))
-    //
-    //
-    //    XCTAssertEqual(Color.red.changingBrightness(by: -0.5), Color(red: 0.5, green: 0, blue: 0, alpha: 1))
-    //    XCTAssertEqual(Color.green.changingBrightness(by: -0.5), Color(red: 0, green: 0.5, blue: 0, alpha: 1))
-    //    XCTAssertEqual(Color.blue.changingBrightness(by: -0.5), Color(red: 0, green: 0, blue: 0.5, alpha: 1))
-  }
-
-  func testChangingSaturation() {
-
-//    do {
-//      let gray = Color(red:0.5, green:0.5, blue: 0.5, alpha: 1)
-//      XCTAssertEqual(gray.changingSaturation(by: 0.0), gray)
-//      XCTAssertEqual(gray.changingSaturation(by: 0.5), Color(red: 0.5, green: 0.25, blue: 0.25, alpha: 1))
-//      XCTAssertEqual(gray.changingSaturation(by: -0.0), gray)
-//      XCTAssertEqual(gray.changingSaturation(by: -0.5), Color(red: 0.5, green: 0.75, blue: 0.75, alpha: 1))
-//    }
-//
-//    do {
-//      /// HSBA: 0,1,1,1
-//      let color = Color.red.changingSaturation(by: 0.3)!
-//      let hsba = color.hsba!
-//      XCTAssertTrue(hsba.hue == 0)
-//      XCTAssertTrue(hsba.saturation == 1.3)
-//      XCTAssertTrue(hsba.brightness == 1)
-//      XCTAssertTrue(hsba.alpha == 1)
-//    }
-//
-//    do {
-//      /// HSBA: 0,1,1,1
-//      let color = Color.red.changingSaturation(by: -0.3)!
-//      let hsba = color.hsba!
-//      XCTAssertTrue(hsba.hue == 0)
-//      XCTAssertTrue(hsba.saturation == 0.7)
-//      XCTAssertTrue(hsba.brightness == 1)
-//      XCTAssertTrue(hsba.alpha == 1)
-//    }
-
-
-    //    XCTAssertEqual(Color.red.changingSaturation(by: 0.5), Color(red: 1, green: -0.5, blue: -0.5, alpha: 1))
-    //    XCTAssertEqual(Color.green.changingSaturation(by: 0.5), Color(red: -0.5, green: 1.0, blue:-0.5, alpha: 1))
-    //    XCTAssertEqual(Color.blue.changingSaturation(by: 0.5), Color(red: -0.5, green: -0.5, blue: 1.0, alpha: 1))
-    //
-    //
-    //    XCTAssertEqual(Color.red.changingSaturation(by: -0.5), Color(red: 1, green: 0.5, blue: 0.5, alpha: 1))
-    //    XCTAssertEqual(Color.green.changingSaturation(by: -0.5), Color(red: 0.5, green: 1.0, blue:0.5, alpha: 1))
-    //    XCTAssertEqual(Color.blue.changingSaturation(by: -0.5), Color(red: 0.5, green: 0.5, blue: 1.0, alpha: 1))
+    XCTAssertTrue(Color.blend(.red, percentage: 0, with: .yellow, percentage: 1.0) == Color.yellow)
+    XCTAssertTrue(Color.blend(.red, percentage: 1.0, with: .yellow, percentage: 0) == Color.red)
   }
 
 }

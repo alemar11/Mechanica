@@ -25,6 +25,7 @@
 import XCTest
 @testable import Mechanica
 
+// TODO: remove
 class ColorFlatTests: XCTestCase {
 
   func testFlatColors() {

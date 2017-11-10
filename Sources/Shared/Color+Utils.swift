@@ -223,67 +223,49 @@ extension Color {
 
 }
 
-//MARK: - Working in Progress
+//MARK: - Editing
 
 extension Color {
 
   /// **Mechanica**
   ///
-  /// Mixes the given color object with the receiver. Specifically, takes the average of each of the RGB components, optionally weighted by the given percentage.
+  /// Blends two colors together.
   ///
   /// - Parameters:
-  ///   - color: color to be mixed.
-  ///   - percentage: mixing weight. (default is 0.5) takes the average of each of the RGBA components.
-  /// - Returns: a `new color` mixing `self` with the given `color`.
-  /// - Note: See [lighter and darker color](http://stackoverflow.com/questions/11598043/get-slightly-lighter-and-darker-color-from-uicolor/23120676#23120676)
-  public final func mixing(with color: Color, by percentage: CGFloat = 0.5) -> Color? {
-    // TODO: range [0, 1]?
-    guard let (r1, g1, b1, a1) = rgba, let (r2, g2, b2, a2) = color.rgba else { return nil }
-    return Color(red: r1 + percentage * (r2 - r1), green: g1 + percentage * (g2 - g1), blue: b1 + percentage * (b2 - b1), alpha: a1 + percentage * (a2 - a1))
-  }
-
-  /// **Mechanica**
-  ///
-  /// Blends two colors.
-  ///
-  /// - Parameters:
-  ///   - color1: First color to blend.
-  ///   - intensity1: Intensity of first color (default is 0.5)
-  ///   - color2: Second color to blend.
-  ///   - intensity2: Intensity of second color (default is 0.5)
+  ///   - firstColor: First color to blend.
+  ///   - firstPercentage: Intensity of first color (default is 0.5)
+  ///   - secondColor: Second color to blend.
+  ///   - secondPercentage: Intensity of second color (default is 0.5)
   /// - Returns: a `new color` blending the two colors.
-  public static func blend(_ color1: Color, intensity1: CGFloat = 0.5, with color2: Color, intensity2: CGFloat = 0.5) -> Color? {
+  /// - Note: The sum of the two percentages must be 1.0 otherwise the blendind operation is not executed.
+  public static func blend(_ firstColor: Color, percentage firstPercentage: CGFloat = 0.5, with secondColor: Color, percentage secondPercentage: CGFloat = 0.5) -> Color? {
     // http://stackoverflow.com/questions/27342715/blend-uicolors-in-swift
 
-    let total = intensity1 + intensity2
-    let level1 = intensity1/total
-    let level2 = intensity2/total
+    guard firstPercentage >= 0 else { return nil }
+    guard secondPercentage >= 0 else { return nil }
 
-    guard level1 > 0 else { return color2 }
-    guard level2 > 0 else { return color1 }
+    let total = firstPercentage + secondPercentage
+    guard total == 1.0 else { return nil }
 
-    let _components1: [CGFloat]? = {
-      guard let c = color1.cgColor.components else { return nil }
-      return c.count == 4 ? c : [c[0], c[0], c[0], c[1]]
-    }()
-    let _components2: [CGFloat]? = {
-      guard let c = color2.cgColor.components else { return nil }
-      return c.count == 4 ? c : [c[0], c[0], c[0], c[1]]
-    }()
+    let level1 = firstPercentage/total
+    let level2 = secondPercentage/total
 
-    guard let components1 = _components1, let components2 = _components2 else { return nil }
+    guard level1 > 0 else { return secondColor.copy() as? Color }
+    guard level2 > 0 else { return firstColor.copy() as? Color }
 
-    let r1 = components1[0]
-    let r2 = components2[0]
+    guard let components1 = firstColor.rgba, let components2 = secondColor.rgba else { return nil }
 
-    let g1 = components1[1]
-    let g2 = components2[1]
+    let r1 = components1.red
+    let r2 = components2.red
 
-    let b1 = components1[2]
-    let b2 = components2[2]
+    let g1 = components1.green
+    let g2 = components2.green
 
-    let a1 = color1.cgColor.alpha
-    let a2 = color2.cgColor.alpha
+    let b1 = components1.blue
+    let b2 = components2.blue
+
+    let a1 = firstColor.cgColor.alpha
+    let a2 = secondColor.cgColor.alpha
 
     let r = (level1 * r1) + (level2 * r2)
     let g = (level1 * g1) + (level2 * g2)
@@ -293,59 +275,4 @@ extension Color {
     return Color(red: r, green: g, blue: b, alpha: a)
   }
 
-  /// **Mechanica**
-  ///
-  /// Returns a `new` color derived from `self` darkened by the given percentage in the RGBA color space.
-  /// - Note: The `new` color is obtained mixing `self` with the black color.
-  public final func darkened(by percentage: CGFloat = 0.25) -> Color? {
-    // TODO: range [0, 1]?
-    //return mixing(with: .black, by: percentage)
-    guard let (r, g, b, a) = rgba else { return nil }
-
-    return Color(red: (r - percentage), green: (g - percentage), blue: (b - percentage), alpha: a)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a `new` color derived from `self` lightened by the given percentage in the RGBA color space.
-  /// - Note: The `new` color is obtained mixing `self` with the white color.
-  public final func lightened(by percentage: CGFloat = 0.25) -> Color? {
-    // TODO: range [0, 1]?
-    //return mixing(with: .white, by: percentage)
-    guard let (r, g, b, a) = rgba else { return nil }
-
-    return Color(red: (r + percentage), green: (g + percentage), blue: (b + percentage), alpha: a)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a new color with che hue changed by a `percentage`.
-  public final func changingHue(by percentage: CGFloat = 0.25) -> Color? {
-    guard percentage != 0 else { return self.copy() as? Color }
-    guard let hsba = hsba else { return nil }
-    // TODO: range [0, 1]?
-    return Color(hue: (hsba.hue + percentage), saturation: hsba.saturation, brightness: hsba.brightness, alpha: hsba.alpha)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a new color with che brightness changed by a `percentage`.
-  /// - Note: A positive percentage returns a lighented color, while a negative percentage returns a darkened color.
-  public final func changingBrightness(by percentage: CGFloat = 0.25) -> Color? {
-    guard percentage != 0 else { return self.copy() as? Color }
-    guard let hsba = hsba else { return nil }
-    // TODO: range [0, 1]?
-    return Color(hue: hsba.hue, saturation: hsba.saturation, brightness: (hsba.brightness + percentage), alpha: hsba.alpha)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a new color with che brightness changed by a `percentage`.
-  /// - Note: A positive percentage returns a shaded color, while a negative percentage returns a tinted color.
-  public final func changingSaturation(by percentage: CGFloat = 0.25) -> Color? {
-    guard percentage != 0 else { return self.copy() as? Color }
-    guard let hsba = hsba else { return nil }
-    // TODO: range [0, 1]?
-    return Color(hue: hsba.hue, saturation: (hsba.saturation + percentage), brightness: hsba.brightness, alpha: hsba.alpha)
-  }
 }
