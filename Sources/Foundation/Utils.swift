@@ -38,3 +38,15 @@ public func typeName(of some: Any) -> String {
 
   return value
 }
+
+/// **Mechanica**
+///
+/// Returns the app identifier (`bundleIdenfier` or its `executable` file name).
+public var appIdentifier: String? {
+  if let identifier = Bundle.main.bundleIdentifier, !identifier.isBlank { //i.e. org.tinrobots.App
+    return identifier
+  } else if let identifier = Bundle.main.executableFileName, !identifier.isBlank { //i.e. AppExecutableName
+    return identifier
+  }
+  return nil
+}

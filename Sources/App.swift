@@ -29,7 +29,7 @@ public enum App {
   /// **Mechanica**
   ///
   /// Returns the app identifier (`bundleIdenfier` or its `executable` file name).
-  public static var identifier: String? {
+  public static var appIdentifier: String? {
     if let identifier = Bundle.main.bundleIdentifier, !identifier.isBlank { //i.e. org.tinrobots.App
       return identifier
     } else if let identifier = Bundle.main.executableFileName, !identifier.isBlank { //i.e. AppExecutableName
