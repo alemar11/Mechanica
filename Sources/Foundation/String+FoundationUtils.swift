@@ -29,6 +29,26 @@ extension String {
   
   /// **Mechanica**
   ///
+  /// Returns a Bool value by parsing `self`.
+  ///
+  /// Example:
+  ///
+  ///     "👍🏼".bool -> true
+  ///     "0".bool -> false
+  ///
+  public var bool: Bool? {
+    switch self.trimmed().lowercased() {
+    case "1", "true", "t", "yes", "y", "👍", "👍🏻", "👍🏼", "👍🏽", "👍🏾", "👍🏿":
+      return true
+    case "0", "false", "f", "no", "n", "👎", "👎🏻", "👎🏼", "👎🏽", "👎🏾", "👎🏿":
+      return false
+    default:
+      return nil
+    }
+  }
+  
+  /// **Mechanica**
+  ///
   /// Returns *true* if `self` starts with a given prefix.
   public func starts(with prefix: String, caseSensitive: Bool = true) -> Bool {
     if !caseSensitive {
@@ -261,20 +281,19 @@ extension String {
     return first!.isFlag
   }
   
-  // MARK: - Bool
-  
   /// **Mechanica**
   ///
-  /// Return a Bool value by parsing `self`.
-  public var bool: Bool? {
-    switch self.trimmed().lowercased() {
-    case "1", "true", "t", "yes", "y", "👍", "👍🏻", "👍🏼", "👍🏽", "👍🏾", "👍🏿":
-      return true
-    case "0", "false", "f", "no", "n", "👎", "👎🏻", "👎🏼", "👎🏽", "👎🏾", "👎🏿":
-      return false
-    default:
-      return nil
+  /// Generates a `new` random alphanumeric string of a given length (default 8).
+  public static func random(length: UInt32 = 8) -> String {
+    let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    var randomString: String = ""
+    
+    for _ in 0..<length {
+      let randomValue = arc4random_uniform(UInt32(base.count))
+      randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
     }
+    
+    return randomString
   }
   
   // MARK: - Subscript with NSRange
@@ -410,22 +429,6 @@ extension String {
     return replacingCharacters(in: start ..< end, with: replacement)
   }
   
-  // MARK: - Random
-  
-  /// **Mechanica**
-  ///
-  /// Generates a `new` random alphanumeric string of a given length (default 8).
-  public static func random(length: UInt32 = 8) -> String {
-    let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    var randomString: String = ""
-    
-    for _ in 0..<length {
-      let randomValue = arc4random_uniform(UInt32(base.count))
-      randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
-    }
-    
-    return randomString
-  }
   
   // MARK: - Cleaning Methods
   
@@ -649,6 +652,77 @@ extension String {
     return plainData?.base64EncodedString()
   }
   
+  // MARK: - Semantic Versioning
+  
+  /// **Mechanica**
+  ///
+  /// Checks if `self` is a semantic version with a value equal to a given `version`.
+  public func isSemanticVersionEqual(to version: String) -> Bool {
+    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedSame
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Checks if `self` is a semantic version with a value greater than given `version`.
+  public func isSemanticVersionGreater(than version: String) -> Bool {
+    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedDescending
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Checks if `self` is a semantic version with a value greater or equal to a given `version`.
+  public func isSemanticVersionGreaterOrEqual(to version: String) -> Bool {
+    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedAscending
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Checks if `self` is a semantic version with a value lesser than a given `version`.
+  public func isSemanticVersionLesser(than version: String) -> Bool {
+    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedAscending
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Checks if `self` is a semantic version with a value lesser or equal to a given `version`.
+  public func isSemanticVersionLesserOrEqual(to version: String) -> Bool {
+    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedDescending
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Makes sure that we always have a semantic version in the form MAJOR.MINOR.PATCH
+  func ensureSemanticVersionCorrectness() -> String {
+    if self.isEmpty { return "0.0.0" }
+    
+    var copy = self
+    
+    let versionComponents = components(separatedBy: ".")
+    guard 1 ... 3 ~= versionComponents.count else { fatalError("Invalid number of semantic version components (\(versionComponents.count)).") }
+    
+    let notNumericComponents = versionComponents.filter { !$0.isNumeric }
+    guard notNumericComponents.isEmpty else { fatalError("Each semantic version component should have a numeric value.") }
+    
+    for _ in versionComponents.count..<3 {
+      copy += ".0"
+    }
+    
+    return copy
+  }
+  
+  /// **Mechanica**
+  ///
+  /// If `self` is a semantic version, returns a tuple with major, minor and patch components.
+  public var semanticVersion: (Int, Int, Int) {
+    let versionComponents = ensureSemanticVersionCorrectness().components(separatedBy: ".")
+    let major = Int(versionComponents[0]) ?? 0
+    let minor = Int(versionComponents[1]) ?? 0
+    let patch = Int(versionComponents[2]) ?? 0
+    
+    return (major, minor, patch)
+  }
+  
+  
   // MARK: - Regular Expression
   
   /// **Mechanica**
@@ -722,76 +796,6 @@ extension String {
     guard let range = firstRange(matching: pattern) else { return nil }
     
     return String(self[range])
-  }
-  
-  // MARK: - Semantic Versioning
-  
-  /// **Mechanica**
-  ///
-  /// Checks if `self` is a semantic version with a value equal to a given `version`.
-  public func isSemanticVersionEqual(to version: String) -> Bool {
-    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedSame
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Checks if `self` is a semantic version with a value greater than given `version`.
-  public func isSemanticVersionGreater(than version: String) -> Bool {
-    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedDescending
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Checks if `self` is a semantic version with a value greater or equal to a given `version`.
-  public func isSemanticVersionGreaterOrEqual(to version: String) -> Bool {
-    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedAscending
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Checks if `self` is a semantic version with a value lesser than a given `version`.
-  public func isSemanticVersionLesser(than version: String) -> Bool {
-    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedAscending
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Checks if `self` is a semantic version with a value lesser or equal to a given `version`.
-  public func isSemanticVersionLesserOrEqual(to version: String) -> Bool {
-    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedDescending
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Makes sure that we always have a semantic version in the form MAJOR.MINOR.PATCH
-  func ensureSemanticVersionCorrectness() -> String {
-    if self.isEmpty { return "0.0.0" }
-    
-    var copy = self
-    
-    let versionComponents = components(separatedBy: ".")
-    guard 1 ... 3 ~= versionComponents.count else { fatalError("Invalid number of semantic version components (\(versionComponents.count)).") }
-    
-    let notNumericComponents = versionComponents.filter { !$0.isNumeric }
-    guard notNumericComponents.isEmpty else { fatalError("Each semantic version component should have a numeric value.") }
-    
-    for _ in versionComponents.count..<3 {
-      copy += ".0"
-    }
-    
-    return copy
-  }
-  
-  /// **Mechanica**
-  ///
-  /// If `self` is a semantic version, returns a tuple with major, minor and patch components.
-  public var semanticVersion: (Int, Int, Int) {
-    let versionComponents = ensureSemanticVersionCorrectness().components(separatedBy: ".")
-    let major = Int(versionComponents[0]) ?? 0
-    let minor = Int(versionComponents[1]) ?? 0
-    let patch = Int(versionComponents[2]) ?? 0
-    
-    return (major, minor, patch)
   }
   
 }
