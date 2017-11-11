@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Mechanica.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "12B5371D1D33F192005C52A7"
+               BuildableName = "Mechanica macOS Tests.xctest"
+               BlueprintName = "Mechanica macOS Tests"
+               ReferencedContainer = "container:Mechanica.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

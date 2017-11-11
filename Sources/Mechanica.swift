@@ -27,3 +27,11 @@ import Foundation
 ///
 /// Mechanica Bundle Identifier
 internal let bundleIdentifier = "org.tinrobots.Mechanica"
+
+/// **Mechanica**
+///
+/// Mechanica Bundle
+internal var bundle: Bundle {
+  class Object {}
+  return Bundle(for: Object.self)
+}

@@ -1,5 +1,14 @@
 # Changelog
 
+### 1.1.0
+
+- More UIKit utils.
+- More String utils (i.e. padding methods).
+- Better random functions.
+- Added Sequence utils.
+- Added Character and Unicode Utils.
+- Better library structure.
+
 ### 1.0.0 ⭐
 
 - Mechanica is now completely migrated to **Swift 4**.  🤓
@@ -9,6 +18,8 @@
 - Added % unary operator.
 - Added more UIKit extensions.
 - More tests.
+- CoreData utils moved in a separated repository: [CoreDataPlus](https://github.com/tinrobots/coredataplus).
+- Removed Interface Builder utils (not in the scope of this library).
 
 ### 0.4.2
 
@@ -30,7 +41,7 @@
 
 ### 0.3.1
 
-- minor bugfixes.
+- Minor bugfixes.
 
 ### 0.3.0
 
@@ -41,8 +52,8 @@
 
 ### 0.2.0
 
-- added more extensions.
+- Added more extensions.
 
 ### 0.1.0
 
-- first release. ⭐
+- First release. ⭐

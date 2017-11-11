@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) && os(tvOS)
+#if os(iOS) || os(tvOS)
 
 import UIKit
 
@@ -31,11 +31,8 @@ extension UIButton {
   ///
   /// Sets the background `color` to use for the specified button `state`.
   public func setBackgroundColor(_ color: UIColor, for state: UIControlState) {
-    UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
-    UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)
-    UIGraphicsGetCurrentContext()!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-    let colorImage = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
+    let colorImage = UIImage(color: color, size: CGSize(width: 1, height: 1))
+
     setBackgroundImage(colorImage, for: state)
   }
 

@@ -1,0 +1,611 @@
+//
+// Mechanica
+//
+// Copyright © 2016-2017 Tinrobots.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+import XCTest
+@testable import Mechanica
+
+class StringUtilsTests: XCTestCase {
+
+  func testLength() {
+    XCTAssertTrue("".length == 0)
+    XCTAssertTrue(" ".length == 1)
+    XCTAssertTrue("cafe".length == 4)
+    XCTAssertTrue("cafè".length == 4)
+    XCTAssertTrue("🇮🇹".length == 1)
+    XCTAssertTrue("👍🏻".length == 1) //2
+    XCTAssertTrue("👍🏽".length == 1) //2
+    XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
+  }
+
+  func testStarts() {
+    //case sensitive
+    XCTAssertTrue("a".starts(with:"a"))
+    XCTAssertFalse("a".starts(with:"A"))
+    XCTAssertTrue("🤔a1".starts(with:"🤔"))
+    XCTAssertTrue("🖖🏽a1".starts(with:"🖖🏽"))
+    XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹"))
+
+    //case insensitive
+    XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹", caseSensitive: false))
+    XCTAssertTrue("a".starts(with:"A", caseSensitive: false))
+    XCTAssertTrue("Hello".starts(with:"hello", caseSensitive: false))
+    XCTAssertFalse("Hello".starts(with:"helloo", caseSensitive: false))
+  }
+
+  func testEnds() {
+    //case sensitive
+    XCTAssertTrue("a".ends(with:"a"))
+    XCTAssertFalse("a".ends(with:"A"))
+    XCTAssertTrue("a1🤔".ends(with:"🤔"))
+    XCTAssertTrue("a1🖖🏽".ends(with:"🖖🏽"))
+    XCTAssertTrue(" 🖖🏽🇮🇹🇮🇹".ends(with:"🇮🇹"))
+
+    //case insensitive
+    XCTAssertTrue(" 🖖🏽🇮🇹🇮🇹".ends(with:"🇮🇹", caseSensitive: false))
+    XCTAssertTrue("a".ends(with:"A", caseSensitive: false))
+    XCTAssertTrue("Hello".ends(with:"hello", caseSensitive: false))
+    XCTAssertFalse("Hello".ends(with:"helloo", caseSensitive: false))
+  }
+
+  func testReverse() {
+    var a = "a"
+    a.reverse()
+    XCTAssertTrue(a == "a")
+    var aa = "aa"
+    aa.reverse()
+    XCTAssertTrue(aa == "aa")
+    var abc = "abc"
+    abc.reverse()
+    XCTAssertTrue(abc == "cba")
+    var 🤔aa = "🤔aa"
+    🤔aa.reverse()
+    XCTAssertTrue(🤔aa == "aa🤔")
+  }
+
+  func testFirstCharacterOfEachWord() {
+
+    do {
+      let text = "tin Robots ! 🤖"
+      let initials = text.firstCharacterOfEachWord()
+      XCTAssertEqual(initials, ["t", "R", "!", "🤖"])
+    }
+
+    do {
+      let text = "\n"
+      let initials = text.firstCharacterOfEachWord()
+      XCTAssertTrue(initials.isEmpty)
+    }
+
+  }
+
+  func testContainsCaseSensitive() {
+    XCTAssertTrue("AaBbCc".contains("a", caseSensitive: true))
+    XCTAssertTrue("AaBbCc".contains("Aa", caseSensitive: true))
+
+    XCTAssertFalse("AaBbCc".contains("aa", caseSensitive: true)) //case sensitive
+    XCTAssertTrue("AaBbCc".contains("aa", caseSensitive: false)) //case insensitive
+    XCTAssertTrue("AaBbCc".contains("Aa", caseSensitive: true)) //case sensitive
+    XCTAssertFalse("AaBbCc".contains("aa", caseSensitive: true)) //case sensitive
+
+    XCTAssertFalse("HELLO world".contains("hello", caseSensitive: true)) //case sensitive
+    XCTAssertTrue("HELLO world".contains("hello", caseSensitive: false)) //case insensitive
+    XCTAssertFalse("HELLO world".contains("abc", caseSensitive: false)) //case insensitive
+
+    XCTAssertTrue("AaB🤔bCc".contains("🤔", caseSensitive: true))
+    XCTAssertFalse("AaB🤔bCc".contains("🤔🤔", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("ta", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("\u{200B}", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("🇮🇹", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("🇮🇹", caseSensitive: false))
+    XCTAssertFalse("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("{20", caseSensitive: true))
+  }
+
+  func testContainsCharacters() {
+    XCTAssertFalse("".containsCharacters(in: .letters))
+    XCTAssertTrue("AaBbCc".containsCharacters(in: .letters))
+    XCTAssertFalse("A1aBbCc".containsCharacters(in: .letters))
+    XCTAssertTrue("AaB bCc".containsCharacters(in: CharacterSet.letters.union(CharacterSet.whitespaces)))
+    XCTAssertFalse("A1a BbCc".containsCharacters(in: .letters))
+    XCTAssertTrue("123".containsCharacters(in: .decimalDigits))
+  }
+
+  func testReplace() {
+    XCTAssertTrue("AaBbCc".replace("a", with: "Z") == "AZBbCc")
+    XCTAssertTrue("AaBbCc".replace("a", with: "a") == "AaBbCc")
+    XCTAssertFalse("AaBbCc".replace("a", with: "A") == "AaBbCc")
+    XCTAssertTrue("AaBbCc".replace("", with: "A") == "AaBbCc")
+    XCTAssertTrue("AaBbCc".replace("AaBbCc", with: "123") == "123")
+    XCTAssertTrue("aaBbCa".replace("a", with: "1") == "11BbC1")
+
+    XCTAssertTrue("AaBbCc🤔".replace("🤔", with: "🤔🤔") == "AaBbCc🤔🤔")
+    XCTAssertTrue("".replace("🤔", with: "🤔🤔") == "")
+    XCTAssertTrue("".replace("", with: "🤔") == "")
+
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".replace("\u{200B}", with: " ") == "Italy 🇮🇹 🇮🇹 🇮🇹")
+
+    XCTAssertTrue("AaBbCc".replace("a", with: "Z", caseSensitive: false) == "ZZBbCc")
+    XCTAssertTrue("AaBbCc".replace("a", with: "a", caseSensitive: false) == "aaBbCc")
+    XCTAssertTrue("AaBbCc".replace("a", with: "A", caseSensitive: false) == "AABbCc")
+    XCTAssertTrue("AaBbCc".replace("", with: "A", caseSensitive: false) == "AaBbCc")
+  }
+
+  func testTrim() {
+    var s1 = "   Hello World   "
+    s1.trim()
+    XCTAssertTrue(s1 == "Hello World")
+  }
+
+  func testTrimmed() {
+    let s1 = "   Hello World   "
+    XCTAssertTrue(s1.trimmedStart() == "Hello World   ")
+    XCTAssertTrue(s1.trimmedEnd() == "   Hello World")
+    XCTAssertTrue(s1.trimmed() == "Hello World")
+
+    let s2 = "   \u{200B} Hello World   "
+    XCTAssertTrue(s2.trimmedStart() == "Hello World   ")
+    XCTAssertTrue(s2.trimmed() == "Hello World")
+
+    let s3 = "Hello World\n\n   "
+    XCTAssertTrue(s3.trimmedEnd() == "Hello World")
+    XCTAssertTrue(s3.trimmed() == "Hello World")
+
+
+    let s4 = "abcdefg"
+    XCTAssertTrue(s4.trimmedEnd(characterSet: .alphanumerics) == "")
+    XCTAssertTrue(s4.trimmedStart(characterSet: .alphanumerics) == "")
+
+    let s5 = "  abcdefg  "
+    XCTAssertTrue(s5.trimmedEnd(characterSet: .alphanumerics) == "  abcdefg  ")
+    XCTAssertTrue(s5.trimmedStart(characterSet: .alphanumerics) == "  abcdefg  ")
+    XCTAssertTrue(s5.trimmed() == "abcdefg")
+  }
+
+  func testCapitalizedFirstCharacter() {
+    let s1 = "   hello world   "
+    XCTAssertTrue(s1.capitalizedFirstCharacter() == s1)
+    let s2 = "hello world   "
+    XCTAssertTrue(s2.capitalizedFirstCharacter() == "Hello world   ")
+    let s3 = "1 hello world   "
+    XCTAssertTrue(s3.capitalizedFirstCharacter() == s3)
+    let s4 = "🇮🇹 hello world   "
+    XCTAssertTrue(s4.capitalizedFirstCharacter() == s4)
+    let s5 = "🇮🇹🇮🇹 hello world   "
+    XCTAssertTrue(s5.capitalizedFirstCharacter() == s5)
+    let s6 = "Hello world   "
+    XCTAssertTrue(s6.capitalizedFirstCharacter() == s6)
+    let s7 = "\na"
+    XCTAssertTrue(s7.capitalizedFirstCharacter() == s7)
+    let s8 = ""
+    XCTAssertTrue(s8.capitalizedFirstCharacter() == s8)
+    let s9 = "h e l l o w o r l d"
+    XCTAssertTrue(s9.capitalizedFirstCharacter() == "H e l l o w o r l d")
+    let s10 = "\u{200B}hello\u{200B}"
+    XCTAssertTrue(s10.capitalizedFirstCharacter() == s10)
+  }
+
+  func testDecapitalizedFirstCharacter() {
+    let s1 = "   hello world   "
+    XCTAssertTrue(s1.decapitalizedFirstCharacter() == s1)
+    let s2 = "Hello world   "
+    XCTAssertTrue(s2.decapitalizedFirstCharacter() == "hello world   ")
+    let s3 = "1 hello world   "
+    XCTAssertTrue(s3.decapitalizedFirstCharacter() == s3)
+    let s4 = "🇮🇹 hello world   "
+    XCTAssertTrue(s4.decapitalizedFirstCharacter() == s4)
+    let s5 = "🇮🇹🇮🇹 hello world   "
+    XCTAssertTrue(s5.decapitalizedFirstCharacter() == s5)
+    let s6 = "hello world   "
+    XCTAssertTrue(s6.decapitalizedFirstCharacter() == s6)
+    let s7 = "\na"
+    XCTAssertTrue(s7.decapitalizedFirstCharacter() == s7)
+    let s8 = ""
+    XCTAssertTrue(s8.decapitalizedFirstCharacter() == s8)
+    let s9 = "H e l l o w o r l d"
+    XCTAssertTrue(s9.decapitalizedFirstCharacter() == "h e l l o w o r l d")
+    let s10 = "\u{200B}hello\u{200B}"
+    XCTAssertTrue(s10.decapitalizedFirstCharacter() == s10)
+  }
+
+  func testPrefix() {
+    let s = "Hello World 🖖🏽"
+    XCTAssertTrue(s.prefix(maxLength: -100) == "")
+    XCTAssertTrue(s.prefix(maxLength: 0) == "")
+    XCTAssertTrue(s.prefix(maxLength: 1) == "H")
+    XCTAssertTrue(s.prefix(maxLength: 2) == "He")
+    XCTAssertTrue(s.prefix(maxLength: 3) == "Hel")
+    XCTAssertTrue(s.prefix(maxLength: 4) == "Hell")
+    XCTAssertTrue(s.prefix(maxLength: 5) == "Hello")
+    XCTAssertTrue(s.prefix(maxLength: 6) == "Hello ")
+    XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World 🖖🏽")
+    XCTAssertTrue(s.prefix(maxLength: 14) == "Hello World 🖖🏽")
+    XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World 🖖🏽")
+  }
+
+  func testSuffix() {
+    let s = "Hello World 🖖🏽"
+    XCTAssertTrue(s.suffix(maxLength: -100) == "")
+    XCTAssertTrue(s.suffix(maxLength: 0) == "")
+    XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 3) == "d 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 4) == "ld 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 5) == "rld 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World 🖖🏽")
+  }
+
+  func testCondensingExcessiveSpaces() {
+    XCTAssertTrue("test spaces too many".condensingExcessiveSpaces() == "test spaces too many")
+    XCTAssertTrue("test  spaces    too many".condensingExcessiveSpaces() == "test spaces too many")
+    XCTAssertTrue(" test spaces too many ".condensingExcessiveSpaces() == "test spaces too many")
+    XCTAssertTrue(" test spaces too many".condensingExcessiveSpaces() == "test spaces too many")
+    XCTAssertTrue("test spaces too many ".condensingExcessiveSpaces() == "test spaces too many")
+  }
+
+  func testCondensingExcessiveSpacesAndNewLines() {
+    XCTAssertTrue("test\n spaces too many".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
+    XCTAssertTrue("\n\ntest  spaces    too many".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
+    XCTAssertTrue(" test spaces too many \n\n".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
+    XCTAssertTrue(" test spaces too\n many".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
+    XCTAssertTrue("test\n\n spaces \n\n too many ".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
+  }
+
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
+  func testRemovingAccentsOrDiacritics() {
+    XCTAssertTrue("äöüÄÖÜ".removingAccentsOrDiacritics() == "aouAOU")
+    XCTAssertTrue("1".removingAccentsOrDiacritics() == "1")
+    XCTAssertTrue("🇮🇹".removingAccentsOrDiacritics() == "🇮🇹")
+    XCTAssertTrue("Hello World!".removingAccentsOrDiacritics() == "Hello World!")
+    XCTAssertTrue("è".removingAccentsOrDiacritics() == "e")
+  }
+
+  func testFirst(){
+    XCTAssertTrue("Hello".first == "H")
+    XCTAssertTrue("∂Hello".first == "∂")
+    XCTAssertTrue(" Hello".first == " ")
+  }
+
+  func testLast(){
+    XCTAssertTrue("Hello".last == "o")
+    XCTAssertTrue("Hello∂".last == "∂")
+    XCTAssertTrue("Hello ".last == " ")
+  }
+
+  func testRemovingPrefix() {
+
+    let s = "hello"
+    XCTAssertTrue(s.removingPrefix(upToPosition: 0) == "hello")
+    XCTAssertTrue(s.removingPrefix() == "ello")
+    XCTAssertTrue(s.removingPrefix(upToPosition: 1) == "ello")
+    XCTAssertTrue(s.removingPrefix(upToPosition: 3) == "lo")
+    XCTAssertTrue(s.removingPrefix(upToPosition: 5) == "")
+    XCTAssertTrue(s.removingPrefix(upToPosition: 100) == "")
+    XCTAssertTrue(s.removingPrefix(upToPosition: -1) == "")
+    XCTAssertTrue("".removingPrefix(upToPosition: 1) == "")
+    XCTAssertTrue(s.removingPrefix("") == "hello")
+    XCTAssertTrue(s.removingPrefix("h") == "ello")
+    XCTAssertTrue(s.removingPrefix("hel") == "lo")
+    XCTAssertTrue(s.removingPrefix("abc") == "hello")
+    XCTAssertTrue(s.removingPrefix("\n") == "hello")
+    XCTAssertTrue("\na".removingPrefix("\n") == "a")
+  }
+
+  func testRemovingSuffix() {
+
+    let s = "hello"
+    XCTAssertTrue(s.removingSuffix(fromPosition: 0) == "hello")
+    XCTAssertTrue(s.removingSuffix() == "hell")
+    XCTAssertTrue(s.removingSuffix(fromPosition: 1) == "hell")
+    XCTAssertTrue(s.removingSuffix(fromPosition: 3) == "he")
+    XCTAssertTrue(s.removingSuffix(fromPosition: 5) == "")
+    XCTAssertTrue(s.removingSuffix(fromPosition: 100) == "")
+    XCTAssertTrue(s.removingSuffix(fromPosition: -1) == "")
+    XCTAssertTrue("".removingSuffix(fromPosition: 1) == "")
+    XCTAssertTrue(s.removingSuffix("abc") == "hello")
+    XCTAssertTrue(s.removingSuffix("o") == "hell")
+    XCTAssertTrue(s.removingSuffix("llo") == "he")
+    XCTAssertTrue(s.removingSuffix("hello") == "")
+    XCTAssertTrue("\na".removingSuffix("a") == "\n")
+
+  }
+
+  func testRemovingCharacters() {
+    do {
+      let s = "123Hello45 !World..5"
+      let result1 = s.removingCharacters(in: CharacterSet.letters.inverted)
+      XCTAssertTrue(result1 == "HelloWorld")
+      let result2 = s.removingCharacters(in: .letters)
+      XCTAssertTrue(result2 == "12345 !..5")
+      /// CharacterSet.capitalizedLetters returns a character set containing the characters in Unicode General Category Lt aka "Letter, titlecase".
+      /// That are "Ligatures containing uppercase followed by lowercase letters (e.g., ǅ, ǈ, ǋ, and ǲ)"
+      let result4 = s.removingCharacters(in: .capitalizedLetters)
+      XCTAssertTrue(result4 == "123Hello45 !World..5")
+    }
+
+    do {
+      let s = "H ello"
+      let result1 = s.removingCharacters(in: CharacterSet.letters.inverted)
+      XCTAssertTrue(result1 == "Hello")
+      let result2 = s.removingCharacters(in: .decimalDigits)
+      XCTAssertTrue(s == result2)
+    }
+
+  }
+
+  func testTruncate() {
+    let s = "Hello World"
+    XCTAssertTrue(s.truncate(at: 0) == "…")
+    XCTAssertTrue(s.truncate(at: 0, withTrailing: nil) == "")
+    XCTAssertTrue(s.truncate(at: 5) == "Hello…")
+    XCTAssertTrue(s.truncate(at: -5) == "")
+    XCTAssertTrue(s.truncate(at: 10) == "Hello Worl…")
+    XCTAssertTrue(s.truncate(at: 10, withTrailing: nil) == "Hello Worl")
+    XCTAssertTrue(s.truncate(at: 11) == "Hello World")
+    XCTAssertTrue(s.truncate(at: 11,withTrailing: nil) == "Hello World")
+    XCTAssertTrue(s.truncate(at: 100) == "Hello World")
+
+    let s2 = "Hello 🗺"
+    XCTAssertTrue(s2.truncate(at: 5) == "Hello…")
+    XCTAssertTrue(s2.truncate(at: 6) == "Hello …")
+    XCTAssertTrue(s2.truncate(at: 7) == "Hello 🗺")
+
+    let s3 = "a😀bb😄😄ccc😄😬😄"
+    XCTAssertTrue(s3.truncate(at: 0) == "…")
+    XCTAssertTrue(s3.truncate(at: 1) == "a…")
+    XCTAssertTrue(s3.truncate(at: 2) == "a😀…")
+    XCTAssertTrue(s3.truncate(at: 3) == "a😀b…")
+    XCTAssertTrue(s3.truncate(at: 4) == "a😀bb…")
+    XCTAssertTrue(s3.truncate(at: 5) == "a😀bb😄…")
+    XCTAssertTrue(s3.truncate(at: 6) == "a😀bb😄😄…")
+
+    let s4 = "a🇮🇹bb🇮🇹🇮🇹ccc🇮🇹🇮🇹🇮🇹"
+    XCTAssertTrue(s4.truncate(at: 0) == "…")
+    XCTAssertTrue(s4.truncate(at: 1) == "a…")
+    XCTAssertTrue(s4.truncate(at: 2) == "a🇮🇹…")
+    XCTAssertTrue(s4.truncate(at: 3) == "a🇮🇹b…")
+    XCTAssertTrue(s4.truncate(at: 4) == "a🇮🇹bb…")
+    XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹…")
+    XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹…")
+
+    let s5 = "\u{2126}"
+    XCTAssertTrue(s5.truncate(at: 0) == "…")
+    XCTAssertTrue(s5.truncate(at: 4) == "Ω")
+    XCTAssertTrue(s5.truncate(at: 100) == "Ω")
+
+    let s6 = "cafè"
+    XCTAssertTrue(s6.truncate(at: 1) == "c…")
+    XCTAssertTrue(s6.truncate(at: 4) == "cafè")
+
+    let s7 = "👍👍👍👍" // 4 characters
+    XCTAssertTrue(s7.truncate(at: 1) == "👍…")
+    XCTAssertTrue(s7.truncate(at: 2) == "👍👍…")
+    XCTAssertTrue(s7.truncate(at: 3) == "👍👍👍…")
+
+    let s8 = "👍👍🏻👍🏼👍🏾"
+    XCTAssertTrue(s8.truncate(at: 1) == "👍…")
+    XCTAssertTrue(s8.truncate(at: 2) == "👍👍🏻…")
+    XCTAssertTrue(s8.truncate(at: 3) == "👍👍🏻👍🏼…")
+    XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍🏼👍🏾")
+    XCTAssertTrue(s8.truncate(at: 5) == "👍👍🏻👍🏼👍🏾")
+
+    //flags sperated by a ZERO WIDTH SPACE
+    let s9 = "🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹"
+    XCTAssertTrue(s9.truncate(at: 1) == "🇮🇹…")
+    XCTAssertTrue(s9.truncate(at: 2) == "🇮🇹​…")
+    XCTAssertTrue(s9.truncate(at: 3) == "🇮🇹​🇮🇹…")
+    XCTAssertTrue(s9.truncate(at: 4) == "🇮🇹​🇮🇹​…")
+    XCTAssertTrue(s9.truncate(at: 5) == "🇮🇹​🇮🇹​🇮🇹")
+  }
+
+  func testSubscript() {
+    let string = "∆Test😗🇮🇹"
+
+    XCTAssertTrue(string[0] == "∆")
+    XCTAssertTrue(string[1] == "T")
+    XCTAssertTrue(string[5] == "😗")
+    XCTAssertTrue(string[6] == "🇮🇹")
+    XCTAssertNil(string[-1])
+    XCTAssertNil(string[7])
+    XCTAssertNil(string[10])
+    XCTAssertTrue(string[string.length - 1] == "🇮🇹")
+    XCTAssertTrue(string[0..<1] == "∆")
+    XCTAssertTrue(string[1..<6] == "Test😗")
+    XCTAssertNotNil(string["Test"])
+    XCTAssertNotNil(string["😗"])
+
+    // MARK: - Range
+
+    XCTAssertTrue(string[Range(0..<3)] == "∆Te")
+    XCTAssertTrue(string[Range(3..<3)] == "")
+    XCTAssertTrue(string[Range(3..<6)] == "st😗")
+    XCTAssertTrue(string[Range(0..<string.length)] == "∆Test😗🇮🇹")
+    XCTAssertNil(string[Range(string.length ..< string.length+1)])
+    XCTAssertTrue(string[Range(string.length ..< string.length)] == "")
+
+    XCTAssertNil(string[Range(1 ..< 100)])
+    XCTAssertNil(string[Range(-1 ..< 1)])
+    XCTAssertNil(string[Range(1 ..< string.length+1)])
+    XCTAssertNil(string[Range(100 ..< 200)])
+    XCTAssertNil(string[Range(-1 ..< string.length)])
+    XCTAssertNil(string[Range(-1 ..< 1)])
+    XCTAssertNil(string[Range(string.length+10 ..< string.length+10)])
+
+    // MARK: - NSRange
+
+    let nsrange = NSRange(location: 0, length: 1)
+    XCTAssertTrue(string[nsrange] == "∆")
+
+    let nsrange2 = NSRange(location: 4, length: 2)
+    XCTAssertTrue(string[nsrange2] == "t😗")
+
+    let nsrange3 = NSRange(location: 40, length: 2)
+    XCTAssertNil(string[nsrange3])
+
+    let nsrange4 = NSRange(location: -1, length: 2)
+    XCTAssertNil(string[nsrange4])
+
+    let nsrange5 = NSRange(location: 1, length: 1)
+    XCTAssertTrue(string[nsrange5] == "T")
+
+    let nsrange6 = NSRange(location: 2, length: 1)
+    XCTAssertTrue(string[nsrange6] == "e")
+
+    let nsrange7 = NSRange(location: 6, length: 1)
+    XCTAssertTrue(string[nsrange7] == "🇮🇹")
+
+    XCTAssertNil(string[""])
+    let range2 = string["∆"]
+    XCTAssertTrue(range2! == string.startIndex ..< string.index(string.startIndex, offsetBy: 1))
+    let range3 = string["est"] //2,3,4
+    XCTAssert(range3! ~= string.index(string.startIndex, offsetBy: 2) ..< string.index(string.startIndex, offsetBy: 5))
+    XCTAssertNil(string["k"])
+    XCTAssertNil(string["123est"])
+
+  }
+
+  func testReplacingCharacters() {
+
+    let s = "Hello World" //10 characters
+    do {
+      let countableRange = CountableRange(uncheckedBounds: (lower: 0, upper: 2)) //[0,2[
+      let newString = s.replacingCharacters(in: countableRange, with: "1")
+      XCTAssertTrue(newString == "1llo World")
+
+      let countableClosedRange = CountableClosedRange(uncheckedBounds: (lower: 0, upper: 2)) //[0,2]
+      let newString2 = s.replacingCharacters(in: countableClosedRange, with: "1")
+      XCTAssertTrue(newString2 == "1lo World")
+    }
+    do {
+      let countableRange = CountableRange(uncheckedBounds: (lower: 0, upper: 11)) //[0,11[
+      let newString = s.replacingCharacters(in: countableRange, with: "1")
+      XCTAssertTrue(newString == "1")
+
+      let countableClosedRange = CountableClosedRange(uncheckedBounds: (lower: 0, upper: s.count-1)) //[0,9]
+      let newString2 = s.replacingCharacters(in: countableClosedRange, with: "1")
+      XCTAssertTrue(newString2 == "1")
+    }
+  }
+
+  func testURLEscaped() {
+    XCTAssertTrue("Hello_World".urlEscaped == "Hello_World")
+    XCTAssertTrue("Hello Günter".urlEscaped == "Hello%20G%C3%BCnter")
+  }
+
+  func testSemanticVersion() {
+    XCTAssertTrue("1".semanticVersion == (1,0,0))
+    XCTAssertTrue("1.0".semanticVersion == (1,0,0))
+    XCTAssertTrue("1.0.0".semanticVersion == (1,0,0))
+    XCTAssertTrue("".semanticVersion == (0,0,0))
+  }
+
+  func testRandom() {
+
+    do {
+      let randomString = String.random()
+      XCTAssertTrue(randomString.length == 8)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+    }
+
+    do {
+      let randomString = String.random(length: 1)
+      XCTAssertTrue(randomString.length == 1)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+    }
+
+    do {
+      let randomString = String.random(length: 100)
+      XCTAssertTrue(randomString.length == 100)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+    }
+
+  }
+
+  // MARK: - Case Operators
+
+  func testCamelCased() {
+    XCTAssertEqual("Hello World".camelCased(), "helloWorld")
+    XCTAssertEqual("  Hello World".camelCased(), "helloWorld")
+    XCTAssertEqual("HelloWorld".camelCased(), "helloWorld")
+    XCTAssertEqual("-Hello_World-".camelCased(), "helloWorld")
+    XCTAssertEqual("-Hello_ World-".camelCased(), "helloWorld")
+    XCTAssertEqual("Hell0W0rld".camelCased(), "hell0W0rld")
+    XCTAssertEqual("helloWorld".camelCased(), "helloWorld")
+  }
+
+  func testKebabCased() {
+    XCTAssertEqual("Hello World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("Hello_World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("_Hello_World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("_Hello_  World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("-HeLL0_W0rld-".kebabCased(), "-hell0-w0rld-")
+    XCTAssertEqual("HelloWorld".kebabCased(), "-helloworld-")
+    XCTAssertEqual("     HelloWorld".kebabCased(), "-helloworld-")
+  }
+
+  func testPascalCased() {
+    XCTAssertEqual("Hello World".pascalCased(), "HelloWorld")
+    XCTAssertEqual("HelloWorld".pascalCased(), "HelloWorld")
+    XCTAssertEqual("HelloWorld ".pascalCased(), "HelloWorld")
+    XCTAssertEqual("-Hello_World-".pascalCased(), "HelloWorld")
+    XCTAssertEqual("-Hello_ World-".pascalCased(), "HelloWorld")
+    XCTAssertEqual("Hell0W0rld".pascalCased(), "Hell0W0rld")
+  }
+
+  func testSlugCased() {
+    XCTAssertEqual("Hello World".slugCased(), "hello-world")
+    XCTAssertEqual("Hello_World".slugCased(), "hello-world")
+    XCTAssertEqual("Hello-World".slugCased(), "hello-world")
+    XCTAssertEqual("Hello- World".slugCased(), "hello-world")
+    XCTAssertEqual("-Hello- World".slugCased(), "hello-world")
+    XCTAssertEqual("HeLL0 W0rld".slugCased(), "hell0-w0rld")
+    XCTAssertEqual("HelloWorld".slugCased(), "helloworld")
+  }
+
+  func testSnakeCased() {
+    XCTAssertEqual("Hello World".snakeCased(), "Hello_World")
+    XCTAssertEqual("hello world".snakeCased(), "hello_world")
+    XCTAssertEqual("hello_world".snakeCased(), "hello_world")
+    XCTAssertEqual("hello__world".snakeCased(), "hello_world")
+    XCTAssertEqual("hello__ world".snakeCased(), "hello_world")
+    XCTAssertEqual(" hello_world".snakeCased(), "hello_world")
+    XCTAssertEqual("Hell0W0rld".snakeCased(), "Hell0W0rld")
+    XCTAssertEqual("HelloWorld".snakeCased(), "HelloWorld")
+  }
+
+  func testSwapCased() {
+    XCTAssertEqual("Hello World".swapCased(), "hELLO wORLD")
+    XCTAssertEqual("hELLO wORLD".swapCased(), "Hello World")
+    XCTAssertEqual("HelloWorld".swapCased(), "hELLOwORLD")
+    XCTAssertEqual("-Hello_World-".swapCased(), "-hELLO_wORLD-")
+    XCTAssertEqual("Hell0W0rld".swapCased(), "hELL0w0RLD")
+  }
+
+  func testNSRange() {
+    let string = "Hello World 👩🏽‍🌾👨🏼‍🚒💃🏾"
+    let range = string.startIndex...
+
+    XCTAssert(string.nsRange.length == string[range].utf16.count)
+
+  }
+
+}
+
