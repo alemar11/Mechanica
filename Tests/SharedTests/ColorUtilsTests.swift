@@ -271,7 +271,14 @@ class ColorUtilsTests: XCTestCase {
   func testBlending() {
     let orange = Color.blend(.red, with: .yellow)
     XCTAssertNotNil(orange)
-    XCTAssertTrue(orange! == Color.orange)
+    let orangeRGBA = orange?.rgba
+    XCTAssertNotNil(orangeRGBA)
+    print("_orange: \(orange!)")
+    print("color_orange: \(Color.orange)")
+    XCTAssertTrue(orangeRGBA!.red == Color.orange.rgba!.red)
+    XCTAssertTrue(orangeRGBA!.green == Color.orange.rgba!.green)
+    XCTAssertTrue(orangeRGBA!.blue == Color.orange.rgba!.blue)
+    XCTAssertTrue(orangeRGBA!.alpha == Color.orange.rgba!.alpha)
 
     let gray = Color.blend(.white, with: .black)
     XCTAssertNotNil(gray)
