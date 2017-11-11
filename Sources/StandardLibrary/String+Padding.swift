@@ -26,6 +26,8 @@
 import Darwin
 
 public extension String {
+  
+  // MARK: - Padding Operations
 
   /// **Mechanica**
   ///

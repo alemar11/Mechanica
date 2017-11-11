@@ -62,10 +62,10 @@ extension Color {
 
 }
 
-// MARK: - sRGBA
-
 extension Color {
 
+  // MARK: - sRGBA
+  
   /// **Mechanica**
   ///
   /// Alias for RGBA color space components
@@ -127,10 +127,10 @@ extension Color {
 
 }
 
-// MARK: - Initializers
-
 extension Color {
 
+  // MARK: - Initializers
+  
   /// **Mechanica**
   ///
   /// Returns a sRGB color from a hexadecimal integer.
@@ -195,10 +195,10 @@ extension Color {
 
 }
 
-// MARK: - HSBA
-
 extension Color {
 
+  // MARK: - HSBA
+  
   /// **Mechanica**
   ///
   /// Alias for HSBA color space components
@@ -223,10 +223,10 @@ extension Color {
 
 }
 
-// MARK: - Editing
-
 extension Color {
 
+  // MARK: - Editing
+  
   /// **Mechanica**
   ///
   /// Blends two colors together.

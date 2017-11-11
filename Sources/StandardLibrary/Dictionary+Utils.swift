@@ -21,10 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// MARK: - Utils
-
 public extension Dictionary {
-
+  
   /// **Mechanica**
   ///
   /// Returns true if the `key` exists in the dictionary.
@@ -51,10 +49,10 @@ public extension Dictionary {
 
 }
 
-// MARK: - ExpressibleByStringLiteral
-
 public extension Dictionary where Key: ExpressibleByStringLiteral {
 
+  // MARK: - ExpressibleByStringLiteral
+  
   /// **Mechanica**
   ///
   /// Lowercase all keys in dictionary.
@@ -68,10 +66,10 @@ public extension Dictionary where Key: ExpressibleByStringLiteral {
 
 }
 
-// MARK: - Random
-
 extension Dictionary {
 
+  // MARK: - Random
+  
   /// **Mechanica**
   ///
   /// Returns a random pair of (key,value) from `self`.

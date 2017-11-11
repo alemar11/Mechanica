@@ -23,10 +23,10 @@
 
 import Foundation
 
-// MARK: - Regular Expression
-
 extension String {
 
+  // MARK: - Regular Expression
+  
   /// **Mechanica**
   ///
   /// Returns a range equivalent to the given `NSRange` or `nil` if the range can't be converted.

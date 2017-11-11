@@ -29,10 +29,10 @@ import Foundation
   import AppKit
 #endif
 
-// MARK: - Attributes
-
 extension NSMutableAttributedString {
 
+  // MARK: - Attributes
+  
   /// **Mechanica**
   ///
   /// Removes all the attributes from `self`.

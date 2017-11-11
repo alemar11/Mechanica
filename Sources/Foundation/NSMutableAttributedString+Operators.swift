@@ -24,6 +24,8 @@
 import Foundation
 
 extension NSMutableAttributedString {
+  
+  // MARK: - Operators
 
   /// **Mechanica**
   ///

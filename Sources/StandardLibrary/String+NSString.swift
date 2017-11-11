@@ -24,6 +24,8 @@
 import Foundation
 
 extension String {
+  
+  // MARK: - NSString
 
   /// **Mechanica**
   ///
