@@ -210,4 +210,91 @@ extension String {
     return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
   }
   
+  // MARK: - Case Operators
+  
+  /// **Mechanica**
+  ///
+  /// Produces a camel cased version of the `String`.
+  ///
+  /// Example:
+  ///
+  ///     let string = "HelloWorld"
+  ///     print(string.camelCased()) -> "helloWorld"
+  ///
+  /// - Returns: A camel cased copy of the `String`.
+  public func camelCased() -> String {
+    return pascalCased().decapitalizedFirstCharacter()
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Produces the kebab cased version of the `String`.
+  ///
+  /// Example:
+  ///
+  ///     let string = "Hello World"
+  ///     print(string.kebabCased()) -> "-Hello-World-"
+  ///
+  /// - Returns: The kebab cased copy of the `String`.
+  public func kebabCased() -> String {
+    return "-" + slugCased() + "-"
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Produces a pascal cased version of the `String`.
+  ///
+  /// Example:
+  ///
+  ///     let string = "HELLO WORLD"
+  ///     print(string.pascalCased()) -> "HelloWorld"
+  ///
+  /// - Returns: A pascal cased copy of the `String`.
+  public func pascalCased() -> String {
+    return replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: "-", with: " ").components(separatedBy: .whitespaces).joined()
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Produces the slug version of the `String`.
+  ///
+  /// Example:
+  ///
+  ///     let string = "Hello World"
+  ///     print(string.slugCased()) -> "Hello-World"
+  ///
+  /// - Returns: The slug copy of the `String`.
+  public func slugCased() -> String {
+    return replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: "-", with: " ").condensingExcessiveSpaces().replacingOccurrences(of: " ", with: "-").lowercased()
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Produces the snake cased version of the `String`.
+  ///
+  /// Example:
+  ///
+  ///     let string = "hello world"
+  ///     print(string.snakeCased())
+  ///     -> Prints "hello_world"
+  ///
+  /// - Returns: The slug copy of the `String`.
+  public func snakeCased() -> String {
+    return replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: "-", with: " ").condensingExcessiveSpaces().replacingOccurrences(of: " ", with: "_")
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Produces the swap cased version of the `String`.
+  ///
+  /// Example:
+  ///
+  ///     let string = "Hello World"
+  ///     print(string.swapCased()) -> "hELLO wORLD"
+  ///
+  /// - Returns: The swap cased copy of the `String`.
+  public func swapCased() -> String {
+    return map({String($0).isLowercased ? String($0).uppercased() : String($0).lowercased()}).joined()
+  }
+  
 }
