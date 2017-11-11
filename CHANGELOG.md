@@ -3,10 +3,11 @@
 ### 1.1.0
 
 - More UIKit utils.
-- More String utils.
+- More String utils (i.e. padding methods).
 - Better random functions.
 - Added Sequence utils.
 - Added Character and Unicode Utils.
+- Better library structure.
 
 ### 1.0.0 ⭐
 
