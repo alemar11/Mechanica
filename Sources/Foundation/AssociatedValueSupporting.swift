@@ -85,7 +85,7 @@ extension AssociatedValueSupporting {
   /// - Parameter key: The key for the association.
   /// - Returns: The value associated with the key for object.
   public func getAssociatedValue<T>(forKey key: UnsafeRawPointer) -> T? {
-    return Mechanica._getAssociatedValue(forObject: self, usingKey: key)
+    return _getAssociatedValue(forObject: self, usingKey: key)
   }
 
   /// **Mechanica**

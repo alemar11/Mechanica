@@ -21,8 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// MARK: - Percent
-
 postfix operator %
 
 /// **Mechanica**
@@ -37,4 +35,18 @@ public postfix func % (value: Float) -> Float {
 /// 'Double' percent operator.
 public postfix func % (value: Double) -> Double {
   return value / 100
+}
+
+infix operator ???: NilCoalescingPrecedence
+
+/// **Mechanica**
+///
+/// Optional-string-coalescing operator.
+///
+/// The ??? operator takes any `optional` on its left side and a `default` string value on the right, returning a string.
+/// If the optional value is non-nil, it unwraps it and returns its string description, otherwise it returns the default value.
+///
+/// [Credits](https://oleb.net/blog/2016/12/optionals-string-interpolation/)
+public func ??? <T>(optional: T?, defaultValue: @autoclosure () -> String) -> String {
+  return optional.map { String(describing: $0) } ?? defaultValue()
 }

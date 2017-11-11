@@ -37,7 +37,7 @@ extension NSMutableAttributedString {
   ///
   /// Removes all the attributes from `self`.
   public func removeAllAttributes() {
-    setAttributes([:], range: NSRange(location: 0, length: string.length))
+    setAttributes([:], range: NSRange(location: 0, length: string.count))
   }
 
   /// **Mechanica**

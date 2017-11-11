@@ -65,96 +65,6 @@ extension String {
     return true
   }
   
-  /// **Mechanica**
-  ///
-  /// Returns *true* if `self` starts with a given prefix.
-  public func starts(with prefix: String, caseSensitive: Bool = true) -> Bool {
-    if !caseSensitive {
-      return lowercased().hasPrefix(prefix.lowercased())
-    }
-    
-    return hasPrefix(prefix)
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Returns *true* if `self` ends with a given suffix.
-  public func ends(with suffix: String, caseSensitive: Bool = true) -> Bool {
-    if !caseSensitive {
-      return lowercased().hasSuffix(suffix.lowercased())
-    }
-    
-    return hasSuffix(suffix)
-  }
-  
-  /// **Mechanica**
-  ///
-  ///  Checks if `self` contains a `String`.
-  ///
-  /// - Parameters:
-  ///   -  string:       String to match.
-  ///   - caseSensitive: Search option: *true* for case-sensitive, false for case-insensitive. (if *true* this function is equivalent to `self.contains(...)`)
-  ///
-  ///  - Returns: *true* if contains match, otherwise false.
-  public func contains(_ string: String, caseSensitive: Bool) -> Bool {
-    if caseSensitive {
-      return contains(string)
-    } else {
-      return range(of: string, options: .caseInsensitive) != nil
-    }
-  }
-  
-  /// **Mechanica**
-  ///
-  ///  Returns a `new` string in which all occurrences of a target are replaced by another given string.
-  ///
-  /// - Parameters:
-  ///   - target:         target string
-  ///   - replacement:    replacement string
-  ///   - caseSensitive:  `*true*` (default) for a case-sensitive replacemente
-  public func replace(_ target: String, with replacement: String, caseSensitive: Bool = true) -> String {
-    let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
-    
-    return replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Returns a list containing the first character of each word contained in `self`.
-  func firstCharacterOfEachWord() -> [String] {
-    return components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.map { String($0.prefix(1)) }
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Returns a percent-escaped string following RFC 3986 for a query string key or value.
-  public var urlEscaped: String? {
-    return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
-  public func capitalizedFirstCharacter() -> String {
-    guard !isEmpty else { return self }
-    let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
-    let result = capitalizedFirstCharacher + String(dropFirst())
-    
-    return result
-  }
-  
-  /// **Mechanica**
-  ///
-  /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
-  public func decapitalizedFirstCharacter() -> String {
-    guard !isEmpty else { return self }
-    
-    let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
-    let result = capitalizedFirstCharacher + String(dropFirst())
-    
-    return result
-  }
-  
   // MARK: - Suffix and Prefix Methods
   
   /// **Mechanica**
@@ -477,17 +387,20 @@ extension String {
     return String(self[range])
   }
   
+  // MARK: - Operators
+  
   /// **Mechanica**
   ///
-  ///  Returns the range of the first occurrence of a given string in the `String`.
-  ///
-  ///  - parameter substring: substring
-  ///
-  ///  - Returns: range of the first occurrence or nil.
-  public subscript (substring: String) -> Range<String.Index>? {
-    let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex) )
-    
-    return self.range(of: substring, options: .literal, range: range, locale: .current)
+  /// Creates a `new` string representing the given string repeated the specified number of times.
+  public static func * (lhs: String, rhs: Int) -> String {
+    return  String(repeating: lhs, count: rhs)
   }
   
+  /// **Mechanica**
+  ///
+  /// Creates a `new` string representing the given string repeated the specified number of times.
+  public static func * (lhs: Int, rhs: String) -> String {
+    return  String(repeating: rhs, count: lhs)
+  }
+
 }
