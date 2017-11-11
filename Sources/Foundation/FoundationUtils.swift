@@ -26,7 +26,7 @@ import Foundation
 /// **Mechanica**
 ///
 /// Returns the app identifier (`bundleIdenfier` or its `executable` file name).
-public var appIdentifier: String? {
+internal var appIdentifier: String? {
   //TODO: review
   if let identifier = Bundle.main.bundleIdentifier, !identifier.isBlank { //i.e. org.tinrobots.App
     return identifier

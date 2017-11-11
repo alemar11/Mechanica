@@ -30,7 +30,7 @@ extension UIView {
   /// **Mechanica**
   ///
   /// A Boolean value that determines whether the view’s autoresizing mask is translated into Auto Layout constraints.
-  var usesAutoLayout: Bool {
+  internal var usesAutoLayout: Bool {
     get { return !translatesAutoresizingMaskIntoConstraints }
     set { translatesAutoresizingMaskIntoConstraints = !newValue }
   }
@@ -38,7 +38,7 @@ extension UIView {
   /// **Mechanica**
   ///
   /// Take sceenshot with the current device's screen scale.
-  func screenshot() -> UIImage {
+  internal func screenshot() -> UIImage {
     // note: by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
     return UIGraphicsImageRenderer(size: bounds.size).image { _ in
       drawHierarchy(in: CGRect(origin: .zero, size: bounds.size), afterScreenUpdates: true)
