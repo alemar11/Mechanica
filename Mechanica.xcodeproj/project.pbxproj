@@ -323,10 +323,6 @@
 		D2234A631E002D2600252551 /* String+FoundationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2234A611E002D2600252551 /* String+FoundationUtils.swift */; };
 		D2234A641E002D2600252551 /* String+FoundationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2234A611E002D2600252551 /* String+FoundationUtils.swift */; };
 		D2234A651E002D2600252551 /* String+FoundationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2234A611E002D2600252551 /* String+FoundationUtils.swift */; };
-		D24745AD1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24745AC1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift */; };
-		D24745AE1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24745AC1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift */; };
-		D24745AF1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24745AC1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift */; };
-		D24745B01E4B3DF800956918 /* NSMutableAttributedString+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24745AC1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift */; };
 		D273A59A1DD5FB8B0007796F /* Mechanica.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273A5991DD5FB8B0007796F /* Mechanica.swift */; };
 		D273A59B1DD5FB8B0007796F /* Mechanica.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273A5991DD5FB8B0007796F /* Mechanica.swift */; };
 		D273A59C1DD5FB8B0007796F /* Mechanica.swift in Sources */ = {isa = PBXBuildFile; fileRef = D273A5991DD5FB8B0007796F /* Mechanica.swift */; };
@@ -493,7 +489,6 @@
 		D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Bundle+Info.swift"; sourceTree = "<group>"; };
 		D220818C1E07FEB700BE4268 /* URL+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "URL+Utils.swift"; sourceTree = "<group>"; };
 		D2234A611E002D2600252551 /* String+FoundationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "String+FoundationUtils.swift"; sourceTree = "<group>"; };
-		D24745AC1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSMutableAttributedString+Operators.swift"; sourceTree = "<group>"; };
 		D273A5991DD5FB8B0007796F /* Mechanica.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Mechanica.swift; sourceTree = "<group>"; };
 		D278BD951DEF1061006FAD83 /* Color+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Color+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D28CAEE51E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FixedWidthIntegerRandomizable.swift; sourceTree = "<group>"; };
@@ -695,7 +690,6 @@
 				2307D0691F8FA15500FDBA2A /* Locale.swift */,
 				23949C541E4B974400BD9EC8 /* NSAttributedString+Operators.swift */,
 				23949C591E4B979D00BD9EC8 /* NSAttributedString+Utils.swift */,
-				D24745AC1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift */,
 				23D7792E1F66706200724053 /* NSMutableAttributedString+Utils.swift */,
 				239F8DD71E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift */,
 				23B2ED6C1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift */,
@@ -1155,7 +1149,6 @@
 				239B92651F274E55009A9433 /* Sequence+Utils.swift in Sources */,
 				23D6A8571F9B73BD00AEC35A /* UIViewController+Utils.swift in Sources */,
 				D273A59A1DD5FB8B0007796F /* Mechanica.swift in Sources */,
-				D24745AD1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift in Sources */,
 				12D9DEFD1E085B6A000799C6 /* Bool+Utils.swift in Sources */,
 				23B2ED6D1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift in Sources */,
 				23024C891F8B64A800024885 /* UIWindow+Utils.swift in Sources */,
@@ -1189,7 +1182,6 @@
 				D273A59B1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				239F8DD91E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift in Sources */,
 				2363FED71F6E779C0067257A /* UIImage+Utils.swift in Sources */,
-				D24745AE1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift in Sources */,
 				D278BD9B1DEF1061006FAD83 /* Color+Utils.swift in Sources */,
 				23964A031E5B034800C8E0DF /* Collection+Utils.swift in Sources */,
 				23C796701FB44920006766FD /* FixedWidthIntegerRandomizable.swift in Sources */,
@@ -1244,7 +1236,6 @@
 				239B92671F274E55009A9433 /* Sequence+Utils.swift in Sources */,
 				D273A59C1DD5FB8B0007796F /* Mechanica.swift in Sources */,
 				23B2ED6F1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift in Sources */,
-				D24745AF1E4B3DF800956918 /* NSMutableAttributedString+Operators.swift in Sources */,
 				23D779311F66706200724053 /* NSMutableAttributedString+Utils.swift in Sources */,
 				238E5B191FB5C40F00331C85 /* Dictionary+FoundationUtils.swift in Sources */,
 				23C7967F1FB44E74006766FD /* SignedInteger.swift in Sources */,
@@ -1286,7 +1277,6 @@
 				12B9563D1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				23D779321F66706200724053 /* NSMutableAttributedString+Utils.swift in Sources */,
 				23B2ED701EC8CDBB006365BD /* NSObjectProtocol+Utils.swift in Sources */,
-				D24745B01E4B3DF800956918 /* NSMutableAttributedString+Operators.swift in Sources */,
 				23949C581E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */,
 				23C796801FB44E74006766FD /* SignedInteger.swift in Sources */,
 				231874BC1FA78CE000FA797F /* NSImage+Utils.swift in Sources */,
