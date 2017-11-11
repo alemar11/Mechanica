@@ -21,6 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+import Darwin
+
 extension String {
   
   // MARK: - Helper Methods
@@ -281,6 +283,165 @@ extension String {
       return ""
     }
     
+  }
+  
+  // MARK: - Padding Operations
+  
+  /// **Mechanica**
+  ///
+  ///  Returns a `new` String  with the center-padded version of `self` if it's shorter than `length` using a `token`. Padding characters are truncated if they can't be evenly divided by length.
+  ///
+  /// Example 1:
+  ///
+  ///     let string = "Hello World"
+  ///     string.padding(length: 15) -> "  Hello World  "
+  ///
+  /// Example 2:
+  ///
+  ///     let string = "Hello World"
+  ///     string.padding(length: 15, withToken: "*") -> "**Hello World**"
+  ///
+  /// - Parameters:
+  ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned.
+  ///   - token: The string used to pad the String (defaults to a white space).
+  /// - Returns: The padded copy of the string.
+  /// - Note: If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
+  public func padding(length: Int, with token: String = " ") -> String {
+    guard count < length else { return self }
+    
+    let delta = Int(ceil(Double(length-count)/2))
+    return paddingStart(length: length-delta, with: token).paddingEnd(length: length, with: token)
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Pads `self on the left and right sides if it's shorter than `length` using a `token`. Padding characters are truncated if they can't be evenly divided by length.
+  ///
+  /// Example 1:
+  ///
+  ///     let string = "Hello World"
+  ///     string.pad(length: 15) -> "  Hello World  "
+  ///
+  /// Example 2:
+  ///
+  ///     let string = "Hello World"
+  ///     string.pad(length: 15, withToken: "*") -> "**Hello World**"
+  ///
+  /// - Parameters:
+  ///   - length: The final length of your string. If the provided length is less than or equal to the original string, the original string is returned.
+  /// If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
+  ///   - token: The string used to pad the String (defaults to a white space).
+  /// - Note: If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
+  public mutating func pad(length: Int, with token: String = " ") {
+    self = padding(length: length, with: token)
+  }
+  
+  /// **Mechanica**
+  ///
+  ///  Returns a `new` String  with the left-padded version of `self` if it's shorter than `length` using a `token`. Padding characters are truncated if they can't be evenly divided by length.
+  ///
+  /// Example 1:
+  ///
+  ///     let string = "Hello World"
+  ///     string.paddingStart(length: 15) -> "    Hello World"
+  ///
+  /// Example 2:
+  ///
+  ///     let string = "Hello World"
+  ///     string.paddingStart(length: 15, withToken: "*") -> "****Hello World"
+  ///
+  /// - Parameters:
+  ///   - length: The final length of your string.
+  ///   - token: The string used to pad the String (defaults to a white space).
+  /// - Returns: The left-padded copy of the string.
+  public func paddingStart(length: Int, with token: String = " ") -> String {
+    guard count < length else { return self }
+    
+    let padLength = length - count
+    if padLength < token.count {
+      return token[token.startIndex..<token.index(token.startIndex, offsetBy: padLength)] + self
+    } else {
+      var padding = token
+      while padding.count < padLength {
+        padding.append(token)
+      }
+      return padding[padding.startIndex..<padding.index(padding.startIndex, offsetBy: padLength)] + self
+    }
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Pads `self` on the left side if it's shorter than `length` using a `token`. Padding characters are truncated if they exceed length.
+  ///
+  /// Example 1:
+  ///
+  ///     let string = "Hello World"
+  ///     string.padStart(length: 15) -> "    Hello World"
+  ///
+  /// Example 2:
+  ///
+  ///     let string = "Hello World"
+  ///     string.padStart(length: 15, withToken: "*") -> "****Hello World"
+  ///
+  /// - Parameters:
+  ///   - length: The final length of your string.
+  ///   - token: The string used to pad the String (defaults to a white space).
+  public mutating func padStart(length: Int, with token: String = " ") {
+    self = paddingStart(length: length, with: token)
+  }
+  
+  /// **Mechanica**
+  ///
+  ///  Returns a `new` String  with the right-padded version of `self` if it's shorter than `length` using a `token`. Padding characters are truncated if they can't be evenly divided by length.
+  ///
+  /// Example 1:
+  ///
+  ///     let string = "Hello World"
+  ///     string.paddingEnd(length: 15) -> "Hello World    "
+  ///
+  /// Example 2:
+  ///
+  ///     let string = "Hello World"
+  ///     string.paddingEnd(length: 15, withToken: "*", ) -> "Hello World****"
+  ///
+  /// - Parameters:
+  ///   - length: The final length of your string.
+  ///   - token: The string used to pad the String (defaults to a white space).
+  /// - Returns: The right-padded copy of the string.
+  public func paddingEnd(length: Int, with token: String = " ") -> String {
+    guard count < length else { return self }
+    
+    let padLength = length - count
+    if padLength < token.count {
+      return self + token[token.startIndex..<token.index(token.startIndex, offsetBy: padLength)]
+    } else {
+      var padding = token
+      while padding.count < padLength {
+        padding.append(token)
+      }
+      return self + padding[padding.startIndex..<padding.index(padding.startIndex, offsetBy: padLength)]
+    }
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Pads `self` on the right side if it's shorter than `length` using a `token`. Padding characters are truncated if they exceed length.
+  ///
+  /// Example 1:
+  ///
+  ///     let string = "Hello World"
+  ///     string.padEnd(length: 15) -> "Hello World    "
+  ///
+  /// Example 2:
+  ///
+  ///     let string = "Hello World"
+  ///     string.padEnd(length: 15, withToken: "*", ) -> "Hello World****"
+  ///
+  /// - Parameters:
+  ///   - length: The final length of your string.
+  ///   - token: The string used to pad the String (defaults to a white space).
+  public mutating func padEnd(length: Int, with token: String = " ") {
+    self = paddingEnd(length: length, with: token)
   }
   
   // MARK: - Subscript Methods
