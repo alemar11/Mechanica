@@ -301,10 +301,6 @@
 		23DC26D31F1E3F090093F7EE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC26D11F1E3F090093F7EE /* Operators.swift */; };
 		23DC26D41F1E3F090093F7EE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC26D11F1E3F090093F7EE /* Operators.swift */; };
 		23DC26D51F1E3F090093F7EE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC26D11F1E3F090093F7EE /* Operators.swift */; };
-		23DEAAD41FB7161400C8BFDA /* String+Refactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DEAAD31FB7161400C8BFDA /* String+Refactor.swift */; };
-		23DEAAD51FB7161400C8BFDA /* String+Refactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DEAAD31FB7161400C8BFDA /* String+Refactor.swift */; };
-		23DEAAD61FB7161400C8BFDA /* String+Refactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DEAAD31FB7161400C8BFDA /* String+Refactor.swift */; };
-		23DEAAD71FB7161400C8BFDA /* String+Refactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DEAAD31FB7161400C8BFDA /* String+Refactor.swift */; };
 		23EE2F4C1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
 		23EE2F4D1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
 		23EE2F4E1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
@@ -507,7 +503,6 @@
 		23D9229A1EFA670900629E17 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		23D9229B1EFA670900629E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23DC26D11F1E3F090093F7EE /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Operators.swift; sourceTree = "<group>"; };
-		23DEAAD31FB7161400C8BFDA /* String+Refactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Refactor.swift"; sourceTree = "<group>"; };
 		23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NSPredicateUtilsTests.swift; sourceTree = "<group>"; };
 		23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSPredicate+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
@@ -729,7 +724,6 @@
 				D2ABD0061E004F8D006859B9 /* ProcessInfo+Utils.swift */,
 				D220818C1E07FEB700BE4268 /* URL+Utils.swift */,
 				23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */,
-				23DEAAD31FB7161400C8BFDA /* String+Refactor.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -753,8 +747,10 @@
 				239B92641F274E55009A9433 /* Sequence+Utils.swift */,
 				23C7967C1FB44E74006766FD /* SignedInteger.swift */,
 				238E5B1F1FB5C73E00331C85 /* StandardLibraryUtils.swift */,
+				D208D1811DF07103009687BB /* String+Operators.swift */,
+				23C796811FB458E6006766FD /* String+Padding.swift */,
+				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
 				2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */,
-				23C7968A1FB47254006766FD /* String */,
 			);
 			path = StandardLibrary;
 			sourceTree = "<group>";
@@ -790,16 +786,6 @@
 				23CC6B221FA71E04004D062B /* Image+Utils.swift */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		23C7968A1FB47254006766FD /* String */ = {
-			isa = PBXGroup;
-			children = (
-				D208D1811DF07103009687BB /* String+Operators.swift */,
-				23C796811FB458E6006766FD /* String+Padding.swift */,
-				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
-			);
-			name = String;
 			sourceTree = "<group>";
 		};
 		23D922981EFA670900629E17 /* Support */ = {
@@ -1172,7 +1158,6 @@
 				12B9563A1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				D205B0601DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */,
 				2302A2D21F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */,
-				23DEAAD41FB7161400C8BFDA /* String+Refactor.swift in Sources */,
 				239F8DD81E55DED500E3DF33 /* NSObjectProtocol+Swizzling.swift in Sources */,
 				230949071F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */,
 				23949C551E4B974400BD9EC8 /* NSAttributedString+Operators.swift in Sources */,
@@ -1209,7 +1194,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23DEAAD51FB7161400C8BFDA /* String+Refactor.swift in Sources */,
 				D214026D1D5379AE00BCF2E7 /* Bundle+Info.swift in Sources */,
 				230949081F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */,
 				12B956321D880B3B00F75DD5 /* String+Utils.swift in Sources */,
@@ -1282,7 +1266,6 @@
 				23928B811F5DAC5E00FB74AE /* Font+Utils.swift in Sources */,
 				12B9563C1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				2302A2D41F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */,
-				23DEAAD61FB7161400C8BFDA /* String+Refactor.swift in Sources */,
 				230949091F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */,
 				D2234A641E002D2600252551 /* String+Foundation.swift in Sources */,
 				2307D06C1F8FA15500FDBA2A /* Locale.swift in Sources */,
@@ -1319,7 +1302,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23DEAAD71FB7161400C8BFDA /* String+Refactor.swift in Sources */,
 				D208D1851DF07103009687BB /* String+Operators.swift in Sources */,
 				2302A2D51F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */,
 				23949C5D1E4B979D00BD9EC8 /* NSAttributedString+Utils.swift in Sources */,

@@ -55,6 +55,9 @@
                 <a href="../Extensions/Dictionary.html">Dictionary</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/ExpressibleByIntegerLiteral.html">ExpressibleByIntegerLiteral</a>
               </li>
               <li class="nav-group-task">
@@ -110,6 +113,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/SignedInteger.html">SignedInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
@@ -171,10 +177,10 @@
                 <a href="../Functions.html#/s:9Mechanica1roPS2fF">%(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions/???(_:_:).html">???(_:_:)</a>
+                <a href="../Functions.html#/???(_:_:)">???(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:9Mechanica8typeNameSSyp2of_tF">typeName(of:)</a>
+                <a href="../Functions.html#/typeName(of:)">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -186,20 +192,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/FixedWidthIntegerRandomizable.html">FixedWidthIntegerRandomizable</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Typealiases.html">Type Aliases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Mechanica5Colora">Color</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Mechanica4Fonta">Font</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Mechanica5Imagea">Image</a>
               </li>
             </ul>
           </li>
@@ -217,38 +209,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So16NSObjectProtocolP9MechanicaE18SwizzlingSelectorsa"></a>
-                    <a name="//apple_ref/swift/Alias/SwizzlingSelectors" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16NSObjectProtocolP9MechanicaE18SwizzlingSelectorsa">SwizzlingSelectors</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-<p>Couple of <code>Selector</code> where the method corresponding to the first one needs to be exchanged with the second one.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">SwizzlingSelectors</span> <span class="o">=</span> <span class="p">(</span><span class="nv">originalSelector</span><span class="p">:</span> <span class="kt">Selector</span><span class="p">,</span> <span class="nv">swizzledSelector</span><span class="p">:</span> <span class="kt">Selector</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So16NSObjectProtocolP9MechanicaE7swizzley10ObjectiveC8SelectorV6method_AG4withtFZ"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/swizzle(method:with:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16NSObjectProtocolP9MechanicaE7swizzley10ObjectiveC8SelectorV6method_AG4withtFZ">swizzle(method:with:)</a>
+                    <a class="token" href="#/">swizzle(method:with:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -280,54 +243,15 @@ The next best place to perform the swizzling is in initialize, a method called r
 </div>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">swizzle</span><span class="p">(</span><span class="n">method</span> <span class="nv">originalSelector</span><span class="p">:</span> <span class="kt">Selector</span><span class="p">,</span> <span class="n">with</span> <span class="nv">swizzledSelector</span><span class="p">:</span> <span class="kt">Selector</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>originalSelector</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p><code>Selector</code> for the original method</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>swizzledSelector</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p><code>Selector</code> for the swizzled methos</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So16NSObjectProtocolP9MechanicaE7swizzleySay10ObjectiveC8SelectorV08originalF0_AG08swizzledF0tGFZ"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/swizzle(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16NSObjectProtocolP9MechanicaE7swizzleySay10ObjectiveC8SelectorV08originalF0_AG08swizzledF0tGFZ">swizzle(_:)</a>
+                    <a class="token" href="#/">swizzle(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -340,18 +264,10 @@ The next best place to perform the swizzling is in initialize, a method called r
 <p>Exchanges the implementations of each couple of Selectors.</p>
 <div class="aside aside-see-also">
     <p class="aside-title">See also</p>
-    <code><a href="../Extensions/NSObjectProtocol.html#/s:So16NSObjectProtocolP9MechanicaE7swizzley10ObjectiveC8SelectorV6method_AG4withtFZ">swizzle(method:with:)</a></code>
+    <code><a href="../Extensions/NSObjectProtocol.html#/swizzle(method:with:)">swizzle(method:with:)</a></code>
 
 </div>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">swizzle</span><span class="p">(</span><span class="n">_</span> <span class="nv">selectors</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Extensions/NSObjectProtocol.html#/s:So16NSObjectProtocolP9MechanicaE18SwizzlingSelectorsa">SwizzlingSelectors</a></span><span class="p">])</span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>
@@ -363,9 +279,9 @@ The next best place to perform the swizzling is in initialize, a method called r
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So16NSObjectProtocolP9MechanicaE4typeSSv"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16NSObjectProtocolP9MechanicaE4typeSSv">type</a>
+                    <a class="token" href="#/">type</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -378,23 +294,15 @@ The next best place to perform the swizzling is in initialize, a method called r
 <p>Returns the type of an object conforming to <code>NSObjectProtocol</code> as <code>String</code>.</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So16NSObjectProtocolP9MechanicaE4typeSSvZ"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Variable/type" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16NSObjectProtocolP9MechanicaE4typeSSvZ">type</a>
+                    <a class="token" href="#/">type</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -406,14 +314,6 @@ The next best place to perform the swizzling is in initialize, a method called r
 
 <p>Returns the type of an object instance conforming to <code>NSObjectProtocol</code> as <code>String</code>.</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>

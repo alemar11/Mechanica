@@ -55,6 +55,9 @@
                 <a href="../Extensions/Dictionary.html">Dictionary</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/ExpressibleByIntegerLiteral.html">ExpressibleByIntegerLiteral</a>
               </li>
               <li class="nav-group-task">
@@ -110,6 +113,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/SignedInteger.html">SignedInteger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
@@ -171,10 +177,10 @@
                 <a href="../Functions.html#/s:9Mechanica1roPS2fF">%(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions/???(_:_:).html">???(_:_:)</a>
+                <a href="../Functions.html#/???(_:_:)">???(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:9Mechanica8typeNameSSyp2of_tF">typeName(of:)</a>
+                <a href="../Functions.html#/typeName(of:)">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -189,32 +195,12 @@
               </li>
             </ul>
           </li>
-          <li class="nav-group-name">
-            <a href="../Typealiases.html">Type Aliases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Mechanica5Colora">Color</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Mechanica4Fonta">Font</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Mechanica5Imagea">Image</a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
       <article class="main-content">
         <section>
           <section class="section">
             <h1>RangeReplaceableCollection</h1>
-              <div class="declaration">
-                <div class="language">
-                  <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">RangeReplaceableCollection</span> <span class="p">:</span> <span class="kt">Collection</span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">SubSequence</span> <span class="p">:</span> <span class="n">_RangeReplaceableIndexable</span></code></pre>
-
-                </div>
-              </div>
             
           </section>
           <section class="section task-group-section">
@@ -223,9 +209,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE9appendingx7ElementQzF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/appending(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE9appendingx7ElementQzF">appending(_:)</a>
+                    <a class="token" href="#/">appending(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -238,23 +224,15 @@
 <p>Appends a new <code>element</code>.</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">appending</span><span class="p">(</span><span class="n">_</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE11removeFirst7ElementQzSgSbAHc5where_tF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/removeFirst(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE11removeFirst7ElementQzSgSbAHc5where_tF">removeFirst(where:)</a>
+                    <a class="token" href="#/">removeFirst(where:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -267,42 +245,15 @@
 <p>Removes the first element that matches the given <code>condition</code>.</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeFirst</span><span class="p">(</span><span class="k">where</span> <span class="nv">condition</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>condition</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE13removingFirstx_7ElementQzSgtSbAHc5where_tF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/removingFirst(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE13removingFirstx_7ElementQzSgtSbAHc5where_tF">removingFirst(where:)</a>
+                    <a class="token" href="#/">removingFirst(where:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -315,46 +266,15 @@
 <p>Removes the first element that matches the given <code>condition</code> and returns a tuple with a <code>new</code> collection and the removed element.</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removingFirst</span><span class="p">(</span><span class="k">where</span> <span class="nv">condition</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="k">Self</span><span class="p">,</span> <span class="kt">Element</span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>condition</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Returns a tuple with a <code>new</code> collection and the removed element.</p>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE10removeLast7ElementQzSgSbAHc5where_tF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/removeLast(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE10removeLast7ElementQzSgSbAHc5where_tF">removeLast(where:)</a>
+                    <a class="token" href="#/">removeLast(where:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -367,42 +287,15 @@
 <p>Removes the last element that matches the given <code>condition</code>.</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeLast</span><span class="p">(</span><span class="k">where</span> <span class="nv">condition</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>condition</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE12removingLastx_7ElementQzSgtSbAHc5where_tF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/removingLast(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE12removingLastx_7ElementQzSgtSbAHc5where_tF">removingLast(where:)</a>
+                    <a class="token" href="#/">removingLast(where:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -415,46 +308,15 @@
 <p>Removes the last element that matches the given <code>condition</code> and returns a tuple with a <code>new</code> collection and the removed element.</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removingLast</span><span class="p">(</span><span class="k">where</span> <span class="nv">condition</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="k">Self</span><span class="p">,</span> <span class="kt">Element</span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>condition</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Returns a tuple with a <code>new</code> collection and the removed element.</p>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE9removeAllSay7ElementQzGSbAHc5where_tF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/removeAll(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE9removeAllSay7ElementQzGSbAHc5where_tF">removeAll(where:)</a>
+                    <a class="token" href="#/">removeAll(where:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -472,42 +334,15 @@
 </div>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeAll</span><span class="p">(</span><span class="k">where</span> <span class="nv">condition</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Element</span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>condition</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE11removingAllx_Say7ElementQzGtSbAHc5where_tF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/removingAll(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26RangeReplaceableCollectionP9MechanicasAARzSi5IndexRtzlE11removingAllx_Say7ElementQzGtSbAHc5where_tF">removingAll(where:)</a>
+                    <a class="token" href="#/">removingAll(where:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -525,37 +360,6 @@
 </div>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removingAll</span><span class="p">(</span><span class="k">where</span> <span class="nv">condition</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="k">Self</span><span class="p">,</span> <span class="p">[</span><span class="kt">Element</span><span class="p">])</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>condition</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Returns a tuple with a <code>new</code> collection and the removed elements.</p>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -566,9 +370,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26RangeReplaceableCollectionP9MechanicasAARzs9Equatable7ElementRpzSi5IndexRtzlE21removeFirstOccurrenceAFSgAF2of_tF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/removeFirstOccurrence(of:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26RangeReplaceableCollectionP9MechanicasAARzs9Equatable7ElementRpzSi5IndexRtzlE21removeFirstOccurrenceAFSgAF2of_tF">removeFirstOccurrence(of:)</a>
+                    <a class="token" href="#/">removeFirstOccurrence(of:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -580,46 +384,15 @@
 Removes the first specified element from the collection (if exists).</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeFirstOccurrence</span><span class="p">(</span><span class="n">of</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>element</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The element to remove the last occurrence.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The element removed (if any).</p>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26RangeReplaceableCollectionP9MechanicasAARzs9Equatable7ElementRpzSi5IndexRtzlE20removeLastOccurrenceAFSgAF2of_tF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/removeLastOccurrence(of:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26RangeReplaceableCollectionP9MechanicasAARzs9Equatable7ElementRpzSi5IndexRtzlE20removeLastOccurrenceAFSgAF2of_tF">removeLastOccurrence(of:)</a>
+                    <a class="token" href="#/">removeLastOccurrence(of:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -631,37 +404,6 @@ Removes the first specified element from the collection (if exists).</p>
 
 <p>Removes the last specified element from the array (if exists).</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">removeLastOccurrence</span><span class="p">(</span><span class="n">of</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>element</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The element to remove the collection occurrence.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The element removed (if any).</p>
                       </div>
                     </section>
                   </div>

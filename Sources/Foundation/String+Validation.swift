@@ -64,33 +64,9 @@ public extension String {
 
   /// **Mechanica**
   ///
-  /// Returns true if all the characters are lowercased.
-  public var isLowercased: Bool {
-    return self == lowercased()
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns true, if all characters are uppercased. Otherwise, false.
-  public var isUppercased: Bool {
-    return self == uppercased()
-  }
-
-  /// **Mechanica**
-  ///
   /// Checks if the `String` is **blank** (a string that is either empty or contains only space/newline characters).
   public var isBlank: Bool {
     return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
-  }
-
-  /// **Mechanica**
-  ///
-  /// Checks if all of the characters in a string are all the same.
-  public var isHomogeneous: Bool {
-    for char in dropFirst() where char != first {
-      return false
-    }
-    return true
   }
 
   /// **Mechanica**
