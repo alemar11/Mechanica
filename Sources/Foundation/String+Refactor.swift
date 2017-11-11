@@ -25,6 +25,22 @@ import Foundation
 
 extension String {
   
+  // MARK: - Bool
+  
+  /// **Mechanica**
+  ///
+  /// Return a Bool value by parsing `self`.
+  public var bool: Bool? {
+    switch self.trimmed().lowercased() {
+    case "1", "true", "t", "yes", "y", "👍", "👍🏻", "👍🏼", "👍🏽", "👍🏾", "👍🏿":
+      return true
+    case "0", "false", "f", "no", "n", "👎", "👎🏻", "👎🏼", "👎🏽", "👎🏾", "👎🏿":
+      return false
+    default:
+      return nil
+    }
+  }
+  
   // MARK: - Subscript with NSRange
   
   /// **Mechanica**

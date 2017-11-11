@@ -143,20 +143,6 @@ extension String {
   
   /// **Mechanica**
   ///
-  /// Return a Bool value by parsing `self`.
-  public var bool: Bool? {
-    switch self.trimmed().lowercased() {
-    case "1", "true", "t", "yes", "y", "👍", "👍🏻", "👍🏼", "👍🏽", "👍🏾", "👍🏿":
-      return true
-    case "0", "false", "f", "no", "n", "👎", "👎🏻", "👎🏼", "👎🏽", "👎🏾", "👎🏿":
-      return false
-    default:
-      return nil
-    }
-  }
-
-  /// **Mechanica**
-  ///
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
   public func capitalizedFirstCharacter() -> String {
     guard !isEmpty else { return self }
