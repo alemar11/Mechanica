@@ -25,10 +25,10 @@ import XCTest
 @testable import Mechanica
 
 class FoundationUtilsTests: XCTestCase {
-  
+
   func testAppIdentifier() {
     XCTAssert(appIdentifier == "xctest")
   }
-    
+
 }
 

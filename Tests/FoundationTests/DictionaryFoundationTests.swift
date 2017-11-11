@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -25,7 +25,7 @@ import XCTest
 @testable import Mechanica
 
 class DictionaryFoundationTests: XCTestCase {
-    
+
   func testInitFromJSON() {
 
     do {
@@ -103,5 +103,5 @@ class DictionaryFoundationTests: XCTestCase {
     }
 
   }
-    
+
 }
