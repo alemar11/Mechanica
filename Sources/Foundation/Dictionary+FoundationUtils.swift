@@ -26,7 +26,7 @@ import Foundation
 extension Dictionary {
 
   // MARK: - JSON
-  
+
   /// **Mechanica**
   ///
   /// Returns a Dictionary from a given JSON String.

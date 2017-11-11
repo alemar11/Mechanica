@@ -65,7 +65,7 @@ extension Sequence {
 }
 
 extension Sequence where Element: Equatable {
-  
+
   // MARK: - Equatable
 
   /// **Mechanica**
@@ -84,7 +84,7 @@ extension Sequence where Element: Equatable {
 }
 
 extension Sequence where Element: Hashable {
-  
+
   // MARK: - Hashable
 
   /// **Mechanica**
@@ -103,7 +103,7 @@ extension Sequence where Element: Hashable {
 }
 
 extension Sequence where Element: AnyObject {
-  
+
   // MARK: - AnyObject
 
   /// **Mechanica**

@@ -24,37 +24,37 @@
 import Darwin
 
 extension String {
-  
+
   // MARK: - Helper Methods
-  
+
   /// **Mechanica**
   ///
   /// Returns the length of the `String`.
   public var length: Int {
     return count
   }
-  
+
   /// **Mechanica**
   ///
   /// Reverse `self`.
   public mutating func reverse() {
     self = String(reversed())
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns true if all the characters are lowercased.
   public var isLowercased: Bool {
     return self == lowercased()
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns true, if all characters are uppercased. Otherwise, false.
   public var isUppercased: Bool {
     return self == uppercased()
   }
-  
+
   /// **Mechanica**
   ///
   /// Checks if all of the characters in a string are all the same.
@@ -64,27 +64,27 @@ extension String {
     }
     return true
   }
-  
+
   // MARK: - Suffix and Prefix Methods
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string containing the first character of the `String`.
   public var first: String {
     let first = self[..<index(after: startIndex)]
-    
+
     return String(first)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` string containing the last character of the `String`.
   public var last: String {
     let last = self[index(before: endIndex)...]
-    
+
     return String(last)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a substring, up to maxLength in length, containing the initial elements of the `String`.
@@ -94,10 +94,10 @@ extension String {
   ///
   public func prefix(maxLength: Int) -> String {
     guard maxLength > 0 else { return "" }
-    
+
     return String(prefix(maxLength))
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a slice, up to maxLength in length, containing the final elements of `String`.
@@ -106,10 +106,10 @@ extension String {
   ///  - parameter maxLength: substring max lenght
   public func suffix(maxLength: Int) -> String {
     guard maxLength > 0 else { return "" }
-    
+
     return String(suffix(maxLength))
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a new `String` containing the characters of the String from the one at a given position to the end.
@@ -121,12 +121,12 @@ extension String {
   ///  - parameter upToPosition: position (included) up to which remove the prefix.
   public func removingPrefix(upToPosition: Int = 1) -> String {
     guard upToPosition >= 0 && upToPosition <= length else { return "" }
-    
+
     let startIndex = index(self.startIndex, offsetBy: upToPosition)
-    
+
     return String(self[startIndex...])
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a new `String` removing the spcified prefix (if the string has it).
@@ -138,10 +138,10 @@ extension String {
   ///  - parameter prefix: prefix to be removed.
   public func removingPrefix(_ prefix: String) -> String {
     guard hasPrefix(prefix) else { return self }
-    
+
     return removingPrefix(upToPosition: prefix.length)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a new `String` containing the characters of the String up to, but not including, the one at a given position.
@@ -153,12 +153,12 @@ extension String {
   ///
   public func removingSuffix(fromPosition: Int = 1) -> String {
     guard fromPosition >= 0 && fromPosition <= length else { return "" }
-    
+
     let startIndex = index(endIndex, offsetBy: -fromPosition)
-    
+
     return String(self[..<startIndex])
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a new `String` removing the spcified suffix (if the string has it).
@@ -170,11 +170,10 @@ extension String {
   ///  - parameter prefix: prefix to be removed.
   public func removingSuffix(_ suffix: String) -> String {
     guard hasSuffix(suffix) else { return self }
-    
+
     return removingSuffix(fromPosition: suffix.length)
   }
-  
-  
+
   /// **Mechanica**
   ///
   ///  Truncates the `String` to the given length (number of characters) and appends optional trailing string if longer.
@@ -183,7 +182,7 @@ extension String {
   ///  - parameter trailing: optional trailing string
   ///
   public func truncate(at length: Int, withTrailing trailing: String? = "…") -> String {
-    
+
     switch length {
     case 0..<self.length:
       return self.prefix(maxLength: length) + (trailing ?? "")
@@ -192,11 +191,11 @@ extension String {
     default:
       return ""
     }
-    
+
   }
-  
+
   // MARK: - Padding Operations
-  
+
   /// **Mechanica**
   ///
   ///  Returns a `new` String  with the center-padded version of `self` if it's shorter than `length` using a `token`. Padding characters are truncated if they can't be evenly divided by length.
@@ -218,11 +217,11 @@ extension String {
   /// - Note: If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.
   public func padding(length: Int, with token: String = " ") -> String {
     guard count < length else { return self }
-    
+
     let delta = Int(ceil(Double(length-count)/2))
     return paddingStart(length: length-delta, with: token).paddingEnd(length: length, with: token)
   }
-  
+
   /// **Mechanica**
   ///
   /// Pads `self on the left and right sides if it's shorter than `length` using a `token`. Padding characters are truncated if they can't be evenly divided by length.
@@ -245,7 +244,7 @@ extension String {
   public mutating func pad(length: Int, with token: String = " ") {
     self = padding(length: length, with: token)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a `new` String  with the left-padded version of `self` if it's shorter than `length` using a `token`. Padding characters are truncated if they can't be evenly divided by length.
@@ -266,7 +265,7 @@ extension String {
   /// - Returns: The left-padded copy of the string.
   public func paddingStart(length: Int, with token: String = " ") -> String {
     guard count < length else { return self }
-    
+
     let padLength = length - count
     if padLength < token.count {
       return token[token.startIndex..<token.index(token.startIndex, offsetBy: padLength)] + self
@@ -278,7 +277,7 @@ extension String {
       return padding[padding.startIndex..<padding.index(padding.startIndex, offsetBy: padLength)] + self
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Pads `self` on the left side if it's shorter than `length` using a `token`. Padding characters are truncated if they exceed length.
@@ -299,7 +298,7 @@ extension String {
   public mutating func padStart(length: Int, with token: String = " ") {
     self = paddingStart(length: length, with: token)
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns a `new` String  with the right-padded version of `self` if it's shorter than `length` using a `token`. Padding characters are truncated if they can't be evenly divided by length.
@@ -320,7 +319,7 @@ extension String {
   /// - Returns: The right-padded copy of the string.
   public func paddingEnd(length: Int, with token: String = " ") -> String {
     guard count < length else { return self }
-    
+
     let padLength = length - count
     if padLength < token.count {
       return self + token[token.startIndex..<token.index(token.startIndex, offsetBy: padLength)]
@@ -332,7 +331,7 @@ extension String {
       return self + padding[padding.startIndex..<padding.index(padding.startIndex, offsetBy: padLength)]
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Pads `self` on the right side if it's shorter than `length` using a `token`. Padding characters are truncated if they exceed length.
@@ -353,9 +352,9 @@ extension String {
   public mutating func padEnd(length: Int, with token: String = " ") {
     self = paddingEnd(length: length, with: token)
   }
-  
+
   // MARK: - Subscript Methods
-  
+
   /// **Mechanica**
   ///
   ///  Gets the character at the specified index as String.
@@ -365,10 +364,10 @@ extension String {
   ///  - Returns: Character as String or nil if the index is out of bounds
   public subscript (index: Int) -> String? {
     guard 0..<count ~= index else { return nil }
-    
+
     return String(Array(self)[index])
   }
-  
+
   /// **Mechanica**
   ///
   ///   Returns the substring in the given range.
@@ -379,23 +378,23 @@ extension String {
   public subscript (range: Range<Int>) -> String? {
     guard 0...length ~= range.lowerBound else { return nil }
     guard 0...length ~= range.upperBound else { return nil }
-    
+
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(startIndex, offsetBy: range.upperBound)
     let range = Range(uncheckedBounds: (lower: start, upper: end))
-    
+
     return String(self[range])
   }
-  
+
   // MARK: - Operators
-  
+
   /// **Mechanica**
   ///
   /// Creates a `new` string representing the given string repeated the specified number of times.
   public static func * (lhs: String, rhs: Int) -> String {
     return  String(repeating: lhs, count: rhs)
   }
-  
+
   /// **Mechanica**
   ///
   /// Creates a `new` string representing the given string repeated the specified number of times.

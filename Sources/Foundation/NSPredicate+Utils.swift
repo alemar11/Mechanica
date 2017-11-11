@@ -48,7 +48,7 @@ extension NSPredicate {
 extension NSPredicate {
 
   // MARK: Operators
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` predicate formed by **AND-ing** the two predicates.

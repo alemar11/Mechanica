@@ -26,7 +26,7 @@ import Foundation
 extension NSAttributedString {
 
   // MARK: - Initializers
-  
+
   /// **Mechanica**
   ///
   /// Initializes and returns a `new` NSAttributedString object from the `html` contained in the given string.

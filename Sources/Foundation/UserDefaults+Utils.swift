@@ -82,7 +82,7 @@ public extension UserDefaults {
 extension UserDefaults {
 
   // MARK: Codable
-  
+
   /// **Mechanica**
   ///
   /// Returns the object conformig to `Codable` associated with the specified key, or nil if the key was not found.

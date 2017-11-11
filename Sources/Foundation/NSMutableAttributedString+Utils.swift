@@ -26,7 +26,7 @@ import Foundation
 extension NSMutableAttributedString {
 
   // MARK: - Attributes
-  
+
   /// **Mechanica**
   ///
   /// Removes all the attributes from `self`.
@@ -40,9 +40,9 @@ extension NSMutableAttributedString {
   public func removingAllAttributes() -> NSMutableAttributedString {
     return NSMutableAttributedString(string: string)
   }
-  
+
   // MARK: - Operators
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left NSMutableAttributedString.
@@ -54,7 +54,7 @@ extension NSMutableAttributedString {
     a.append(b)
     return a
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` NSMutableAttributedString appending the right NSAttributedString to the left NSMutableAttributedString.
@@ -65,7 +65,7 @@ extension NSMutableAttributedString {
     a.append(rhs)
     return a
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left NSAttributedString.
@@ -73,7 +73,7 @@ extension NSMutableAttributedString {
     let a = NSMutableAttributedString(attributedString: lhs)
     return a + rhs
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` NSMutableAttributedString appending the right String to the left NSMutableAttributedString.
@@ -84,7 +84,7 @@ extension NSMutableAttributedString {
     let b = NSMutableAttributedString(string: rhs)
     return a + b
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left String.
@@ -95,21 +95,21 @@ extension NSMutableAttributedString {
     // swiftlint:enable force_cast
     return a + b
   }
-  
+
   /// **Mechanica**
   ///
   /// Appends the right NSMutableAttributedString to the left NSMutableAttributedString.
   public static func += (lhs: NSMutableAttributedString, rhs: NSMutableAttributedString) {
     lhs.append(rhs)
   }
-  
+
   /// **Mechanica**
   ///
   /// Appends the right NSAttributedString to the left NSMutableAttributedString.
   public static func += (lhs: NSMutableAttributedString, rhs: NSAttributedString) {
     lhs.append(rhs)
   }
-  
+
   /// **Mechanica**
   ///
   /// Appends the right String to the left NSMutableAttributedString.

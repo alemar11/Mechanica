@@ -22,7 +22,7 @@
 // SOFTWARE.
 
 public extension Dictionary {
-  
+
   /// **Mechanica**
   ///
   /// Returns true if the `key` exists in the dictionary.
@@ -52,7 +52,7 @@ public extension Dictionary {
 public extension Dictionary where Key: ExpressibleByStringLiteral {
 
   // MARK: - ExpressibleByStringLiteral
-  
+
   /// **Mechanica**
   ///
   /// Lowercase all keys in dictionary.
@@ -69,7 +69,7 @@ public extension Dictionary where Key: ExpressibleByStringLiteral {
 extension Dictionary {
 
   // MARK: - Random
-  
+
   /// **Mechanica**
   ///
   /// Returns a random pair of (key,value) from `self`.
