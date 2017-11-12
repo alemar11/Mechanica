@@ -25,7 +25,25 @@ import Foundation
 
 extension String {
 
-  // MARK: - Foundation Helper Methods
+  // MARK: - Foundation
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` string decoded from base64.
+  public var base64Decoded: String? {
+    guard let decodedData = Data(base64Encoded: self) else {
+      return nil
+    }
+    return String(data: decodedData, encoding: .utf8)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` string encoded in base64.
+  public var base64Encoded: String? {
+    let plainData = self.data(using: .utf8)
+    return plainData?.base64EncodedString()
+  }
 
   /// **Mechanica**
   ///
@@ -49,6 +67,91 @@ extension String {
 
   /// **Mechanica**
   ///
+  ///  Condenses all white spaces repetitions in a single white space.
+  ///  White space at the beginning or ending of the `String` are trimmed out.
+  ///
+  /// Example:
+  ///
+  ///     let aString = "test    too many    spaces"
+  ///     aString.removeExcessiveSpaces  -> test too many spaces
+  ///
+  ///
+  ///  - Returns: A `new` string where all white spaces repetitions are replaced with a single white space.
+  public func condensingExcessiveSpaces() -> String {
+    let components = self.components(separatedBy: .whitespaces)
+    let filtered = components.filter {!$0.isEmpty}
+
+    return filtered.joined(separator: " ")
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Condenses all white spaces and new lines repetitions in a single white space.
+  ///  White space and new lines at the beginning or ending of the `String` are trimmed out.
+  ///
+  ///  - Returns: A `new` string where all white spaces and new lines repetitions are replaced with a single white space.
+  public func condensingExcessiveSpacesAndNewlines() -> String {
+    let components = self.components(separatedBy: .whitespacesAndNewlines)
+    let filtered = components.filter {!$0.isBlank}
+
+    return filtered.joined(separator: " ")
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Checks if `self` contains a `String`.
+  ///
+  /// - Parameters:
+  ///   -  string:       String to match.
+  ///   - caseSensitive: Search option: *true* for case-sensitive, false for case-insensitive. (if *true* this function is equivalent to `self.contains(...)`)
+  ///
+  ///  - Returns: *true* if contains match, otherwise false.
+  public func contains(_ string: String, caseSensitive: Bool) -> Bool {
+    if caseSensitive {
+      return contains(string)
+    } else {
+      return range(of: string, options: .caseInsensitive) != nil
+    }
+  }
+
+  /// **Mechanica**
+  ///
+  /// Checks if if all the characters in the string belong to a specific `CharacterSet`.
+  ///
+  /// - Parameter characterSet: The `CharacterSet` used to test the string.
+  /// - Returns: *true* if all the characters in the string belong to the `CharacterSet`, otherwise false.
+  public func containsCharacters(in characterSet: CharacterSet) -> Bool {
+    guard !isEmpty else { return false }
+    for scalar in unicodeScalars {
+      guard characterSet.contains(scalar) else { return false }
+    }
+
+    return true
+  }
+
+  /// **Mechanica**
+  ///
+  /// Makes sure that we always have a semantic version in the form MAJOR.MINOR.PATCH
+  func ensureSemanticVersionCorrectness() -> String {
+    if self.isEmpty { return "0.0.0" }
+
+    var copy = self
+
+    let versionComponents = components(separatedBy: ".")
+    guard 1 ... 3 ~= versionComponents.count else { fatalError("Invalid number of semantic version components (\(versionComponents.count)).") }
+
+    let notNumericComponents = versionComponents.filter { !$0.isNumeric }
+    guard notNumericComponents.isEmpty else { fatalError("Each semantic version component should have a numeric value.") }
+
+    for _ in versionComponents.count..<3 {
+      copy += ".0"
+    }
+
+    return copy
+  }
+
+  /// **Mechanica**
+  ///
   /// Returns *true* if `self` starts with a given prefix.
   public func starts(with prefix: String, caseSensitive: Bool = true) -> Bool {
     if !caseSensitive {
@@ -67,23 +170,6 @@ extension String {
     }
 
     return hasSuffix(suffix)
-  }
-
-  /// **Mechanica**
-  ///
-  ///  Checks if `self` contains a `String`.
-  ///
-  /// - Parameters:
-  ///   -  string:       String to match.
-  ///   - caseSensitive: Search option: *true* for case-sensitive, false for case-insensitive. (if *true* this function is equivalent to `self.contains(...)`)
-  ///
-  ///  - Returns: *true* if contains match, otherwise false.
-  public func contains(_ string: String, caseSensitive: Bool) -> Bool {
-    if caseSensitive {
-      return contains(string)
-    } else {
-      return range(of: string, options: .caseInsensitive) != nil
-    }
   }
 
   /// **Mechanica**
@@ -160,13 +246,6 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Checks if the `String` contains only numbers.
-  public var isNumeric: Bool {
-    return !isEmpty && rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
-  }
-
-  /// **Mechanica**
-  ///
   /// Returns true if the `String` contains at least one letter and one number.
   public var isAlphaNumeric: Bool {
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
@@ -181,66 +260,56 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Checks if string is a valid URL.
+  /// Returns `true` if `self` is a country emoji flag.
   ///
-  /// Example:
-  ///
-  ///     "https://tinrobots.org".isValidUrl -> true
-  ///
-  public var isValidUrl: Bool {
-    return URL(string: self) != nil
+  /// - Note: to check if a string contains a flag use: `self.contains { $0.isFlag }`
+  /// - Note: to extrapolate the flags in a string use: `self.filter { $0.isFlag }`
+  public var isEmojiCountryFlag: Bool {
+    guard count == 1 else { return false }
+
+    return first!.isFlag
   }
 
   /// **Mechanica**
   ///
-  /// Check if the `String` is a valid schemed URL.
-  ///
-  /// Example:
-  ///
-  ///     "https://tinrobots.org".isValidSchemedUrl -> true
-  ///     "tinrobots.org".isValidSchemedUrl -> false
-  ///
-  public var isValidSchemedUrl: Bool {
-    guard let url = URL(string: self) else { return false }
-    return url.scheme != nil
+  /// Checks if the `String` contains only numbers.
+  public var isNumeric: Bool {
+    return !isEmpty && rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
   }
 
   /// **Mechanica**
   ///
-  /// Checks if string is a valid https URL.
-  ///
-  /// Example:
-  ///
-  ///     "https://tinrobots.org".isValidHttpsUrl -> true
-  ///
-  public var isValidHttpsUrl: Bool {
-    guard let url = URL(string: self) else { return false }
-    return url.scheme == "https"
+  /// Checks if `self` is a semantic version with a value equal to a given `version`.
+  public func isSemanticVersionEqual(to version: String) -> Bool {
+    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedSame
   }
 
   /// **Mechanica**
   ///
-  /// Checks if string is a valid http URL.
-  ///
-  /// Example:
-  ///
-  ///     "http://tinrobots.org".isValidHttpUrl -> true
-  ///
-  public var isValidHttpUrl: Bool {
-    guard let url = URL(string: self) else { return false }
-    return url.scheme == "http"
+  /// Checks if `self` is a semantic version with a value greater than given `version`.
+  public func isSemanticVersionGreater(than version: String) -> Bool {
+    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedDescending
   }
 
   /// **Mechanica**
   ///
-  /// Checks if string is a valid file URL.
+  /// Checks if `self` is a semantic version with a value greater or equal to a given `version`.
+  public func isSemanticVersionGreaterOrEqual(to version: String) -> Bool {
+    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedAscending
+  }
+
+  /// **Mechanica**
   ///
-  /// Example:
+  /// Checks if `self` is a semantic version with a value lesser than a given `version`.
+  public func isSemanticVersionLesser(than version: String) -> Bool {
+    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedAscending
+  }
+
+  /// **Mechanica**
   ///
-  ///     "file://Documents/file.txt".isValidFileUrl -> true
-  ///
-  public var isValidFileUrl: Bool {
-    return URL(string: self)?.isFileURL ?? false
+  /// Checks if `self` is a semantic version with a value lesser or equal to a given `version`.
+  public func isSemanticVersionLesserOrEqual(to version: String) -> Bool {
+    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedDescending
   }
 
   /// **Mechanica**
@@ -271,14 +340,66 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Returns `true` if `self` is a country emoji flag.
+  /// Checks if string is a valid file URL.
   ///
-  /// - Note: to check if a string contains a flag use: `self.contains { $0.isFlag }`
-  /// - Note: to extrapolate the flags in a string use: `self.filter { $0.isFlag }`
-  public var isEmojiCountryFlag: Bool {
-    guard count == 1 else { return false }
+  /// Example:
+  ///
+  ///     "file://Documents/file.txt".isValidFileUrl -> true
+  ///
+  public var isValidFileUrl: Bool {
+    return URL(string: self)?.isFileURL ?? false
+  }
 
-    return first!.isFlag
+  /// **Mechanica**
+  ///
+  /// Checks if string is a valid http URL.
+  ///
+  /// Example:
+  ///
+  ///     "http://tinrobots.org".isValidHttpUrl -> true
+  ///
+  public var isValidHttpUrl: Bool {
+    guard let url = URL(string: self) else { return false }
+    return url.scheme == "http"
+  }
+
+  /// **Mechanica**
+  ///
+  /// Checks if string is a valid https URL.
+  ///
+  /// Example:
+  ///
+  ///     "https://tinrobots.org".isValidHttpsUrl -> true
+  ///
+  public var isValidHttpsUrl: Bool {
+    guard let url = URL(string: self) else { return false }
+    return url.scheme == "https"
+  }
+
+  /// **Mechanica**
+  ///
+  /// Check if the `String` is a valid schemed URL.
+  ///
+  /// Example:
+  ///
+  ///     "https://tinrobots.org".isValidSchemedUrl -> true
+  ///     "tinrobots.org".isValidSchemedUrl -> false
+  ///
+  public var isValidSchemedUrl: Bool {
+    guard let url = URL(string: self) else { return false }
+    return url.scheme != nil
+  }
+
+  /// **Mechanica**
+  ///
+  /// Checks if string is a valid URL.
+  ///
+  /// Example:
+  ///
+  ///     "https://tinrobots.org".isValidUrl -> true
+  ///
+  public var isValidUrl: Bool {
+    return URL(string: self) != nil
   }
 
   /// **Mechanica**
@@ -396,21 +517,6 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Checks if if all the characters in the string belong to a specific `CharacterSet`.
-  ///
-  /// - Parameter characterSet: The `CharacterSet` used to test the string.
-  /// - Returns: *true* if all the characters in the string belong to the `CharacterSet`, otherwise false.
-  public func containsCharacters(in characterSet: CharacterSet) -> Bool {
-    guard !isEmpty else { return false }
-    for scalar in unicodeScalars {
-      guard characterSet.contains(scalar) else { return false }
-    }
-
-    return true
-  }
-
-  /// **Mechanica**
-  ///
   /// Returns a `new` string in which the characters in a specified `CountableRange` range of the String are replaced by a given string.
   public func replacingCharacters(in range: CountableRange<Int>, with replacement: String) -> String {
     let start = index(startIndex, offsetBy: range.lowerBound)
@@ -427,40 +533,6 @@ extension String {
     let end   = index(start, offsetBy: range.count)
 
     return replacingCharacters(in: start ..< end, with: replacement)
-  }
-
-  // MARK: - Cleaning Methods
-
-  /// **Mechanica**
-  ///
-  ///  Condenses all white spaces repetitions in a single white space.
-  ///  White space at the beginning or ending of the `String` are trimmed out.
-  ///
-  /// Example:
-  ///
-  ///     let aString = "test    too many    spaces"
-  ///     aString.removeExcessiveSpaces  -> test too many spaces
-  ///
-  ///
-  ///  - Returns: A `new` string where all white spaces repetitions are replaced with a single white space.
-  public func condensingExcessiveSpaces() -> String {
-    let components = self.components(separatedBy: .whitespaces)
-    let filtered = components.filter {!$0.isEmpty}
-
-    return filtered.joined(separator: " ")
-  }
-
-  /// **Mechanica**
-  ///
-  ///  Condenses all white spaces and new lines repetitions in a single white space.
-  ///  White space and new lines at the beginning or ending of the `String` are trimmed out.
-  ///
-  ///  - Returns: A `new` string where all white spaces and new lines repetitions are replaced with a single white space.
-  public func condensingExcessiveSpacesAndNewlines() -> String {
-    let components = self.components(separatedBy: .whitespacesAndNewlines)
-    let filtered = components.filter {!$0.isBlank}
-
-    return filtered.joined(separator: " ")
   }
 
   /// **Mechanica**
@@ -568,18 +640,18 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Returns the last path component of the receiver.
-  /// - Note: This method only works with file paths (not, for example, string representations of URLs).
-  var lastPathComponent: String {
-    return (self as NSString).lastPathComponent
+  /// Returns a new string made by appending to the receiver a given string.
+  func appendingPathComponent(_ path: String) -> String {
+    let nsString = self as NSString
+    return nsString.appendingPathComponent(path)
   }
 
   /// **Mechanica**
   ///
-  /// Return the path extension, if any, of the string as interpreted as a path.
-  /// - Note: This method only works with file paths (not, for example, string representations of URLs).
-  var pathExtension: String {
-    return (self as NSString).pathExtension
+  /// Returns a new string made by appending to the receiver an extension separator followed by a given extension.
+  func appendingPathExtension(_ ext: String) -> String? {
+    let nsString = self as NSString
+    return nsString.appendingPathExtension(ext)
   }
 
   /// **Mechanica**
@@ -599,6 +671,14 @@ extension String {
 
   /// **Mechanica**
   ///
+  /// Returns the last path component of the receiver.
+  /// - Note: This method only works with file paths (not, for example, string representations of URLs).
+  var lastPathComponent: String {
+    return (self as NSString).lastPathComponent
+  }
+
+  /// **Mechanica**
+  ///
   /// Returns the file-system path components of the receiver.
   var pathComponents: [String] {
     return (self as NSString).pathComponents
@@ -606,18 +686,10 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Returns a new string made by appending to the receiver a given string.
-  func appendingPathComponent(_ path: String) -> String {
-    let nsString = self as NSString
-    return nsString.appendingPathComponent(path)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a new string made by appending to the receiver an extension separator followed by a given extension.
-  func appendingPathExtension(_ ext: String) -> String? {
-    let nsString = self as NSString
-    return nsString.appendingPathExtension(ext)
+  /// Return the path extension, if any, of the string as interpreted as a path.
+  /// - Note: This method only works with file paths (not, for example, string representations of URLs).
+  var pathExtension: String {
+    return (self as NSString).pathExtension
   }
 
   // MARK: - NSRange
@@ -629,84 +701,6 @@ extension String {
     let range = self.startIndex...
 
     return NSRange(range, in: self)
-  }
-
-  // MARK: - Data
-
-  /// **Mechanica**
-  ///
-  /// Returns a `new` string decoded from base64.
-  public var base64Decoded: String? {
-    guard let decodedData = Data(base64Encoded: self) else {
-      return nil
-    }
-    return String(data: decodedData, encoding: .utf8)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a `new` string encoded in base64.
-  public var base64Encoded: String? {
-    let plainData = self.data(using: .utf8)
-    return plainData?.base64EncodedString()
-  }
-
-  // MARK: - Semantic Versioning
-
-  /// **Mechanica**
-  ///
-  /// Checks if `self` is a semantic version with a value equal to a given `version`.
-  public func isSemanticVersionEqual(to version: String) -> Bool {
-    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedSame
-  }
-
-  /// **Mechanica**
-  ///
-  /// Checks if `self` is a semantic version with a value greater than given `version`.
-  public func isSemanticVersionGreater(than version: String) -> Bool {
-    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedDescending
-  }
-
-  /// **Mechanica**
-  ///
-  /// Checks if `self` is a semantic version with a value greater or equal to a given `version`.
-  public func isSemanticVersionGreaterOrEqual(to version: String) -> Bool {
-    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedAscending
-  }
-
-  /// **Mechanica**
-  ///
-  /// Checks if `self` is a semantic version with a value lesser than a given `version`.
-  public func isSemanticVersionLesser(than version: String) -> Bool {
-    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedAscending
-  }
-
-  /// **Mechanica**
-  ///
-  /// Checks if `self` is a semantic version with a value lesser or equal to a given `version`.
-  public func isSemanticVersionLesserOrEqual(to version: String) -> Bool {
-    return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedDescending
-  }
-
-  /// **Mechanica**
-  ///
-  /// Makes sure that we always have a semantic version in the form MAJOR.MINOR.PATCH
-  func ensureSemanticVersionCorrectness() -> String {
-    if self.isEmpty { return "0.0.0" }
-
-    var copy = self
-
-    let versionComponents = components(separatedBy: ".")
-    guard 1 ... 3 ~= versionComponents.count else { fatalError("Invalid number of semantic version components (\(versionComponents.count)).") }
-
-    let notNumericComponents = versionComponents.filter { !$0.isNumeric }
-    guard notNumericComponents.isEmpty else { fatalError("Each semantic version component should have a numeric value.") }
-
-    for _ in versionComponents.count..<3 {
-      copy += ".0"
-    }
-
-    return copy
   }
 
   /// **Mechanica**
@@ -759,6 +753,18 @@ extension String {
   /// - Parameters:
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
+  /// - Returns: returns the first matched string for `self`.
+  func firstMatch(for pattern: String, options: NSRegularExpression.Options = []) -> String? {
+    guard let range = firstRange(matching: pattern) else { return nil }
+
+    return String(self[range])
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Parameters:
+  ///   - pattern: a regular expression pattern.
+  ///   - options: a list of `NSRegularExpression.Options`.
   /// - Returns: returns a the first matched range for `self` or nil.
   public func firstRange(matching pattern: String, options: NSRegularExpression.Options = []) -> Range<String.Index>? {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return nil }
@@ -782,18 +788,6 @@ extension String {
     }
 
     return strings
-  }
-
-  /// **Mechanica**
-  ///
-  /// - Parameters:
-  ///   - pattern: a regular expression pattern.
-  ///   - options: a list of `NSRegularExpression.Options`.
-  /// - Returns: returns the first matched string for `self`.
-  func firstMatch(for pattern: String, options: NSRegularExpression.Options = []) -> String? {
-    guard let range = firstRange(matching: pattern) else { return nil }
-
-    return String(self[range])
   }
 
 }

@@ -25,20 +25,25 @@ import Darwin
 
 extension String {
 
-  // MARK: - Helper Methods
+  // MARK: - Standard Library
 
   /// **Mechanica**
   ///
-  /// Returns the length of the `String`.
-  public var length: Int {
-    return count
+  /// Returns a `new` string containing the first character of the `String`.
+  public var first: String {
+    let first = self[..<index(after: startIndex)]
+
+    return String(first)
   }
 
   /// **Mechanica**
   ///
-  /// Reverse `self`.
-  public mutating func reverse() {
-    self = String(reversed())
+  /// Checks if all of the characters in a string are all the same.
+  public var isHomogeneous: Bool {
+    for char in dropFirst() where char != first {
+      return false
+    }
+    return true
   }
 
   /// **Mechanica**
@@ -57,27 +62,6 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Checks if all of the characters in a string are all the same.
-  public var isHomogeneous: Bool {
-    for char in dropFirst() where char != first {
-      return false
-    }
-    return true
-  }
-
-  // MARK: - Suffix and Prefix Methods
-
-  /// **Mechanica**
-  ///
-  /// Returns a `new` string containing the first character of the `String`.
-  public var first: String {
-    let first = self[..<index(after: startIndex)]
-
-    return String(first)
-  }
-
-  /// **Mechanica**
-  ///
   /// Returns a `new` string containing the last character of the `String`.
   public var last: String {
     let last = self[index(before: endIndex)...]
@@ -87,114 +71,10 @@ extension String {
 
   /// **Mechanica**
   ///
-  ///  Returns a substring, up to maxLength in length, containing the initial elements of the `String`.
-  ///
-  ///  - Warning: If maxLength exceeds self.count, the result contains all the elements of self.
-  ///  - parameter maxLength: substring max lenght
-  ///
-  public func prefix(maxLength: Int) -> String {
-    guard maxLength > 0 else { return "" }
-
-    return String(prefix(maxLength))
+  /// Returns the length of the `String`.
+  public var length: Int {
+    return count
   }
-
-  /// **Mechanica**
-  ///
-  ///  Returns a slice, up to maxLength in length, containing the final elements of `String`.
-  ///
-  ///  - Warning: If maxLength exceeds `String` character count, the result contains all the elements of `String`.
-  ///  - parameter maxLength: substring max lenght
-  public func suffix(maxLength: Int) -> String {
-    guard maxLength > 0 else { return "" }
-
-    return String(suffix(maxLength))
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a new `String` containing the characters of the String from the one at a given position to the end.
-  ///
-  /// Example:
-  ///
-  ///     "hello".removingPrefix(upToPosition: 1) -> "ello"
-  ///
-  ///  - parameter upToPosition: position (included) up to which remove the prefix.
-  public func removingPrefix(upToPosition: Int = 1) -> String {
-    guard upToPosition >= 0 && upToPosition <= length else { return "" }
-
-    let startIndex = index(self.startIndex, offsetBy: upToPosition)
-
-    return String(self[startIndex...])
-  }
-
-  /// **Mechanica**
-  ///
-  ///  Returns a new `String` removing the spcified prefix (if the string has it).
-  ///
-  /// Example:
-  ///
-  ///     "hello".removingPrefix("hel") -> "lo"
-  ///
-  ///  - parameter prefix: prefix to be removed.
-  public func removingPrefix(_ prefix: String) -> String {
-    guard hasPrefix(prefix) else { return self }
-
-    return removingPrefix(upToPosition: prefix.length)
-  }
-
-  /// **Mechanica**
-  ///
-  ///  Returns a new `String` containing the characters of the String up to, but not including, the one at a given position.
-  ///  - parameter fromPosition: position (included) from which remove the suffix
-  ///
-  /// Example:
-  ///
-  ///     "hello".removingSuffix(fromPosition: 1) -> "hell"
-  ///
-  public func removingSuffix(fromPosition: Int = 1) -> String {
-    guard fromPosition >= 0 && fromPosition <= length else { return "" }
-
-    let startIndex = index(endIndex, offsetBy: -fromPosition)
-
-    return String(self[..<startIndex])
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a new `String` removing the spcified suffix (if the string has it).
-  ///
-  /// Example:
-  ///
-  ///     "hello".removingSuffix("0") -> "hell"
-  ///
-  ///  - parameter prefix: prefix to be removed.
-  public func removingSuffix(_ suffix: String) -> String {
-    guard hasSuffix(suffix) else { return self }
-
-    return removingSuffix(fromPosition: suffix.length)
-  }
-
-  /// **Mechanica**
-  ///
-  ///  Truncates the `String` to the given length (number of characters) and appends optional trailing string if longer.
-  ///  The default trailing is the ellipsis (…).
-  ///  - parameter length:   number of characters after which the `String` is truncated
-  ///  - parameter trailing: optional trailing string
-  ///
-  public func truncate(at length: Int, withTrailing trailing: String? = "…") -> String {
-
-    switch length {
-    case 0..<self.length:
-      return self.prefix(maxLength: length) + (trailing ?? "")
-    case _ where length >= self.length:
-      return self // no truncation needed
-    default:
-      return ""
-    }
-
-  }
-
-  // MARK: - Padding Operations
 
   /// **Mechanica**
   ///
@@ -351,6 +231,122 @@ extension String {
   ///   - token: The string used to pad the String (defaults to a white space).
   public mutating func padEnd(length: Int, with token: String = " ") {
     self = paddingEnd(length: length, with: token)
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Returns a substring, up to maxLength in length, containing the initial elements of the `String`.
+  ///
+  ///  - Warning: If maxLength exceeds self.count, the result contains all the elements of self.
+  ///  - parameter maxLength: substring max lenght
+  ///
+  public func prefix(maxLength: Int) -> String {
+    guard maxLength > 0 else { return "" }
+
+    return String(prefix(maxLength))
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a new `String` containing the characters of the String from the one at a given position to the end.
+  ///
+  /// Example:
+  ///
+  ///     "hello".removingPrefix(upToPosition: 1) -> "ello"
+  ///
+  ///  - parameter upToPosition: position (included) up to which remove the prefix.
+  public func removingPrefix(upToPosition: Int = 1) -> String {
+    guard upToPosition >= 0 && upToPosition <= length else { return "" }
+
+    let startIndex = index(self.startIndex, offsetBy: upToPosition)
+
+    return String(self[startIndex...])
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Returns a new `String` removing the spcified prefix (if the string has it).
+  ///
+  /// Example:
+  ///
+  ///     "hello".removingPrefix("hel") -> "lo"
+  ///
+  ///  - parameter prefix: prefix to be removed.
+  public func removingPrefix(_ prefix: String) -> String {
+    guard hasPrefix(prefix) else { return self }
+
+    return removingPrefix(upToPosition: prefix.length)
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Returns a new `String` containing the characters of the String up to, but not including, the one at a given position.
+  ///  - parameter fromPosition: position (included) from which remove the suffix
+  ///
+  /// Example:
+  ///
+  ///     "hello".removingSuffix(fromPosition: 1) -> "hell"
+  ///
+  public func removingSuffix(fromPosition: Int = 1) -> String {
+    guard fromPosition >= 0 && fromPosition <= length else { return "" }
+
+    let startIndex = index(endIndex, offsetBy: -fromPosition)
+
+    return String(self[..<startIndex])
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a new `String` removing the spcified suffix (if the string has it).
+  ///
+  /// Example:
+  ///
+  ///     "hello".removingSuffix("0") -> "hell"
+  ///
+  ///  - parameter prefix: prefix to be removed.
+  public func removingSuffix(_ suffix: String) -> String {
+    guard hasSuffix(suffix) else { return self }
+
+    return removingSuffix(fromPosition: suffix.length)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Reverse `self`.
+  public mutating func reverse() {
+    self = String(reversed())
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Returns a slice, up to maxLength in length, containing the final elements of `String`.
+  ///
+  ///  - Warning: If maxLength exceeds `String` character count, the result contains all the elements of `String`.
+  ///  - parameter maxLength: substring max lenght
+  public func suffix(maxLength: Int) -> String {
+    guard maxLength > 0 else { return "" }
+
+    return String(suffix(maxLength))
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Truncates the `String` to the given length (number of characters) and appends optional trailing string if longer.
+  ///  The default trailing is the ellipsis (…).
+  ///  - parameter length:   number of characters after which the `String` is truncated
+  ///  - parameter trailing: optional trailing string
+  ///
+  public func truncate(at length: Int, withTrailing trailing: String? = "…") -> String {
+
+    switch length {
+    case 0..<self.length:
+      return self.prefix(maxLength: length) + (trailing ?? "")
+    case _ where length >= self.length:
+      return self // no truncation needed
+    default:
+      return ""
+    }
+
   }
 
   // MARK: - Subscript Methods
