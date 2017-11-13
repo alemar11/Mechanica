@@ -59,6 +59,7 @@ class SequenceUtilsTests: XCTestCase {
   private let list3 = ["a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "l": 9, "m": 10]
 
   func testHasSome() {
+
     XCTAssertTrue(list.hasSomeElements(where: {$0.value1 == "demo5"}))
     XCTAssertTrue(list.hasSomeElements(where: {$0.value2 == 1}))
     XCTAssertTrue(list2.hasSomeElements(where: {$0.value1 == "demo1"}))
@@ -138,8 +139,9 @@ class SequenceUtilsTests: XCTestCase {
       // Given
       let array = ["aaa", "aab", "1", "ccc", "ccb"]
       // When
-      let groupedDictionary = array.grouped(by: { return $0.first } ) //[ "a" : ["aaa", "aab"], "1" : ["1"], "c" : ["ccc", "ccb"] ]
+      let groupedDictionary = array.grouped(by: { return $0.first! }) //[ "a" : ["aaa", "aab"], "1" : ["1"], "c" : ["ccc", "ccb"] ]
       // Then
+      print(groupedDictionary)
       XCTAssertNotNil(groupedDictionary)
       XCTAssertTrue(groupedDictionary.keys.count == 3)
       XCTAssertNotNil(groupedDictionary["a"])
@@ -149,7 +151,7 @@ class SequenceUtilsTests: XCTestCase {
       XCTAssertNotNil(groupedDictionary["c"])
       XCTAssertTrue(groupedDictionary["c"]! == ["ccc", "ccb"])
 
-      let dictionary =  Dictionary(grouping: array, by: { return $0.first })
+      let dictionary =  Dictionary(grouping: array, by: { return $0.first! })
       XCTAssert(groupedDictionary.keys == dictionary.keys)
       groupedDictionary.keys.forEach { key in
         XCTAssertTrue(groupedDictionary[key]! == dictionary[key]!)
@@ -211,6 +213,7 @@ class SequenceUtilsTests: XCTestCase {
     }
   }
 
+
   struct Sample: Equatable {
     let value: String
 
@@ -221,6 +224,7 @@ class SequenceUtilsTests: XCTestCase {
   }
 
   func testUniqueElements() {
+
     do {
       let array = [2, 1, 3, 4, 7, 1, 5, 4, 4, 1]
       let uniqueElements = array.uniqueElements()
