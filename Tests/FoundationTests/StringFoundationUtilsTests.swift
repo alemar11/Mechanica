@@ -1024,6 +1024,96 @@ class StringNSStringTests: XCTestCase {
     XCTAssertTrue("".semanticVersion == (0,0,0))
   }
 
+  // MARK: - Case Operators
+
+  func testCamelCased() {
+    XCTAssertEqual("Hello World".camelCased(), "helloWorld")
+    XCTAssertEqual("  Hello World".camelCased(), "helloWorld")
+    XCTAssertEqual("HelloWorld".camelCased(), "helloWorld")
+    XCTAssertEqual("-Hello_World-".camelCased(), "helloWorld")
+    XCTAssertEqual("-Hello_ World-".camelCased(), "helloWorld")
+    XCTAssertEqual("Hell0W0rld".camelCased(), "hell0W0rld")
+    XCTAssertEqual("helloWorld".camelCased(), "helloWorld")
+  }
+
+  func testKebabCased() {
+    XCTAssertEqual("Hello World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("Hello_World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("_Hello_World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("_Hello_  World".kebabCased(), "-hello-world-")
+    XCTAssertEqual("-HeLL0_W0rld-".kebabCased(), "-hell0-w0rld-")
+    XCTAssertEqual("HelloWorld".kebabCased(), "-helloworld-")
+    XCTAssertEqual("     HelloWorld".kebabCased(), "-helloworld-")
+  }
+
+  func testPascalCased() {
+    XCTAssertEqual("Hello World".pascalCased(), "HelloWorld")
+    XCTAssertEqual("HelloWorld".pascalCased(), "HelloWorld")
+    XCTAssertEqual("HelloWorld ".pascalCased(), "HelloWorld")
+    XCTAssertEqual("-Hello_World-".pascalCased(), "HelloWorld")
+    XCTAssertEqual("-Hello_ World-".pascalCased(), "HelloWorld")
+    XCTAssertEqual("Hell0W0rld".pascalCased(), "Hell0W0rld")
+  }
+
+  func testSlugCased() {
+    XCTAssertEqual("Hello World".slugCased(), "hello-world")
+    XCTAssertEqual("Hello_World".slugCased(), "hello-world")
+    XCTAssertEqual("Hello-World".slugCased(), "hello-world")
+    XCTAssertEqual("Hello- World".slugCased(), "hello-world")
+    XCTAssertEqual("-Hello- World".slugCased(), "hello-world")
+    XCTAssertEqual("HeLL0 W0rld".slugCased(), "hell0-w0rld")
+    XCTAssertEqual("HelloWorld".slugCased(), "helloworld")
+  }
+
+  func testSnakeCased() {
+    XCTAssertEqual("Hello World".snakeCased(), "Hello_World")
+    XCTAssertEqual("hello world".snakeCased(), "hello_world")
+    XCTAssertEqual("hello_world".snakeCased(), "hello_world")
+    XCTAssertEqual("hello__world".snakeCased(), "hello_world")
+    XCTAssertEqual("hello__ world".snakeCased(), "hello_world")
+    XCTAssertEqual(" hello_world".snakeCased(), "hello_world")
+    XCTAssertEqual("Hell0W0rld".snakeCased(), "Hell0W0rld")
+    XCTAssertEqual("HelloWorld".snakeCased(), "HelloWorld")
+  }
+
+  func testSwapCased() {
+    XCTAssertEqual("Hello World".swapCased(), "hELLO wORLD")
+    XCTAssertEqual("hELLO wORLD".swapCased(), "Hello World")
+    XCTAssertEqual("HelloWorld".swapCased(), "hELLOwORLD")
+    XCTAssertEqual("-Hello_World-".swapCased(), "-hELLO_wORLD-")
+    XCTAssertEqual("Hell0W0rld".swapCased(), "hELL0w0RLD")
+  }
+
+  func testNSRange() {
+    let string = "Hello World 👩🏽‍🌾👨🏼‍🚒💃🏾"
+    let range = string.startIndex...
+
+    XCTAssert(string.nsRange.length == string[range].utf16.count)
+
+  }
+
+  func testContainsCaseSensitive() {
+    XCTAssertTrue("AaBbCc".contains("a", caseSensitive: true))
+    XCTAssertTrue("AaBbCc".contains("Aa", caseSensitive: true))
+
+    XCTAssertFalse("AaBbCc".contains("aa", caseSensitive: true)) //case sensitive
+    XCTAssertTrue("AaBbCc".contains("aa", caseSensitive: false)) //case insensitive
+    XCTAssertTrue("AaBbCc".contains("Aa", caseSensitive: true)) //case sensitive
+    XCTAssertFalse("AaBbCc".contains("aa", caseSensitive: true)) //case sensitive
+
+    XCTAssertFalse("HELLO world".contains("hello", caseSensitive: true)) //case sensitive
+    XCTAssertTrue("HELLO world".contains("hello", caseSensitive: false)) //case insensitive
+    XCTAssertFalse("HELLO world".contains("abc", caseSensitive: false)) //case insensitive
+
+    XCTAssertTrue("AaB🤔bCc".contains("🤔", caseSensitive: true))
+    XCTAssertFalse("AaB🤔bCc".contains("🤔🤔", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("ta", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("\u{200B}", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("🇮🇹", caseSensitive: true))
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("🇮🇹", caseSensitive: false))
+    XCTAssertFalse("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("{20", caseSensitive: true))
+  }
+
 }
 
 // MARK: - Tests Resources
