@@ -44,11 +44,8 @@ extension URL {
 
     return parameters
   }
-}
 
-// MARK: - Operators
-
-extension URL {
+  // MARK: - Operators
 
   /// **Mechanica**
   ///

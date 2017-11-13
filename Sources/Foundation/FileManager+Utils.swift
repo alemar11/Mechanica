@@ -30,15 +30,6 @@ extension FileManager {
 
   /// **Mechanica**
   ///
-  /// Returns the container directory associated with the specified security application group Identifier.
-  public final func containerDirectory(for groupIdentifier: String) -> URL? {
-    return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
-  }
-
-  // MARK: - Delete
-
-  /// **Mechanica**
-  ///
   /// Cleans all contents in a directory `path`.
   ///
   /// - Parameter path: **directory** path (if it's not a directory path, nothing is done).
@@ -55,6 +46,13 @@ extension FileManager {
       let path = URL(fileURLWithPath: path).appendingPathComponent(file).path
       try removeItem(atPath: path)
     }
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns the container directory associated with the specified security application group Identifier.
+  public final func containerDirectory(for groupIdentifier: String) -> URL? {
+    return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
   }
 
   /// **Mechanica**
