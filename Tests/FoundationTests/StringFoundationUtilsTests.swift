@@ -266,6 +266,79 @@ class StringNSStringTests: XCTestCase {
     XCTAssertTrue("🇺🇸".isEmojiCountryFlag)
   }
 
+  func testContainsCharacters() {
+    XCTAssertFalse("".containsCharacters(in: .letters))
+    XCTAssertTrue("AaBbCc".containsCharacters(in: .letters))
+    XCTAssertFalse("A1aBbCc".containsCharacters(in: .letters))
+    XCTAssertTrue("AaB bCc".containsCharacters(in: CharacterSet.letters.union(CharacterSet.whitespaces)))
+    XCTAssertFalse("A1a BbCc".containsCharacters(in: .letters))
+    XCTAssertTrue("123".containsCharacters(in: .decimalDigits))
+  }
+
+  func testReplace() {
+    XCTAssertTrue("AaBbCc".replace("a", with: "Z") == "AZBbCc")
+    XCTAssertTrue("AaBbCc".replace("a", with: "a") == "AaBbCc")
+    XCTAssertFalse("AaBbCc".replace("a", with: "A") == "AaBbCc")
+    XCTAssertTrue("AaBbCc".replace("", with: "A") == "AaBbCc")
+    XCTAssertTrue("AaBbCc".replace("AaBbCc", with: "123") == "123")
+    XCTAssertTrue("aaBbCa".replace("a", with: "1") == "11BbC1")
+
+    XCTAssertTrue("AaBbCc🤔".replace("🤔", with: "🤔🤔") == "AaBbCc🤔🤔")
+    XCTAssertTrue("".replace("🤔", with: "🤔🤔") == "")
+    XCTAssertTrue("".replace("", with: "🤔") == "")
+
+    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".replace("\u{200B}", with: " ") == "Italy 🇮🇹 🇮🇹 🇮🇹")
+
+    XCTAssertTrue("AaBbCc".replace("a", with: "Z", caseSensitive: false) == "ZZBbCc")
+    XCTAssertTrue("AaBbCc".replace("a", with: "a", caseSensitive: false) == "aaBbCc")
+    XCTAssertTrue("AaBbCc".replace("a", with: "A", caseSensitive: false) == "AABbCc")
+    XCTAssertTrue("AaBbCc".replace("", with: "A", caseSensitive: false) == "AaBbCc")
+  }
+
+  func testPrefix() {
+    let s = "Hello World 🖖🏽"
+    XCTAssertTrue(s.prefix(maxLength: -100) == "")
+    XCTAssertTrue(s.prefix(maxLength: 0) == "")
+    XCTAssertTrue(s.prefix(maxLength: 1) == "H")
+    XCTAssertTrue(s.prefix(maxLength: 2) == "He")
+    XCTAssertTrue(s.prefix(maxLength: 3) == "Hel")
+    XCTAssertTrue(s.prefix(maxLength: 4) == "Hell")
+    XCTAssertTrue(s.prefix(maxLength: 5) == "Hello")
+    XCTAssertTrue(s.prefix(maxLength: 6) == "Hello ")
+    XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World 🖖🏽")
+    XCTAssertTrue(s.prefix(maxLength: 14) == "Hello World 🖖🏽")
+    XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World 🖖🏽")
+  }
+
+  func testSuffix() {
+    let s = "Hello World 🖖🏽"
+    XCTAssertTrue(s.suffix(maxLength: -100) == "")
+    XCTAssertTrue(s.suffix(maxLength: 0) == "")
+    XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 3) == "d 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 4) == "ld 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 5) == "rld 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World 🖖🏽")
+    XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World 🖖🏽")
+  }
+
+  func testCondensingExcessiveSpaces() {
+    XCTAssertTrue("test spaces too many".condensingExcessiveSpaces() == "test spaces too many")
+    XCTAssertTrue("test  spaces    too many".condensingExcessiveSpaces() == "test spaces too many")
+    XCTAssertTrue(" test spaces too many ".condensingExcessiveSpaces() == "test spaces too many")
+    XCTAssertTrue(" test spaces too many".condensingExcessiveSpaces() == "test spaces too many")
+    XCTAssertTrue("test spaces too many ".condensingExcessiveSpaces() == "test spaces too many")
+  }
+
+  func testCondensingExcessiveSpacesAndNewLines() {
+    XCTAssertTrue("test\n spaces too many".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
+    XCTAssertTrue("\n\ntest  spaces    too many".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
+    XCTAssertTrue(" test spaces too many \n\n".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
+    XCTAssertTrue(" test spaces too\n many".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
+    XCTAssertTrue("test\n\n spaces \n\n too many ".condensingExcessiveSpacesAndNewlines() == "test spaces too many")
+  }
+
   func testSemanticVersionComparison() {
 
     // Equal
