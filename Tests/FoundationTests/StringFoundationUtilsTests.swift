@@ -83,6 +83,22 @@ class StringNSStringTests: XCTestCase {
     XCTAssert("Hello Robots!🤖🤖".base64Encoded == "SGVsbG8gUm9ib3RzIfCfpJbwn6SW", "Couldn't get the correct Base64 encoded value.")
   }
 
+  func testFirstCharacterOfEachWord() {
+
+    do {
+      let text = "tin Robots ! 🤖"
+      let initials = text.firstCharacterOfEachWord()
+      XCTAssertEqual(initials, ["t", "R", "!", "🤖"])
+    }
+
+    do {
+      let text = "\n"
+      let initials = text.firstCharacterOfEachWord()
+      XCTAssertTrue(initials.isEmpty)
+    }
+
+  }
+
   func testStarts() {
     //case sensitive
     XCTAssertTrue("a".starts(with:"a"))

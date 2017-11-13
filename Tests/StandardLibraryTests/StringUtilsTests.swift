@@ -52,22 +52,6 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(🤔aa == "aa🤔")
   }
 
-  func testFirstCharacterOfEachWord() {
-
-    do {
-      let text = "tin Robots ! 🤖"
-      let initials = text.firstCharacterOfEachWord()
-      XCTAssertEqual(initials, ["t", "R", "!", "🤖"])
-    }
-
-    do {
-      let text = "\n"
-      let initials = text.firstCharacterOfEachWord()
-      XCTAssertTrue(initials.isEmpty)
-    }
-
-  }
-
   func testFirst(){
     XCTAssertTrue("Hello".first == "H")
     XCTAssertTrue("∂Hello".first == "∂")

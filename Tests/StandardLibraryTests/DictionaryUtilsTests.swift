@@ -39,15 +39,6 @@ class DictionaryUtilsTests: XCTestCase {
     }
   }
 
-  func testLowercaseAllKeys() {
-    var dictionary = ["Key1":1, "key2":2, "kEY3":3]
-    dictionary.lowercaseAllKeys()
-    dictionary.keys.enumerated().forEach { (arg) in
-      let (_, k) = arg
-      XCTAssertTrue(k.isLowercased)
-    }
-  }
-
   func testRemoveAll() {
     var dictionary = ["a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "l": 9, "m": 10]
 
