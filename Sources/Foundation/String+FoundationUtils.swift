@@ -570,7 +570,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "HelloWorld"
-  ///     print(string.camelCased()) -> "helloWorld"
+  ///     string.camelCased() -> "helloWorld"
   ///
   /// - Returns: A camel cased copy of the `String`.
   public func camelCased() -> String {
@@ -584,7 +584,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "Hello World"
-  ///     print(string.kebabCased()) -> "-Hello-World-"
+  ///     string.kebabCased() -> "-Hello-World-"
   ///
   /// - Returns: The kebab cased copy of the `String`.
   public func kebabCased() -> String {
@@ -598,7 +598,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "HELLO WORLD"
-  ///     print(string.pascalCased()) -> "HelloWorld"
+  ///     string.pascalCased() -> "HelloWorld"
   ///
   /// - Returns: A pascal cased copy of the `String`.
   public func pascalCased() -> String {
@@ -612,7 +612,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "Hello World"
-  ///     print(string.slugCased()) -> "Hello-World"
+  ///     string.slugCased() -> "Hello-World"
   ///
   /// - Returns: The slug copy of the `String`.
   public func slugCased() -> String {
@@ -626,8 +626,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "hello world"
-  ///     print(string.snakeCased())
-  ///     -> Prints "hello_world"
+  ///     string.snakeCased()  -> "hello_world"
   ///
   /// - Returns: The slug copy of the `String`.
   public func snakeCased() -> String {
@@ -641,7 +640,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "Hello World"
-  ///     print(string.swapCased()) -> "hELLO wORLD"
+  ///     string.swapCased() -> "hELLO wORLD"
   ///
   /// - Returns: The swap cased copy of the `String`.
   public func swapCased() -> String {
