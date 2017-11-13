@@ -26,15 +26,6 @@ import XCTest
 
 class DictionaryUtilsTests: XCTestCase {
 
-  func testLowercaseAllKeys() {
-    var dictionary = ["Key1":1, "key2":2, "kEY3":3]
-    dictionary.lowercaseAllKeys()
-    dictionary.keys.enumerated().forEach { (arg) in
-      let (_, k) = arg
-      XCTAssertTrue(k.isLowercased)
-    }
-  }
-
   func testHasKey() {
     do {
       let dictionary: [String:Int] = [:]
@@ -45,6 +36,15 @@ class DictionaryUtilsTests: XCTestCase {
       let dictionary: [String:Int] = ["robot":1, "robot2":2]
       XCTAssertFalse(dictionary.hasKey(""))
       XCTAssertTrue(dictionary.hasKey("robot"))
+    }
+  }
+
+  func testLowercaseAllKeys() {
+    var dictionary = ["Key1":1, "key2":2, "kEY3":3]
+    dictionary.lowercaseAllKeys()
+    dictionary.keys.enumerated().forEach { (arg) in
+      let (_, k) = arg
+      XCTAssertTrue(k.isLowercased)
     }
   }
 
