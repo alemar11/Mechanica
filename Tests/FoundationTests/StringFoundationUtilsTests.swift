@@ -26,7 +26,7 @@ import XCTest
 
 class StringNSStringTests: XCTestCase {
 
-  func testToBool() {
+  func testBool() {
     do {
       guard let n = "1".bool, n == true else {
         XCTAssert(false, "Couldn't get the correct Bool value.")
