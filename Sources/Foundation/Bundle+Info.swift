@@ -36,6 +36,13 @@ extension Bundle {
 
   /// **Mechanica**
   ///
+  /// Returns the receiver's executable file name.
+  public final var executableFileName: String? {
+    return executableURL?.lastPathComponent
+  }
+
+  /// **Mechanica**
+  ///
   /// Returns the release-version-number string for the `Bundle`.
   public final var shortVersionString: String? {
     return infoDictionary?["CFBundleShortVersionString"] as? String
@@ -46,13 +53,6 @@ extension Bundle {
   /// Returns the build-version-number string for the `Bundle`.
   public final var version: String? {
     return infoDictionary?["CFBundleVersion"] as? String
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns the receiver's executable file name.
-  public final var executableFileName: String? {
-    return executableURL?.lastPathComponent
   }
 
 }

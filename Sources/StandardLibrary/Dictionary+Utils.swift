@@ -47,6 +47,17 @@ public extension Dictionary {
     return removedElements
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns a random pair of (key,value) from `self`.
+  public func random() -> Element {
+    let index = Int.random(lowerBound: 0, upperBound: count)
+    let key =  Array(keys)[index]
+    let value = self[key]!
+
+    return (key, value)
+  }
+
 }
 
 public extension Dictionary where Key: ExpressibleByStringLiteral {
@@ -62,23 +73,6 @@ public extension Dictionary where Key: ExpressibleByStringLiteral {
         self[lowercaseKey] = removeValue(forKey: key)
       }
     }
-  }
-
-}
-
-extension Dictionary {
-
-  // MARK: - Random
-
-  /// **Mechanica**
-  ///
-  /// Returns a random pair of (key,value) from `self`.
-  public func random() -> Element {
-    let index = Int.random(lowerBound: 0, upperBound: count)
-    let key =  Array(keys)[index]
-    let value = self[key]!
-
-    return (key, value)
   }
 
 }

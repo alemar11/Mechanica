@@ -67,6 +67,17 @@ extension String {
 
   /// **Mechanica**
   ///
+  /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
+  public func capitalizedFirstCharacter() -> String {
+    guard !isEmpty else { return self }
+    let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
+    let result = capitalizedFirstCharacher + String(dropFirst())
+
+    return result
+  }
+
+  /// **Mechanica**
+  ///
   ///  Condenses all white spaces repetitions in a single white space.
   ///  White space at the beginning or ending of the `String` are trimmed out.
   ///
@@ -131,6 +142,29 @@ extension String {
 
   /// **Mechanica**
   ///
+  /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
+  public func decapitalizedFirstCharacter() -> String {
+    guard !isEmpty else { return self }
+
+    let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
+    let result = capitalizedFirstCharacher + String(dropFirst())
+
+    return result
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns *true* if `self` ends with a given suffix.
+  public func ends(with suffix: String, caseSensitive: Bool = true) -> Bool {
+    if !caseSensitive {
+      return lowercased().hasSuffix(suffix.lowercased())
+    }
+
+    return hasSuffix(suffix)
+  }
+
+  /// **Mechanica**
+  ///
   /// Makes sure that we always have a semantic version in the form MAJOR.MINOR.PATCH
   func ensureSemanticVersionCorrectness() -> String {
     if self.isEmpty { return "0.0.0" }
@@ -152,75 +186,9 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Returns *true* if `self` starts with a given prefix.
-  public func starts(with prefix: String, caseSensitive: Bool = true) -> Bool {
-    if !caseSensitive {
-      return lowercased().hasPrefix(prefix.lowercased())
-    }
-
-    return hasPrefix(prefix)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns *true* if `self` ends with a given suffix.
-  public func ends(with suffix: String, caseSensitive: Bool = true) -> Bool {
-    if !caseSensitive {
-      return lowercased().hasSuffix(suffix.lowercased())
-    }
-
-    return hasSuffix(suffix)
-  }
-
-  /// **Mechanica**
-  ///
-  ///  Returns a `new` string in which all occurrences of a target are replaced by another given string.
-  ///
-  /// - Parameters:
-  ///   - target:         target string
-  ///   - replacement:    replacement string
-  ///   - caseSensitive:  `*true*` (default) for a case-sensitive replacemente
-  public func replace(_ target: String, with replacement: String, caseSensitive: Bool = true) -> String {
-    let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
-
-    return replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
-  }
-
-  /// **Mechanica**
-  ///
   /// Returns a list containing the first character of each word contained in `self`.
   func firstCharacterOfEachWord() -> [String] {
     return components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.map { String($0.prefix(1)) }
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a percent-escaped string following RFC 3986 for a query string key or value.
-  public var urlEscaped: String? {
-    return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
-  public func capitalizedFirstCharacter() -> String {
-    guard !isEmpty else { return self }
-    let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
-    let result = capitalizedFirstCharacher + String(dropFirst())
-
-    return result
-  }
-
-  /// **Mechanica**
-  ///
-  /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
-  public func decapitalizedFirstCharacter() -> String {
-    guard !isEmpty else { return self }
-
-    let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
-    let result = capitalizedFirstCharacher + String(dropFirst())
-
-    return result
   }
 
   /// **Mechanica**
@@ -417,6 +385,143 @@ extension String {
     return randomString
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns a `new` String stripped of all accents and diacritics.
+  ///
+  /// Example:
+  ///
+  ///     let string = "äöüÄÖÜ" -> ÄÖÜ
+  ///     let stripped = string.stripCombiningMarks -> aouAOU
+  ///
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
+  func removingAccentsOrDiacritics() -> String {
+    return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Remove the characters in the given set.
+  public mutating func removeCharacters(in set: CharacterSet) {
+    for idx in indices.reversed() {
+      if set.contains(String(self[idx]).unicodeScalars.first!) {
+        remove(at: idx)
+      }
+    }
+
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Returns a new `String` removing the characters in the given set.
+  public func removingCharacters(in set: CharacterSet) -> String {
+    var copy = self
+    copy.removeCharacters(in: set)
+
+    return copy
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Returns a `new` string in which all occurrences of a target are replaced by another given string.
+  ///
+  /// - Parameters:
+  ///   - target:         target string
+  ///   - replacement:    replacement string
+  ///   - caseSensitive:  `*true*` (default) for a case-sensitive replacemente
+  public func replace(_ target: String, with replacement: String, caseSensitive: Bool = true) -> String {
+    let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
+
+    return replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` string in which the characters in a specified `CountableClosedRange` range of the String are replaced by a given string.
+  public func replacingCharacters(in range: CountableClosedRange<Int>, with replacement: String) -> String {
+    let start = index(startIndex, offsetBy: range.lowerBound)
+    let end   = index(start, offsetBy: range.count)
+
+    return replacingCharacters(in: start ..< end, with: replacement)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` string in which the characters in a specified `CountableRange` range of the String are replaced by a given string.
+  public func replacingCharacters(in range: CountableRange<Int>, with replacement: String) -> String {
+    let start = index(startIndex, offsetBy: range.lowerBound)
+    let end   = index(start, offsetBy: range.count)
+
+    return replacingCharacters(in: start ..< end, with: replacement)
+  }
+
+  /// **Mechanica**
+  ///
+  /// If `self` is a semantic version, returns a tuple with major, minor and patch components.
+  public var semanticVersion: (Int, Int, Int) {
+    let versionComponents = ensureSemanticVersionCorrectness().components(separatedBy: ".")
+    let major = Int(versionComponents[0]) ?? 0
+    let minor = Int(versionComponents[1]) ?? 0
+    let patch = Int(versionComponents[2]) ?? 0
+
+    return (major, minor, patch)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns *true* if `self` starts with a given prefix.
+  public func starts(with prefix: String, caseSensitive: Bool = true) -> Bool {
+    if !caseSensitive {
+      return lowercased().hasPrefix(prefix.lowercased())
+    }
+
+    return hasPrefix(prefix)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Removes spaces and new lines from both ends of `self.
+  public mutating func trim() {
+    self = trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Returns a `new` String made by removing spaces and new lines from both ends.
+  public func trimmed() -> String {
+    return trimmingCharacters(in: .whitespacesAndNewlines)
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Strips the specified characters from the end of `self`.
+  ///
+  ///  - parameter set: characters to strip
+  ///
+  ///  - Returns: stripped string
+  public func trimmedEnd(characterSet set: CharacterSet = .whitespacesAndNewlines) -> String {
+    if let range = rangeOfCharacter(from: set.inverted, options: .backwards) {
+      return String(self[..<range.upperBound])
+    }
+
+    return ""
+  }
+
+  /// **Mechanica**
+  ///
+  ///  Strips the specified characters from the beginning of `self`.
+  ///
+  ///  - parameter set: characters to strip
+  ///
+  ///  - Returns: stripped string
+  public func trimmedStart(characterSet set: CharacterSet = .whitespacesAndNewlines) -> String {
+    if let range = rangeOfCharacter(from: set.inverted) {
+      return String(self[range.lowerBound..<endIndex])
+    }
+
+    return ""
+  }
+
   // MARK: - Subscript with NSRange
 
   /// **Mechanica**
@@ -445,108 +550,15 @@ extension String {
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
 
-  // MARK: - Trimming Methods
-
-  /// **Mechanica**
-  ///
-  /// Removes spaces and new lines from both ends of `self.
-  public mutating func trim() {
-    self = trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-  }
-
-  /// **Mechanica**
-  ///
-  ///  Returns a `new` String made by removing spaces and new lines from both ends.
-  public func trimmed() -> String {
-    return trimmingCharacters(in: .whitespacesAndNewlines)
-  }
-
-  /// **Mechanica**
-  ///
-  ///  Strips the specified characters from the beginning of `self`.
-  ///
-  ///  - parameter set: characters to strip
-  ///
-  ///  - Returns: stripped string
-  public func trimmedStart(characterSet set: CharacterSet = .whitespacesAndNewlines) -> String {
-    if let range = rangeOfCharacter(from: set.inverted) {
-      return String(self[range.lowerBound..<endIndex])
-    }
-
-    return ""
-  }
-
-  /// **Mechanica**
-  ///
-  ///  Strips the specified characters from the end of `self`.
-  ///
-  ///  - parameter set: characters to strip
-  ///
-  ///  - Returns: stripped string
-  public func trimmedEnd(characterSet set: CharacterSet = .whitespacesAndNewlines) -> String {
-    if let range = rangeOfCharacter(from: set.inverted, options: .backwards) {
-      return String(self[..<range.upperBound])
-    }
-
-    return ""
-  }
-
   // MARK: - CharacterSet
 
   /// **Mechanica**
   ///
-  ///  Remove the characters in the given set.
-  public mutating func removeCharacters(in set: CharacterSet) {
-    for idx in indices.reversed() {
-      if set.contains(String(self[idx]).unicodeScalars.first!) {
-        remove(at: idx)
-      }
-    }
+  /// Returns the `NSRange` of `self`.
+  public var nsRange: NSRange {
+    let range = self.startIndex...
 
-  }
-
-  /// **Mechanica**
-  ///
-  ///  Returns a new `String` removing the characters in the given set.
-  public func removingCharacters(in set: CharacterSet) -> String {
-    var copy = self
-    copy.removeCharacters(in: set)
-
-    return copy
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a `new` string in which the characters in a specified `CountableRange` range of the String are replaced by a given string.
-  public func replacingCharacters(in range: CountableRange<Int>, with replacement: String) -> String {
-    let start = index(startIndex, offsetBy: range.lowerBound)
-    let end   = index(start, offsetBy: range.count)
-
-    return replacingCharacters(in: start ..< end, with: replacement)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a `new` string in which the characters in a specified `CountableClosedRange` range of the String are replaced by a given string.
-  public func replacingCharacters(in range: CountableClosedRange<Int>, with replacement: String) -> String {
-    let start = index(startIndex, offsetBy: range.lowerBound)
-    let end   = index(start, offsetBy: range.count)
-
-    return replacingCharacters(in: start ..< end, with: replacement)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a `new` String stripped of all accents and diacritics.
-  ///
-  /// Example:
-  ///
-  ///     let string = "äöüÄÖÜ" -> ÄÖÜ
-  ///     let stripped = string.stripCombiningMarks -> aouAOU
-  ///
-  @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
-  func removingAccentsOrDiacritics() -> String {
-    return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
+    return NSRange(range, in: self)
   }
 
   // MARK: - Case Operators
@@ -692,61 +704,14 @@ extension String {
     return (self as NSString).pathExtension
   }
 
-  // MARK: - NSRange
-
   /// **Mechanica**
   ///
-  /// Returns the `NSRange` of `self`.
-  public var nsRange: NSRange {
-    let range = self.startIndex...
-
-    return NSRange(range, in: self)
-  }
-
-  /// **Mechanica**
-  ///
-  /// If `self` is a semantic version, returns a tuple with major, minor and patch components.
-  public var semanticVersion: (Int, Int, Int) {
-    let versionComponents = ensureSemanticVersionCorrectness().components(separatedBy: ".")
-    let major = Int(versionComponents[0]) ?? 0
-    let minor = Int(versionComponents[1]) ?? 0
-    let patch = Int(versionComponents[2]) ?? 0
-
-    return (major, minor, patch)
+  /// Returns a percent-escaped string following RFC 3986 for a query string key or value.
+  public var urlEscaped: String? {
+    return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
   }
 
   // MARK: - Regular Expression
-
-  /// **Mechanica**
-  ///
-  /// Returns a range equivalent to the given `NSRange` or `nil` if the range can't be converted.
-  @available(*, deprecated, message: "Swift 4 supports conversion between NSRange and Range ( Range.init?(_:in) )")
-  private func range(from nsRange: NSRange) -> Range<Index>? {
-    guard let range = Range(nsRange) else { return nil }
-    let utf16Start = UTF16Index(encodedOffset: range.lowerBound)
-    let utf16End = UTF16Index(encodedOffset: range.upperBound)
-
-    guard
-      let start = Index(utf16Start, within: self),
-      let end = Index(utf16End, within: self)
-      else { return nil }
-
-    return start..<end
-  }
-
-  /// **Mechanica**
-  ///
-  /// - Parameters:
-  ///   - pattern: a regular expression pattern.
-  ///   - options: a list of `NSRegularExpression.Options`.
-  /// - Returns: returns a list of matched ranges for `self`.
-  public func ranges(matching pattern: String, options: NSRegularExpression.Options = []) -> [Range<String.Index>] {
-    guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return [] }
-    let matches = regex.matches(in: self, options: [], range: NSRange(startIndex..<endIndex, in: self))
-    let ranges = matches.flatMap { Range($0.range, in: self) }
-
-    return ranges
-  }
 
   /// **Mechanica**
   ///
@@ -788,6 +753,37 @@ extension String {
     }
 
     return strings
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a range equivalent to the given `NSRange` or `nil` if the range can't be converted.
+  @available(*, deprecated, message: "Swift 4 supports conversion between NSRange and Range ( Range.init?(_:in) )")
+  private func range(from nsRange: NSRange) -> Range<Index>? {
+    guard let range = Range(nsRange) else { return nil }
+    let utf16Start = UTF16Index(encodedOffset: range.lowerBound)
+    let utf16End = UTF16Index(encodedOffset: range.upperBound)
+
+    guard
+      let start = Index(utf16Start, within: self),
+      let end = Index(utf16End, within: self)
+      else { return nil }
+
+    return start..<end
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Parameters:
+  ///   - pattern: a regular expression pattern.
+  ///   - options: a list of `NSRegularExpression.Options`.
+  /// - Returns: returns a list of matched ranges for `self`.
+  public func ranges(matching pattern: String, options: NSRegularExpression.Options = []) -> [Range<String.Index>] {
+    guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return [] }
+    let matches = regex.matches(in: self, options: [], range: NSRange(startIndex..<endIndex, in: self))
+    let ranges = matches.flatMap { Range($0.range, in: self) }
+
+    return ranges
   }
 
 }
