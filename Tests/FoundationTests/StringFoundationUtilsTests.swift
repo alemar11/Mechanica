@@ -72,15 +72,45 @@ class StringNSStringTests: XCTestCase {
     XCTAssertNil("👎🏾👎🏼".bool, "Couldn't get the correct Bool value.")
   }
 
-  func testToBase64Decoded() {
+  func testBase64Decoded() {
     XCTAssertNil("123".base64Decoded, "Couldn't get the correct Base64 decoded value.")
     XCTAssert("SGVsbG8gV29ybGQh".base64Decoded == "Hello World!", "Couldn't get the correct Base64 decoded value.")
     XCTAssert("SGVsbG8gUm9ib3RzIfCfpJbwn6SW".base64Decoded ==  "Hello Robots!🤖🤖", "Couldn't get the correct Base64 decoded value.")
   }
 
-  func testToBase64Encoded() {
+  func testBase64Encoded() {
     XCTAssert("Hello World!".base64Encoded == "SGVsbG8gV29ybGQh", "Couldn't get the correct Base64 encoded value.")
     XCTAssert("Hello Robots!🤖🤖".base64Encoded == "SGVsbG8gUm9ib3RzIfCfpJbwn6SW", "Couldn't get the correct Base64 encoded value.")
+  }
+
+  func testStarts() {
+    //case sensitive
+    XCTAssertTrue("a".starts(with:"a"))
+    XCTAssertFalse("a".starts(with:"A"))
+    XCTAssertTrue("🤔a1".starts(with:"🤔"))
+    XCTAssertTrue("🖖🏽a1".starts(with:"🖖🏽"))
+    XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹"))
+
+    //case insensitive
+    XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹", caseSensitive: false))
+    XCTAssertTrue("a".starts(with:"A", caseSensitive: false))
+    XCTAssertTrue("Hello".starts(with:"hello", caseSensitive: false))
+    XCTAssertFalse("Hello".starts(with:"helloo", caseSensitive: false))
+  }
+
+  func testEnds() {
+    //case sensitive
+    XCTAssertTrue("a".ends(with:"a"))
+    XCTAssertFalse("a".ends(with:"A"))
+    XCTAssertTrue("a1🤔".ends(with:"🤔"))
+    XCTAssertTrue("a1🖖🏽".ends(with:"🖖🏽"))
+    XCTAssertTrue(" 🖖🏽🇮🇹🇮🇹".ends(with:"🇮🇹"))
+
+    //case insensitive
+    XCTAssertTrue(" 🖖🏽🇮🇹🇮🇹".ends(with:"🇮🇹", caseSensitive: false))
+    XCTAssertTrue("a".ends(with:"A", caseSensitive: false))
+    XCTAssertTrue("Hello".ends(with:"hello", caseSensitive: false))
+    XCTAssertFalse("Hello".ends(with:"helloo", caseSensitive: false))
   }
 
   func testHasLetters() {
@@ -236,7 +266,7 @@ class StringNSStringTests: XCTestCase {
     XCTAssertTrue("🇺🇸".isEmojiCountryFlag)
   }
 
-  func testSemanticVersion() {
+  func testSemanticVersionComparison() {
 
     // Equal
 
@@ -605,6 +635,321 @@ class StringNSStringTests: XCTestCase {
     XCTAssertTrue(s10.decapitalizedFirstCharacter() == s10)
   }
 
+  func testPaddingStart() {
+    XCTAssertEqual("Hello World".paddingStart(length: 15), "    Hello World")
+    XCTAssertEqual("Hello World".paddingStart(length: 15, with: "*"), "****Hello World")
+
+    XCTAssertEqual("Tin".paddingStart(length: 0), "Tin")
+    XCTAssertEqual("Tin".paddingStart(length: 1), "Tin")
+    XCTAssertEqual("Tin".paddingStart(length: 2), "Tin")
+    XCTAssertEqual("Tin".paddingStart(length: 3), "Tin")
+    XCTAssertEqual("Tin".paddingStart(length: 4), " Tin")
+
+    XCTAssertEqual("Tin Robots!".paddingStart(length: 15), "    Tin Robots!")
+    XCTAssertEqual("-Tin_Robots!-".paddingStart(length: 15), "  -Tin_Robots!-")
+    XCTAssertEqual(" _T1n R0bots!_ ".paddingStart(length: 20), "      _T1n R0bots!_ ")
+    XCTAssertEqual("Tin Robots!".paddingStart(length: 5), "Tin Robots!")
+
+    XCTAssertEqual("Tin Robots!".paddingStart(length: 15, with: "*"), "****Tin Robots!")
+    XCTAssertEqual("-Tin_Robots!-".paddingStart(length: 15, with: "*"), "**-Tin_Robots!-")
+    XCTAssertEqual(" _T1n R0bots!_ ".paddingStart(length: 20, with: "*"), "***** _T1n R0bots!_ ")
+    XCTAssertEqual("Tin Robots!".paddingStart(length: 5, with: "*"), "Tin Robots!")
+
+    XCTAssertEqual("abcde".paddingStart(length: 6, with: "123"), "1abcde")
+    XCTAssertEqual("abcd".paddingStart(length: 6, with: "123"), "12abcd")
+    XCTAssertEqual("abc".paddingStart(length: 6, with: "123"), "123abc")
+    XCTAssertEqual("ab".paddingStart(length: 6, with: "123"), "1231ab")
+    XCTAssertEqual("a".paddingStart(length: 6, with: "123"), "12312a")
+  }
+
+  func testPadStart() {
+    do {
+      var string = "Tin"
+      string.padStart(length: 1)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padStart(length: 2)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padStart(length: 3)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padStart(length: 4)
+      XCTAssertEqual(string, " Tin")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.padStart(length: 15)
+      XCTAssertEqual(string, "    Tin Robots!")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.padStart(length: 15, with: "*")
+      XCTAssertEqual(string, "****Tin Robots!")
+    }
+
+    do {
+      var string = " _T1n R0bots!_ "
+      string.padStart(length: 20, with: "*")
+      XCTAssertEqual(string, "***** _T1n R0bots!_ ")
+    }
+
+    do {
+      var string = "a"
+      string.padStart(length: 6, with: "123")
+      XCTAssertEqual(string, "12312a")
+    }
+  }
+
+  func testPaddingEnd() {
+    XCTAssertEqual("Hello World".paddingEnd(length: 15), "Hello World    ")
+    XCTAssertEqual("Hello World".paddingEnd(length: 15, with: "*"), "Hello World****")
+
+    XCTAssertEqual("Tin".paddingEnd(length: 0), "Tin")
+    XCTAssertEqual("Tin".paddingEnd(length: 1), "Tin")
+    XCTAssertEqual("Tin".paddingEnd(length: 2), "Tin")
+    XCTAssertEqual("Tin".paddingEnd(length: 3), "Tin")
+    XCTAssertEqual("Tin".paddingEnd(length: 4), "Tin ")
+
+    XCTAssertEqual("Tin Robots!".paddingEnd(length: 15), "Tin Robots!    ")
+    XCTAssertEqual("-Tin_Robots!-".paddingEnd(length: 15), "-Tin_Robots!-  ")
+    XCTAssertEqual(" _T1n R0bots!_ ".paddingEnd(length: 20), " _T1n R0bots!_      ")
+    XCTAssertEqual("Tin Robots!".paddingEnd(length: 5), "Tin Robots!")
+
+    XCTAssertEqual("Tin Robots!".paddingEnd(length: 15, with: "*"), "Tin Robots!****")
+    XCTAssertEqual("-Tin_Robots!-".paddingEnd(length: 15, with: "*"), "-Tin_Robots!-**")
+    XCTAssertEqual(" _T1n R0bots!_ ".paddingEnd(length: 20, with: "*"), " _T1n R0bots!_ *****")
+    XCTAssertEqual("Tin Robots!".paddingEnd(length: 5, with: "*"), "Tin Robots!")
+
+    XCTAssertEqual("abcde".paddingEnd(length: 6, with: "123"), "abcde1")
+    XCTAssertEqual("abcd".paddingEnd(length: 6, with: "123"), "abcd12")
+    XCTAssertEqual("abc".paddingEnd(length: 6, with: "123"), "abc123")
+    XCTAssertEqual("ab".paddingEnd(length: 6, with: "123"), "ab1231")
+    XCTAssertEqual("a".paddingEnd(length: 6, with: "123"), "a12312")
+  }
+
+  func testPadEnd() {
+    do {
+      var string = "Tin"
+      string.padEnd(length: 1)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padEnd(length: 2)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padEnd(length: 3)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.padEnd(length: 4)
+      XCTAssertEqual(string, "Tin ")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.padEnd(length: 15)
+      XCTAssertEqual(string, "Tin Robots!    ")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.padEnd(length: 15, with: "*")
+      XCTAssertEqual(string, "Tin Robots!****")
+    }
+
+    do {
+      var string = " _T1n R0bots!_ "
+      string.padEnd(length: 20, with: "*")
+      XCTAssertEqual(string, " _T1n R0bots!_ *****")
+    }
+
+    do {
+      var string = "a"
+      string.padEnd(length: 6, with: "123")
+      XCTAssertEqual(string, "a12312")
+    }
+  }
+
+  func testPadding() {
+    XCTAssertEqual("Hello World".padding(length: 15), "  Hello World  ")
+    XCTAssertEqual("Hello World".padding(length: 15, with: "*"), "**Hello World**")
+
+    XCTAssertEqual("Tin".padding(length: 0), "Tin")
+    XCTAssertEqual("Tin".padding(length: 1), "Tin")
+    XCTAssertEqual("Tin".padding(length: 2), "Tin")
+    XCTAssertEqual("Tin".padding(length: 3), "Tin")
+    XCTAssertEqual("Tin".padding(length: 4), "Tin ")
+    XCTAssertEqual("Tin".padding(length: 5), " Tin ")
+    XCTAssertEqual("Tin".padding(length: 6), " Tin  ")
+    XCTAssertEqual("Tin".padding(length: 7), "  Tin  ")
+
+    XCTAssertEqual("Tin Robots!".padding(length: 15), "  Tin Robots!  ")
+    XCTAssertEqual("-Tin_Robots!-".padding(length: 15), " -Tin_Robots!- ")
+    XCTAssertEqual(" _T1n R0bots!_ ".padding(length: 20), "   _T1n R0bots!_    ")
+    XCTAssertEqual("Tin Robots!".padding(length: 5), "Tin Robots!")
+
+    XCTAssertEqual("Tin Robots!".padding(length: 15, with: "*"), "**Tin Robots!**")
+    XCTAssertEqual("-Tin_Robots!-".padding(length: 15, with: "*"), "*-Tin_Robots!-*")
+    XCTAssertEqual(" _T1n R0bots!_ ".padding(length: 20, with: "*"), "** _T1n R0bots!_ ***")
+    XCTAssertEqual("Tin Robots!".padding(length: 5, with: "*"), "Tin Robots!")
+
+    XCTAssertEqual("abcde".padding(length: 6, with: "123"), "abcde1")
+    XCTAssertEqual("abcd".padding(length: 6, with: "123"), "1abcd1")
+    XCTAssertEqual("abc".padding(length: 6, with: "123"), "1abc12")
+    XCTAssertEqual("ab".padding(length: 6, with: "123"), "12ab12")
+    XCTAssertEqual("a".padding(length: 6, with: "123"), "12a123")
+  }
+
+  func testPad() {
+    do {
+      var string = "Tin"
+      string.pad(length: 1)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.pad(length: 2)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.pad(length: 3)
+      XCTAssertEqual(string, "Tin")
+    }
+
+    do {
+      var string = "Tin"
+      string.pad(length: 4)
+      XCTAssertEqual(string, "Tin ")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.pad(length: 15)
+      XCTAssertEqual(string, "  Tin Robots!  ")
+    }
+
+    do {
+      var string = "Tin Robots!"
+      string.pad(length: 15, with: "*")
+      XCTAssertEqual(string, "**Tin Robots!**")
+    }
+
+    do {
+      var string = " _T1n R0bots!_ "
+      string.pad(length: 20, with: "*")
+      XCTAssertEqual(string, "** _T1n R0bots!_ ***")
+    }
+
+    do {
+      var string = "a"
+      string.pad(length: 6, with: "123")
+      XCTAssertEqual(string, "12a123")
+    }
+  }
+
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
+  func testRemovingAccentsOrDiacritics() {
+    XCTAssertTrue("äöüÄÖÜ".removingAccentsOrDiacritics() == "aouAOU")
+    XCTAssertTrue("1".removingAccentsOrDiacritics() == "1")
+    XCTAssertTrue("🇮🇹".removingAccentsOrDiacritics() == "🇮🇹")
+    XCTAssertTrue("Hello World!".removingAccentsOrDiacritics() == "Hello World!")
+    XCTAssertTrue("è".removingAccentsOrDiacritics() == "e")
+  }
+
+  func testRemovingPrefix() {
+
+    let s = "hello"
+    XCTAssertTrue(s.removingPrefix(upToPosition: 0) == "hello")
+    XCTAssertTrue(s.removingPrefix() == "ello")
+    XCTAssertTrue(s.removingPrefix(upToPosition: 1) == "ello")
+    XCTAssertTrue(s.removingPrefix(upToPosition: 3) == "lo")
+    XCTAssertTrue(s.removingPrefix(upToPosition: 5) == "")
+    XCTAssertTrue(s.removingPrefix(upToPosition: 100) == "")
+    XCTAssertTrue(s.removingPrefix(upToPosition: -1) == "")
+    XCTAssertTrue("".removingPrefix(upToPosition: 1) == "")
+    XCTAssertTrue(s.removingPrefix("") == "hello")
+    XCTAssertTrue(s.removingPrefix("h") == "ello")
+    XCTAssertTrue(s.removingPrefix("hel") == "lo")
+    XCTAssertTrue(s.removingPrefix("abc") == "hello")
+    XCTAssertTrue(s.removingPrefix("\n") == "hello")
+    XCTAssertTrue("\na".removingPrefix("\n") == "a")
+  }
+
+  func testRemovingSuffix() {
+
+    let s = "hello"
+    XCTAssertTrue(s.removingSuffix(fromPosition: 0) == "hello")
+    XCTAssertTrue(s.removingSuffix() == "hell")
+    XCTAssertTrue(s.removingSuffix(fromPosition: 1) == "hell")
+    XCTAssertTrue(s.removingSuffix(fromPosition: 3) == "he")
+    XCTAssertTrue(s.removingSuffix(fromPosition: 5) == "")
+    XCTAssertTrue(s.removingSuffix(fromPosition: 100) == "")
+    XCTAssertTrue(s.removingSuffix(fromPosition: -1) == "")
+    XCTAssertTrue("".removingSuffix(fromPosition: 1) == "")
+    XCTAssertTrue(s.removingSuffix("abc") == "hello")
+    XCTAssertTrue(s.removingSuffix("o") == "hell")
+    XCTAssertTrue(s.removingSuffix("llo") == "he")
+    XCTAssertTrue(s.removingSuffix("hello") == "")
+    XCTAssertTrue("\na".removingSuffix("a") == "\n")
+
+  }
+
+  func testRemovingCharacters() {
+    do {
+      let s = "123Hello45 !World..5"
+      let result1 = s.removingCharacters(in: CharacterSet.letters.inverted)
+      XCTAssertTrue(result1 == "HelloWorld")
+      let result2 = s.removingCharacters(in: .letters)
+      XCTAssertTrue(result2 == "12345 !..5")
+      /// CharacterSet.capitalizedLetters returns a character set containing the characters in Unicode General Category Lt aka "Letter, titlecase".
+      /// That are "Ligatures containing uppercase followed by lowercase letters (e.g., ǅ, ǈ, ǋ, and ǲ)"
+      let result4 = s.removingCharacters(in: .capitalizedLetters)
+      XCTAssertTrue(result4 == "123Hello45 !World..5")
+    }
+
+    do {
+      let s = "H ello"
+      let result1 = s.removingCharacters(in: CharacterSet.letters.inverted)
+      XCTAssertTrue(result1 == "Hello")
+      let result2 = s.removingCharacters(in: .decimalDigits)
+      XCTAssertTrue(s == result2)
+    }
+
+  }
+
+  func testURLEscaped() {
+    XCTAssertTrue("Hello_World".urlEscaped == "Hello_World")
+    XCTAssertTrue("Hello Günter".urlEscaped == "Hello%20G%C3%BCnter")
+  }
+
+  func testSemanticVersion() {
+    XCTAssertTrue("1".semanticVersion == (1,0,0))
+    XCTAssertTrue("1.0".semanticVersion == (1,0,0))
+    XCTAssertTrue("1.0.0".semanticVersion == (1,0,0))
+    XCTAssertTrue("".semanticVersion == (0,0,0))
+  }
 
 }
 
