@@ -12,13 +12,13 @@ let package = Package(
   targets: [
     // Targets are the basic building blocks of a package. A target can define a module or a test suite.
     // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-    
+
     .target(name: "Mechanica", path: "Sources"),
     .testTarget(name: "FoundationTests", dependencies: ["Mechanica"]),
     .testTarget(name: "SharedTests", dependencies: ["Mechanica"]),
     .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
     .testTarget(name: "UIKitTests", dependencies: ["Mechanica"])
-    
+
     /*
      .target(name: "Mechanica", path: "Sources/StandardLibrary", sources: [
      "BinaryFloatingPoint+Utils.swift",
@@ -39,7 +39,7 @@ let package = Package(
      "String+Utils.swift",
      "Unicode+Utils.swift"
      ]),
-     
+
      .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"], sources: [
      "BinaryFloatingPointUtilsTests.swift",
      "BinaryIntegerUtilsTests.swift",
@@ -57,6 +57,6 @@ let package = Package(
      "UnsignedIntegerUtilsTests.swift"
      ]),
      */
-    
+
   ]
 )
