@@ -1133,7 +1133,7 @@ class StringNSStringTests: XCTestCase {
   func testSubscript() {
     let string = "∆Test😗🇮🇹"
     
-    // MARK: - NSRange
+    // NSRange
 
     let nsrange = NSRange(location: 0, length: 1)
     XCTAssertTrue(string[nsrange] == "∆")
@@ -1163,6 +1163,11 @@ class StringNSStringTests: XCTestCase {
     XCTAssert(range3! ~= string.index(string.startIndex, offsetBy: 2) ..< string.index(string.startIndex, offsetBy: 5))
     XCTAssertNil(string["k"])
     XCTAssertNil(string["123est"])
+
+
+    // Substring
+    XCTAssertNotNil(string["Test"])
+    XCTAssertNotNil(string["😗"])
 
   }
 

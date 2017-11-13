@@ -641,7 +641,6 @@
 		23C796641FB44742006766FD /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				D2234A611E002D2600252551 /* String+FoundationUtils.swift */,
 				239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */,
 				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
 				238E5B161FB5C40F00331C85 /* Dictionary+FoundationUtils.swift */,
@@ -654,6 +653,7 @@
 				23B2ED6C1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift */,
 				23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */,
 				D2ABD0061E004F8D006859B9 /* ProcessInfo+Utils.swift */,
+				D2234A611E002D2600252551 /* String+FoundationUtils.swift */,
 				D220818C1E07FEB700BE4268 /* URL+Utils.swift */,
 				23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */,
 			);
