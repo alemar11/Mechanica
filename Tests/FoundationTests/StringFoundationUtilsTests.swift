@@ -1114,6 +1114,87 @@ class StringNSStringTests: XCTestCase {
     XCTAssertFalse("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".contains("{20", caseSensitive: true))
   }
 
+  func testSubscript() {
+    let string = "∆Test😗🇮🇹"
+    
+    // MARK: - NSRange
+
+    let nsrange = NSRange(location: 0, length: 1)
+    XCTAssertTrue(string[nsrange] == "∆")
+
+    let nsrange2 = NSRange(location: 4, length: 2)
+    XCTAssertTrue(string[nsrange2] == "t😗")
+
+    let nsrange3 = NSRange(location: 40, length: 2)
+    XCTAssertNil(string[nsrange3])
+
+    let nsrange4 = NSRange(location: -1, length: 2)
+    XCTAssertNil(string[nsrange4])
+
+    let nsrange5 = NSRange(location: 1, length: 1)
+    XCTAssertTrue(string[nsrange5] == "T")
+
+    let nsrange6 = NSRange(location: 2, length: 1)
+    XCTAssertTrue(string[nsrange6] == "e")
+
+    let nsrange7 = NSRange(location: 6, length: 1)
+    XCTAssertTrue(string[nsrange7] == "🇮🇹")
+
+    XCTAssertNil(string[""])
+    let range2 = string["∆"]
+    XCTAssertTrue(range2! == string.startIndex ..< string.index(string.startIndex, offsetBy: 1))
+    let range3 = string["est"] //2,3,4
+    XCTAssert(range3! ~= string.index(string.startIndex, offsetBy: 2) ..< string.index(string.startIndex, offsetBy: 5))
+    XCTAssertNil(string["k"])
+    XCTAssertNil(string["123est"])
+
+  }
+
+  func testReplacingCharacters() {
+
+    let s = "Hello World" //10 characters
+    do {
+      let countableRange = CountableRange(uncheckedBounds: (lower: 0, upper: 2)) //[0,2[
+      let newString = s.replacingCharacters(in: countableRange, with: "1")
+      XCTAssertTrue(newString == "1llo World")
+
+      let countableClosedRange = CountableClosedRange(uncheckedBounds: (lower: 0, upper: 2)) //[0,2]
+      let newString2 = s.replacingCharacters(in: countableClosedRange, with: "1")
+      XCTAssertTrue(newString2 == "1lo World")
+    }
+    do {
+      let countableRange = CountableRange(uncheckedBounds: (lower: 0, upper: 11)) //[0,11[
+      let newString = s.replacingCharacters(in: countableRange, with: "1")
+      XCTAssertTrue(newString == "1")
+
+      let countableClosedRange = CountableClosedRange(uncheckedBounds: (lower: 0, upper: s.count-1)) //[0,9]
+      let newString2 = s.replacingCharacters(in: countableClosedRange, with: "1")
+      XCTAssertTrue(newString2 == "1")
+    }
+  }
+
+  func testRandom() {
+
+    do {
+      let randomString = String.random()
+      XCTAssertTrue(randomString.length == 8)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+    }
+
+    do {
+      let randomString = String.random(length: 1)
+      XCTAssertTrue(randomString.length == 1)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+    }
+
+    do {
+      let randomString = String.random(length: 100)
+      XCTAssertTrue(randomString.length == 100)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+    }
+
+  }
+
 }
 
 // MARK: - Tests Resources
