@@ -99,6 +99,8 @@
 		2363FED51F6E76EC0067257A /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363FED41F6E76EC0067257A /* UIImage+Utils.swift */; };
 		2363FED61F6E779A0067257A /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363FED41F6E76EC0067257A /* UIImage+Utils.swift */; };
 		2363FED71F6E779C0067257A /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363FED41F6E76EC0067257A /* UIImage+Utils.swift */; };
+		236407821FBB11EE003D2AF0 /* UIViewUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2364077E1FBB11E2003D2AF0 /* UIViewUtilsTests.swift */; };
+		236407831FBB11EF003D2AF0 /* UIViewUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2364077E1FBB11E2003D2AF0 /* UIViewUtilsTests.swift */; };
 		23690FE51F836F4A008C0B7E /* UILayoutPriority+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23690FE41F836F4A008C0B7E /* UILayoutPriority+Utils.swift */; };
 		23690FE61F837213008C0B7E /* UILayoutPriority+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23690FE41F836F4A008C0B7E /* UILayoutPriority+Utils.swift */; };
 		23690FE81F837295008C0B7E /* UILayoutPriorityUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23690FE71F837295008C0B7E /* UILayoutPriorityUtilsTests.swift */; };
@@ -393,6 +395,7 @@
 		233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "BinaryFloatingPoint+Utils.swift"; sourceTree = "<group>"; };
 		2363FED41F6E76EC0067257A /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
+		2364077E1FBB11E2003D2AF0 /* UIViewUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewUtilsTests.swift; sourceTree = "<group>"; };
 		23690FE41F836F4A008C0B7E /* UILayoutPriority+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILayoutPriority+Utils.swift"; sourceTree = "<group>"; };
 		23690FE71F837295008C0B7E /* UILayoutPriorityUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILayoutPriorityUtilsTests.swift; sourceTree = "<group>"; };
 		237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "BinaryInteger+Utils.swift"; sourceTree = "<group>"; };
@@ -604,6 +607,7 @@
 				23B5805D1F94E64600A365C0 /* UIDeviceUtilsTests.swift */,
 				23690FE71F837295008C0B7E /* UILayoutPriorityUtilsTests.swift */,
 				231874C01FA78EF600FA797F /* UIWindowUtilsTests.swift */,
+				2364077E1FBB11E2003D2AF0 /* UIViewUtilsTests.swift */,
 			);
 			path = UIKitTests;
 			sourceTree = "<group>";
@@ -1275,6 +1279,7 @@
 				23078BEC1F20E1480074D955 /* OperatorsTests.swift in Sources */,
 				237F17B61E90000900726553 /* SequenceUtilsTests.swift in Sources */,
 				237F177D1E90000900726553 /* DictionaryUtilsTests.swift in Sources */,
+				236407821FBB11EE003D2AF0 /* UIViewUtilsTests.swift in Sources */,
 				237F17AD1E90000900726553 /* NSPredicateOperatorsTests.swift in Sources */,
 				237F17C81E90000900726553 /* StringUtilsTests.swift in Sources */,
 				237F176B1E90000900726553 /* BundleInfoTests.swift in Sources */,
@@ -1318,6 +1323,7 @@
 				238E5B1D1FB5C6EC00331C85 /* DictionaryFoundationTests.swift in Sources */,
 				237F17B71E90000900726553 /* SequenceUtilsTests.swift in Sources */,
 				237F177E1E90000900726553 /* DictionaryUtilsTests.swift in Sources */,
+				236407831FBB11EF003D2AF0 /* UIViewUtilsTests.swift in Sources */,
 				237F17AE1E90000900726553 /* NSPredicateOperatorsTests.swift in Sources */,
 				237F17C91E90000900726553 /* StringUtilsTests.swift in Sources */,
 				237F176C1E90000900726553 /* BundleInfoTests.swift in Sources */,
