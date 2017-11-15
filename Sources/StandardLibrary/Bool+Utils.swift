@@ -56,7 +56,7 @@ extension Bool {
   /// Returns `true` or `false` randomly.
   static public func random() -> Bool {
     #if os(Linux)
-      return _swift_stdlib_arc4random_uniform(2) == 0
+      return _swift_stdlib_cxx11_mt19937_uniform(2) == 0
     #else
       return arc4random_uniform(2) == 0
     #endif
