@@ -97,32 +97,32 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
     XCTAssertFalse(UInt.random(lowerBound: 40, upperBound: 50) < 40)
     XCTAssertTrue(UInt.random(lowerBound: UInt.max, upperBound: UInt.max) == UInt.max)
 
-    /// UInt64
-    XCTAssertTrue(UInt64.random(lowerBound: UInt64.max, upperBound: UInt64.max) == UInt64.max)
-    XCTAssertTrue(UInt64.random() <= UInt64.max)
-
-    /// UInt32
-    XCTAssertTrue(UInt32.min...UInt32.max ~= UInt32.random())
-    XCTAssertTrue(UInt32.random(lowerBound: 1, upperBound: 100) <= 100)
-    XCTAssertTrue(UInt32.min...UInt32.max ~= UInt32.random())
-    XCTAssertFalse(UInt32.random(lowerBound: 50, upperBound: 100) > 100)
-    XCTAssertFalse(UInt32.random(lowerBound: 4000, upperBound: 5000) < 4000)
-    XCTAssertTrue(UInt32.random(lowerBound: UInt32.max, upperBound: UInt32.max) == UInt32.max)
-
-    /// UInt16
-    XCTAssertTrue(UInt16.min...UInt16.max ~= UInt16.random())
-    XCTAssertTrue(UInt16.random(lowerBound: 1, upperBound: 100) <= 100)
-    XCTAssertTrue(UInt16.min...UInt16.max ~= UInt16.random())
-    XCTAssertFalse(UInt16.random(lowerBound: 50, upperBound: 100) > 100)
-    XCTAssertFalse(UInt16.random(lowerBound: 4000, upperBound: 5000) < 4000)
-    XCTAssertTrue(UInt16.random(lowerBound: UInt16.max, upperBound: UInt16.max) == UInt16.max)
-
-    /// UInt8
-    XCTAssertTrue(UInt8.random(lowerBound: 1, upperBound: 100) <= 100)
-    XCTAssertTrue(UInt8.min...UInt8.max ~= UInt8.random())
-    XCTAssertFalse(UInt8.random(lowerBound: 50, upperBound: 100) > 100)
-    XCTAssertFalse(UInt8.random(lowerBound: 40, upperBound: 50) < 40)
-    XCTAssertTrue(UInt8.random(lowerBound: UInt8.max, upperBound: UInt8.max) == UInt8.max)
+//    /// UInt64
+//    XCTAssertTrue(UInt64.random(lowerBound: UInt64.max, upperBound: UInt64.max) == UInt64.max)
+//    XCTAssertTrue(UInt64.random() <= UInt64.max)
+//
+//    /// UInt32
+//    XCTAssertTrue(UInt32.min...UInt32.max ~= UInt32.random())
+//    XCTAssertTrue(UInt32.random(lowerBound: 1, upperBound: 100) <= 100)
+//    XCTAssertTrue(UInt32.min...UInt32.max ~= UInt32.random())
+//    XCTAssertFalse(UInt32.random(lowerBound: 50, upperBound: 100) > 100)
+//    XCTAssertFalse(UInt32.random(lowerBound: 4000, upperBound: 5000) < 4000)
+//    XCTAssertTrue(UInt32.random(lowerBound: UInt32.max, upperBound: UInt32.max) == UInt32.max)
+//
+//    /// UInt16
+//    XCTAssertTrue(UInt16.min...UInt16.max ~= UInt16.random())
+//    XCTAssertTrue(UInt16.random(lowerBound: 1, upperBound: 100) <= 100)
+//    XCTAssertTrue(UInt16.min...UInt16.max ~= UInt16.random())
+//    XCTAssertFalse(UInt16.random(lowerBound: 50, upperBound: 100) > 100)
+//    XCTAssertFalse(UInt16.random(lowerBound: 4000, upperBound: 5000) < 4000)
+//    XCTAssertTrue(UInt16.random(lowerBound: UInt16.max, upperBound: UInt16.max) == UInt16.max)
+//
+//    /// UInt8
+//    XCTAssertTrue(UInt8.random(lowerBound: 1, upperBound: 100) <= 100)
+//    XCTAssertTrue(UInt8.min...UInt8.max ~= UInt8.random())
+//    XCTAssertFalse(UInt8.random(lowerBound: 50, upperBound: 100) > 100)
+//    XCTAssertFalse(UInt8.random(lowerBound: 40, upperBound: 50) < 40)
+//    XCTAssertTrue(UInt8.random(lowerBound: UInt8.max, upperBound: UInt8.max) == UInt8.max)
 
   }
 
