@@ -21,13 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(Linux)
-  import Glibc
-  import SwiftShims
-#else
-  import Darwin
-#endif
-
 extension Bool {
 
   /// **Mechanica**
@@ -55,11 +48,7 @@ extension Bool {
   ///
   /// Returns `true` or `false` randomly.
   static public func random() -> Bool {
-    #if os(Linux)
-      return _swift_stdlib_cxx11_mt19937_uniform(2) == 0
-    #else
-      return arc4random_uniform(2) == 0
-    #endif
+    return mechanica_arc4random_uniform(2) == 0
   }
 
   /// **Mechanica**

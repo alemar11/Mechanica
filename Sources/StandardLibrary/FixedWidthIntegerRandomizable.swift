@@ -23,13 +23,6 @@
 
 // MARK: - FixedWidthIntegerRandomizable
 
-#if os(Linux)
-  import Glibc
-  import SwiftShims
-#else
-  import Darwin
-#endif
-
 /// **Mechanica**
 ///
 /// FixedWidthInteger random protocol.
@@ -125,11 +118,7 @@ extension UInt32 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
-    #if os(Linux)
-      return _swift_stdlib_cxx11_mt19937_uniform(upperBound - lowerBound) + lowerBound
-    #else
-     return arc4random_uniform(upperBound - lowerBound) + lowerBound
-    #endif
+    return mechanica_arc4random_uniform(upperBound - lowerBound) + lowerBound
   }
 
 }
@@ -147,11 +136,7 @@ extension UInt16 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
-    #if os(Linux)
-      return UInt16(_swift_stdlib_cxx11_mt19937_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
-    #else
-      return UInt16(arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
-    #endif
+    return UInt16(mechanica_arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
   }
 
 }
@@ -169,11 +154,7 @@ extension UInt8 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
-    #if os(Linux)
-      return UInt8(_swift_stdlib_cxx11_mt19937_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
-    #else
-      return UInt8(arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
-    #endif
+    return UInt8(mechanica_arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
   }
 
 }
@@ -238,13 +219,7 @@ extension Int32 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
-    let r: UInt32
-    
-    #if os(Linux)
-      r = _swift_stdlib_cxx11_mt19937_uniform(UInt32(Int64(upperBound) - Int64(lowerBound)))
-    #else
-       r = arc4random_uniform(UInt32(Int64(upperBound) - Int64(lowerBound)))
-    #endif
+    let r = mechanica_arc4random_uniform(UInt32(Int64(upperBound) - Int64(lowerBound)))
     return Int32(Int64(r) + Int64(lowerBound))
   }
 
@@ -263,13 +238,7 @@ extension Int16 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
-    let r: UInt32
-    
-    #if os(Linux)
-      r = _swift_stdlib_cxx11_mt19937_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
-    #else
-      r = arc4random_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
-    #endif
+    let r = mechanica_arc4random_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
     return Int16(Int32(r) + Int32(lowerBound))
   }
 
@@ -290,11 +259,7 @@ extension Int8 {
 
     let r: UInt32
     
-    #if os(Linux)
-      r = _swift_stdlib_cxx11_mt19937_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
-    #else
-      r = arc4random_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
-    #endif
+    let r = mechanica_arc4random_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
     return Int8(Int32(r) + Int32(lowerBound))
   }
 
