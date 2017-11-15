@@ -23,6 +23,7 @@
 
 #if os(Linux)
   import Glibc
+  import SwiftShims
 #else
   import Darwin
 #endif
@@ -33,14 +34,22 @@ public extension ExpressibleByIntegerLiteral {
   ///
   /// Returns a random integer value.
   public static func random() -> Self {
-    return arc4random(type: Self.self)
+    #if os(Linux)
+      return _swift_stdlib_arc4random(type: Self.self)
+    #else
+      return arc4random(type: Self.self)
+    #endif
   }
 
 }
 
 private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   var result: T = 0
-  arc4random_buf(&result, Int(MemoryLayout<T>.size))
+  #if os(Linux)
+    return _swift_stdlib_arc4random_buf(&result, Int(MemoryLayout<T>.size))
+  #else
+    arc4random_buf(&result, Int(MemoryLayout<T>.size))
+  #endif
 
   return result
 }
