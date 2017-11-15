@@ -42,7 +42,7 @@ public extension ExpressibleByIntegerLiteral {
 private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   var result: T = 0
   #if os(Linux)
-    return getentropy(&result, Int(MemoryLayout<T>.size))
+    getentropy(&result, Int(MemoryLayout<T>.size))
   #else
     arc4random_buf(&result, Int(MemoryLayout<T>.size))
   #endif
