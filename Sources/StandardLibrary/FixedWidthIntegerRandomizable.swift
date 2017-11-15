@@ -25,6 +25,7 @@
 
 #if os(Linux)
   import Glibc
+  import SwiftShims
 #else
   import Darwin
 #endif
