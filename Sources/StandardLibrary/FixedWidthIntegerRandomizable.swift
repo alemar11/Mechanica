@@ -148,7 +148,7 @@ extension UInt16 {
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
     #if os(Linux)
-      return UInt16(_swift_stdlib_cxx11_mt19937_uniform(upperBound - lowerBound) + lowerBound)
+      return UInt16(_swift_stdlib_cxx11_mt19937_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
     #else
       return UInt16(arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
     #endif
@@ -170,7 +170,7 @@ extension UInt8 {
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
     #if os(Linux)
-      return UInt8(_swift_stdlib_cxx11_mt19937_uniform(upperBound - lowerBound) + lowerBound)
+      return UInt8(_swift_stdlib_cxx11_mt19937_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
     #else
       return UInt8(arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
     #endif
