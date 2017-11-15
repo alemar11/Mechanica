@@ -21,7 +21,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Darwin
+#if os(Linux)
+  import Glibc
+#else
+  import Darwin
+#endif
 
 extension Bool {
 

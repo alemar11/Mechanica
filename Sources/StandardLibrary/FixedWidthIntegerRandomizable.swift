@@ -23,7 +23,11 @@
 
 // MARK: - FixedWidthIntegerRandomizable
 
-import Darwin
+#if os(Linux)
+  import Glibc
+#else
+  import Darwin
+#endif
 
 /// **Mechanica**
 ///
