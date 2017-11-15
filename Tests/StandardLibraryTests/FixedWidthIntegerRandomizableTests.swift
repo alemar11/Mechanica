@@ -45,7 +45,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
     XCTAssertTrue(Int.random(lowerBound: 1, upperBound: 100) <= 100)
     XCTAssertTrue(Int.min...Int.max ~= Int.random())
-    //XCTAssertTrue(Int32.min...Int32.max ~= Int32.random())
+    XCTAssertTrue(Int32.min...Int32.max ~= Int32.random())
     XCTAssertFalse(Int.random(lowerBound: 50, upperBound: 100) > 100)
     XCTAssertFalse(Int.random(lowerBound: 40, upperBound: 50) < 40)
 
