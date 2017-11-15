@@ -256,8 +256,6 @@ extension Int8 {
   public static func random(lowerBound: Int8, upperBound: Int8) -> Int8 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
-
-    let r: UInt32
     
     let r = mechanica_arc4random_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
     return Int8(Int32(r) + Int32(lowerBound))
