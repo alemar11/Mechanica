@@ -60,3 +60,13 @@ let package = Package(
 
   ]
 )
+
+#if os(Linux)
+
+package.targets = [
+  .library(name: "Mechanica", targets: ["Mechanica"])
+  .target(name: "Mechanica", path: "Sources/SwiftStandardLibrary"),
+  .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"], path: "Tests/SQLiteTests")
+]
+  
+#endif

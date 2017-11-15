@@ -462,6 +462,7 @@
 		23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NSPredicateUtilsTests.swift; sourceTree = "<group>"; };
 		23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSPredicate+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
+		23EF01061FBCDCE7002B0FDD /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = Tests/LinuxMain.swift; sourceTree = SOURCE_ROOT; };
 		23F6A1621EC8DBD400D20502 /* FoundationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FoundationUtils.swift; sourceTree = "<group>"; };
 		23F6A1671EC8DF6500D20502 /* FoundationUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FoundationUtilsTests.swift; sourceTree = "<group>"; };
 		D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "FloatingPoint+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -735,6 +736,7 @@
 		23D922981EFA670900629E17 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				23EF01061FBCDCE7002B0FDD /* LinuxMain.swift */,
 				237EF6901FA4B23000B54A7A /* Package.swift */,
 				12B536ED1D33ED6A005C52A7 /* Mechanica.h */,
 				23280BE21F28C492008B6196 /* IDETemplateMacros.plist */,
