@@ -1,5 +1,10 @@
 # Changelog
 
+
+### 1.x.x
+- Better separation between Standard Library and Foundation utils.
+- Bugfixes.
+
 ### 1.1.0
 
 - More UIKit utils.
