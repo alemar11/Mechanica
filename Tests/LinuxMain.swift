@@ -1,6 +1,6 @@
 import XCTest
-@testable import SQLiteTests
+@testable import StandardLibraryTests
 
 XCTMain([
-  testCase([
-    ])])
+  testCase([])
+  ])
