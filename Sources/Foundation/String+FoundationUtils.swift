@@ -153,6 +153,7 @@ extension String {
   }
 
   #if !os(Linux)
+  // BUG: https://bugs.swift.org/browse/SR-5627
   
   /// **Mechanica**
   ///
@@ -297,6 +298,7 @@ extension String {
   }
 
   #if !os(Linux)
+  // BUG: https://bugs.swift.org/browse/SR-5627
   
   /// **Mechanica**
   ///
@@ -476,6 +478,7 @@ extension String {
   }
 
   #if !os(Linux)
+  // BUG: https://bugs.swift.org/browse/SR-5627
   
   /// **Mechanica**
   ///
