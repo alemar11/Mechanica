@@ -65,7 +65,7 @@ let package = Package(
 
 package.targets = [
   .target(name: "Mechanica", path: "Sources/SwiftStandardLibrary"),
-  .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"], path: "Tests/StandardLibraryTests")
+  .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"])
 ]
   
 #endif
