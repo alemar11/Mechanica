@@ -267,6 +267,8 @@ extension String {
     return String(self[startIndex...])
   }
 
+  #if !os(Linux)
+  
   /// **Mechanica**
   ///
   ///  Returns a new `String` removing the spcified prefix (if the string has it).
@@ -277,10 +279,12 @@ extension String {
   ///
   ///  - parameter prefix: prefix to be removed.
   public func removingPrefix(_ prefix: String) -> String {
-    guard self.hasPrefix(prefix) else { return self }
+    guard hasPrefix(prefix) else { return self }
 
     return removingPrefix(upToPosition: prefix.length)
   }
+  
+  #endif
 
   /// **Mechanica**
   ///
@@ -299,6 +303,8 @@ extension String {
     return String(self[..<startIndex])
   }
 
+  #if !os(Linux)
+  
   /// **Mechanica**
   ///
   /// Returns a new `String` removing the spcified suffix (if the string has it).
@@ -309,10 +315,12 @@ extension String {
   ///
   ///  - parameter prefix: prefix to be removed.
   public func removingSuffix(_ suffix: String) -> String {
-    guard self.hasSuffix(suffix) else { return self }
+    guard hasSuffix(suffix) else { return self }
 
     return removingSuffix(fromPosition: suffix.length)
   }
+  
+  #endif
 
   /// **Mechanica**
   ///

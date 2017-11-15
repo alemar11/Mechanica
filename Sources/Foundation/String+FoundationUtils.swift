@@ -152,6 +152,8 @@ extension String {
     return result
   }
 
+  #if !os(Linux)
+  
   /// **Mechanica**
   ///
   /// Returns *true* if `self` ends with a given suffix.
@@ -162,6 +164,8 @@ extension String {
 
     return hasSuffix(suffix)
   }
+  
+  #endif
 
   /// **Mechanica**
   ///
@@ -292,6 +296,8 @@ extension String {
     return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
   }
 
+  #if !os(Linux)
+  
   /// **Mechanica**
   ///
   /// Different implementation for `isValidEmail` computed property.
@@ -305,6 +311,8 @@ extension String {
 
     return matches[0].url?.absoluteString == "mailto:\(self)"
   }
+  
+  #endif
 
   /// **Mechanica**
   ///
@@ -467,6 +475,8 @@ extension String {
     return (major, minor, patch)
   }
 
+  #if !os(Linux)
+  
   /// **Mechanica**
   ///
   /// Returns *true* if `self` starts with a given prefix.
@@ -477,6 +487,8 @@ extension String {
 
     return hasPrefix(prefix)
   }
+  
+  #endif
 
   /// **Mechanica**
   ///
