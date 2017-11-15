@@ -34,11 +34,7 @@ public extension ExpressibleByIntegerLiteral {
   ///
   /// Returns a random integer value.
   public static func random() -> Self {
-    #if os(Linux)
-      return _swift_stdlib_arc4random(type: Self.self)
-    #else
       return arc4random(type: Self.self)
-    #endif
   }
 
 }
@@ -46,7 +42,7 @@ public extension ExpressibleByIntegerLiteral {
 private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   var result: T = 0
   #if os(Linux)
-    return _swift_stdlib_arc4random_buf(&result, Int(MemoryLayout<T>.size))
+    return getentropy(&result, Int(MemoryLayout<T>.size))
   #else
     arc4random_buf(&result, Int(MemoryLayout<T>.size))
   #endif
