@@ -277,7 +277,7 @@ extension String {
   ///
   ///  - parameter prefix: prefix to be removed.
   public func removingPrefix(_ prefix: String) -> String {
-    guard hasPrefix(prefix) else { return self }
+    guard self.hasPrefix(prefix) else { return self }
 
     return removingPrefix(upToPosition: prefix.length)
   }
@@ -309,7 +309,7 @@ extension String {
   ///
   ///  - parameter prefix: prefix to be removed.
   public func removingSuffix(_ suffix: String) -> String {
-    guard hasSuffix(suffix) else { return self }
+    guard self.hasSuffix(suffix) else { return self }
 
     return removingSuffix(fromPosition: suffix.length)
   }
