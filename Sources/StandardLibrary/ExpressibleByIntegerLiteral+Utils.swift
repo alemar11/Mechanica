@@ -43,7 +43,7 @@ private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   #if os(Linux)
     result =  random() as! T
   #else
-    arc4random_buf(&result, Int(MemoryLayout<T>.size))
+    arc4random_buf(&result, MemoryLayout<T>.size)
   #endif
 
   return result
