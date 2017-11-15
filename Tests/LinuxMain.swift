@@ -2,5 +2,7 @@ import XCTest
 @testable import StandardLibraryTests
 
 XCTMain([
-  testCase([])
+  testCase([
+    BoolUtilsTests.allTests
+    ])
   ])
