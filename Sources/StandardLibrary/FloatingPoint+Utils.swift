@@ -79,7 +79,11 @@ extension FloatingPoint {
     var divisor: Self = 1
     for _ in 0..<decimalPlaces { divisor *= 10  }
 
-    return Darwin.ceil(self * divisor) / divisor // equals to (self * divisor).rounded(.up) / divisor
+    #if os(Linux)
+      return Glibc.ceil(self * divisor) / divisor
+    #else
+      return Darwin.ceil(self * divisor) / divisor // equals to (self * divisor).rounded(.up) / divisor
+    #endif
   }
 
   /// **Mechanica**
@@ -113,7 +117,11 @@ extension FloatingPoint {
     var divisor: Self = 1
     for _ in 0..<decimalPlaces { divisor *= 10 }
 
-    return Darwin.floor(self * divisor) / divisor // equals to (self * divisor).rounded(.down) / divisor
+    #if os(Linux)
+      return Glibc.floor(self * divisor) / divisor
+    #else
+      return Darwin.floor(self * divisor) / divisor // equals to (self * divisor).rounded(.down) / divisor
+    #endif
   }
 
   /// **Mechanica**
