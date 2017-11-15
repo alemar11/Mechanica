@@ -23,6 +23,12 @@
 
 // MARK: - FixedWidthIntegerRandomizable
 
+#if os(Linux)
+  import Glibc
+#else
+  import Darwin
+#endif
+
 /// **Mechanica**
 ///
 /// FixedWidthInteger random protocol.
