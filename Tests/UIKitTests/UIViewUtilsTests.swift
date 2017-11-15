@@ -37,9 +37,12 @@ class UIWiewUtilsTests: XCTestCase {
   }
 
   func testScreenshot() {
-    let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 50)))
-    view.backgroundColor = .red
-    let screenshot = view.screenshot()
+    let view1 = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 50)))
+    view1.backgroundColor = .red
+    let view2 = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 50, height: 25)))
+    view2.backgroundColor = .green
+    view1.addSubview(view2)
+    let screenshot = view1.screenshot()
     XCTAssertTrue(screenshot.size.width == 100)
     XCTAssertTrue(screenshot.size.height == 50)
     XCTAssertFalse(screenshot.size.width == 50)
