@@ -26,7 +26,13 @@ import XCTest
 
 class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
-  func testRandolowerBoundt() {
+  static var allTests = [
+    ("testRandomlowerBound", testRandomlowerBound),
+    ("testRandomUInt", testRandomUInt),
+    ("testOverflow", testOverflow)
+  ]
+  
+  func testRandomlowerBound() {
 
     /// Int
     XCTAssertTrue(Int.random(lowerBound: 1, upperBound: 1) == 1)
