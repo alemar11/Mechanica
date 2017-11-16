@@ -26,7 +26,7 @@ import XCTest
 
 class OperatorsTests: XCTestCase {
   
-  static var allTests = [("testPercent", testPercent)]
+  static var allTests = [ ("testPercent", testPercent) ]
   
   func testPercent() {
     do {

@@ -12,7 +12,8 @@ XCTMain([
   testCase(OperatorsTests.allTests),
   testCase(OptionalUtilsTests.allTests),
   testCase(RangeReplaceableCollectionUtilsTests.allTests),
-  testCase(SequenceUtilsTests.allTests)
-  
-  
+  testCase(SequenceUtilsTests.allTests),
+  testCase(SignedIntegerTests.allTests),
+  testCase(StringUtilsTests.allTests),
+  testCase(UnsignedIntegerUtilsTests.allTests)
   ])

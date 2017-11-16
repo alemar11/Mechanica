@@ -26,6 +26,20 @@ import XCTest
 
 class StringUtilsTests: XCTestCase {
 
+  static var allTests = [
+    ("testLength", testLength),
+    ("testReverse", testReverse),
+    ("testFirst", testFirst),
+    ("testLast", testLast),
+    ("testTruncate", testTruncate),
+    ("testSubscript", testSubscript),
+    ("testIsHomogeneous", testIsHomogeneous),
+    ("testIsLowercased", testIsLowercased),
+    ("testIsUppercased", testIsUppercased),
+    ("testMultiply", testMultiply),
+    ("testOptionalStringCoalescingOperator", testOptionalStringCoalescingOperator)
+  ]
+  
   func testLength() {
     XCTAssertTrue("".length == 0)
     XCTAssertTrue(" ".length == 1)
