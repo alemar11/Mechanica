@@ -1,24 +1,24 @@
 matrix:
-  env:
-    global:
-    - LC_CTYPE=en_US.UTF-8
-    - LANG=en_US.UTF-8
-    - IOS_FRAMEWORK_SCHEME="Mechanica iOS"
-    - MACOS_FRAMEWORK_SCHEME="Mechanica macOS"
-    - TVOS_FRAMEWORK_SCHEME="Mechanica tvOS"
-    - WATCHOS_FRAMEWORK_SCHEME="Mechanica watchOS"
-    - IOS_SDK=iphonesimulator11.1
-    - MACOS_SDK=macosx10.13
-    - TVOS_SDK=appletvsimulator11.1
-    - WATCHOS_SDK=watchsimulator4.1
-    - XCODE_VERSION=xcode9.1
   include:
+      env:
+        global:
+        - LC_CTYPE=en_US.UTF-8
+        - LANG=en_US.UTF-8
+        - IOS_FRAMEWORK_SCHEME="Mechanica iOS"
+        - MACOS_FRAMEWORK_SCHEME="Mechanica macOS"
+        - TVOS_FRAMEWORK_SCHEME="Mechanica tvOS"
+        - WATCHOS_FRAMEWORK_SCHEME="Mechanica watchOS"
+        - IOS_SDK=iphonesimulator11.1
+        - MACOS_SDK=macosx10.13
+        - TVOS_SDK=appletvsimulator11.1
+        - WATCHOS_SDK=watchsimulator4.1
+        - XCODE_VERSION=xcode9.1
     - os: linux
       dist: trusty
       sudo: required
       language: generic
     - os: osx
-      osx_image: "$XCODE_VERSION"
+      osx_image: xcode9.1
       language: objective-c
       sudo: required
  
