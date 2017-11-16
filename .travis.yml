@@ -66,7 +66,7 @@ script:
     fi
 
   - if [ $SWIFT_PACKAGE == "YES" ]; then
-      swift test      
+      swift test;      
    fi   
 
 after_success:
