@@ -12,11 +12,11 @@ matrix:
     - TVOS_SDK=appletvsimulator11.1
     - WATCHOS_SDK=watchsimulator4.1
     - XCODE_VERSION=xcode9.1
-  # include:
-  #   - os: linux
-  #     dist: trusty
-  #     sudo: required
-  #     language: generic
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      language: generic
     - os: osx
       osx_image: "$XCODE_VERSION"
       language: objective-c
