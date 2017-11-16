@@ -44,7 +44,6 @@ script:
   - xcodebuild -version
   - xcodebuild -showsdks
   - swift --version
-  - swift build
 
   # Build Framework in Debug and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
@@ -66,6 +65,7 @@ script:
     
   # Run `pod lib lint` if specified
   - if [ $POD_LINT == "YES" ]; then
+      swift build;
       pod lib lint;
     fi
 
