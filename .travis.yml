@@ -103,7 +103,7 @@ script:
         pod lib lint;
       fi
 
-  fi
+    fi
 
 after_success:
   - sleep 5      
