@@ -37,7 +37,7 @@ matrix:
       env: 
         - DESTINATION="OS=10.3.1,name=iPhone 7 Plus" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios10"
 
-    #iOS watchOS 3
+    #iOS watchOS 3.2
     - os: osx
       osx_image: xcode9.1
       language: objective-c
@@ -45,7 +45,7 @@ matrix:
       env: 
         - DESTINATION="OS=3.2,name=Apple Watch - 42mm" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="watchos3"
 
-    #tvOS 10
+    #tvOS 10.2
     - os: osx
       osx_image: xcode9.1
       language: objective-c
@@ -77,7 +77,7 @@ matrix:
       env: 
         - DESTINATION="OS=11.1,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="tvos"
 
-    #macOS 10.13
+    #macOS 10.12
     - os: osx
       osx_image: xcode9.1
       language: objective-c
