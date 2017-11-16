@@ -90,7 +90,11 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$RUN_TESTS" == "YES" ]]; then
       echo "Running tests...";
       xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
-      bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG";      
+      bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG";
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
+    else        
+      echo "Nothing to do."
     fi
 
   # # Build Framework in Release and Run Tests if specified
