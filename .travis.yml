@@ -65,7 +65,6 @@ script:
       pod lib lint;
     fi
 
-
   - if [ $SWIFT_PACKAGE == "YES" ]; then
       swift test      
    fi   

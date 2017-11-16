@@ -41,7 +41,9 @@ public extension ExpressibleByIntegerLiteral {
 private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   var result: T = 0
   #if os(Linux)
+    // swiftlint:disable force_cast
     result =  random() as! T
+    // swiftlint:enable force_cast
   #else
     arc4random_buf(&result, MemoryLayout<T>.size)
   #endif
