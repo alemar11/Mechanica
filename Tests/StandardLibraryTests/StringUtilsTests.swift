@@ -47,6 +47,9 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("cafè".length == 4)
     XCTAssertTrue("🇮🇹".length == 1)
     XCTAssertTrue("👍🏻".length == 1) //2
+    print("-----\n\n")
+    print("👍🏻".length)
+    print("-----\n\n")
     XCTAssertTrue("👍🏽".length == 1) //2
     XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
   }
