@@ -10,7 +10,7 @@ env:
     - MACOS_SDK=macosx10.13
     - TVOS_SDK=appletvsimulator11.1
     - WATCHOS_SDK=watchsimulator4.1
-    - RUN_TESTS="YES"
+    - XCODE_RUN_TESTS="YES"
 
 matrix:
   include:
@@ -27,7 +27,7 @@ matrix:
       language: objective-c
       sudo: required
       env: 
-        - DESTINATION="OS=11.1,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios"
+        - DESTINATION="OS=11.1,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios"
 
     #watchOS 4.1
     - os: osx
@@ -35,7 +35,7 @@ matrix:
       language: objective-c
       sudo: required
       env: 
-        - DESTINATION="OS=4.1,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO" POD_LINT="NO" CODECOV_FLAG="watchos"
+        - DESTINATION="OS=4.1,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" POD_LINT="NO" CODECOV_FLAG="watchos"
 
     #tvOS 11.1
     - os: osx
@@ -43,7 +43,7 @@ matrix:
       language: objective-c
       sudo: required
       env: 
-        - DESTINATION="OS=11.1,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="tvos"
+        - DESTINATION="OS=11.1,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="tvos"
 
     #macOS 10.13
     - os: osx
@@ -51,7 +51,7 @@ matrix:
       language: objective-c
       sudo: required
       env: 
-       - DESTINATION="arch=x86_64" SCHEME="$MACOS_FRAMEWORK_SCHEME" SDK="$MACOS_SDK" RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="macos"     
+       - DESTINATION="arch=x86_64" SCHEME="$MACOS_FRAMEWORK_SCHEME" SDK="$MACOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="macos"     
 
 # skip release group defined in Gemfile
 bundler_args: --without release
@@ -87,18 +87,20 @@ script:
   - swift test
 
   # # Build Framework in Debug and Run Tests if specified
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$RUN_TESTS" == "YES" ]]; then
-      echo "Running tests...";
-      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
-      bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG";
-    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
-    else        
-      echo "Nothing to do."
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] then
+
+      if [[ "$XCODE_RUN_TESTS" == "YES" ]]; then
+        echo "Running tests...";
+        xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
+        bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG";
+      else
+        xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
+      fi
+
     fi
 
   # # Build Framework in Release and Run Tests if specified
-  # - if [ $RUN_TESTS == "YES" ]; then
+  # - if [ $XCODE_RUN_TESTS == "YES" ]; then
   #     xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
   #   else
   #     xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
