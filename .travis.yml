@@ -15,6 +15,7 @@ env:
 matrix:
   include:
 
+    #Ubuntu
     - os: linux
       dist: trusty
       sudo: required
@@ -34,11 +35,23 @@ matrix:
       language: objective-c
       sudo: required
       env: 
-        - DESTINATION="OS=4.1,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO" POD_LINT="NO" CODECOV_FLAG="watchos"    
+        - DESTINATION="OS=4.1,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO" POD_LINT="NO" CODECOV_FLAG="watchos"
 
-        # - DESTINATION="OS=4.1,name=Apple Watch - 42mm"      SCHEME="$WATCHOS_FRAMEWORK_SCHEME"  SDK="$WATCHOS_SDK"  RUN_TESTS="NO"    POD_LINT="NO"    CODECOV_FLAG="watchos"   
-    # - DESTINATION="OS=11.1,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME"     SDK="$TVOS_SDK"     RUN_TESTS="YES"   POD_LINT="NO"    CODECOV_FLAG="tvos"      
-    # - DESTINATION="arch=x86_64"                         SCHEME="$MACOS_FRAMEWORK_SCHEME"    SDK="$MACOS_SDK"    RUN_TESTS="YES"   POD_LINT="NO"    CODECOV_FLAG="macos"     
+    #tvOS 11.1
+    - os: osx
+      osx_image: xcode9.1
+      language: objective-c
+      sudo: required
+      env: 
+        - DESTINATION="OS=11.1,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="tvos"
+
+    #macOS 10.13
+    - os: osx
+      osx_image: xcode9.1
+      language: objective-c
+      sudo: required
+      env: 
+       - DESTINATION="arch=x86_64" SCHEME="$MACOS_FRAMEWORK_SCHEME" SDK="$MACOS_SDK" RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="macos"     
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
