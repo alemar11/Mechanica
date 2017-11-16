@@ -25,68 +25,68 @@ import XCTest
 @testable import Mechanica
 
 class FoundationUtilsTests: XCTestCase {
-  
+
   private class Demo {}
-  
+
   class Demo2: CustomStringConvertible, CustomDebugStringConvertible {
     var description: String { return "description-Demo2" }
     var debugDescription: String { return "debugDescription-Demo2" }
   }
-  
+
   private class Demo3: Demo {}
-  
+
   class DemoNSObject: NSObject {}
-  
+
   class DemoNSObject2: NSObject {
     override var description: String { return "description-DemoNSObject2" }
     override var debugDescription: String { return "debugDescription-DemoNSObject2" }
   }
-  
+
   struct DemoStruct {}
-  
+
   struct DemoStruct2: CustomStringConvertible, CustomDebugStringConvertible {
     var description: String { return "description-DemoStruct2" }
     var debugDescription: String { return "debugDescription-DemoStruct2" }
   }
-  
+
   enum DemoEnum {}
-  
+
   enum DemoEnum2: CustomStringConvertible, CustomDebugStringConvertible {
     var description: String { return "description-DemoEnum2" }
     var debugDescription: String { return "debugDescription-DemoEnum2" }
   }
-  
+
   func testTypeName() {
-    
+
     XCTAssertEqual(typeName(of: Demo()), "Demo")
     XCTAssertEqual(typeName(of: Demo.self), "Demo")
-    
+
     XCTAssertEqual(typeName(of: Demo2()), "Demo2")
     XCTAssertEqual(typeName(of: Demo2.self), "Demo2")
-    
+
     XCTAssertEqual(typeName(of: Demo3()), "Demo3")
     XCTAssertEqual(typeName(of: Demo3.self), "Demo3")
-    
+
     XCTAssertEqual(typeName(of: DemoNSObject()), "DemoNSObject")
     XCTAssertEqual(typeName(of: DemoNSObject.self), "DemoNSObject")
-    
+
     XCTAssertEqual(typeName(of: DemoNSObject2()), "DemoNSObject2")
     XCTAssertEqual(typeName(of: DemoNSObject2.self), "DemoNSObject2")
-    
+
     XCTAssertEqual(typeName(of: DemoStruct()), "DemoStruct")
     XCTAssertEqual(typeName(of: DemoStruct.self), "DemoStruct")
-    
+
     XCTAssertEqual(typeName(of: DemoStruct2()), "DemoStruct2")
     XCTAssertEqual(typeName(of: DemoStruct2.self), "DemoStruct2")
-    
+
     XCTAssertEqual(typeName(of: DemoEnum.self), "DemoEnum")
     XCTAssertEqual(typeName(of: DemoEnum2.self), "DemoEnum2")
-    
+
   }
-  
+
   func testAppIdentifier() {
     XCTAssert(appIdentifier == "xctest")
   }
-  
+
 }
 

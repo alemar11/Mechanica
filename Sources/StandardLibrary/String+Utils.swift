@@ -269,7 +269,7 @@ extension String {
 
   #if !os(Linux)
   // BUG: https://bugs.swift.org/browse/SR-5627
-  
+
   /// **Mechanica**
   ///
   ///  Returns a new `String` removing the spcified prefix (if the string has it).
@@ -284,7 +284,7 @@ extension String {
 
     return removingPrefix(upToPosition: prefix.length)
   }
-  
+
   #endif
 
   /// **Mechanica**
@@ -306,7 +306,7 @@ extension String {
 
   #if !os(Linux)
   // BUG: https://bugs.swift.org/browse/SR-5627
-  
+
   /// **Mechanica**
   ///
   /// Returns a new `String` removing the spcified suffix (if the string has it).
@@ -321,7 +321,7 @@ extension String {
 
     return removingSuffix(fromPosition: suffix.length)
   }
-  
+
   #endif
 
   /// **Mechanica**

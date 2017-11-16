@@ -32,7 +32,7 @@ class BinaryIntegerUtilsTests: XCTestCase {
     ("testIsPositive", testIsPositive),
     ("testIsNegative", testIsNegative)
   ]
-  
+
   func testIsEven() {
     XCTAssertTrue(2.isEven)
     XCTAssertTrue((-2).isEven)

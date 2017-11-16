@@ -1132,7 +1132,7 @@ class StringNSStringTests: XCTestCase {
 
   func testSubscript() {
     let string = "∆Test😗🇮🇹"
-    
+
     // NSRange
 
     let nsrange = NSRange(location: 0, length: 1)

@@ -27,7 +27,7 @@ import XCTest
 class BinaryFloatingPointUtilsTests: XCTestCase {
 
   static var allTests = [("testbinaryString", testbinaryString)]
-  
+
   // MARK: - BinaryConvertible
 
   /// http://www.binaryconvert.com/result_signed_int.html?decimal=045049049049

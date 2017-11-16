@@ -5,6 +5,6 @@ XCTMain([
   testCase(BinaryFloatingPointUtilsTests.allTests),
   testCase(BinaryIntegerUtilsTests.allTests),
   testCase(BoolUtilsTests.allTests),
-  
+
   testCase(FixedWidthIntegerIntervalRandomizableTests.allTests)
   ])

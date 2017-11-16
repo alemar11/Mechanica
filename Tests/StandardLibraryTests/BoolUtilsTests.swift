@@ -25,7 +25,7 @@ import XCTest
 @testable import Mechanica
 
 class BoolUtilsTests: XCTestCase {
-  
+
   static var allTests = [
     ("testInt", testInt),
     ("testRandom", testRandom),

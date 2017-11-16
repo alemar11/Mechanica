@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -25,12 +25,12 @@ import XCTest
 @testable import Mechanica
 
 class DataUtilsTests: XCTestCase {
-    
+
   func testBytes() {
     let data = "tinrobots".data(using: .utf8)
     let bytes = data?.bytes
     XCTAssertNotNil(bytes)
     XCTAssertEqual(bytes?.count, 9)
   }
-    
+
 }

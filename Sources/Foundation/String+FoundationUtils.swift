@@ -154,7 +154,7 @@ extension String {
 
   #if !os(Linux)
   // BUG: https://bugs.swift.org/browse/SR-5627
-  
+
   /// **Mechanica**
   ///
   /// Returns *true* if `self` ends with a given suffix.
@@ -165,7 +165,7 @@ extension String {
 
     return hasSuffix(suffix)
   }
-  
+
   #endif
 
   /// **Mechanica**
@@ -299,7 +299,7 @@ extension String {
 
   #if !os(Linux)
   // BUG: https://bugs.swift.org/browse/SR-5627
-  
+
   /// **Mechanica**
   ///
   /// Different implementation for `isValidEmail` computed property.
@@ -313,7 +313,7 @@ extension String {
 
     return matches[0].url?.absoluteString == "mailto:\(self)"
   }
-  
+
   #endif
 
   /// **Mechanica**
@@ -479,7 +479,7 @@ extension String {
 
   #if !os(Linux)
   // BUG: https://bugs.swift.org/browse/SR-5627
-  
+
   /// **Mechanica**
   ///
   /// Returns *true* if `self` starts with a given prefix.
@@ -490,7 +490,7 @@ extension String {
 
     return hasPrefix(prefix)
   }
-  
+
   #endif
 
   /// **Mechanica**

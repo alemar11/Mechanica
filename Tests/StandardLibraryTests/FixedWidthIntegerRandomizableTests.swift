@@ -31,7 +31,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
     //("testRandomUInt", testRandomUInt),
     //("testOverflow", testOverflow)
   ]
-  
+
   func testRandomlowerBound() {
 
     /// Int
