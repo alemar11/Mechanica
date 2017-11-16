@@ -79,7 +79,7 @@ script:
       set -o pipefail;
       xcodebuild -version;
       xcodebuild -showsdks;
-  fi
+    fi
   
   - swift --version
   - swift build
