@@ -87,7 +87,7 @@ script:
   - swift test
 
   # # Build Framework in Debug and Run Tests if specified
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] then
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
 
       if [[ "$XCODE_RUN_TESTS" == "YES" ]]; then
         echo "Running tests...";
