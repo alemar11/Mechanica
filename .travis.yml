@@ -11,6 +11,7 @@ env:
     - TVOS_SDK=appletvsimulator11.1
     - WATCHOS_SDK=watchsimulator4.1
     - XCODE_RUN_TESTS="YES"
+    - POD_LINT="YES"
 
 matrix:
   include:
@@ -90,9 +91,11 @@ bundler_args: --without release
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
+      echo "Installing cocoapods...";
       gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet;
     fi 
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then  
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      echo "Installing swiftlint...";  
       brew install swiftlint;
     fi
 
