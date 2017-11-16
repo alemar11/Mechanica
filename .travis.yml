@@ -76,19 +76,17 @@ install:
 
 script:
   - set -o pipefail
-
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
-      xcodebuild -version;
-      xcodebuild -showsdks;
-    fi
-  
   - swift --version
   - swift build
   - swift test
 
-  # # Build Framework in Debug and Run Tests if specified
+  # Build Framework in Debug and Run Tests if specified
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
 
+      xcodebuild -version;
+      xcodebuild -showsdks;
+
+      # Xcode
       if [[ "$XCODE_RUN_TESTS" == "YES" ]]; then
         echo "Running tests...";
         xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
@@ -97,19 +95,12 @@ script:
         xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
       fi
 
-    fi
+      # CocoaPods
+      if [ $POD_LINT == "YES" ]; then
+        pod lib lint;
+      fi
 
-  # # Build Framework in Release and Run Tests if specified
-  # - if [ $XCODE_RUN_TESTS == "YES" ]; then
-  #     xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
-  #   else
-  #     xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
-  #   fi
-    
-  # # Run `pod lib lint` if specified
-  # - if [ $POD_LINT == "YES" ]; then
-  #     pod lib lint;
-  #   fi
+  fi
 
 after_success:
   - sleep 5      
