@@ -25,11 +25,17 @@ import XCTest
 @testable import Mechanica
 
 class CollectionUtilsTests: XCTestCase {
-
+  
+  static var allTests = [
+    ("testFirstIndex", testFirstIndex),
+    ("testLastIndex", testLastIndex),
+    ("testRandom", testRandom)
+  ]
+  
   func testFirstIndex() {
     // Given
     let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
-
+    
     // When, Then
     let index1 = array.firstIndex(of: 1)
     XCTAssertTrue(index1 == 0)
@@ -40,11 +46,11 @@ class CollectionUtilsTests: XCTestCase {
     let index4 = array.firstIndex(of: 11)
     XCTAssertTrue(index4 == nil)
   }
-
+  
   func testLastIndex() {
     // Given
     let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
-
+    
     // When, Then
     let index1 = array.lastIndex(of: 1)
     XCTAssertTrue(index1 == 2)
@@ -55,7 +61,7 @@ class CollectionUtilsTests: XCTestCase {
     let index4 = array.lastIndex(of: 11)
     XCTAssertTrue(index4 == nil)
   }
-
+  
   func testRandom() {
     do {
       let collection = [1]
@@ -63,7 +69,7 @@ class CollectionUtilsTests: XCTestCase {
         XCTAssertTrue(collection.random() == 1)
       }
     }
-
+    
     do {
       let collection = [1, 2]
       for _ in 1...100 {
@@ -71,12 +77,12 @@ class CollectionUtilsTests: XCTestCase {
         XCTAssertTrue(value == 1 || value == 2)
       }
     }
-
+    
     do {
       let collection = Array(repeating: 3, count: 300)
       XCTAssertTrue(collection.random() == 3)
     }
-
+    
     do {
       let collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
       for _ in 1...100 {
@@ -84,7 +90,7 @@ class CollectionUtilsTests: XCTestCase {
         XCTAssertTrue(collection.contains(value))
       }
     }
-
+    
     do {
       let collection = ["a", "b", "c", "d", "e", "z", "1", "👻"]
       for _ in 1...100 {
@@ -92,30 +98,30 @@ class CollectionUtilsTests: XCTestCase {
         XCTAssertTrue(collection.contains(value))
       }
     }
-
+    
     do {
       let dictionary = [1, 2, 3]
       var foundFirst = false
       var foundSecond = false
       var foundThird = false
-
+      
       repeat {
         let randomElement = dictionary.random()
-
+        
         if randomElement == 1 {
           foundFirst = true
-
+          
         } else if randomElement == 2 {
           foundSecond = true
-
+          
         } else if randomElement == 3 {
           foundThird = true
         }
-
+        
       } while foundFirst == false || foundSecond == false || foundThird == false
     }
   }
-
+  
 }
 
 
