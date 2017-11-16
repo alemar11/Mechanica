@@ -10,5 +10,9 @@ XCTMain([
   testCase(FixedWidthIntegerIntervalRandomizableTests.allTests),
   testCase(FloatingPointUtilsTests.allTests),
   testCase(OperatorsTests.allTests),
-  testCase(OptionalUtilsTests.allTests)
+  testCase(OptionalUtilsTests.allTests),
+  testCase(RangeReplaceableCollectionUtilsTests.allTests),
+  testCase(SequenceUtilsTests.allTests)
+  
+  
   ])
