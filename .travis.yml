@@ -53,6 +53,22 @@ matrix:
       env: 
        - DESTINATION="arch=x86_64" SCHEME="$MACOS_FRAMEWORK_SCHEME" SDK="$MACOS_SDK" RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="macos"     
 
+# skip release group defined in Gemfile
+bundler_args: --without release
+
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
+      gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet;
+    fi 
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then  
+      brew install swiftlint;
+    fi
+
+before_script:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
+      swiftlint --reporter "emoji";
+    fi
+
 install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
       eval "$(curl -sL https://swiftenv.fuller.li/install.sh)";
