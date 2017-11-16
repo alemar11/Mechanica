@@ -99,7 +99,7 @@ script:
       fi
 
       # CocoaPods
-      if [ $POD_LINT == "YES" ]; then
+      if [[ $POD_LINT == "YES" ]]; then
         pod lib lint;
       fi
 
