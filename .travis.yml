@@ -65,14 +65,13 @@ script:
     
   # Run `pod lib lint` if specified
   - if [ $POD_LINT == "YES" ]; then
-      swift build;
       pod lib lint;
     fi
 
-  # - if [ $SWIFT_PACKAGE == "YES" ]; then
-  #     swift build;
-  #     swift test;      
-  #  fi   
+  - if [ $SWIFT_PACKAGE == "YES" ]; then
+      swift build;
+      swift test;      
+   fi   
 
 after_success:
   - sleep 5
