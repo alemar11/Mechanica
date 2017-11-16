@@ -29,7 +29,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
   static var allTests = [
     ("testRandomSignedIntegerWithBounds", testRandomSignedIntegerWithBounds),
     ("testRandomUnsignedIntegerWithBounds", testRandomUnsignedIntegerWithBounds),
-    //("testOverflow", testOverflow)
+    ("testOverflow", testOverflow)
   ]
   
   func testRandomSignedIntegerWithBounds() {
