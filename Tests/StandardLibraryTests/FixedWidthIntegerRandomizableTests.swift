@@ -84,6 +84,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
   }
   
+   #if !os(Linux)
   func testSignedIntegerRandom() {
     /// Int
     XCTAssertTrue(Int.min...Int.max ~= Int.random())
@@ -100,6 +101,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
     /// Int8
     XCTAssertTrue(Int8.min...Int8.max ~= Int8.random())
   }
+  #endif
 
   func testRandomUnsignedIntegerWithBounds() {
 
@@ -133,6 +135,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
   }
   
+   #if !os(Linux)
   func testUnsignedIntegerRandom() {
     /// UInt
     XCTAssertTrue(UInt.min...UInt.max ~= UInt.random())
@@ -149,6 +152,7 @@ class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
     /// UInt8
     XCTAssertTrue(UInt8.min...UInt8.max ~= UInt8.random())
   }
+  #endif
 
   func testOverflow() {
 
