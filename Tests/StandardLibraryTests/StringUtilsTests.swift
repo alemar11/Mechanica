@@ -49,7 +49,6 @@ class StringUtilsTests: XCTestCase {
     
     #if !os(Linux)
     // BUG: https://bugs.swift.org/browse/SR-6076
-      
     XCTAssertTrue("👍🏻".length == 1) //2
     XCTAssertTrue("👍🏽".length == 1) //2
     XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
@@ -115,8 +114,12 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s4.truncate(at: 2) == "a🇮🇹…")
     XCTAssertTrue(s4.truncate(at: 3) == "a🇮🇹b…")
     XCTAssertTrue(s4.truncate(at: 4) == "a🇮🇹bb…")
+    
+    #if !os(Linux)
+    // BUG: https://bugs.swift.org/browse/SR-6076
     XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹…")
     XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹…")
+    #endif
     
     let s5 = "\u{2126}"
     XCTAssertTrue(s5.truncate(at: 0) == "…")
@@ -134,10 +137,14 @@ class StringUtilsTests: XCTestCase {
     
     let s8 = "👍👍🏻👍🏼👍🏾"
     XCTAssertTrue(s8.truncate(at: 1) == "👍…")
+    
+    #if !os(Linux)
+    // BUG: https://bugs.swift.org/browse/SR-6076
     XCTAssertTrue(s8.truncate(at: 2) == "👍👍🏻…")
     XCTAssertTrue(s8.truncate(at: 3) == "👍👍🏻👍🏼…")
     XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍🏼👍🏾")
     XCTAssertTrue(s8.truncate(at: 5) == "👍👍🏻👍🏼👍🏾")
+    #endif
     
     //flags sperated by a ZERO WIDTH SPACE
     let s9 = "🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹"
@@ -161,8 +168,8 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(string[string.length - 1] == "🇮🇹")
     XCTAssertTrue(string[0..<1] == "∆")
     XCTAssertTrue(string[1..<6] == "Test😗")
-    //    XCTAssertNotNil(string["Test"])
-    //    XCTAssertNotNil(string["😗"])
+    XCTAssertNotNil(string["Test"])
+    XCTAssertNotNil(string["😗"])
     
     // MARK: - Range
     
