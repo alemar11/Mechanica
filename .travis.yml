@@ -75,8 +75,9 @@ install:
     fi  
 
 script:
+  - set -o pipefail
+
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
-      set -o pipefail;
       xcodebuild -version;
       xcodebuild -showsdks;
     fi
@@ -86,12 +87,14 @@ script:
   - swift test
 
   # # Build Framework in Debug and Run Tests if specified
-  # - if [ $RUN_TESTS == "YES" ]; then
-  #     xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
-  #     bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG"
-  #   else
-  #     xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
-  #   fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" && $RUN_TESTS == "YES" ]; then
+      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
+      bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG"
+
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
+      xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
+      
+    fi
 
   # # Build Framework in Release and Run Tests if specified
   # - if [ $RUN_TESTS == "YES" ]; then
