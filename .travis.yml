@@ -76,15 +76,18 @@ install:
 
 script:
   - set -o pipefail
+
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
+      xcodebuild -version;
+      xcodebuild -showsdks;
+    fi
+  
   - swift --version
   - swift build
   - swift test
 
   # Build Framework in Debug and Run Tests if specified
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-
-      xcodebuild -version;
-      xcodebuild -showsdks;
 
       # Xcode
       if [[ "$XCODE_RUN_TESTS" == "YES" ]]; then
