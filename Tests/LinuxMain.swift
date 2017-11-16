@@ -7,5 +7,8 @@ XCTMain([
   testCase(BoolUtilsTests.allTests),
   testCase(CollectionUtilsTests.allTests),
   testCase(DictionaryUtilsTests.allTests),
-  testCase(FixedWidthIntegerIntervalRandomizableTests.allTests)
+  testCase(FixedWidthIntegerIntervalRandomizableTests.allTests),
+  testCase(FloatingPointUtilsTests.allTests),
+  testCase(OperatorTests.allTests),
+  testCase(OptionalUtilsTests.allTests)
   ])
