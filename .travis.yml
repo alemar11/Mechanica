@@ -44,6 +44,7 @@ script:
   - xcodebuild -version
   - xcodebuild -showsdks
   - swift --version
+  - swift build
 
   # Build Framework in Debug and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
@@ -55,7 +56,10 @@ script:
 
   # Build Framework in Release and Run Tests if specified
   - if [ $RUN_TESTS == "YES" ]; then
+      # Xcode Tests
       xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
+      # Swift Package Manager Tests
+      swift test; 
     else
       xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
     fi
@@ -65,10 +69,10 @@ script:
       pod lib lint;
     fi
 
-  - if [ $SWIFT_PACKAGE == "YES" ]; then
-      swift build;
-      swift test;      
-   fi   
+  # - if [ $SWIFT_PACKAGE == "YES" ]; then
+  #     swift build;
+  #     swift test;      
+  #  fi   
 
 after_success:
   - sleep 5
