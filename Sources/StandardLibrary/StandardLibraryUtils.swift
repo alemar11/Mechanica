@@ -35,3 +35,12 @@ func mechanica_arc4random_uniform(_ upperBound: UInt32) -> UInt32 {
     return arc4random_uniform(upperBound)
   #endif
 }
+
+func mechanica_arc4random() -> UInt32 {
+  #if os(Linux)
+    return _swift_stdlib_cxx11_mt19937()
+  #else
+    return arc4random()
+  #endif
+}
+

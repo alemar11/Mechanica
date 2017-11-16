@@ -92,9 +92,17 @@ extension UInt64 {
       return UInt64(UInt32.random(lowerBound: UInt32(lowerBound), upperBound: UInt32(upperBound)))
     }
 
+    func random64() -> UInt64 {
+      #if os(Linux)
+        return (UInt64(mechanica_arc4random()) << 32) &+ UInt64(mechanica_arc4random())
+      #else
+        return UInt64.random()
+      #endif
+    }
+    
     var m: UInt64
     let u = upperBound - lowerBound
-    var r = UInt64.random()
+    var r = random64()
 
     if u > UInt64(Int64.max) {
       m = 1 + ~u
@@ -103,7 +111,7 @@ extension UInt64 {
     }
 
     while r < m {
-      r = UInt64.random()
+      r = random64()
     }
 
     return (r % u) + lowerBound

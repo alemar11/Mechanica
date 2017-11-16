@@ -21,11 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(Linux)
-  import Glibc
-#else
-  import Darwin
-#endif
+#if !os(Linux)
+import Darwin
 
 public extension ExpressibleByIntegerLiteral {
 
@@ -40,13 +37,8 @@ public extension ExpressibleByIntegerLiteral {
 
 private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   var result: T = 0
-  #if os(Linux)
-    // swiftlint:disable force_cast
-    result =  random() as! T
-    // swiftlint:enable force_cast
-  #else
-    arc4random_buf(&result, MemoryLayout<T>.size)
-  #endif
-
+  arc4random_buf(&result, MemoryLayout<T>.size)
   return result
 }
+
+#endif
