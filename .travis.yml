@@ -10,7 +10,7 @@ env:
     - MACOS_SDK=macosx10.13
     - TVOS_SDK=appletvsimulator11.1
     - WATCHOS_SDK=watchsimulator4.1
-    - XCODE_VERSION=xcode9.1
+    - RUN_TESTS="YES"
 
 matrix:
   include:
@@ -87,9 +87,15 @@ script:
   - swift test
 
   # # Build Framework in Debug and Run Tests if specified
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$RUN_TESTS" == "YES" ]]; then
+      echo "Running tests...";
       xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
       bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG";
+
+    # elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+    #   echo "Building...";
+    #   xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
+      
     fi
 
   # # Build Framework in Release and Run Tests if specified
