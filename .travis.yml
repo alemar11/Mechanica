@@ -75,5 +75,35 @@ install:
     fi  
 
 script:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
+      set -o pipefail;
+      xcodebuild -version;
+      xcodebuild -showsdks;
+  fi
+  
+  - swift --version
   - swift build
-  - swift test      
+  - swift test
+
+  # # Build Framework in Debug and Run Tests if specified
+  # - if [ $RUN_TESTS == "YES" ]; then
+  #     xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
+  #     bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG"
+  #   else
+  #     xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
+  #   fi
+
+  # # Build Framework in Release and Run Tests if specified
+  # - if [ $RUN_TESTS == "YES" ]; then
+  #     xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
+  #   else
+  #     xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
+  #   fi
+    
+  # # Run `pod lib lint` if specified
+  # - if [ $POD_LINT == "YES" ]; then
+  #     pod lib lint;
+  #   fi
+
+after_success:
+  - sleep 5      
