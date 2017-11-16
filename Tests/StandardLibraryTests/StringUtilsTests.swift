@@ -47,11 +47,15 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("cafè".length == 4)
     XCTAssertTrue("🇮🇹".length == 1)
     XCTAssertTrue("👍🏻".length == 1) //2
-    print("-----\n\n")
-    print("👍🏻".length)
-    print("-----\n\n")
     XCTAssertTrue("👍🏽".length == 1) //2
     XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
+    
+    let jp: Character = "\u{1F1EF}\u{1F1F5}" // Flag of Japan
+    let de: Character = "\u{1F1E9}\u{1F1EA}" // Flag of Germany
+    print("\(jp)".count) // Prints "1", of course
+    print("\(de)".count) // Prints "1", of course
+    print("\(jp)\(de)".count) // Prints "2" on macOS, but prints "1" on Linux
+    print("\(jp)\(de)\(jp)\(de)".count) // Prints "4" on macOS, but prints "1" on Linux
   }
 
   func testReverse() {
