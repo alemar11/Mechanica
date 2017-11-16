@@ -3,7 +3,7 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
-      language: objective-c
+      language: cpp
     - os: osx
       osx_image: xcode9.1
       language: objective-c
