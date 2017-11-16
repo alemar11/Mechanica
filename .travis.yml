@@ -15,13 +15,13 @@ env:
 matrix:
   include:
 
-    #Ubuntu
+    # Ubuntu Trusty 14.04
     - os: linux
       dist: trusty
       sudo: required
       language: generic
 
-    #iOS 10.3.1 (32bit)
+    # iOS 10.3.1 (32bit)
     - os: osx
       osx_image: xcode9.1
       language: objective-c
@@ -29,7 +29,7 @@ matrix:
       env: 
         - DESTINATION="OS=10.3.1,name=iPhone 5" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios10-32bit"
 
-    #iOS 10.3.1
+    # iOS 10.3.1
     - os: osx
       osx_image: xcode9.1
       language: objective-c
@@ -37,7 +37,7 @@ matrix:
       env: 
         - DESTINATION="OS=10.3.1,name=iPhone 7 Plus" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios10"
 
-    #iOS watchOS 3.2
+    # iOS watchOS 3.2
     - os: osx
       osx_image: xcode9.1
       language: objective-c
@@ -45,7 +45,7 @@ matrix:
       env: 
         - DESTINATION="OS=3.2,name=Apple Watch - 42mm" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="watchos3"
 
-    #tvOS 10.2
+    # tvOS 10.2
     - os: osx
       osx_image: xcode9.1
       language: objective-c
@@ -53,7 +53,7 @@ matrix:
       env: 
         - DESTINATION="OS=10.2,name=Apple TV 1080p" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="tvos10"
 
-    #iOS 11.1
+    # iOS 11.1
     - os: osx
       osx_image: xcode9.1
       language: objective-c
@@ -69,7 +69,7 @@ matrix:
       env: 
         - DESTINATION="OS=4.1,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" POD_LINT="NO" CODECOV_FLAG="watchos"
 
-    #tvOS 11.1
+    # tvOS 11.1
     - os: osx
       osx_image: xcode9.1
       language: objective-c
@@ -77,7 +77,7 @@ matrix:
       env: 
         - DESTINATION="OS=11.1,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="tvos"
 
-    #macOS 10.12
+    # macOS 10.12
     - os: osx
       osx_image: xcode9.1
       language: objective-c
