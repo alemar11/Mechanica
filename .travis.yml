@@ -21,6 +21,7 @@ matrix:
       dist: trusty
       sudo: required
       language: generic
+      install: eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
 
     # iOS 10.3.1 (32bit)
     - os: osx
@@ -86,11 +87,6 @@ before_install:
       gem install cocoapods --no-rdoc --no-ri --no-document --quiet;
       brew install swiftlint;
     fi
-
-install:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      eval "$(curl -sL https://swiftenv.fuller.li/install.sh)";
-    fi 
 
 before_script:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then 
