@@ -26,7 +26,6 @@ matrix:
     - os: osx
       osx_image: xcode9.1
       language: objective-c
-      sudo: required
       env: 
         - DESTINATION="OS=10.3.1,name=iPhone 5" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios10-32bit"  
 
@@ -34,7 +33,6 @@ matrix:
     - os: osx
       osx_image: xcode9.1
       language: objective-c
-      sudo: required
       env: 
         - DESTINATION="OS=10.3.1,name=iPhone 7 Plus" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios10"      
 
@@ -42,7 +40,6 @@ matrix:
     - os: osx
       osx_image: xcode9.1
       language: objective-c
-      sudo: required
       env: 
         - DESTINATION="OS=3.2,name=Apple Watch - 42mm" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="watchos3"              
 
@@ -50,7 +47,6 @@ matrix:
     - os: osx
       osx_image: xcode9.1
       language: objective-c
-      sudo: required
       env: 
         - DESTINATION="OS=10.2,name=Apple TV 1080p" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="tvos10" 
 
@@ -58,7 +54,6 @@ matrix:
     - os: osx
       osx_image: xcode9.1
       language: objective-c
-      sudo: required
       env: 
         - DESTINATION="OS=11.1,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios"
 
@@ -66,7 +61,6 @@ matrix:
     - os: osx
       osx_image: xcode9.1
       language: objective-c
-      sudo: required
       env: 
         - DESTINATION="OS=4.1,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" POD_LINT="NO" CODECOV_FLAG="watchos"
 
@@ -74,15 +68,12 @@ matrix:
     - os: osx
       osx_image: xcode9.1
       language: objective-c
-      sudo: required
       env: 
         - DESTINATION="OS=11.1,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="tvos" 
 
     # macOS 10.12
     - os: osx
       osx_image: xcode9.1
-      language: objective-c
-      sudo: required
       env: 
        - DESTINATION="arch=x86_64" SCHEME="$MACOS_FRAMEWORK_SCHEME" SDK="$MACOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="macos"     
         
