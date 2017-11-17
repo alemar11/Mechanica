@@ -145,11 +145,11 @@ script:
       else
         xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
       fi
-    fi
+  fi
 
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$POD_LINT" == "YES" ]]; then 
     echo("pod lint")
   fi
-  
+
 after_success:
   - sleep 5      
