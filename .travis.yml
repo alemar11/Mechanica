@@ -13,6 +13,10 @@ env:
     - XCODE_RUN_TESTS="YES"
     - POD_LINT="YES" #todo: remove?
 
+cache:
+  - bundler
+  - cocoapods
+
 matrix:
   include:
 
