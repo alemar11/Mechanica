@@ -31,6 +31,7 @@ matrix:
         - DESTINATION="OS=10.3.1,name=iPhone 5" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios10-32bit"
       cache:
         - bundler
+        - cocoapods    
 
     # iOS 10.3.1
     - os: osx
@@ -40,7 +41,8 @@ matrix:
       env: 
         - DESTINATION="OS=10.3.1,name=iPhone 7 Plus" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios10"
       cache:
-        - bundler    
+        - bundler
+        - cocoapods        
 
     # iOS watchOS 3.2
     - os: osx
@@ -49,6 +51,9 @@ matrix:
       sudo: required
       env: 
         - DESTINATION="OS=3.2,name=Apple Watch - 42mm" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="watchos3"
+      cache:
+        - bundler
+        - cocoapods                
 
     # tvOS 10.2
     - os: osx
@@ -57,6 +62,9 @@ matrix:
       sudo: required
       env: 
         - DESTINATION="OS=10.2,name=Apple TV 1080p" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="tvos10"
+      cache:
+        - bundler
+        - cocoapods   
 
     # iOS 11.1
     - os: osx
@@ -67,6 +75,7 @@ matrix:
         - DESTINATION="OS=11.1,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="YES" CODECOV_FLAG="ios"
       cache:
         - bundler
+        - cocoapods  
 
     #watchOS 4.1
     - os: osx
@@ -77,6 +86,7 @@ matrix:
         - DESTINATION="OS=4.1,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" POD_LINT="NO" CODECOV_FLAG="watchos"
       cache:
         - bundler
+        - cocoapods  
 
     # tvOS 11.1
     - os: osx
@@ -87,6 +97,7 @@ matrix:
         - DESTINATION="OS=11.1,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="tvos"
       cache:
         - bundler
+        - cocoapods  
 
     # macOS 10.12
     - os: osx
@@ -97,6 +108,7 @@ matrix:
        - DESTINATION="arch=x86_64" SCHEME="$MACOS_FRAMEWORK_SCHEME" SDK="$MACOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="macos"     
       cache:
         - bundler
+        - cocoapods  
         
 # skip release group defined in Gemfile
 bundler_args: --without release
@@ -104,7 +116,6 @@ bundler_args: --without release
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
       gem install cocoapods --no-rdoc --no-ri --no-document --quiet;
-      pod --version;
       brew install swiftlint;
     fi
 
