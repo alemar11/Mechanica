@@ -121,6 +121,7 @@ script:
     fi
 
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      bundle install;
       pod --version;
     fi
 
