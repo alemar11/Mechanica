@@ -147,9 +147,7 @@ script:
       fi
   fi
 
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$POD_LINT" == "YES" ]]; then 
-    echo("pod lint")
-  fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$POD_LINT" == "YES" ]]; then echo("pod lint") fi
 
 after_success:
   - sleep 5      
