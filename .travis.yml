@@ -11,7 +11,7 @@ env:
     - TVOS_SDK=appletvsimulator11.1
     - WATCHOS_SDK=watchsimulator4.1
     - XCODE_RUN_TESTS="YES"
-    - POD_LINT="NO" #todo: remove?
+    - POD_LINT="YES" #todo: remove?
 
 matrix:
   include:
@@ -139,13 +139,13 @@ script:
       else
         xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
       fi
-
+      
       if [[ "$XCODE_RUN_TESTS" == "YES" ]]; then
         xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
       else
         xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO build | xcpretty;
       fi
-  fi
+    fi
 
 after_success:
   - sleep 5      
