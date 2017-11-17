@@ -82,7 +82,6 @@ bundler_args: --without release
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
-      gem install cocoapods --no-rdoc --no-ri --no-document --quiet;
       brew install swiftlint;
     fi
 
@@ -121,7 +120,7 @@ script:
     fi
 
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      bundle install;
+      gem install cocoapods --no-rdoc --no-ri --no-document --quiet;
       pod --version;
     fi
 
