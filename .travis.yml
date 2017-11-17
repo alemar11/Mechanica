@@ -84,7 +84,7 @@ bundler_args: --without release
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      gem uninstall cocoapods -a;
+      gem uninstall cocoapods -ax;
       gem install cocoapods;
       brew install swiftlint;
     fi
