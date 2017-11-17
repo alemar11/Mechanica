@@ -148,7 +148,7 @@ script:
     fi
 
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      pod --version
+      pod --version;
     fi
 
 after_success:
