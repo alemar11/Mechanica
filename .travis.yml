@@ -71,9 +71,10 @@ matrix:
       env: 
         - DESTINATION="OS=11.1,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="tvos" 
 
-    # macOS 10.12
+    # macOS
     - os: osx
       osx_image: xcode9.1
+      language: objective-c
       env: 
        - DESTINATION="arch=x86_64" SCHEME="$MACOS_FRAMEWORK_SCHEME" SDK="$MACOS_SDK" XCODE_RUN_TESTS="YES" POD_LINT="NO" CODECOV_FLAG="macos"     
         
