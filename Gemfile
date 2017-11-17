@@ -1,6 +1,9 @@
 source "https://rubygems.org"
 
-group :release do
-  gem "jazzy"
+group :travis_phase do
   gem 'cocoapods'
+end
+
+group :release_phase do
+  gem 'jazzy'
 end
