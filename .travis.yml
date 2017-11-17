@@ -134,7 +134,6 @@ script:
       xcodebuild -version;
       xcodebuild -showsdks;
 
-      # Debug
       if [[ "$XCODE_RUN_TESTS" == "YES" ]]; then
         xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
         bash <(curl -s https://codecov.io/bash) -J 'Mechanica' -cF "$CODECOV_FLAG";
@@ -142,7 +141,6 @@ script:
         xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty;
       fi
 
-      # Release
       if [[ "$XCODE_RUN_TESTS" == "YES" ]]; then
         xcodebuild -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES build-for-testing test-without-building | xcpretty;
       else
