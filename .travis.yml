@@ -148,7 +148,7 @@ script:
     fi
 
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      echo("test...")
+      pod lib lint;
     fi
 
 after_success:
