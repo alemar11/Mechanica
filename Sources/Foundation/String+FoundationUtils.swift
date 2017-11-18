@@ -664,6 +664,8 @@ extension String {
   
   // MARK: - NSString
   
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  
   /// **Mechanica**
   ///
   /// Returns a new string made by appending to the receiver a given string.
@@ -718,11 +720,13 @@ extension String {
     return (self as NSString).pathExtension
   }
   
+  #endif
+  
   /// **Mechanica**
   ///
   /// Returns a percent-escaped string following RFC 3986 for a query string key or value.
   public var urlEscaped: String? {
-    return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+    return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
   }
   
   // MARK: - Regular Expression
