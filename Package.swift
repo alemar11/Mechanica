@@ -75,20 +75,22 @@ package.targets = [
               exclude: ["AssociatedValueSupportingTests.swift",
                         "NSObjectProtocol+SwizzlingTests.swift",
                         
-//                        "Bundle+Info.swift",
-//                        "Data+Utils.swift",
-//                        "Dictionary+FoundationUtils.swift",
-                        "FileManager+Utils.swift",
-                        "FoundationUtils.swift",
-                        "Locale.swift",
-                        "NSAttributedString+Utils.swift",
-                        "NSMutableAttributedString+Utils.swift",
-                        "NSObjectProtocol+Utils.swift",
-                        "NSPredicate+Utils.swift",
-                        "ProcessInfo+Utils.swift",
-                        "String+FoundationUtils.swift",
-                        "URL+Utils.swift",
-                        "UserDefaults+Utils.swift"
+//                        "BundleInfoTests.swift",
+//                        "DataUtilsTests.swift",
+//                        "DictionaryFoundationUtilsTests.swift",
+                        "FileManagerUtilsTests.swift",
+                        "FoundationUtilsTests.swift",
+                        "LocaleUtilsTests.swift",
+                        "NSAttributedStringUtilsTests.swift",
+                        "NSMutableAttributedStringOperatorsTests.swift",
+                        "NSMutableAttributedStringUtilsTests.swift",
+                        
+                        "NSObjectProtocolUtils.swift",
+                        "NSPredicateOperatorsTests.swift",
+                        "NSPredicateUtilsTests.swift",
+                        "StringFoundationUtilsTests.swift",
+                        "URLUtilsTests.swift",
+                        "UserDefaultsUtilsTests.swift"
     ])
 ]
   
