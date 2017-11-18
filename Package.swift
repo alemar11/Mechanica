@@ -66,8 +66,8 @@ let package = Package(
 package.targets = [
   .target(name: "Mechanica",
           path: "Sources",
-          sources: ["StandardLibrary", "Foundation"],
           excludes: ["AssociatedValueSupporting.swift", "NSObjectProtocol+Swizzling.swift"],
+          sources: ["StandardLibrary", "Foundation"],
   ),
   .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"])
 ]
