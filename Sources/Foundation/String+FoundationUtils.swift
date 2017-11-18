@@ -388,7 +388,7 @@ extension String {
     var randomString: String = ""
     
     for _ in 0..<length {
-      let randomValue = arc4random_uniform(UInt32(base.count))
+      let randomValue = mechanica_arc4random_uniform(UInt32(base.count))
       randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
     }
     
@@ -535,6 +535,13 @@ extension String {
     }
     
     return ""
+  }
+  
+  /// **Mechanica**
+  ///
+  /// Returns a percent-escaped string following RFC 3986 for a query string key or value.
+  public var urlEscaped: String? {
+    return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
   }
   
   // MARK: - Subscript with NSRange
@@ -721,13 +728,6 @@ extension String {
   }
   
   #endif
-  
-  /// **Mechanica**
-  ///
-  /// Returns a percent-escaped string following RFC 3986 for a query string key or value.
-  public var urlEscaped: String? {
-    return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-  }
   
   // MARK: - Regular Expression
   
