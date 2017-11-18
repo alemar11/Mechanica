@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -25,7 +25,7 @@ import XCTest
 @testable import Mechanica
 
 class DictionaryFoundationTests: XCTestCase {
-    
+
   func testInitFromJSON() {
 
     do {
@@ -103,5 +103,14 @@ class DictionaryFoundationTests: XCTestCase {
     }
 
   }
-    
+
+  func testLowercaseAllKeys() {
+    var dictionary = ["Key1":1, "key2":2, "kEY3":3]
+    dictionary.lowercaseAllKeys()
+    dictionary.keys.enumerated().forEach { (arg) in
+      let (_, k) = arg
+      XCTAssertTrue(k.isLowercased)
+    }
+  }
+
 }

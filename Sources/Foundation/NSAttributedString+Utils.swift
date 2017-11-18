@@ -23,9 +23,9 @@
 
 import Foundation
 
-// MARK: - Initializers
-
 extension NSAttributedString {
+
+  // MARK: - Initializers
 
   /// **Mechanica**
   ///
@@ -43,6 +43,38 @@ extension NSAttributedString {
     try? self.init(data: data,
                    options: [.documentType: NSAttributedString.DocumentType.html],
                    documentAttributes: nil)
+  }
+
+  // MARK: - Operators
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left NSAttributedString.
+  static public func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
+    // swiftlint:disable force_cast
+    let a = lhs.mutableCopy() as! NSMutableAttributedString
+    return (a + rhs).copy() as! NSAttributedString
+    // swiftlint:enable force_cast
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSAttributedString appending the right String to the left NSAttributedString.
+  static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
+    // swiftlint:disable force_cast
+    let a = lhs.mutableCopy() as! NSMutableAttributedString
+    return (a + rhs).copy() as! NSAttributedString
+    // swiftlint:enable force_cast
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left String.
+  static public func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
+    let a = NSMutableAttributedString(string: lhs)
+    // swiftlint:disable force_cast
+    return (a + rhs).copy() as! NSAttributedString
+    // swiftlint:enable force_cast
   }
 
 }

@@ -62,9 +62,9 @@ extension Color {
 
 }
 
-// MARK: - sRGBA
-
 extension Color {
+
+  // MARK: - sRGBA
 
   /// **Mechanica**
   ///
@@ -127,9 +127,9 @@ extension Color {
 
 }
 
-// MARK: - Initializers
-
 extension Color {
+
+  // MARK: - Initializers
 
   /// **Mechanica**
   ///
@@ -195,9 +195,9 @@ extension Color {
 
 }
 
-// MARK: - HSBA
-
 extension Color {
+
+  // MARK: - HSBA
 
   /// **Mechanica**
   ///
@@ -223,9 +223,9 @@ extension Color {
 
 }
 
-// MARK: - Editing
-
 extension Color {
+
+  // MARK: - Editing
 
   /// **Mechanica**
   ///

@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -21,18 +21,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-/// **Mechanica**
-///
-/// Returns the type name as `String`.
-public func typeName(of some: Any) -> String {
-  let value = (some is Any.Type) ? "\(some)" : "\(type(of: some))"
+#if os(Linux)
+  import Glibc
+  import SwiftShims
+#else
+  import Darwin
+#endif
 
-  if !value.starts(with: "(") { return value }
-
-  // match a word inside "(" and " in" https://regex101.com/r/eO6eB7/10
-  let pattern = "(?<=\\()[^()]{1,10}(?=\\sin)"
-  //if let result = value.range(of: pattern, options: .regularExpression) { return value[result] }
-  if let result = value.firstRange(matching: pattern) { return String(value[result]) }
-
-  return value
+func mechanica_arc4random_uniform(_ upperBound: UInt32) -> UInt32 {
+  #if os(Linux)
+    return _swift_stdlib_cxx11_mt19937_uniform(upperBound)
+  #else
+    return arc4random_uniform(upperBound)
+  #endif
 }
+
+func mechanica_arc4random() -> UInt32 {
+  #if os(Linux)
+    return _swift_stdlib_cxx11_mt19937()
+  #else
+    return arc4random()
+  #endif
+}
+
