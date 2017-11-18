@@ -25,6 +25,9 @@ import Foundation
 
 extension ProcessInfo {
 
+  #if !os(Linux)
+  // BUG: https://bugs.swift.org/browse/SR-5627
+  
   /// **Mechanica**
   ///
   ///  Returns true if SwiftPackage tests are running.
@@ -32,6 +35,8 @@ extension ProcessInfo {
     let testArguments = processInfo.arguments.filter { $0.ends(with: "xctest")}
     return processInfo.environment["XCTestConfigurationFilePath"] == nil && testArguments.count > 0
   }
+  
+  #endif
 
   /// **Mechanica**
   ///
