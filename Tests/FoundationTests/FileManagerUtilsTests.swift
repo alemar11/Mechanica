@@ -56,7 +56,8 @@ class FileManagerUtilsTests: XCTestCase {
     
     #if os(Linux)
       // Given
-      try FileManager.default.createDirectory(atPath: "/tmp/Mechanica", withIntermediateDirectories: false, attributes: nil)
+      // First check if the folder doesn't exists
+      //try FileManager.default.createDirectory(atPath: "/tmp/Mechanica", withIntermediateDirectories: false, attributes: nil)
       
       // TODO: implement Linux Tests
     #endif
