@@ -1,5 +1,6 @@
 import XCTest
 @testable import StandardLibraryTests
+@testable import FoundationTests
 
 XCTMain([
   testCase(BinaryFloatingPointUtilsTests.allTests),
