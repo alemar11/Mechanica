@@ -64,7 +64,7 @@ let package = Package(
 #if os(Linux)
 
 package.targets = [
-  .target(name: "Mechanica", path: "Sources/StandardLibrary"),
+  .target(name: "Mechanica", path: "Sources", sources: ["StandardLibrary", "Foundation"]),
   .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"])
 ]
   
