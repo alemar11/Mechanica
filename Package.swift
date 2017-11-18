@@ -69,7 +69,8 @@ package.targets = [
           exclude: ["AssociatedValueSupporting.swift", "NSObjectProtocol+Swizzling.swift"],
           sources: ["StandardLibrary", "Foundation"]
   ),
-  .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"])
+  .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
+  .testTarget(name: "FoundationTests", dependencies: ["Mechanica"])
 ]
   
 #endif

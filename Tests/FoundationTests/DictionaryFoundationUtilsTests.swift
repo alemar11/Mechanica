@@ -24,7 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-class DictionaryFoundationTests: XCTestCase {
+class DictionaryFoundationUtilsTests: XCTestCase {
 
   static var allTests = [
     ("testInitFromJSON", testInitFromJSON),
