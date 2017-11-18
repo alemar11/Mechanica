@@ -26,6 +26,13 @@ import XCTest
 
 class BoolUtilsTests: XCTestCase {
 
+  static var allTests = [
+    ("testInt", testInt),
+    ("testRandom", testRandom),
+    ("testToggle", testToggle),
+    ("testBinaryString", testBinaryString)
+  ]
+
   func testInt() {
     XCTAssert(true.int == 1)
     XCTAssert(false.int == 0)
@@ -52,7 +59,7 @@ class BoolUtilsTests: XCTestCase {
 
   // MARK:- BinaryConvertible
 
-  func testbinaryString() {
+  func testBinaryString() {
     XCTAssertEqual(true.binaryString, "1")
     XCTAssertEqual(false.binaryString, "0")
   }

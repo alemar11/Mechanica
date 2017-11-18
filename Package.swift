@@ -60,3 +60,12 @@ let package = Package(
 
   ]
 )
+
+#if os(Linux)
+
+package.targets = [
+  .target(name: "Mechanica", path: "Sources/StandardLibrary"),
+  .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"])
+]
+  
+#endif

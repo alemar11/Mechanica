@@ -26,6 +26,12 @@ import XCTest
 
 class DictionaryUtilsTests: XCTestCase {
 
+  static var allTests = [
+    ("testHasKey", testHasKey),
+    ("testRemoveAll", testRemoveAll),
+    ("testRandom", testRandom)
+  ]
+  
   func testHasKey() {
     do {
       let dictionary: [String:Int] = [:]

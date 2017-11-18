@@ -26,6 +26,16 @@ import XCTest
 
 class SequenceUtilsTests: XCTestCase {
 
+  static var allTests = [
+    ("testHasSome", testHasSome),
+    ("testHasAll", testHasAll),
+    ("testContatinsObjectIdentical", testContatinsObjectIdentical),
+    ("testCount", testCount),
+    ("testGroupedBy", testGroupedBy),
+    ("testFrequencies", testFrequencies),
+    ("testUniqueElements", testUniqueElements)
+  ]
+  
   private struct Demo {
     let value1: String
     let value2: Int

@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if !os(Linux)
 import Darwin
 
 public extension ExpressibleByIntegerLiteral {
@@ -29,14 +30,15 @@ public extension ExpressibleByIntegerLiteral {
   ///
   /// Returns a random integer value.
   public static func random() -> Self {
-    return arc4random(type: Self.self)
+      return arc4random(type: Self.self)
   }
 
 }
 
 private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
   var result: T = 0
-  arc4random_buf(&result, Int(MemoryLayout<T>.size))
-
+  arc4random_buf(&result, MemoryLayout<T>.size)
   return result
 }
+
+#endif

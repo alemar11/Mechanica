@@ -284,6 +284,10 @@
 		23EE9B1A1E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */; };
 		23EE9B1B1E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */; };
 		23EE9B1C1E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */; };
+		23EF01081FBCF98C002B0FDD /* StandardLibraryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF01071FBCF98C002B0FDD /* StandardLibraryUtils.swift */; };
+		23EF01091FBCF98C002B0FDD /* StandardLibraryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF01071FBCF98C002B0FDD /* StandardLibraryUtils.swift */; };
+		23EF010A1FBCF98C002B0FDD /* StandardLibraryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF01071FBCF98C002B0FDD /* StandardLibraryUtils.swift */; };
+		23EF010B1FBCF98C002B0FDD /* StandardLibraryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EF01071FBCF98C002B0FDD /* StandardLibraryUtils.swift */; };
 		23F6A1631EC8DBD400D20502 /* FoundationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F6A1621EC8DBD400D20502 /* FoundationUtils.swift */; };
 		23F6A1641EC8DBD400D20502 /* FoundationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F6A1621EC8DBD400D20502 /* FoundationUtils.swift */; };
 		23F6A1651EC8DBD400D20502 /* FoundationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F6A1621EC8DBD400D20502 /* FoundationUtils.swift */; };
@@ -462,6 +466,8 @@
 		23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NSPredicateUtilsTests.swift; sourceTree = "<group>"; };
 		23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSPredicate+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
+		23EF01061FBCDCE7002B0FDD /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = Tests/LinuxMain.swift; sourceTree = SOURCE_ROOT; };
+		23EF01071FBCF98C002B0FDD /* StandardLibraryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardLibraryUtils.swift; sourceTree = "<group>"; };
 		23F6A1621EC8DBD400D20502 /* FoundationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FoundationUtils.swift; sourceTree = "<group>"; };
 		23F6A1671EC8DF6500D20502 /* FoundationUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FoundationUtilsTests.swift; sourceTree = "<group>"; };
 		D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "FloatingPoint+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -695,6 +701,7 @@
 				23C7967C1FB44E74006766FD /* SignedInteger.swift */,
 				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
 				2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */,
+				23EF01071FBCF98C002B0FDD /* StandardLibraryUtils.swift */,
 			);
 			path = StandardLibrary;
 			sourceTree = "<group>";
@@ -735,6 +742,7 @@
 		23D922981EFA670900629E17 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				23EF01061FBCDCE7002B0FDD /* LinuxMain.swift */,
 				237EF6901FA4B23000B54A7A /* Package.swift */,
 				12B536ED1D33ED6A005C52A7 /* Mechanica.h */,
 				23280BE21F28C492008B6196 /* IDETemplateMacros.plist */,
@@ -1111,6 +1119,7 @@
 				D278BD9A1DEF1061006FAD83 /* Color+Utils.swift in Sources */,
 				D220818D1E07FEB700BE4268 /* URL+Utils.swift in Sources */,
 				23F6A1631EC8DBD400D20502 /* FoundationUtils.swift in Sources */,
+				23EF01081FBCF98C002B0FDD /* StandardLibraryUtils.swift in Sources */,
 				235DCB8B1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
 				231B2EF31F72808900854AA1 /* UIView+Utils.swift in Sources */,
 				23EE2F501F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
@@ -1169,6 +1178,7 @@
 				23C796761FB44920006766FD /* BinaryInteger+Utils.swift in Sources */,
 				2307D06B1F8FA15500FDBA2A /* Locale.swift in Sources */,
 				2302A2CE1F8FFE7A001A92A8 /* Character+Utils.swift in Sources */,
+				23EF01091FBCF98C002B0FDD /* StandardLibraryUtils.swift in Sources */,
 				23839F801E93C70F002D757B /* UserDefaults+Utils.swift in Sources */,
 				23C7967E1FB44E74006766FD /* SignedInteger.swift in Sources */,
 				23949C561E4B974400BD9EC8 /* NSAttributedString+Utils.swift in Sources */,
@@ -1209,6 +1219,7 @@
 				231B2EF51F72808900854AA1 /* UIView+Utils.swift in Sources */,
 				239B92671F274E55009A9433 /* Sequence+Utils.swift in Sources */,
 				D273A59C1DD5FB8B0007796F /* Mechanica.swift in Sources */,
+				23EF010A1FBCF98C002B0FDD /* StandardLibraryUtils.swift in Sources */,
 				23B2ED6F1EC8CDBB006365BD /* NSObjectProtocol+Utils.swift in Sources */,
 				23D779311F66706200724053 /* NSMutableAttributedString+Utils.swift in Sources */,
 				238E5B191FB5C40F00331C85 /* Dictionary+FoundationUtils.swift in Sources */,
@@ -1249,6 +1260,7 @@
 				12B956301D880B3B00F75DD5 /* Optional+Utils.swift in Sources */,
 				23EE2F531F16A3FA0087DE67 /* NSPredicate+Utils.swift in Sources */,
 				12B9563D1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
+				23EF010B1FBCF98C002B0FDD /* StandardLibraryUtils.swift in Sources */,
 				23D779321F66706200724053 /* NSMutableAttributedString+Utils.swift in Sources */,
 				23B2ED701EC8CDBB006365BD /* NSObjectProtocol+Utils.swift in Sources */,
 				23949C581E4B974400BD9EC8 /* NSAttributedString+Utils.swift in Sources */,

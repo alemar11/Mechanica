@@ -55,5 +55,5 @@ extension ProcessInfo {
     return processInfo.environment["APP_SANDBOX_CONTAINER_ID"].hasValue
   }
   #endif
-  
+
 }

@@ -21,42 +21,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import XCTest
-@testable import Mechanica
+#if os(Linux)
+  import Glibc
+  import SwiftShims
+#else
+  import Darwin
+#endif
 
-class OperatorsTests: XCTestCase {
-  
-  static var allTests = [ ("testPercent", testPercent) ]
-  
-  func testPercent() {
-    do {
-      let value1 = 20.0%
-      XCTAssertTrue(value1 == 0.2)
-      
-      let value2 = 11.1%
-      XCTAssertTrue(value2 == 0.111)
-      
-      let value3 = Double(0)%
-      XCTAssertTrue(value3 == 0)
-      
-      let value4 = Double(100)%
-      XCTAssertTrue(value4 == 1)
-    }
-    
-    do {
-      let value1 = Float(20)%
-      XCTAssertTrue(value1 == 0.2)
-      
-      let value2 = Float(11.1)%
-      XCTAssertTrue(value2 == 0.111)
-      
-      let value3 = Float(0)%
-      XCTAssertTrue(value3 == 0)
-      
-      let value4 = Float(100)%
-      XCTAssertTrue(value4 == 1)
-    }
-    
-  }
-  
+func mechanica_arc4random_uniform(_ upperBound: UInt32) -> UInt32 {
+  #if os(Linux)
+    return _swift_stdlib_cxx11_mt19937_uniform(upperBound)
+  #else
+    return arc4random_uniform(upperBound)
+  #endif
 }
+
+func mechanica_arc4random() -> UInt32 {
+  #if os(Linux)
+    return _swift_stdlib_cxx11_mt19937()
+  #else
+    return arc4random()
+  #endif
+}
+
