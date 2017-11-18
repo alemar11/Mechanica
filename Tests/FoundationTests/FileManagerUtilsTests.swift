@@ -26,8 +26,6 @@ import XCTest
 
 extension FileManager {
   
-  static var allTests = [("testDestroyFileOrDirectory", testDestroyFileOrDirectory)]
-
   /// **Mechanica**
   ///
   /// Creates and returns always a `new` directory in Library/Caches in the user's home directory for discardable cache files.
@@ -46,6 +44,8 @@ extension FileManager {
 
 @available(iOS 10, tvOS 10, watchOS 3, macOS 10.12, *)
 class FileManagerUtilsTests: XCTestCase {
+  
+  static var allTests = [("testDestroyFileOrDirectory", testDestroyFileOrDirectory)]
 
   #if !os(Linux)
   

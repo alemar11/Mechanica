@@ -20,5 +20,6 @@ XCTMain([
   
   testCase(BundleInfoTests.allTests),
   testCase(DataUtilsTests.allTests),
-  testCase(DictionaryFoundationUtilsTests.allTests)
+  testCase(DictionaryFoundationUtilsTests.allTests),
+  testCase(FileManagerUtilsTests.allTests)
   ])
