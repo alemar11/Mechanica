@@ -28,6 +28,8 @@ import Foundation
 
 extension FileManager {
 
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  
   /// **Mechanica**
   ///
   /// Cleans all contents in a directory `path`.
@@ -47,13 +49,15 @@ extension FileManager {
       try removeItem(atPath: path)
     }
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns the container directory associated with the specified security application group Identifier.
   public final func containerDirectory(for groupIdentifier: String) -> URL? {
     return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
   }
+  
+  #endif
 
   /// **Mechanica**
   ///
