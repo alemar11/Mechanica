@@ -298,9 +298,11 @@ extension String {
     #if !os(Linux)
       return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
     #else
+      var result: Bool
       emailPattern.withCString {
-        return NSPredicate(format: "SELF MATCHES[c] %@", $0).evaluate(with: self)
+        result = NSPredicate(format: "SELF MATCHES[c] %@", $0).evaluate(with: self)
       }
+      return result
     #endif
   }
   
