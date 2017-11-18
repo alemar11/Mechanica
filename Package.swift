@@ -78,7 +78,7 @@ package.targets = [
 //                        "BundleInfoTests.swift",
 //                        "DataUtilsTests.swift",
 //                        "DictionaryFoundationUtilsTests.swift",
-                        "FileManagerUtilsTests.swift",
+//                        "FileManagerUtilsTests.swift",
                         "FoundationUtilsTests.swift",
                         "LocaleUtilsTests.swift",
                         "NSAttributedStringUtilsTests.swift",
