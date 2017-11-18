@@ -80,6 +80,7 @@ class DictionaryFoundationUtilsTests: XCTestCase {
       XCTAssertTrue(( json == string) || (json == "{\"val\":1,\"foo\":\"bar\"}") )
       let jsonPretty = dictionary!.jsonString(prettify: true)
       XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}") || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}") || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}"))
+      print(jsonPretty)
     }
 
     do {
