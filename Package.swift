@@ -12,13 +12,13 @@ let package = Package(
   targets: [
     // Targets are the basic building blocks of a package. A target can define a module or a test suite.
     // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-
+    
     .target(name: "Mechanica", path: "Sources"),
     .testTarget(name: "FoundationTests", dependencies: ["Mechanica"]),
     .testTarget(name: "SharedTests", dependencies: ["Mechanica"]),
     .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
     .testTarget(name: "UIKitTests", dependencies: ["Mechanica"])
-
+    
     /*
      .target(name: "Mechanica", path: "Sources/StandardLibrary", sources: [
      "BinaryFloatingPoint+Utils.swift",
@@ -39,7 +39,7 @@ let package = Package(
      "String+Utils.swift",
      "Unicode+Utils.swift"
      ]),
-
+     
      .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"], sources: [
      "BinaryFloatingPointUtilsTests.swift",
      "BinaryIntegerUtilsTests.swift",
@@ -57,12 +57,12 @@ let package = Package(
      "UnsignedIntegerUtilsTests.swift"
      ]),
      */
-
+    
   ]
 )
 
 #if os(Linux)
-
+  
 package.targets = [
   .target(name: "Mechanica",
           path: "Sources",
@@ -70,7 +70,26 @@ package.targets = [
           sources: ["StandardLibrary", "Foundation"]
   ),
   .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
-  .testTarget(name: "FoundationTests", dependencies: ["Mechanica"], exclude: ["AssociatedValueSupportingTests.swift", "NSObjectProtocol+SwizzlingTests.swift"])
+  .testTarget(name: "FoundationTests",
+              dependencies: ["Mechanica"],
+              exclude: ["AssociatedValueSupportingTests.swift",
+                        "NSObjectProtocol+SwizzlingTests.swift",
+                        
+//                        "Bundle+Info.swift",
+//                        "Data+Utils.swift",
+//                        "Dictionary+FoundationUtils.swift",
+                        "FileManager+Utils.swift",
+                        "FoundationUtils.swift",
+                        "Locale.swift",
+                        "NSAttributedString+Utils.swift",
+                        "NSMutableAttributedString+Utils.swift",
+                        "NSObjectProtocol+Utils.swift",
+                        "NSPredicate+Utils.swift",
+                        "ProcessInfo+Utils.swift",
+                        "String+FoundationUtils.swift",
+                        "URL+Utils.swift",
+                        "UserDefaults+Utils.swift"
+    ])
 ]
   
 #endif
