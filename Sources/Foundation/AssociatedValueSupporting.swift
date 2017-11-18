@@ -21,6 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+
 import Foundation
 
 // MARK: - AssociatedValueSupporting Protocol
@@ -162,3 +164,5 @@ fileprivate func _removeAllAssociatedValues(forObject object: Any) {
   objc_removeAssociatedObjects(object)
 }
 // swiftlint:enable private_over_fileprivate
+
+#endif
