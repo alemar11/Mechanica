@@ -51,19 +51,20 @@ extension FileManager {
 class FileManagerUtilsTests: XCTestCase {
   
   static var allTests = [("testDestroyFileOrDirectory", testDestroyFileOrDirectory)]
-
-  #if os(Linux)
   
   func testDestroyFileOrDirectory() throws {
+    #if os(Linux)
   // Given
-  let tmp = try FileManager.default.createDirectory(at: URL(string: "Mechanica")!, withIntermediateDirectories: false, attributes: nil)
+  let tmp = try FileManager.default.createDirectory(atPath: "/tmp/Mechanica", withIntermediateDirectories: false, attributes: nil)
   print(tmp)
   
   // TODO: implement Linux Tests
+    
+    #endif
   
   }
   
-  #else
+  #if !os(Linux)
   
   func testClearOrDestroyDirectory() throws {
 
