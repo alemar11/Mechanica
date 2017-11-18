@@ -268,7 +268,7 @@ extension String {
   }
   
   #if !os(Linux)
-  // BUG: https://bugs.swift.org/browse/SR-5627
+  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
   
   /// **Mechanica**
   ///
@@ -305,7 +305,7 @@ extension String {
   }
   
   #if !os(Linux)
-  // BUG: https://bugs.swift.org/browse/SR-5627
+  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
   
   /// **Mechanica**
   ///

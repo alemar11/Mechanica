@@ -67,7 +67,7 @@ extension NSMutableAttributedString {
   }
 
   #if !os(Linux)
-  // BUG UNIMPLEMENTED ON LINUX
+  // Not implemented on Linux
   
   /// **Mechanica**
   ///
