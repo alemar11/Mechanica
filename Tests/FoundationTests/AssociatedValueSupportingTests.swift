@@ -26,6 +26,8 @@ import XCTest
 
 class AssociatedValueSupportingTests: XCTestCase {
 
+  // TODO: enable this test
+  
 //  // MARK:- Associated Objects
 //
 //  func testValueAssociation() {

@@ -26,6 +26,8 @@ import XCTest
 
 class DataUtilsTests: XCTestCase {
 
+  static var allTests = [("testBytes", testBytes)]
+  
   func testBytes() {
     let data = "tinrobots".data(using: .utf8)
     let bytes = data?.bytes

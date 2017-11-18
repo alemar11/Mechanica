@@ -25,6 +25,8 @@ import XCTest
 @testable import Mechanica
 
 class BundleInfoTests: XCTestCase {
+  
+  static var allTests = [("testBundle", testBundle)]
 
   func testBundle() {
     // Given, When

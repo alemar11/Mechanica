@@ -26,6 +26,14 @@ import XCTest
 
 class DictionaryFoundationTests: XCTestCase {
 
+  static var allTests = [
+    ("testInitFromJSON", testInitFromJSON),
+    ("testJSONString", testJSONString),
+    ("testJSONData", testJSONData),
+    ("testLowercaseAllKeys", testLowercaseAllKeys)
+    
+  ]
+  
   func testInitFromJSON() {
 
     do {

@@ -15,5 +15,9 @@ XCTMain([
   testCase(SequenceUtilsTests.allTests),
   testCase(SignedIntegerTests.allTests),
   testCase(StringUtilsTests.allTests),
-  testCase(UnsignedIntegerUtilsTests.allTests)
+  testCase(UnsignedIntegerUtilsTests.allTests),
+  
+  testCase(BundleInfoTests.allTests),
+  testCase(DataUtilsTests.allTests),
+  testCase(DictionaryFoundationUtilsTests.allTests)
   ])
