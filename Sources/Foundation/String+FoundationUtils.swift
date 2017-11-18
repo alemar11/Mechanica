@@ -300,7 +300,7 @@ extension String {
 //    #else
     let args : CVarArg = ""
     //let predicate = emailPattern.withCString { NSPredicate(format: "SELF MATCHES[c] %@", $0) }
-    return NSPredicate(format: "SELF MATCHES[c] %@", [emailPattern]).evaluate(with: self)
+    return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern as CVarArg).evaluate(with: self)
 //    #endif
   }
   
