@@ -44,6 +44,7 @@ class DictionaryFoundationUtilsTests: XCTestCase {
       let expectedDictionary2: Dictionary<String, Any> = ["foo": "bar", "val": Date()]
       XCTAssertTrue(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary)) //fails on linux
       print(NSDictionary(dictionary: dictionary!))
+      print(expectedDictionary)
       XCTAssertFalse(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary2))
     }
 
@@ -78,8 +79,7 @@ class DictionaryFoundationUtilsTests: XCTestCase {
       let json = dictionary!.jsonString()
       XCTAssertTrue(( json == string) || (json == "{\"val\":1,\"foo\":\"bar\"}") )
       let jsonPretty = dictionary!.jsonString(prettify: true)
-      XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}") || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}") || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}")) //fails on linux
-      print(jsonPretty)
+      XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}") || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}") || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}"))
     }
 
     do {
