@@ -295,15 +295,13 @@ extension String {
     let emailPattern = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
     // swiftlint:enable line_length
     
-    #if !os(Linux)
-      return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
-    #else
-      var result: Bool
-      emailPattern.withCString {
-        result = NSPredicate(format: "SELF MATCHES[c] %@", $0).evaluate(with: self)
-      }
-      return result
-    #endif
+//    #if !os(Linux)
+//      return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
+//    #else
+    let args : CVarArg = ""
+    //let predicate = emailPattern.withCString { NSPredicate(format: "SELF MATCHES[c] %@", $0) }
+    return NSPredicate(format: "SELF MATCHES[c] %@", [emailPattern]).evaluate(with: self)
+//    #endif
   }
   
   #if !os(Linux)
