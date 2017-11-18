@@ -151,7 +151,6 @@ class SequenceUtilsTests: XCTestCase {
       // When
       let groupedDictionary = array.grouped(by: { return $0.first! }) //[ "a" : ["aaa", "aab"], "1" : ["1"], "c" : ["ccc", "ccb"] ]
       // Then
-      print(groupedDictionary)
       XCTAssertNotNil(groupedDictionary)
       XCTAssertTrue(groupedDictionary.keys.count == 3)
       XCTAssertNotNil(groupedDictionary["a"])

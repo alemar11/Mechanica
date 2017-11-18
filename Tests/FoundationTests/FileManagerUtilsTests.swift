@@ -26,6 +26,9 @@ import XCTest
 
 extension FileManager {
   
+  #if !os(Linux)
+  // Not implemented on Linux: url(for:in:appropriateFor:create:)
+  
   /// **Mechanica**
   ///
   /// Creates and returns always a `new` directory in Library/Caches in the user's home directory for discardable cache files.
@@ -39,6 +42,8 @@ extension FileManager {
 
     return subdirectoryURL
   }
+  
+  #endif
 
 }
 
@@ -47,7 +52,18 @@ class FileManagerUtilsTests: XCTestCase {
   
   static var allTests = [("testDestroyFileOrDirectory", testDestroyFileOrDirectory)]
 
-  #if !os(Linux)
+  #if os(Linux)
+  
+  func testDestroyFileOrDirectory() throws {
+  // Given
+  let tmp = try FileManager.default.createDirectory(at: URL(string: "/tmp/Mechanica")!, withIntermediateDirectories: true, attributes: nil)
+  print(tmp)
+  
+  // TODO: implement Linux Tests
+  
+  }
+  
+  #else
   
   func testClearOrDestroyDirectory() throws {
 
@@ -114,15 +130,4 @@ class FileManagerUtilsTests: XCTestCase {
   
   #endif
   
-  func testDestroyFileOrDirectory() throws {
-    // Given
-    let subdirectory1 = try FileManager.default.newCachesSubDirectory()
-    let subdirectory2 = try FileManager.default.newCachesSubDirectory()
-    print(subdirectory1)
-    print(subdirectory2)
-    XCTAssertTrue(subdirectory1 != subdirectory2)
-    
-    
-  }
-
 }
