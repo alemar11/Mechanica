@@ -25,6 +25,8 @@ import XCTest
 @testable import Mechanica
 
 extension FileManager {
+  
+  static var allTests = [("testDestroyFileOrDirectory", testDestroyFileOrDirectory)]
 
   /// **Mechanica**
   ///
@@ -45,17 +47,17 @@ extension FileManager {
 @available(iOS 10, tvOS 10, watchOS 3, macOS 10.12, *)
 class FileManagerUtilsTests: XCTestCase {
 
-  func testClearOrDestroyDirectory() {
+  #if !os(Linux)
+  
+  func testClearOrDestroyDirectory() throws {
 
     // Given
-    let subdirectory1 = try? FileManager.default.newCachesSubDirectory()
-    let subdirectory2 = try? FileManager.default.newCachesSubDirectory()
+    let subdirectory1 = try FileManager.default.newCachesSubDirectory()
+    let subdirectory2 = try FileManager.default.newCachesSubDirectory()
 
-    XCTAssertNotNil(subdirectory1)
-    XCTAssertNotNil(subdirectory2)
     XCTAssertTrue(subdirectory1 != subdirectory2)
 
-    let directories = [subdirectory1!, subdirectory2!]
+    let directories = [subdirectory1, subdirectory2]
 
     // When
     directories.enumerated().forEach { arg in
@@ -108,6 +110,19 @@ class FileManagerUtilsTests: XCTestCase {
       }
     }
 
+  }
+  
+  #endif
+  
+  func testDestroyFileOrDirectory() throws {
+    // Given
+    let subdirectory1 = try FileManager.default.newCachesSubDirectory()
+    let subdirectory2 = try FileManager.default.newCachesSubDirectory()
+    print(subdirectory1)
+    print(subdirectory2)
+    XCTAssertTrue(subdirectory1 != subdirectory2)
+    
+    
   }
 
 }

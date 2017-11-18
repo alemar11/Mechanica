@@ -31,7 +31,6 @@ class DictionaryFoundationUtilsTests: XCTestCase {
     ("testJSONString", testJSONString),
     ("testJSONData", testJSONData),
     ("testLowercaseAllKeys", testLowercaseAllKeys)
-    
   ]
   
   func testInitFromJSON() {
