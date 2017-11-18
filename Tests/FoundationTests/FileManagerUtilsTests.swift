@@ -56,7 +56,7 @@ class FileManagerUtilsTests: XCTestCase {
   
   func testDestroyFileOrDirectory() throws {
   // Given
-  let tmp = try FileManager.default.createDirectory(at: URL(string: "/tmp/Mechanica")!, withIntermediateDirectories: true, attributes: nil)
+  let tmp = try FileManager.default.createDirectory(at: URL(string: "/tmp/Mechanica")!, withIntermediateDirectories: false, attributes: nil)
   print(tmp)
   
   // TODO: implement Linux Tests
