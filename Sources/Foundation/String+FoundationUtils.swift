@@ -395,6 +395,8 @@ extension String {
     return randomString
   }
   
+  #if !os(Linux)
+  
   /// **Mechanica**
   ///
   /// Returns a `new` String stripped of all accents and diacritics.
@@ -408,6 +410,8 @@ extension String {
   func removingAccentsOrDiacritics() -> String {
     return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
   }
+  
+  #endif
   
   /// **Mechanica**
   ///
