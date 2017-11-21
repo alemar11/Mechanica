@@ -58,7 +58,8 @@ let package = Package(
      ]),
      */
 
-  ]
+  ],
+    swiftLanguageVersions: [4]
 )
 
 #if os(Linux)
