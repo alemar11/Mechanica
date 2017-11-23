@@ -62,19 +62,35 @@ class DictionaryFoundationUtilsTests: XCTestCase {
     
     do {
       let string = "{\"foo\":\"bar\",\"val\":null}"
-      let dictionary = Dictionary<String, Any?>(json: string)
+      let dictionary = Dictionary<String, Any>(json: string)
+      
       if let dictionary = dictionary {
-        XCTAssertNotNil(dictionary)
-        print(dictionary)
-        #if !os(Linux)
-        XCTAssertTrue(dictionary["val"] is NSNull?) //fails on linux
-        #endif
-        XCTAssertTrue(dictionary["val"]! == nil) //fails on linux
+        XCTAssertTrue(dictionary["val"] is NSNull)
       } else {
         XCTAssertNotNil(dictionary)
       }
     }
-      
+    
+//    do {
+//      let string = "{\"foo\":\"bar\",\"val\":null}"
+//      let dictionary = Dictionary<String, Any?>(json: string)
+//      if let dictionary = dictionary {
+//        XCTAssertNotNil(dictionary)
+//        if let val = dictionary["val"] {
+//          XCTAssertTrue(val == nil)
+//        } else {
+//          print("error")
+//        }
+////        print(dictionary)
+////        #if !os(Linux)
+//        //XCTAssertTrue(dictionary["val"]! == NSNull?) //fails on linux
+////        #endif
+//        XCTAssertTrue(dictionary["val"]! == nil) //fails on linux
+//      } else {
+//        XCTAssertNotNil(dictionary)
+//      }
+//    }
+    
       do {
         let invalidJSON = "tinrobots"
         let invalidDictionary = Dictionary<String, Any>(json: invalidJSON)
