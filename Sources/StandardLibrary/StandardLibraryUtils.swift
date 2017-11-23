@@ -43,4 +43,3 @@ func mechanica_arc4random() -> UInt32 {
     return arc4random()
   #endif
 }
-

@@ -88,7 +88,7 @@ extension UInt64 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
-    guard upperBound > UInt64(UInt32.max ) else {
+    guard upperBound > UInt64(UInt32.max) else {
       return UInt64(UInt32.random(lowerBound: UInt32(lowerBound), upperBound: UInt32(upperBound)))
     }
 
@@ -99,7 +99,7 @@ extension UInt64 {
         return UInt64.random()
       #endif
     }
-    
+
     var m: UInt64
     let u = upperBound - lowerBound
     var r = random64()
