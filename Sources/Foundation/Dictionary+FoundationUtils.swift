@@ -38,7 +38,7 @@ extension Dictionary {
       #if os(Linux)
       for (key, value) in jsonDictionary {
         if (value is NSNull) {
-          jsonDictionary[key] == nil
+          jsonDictionary[key] = nil
         }
       }
       #endif
