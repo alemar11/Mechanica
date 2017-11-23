@@ -25,14 +25,14 @@ import XCTest
 @testable import Mechanica
 
 class BundleInfoTests: XCTestCase {
-  
+
   static var allTests = [("testBundle", testBundle)]
 
   func testBundle() {
     // TODO: add Linux specific tests
-    
+
     #if !os(Linux)
-      
+
     // Given, When
     let bundle = Mechanica.bundle
     // Then
@@ -51,9 +51,9 @@ class BundleInfoTests: XCTestCase {
     } else {
       XCTFail("Missing ProcessInfo details.")
     }
-    
+
     #endif
-    
+
   }
 
 }

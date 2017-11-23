@@ -99,7 +99,7 @@ extension UInt64 {
         return UInt64.random()
       #endif
     }
-    
+
     var m: UInt64
     let u = upperBound - lowerBound
     var r = random64()

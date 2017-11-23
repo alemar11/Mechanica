@@ -49,14 +49,14 @@ extension FileManager {
       try removeItem(atPath: path)
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the container directory associated with the specified security application group Identifier.
   public final func containerDirectory(for groupIdentifier: String) -> URL? {
     return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
   }
-  
+
   #endif
 
   /// **Mechanica**

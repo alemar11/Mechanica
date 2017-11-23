@@ -27,7 +27,7 @@ import XCTest
 class OptionalUtilsTests: XCTestCase {
 
   static var allTests = [("testHasValue", testHasValue)]
-  
+
   func testHasValue(){
     var value: Any?
     XCTAssert(!value.hasValue)

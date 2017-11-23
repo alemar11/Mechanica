@@ -26,7 +26,7 @@ import Foundation
 extension NSAttributedString {
 
   #if !os(Linux)
-  
+
   // MARK: - Initializers
 
   /// **Mechanica**
@@ -46,7 +46,7 @@ extension NSAttributedString {
                    options: [.documentType: NSAttributedString.DocumentType.html],
                    documentAttributes: nil)
   }
-  
+
   #endif
 
   // MARK: - Operators

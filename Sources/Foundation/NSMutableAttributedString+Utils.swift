@@ -68,7 +68,7 @@ extension NSMutableAttributedString {
 
   #if !os(Linux)
   // Not implemented on Linux
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left NSAttributedString.
@@ -76,7 +76,7 @@ extension NSMutableAttributedString {
     let a = NSMutableAttributedString(attributedString: lhs)
     return a + rhs
   }
-  
+
   #endif
 
   /// **Mechanica**

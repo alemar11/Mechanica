@@ -27,7 +27,7 @@ extension ProcessInfo {
 
   #if !os(Linux)
   // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
-  
+
   /// **Mechanica**
   ///
   ///  Returns true if SwiftPackage tests are running.
@@ -35,21 +35,21 @@ extension ProcessInfo {
     let testArguments = processInfo.arguments.filter { $0.ends(with: "xctest")}
     return processInfo.environment["XCTestConfigurationFilePath"] == nil && testArguments.count > 0
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns true if Xcode or SwiftPackage Unit Tests are running.
   public static var isRunningUnitTests: Bool {
     return isRunningXcodeUnitTests || isRunningSwiftPackageTests
   }
-  
+
   /// **Mechanica**
   ///
   ///  Returns true if Xcode Unit Tests are running.
   public static var isRunningXcodeUnitTests: Bool {
     return processInfo.environment["XCTestConfigurationFilePath"].hasValue
   }
-  
+
   #endif
 
   #if os(macOS)
