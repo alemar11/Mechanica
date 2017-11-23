@@ -65,6 +65,7 @@ class DictionaryFoundationUtilsTests: XCTestCase {
       let dictionary = Dictionary<String, Any>(json: string)
       
       if let dictionary = dictionary {
+        print("---------\n\n")
         XCTAssertTrue(dictionary["val"] is NSNull)
         print("---------\n\n")
         print(dictionary["val"])
