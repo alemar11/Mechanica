@@ -42,6 +42,9 @@ class DictionaryFoundationUtilsTests: XCTestCase {
 
       let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
       let expectedDictionary2: Dictionary<String, Any> = ["foo": "bar", "val": Date()]
+      XCTAssertTrue(expectedDictionary["foo"] is String)
+      XCTAssertTrue(expectedDictionary["val"] is Int)
+      XCTAssertTrue(expectedDictionary["foo"] as? String == "bar")
       XCTAssertTrue(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary)) //fails on linux
       debugPrint(NSDictionary(dictionary: dictionary!))
       debugPrint(expectedDictionary)
