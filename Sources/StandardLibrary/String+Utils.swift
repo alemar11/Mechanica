@@ -272,6 +272,9 @@ extension String {
   // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 =======
   // BUG: https://bugs.swift.org/browse/SR-5627
+<<<<<<< HEAD
+>>>>>>> parent of c781fc6... swift lint
+=======
 >>>>>>> parent of c781fc6... swift lint
   
   /// **Mechanica**
@@ -315,8 +318,12 @@ extension String {
 =======
   // BUG: https://bugs.swift.org/browse/SR-5627
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 >>>>>>> develop
+=======
+  
+>>>>>>> parent of c781fc6... swift lint
 =======
   
 >>>>>>> parent of c781fc6... swift lint
