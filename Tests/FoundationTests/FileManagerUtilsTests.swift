@@ -25,60 +25,96 @@ import XCTest
 @testable import Mechanica
 
 extension FileManager {
-
+  
   #if !os(Linux)
   // Not implemented on Linux: url(for:in:appropriateFor:create:)
-
+  
   /// **Mechanica**
   ///
   /// Creates and returns always a `new` directory in Library/Caches in the user's home directory for discardable cache files.
   fileprivate func newCachesSubDirectory(in domain: FileManager.SearchPathDomainMask = .userDomainMask, withName name: String = UUID().uuidString) throws -> URL {
     let cachesDirectoryURL = try self.url(for: .cachesDirectory, in: domain, appropriateFor: nil, create: true)
     let subdirectoryURL = cachesDirectoryURL.appendingPathComponent(name)
-
+    
     if !fileExists(atPath: subdirectoryURL.path) {
       try createDirectory(at: subdirectoryURL, withIntermediateDirectories: false, attributes: nil)
     }
-
+    
     return subdirectoryURL
   }
-
+  
   #endif
-
+  
 }
 
 @available(iOS 10, tvOS 10, watchOS 3, macOS 10.12, *)
 class FileManagerUtilsTests: XCTestCase {
-
+  
   static var allTests = [("testDestroyFileOrDirectory", testDestroyFileOrDirectory)]
-
+  
   func testDestroyFileOrDirectory() throws {
-
-    #if os(Linux)
-      // Given
-      // First check if the folder doesn't exists
-      //try FileManager.default.createDirectory(atPath: "/tmp/Mechanica", withIntermediateDirectories: false, attributes: nil)
-
-      // TODO: implement Linux Tests
-    #endif
-
+    // Given
+    let folderPath = "/tmp/org.tinrobots.Mechanica-\(UUID().uuidString)"
+    if !FileManager.default.fileExists(atPath: folderPath) {
+      try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: false, attributes: nil)
+    }
+    
+    // When
+    let filePath = folderPath + "/" + "TestFile.txt"
+    let directoryPath = folderPath + "/" + "TestDirectory"
+    FileManager.default.createFile(atPath: filePath, contents: Data(), attributes: nil)
+    try FileManager.default.createDirectory(atPath: directoryPath, withIntermediateDirectories: false, attributes: nil)
+    
+    // Then
+    XCTAssertTrue(FileManager.default.fileExists(atPath: folderPath))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: filePath))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: directoryPath))
+    
+    try FileManager.default.destroyFileOrDirectory(atPath: folderPath)
+    XCTAssertFalse(FileManager.default.fileExists(atPath: folderPath))
+    
   }
-
+  
+  func testCleanDirectory() throws {
+    // Given
+    let folderPath = "/tmp/org.tinrobots.Mechanica-\(UUID().uuidString)"
+    if !FileManager.default.fileExists(atPath: folderPath) {
+      try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: false, attributes: nil)
+    }
+    
+    // When
+    let filePath = folderPath + "/" + "TestFile.txt"
+    let directoryPath = folderPath + "/" + "TestDirectory"
+    FileManager.default.createFile(atPath: filePath, contents: Data(), attributes: nil)
+    try FileManager.default.createDirectory(atPath: directoryPath, withIntermediateDirectories: false, attributes: nil)
+    
+    // Then
+    XCTAssertTrue(FileManager.default.fileExists(atPath: folderPath))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: filePath))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: directoryPath))
+    
+    //TODO: test clean
+    
+    /// destroy the test folder
+    try FileManager.default.destroyFileOrDirectory(atPath: folderPath)
+    XCTAssertFalse(FileManager.default.fileExists(atPath: folderPath))
+  }
+  
   #if !os(Linux)
-
-  func testClearOrDestroyDirectory() throws {
-
+  
+  func testCleanOrDestroyDirectory() throws {
+    
     // Given
     let subdirectory1 = try FileManager.default.newCachesSubDirectory()
     let subdirectory2 = try FileManager.default.newCachesSubDirectory()
-
+    
     XCTAssertTrue(subdirectory1 != subdirectory2)
-
+    
     let directories = [subdirectory1, subdirectory2]
-
+    
     // When
     directories.enumerated().forEach { arg in
-
+      
       let (_, directoryURL) = arg
       let containerURL                = directoryURL.appendingPathComponent("org.tinrobots.tests", isDirectory: true)
       let baseURL                     = containerURL.appendingPathComponent("demo", isDirectory: true)                  // org.tinrobots.tests/demo/
@@ -86,49 +122,49 @@ class FileManagerUtilsTests: XCTestCase {
       let fakeBaseDirectoryAsFileyURL = containerURL.appendingPathComponent("fakeDemoFile", isDirectory: false)         // org.tinrobots.tests/fakeDemoFile
       let testDirectoryURL            = baseURL.appendingPathComponent("test", isDirectory: true)                       // org.tinrobots.tests/demo/test/
       let testFileURL                 = testDirectoryURL.appendingPathComponent("file", isDirectory: false)             // org.tinrobots.tests/demo/test/file
-
+      
       // Then
-
+      
       /// creation
       do {
         try FileManager.default.createDirectory(at: testDirectoryURL, withIntermediateDirectories: true, attributes: nil)
         XCTAssertTrue(FileManager.default.fileExists(atPath: containerURL.path))
-
+        
         XCTAssertFalse(FileManager.default.fileExists(atPath: testFileURL.path))
         XCTAssertTrue(FileManager.default.createFile(atPath: testFileURL.path, contents: Data(), attributes: nil))
         XCTAssertTrue(FileManager.default.fileExists(atPath: testFileURL.path))
-
+        
         XCTAssertFalse(FileManager.default.fileExists(atPath: fakeBaseDirectoryAsFileyURL.path))
         XCTAssertTrue(FileManager.default.createFile(atPath: fakeBaseDirectoryAsFileyURL.path, contents: Data(), attributes: nil))
         XCTAssertTrue(FileManager.default.fileExists(atPath: fakeBaseDirectoryAsFileyURL.path))
-
+        
       } catch {
         XCTFail(error.localizedDescription)
         return
       }
-
+      
       /// cleaning
       do {
         try FileManager.default.cleanDirectory(atPath: baseURL.path)
         try FileManager.default.cleanDirectory(atPath: fakeBaseDirectoryURL.path)
         try FileManager.default.cleanDirectory(atPath: fakeBaseDirectoryAsFileyURL.path)
-
+        
         XCTAssertTrue(FileManager.default.fileExists(atPath: baseURL.path), "The directory at path \(baseURL.path) should exists.")
         XCTAssertTrue(try FileManager.default.contentsOfDirectory(atPath: baseURL.path).count == 0, "The directory at path \(baseURL.path) should be empty.")
         XCTAssertTrue(FileManager.default.fileExists(atPath: fakeBaseDirectoryAsFileyURL.path), "The file at path \(fakeBaseDirectoryAsFileyURL.path) should exists.")
         XCTAssertTrue(!FileManager.default.fileExists(atPath: testDirectoryURL.path), "The directory at path \(testDirectoryURL.path) shouldn't exists.")
-
+        
         try FileManager.default.destroyFileOrDirectory(atPath: containerURL.path)
         XCTAssertNotNil(try? FileManager.default.destroyFileOrDirectory(atPath: containerURL.path))
-
+        
       } catch {
         XCTFail(error.localizedDescription)
         return
       }
     }
-
+    
   }
-
+  
   #endif
-
+  
 }

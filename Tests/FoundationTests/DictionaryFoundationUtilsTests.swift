@@ -81,7 +81,7 @@ class DictionaryFoundationUtilsTests: XCTestCase {
         XCTAssertTrue(dictionary["val"] is NSNull?)
         
         #if !os(Linux)
-          XCTAssertTrue(dictionary["val"]! == nil) //fails on linux
+          XCTAssertTrue(dictionary["val"]! == nil)
         #endif
       } else {
         XCTAssertNotNil(dictionary)
