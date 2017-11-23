@@ -25,7 +25,7 @@ import XCTest
 @testable import Mechanica
 
 class StringUtilsTests: XCTestCase {
-  
+
   static var allTests = [
     ("testLength", testLength),
     ("testReverse", testReverse),
@@ -39,14 +39,14 @@ class StringUtilsTests: XCTestCase {
     ("testMultiply", testMultiply),
     ("testOptionalStringCoalescingOperator", testOptionalStringCoalescingOperator)
   ]
-  
+
   func testLength() {
     XCTAssertTrue("".length == 0)
     XCTAssertTrue(" ".length == 1)
     XCTAssertTrue("cafe".length == 4)
     XCTAssertTrue("cafè".length == 4)
     XCTAssertTrue("🇮🇹".length == 1)
-    
+
     #if !os(Linux)
     // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
     XCTAssertTrue("👍🏻".length == 1) //2
@@ -54,7 +54,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
     #endif
   }
-  
+
   func testReverse() {
     var a = "a"
     a.reverse()
@@ -69,19 +69,19 @@ class StringUtilsTests: XCTestCase {
     🤔aa.reverse()
     XCTAssertTrue(🤔aa == "aa🤔")
   }
-  
+
   func testFirst(){
     XCTAssertTrue("Hello".first == "H")
     XCTAssertTrue("∂Hello".first == "∂")
     XCTAssertTrue(" Hello".first == " ")
   }
-  
+
   func testLast(){
     XCTAssertTrue("Hello".last == "o")
     XCTAssertTrue("Hello∂".last == "∂")
     XCTAssertTrue("Hello ".last == " ")
   }
-  
+
   func testTruncate() {
     let s = "Hello World"
     XCTAssertTrue(s.truncate(at: 0) == "…")
@@ -93,12 +93,12 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.truncate(at: 11) == "Hello World")
     XCTAssertTrue(s.truncate(at: 11,withTrailing: nil) == "Hello World")
     XCTAssertTrue(s.truncate(at: 100) == "Hello World")
-    
+
     let s2 = "Hello 🗺"
     XCTAssertTrue(s2.truncate(at: 5) == "Hello…")
     XCTAssertTrue(s2.truncate(at: 6) == "Hello …")
     XCTAssertTrue(s2.truncate(at: 7) == "Hello 🗺")
-    
+
     let s3 = "a😀bb😄😄ccc😄😬😄"
     XCTAssertTrue(s3.truncate(at: 0) == "…")
     XCTAssertTrue(s3.truncate(at: 1) == "a…")
@@ -107,37 +107,37 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s3.truncate(at: 4) == "a😀bb…")
     XCTAssertTrue(s3.truncate(at: 5) == "a😀bb😄…")
     XCTAssertTrue(s3.truncate(at: 6) == "a😀bb😄😄…")
-    
+
     let s4 = "a🇮🇹bb🇮🇹🇮🇹ccc🇮🇹🇮🇹🇮🇹"
     XCTAssertTrue(s4.truncate(at: 0) == "…")
     XCTAssertTrue(s4.truncate(at: 1) == "a…")
     XCTAssertTrue(s4.truncate(at: 2) == "a🇮🇹…")
     XCTAssertTrue(s4.truncate(at: 3) == "a🇮🇹b…")
     XCTAssertTrue(s4.truncate(at: 4) == "a🇮🇹bb…")
-    
+
     #if !os(Linux)
     // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
     XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹…")
     XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹…")
     #endif
-    
+
     let s5 = "\u{2126}"
     XCTAssertTrue(s5.truncate(at: 0) == "…")
     XCTAssertTrue(s5.truncate(at: 4) == "Ω")
     XCTAssertTrue(s5.truncate(at: 100) == "Ω")
-    
+
     let s6 = "cafè"
     XCTAssertTrue(s6.truncate(at: 1) == "c…")
     XCTAssertTrue(s6.truncate(at: 4) == "cafè")
-    
+
     let s7 = "👍👍👍👍" // 4 characters
     XCTAssertTrue(s7.truncate(at: 1) == "👍…")
     XCTAssertTrue(s7.truncate(at: 2) == "👍👍…")
     XCTAssertTrue(s7.truncate(at: 3) == "👍👍👍…")
-    
+
     let s8 = "👍👍🏻👍🏼👍🏾"
     XCTAssertTrue(s8.truncate(at: 1) == "👍…")
-    
+
     #if !os(Linux)
     // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
     XCTAssertTrue(s8.truncate(at: 2) == "👍👍🏻…")
@@ -145,7 +145,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍🏼👍🏾")
     XCTAssertTrue(s8.truncate(at: 5) == "👍👍🏻👍🏼👍🏾")
     #endif
-    
+
     //flags sperated by a ZERO WIDTH SPACE
     let s9 = "🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹"
     XCTAssertTrue(s9.truncate(at: 1) == "🇮🇹…")
@@ -154,10 +154,10 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s9.truncate(at: 4) == "🇮🇹​🇮🇹​…")
     XCTAssertTrue(s9.truncate(at: 5) == "🇮🇹​🇮🇹​🇮🇹")
   }
-  
+
   func testSubscript() {
     let string = "∆Test😗🇮🇹"
-    
+
     XCTAssertTrue(string[0] == "∆")
     XCTAssertTrue(string[1] == "T")
     XCTAssertTrue(string[5] == "😗")
@@ -168,16 +168,16 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(string[string.length - 1] == "🇮🇹")
     XCTAssertTrue(string[0..<1] == "∆")
     XCTAssertTrue(string[1..<6] == "Test😗")
-    
+
     // MARK: - Range
-    
+
     XCTAssertTrue(string[Range(0..<3)] == "∆Te")
     XCTAssertTrue(string[Range(3..<3)] == "")
     XCTAssertTrue(string[Range(3..<6)] == "st😗")
     XCTAssertTrue(string[Range(0..<string.length)] == "∆Test😗🇮🇹")
     XCTAssertNil(string[Range(string.length ..< string.length+1)])
     XCTAssertTrue(string[Range(string.length ..< string.length)] == "")
-    
+
     XCTAssertNil(string[Range(1 ..< 100)])
     XCTAssertNil(string[Range(-1 ..< 1)])
     XCTAssertNil(string[Range(1 ..< string.length+1)])
@@ -185,9 +185,9 @@ class StringUtilsTests: XCTestCase {
     XCTAssertNil(string[Range(-1 ..< string.length)])
     XCTAssertNil(string[Range(-1 ..< 1)])
     XCTAssertNil(string[Range(string.length+10 ..< string.length+10)])
-    
+
   }
-  
+
   func testIsHomogeneous() {
     XCTAssertTrue("~~~".isHomogeneous)
     XCTAssertTrue("aaa".isHomogeneous)
@@ -195,34 +195,34 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("🤓".isHomogeneous)
     XCTAssertTrue("".isHomogeneous)
     XCTAssertTrue(" ".isHomogeneous)
-    
+
     XCTAssertFalse("AAa".isHomogeneous)
     XCTAssertFalse("as".isHomogeneous)
     XCTAssertFalse("aba".isHomogeneous)
     XCTAssertFalse(" ~~~".isHomogeneous)
   }
-  
+
   func testIsLowercased() {
     XCTAssertTrue("123".isLowercased)
     XCTAssertTrue("abcd123".isLowercased)
     XCTAssertTrue("123!?)".isLowercased)
-    
+
     XCTAssertFalse("12A3".isLowercased)
     XCTAssertFalse("abcdE123".isLowercased)
     XCTAssertFalse("123!C?)".isLowercased)
   }
-  
+
   func testIsUppercased() {
     XCTAssertTrue("123".isUppercased)
     XCTAssertTrue("ABC123".isUppercased)
     XCTAssertTrue("ABC...!?".isUppercased)
-    
+
     XCTAssertFalse("abcdE123".isLowercased)
     XCTAssertFalse("123A!?)".isLowercased)
   }
-  
+
   // MARK: - Operators
-  
+
   func testMultiply() {
     XCTAssert("a"*2 == "aa")
     XCTAssert("aA"*2 == "aAaA")
@@ -233,7 +233,7 @@ class StringUtilsTests: XCTestCase {
     XCTAssert(2*"Hello World "+"!" == "Hello World Hello World !")
     XCTAssert(3*"🇮🇹" == "🇮🇹🇮🇹🇮🇹")
   }
-  
+
   func testOptionalStringCoalescingOperator() {
     let someValue: Int? = 10
     let stringValue = "\(someValue ??? "unknown")"
@@ -242,6 +242,6 @@ class StringUtilsTests: XCTestCase {
     let stringValue2 = "\(someValue2 ??? "unknown")"
     XCTAssert(stringValue2 == "unknown")
   }
-  
+
 }
 

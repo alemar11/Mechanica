@@ -57,8 +57,8 @@ let package = Package(
      "UnsignedIntegerUtilsTests.swift"
      ]),
      */
-    
-  ]
+  ],
+    swiftLanguageVersions: [4]
 )
 
 #if os(Linux)
