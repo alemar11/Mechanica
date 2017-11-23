@@ -25,9 +25,14 @@
 // Migrating an App to a Sandbox: https://developer.apple.com/library/content/documentation/Security/Conceptual/AppSandboxDesignGuide/MigratingALegacyApp/MigratingAnAppToASandbox.html
 
 import Foundation
+#if os(Linux)
+  import Glibc
+#else
+  import Darwin
+#endif
 
 extension FileManager {
-
+  
   /// **Mechanica**
   ///
   /// Cleans all contents in a directory `path`.
@@ -36,12 +41,19 @@ extension FileManager {
   /// - Throws:  throws an error in cases of failure.
   public final func cleanDirectory(atPath path: String) throws {
     var isDirectory: ObjCBool = false
-
-    guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
-    guard isDirectory.boolValue == true else { return }
-
+    
+    #if !os(Linux)
+      guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
+      guard isDirectory.boolValue == true else { return }
+    #else
+      guard fileExists(atPath: path) == true else { return }
+      var res: stat = stat()
+      stat(path, &res)
+      guard res.isDirectory == true else { return }
+    #endif
+    
     let contents = try contentsOfDirectory(atPath: path)
-
+    
     for file in contents {
       let path = URL(fileURLWithPath: path).appendingPathComponent(file).path
       try removeItem(atPath: path)
@@ -49,16 +61,16 @@ extension FileManager {
   }
   
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-
+  
   /// **Mechanica**
   ///
   /// Returns the container directory associated with the specified security application group Identifier.
   public final func containerDirectory(for groupIdentifier: String) -> URL? {
     return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
   }
-
+  
   #endif
-
+  
   /// **Mechanica**
   ///
   /// Destroys a file or a directory at a given `path`; throws an error in cases of failure.
@@ -66,8 +78,27 @@ extension FileManager {
   /// - Parameter path: directory or file path.
   public final func destroyFileOrDirectory(atPath path: String) throws {
     guard fileExists(atPath: path) == true else { return }
-
+    
     try removeItem(atPath: path)
   }
+  
+}
 
+fileprivate extension stat {
+  
+  fileprivate var isExecutable: Bool {
+    #if os(Linux)
+      return UInt32(S_IEXEC) == st_mode
+    #else
+      return S_IEXEC == st_mode
+    #endif
+  }
+  
+  fileprivate var isLink: Bool {
+    return S_IFLNK == st_mode
+  }
+  
+  fileprivate var isDirectory: Bool {
+    return S_IFDIR == st_mode || 16877 == st_mode || 16893 == st_mode
+  }
 }
