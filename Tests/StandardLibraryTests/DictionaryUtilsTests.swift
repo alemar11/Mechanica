@@ -31,7 +31,7 @@ class DictionaryUtilsTests: XCTestCase {
     ("testRemoveAll", testRemoveAll),
     ("testRandom", testRandom)
   ]
-
+  
   func testHasKey() {
     do {
       let dictionary: [String:Int] = [:]

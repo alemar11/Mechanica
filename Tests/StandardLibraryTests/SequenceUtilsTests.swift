@@ -35,7 +35,7 @@ class SequenceUtilsTests: XCTestCase {
     ("testFrequencies", testFrequencies),
     ("testUniqueElements", testUniqueElements)
   ]
-
+  
   private struct Demo {
     let value1: String
     let value2: Int

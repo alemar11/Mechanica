@@ -25,11 +25,11 @@ import XCTest
 @testable import Mechanica
 
 class SignedIntegerTests: XCTestCase {
-
+  
   static var allTests = [ ("testBinaryString", testBinaryString) ]
-
+  
   // MARK: - BinaryConvertible
-
+  
   /// http://www.binaryconvert.com/result_signed_int.html?decimal=045049049049
   func testBinaryString() {
     XCTAssertEqual(Int8(10).binaryString, "00001010")
@@ -39,7 +39,7 @@ class SignedIntegerTests: XCTestCase {
     XCTAssertEqual(Int8(-127).binaryString, "10000001")
     XCTAssertEqual(Int16(-1).binaryString, "1111111111111111")
     XCTAssertEqual(Int32(-111).binaryString,"11111111111111111111111110010001")
-
+    
     #if (arch(x86_64) || arch(arm64))
       // For 64-bit systems
       XCTAssertEqual((-3).binaryString, "1111111111111111111111111111111111111111111111111111111111111101")
@@ -58,7 +58,7 @@ class SignedIntegerTests: XCTestCase {
       XCTAssertEqual(Int.max.binaryString,"01111111111111111111111111111111")
     #endif
   }
-
+  
 }
 
 
