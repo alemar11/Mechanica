@@ -67,7 +67,7 @@ class DictionaryFoundationUtilsTests: XCTestCase {
       if let dictionary = dictionary {
         XCTAssertTrue(dictionary["val"] is NSNull)
         print("---------\n\n")
-        print(dictionary["val"]!)
+        print(dictionary["val"])
       } else {
         XCTAssertNotNil(dictionary)
       }
