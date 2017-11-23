@@ -29,6 +29,7 @@ import Foundation
 extension FileManager {
 
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  
   // TODO: linux compatibility
   /// **Mechanica**
   ///
