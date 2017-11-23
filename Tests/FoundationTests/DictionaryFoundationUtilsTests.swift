@@ -61,107 +61,101 @@ class DictionaryFoundationUtilsTests: XCTestCase {
     }
     
     do {
+      /// NSJSONSerialization uses NSNull objects.
       let string = "{\"foo\":\"bar\",\"val\":null}"
       let dictionary = Dictionary<String, Any>(json: string)
       
       if let dictionary = dictionary {
-        print("---------\n\n")
         XCTAssertTrue(dictionary["val"] is NSNull)
-        print("---------\n\n")
-
       } else {
         XCTAssertNotNil(dictionary)
       }
     }
     
-//    do {
-//      let string = "{\"foo\":\"bar\",\"val\":null}"
-//      let dictionary = Dictionary<String, Any?>(json: string)
-//      if let dictionary = dictionary {
-//        XCTAssertNotNil(dictionary)
-//        if let val = dictionary["val"] {
-//          XCTAssertTrue(val == nil)
-//        } else {
-//          print("error")
-//        }
-////        print(dictionary)
-////        #if !os(Linux)
-//        //XCTAssertTrue(dictionary["val"]! == NSNull?) //fails on linux
-////        #endif
-//        XCTAssertTrue(dictionary["val"]! == nil) //fails on linux
-//      } else {
-//        XCTAssertNotNil(dictionary)
-//      }
-//    }
-    
-      do {
-        let invalidJSON = "tinrobots"
-        let invalidDictionary = Dictionary<String, Any>(json: invalidJSON)
-        XCTAssertNil(invalidDictionary)
-      }
+    do {
+      /// NSJSONSerialization uses NSNull objects
+      let string = "{\"foo\":\"bar\",\"val\":null}"
+      let dictionary = Dictionary<String, Any?>(json: string)
       
-      do {
-        let invalidJSON = "{\"foo\", \"bar\"}"
-        let invalidDictionary = Dictionary<String, Any>(json: invalidJSON)
-        XCTAssertNil(invalidDictionary)
-      }
-      
-    }
-    
-    func testJSONString() {
-      
-      do {
-        let string = "{\"foo\":\"bar\",\"val\":1}"
-        let dictionary = Dictionary<String, Any>(json: string)
+      if let dictionary = dictionary {
+        XCTAssertTrue(dictionary["val"] is NSNull?)
+        
+        #if !os(Linux)
+          XCTAssertTrue(dictionary["val"]! == nil) //fails on linux
+        #endif
+      } else {
         XCTAssertNotNil(dictionary)
-        let json = dictionary!.jsonString()
-        XCTAssertTrue(( json == string) || (json == "{\"val\":1,\"foo\":\"bar\"}") )
-        let jsonPretty = dictionary!.jsonString(prettify: true)
-        XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}")
-          || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}")
-          || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}")
-          || (jsonPretty == "{\n  \"foo\": \"bar\",\n  \"val\": 1,\n}"))
-      }
-      
-      do {
-        let dictionary2: [String: Any?] = ["key1":"val1", "key2": nil]
-        let jsonString = dictionary2.jsonString()
-        XCTAssertNotNil(jsonString)
-        XCTAssertTrue(jsonString == "{\"key2\":null,\"key1\":\"val1\"}" || jsonString == "{\"key1\":\"val1\",\"key2\":null}")
-      }
-      
-    }
-    
-    func testJSONData() {
-      
-      do {
-        let string = "{\"foo\":\"bar\",\"val\":1}"
-        let dictionary = Dictionary<String, Any>(json: string)
-        XCTAssertNotNil(dictionary)
-        XCTAssertNotNil(dictionary!.jsonData())
-        XCTAssertNotNil(dictionary!.jsonData(prettify: true))
-      }
-      
-      do {
-        let string = "{\"foo\"bar\",\"val\":1}"
-        let dictionary = Dictionary<String, Any>(json: string)
-        XCTAssertNil(dictionary)
-      }
-      
-      do {
-        let dictionary: [String: Any?] = ["key1":"val1", "key2": nil]
-        XCTAssertNotNil(dictionary.jsonData())
-      }
-      
-    }
-    
-    func testLowercaseAllKeys() {
-      var dictionary = ["Key1":1, "key2":2, "kEY3":3]
-      dictionary.lowercaseAllKeys()
-      dictionary.keys.enumerated().forEach { (arg) in
-        let (_, k) = arg
-        XCTAssertTrue(k.isLowercased)
       }
     }
     
+    do {
+      let invalidJSON = "tinrobots"
+      let invalidDictionary = Dictionary<String, Any>(json: invalidJSON)
+      XCTAssertNil(invalidDictionary)
+    }
+    
+    do {
+      let invalidJSON = "{\"foo\", \"bar\"}"
+      let invalidDictionary = Dictionary<String, Any>(json: invalidJSON)
+      XCTAssertNil(invalidDictionary)
+    }
+    
+  }
+  
+  func testJSONString() {
+    
+    do {
+      let string = "{\"foo\":\"bar\",\"val\":1}"
+      let dictionary = Dictionary<String, Any>(json: string)
+      XCTAssertNotNil(dictionary)
+      let json = dictionary!.jsonString()
+      XCTAssertTrue(( json == string) || (json == "{\"val\":1,\"foo\":\"bar\"}") )
+      let jsonPretty = dictionary!.jsonString(prettify: true)
+      XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}")
+        || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}")
+        || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}")
+        || (jsonPretty == "{\n  \"foo\": \"bar\",\n  \"val\": 1,\n}"))
+    }
+    
+    do {
+      let dictionary2: [String: Any?] = ["key1":"val1", "key2": nil]
+      let jsonString = dictionary2.jsonString()
+      XCTAssertNotNil(jsonString)
+      XCTAssertTrue(jsonString == "{\"key2\":null,\"key1\":\"val1\"}" || jsonString == "{\"key1\":\"val1\",\"key2\":null}")
+    }
+    
+  }
+  
+  func testJSONData() {
+    
+    do {
+      let string = "{\"foo\":\"bar\",\"val\":1}"
+      let dictionary = Dictionary<String, Any>(json: string)
+      XCTAssertNotNil(dictionary)
+      XCTAssertNotNil(dictionary!.jsonData())
+      XCTAssertNotNil(dictionary!.jsonData(prettify: true))
+    }
+    
+    do {
+      let string = "{\"foo\"bar\",\"val\":1}"
+      let dictionary = Dictionary<String, Any>(json: string)
+      XCTAssertNil(dictionary)
+    }
+    
+    do {
+      let dictionary: [String: Any?] = ["key1":"val1", "key2": nil]
+      XCTAssertNotNil(dictionary.jsonData())
+    }
+    
+  }
+  
+  func testLowercaseAllKeys() {
+    var dictionary = ["Key1":1, "key2":2, "kEY3":3]
+    dictionary.lowercaseAllKeys()
+    dictionary.keys.enumerated().forEach { (arg) in
+      let (_, k) = arg
+      XCTAssertTrue(k.isLowercased)
+    }
+  }
+  
 }
