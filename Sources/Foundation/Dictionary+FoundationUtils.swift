@@ -35,13 +35,13 @@ extension Dictionary {
       let jsonData = json.data(using: .utf8, allowLossyConversion: true),
       var jsonDictionary = (try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)) as? Dictionary
     {
-      #if os(Linux)
-      for (key, value) in jsonDictionary {
-        if (value is NSNull) {
-          jsonDictionary[key] = nil
-        }
-      }
-      #endif
+//      #if os(Linux)
+//      for (key, value) in jsonDictionary {
+//        if (value is NSNull) {
+//          jsonDictionary[key] = nil
+//        }
+//      }
+//      #endif
       self = jsonDictionary
     } else {
       return nil
