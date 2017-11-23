@@ -52,7 +52,7 @@ class DictionaryFoundationUtilsTests: XCTestCase {
       let string = "{\"foo\":\"bar\",\"val\":null}"
       let dictionary = Dictionary<String, Any?>(json: string)
       XCTAssertNotNil(dictionary)
-      print(dictionary)
+      print(dictionary!)
       XCTAssertTrue(dictionary!["val"]! == nil) //fails on linux
     }
 
