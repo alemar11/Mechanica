@@ -40,18 +40,20 @@ extension FileManager {
   /// - Parameter path: **directory** path (if it's not a directory path, nothing is done).
   /// - Throws:  throws an error in cases of failure.
   public final func cleanDirectory(atPath path: String) throws {
-    var isDirectory: ObjCBool = false
+    
     
     #if !os(Linux)
+      var isDirectory: ObjCBool = false
       guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
       guard isDirectory.boolValue == true else { return }
     #else
+      // these lines works on macOS, iOS, tvOS, watchOS
       guard fileExists(atPath: path) == true else { return }
       var res: stat = stat()
       stat(path, &res)
       guard res.isDirectory == true else { return }
     #endif
-    
+
     let contents = try contentsOfDirectory(atPath: path)
     
     for file in contents {
@@ -86,6 +88,8 @@ extension FileManager {
 
 fileprivate extension stat {
   
+  // https://github.com/nsomar/FileUtils
+  
   fileprivate var isExecutable: Bool {
     #if os(Linux)
       return UInt32(S_IEXEC) == st_mode
@@ -101,4 +105,9 @@ fileprivate extension stat {
   fileprivate var isDirectory: Bool {
     return S_IFDIR == st_mode || 16877 == st_mode || 16893 == st_mode
   }
+  
+  fileprivate var isFile: Bool {
+    return !isExecutable && !isLink && !isDirectory
+  }
+  
 }
