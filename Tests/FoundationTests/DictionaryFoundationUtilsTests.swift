@@ -38,17 +38,23 @@ class DictionaryFoundationUtilsTests: XCTestCase {
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
-      XCTAssertNotNil(dictionary)
+      if let dictionary = dictionary {
+      
 
       let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
       let expectedDictionary2: Dictionary<String, Any> = ["foo": "bar", "val": Date()]
       XCTAssertTrue(expectedDictionary["foo"] is String)
-      XCTAssertTrue(expectedDictionary["val"] is Int)
       XCTAssertTrue(expectedDictionary["foo"] as? String == "bar")
-      XCTAssertTrue(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary)) //fails on linux
-      debugPrint(NSDictionary(dictionary: dictionary!))
+      XCTAssertTrue(expectedDictionary["val"] is Int)
+      XCTAssertTrue(expectedDictionary["val"] as? Int == 1)
+      XCTAssertTrue(NSDictionary(dictionary: dictionary).isEqual(to: expectedDictionary)) //fails on linux
+      debugPrint(NSDictionary(dictionary: dictionary))
       debugPrint(expectedDictionary)
-      XCTAssertFalse(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary2))
+      XCTAssertFalse(NSDictionary(dictionary: dictionary).isEqual(to: expectedDictionary2))
+      } else {
+        XCTAssertNotNil(dictionary)
+      }
+
     }
 
     do {
