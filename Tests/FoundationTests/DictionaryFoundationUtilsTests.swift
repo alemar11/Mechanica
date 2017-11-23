@@ -25,38 +25,42 @@ import XCTest
 @testable import Mechanica
 
 class DictionaryFoundationUtilsTests: XCTestCase {
-
+  
   static var allTests = [
     ("testInitFromJSON", testInitFromJSON),
     ("testJSONString", testJSONString),
     ("testJSONData", testJSONData),
     ("testLowercaseAllKeys", testLowercaseAllKeys)
   ]
-
+  
   func testInitFromJSON() {
-
+    
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
       if let dictionary = dictionary {
-      
-
-      let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
-      let expectedDictionary2: Dictionary<String, Any> = ["foo": "bar", "val": Date()]
-      XCTAssertTrue(expectedDictionary["foo"] is String)
-      XCTAssertTrue(expectedDictionary["foo"] as? String == "bar")
-      XCTAssertTrue(expectedDictionary["val"] is Int)
-      XCTAssertTrue(expectedDictionary["val"] as? Int == 1)
-      XCTAssertTrue(NSDictionary(dictionary: dictionary).isEqual(to: expectedDictionary)) //fails on linux
-      debugPrint(NSDictionary(dictionary: dictionary))
-      debugPrint(expectedDictionary)
-      XCTAssertFalse(NSDictionary(dictionary: dictionary).isEqual(to: expectedDictionary2))
+        
+        XCTAssertTrue(dictionary["foo"] is String)
+        XCTAssertTrue(dictionary["foo"] as? String == "bar")
+        XCTAssertTrue(dictionary["val"] is Int)
+        XCTAssertTrue(dictionary["val"] as? Int == 1)
+        
+        let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
+        let expectedDictionary2: Dictionary<String, Any> = ["foo": "bar", "val": Date()]
+        
+        let expectedNSDictionary = NSMutableDictionary()
+        expectedNSDictionary["foo"] = "bar"
+        expectedNSDictionary["val"] = 1
+        
+        XCTAssertTrue(NSDictionary(dictionary: dictionary).isEqual(to: expectedNSDictionary as! [AnyHashable : Any]))
+        XCTAssertTrue(NSDictionary(dictionary: dictionary).isEqual(to: expectedDictionary)) //fails on linux
+        XCTAssertFalse(NSDictionary(dictionary: dictionary).isEqual(to: expectedDictionary2))
       } else {
         XCTAssertNotNil(dictionary)
       }
-
+      
     }
-
+    
     do {
       let string = "{\"foo\":\"bar\",\"val\":null}"
       let dictionary = Dictionary<String, Any?>(json: string)
@@ -64,23 +68,23 @@ class DictionaryFoundationUtilsTests: XCTestCase {
       print(dictionary!)
       XCTAssertTrue(dictionary!["val"]! == nil) //fails on linux
     }
-
+    
     do {
       let invalidJSON = "tinrobots"
       let invalidDictionary = Dictionary<String, Any>(json: invalidJSON)
       XCTAssertNil(invalidDictionary)
     }
-
+    
     do {
       let invalidJSON = "{\"foo\", \"bar\"}"
       let invalidDictionary = Dictionary<String, Any>(json: invalidJSON)
       XCTAssertNil(invalidDictionary)
     }
-
+    
   }
-
+  
   func testJSONString() {
-
+    
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
@@ -93,18 +97,18 @@ class DictionaryFoundationUtilsTests: XCTestCase {
         || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}")
         || (jsonPretty == "{\n  \"foo\": \"bar\",\n  \"val\": 1,\n}"))
     }
-
+    
     do {
       let dictionary2: [String: Any?] = ["key1":"val1", "key2": nil]
       let jsonString = dictionary2.jsonString()
       XCTAssertNotNil(jsonString)
       XCTAssertTrue(jsonString == "{\"key2\":null,\"key1\":\"val1\"}" || jsonString == "{\"key1\":\"val1\",\"key2\":null}")
     }
-
+    
   }
-
+  
   func testJSONData() {
-
+    
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
@@ -112,20 +116,20 @@ class DictionaryFoundationUtilsTests: XCTestCase {
       XCTAssertNotNil(dictionary!.jsonData())
       XCTAssertNotNil(dictionary!.jsonData(prettify: true))
     }
-
+    
     do {
       let string = "{\"foo\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
       XCTAssertNil(dictionary)
     }
-
+    
     do {
       let dictionary: [String: Any?] = ["key1":"val1", "key2": nil]
       XCTAssertNotNil(dictionary.jsonData())
     }
-
+    
   }
-
+  
   func testLowercaseAllKeys() {
     var dictionary = ["Key1":1, "key2":2, "kEY3":3]
     dictionary.lowercaseAllKeys()
@@ -134,5 +138,5 @@ class DictionaryFoundationUtilsTests: XCTestCase {
       XCTAssertTrue(k.isLowercased)
     }
   }
-
+  
 }
