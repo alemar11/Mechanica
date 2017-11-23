@@ -62,7 +62,7 @@ class FileManagerUtilsTests: XCTestCase {
     // When
     let testFilePath = tmpFolderPath + "/" + "TestFile.txt"
     let testFolderPath = tmpFolderPath + "/" + "TestDirectory"
-    FileManager.default.createFile(atPath: testFilePath, contents: Data(), attributes: nil)
+    XCTAssertTrue(FileManager.default.createFile(atPath: testFilePath, contents: Data(), attributes: nil))
     try FileManager.default.createDirectory(atPath: testFolderPath, withIntermediateDirectories: false, attributes: nil)
     
     // Then
@@ -85,7 +85,7 @@ class FileManagerUtilsTests: XCTestCase {
     // When
     let testFilePath = tmpFolderPath + "/" + "TestFile.txt"
     let testFolderPath = tmpFolderPath + "/" + "TestDirectory"
-    FileManager.default.createFile(atPath: testFilePath, contents: Data(), attributes: nil)
+    XCTAssertTrue(FileManager.default.createFile(atPath: testFilePath, contents: Data(), attributes: nil))
     try FileManager.default.createDirectory(atPath: testFolderPath, withIntermediateDirectories: false, attributes: nil)
     
     // Then
