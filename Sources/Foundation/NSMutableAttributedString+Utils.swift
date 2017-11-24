@@ -30,7 +30,7 @@ extension NSMutableAttributedString {
   //    "mutableCopy(with:) is not yet implemented"
   //    "append is not yet implemented"
   //    NSAttributedStringKey
-  
+
   // MARK: - Attributes
 
   /// **Mechanica**
@@ -46,7 +46,7 @@ extension NSMutableAttributedString {
   public func removingAllAttributes() -> NSMutableAttributedString {
     return NSMutableAttributedString(string: string)
   }
-  
+
   // MARK: - Operators
 
   /// **Mechanica**
@@ -122,8 +122,7 @@ extension NSMutableAttributedString {
   public static func += (lhs: NSMutableAttributedString, rhs: String) {
     lhs.append(NSAttributedString(string: rhs))
   }
-  
-  #endif
-  
-}
 
+  #endif
+
+}

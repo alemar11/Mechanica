@@ -27,7 +27,7 @@ import XCTest
 class NSObjectProtocolUtils: XCTestCase {
 
   static var allTests = [("testClassName", testClassName)]
-  
+
   private class Demo: NSObject {}
 
   func testClassName(){

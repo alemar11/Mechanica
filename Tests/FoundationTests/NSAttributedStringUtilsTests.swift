@@ -25,7 +25,7 @@ import XCTest
 @testable import Mechanica
 
 class NSAttributedStringUtilsTests: XCTestCase {
-  
+
   func testInitHTML(){
     do {
       // Given, When
@@ -38,7 +38,7 @@ class NSAttributedStringUtilsTests: XCTestCase {
       let s = NSAttributedString(html: html)
       // Then
       XCTAssertNotNil(s)
-      
+
       XCTAssertTrue(s!.string == "Hello World")
       guard let font = s!.attribute(NSAttributedStringKey.font, at: 0, effectiveRange: nil) as? Font else {
         XCTAssert(false, "No Avenir-Roman font name found.")
@@ -47,73 +47,73 @@ class NSAttributedStringUtilsTests: XCTestCase {
       XCTAssertTrue(font.familyName == "Avenir")
       XCTAssertTrue(font.fontName == "Avenir-Roman")
       XCTAssertTrue(font.pointSize == 15.00)
-      
+
       guard let color = s!.attribute(NSAttributedStringKey.backgroundColor, at: 0, effectiveRange: nil) as? Color else {
         XCTAssert(false, "No text backgroud-color found.")
         return
       }
       XCTAssertTrue(color.hexString == "#9999ff".uppercased())
-      
+
       guard let _ = s!.attribute(NSAttributedStringKey.paragraphStyle, at: 0, effectiveRange: nil) as? NSParagraphStyle else {
         XCTAssert(false, "No NSParagraphStyle found.")
         return
       }
     }
-    
+
     do {
       let html = "<html 1234 </body>"
       let s = NSAttributedString(html: html)
       XCTAssertNotNil(s)
       XCTAssertTrue(s!.string.isEmpty)
     }
-    
+
   }
-  
+
   func testAddition() {
-    
+
     /// addition between NSAttributedStrings
     do {
       let s1 = NSAttributedString(string: "Hello World")
       let s2 = NSAttributedString(string: "!!")
       let s3 = NSAttributedString(string: "🤖")
-      
+
       let s4 = s1 + s2 + s3 // NSAttributedString + NSAttributedString + NSAttributedString
       XCTAssertTrue(s4.string == "Hello World!!🤖")
       XCTAssertFalse(s4 is NSMutableAttributedString)
     }
-    
+
     /// addition between NSAttributedString and String
     do {
       let s1 = NSAttributedString(string: "Hello World")
       let s2 = "!!"
       let s3 = "🤖"
-      
+
       let s4 = s1 + s2 + s3 // NSAttributedString + String + String
       XCTAssertTrue(s4.string == "Hello World!!🤖")
       XCTAssertFalse(s4 is NSMutableAttributedString)
     }
-    
+
     /// addition between String and NSAttributedString
     do {
       let s1 = "Hello World"
       let s2 = NSAttributedString(string: "!!")
       let s3 = NSAttributedString(string: "🤖")
-      
+
       let s4 = s1 + s2 + s3 // String + NSAttributedString + NSAttributedString
       XCTAssertTrue(s4.string == "Hello World!!🤖")
       XCTAssertFalse(s4 is NSMutableAttributedString)
     }
-    
+
     do {
       let s1 = "Hello World"
       let s2 = NSAttributedString(string: "!!")
-      
+
       let s3 = s1 + s2 // String + NSAttributedString
       XCTAssertTrue(s3.string == "Hello World!!")
       XCTAssertFalse(s3 is NSMutableAttributedString)
     }
-    
+
   }
-  
+
 }
 

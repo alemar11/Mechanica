@@ -24,14 +24,14 @@
 import Foundation
 
 extension NSAttributedString {
-  
+
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // Not implemented on Linux:
   //    "mutableCopy(with:) is not yet implemented"
   //    "append is not yet implemented"
-  
+
   // MARK: - Initializers
-  
+
   /// **Mechanica**
   ///
   /// Initializes and returns a `new` NSAttributedString object from the `html` contained in the given string.
@@ -44,14 +44,14 @@ extension NSAttributedString {
   /// - Warning: Using the HTML importer (NSHTMLTextDocumentType) is only possible on the **main thread**.
   public convenience init?(html: String, allowLossyConversion: Bool = false) {
     guard let data = html.data(using: .utf8, allowLossyConversion: allowLossyConversion) else { return nil }
-    
+
     try? self.init(data: data,
                    options: [.documentType: NSAttributedString.DocumentType.html],
                    documentAttributes: nil)
   }
-  
+
   // MARK: - Operators
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left NSAttributedString.
@@ -61,7 +61,7 @@ extension NSAttributedString {
     return (a + rhs).copy() as! NSAttributedString
     // swiftlint:enable force_cast
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString appending the right String to the left NSAttributedString.
@@ -71,7 +71,7 @@ extension NSAttributedString {
     return (a + rhs).copy() as! NSAttributedString
     // swiftlint:enable force_cast
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left String.
@@ -81,7 +81,7 @@ extension NSAttributedString {
     return (a + rhs).copy() as! NSAttributedString
     // swiftlint:enable force_cast
   }
-  
+
   #endif
-  
+
 }
