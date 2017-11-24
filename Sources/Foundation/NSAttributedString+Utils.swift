@@ -70,6 +70,8 @@ extension NSAttributedString {
     // swiftlint:enable force_cast
   }
 
+  #endif
+
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left String.
@@ -79,7 +81,5 @@ extension NSAttributedString {
     return (a + rhs).copy() as! NSAttributedString
     // swiftlint:enable force_cast
   }
-
-  #endif
 
 }
