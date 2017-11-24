@@ -26,12 +26,9 @@ import XCTest
 
 class FoundationUtilsTests: XCTestCase {
 
-  static var allTests = [
-    ("testTypeName", testTypeName),
-    ("testAppIdentifier", testAppIdentifier)
-  ]
+  static var allTests = [("testTypeName", testTypeName)]
   
-  private class Demo {}
+  internal class Demo {}
 
   class Demo2: CustomStringConvertible, CustomDebugStringConvertible {
     var description: String { return "description-Demo2" }
@@ -39,6 +36,8 @@ class FoundationUtilsTests: XCTestCase {
   }
 
   private class Demo3: Demo {}
+  
+  internal class Demo4: Demo {}
 
   class DemoNSObject: NSObject {}
 
@@ -46,6 +45,8 @@ class FoundationUtilsTests: XCTestCase {
     override var description: String { return "description-DemoNSObject2" }
     override var debugDescription: String { return "debugDescription-DemoNSObject2" }
   }
+  
+  private class DemoNSObject3: NSObject {}
 
   struct DemoStruct {}
 
@@ -71,6 +72,9 @@ class FoundationUtilsTests: XCTestCase {
 
     XCTAssertEqual(typeName(of: Demo3()), "Demo3")
     XCTAssertEqual(typeName(of: Demo3.self), "Demo3")
+    
+    XCTAssertEqual(typeName(of: Demo4()), "Demo4")
+    XCTAssertEqual(typeName(of: Demo4.self), "Demo4")
 
     XCTAssertEqual(typeName(of: DemoNSObject()), "DemoNSObject")
     XCTAssertEqual(typeName(of: DemoNSObject.self), "DemoNSObject")
@@ -78,6 +82,9 @@ class FoundationUtilsTests: XCTestCase {
     XCTAssertEqual(typeName(of: DemoNSObject2()), "DemoNSObject2")
     XCTAssertEqual(typeName(of: DemoNSObject2.self), "DemoNSObject2")
 
+    XCTAssertEqual(typeName(of: DemoNSObject3()), "DemoNSObject3")
+    XCTAssertEqual(typeName(of: DemoNSObject3.self), "DemoNSObject3")
+    
     XCTAssertEqual(typeName(of: DemoStruct()), "DemoStruct")
     XCTAssertEqual(typeName(of: DemoStruct.self), "DemoStruct")
 
@@ -90,9 +97,6 @@ class FoundationUtilsTests: XCTestCase {
   }
 
   func testAppIdentifier() {
-    print("\n\n\n------")
-    print(appIdentifier)
-    print("------\n\n\n")
     XCTAssert(appIdentifier == "xctest")
   }
 
