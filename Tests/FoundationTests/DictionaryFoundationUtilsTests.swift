@@ -111,10 +111,14 @@ class DictionaryFoundationUtilsTests: XCTestCase {
       let json = dictionary!.jsonString()
       XCTAssertTrue(( json == string) || (json == "{\"val\":1,\"foo\":\"bar\"}") )
       let jsonPretty = dictionary!.jsonString(prettify: true)
-      XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}")
-        || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}")
-        || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}")
-        || (jsonPretty == "{\n  \"foo\": \"bar\",\n  \"val\": 1,\n}"))
+      if let jsonPretty = jsonPretty {
+        XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}")
+          || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}")
+          || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}")
+          || (jsonPretty == "{\n  \"foo\": \"bar\",\n  \"val\": 1,\n}"))
+      } else {
+        XCTAssertNotNil(jsonPretty)
+      }
     }
     
     do {
