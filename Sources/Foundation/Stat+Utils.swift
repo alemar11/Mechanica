@@ -119,7 +119,7 @@ internal func S_ISBLK(_ m: Int) -> Bool {
 /// **Mechanica**
 ///
 /// Returns `true` if the file is a character special file (a device like a terminal).
-func S_ISCHR(_ m: Int) -> Bool {
+internal func S_ISCHR(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFCHR)
 }
 
@@ -133,28 +133,28 @@ internal func S_ISDIR(_ m: Int) -> Bool {
 /// **Mechanica**
 ///
 /// Returns `true` if the file is a FIFO special file, or a pipe.
-func S_ISFIFO(_ m: Int) -> Bool {
+internal func S_ISFIFO(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFIFO)
 }
 
 /// **Mechanica**
 ///
 /// Returns `true` if the file is a regular file.
-func S_ISREG(_ m: Int) -> Bool {
+internal func S_ISREG(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFREG)
   }
 
 /// **Mechanica**
 ///
 /// Returns `true` if the file is a symbolic link.
-func S_ISLNK(_ m: Int) -> Bool {
+internal func S_ISLNK(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFLNK)
 }
 
 /// **Mechanica**
 ///
 /// Returns `true` if the file is a socket.
-func S_ISSOCK(_ m: Int) -> Bool {
+internal func S_ISSOCK(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFSOCK)
 }
 

@@ -119,6 +119,9 @@
 		237E6FA31FC81C530025F5CD /* Stat+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FA11FC81C530025F5CD /* Stat+Utils.swift */; };
 		237E6FA41FC81C530025F5CD /* Stat+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FA11FC81C530025F5CD /* Stat+Utils.swift */; };
 		237E6FA51FC81C530025F5CD /* Stat+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FA11FC81C530025F5CD /* Stat+Utils.swift */; };
+		237E6FA71FC8321F0025F5CD /* StatUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FA61FC8321F0025F5CD /* StatUtilsTests.swift */; };
+		237E6FA81FC8321F0025F5CD /* StatUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FA61FC8321F0025F5CD /* StatUtilsTests.swift */; };
+		237E6FA91FC8321F0025F5CD /* StatUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237E6FA61FC8321F0025F5CD /* StatUtilsTests.swift */; };
 		237F17621E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */; };
 		237F17631E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */; };
 		237F17641E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */; };
@@ -418,6 +421,7 @@
 		237274BE1E7C41790017B127 /* BinaryInteger+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "BinaryInteger+Utils.swift"; sourceTree = "<group>"; };
 		237395CD1F20C47E007E2796 /* UIButton+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIButton+Utils.swift"; sourceTree = "<group>"; };
 		237E6FA11FC81C530025F5CD /* Stat+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stat+Utils.swift"; sourceTree = "<group>"; };
+		237E6FA61FC8321F0025F5CD /* StatUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatUtilsTests.swift; sourceTree = "<group>"; };
 		237EF6901FA4B23000B54A7A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
 		237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AssociatedValueSupportingTests.swift; sourceTree = "<group>"; };
 		237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BinaryFloatingPointUtilsTests.swift; sourceTree = "<group>"; };
@@ -659,6 +663,7 @@
 				237F17571E90000800726553 /* StringFoundationUtilsTests.swift */,
 				237F175E1E90000800726553 /* URLUtilsTests.swift */,
 				23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */,
+				237E6FA61FC8321F0025F5CD /* StatUtilsTests.swift */,
 			);
 			path = FoundationTests;
 			sourceTree = "<group>";
@@ -1335,6 +1340,7 @@
 				237F17831E90000900726553 /* FileManagerUtilsTests.swift in Sources */,
 				23690FE81F837295008C0B7E /* UILayoutPriorityUtilsTests.swift in Sources */,
 				237F176E1E90000900726553 /* CollectionUtilsTests.swift in Sources */,
+				237E6FA71FC8321F0025F5CD /* StatUtilsTests.swift in Sources */,
 				23EE2F4C1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1380,6 +1386,7 @@
 				237F17841E90000900726553 /* FileManagerUtilsTests.swift in Sources */,
 				23690FE91F837295008C0B7E /* UILayoutPriorityUtilsTests.swift in Sources */,
 				237F176F1E90000900726553 /* CollectionUtilsTests.swift in Sources */,
+				237E6FA81FC8321F0025F5CD /* StatUtilsTests.swift in Sources */,
 				23B2ED731EC8CE28006365BD /* NSObjectProtocolUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1414,6 +1421,7 @@
 				237F17D61E90000900726553 /* UnsignedIntegerUtilsTests.swift in Sources */,
 				23C7967B1FB449B2006766FD /* OptionalUtilsTests.swift in Sources */,
 				237F176A1E90000900726553 /* BoolUtilsTests.swift in Sources */,
+				237E6FA91FC8321F0025F5CD /* StatUtilsTests.swift in Sources */,
 				238E5B1E1FB5C6EC00331C85 /* DictionaryFoundationUtilsTests.swift in Sources */,
 				237F17B51E90000900726553 /* RangeReplaceableCollectionUtilsTests.swift in Sources */,
 				237F178E1E90000900726553 /* BinaryIntegerUtilsTests.swift in Sources */,

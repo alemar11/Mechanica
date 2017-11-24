@@ -42,9 +42,9 @@ extension FileManager {
 //      guard isDirectory.boolValue == true else { return }
 //    #else
       guard fileExists(atPath: path) == true else { return }
-      var res = Stat()
-      stat(path, &res)
-      guard res.isDirectory == true else { return }
+      var result = Stat()
+      stat(path, &result)
+      guard result.isDirectory == true else { return }
 //    #endif
 
     let contents = try contentsOfDirectory(atPath: path)
