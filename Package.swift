@@ -74,11 +74,7 @@ package.targets = [
               dependencies: ["Mechanica"],
               exclude: ["AssociatedValueSupportingTests.swift",
                         "NSObjectProtocolSwizzlingTests.swift",
-                        
-//                        "BundleInfoTests.swift",
-//                        "DataUtilsTests.swift",
-//                        "DictionaryFoundationUtilsTests.swift",
-//                        "FileManagerUtilsTests.swift",
+
                         "FoundationUtilsTests.swift",
                         //"LocaleUtilsTests.swift",
                         //"NSAttributedStringUtilsTests.swift",

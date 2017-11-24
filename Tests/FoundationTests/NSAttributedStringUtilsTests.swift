@@ -28,6 +28,8 @@ class NSAttributedStringUtilsTests: XCTestCase {
 
   static var allTests = [("testAddition", testAddition)]
 
+  #if !os(Linux)
+
   func testInitHTML(){
     do {
       // Given, When
@@ -70,6 +72,8 @@ class NSAttributedStringUtilsTests: XCTestCase {
     }
 
   }
+
+  #endif
 
   func testAddition() {
 
