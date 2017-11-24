@@ -100,8 +100,6 @@ class NSAttributedStringUtilsTests: XCTestCase {
       XCTAssertFalse(s4 is NSMutableAttributedString)
     }
 
-      #endif
-
     /// addition between String and NSAttributedString
     do {
       let s1 = "Hello World"
@@ -112,6 +110,17 @@ class NSAttributedStringUtilsTests: XCTestCase {
       XCTAssertTrue(s4.string == "Hello World!!🤖")
       XCTAssertFalse(s4 is NSMutableAttributedString)
     }
+    #endif
+
+    do {
+      let s1 = "Hello World"
+      let s2 = NSAttributedString(string: "!!")
+
+      let s3 = s1 + s2
+      XCTAssertTrue(s3.string == "Hello World!!")
+      XCTAssertFalse(s3 is NSMutableAttributedString)
+    }
+    
   }
 
 }
