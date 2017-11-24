@@ -78,6 +78,7 @@ package.targets = [
                         "FoundationUtilsTests.swift",
                         //"LocaleUtilsTests.swift",
                         //"NSAttributedStringUtilsTests.swift",
+                
                         "NSMutableAttributedStringOperatorsTests.swift",
                         "NSMutableAttributedStringUtilsTests.swift",
                         

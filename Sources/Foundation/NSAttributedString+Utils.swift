@@ -26,6 +26,7 @@ import Foundation
 extension NSAttributedString {
 
   #if !os(Linux)
+  // Not implemented on Linux: "mutableCopy(with:) is not yet implemented".
 
   // MARK: - Initializers
 
@@ -46,8 +47,6 @@ extension NSAttributedString {
                    options: [.documentType: NSAttributedString.DocumentType.html],
                    documentAttributes: nil)
   }
-
-  #endif
 
   // MARK: - Operators
 
@@ -80,5 +79,7 @@ extension NSAttributedString {
     return (a + rhs).copy() as! NSAttributedString
     // swiftlint:enable force_cast
   }
+
+  #endif
 
 }

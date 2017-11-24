@@ -77,6 +77,7 @@ class NSAttributedStringUtilsTests: XCTestCase {
 
   func testAddition() {
 
+    #if !os(Linux)
     /// addition between NSAttributedStrings
     do {
       let s1 = NSAttributedString(string: "Hello World")
@@ -98,6 +99,8 @@ class NSAttributedStringUtilsTests: XCTestCase {
       XCTAssertTrue(s4.string == "Hello World!!🤖")
       XCTAssertFalse(s4 is NSMutableAttributedString)
     }
+
+      #endif
 
     /// addition between String and NSAttributedString
     do {
