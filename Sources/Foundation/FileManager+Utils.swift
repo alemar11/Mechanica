@@ -121,16 +121,15 @@ extension stat: Equatable {
 
 }
 
-#if !os(Linux)
 
-public let S_IFMT : Int = 0o170000    /* [XSI] type of file mask */
-public let S_IFIFO: Int = 0o010000    /* [XSI] named pipe (fifo) */
-public let S_IFCHR: Int = 0o020000    /* [XSI] character special */
-public let S_IFDIR: Int = 0o040000    /* [XSI] directory */
-public let S_IFBLK: Int = 0o060000    /* [XSI] block special */
-public let S_IFREG: Int = 0o100000    /* [XSI] regular */
-public let S_IFLNK: Int = 0o120000    /* [XSI] symbolic link */
-public let S_IFSOCK:Int = 0o140000    /* [XSI] socket */
+public let S_IFMT : Int = 0o170000    // [XSI] type of file mask
+public let S_IFIFO: Int = 0o010000    // [XSI] named pipe (fifo)
+public let S_IFCHR: Int = 0o020000    // [XSI] character special
+public let S_IFDIR: Int = 0o040000    // [XSI] directory
+public let S_IFBLK: Int = 0o060000    // [XSI] block special
+public let S_IFREG: Int = 0o100000    // [XSI] regular
+public let S_IFLNK: Int = 0o120000    // [XSI] symbolic link
+public let S_IFSOCK:Int = 0o140000    // [XSI] socket
 
 public func S_ISBLK(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFBLK)  /* block special */
@@ -160,4 +159,3 @@ public func S_ISSOCK(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFSOCK)  /* socket */
 }
 
-#endif
