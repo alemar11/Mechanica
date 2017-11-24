@@ -121,7 +121,6 @@ extension stat: Equatable {
 
 }
 
-
 public let S_IFMT : Int = 0o170000    // [XSI] type of file mask
 public let S_IFIFO: Int = 0o010000    // [XSI] named pipe (fifo)
 public let S_IFCHR: Int = 0o020000    // [XSI] character special
