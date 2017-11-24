@@ -24,12 +24,14 @@
 import Foundation
 
 extension NSAttributedString {
-
+  
   #if !os(Linux)
-  // Not implemented on Linux: "mutableCopy(with:) is not yet implemented".
-
+  // Not implemented on Linux:
+  //    "mutableCopy(with:) is not yet implemented"
+  //    "append is not yet implemented"
+  
   // MARK: - Initializers
-
+  
   /// **Mechanica**
   ///
   /// Initializes and returns a `new` NSAttributedString object from the `html` contained in the given string.
@@ -42,14 +44,14 @@ extension NSAttributedString {
   /// - Warning: Using the HTML importer (NSHTMLTextDocumentType) is only possible on the **main thread**.
   public convenience init?(html: String, allowLossyConversion: Bool = false) {
     guard let data = html.data(using: .utf8, allowLossyConversion: allowLossyConversion) else { return nil }
-
+    
     try? self.init(data: data,
                    options: [.documentType: NSAttributedString.DocumentType.html],
                    documentAttributes: nil)
   }
-
+  
   // MARK: - Operators
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left NSAttributedString.
@@ -59,7 +61,7 @@ extension NSAttributedString {
     return (a + rhs).copy() as! NSAttributedString
     // swiftlint:enable force_cast
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString appending the right String to the left NSAttributedString.
@@ -69,19 +71,17 @@ extension NSAttributedString {
     return (a + rhs).copy() as! NSAttributedString
     // swiftlint:enable force_cast
   }
-
-  #endif
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left String.
   static public func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
     let a = NSMutableAttributedString(string: lhs)
     // swiftlint:disable force_cast
-    a.append(rhs)
-    let copy = a.copy() as! NSAttributedString
-    return copy
+    return (a + rhs).copy() as! NSAttributedString
     // swiftlint:enable force_cast
   }
-
+  
+  #endif
+  
 }

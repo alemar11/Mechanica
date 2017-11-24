@@ -76,8 +76,8 @@ package.targets = [
                         "NSObjectProtocolSwizzlingTests.swift",
 
                         "FoundationUtilsTests.swift",
-                        //"LocaleUtilsTests.swift",
-                        //"NSAttributedStringUtilsTests.swift",
+                
+                        "NSAttributedStringUtilsTests.swift",
                 
                         "NSMutableAttributedStringOperatorsTests.swift",
                         "NSMutableAttributedStringUtilsTests.swift",
