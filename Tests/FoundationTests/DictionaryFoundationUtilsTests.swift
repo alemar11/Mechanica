@@ -120,7 +120,7 @@ class DictionaryFoundationUtilsTests: XCTestCase {
           || (jsonPretty == "{\n  \"foo\": \"bar\",\n  \"val\": 1,\n}"))
 
         print("\n\n\n-----------------")
-        print(jsonPretty)
+        debugPrint(jsonPretty)
         print("-----------------\n\n\n")
       } else {
         XCTAssertNotNil(jsonPretty)
