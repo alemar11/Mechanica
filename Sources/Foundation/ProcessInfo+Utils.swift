@@ -50,8 +50,6 @@ extension ProcessInfo {
     return processInfo.environment["XCTestConfigurationFilePath"].hasValue
   }
 
-  #endif
-
   #if os(macOS)
   /// **Mechanica**
   ///
@@ -59,6 +57,8 @@ extension ProcessInfo {
   public static var isSandboxed: Bool {
     return processInfo.environment["APP_SANDBOX_CONTAINER_ID"].hasValue
   }
+  #endif
+
   #endif
 
 }

@@ -26,6 +26,12 @@ import XCTest
 
 class StatUtilsTests: XCTestCase {
 
+  static var allTests = [
+    ("testIsDirectory", testIsDirectory),
+    ("testIsFile", testIsFile),
+    ("testIsLink", testIsLink)
+  ]
+
   func testIsDirectory() throws {
     let tmpPath = "/tmp"
 
