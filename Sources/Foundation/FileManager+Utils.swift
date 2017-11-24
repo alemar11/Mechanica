@@ -98,7 +98,8 @@ fileprivate extension stat {
   }
   
   fileprivate var isLink: Bool {
-    return S_IFLNK == st_mode
+    //return S_IFLNK == st_mode
+     return S_ISLNK(Int(st_mode))
   }
   
   fileprivate var isDirectory: Bool {
@@ -107,7 +108,8 @@ fileprivate extension stat {
   }
   
   fileprivate var isFile: Bool {
-    return !isExecutable && !isLink && !isDirectory
+    //return !isExecutable && !isLink && !isDirectory
+    return S_ISREG(Int(st_mode))
   }
   
 }
