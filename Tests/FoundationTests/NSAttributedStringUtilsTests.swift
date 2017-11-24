@@ -26,6 +26,8 @@ import XCTest
 
 class NSAttributedStringUtilsTests: XCTestCase {
 
+  static var allTests = [("testAddition", testAddition)]
+
   func testInitHTML(){
     do {
       // Given, When
