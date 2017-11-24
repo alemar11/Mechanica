@@ -131,11 +131,11 @@ public let S_IFLNK: Int = 0o120000    // [XSI] symbolic link
 public let S_IFSOCK:Int = 0o140000    // [XSI] socket
 
 public func S_ISBLK(_ m: Int) -> Bool {
-  return (((m) & S_IFMT) == S_IFBLK)  /* block special */
+  return (((m) & S_IFMT) == S_IFBLK)  /* block special file*/
 }
 
 public func S_ISCHR(_ m: Int) -> Bool {
-  return (((m) & S_IFMT) == S_IFCHR)  /* char special */
+  return (((m) & S_IFMT) == S_IFCHR)  /* character special file*/
 }
 
 public func S_ISDIR(_ m: Int) -> Bool {
@@ -143,7 +143,7 @@ public func S_ISDIR(_ m: Int) -> Bool {
 }
 
 public func S_ISFIFO(_ m: Int) -> Bool {
-  return (((m) & S_IFMT) == S_IFIFO)  /* fifo or socket */
+  return (((m) & S_IFMT) == S_IFIFO)  /* pipe or FIFO special file*/
 }
 
 public func S_ISREG(_ m: Int) -> Bool {

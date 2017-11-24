@@ -118,6 +118,10 @@ class DictionaryFoundationUtilsTests: XCTestCase {
           || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}")
           || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}")
           || (jsonPretty == "{\n  \"foo\": \"bar\",\n  \"val\": 1,\n}"))
+
+        print("\n\n\n-----------------")
+        print(jsonPretty)
+        print("-----------------\n\n\n")
       } else {
         XCTAssertNotNil(jsonPretty)
       }
