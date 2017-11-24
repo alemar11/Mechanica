@@ -117,7 +117,7 @@ class DictionaryFoundationUtilsTests: XCTestCase {
         XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}")
           || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}")
           || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}")
-          || (jsonPretty == "{\n  \"foo\": \"bar\",\n  \"val\": 1,\n}"))
+          || (jsonPretty == "{\n  \"foo\": \"bar\",\n  \"val\": 1\n}"))
 
         print("\n\n\n-----------------")
         debugPrint(jsonPretty)
