@@ -78,7 +78,9 @@ extension NSAttributedString {
   static public func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
     let a = NSMutableAttributedString(string: lhs)
     // swiftlint:disable force_cast
-    return (a + rhs).copy() as! NSAttributedString
+    a.append(rhs)
+    let copy = a.copy() as! NSAttributedString
+    return copy
     // swiftlint:enable force_cast
   }
 
