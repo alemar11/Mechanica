@@ -61,7 +61,7 @@ internal extension Stat {
 
 }
 
-// MARK: - Symbols in <sys/stat.h> not defined in Foundation
+// MARK: - Symbols in <sys/stat.h> that are not defined in Foundation
 
 /// **Mechanica**
 ///
