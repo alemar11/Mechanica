@@ -26,10 +26,8 @@ import XCTest
 
 class NSMutableAttributedStringUtilsTests: XCTestCase {
   
-  static var allTests = [("testRemovingAttributes", testRemovingAttributes)]
-  
   func testRemovingAttributes() {
-    #if !os(Linux)
+  
       do {
         // Given
         let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
@@ -56,7 +54,6 @@ class NSMutableAttributedStringUtilsTests: XCTestCase {
         XCTAssertTrue(attributesCount != attributesCount2)
         XCTAssertTrue(attributesCount2 == 0)
       }
-    #endif
     
     do {
       let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red, NSAttributedStringKey.strikethroughColor: Color.blue])
@@ -85,32 +82,30 @@ class NSMutableAttributedStringUtilsTests: XCTestCase {
   
   func testRemoveAttributes() {
     // Given
-//    let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
-//    attributedString += " "
-//    attributedString += NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
-//    let range = NSRange(location: 0, length: attributedString.length)
-//    
-//    var attributesCount = 0
-//    var attributesCount2 = 0
-//    
-//    attributedString.enumerateAttributes(in: range, options: []) { (attributes, _, _) in
-//      if !attributes.keys.isEmpty { attributesCount += 1 }
-//    }
-//    
-//    // When
-//    attributedString.removeAllAttributes()
-//    let range2 = NSRange(location: 0, length: attributedString.length)
-//    
-//    // Then
-//    attributedString.enumerateAttributes(in: range2, options: []) { (attributes, _, _) in
-//      if !attributes.keys.isEmpty { attributesCount2 += 1 }
-//    }
-//    
-//    XCTAssertTrue(attributesCount != attributesCount2)
-//    XCTAssertTrue(attributesCount2 == 0)
+    let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
+    attributedString += " "
+    attributedString += NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+    let range = NSRange(location: 0, length: attributedString.length)
+    
+    var attributesCount = 0
+    var attributesCount2 = 0
+    
+    attributedString.enumerateAttributes(in: range, options: []) { (attributes, _, _) in
+      if !attributes.keys.isEmpty { attributesCount += 1 }
+    }
+    
+    // When
+    attributedString.removeAllAttributes()
+    let range2 = NSRange(location: 0, length: attributedString.length)
+    
+    // Then
+    attributedString.enumerateAttributes(in: range2, options: []) { (attributes, _, _) in
+      if !attributes.keys.isEmpty { attributesCount2 += 1 }
+    }
+    
+    XCTAssertTrue(attributesCount != attributesCount2)
+    XCTAssertTrue(attributesCount2 == 0)
   }
-  
-  #if !os(Linux)
   
   func testAddition() {
     
@@ -250,7 +245,5 @@ class NSMutableAttributedStringUtilsTests: XCTestCase {
       XCTAssertTrue(s.string == "Hello World")
     }
   }
-  
-  #endif
   
 }

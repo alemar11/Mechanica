@@ -25,6 +25,12 @@ import Foundation
 
 extension NSMutableAttributedString {
 
+  #if !os(Linux)
+  // Not implemented on Linux:
+  //    "mutableCopy(with:) is not yet implemented"
+  //    "append is not yet implemented"
+  //    NSAttributedStringKey
+  
   // MARK: - Attributes
 
   /// **Mechanica**
@@ -41,8 +47,6 @@ extension NSMutableAttributedString {
     return NSMutableAttributedString(string: string)
   }
   
-  #if !os(Linux)
-
   // MARK: - Operators
 
   /// **Mechanica**
@@ -120,5 +124,6 @@ extension NSMutableAttributedString {
   }
   
   #endif
-
+  
 }
+

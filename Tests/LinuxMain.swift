@@ -24,7 +24,6 @@ XCTMain([
   testCase(FileManagerUtilsTests.allTests),
   testCase(LocaleUtilsTests.allTests),
 
-  testCase(NSMutableAttributedStringUtilsTests.allTests),
   
   testCase(StatUtilsTests.allTests)
   ])
