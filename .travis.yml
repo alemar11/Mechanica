@@ -32,7 +32,7 @@ matrix:
         - set -o pipefail  
         - swift --version
         - swift build
-        - swift test --parallel
+        - swift test
 
     # macOS: Swift Tests, CocoaPods and SwiftLint
     - os: osx
