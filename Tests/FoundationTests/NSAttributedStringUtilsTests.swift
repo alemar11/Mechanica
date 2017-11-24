@@ -28,7 +28,52 @@ class NSAttributedStringUtilsTests: XCTestCase {
 
   static var allTests = [("testAddition", testAddition)]
 
+  #if !os(Linux)
 
+  func testInitHTML(){
+    do {
+      // Given, When
+      let html = """
+                  <html>
+                    <head><style type=\"text/css\">@font-face {font-family: Avenir-Roman}body {font-family: Avenir-Roman;font-size:15;margin: 0;padding: 0}</style>
+                  </head>
+                  <body style=\"background-color: #E6E6FA;\"><span style=\"background-color: #9999ff;\">Hello World</span></body>
+                  """
+      let s = NSAttributedString(html: html)
+      // Then
+      XCTAssertNotNil(s)
+
+      XCTAssertTrue(s!.string == "Hello World")
+      guard let font = s!.attribute(NSAttributedStringKey.font, at: 0, effectiveRange: nil) as? Font else {
+        XCTAssert(false, "No Avenir-Roman font name found.")
+        return
+      }
+      XCTAssertTrue(font.familyName == "Avenir")
+      XCTAssertTrue(font.fontName == "Avenir-Roman")
+      XCTAssertTrue(font.pointSize == 15.00)
+
+      guard let color = s!.attribute(NSAttributedStringKey.backgroundColor, at: 0, effectiveRange: nil) as? Color else {
+        XCTAssert(false, "No text backgroud-color found.")
+        return
+      }
+      XCTAssertTrue(color.hexString == "#9999ff".uppercased())
+
+      guard let _ = s!.attribute(NSAttributedStringKey.paragraphStyle, at: 0, effectiveRange: nil) as? NSParagraphStyle else {
+        XCTAssert(false, "No NSParagraphStyle found.")
+        return
+      }
+    }
+
+    do {
+      let html = "<html 1234 </body>"
+      let s = NSAttributedString(html: html)
+      XCTAssertNotNil(s)
+      XCTAssertTrue(s!.string.isEmpty)
+    }
+
+  }
+
+  #endif
 
   func testAddition() {
 
@@ -66,6 +111,9 @@ class NSAttributedStringUtilsTests: XCTestCase {
       XCTAssertFalse(s4 is NSMutableAttributedString)
     }
     #endif
+    
+    
+    
 
     do {
       let s1 = "Hello World"
