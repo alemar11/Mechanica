@@ -96,9 +96,14 @@ class FoundationUtilsTests: XCTestCase {
 
   }
 
+  
+  #if !os(Linux)
+  
   func testAppIdentifier() {
     XCTAssert(appIdentifier == "xctest")
   }
+  
+  #endif
 
 }
 
