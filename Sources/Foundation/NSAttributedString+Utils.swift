@@ -25,7 +25,7 @@ import Foundation
 
 extension NSAttributedString {
   
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // Not implemented on Linux:
   //    "mutableCopy(with:) is not yet implemented"
   //    "append is not yet implemented"

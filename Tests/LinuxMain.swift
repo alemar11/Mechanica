@@ -23,7 +23,7 @@ XCTMain([
   testCase(DictionaryFoundationUtilsTests.allTests),
   testCase(FileManagerUtilsTests.allTests),
   testCase(LocaleUtilsTests.allTests),
-
+  testCase(NSObjectUtils.allTests),
   
   testCase(StatUtilsTests.allTests)
   ])

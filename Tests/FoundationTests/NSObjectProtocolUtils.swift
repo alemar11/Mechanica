@@ -26,6 +26,8 @@ import XCTest
 
 class NSObjectUtils: XCTestCase {
 
+  static var allTests = [("testClassName", testClassName)]
+  
   class Demo: NSObject {}
 
   func testClassName(){
