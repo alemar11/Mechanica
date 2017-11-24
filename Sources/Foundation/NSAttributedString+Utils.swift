@@ -25,6 +25,16 @@ import Foundation
 
 extension NSAttributedString {
 
+  /// **Mechanica**
+  ///
+  /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left String.
+  static public func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
+    let a = NSMutableAttributedString(string: lhs)
+    // swiftlint:disable force_cast
+    return (a + rhs).copy() as! NSAttributedString
+    // swiftlint:enable force_cast
+  }
+
   #if !os(Linux)
   // Not implemented on Linux: "mutableCopy(with:) is not yet implemented".
 
@@ -71,15 +81,5 @@ extension NSAttributedString {
   }
 
   #endif
-
-  /// **Mechanica**
-  ///
-  /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left String.
-  static public func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
-    let a = NSMutableAttributedString(string: lhs)
-    // swiftlint:disable force_cast
-    return (a + rhs).copy() as! NSAttributedString
-    // swiftlint:enable force_cast
-  }
 
 }
