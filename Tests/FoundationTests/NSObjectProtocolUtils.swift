@@ -24,11 +24,11 @@
 import XCTest
 @testable import Mechanica
 
-class NSObjectUtils: XCTestCase {
+class NSObjectProtocolUtils: XCTestCase {
 
   static var allTests = [("testClassName", testClassName)]
   
-  class Demo: NSObject {}
+  private class Demo: NSObject {}
 
   func testClassName(){
     XCTAssertEqual(Demo.type, "Demo")
