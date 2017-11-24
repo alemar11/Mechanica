@@ -22,7 +22,13 @@ XCTMain([
   testCase(DataUtilsTests.allTests),
   testCase(DictionaryFoundationUtilsTests.allTests),
   testCase(FileManagerUtilsTests.allTests),
-
+  testCase(LocaleUtilsTests.allTests),
 
   testCase(StatUtilsTests.allTests)
   ])
+
+
+/**
+ * Missing files:
+ * FoundationUtils.swift
+*/
