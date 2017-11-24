@@ -26,6 +26,11 @@ import XCTest
 
 class FoundationUtilsTests: XCTestCase {
 
+  static var allTests = [
+    ("testTypeName", testTypeName),
+    ("testAppIdentifier", testAppIdentifier)
+  ]
+  
   private class Demo {}
 
   class Demo2: CustomStringConvertible, CustomDebugStringConvertible {
@@ -85,6 +90,9 @@ class FoundationUtilsTests: XCTestCase {
   }
 
   func testAppIdentifier() {
+    print("\n\n\n------")
+    print(appIdentifier)
+    print("------\n\n\n")
     XCTAssert(appIdentifier == "xctest")
   }
 
