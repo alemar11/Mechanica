@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -63,10 +63,14 @@ internal extension Stat {
 
 // MARK: - Symbols in <sys/stat.h> that are not defined in Foundation
 
+//swiftlint:disable identifier_name
+
+//swiftlint:disable private_over_fileprivate
+
 /// **Mechanica**
 ///
 /// This is a bit mask used to extract the file type code from a mode value.
-fileprivate let S_IFMT : Int = 0o170000
+fileprivate let S_IFMT: Int = 0o170000
 
 /// **Mechanica**
 ///
@@ -101,7 +105,9 @@ fileprivate let S_IFLNK: Int = 0o120000
 /// **Mechanica**
 ///
 /// This is the file type constant of a socket.
-fileprivate let S_IFSOCK:Int = 0o140000
+fileprivate let S_IFSOCK: Int = 0o140000
+
+//swiftlint:enable private_over_fileprivate
 
 /// **Mechanica**
 ///
@@ -150,4 +156,6 @@ func S_ISLNK(_ m: Int) -> Bool {
 /// Returns `true` if the file is a socket.
 func S_ISSOCK(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFSOCK)
-  }
+}
+
+//swiftlint:enable identifier_name

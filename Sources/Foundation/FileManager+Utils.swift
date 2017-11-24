@@ -27,7 +27,7 @@
 import Foundation
 
 extension FileManager {
-  
+
   /// **Mechanica**
   ///
   /// Cleans all contents in a directory `path`.
@@ -48,24 +48,24 @@ extension FileManager {
 //    #endif
 
     let contents = try contentsOfDirectory(atPath: path)
-    
+
     for file in contents {
       let path = URL(fileURLWithPath: path).appendingPathComponent(file).path
       try removeItem(atPath: path)
     }
   }
-  
+
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-  
+
   /// **Mechanica**
   ///
   /// Returns the container directory associated with the specified security application group Identifier.
   public final func containerDirectory(for groupIdentifier: String) -> URL? {
     return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
   }
-  
+
   #endif
-  
+
   /// **Mechanica**
   ///
   /// Delete a file or a directory at a given `path`.
@@ -74,8 +74,8 @@ extension FileManager {
   /// - Throws:  throws an error in cases of failure.
   public final func deleteFileOrDirectory(atPath path: String) throws {
     guard fileExists(atPath: path) == true else { return }
-    
+
     try removeItem(atPath: path)
   }
-  
+
 }
