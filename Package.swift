@@ -80,8 +80,8 @@ package.targets = [
 //                        "DictionaryFoundationUtilsTests.swift",
 //                        "FileManagerUtilsTests.swift",
                         "FoundationUtilsTests.swift",
-                        "LocaleUtilsTests.swift",
-                        "NSAttributedStringUtilsTests.swift",
+                        //"LocaleUtilsTests.swift",
+                        //"NSAttributedStringUtilsTests.swift",
                         "NSMutableAttributedStringOperatorsTests.swift",
                         "NSMutableAttributedStringUtilsTests.swift",
                         
