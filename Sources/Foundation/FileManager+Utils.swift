@@ -25,11 +25,6 @@
 // Migrating an App to a Sandbox: https://developer.apple.com/library/content/documentation/Security/Conceptual/AppSandboxDesignGuide/MigratingALegacyApp/MigratingAnAppToASandbox.html
 
 import Foundation
-#if os(Linux)
-  import Glibc
-#else
-  import Darwin
-#endif
 
 extension FileManager {
   
@@ -46,9 +41,8 @@ extension FileManager {
 //      guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
 //      guard isDirectory.boolValue == true else { return }
 //    #else
-      // these lines works on macOS, iOS, tvOS, watchOS
       guard fileExists(atPath: path) == true else { return }
-      var res: stat = stat()
+      var res = Stat()
       stat(path, &res)
       guard res.isDirectory == true else { return }
 //    #endif
@@ -74,87 +68,14 @@ extension FileManager {
   
   /// **Mechanica**
   ///
-  /// Destroys a file or a directory at a given `path`; throws an error in cases of failure.
+  /// Delete a file or a directory at a given `path`.
   ///
   /// - Parameter path: directory or file path.
-  public final func destroyFileOrDirectory(atPath path: String) throws {
+  /// - Throws:  throws an error in cases of failure.
+  public final func deleteFileOrDirectory(atPath path: String) throws {
     guard fileExists(atPath: path) == true else { return }
     
     try removeItem(atPath: path)
   }
   
 }
-
-fileprivate extension stat {
-  
-  // https://github.com/nsomar/FileUtils
-  
-  fileprivate var isExecutable: Bool {
-    #if os(Linux)
-      return UInt32(S_IEXEC) == st_mode
-    #else
-      return S_IEXEC == st_mode
-    #endif
-  }
-  
-  fileprivate var isLink: Bool {
-    //return S_IFLNK == st_mode
-     return S_ISLNK(Int(st_mode))
-  }
-  
-  fileprivate var isDirectory: Bool {
-    //return S_IFDIR == st_mode || 16877 == st_mode || 16893 == st_mode
-    return S_ISDIR(Int(st_mode))
-  }
-  
-  fileprivate var isFile: Bool {
-    //return !isExecutable && !isLink && !isDirectory
-    return S_ISREG(Int(st_mode))
-  }
-  
-}
-
-extension stat: Equatable {
-  public static func ==(lhs: stat, rhs: stat) -> Bool {
-    return lhs.st_dev ==  rhs.st_dev && lhs.st_ino == rhs.st_ino
-  }
-
-}
-
-public let S_IFMT : Int = 0o170000    // [XSI] type of file mask
-public let S_IFIFO: Int = 0o010000    // [XSI] named pipe (fifo)
-public let S_IFCHR: Int = 0o020000    // [XSI] character special
-public let S_IFDIR: Int = 0o040000    // [XSI] directory
-public let S_IFBLK: Int = 0o060000    // [XSI] block special
-public let S_IFREG: Int = 0o100000    // [XSI] regular
-public let S_IFLNK: Int = 0o120000    // [XSI] symbolic link
-public let S_IFSOCK:Int = 0o140000    // [XSI] socket
-
-public func S_ISBLK(_ m: Int) -> Bool {
-  return (((m) & S_IFMT) == S_IFBLK)  /* block special file*/
-}
-
-public func S_ISCHR(_ m: Int) -> Bool {
-  return (((m) & S_IFMT) == S_IFCHR)  /* character special file*/
-}
-
-public func S_ISDIR(_ m: Int) -> Bool {
-  return (((m) & S_IFMT) == S_IFDIR)  /* directory */
-}
-
-public func S_ISFIFO(_ m: Int) -> Bool {
-  return (((m) & S_IFMT) == S_IFIFO)  /* pipe or FIFO special file*/
-}
-
-public func S_ISREG(_ m: Int) -> Bool {
-  return (((m) & S_IFMT) == S_IFREG)  /* regular file */
-}
-
-public func S_ISLNK(_ m: Int) -> Bool {
-  return (((m) & S_IFMT) == S_IFLNK)  /* symbolic link */
-}
-
-public func S_ISSOCK(_ m: Int) -> Bool {
-  return (((m) & S_IFMT) == S_IFSOCK)  /* socket */
-}
-

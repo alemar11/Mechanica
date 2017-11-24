@@ -70,7 +70,7 @@ class FileManagerUtilsTests: XCTestCase {
     XCTAssertTrue(FileManager.default.fileExists(atPath: testFilePath))
     XCTAssertTrue(FileManager.default.fileExists(atPath: testFolderPath))
     
-    try FileManager.default.destroyFileOrDirectory(atPath: tmpFolderPath)
+    try FileManager.default.deleteFileOrDirectory(atPath: tmpFolderPath)
     XCTAssertFalse(FileManager.default.fileExists(atPath: tmpFolderPath))
     
   }
@@ -99,7 +99,7 @@ class FileManagerUtilsTests: XCTestCase {
     XCTAssertFalse(FileManager.default.fileExists(atPath: testFilePath))
     
     /// destroy the tmp folder
-    try FileManager.default.destroyFileOrDirectory(atPath: tmpFolderPath)
+    try FileManager.default.deleteFileOrDirectory(atPath: tmpFolderPath)
     XCTAssertFalse(FileManager.default.fileExists(atPath: testFolderPath))
   }
   
@@ -152,8 +152,8 @@ class FileManagerUtilsTests: XCTestCase {
       XCTAssertTrue(FileManager.default.fileExists(atPath: fakeBaseDirectoryAsFileyURL.path), "The file at path \(fakeBaseDirectoryAsFileyURL.path) should exists.")
       XCTAssertTrue(!FileManager.default.fileExists(atPath: testDirectoryURL.path), "The directory at path \(testDirectoryURL.path) shouldn't exists.")
       
-      try FileManager.default.destroyFileOrDirectory(atPath: containerURL.path)
-      XCTAssertNotNil(try? FileManager.default.destroyFileOrDirectory(atPath: containerURL.path))
+      try FileManager.default.deleteFileOrDirectory(atPath: containerURL.path)
+      XCTAssertNotNil(try? FileManager.default.deleteFileOrDirectory(atPath: containerURL.path))
       
     }
     
