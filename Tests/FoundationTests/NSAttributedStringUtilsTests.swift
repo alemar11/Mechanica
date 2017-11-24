@@ -112,17 +112,14 @@ class NSAttributedStringUtilsTests: XCTestCase {
     }
     #endif
     
-    
-    
-
-    do {
-      let s1 = "Hello World"
-      let s2 = NSAttributedString(string: "!!")
-
-      let s3 = s1 + s2
-      XCTAssertTrue(s3.string == "Hello World!!")
-      XCTAssertFalse(s3 is NSMutableAttributedString)
-    }
+//    do {
+//      let s1 = "Hello World"
+//      let s2 = NSAttributedString(string: "!!")
+//
+//      let s3 = s1 + s2
+//      XCTAssertTrue(s3.string == "Hello World!!")
+//      XCTAssertFalse(s3 is NSMutableAttributedString)
+//    }
     
   }
 
