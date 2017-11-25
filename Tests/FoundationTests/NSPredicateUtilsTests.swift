@@ -226,6 +226,9 @@ class NSPredicateUtilsTests: XCTestCase {
       Contact(name: Name(first: "Karen", last: "Pence"), email: "karen@tinrobots.org", phone: "555-555-5558")
       ])
     
+    let x = NSPredicate()
+    let k = NSPredicate(value: true)
+    print("-----------------------\n\n\n\n")
     let emailPredicate = NSPredicate(format: "email contains 'tinrobots.org'")
     let whContacts = contacts.filtered(using: emailPredicate)
     //print(whContacts)
