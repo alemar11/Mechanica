@@ -219,18 +219,18 @@ class NSPredicateUtilsTests: XCTestCase {
   }
   
   func test3() {
-    let contacts = [
+    let contacts = NSArray(array:[
       Contact(name: Name(first: "Donald", last: "Robot"), email: "donald@test.com", phone: "555-555-5555"),
       Contact(name: Name(first: "Melania", last: "Robot"), email: "melania@test.com", phone: "555-555-5556"),
       Contact(name: Name(first: "Mike", last: "Pence"), email: "mike@tinrobots.org", phone: "555-555-5557"),
       Contact(name: Name(first: "Karen", last: "Pence"), email: "karen@tinrobots.org", phone: "555-555-5558")
-      ] as NSSet
+      ])
     
     let emailPredicate = NSPredicate(format: "email contains 'tinrobots.org'")
     let whContacts = contacts.filtered(using: emailPredicate)
     print(whContacts)
-    let x = "Robot" as! CVarArg
-    let lastNamePredicate = NSPredicate(format: "%K = %@", "name.last", x)
+    
+    let lastNamePredicate = NSPredicate(format: "%K = %@", "name.last" as! CVarArg, "Robot" as! CVarArg)
     let trumpContacts = contacts.filtered(using: lastNamePredicate)
     print(trumpContacts)
     
