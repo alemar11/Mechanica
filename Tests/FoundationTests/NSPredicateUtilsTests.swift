@@ -26,6 +26,11 @@ import XCTest
 
 class NSPredicateUtilsTests: XCTestCase {
 
+  static var allTests = [
+    ("testPredicateComposition", testPredicateComposition),
+    ("testOperators", testOperators)
+  ]
+  
   func testPredicateComposition() {
     do {
       let predicate = NSPredicate(format: "X = 10").and(NSPredicate(format: "Y = 30"))
@@ -53,6 +58,123 @@ class NSPredicateUtilsTests: XCTestCase {
       let predicate3 = predicate1.or(predicate2)
       XCTAssertTrue(predicate3.description == "((X == 10 AND V == 11) AND (Y == 30 OR W == 5)) OR (Z == 20 OR (K == 40 AND C == 11))")
     }
+  }
+  
+  func testOperators() {
+    
+    final class TestClass: NSObject {
+      @objc let id: Int
+      @objc let text: String
+      
+      init(id: Int, text: String) {
+        self.id = id
+        self.text = text
+      }
+      
+      override var description: String {
+        return ("\(id),\(text)")
+      }
+    }
+    
+    let tests = [
+      TestClass(id:1, text: "one"),
+      TestClass(id:2, text: "two"),
+      TestClass(id:3, text: "three"),
+      TestClass(id:4, text: "four"),
+      TestClass(id:5, text: "five"),
+      TestClass(id:6, text: "six"),
+      TestClass(id:7, text: "seven"),
+      TestClass(id:8, text: "eight"),
+      TestClass(id:9, text: "nine"),
+      TestClass(id:10, text: "ten")
+    ]
+    
+    let textEqualToOne_predicate = NSPredicate(format: "text = %@", "one");
+    let idGreaterThan5_predicate = NSPredicate(format: "id > 5")
+    let textsStartWithF_predicate = NSPredicate(format: "text BEGINSWITH[cd] 'f'")
+    let textEndsWithE_predicate = NSPredicate(format: "text ENDSWITH[cd] 'e'")
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textEqualToOne_predicate)
+      XCTAssert(result.count == 1)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: idGreaterThan5_predicate)
+      XCTAssert(result.count == 5)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textsStartWithF_predicate)
+      XCTAssert(result.count == 2)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textEndsWithE_predicate)
+      XCTAssert(result.count == 4)
+    }
+    
+    /// ! Operator
+    do {
+      let result = (tests as NSArray).filtered(using: !textEqualToOne_predicate)
+      XCTAssert(result.count == 9)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !idGreaterThan5_predicate)
+      XCTAssert(result.count == 5)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate)
+      XCTAssert(result.count == 8)
+    }
+    
+    
+    /// && Operator
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate && idGreaterThan5_predicate)
+      XCTAssert(result.count == 5)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate && !idGreaterThan5_predicate)
+      XCTAssert(result.count == 3)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textsStartWithF_predicate && textEndsWithE_predicate)
+      XCTAssert(result.count == 1)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textEqualToOne_predicate && idGreaterThan5_predicate)
+      XCTAssert(result.count == 0)
+    }
+    
+    /// || Operator
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate || idGreaterThan5_predicate)
+      XCTAssert(result.count == 8)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textsStartWithF_predicate || !idGreaterThan5_predicate)
+      XCTAssert(result.count == 5)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: textEqualToOne_predicate || textEndsWithE_predicate)
+      XCTAssert(result.count == 4)
+    }
+    
+    do {
+      let result = (tests as NSArray).filtered(using: !textEqualToOne_predicate || textEndsWithE_predicate)
+      XCTAssert(result.count == 10)
+    }
+    
   }
 
 }
