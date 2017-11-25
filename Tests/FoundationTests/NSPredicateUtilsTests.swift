@@ -228,12 +228,12 @@ class NSPredicateUtilsTests: XCTestCase {
     
     let k = NSPredicate(value: true)
     print("-----------------------\n\n\n\n")
-    let emailPredicate = NSPredicate(format: "email contains 'tinrobots.org'")
-    let whContacts = contacts.filtered(using: emailPredicate)
-    //print(whContacts)
-    
-    let lastNamePredicate = NSPredicate(format: "%K = %@", "name.last" as! CVarArg, "Robot" as! CVarArg)
-    let trumpContacts = contacts.filtered(using: lastNamePredicate)
+//    let emailPredicate = NSPredicate(format: "email contains 'tinrobots.org'")
+//    let whContacts = contacts.filtered(using: emailPredicate)
+//    //print(whContacts)
+//    
+//    let lastNamePredicate = NSPredicate(format: "%K = %@", "name.last" as! CVarArg, "Robot" as! CVarArg)
+//    let trumpContacts = contacts.filtered(using: lastNamePredicate)
     //print(trumpContacts)
     
   }
