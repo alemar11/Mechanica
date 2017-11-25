@@ -27,7 +27,6 @@ import XCTest
 class NSPredicateUtilsTests: XCTestCase {
   
   static var allTests = [
-    ("testPredicateComposition", testPredicateComposition),
     //("testOperators", testOperators),
     ("test3", test3)
   ]
