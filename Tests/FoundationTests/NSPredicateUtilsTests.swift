@@ -89,44 +89,49 @@ class NSPredicateUtilsTests: XCTestCase {
       TestClass(id:10, text: "ten")
     ]
     
-    let textEqualToOne_predicate = NSPredicate(format: "text = %@", "one");
+    let textEqualToOne_predicate: NSPredicate
+    #if os(Linux)
+      textEqualToOne_predicate = NSPredicate(format: "text = %@", "one" as! CVarArg);
+    #else
+      textEqualToOne_predicate = NSPredicate(format: "text = %@", "one");
+    #endif
     let idGreaterThan5_predicate = NSPredicate(format: "id > 5")
     let textsStartWithF_predicate = NSPredicate(format: "text BEGINSWITH[cd] 'f'")
     let textEndsWithE_predicate = NSPredicate(format: "text ENDSWITH[cd] 'e'")
     
     do {
-      let result = (tests as NSArray).filtered(using: textEqualToOne_predicate)
+      let result = NSArray(array: tests).filtered(using: textEqualToOne_predicate)
       XCTAssert(result.count == 1)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: idGreaterThan5_predicate)
+      let result = NSArray(array: tests).filtered(using: idGreaterThan5_predicate)
       XCTAssert(result.count == 5)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: textsStartWithF_predicate)
+      let result = NSArray(array: tests).filtered(using: textsStartWithF_predicate)
       XCTAssert(result.count == 2)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: textEndsWithE_predicate)
+      let result = NSArray(array: tests).filtered(using: textEndsWithE_predicate)
       XCTAssert(result.count == 4)
     }
     
     /// ! Operator
     do {
-      let result = (tests as NSArray).filtered(using: !textEqualToOne_predicate)
+      let result = NSArray(array: tests).filtered(using: !textEqualToOne_predicate)
       XCTAssert(result.count == 9)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: !idGreaterThan5_predicate)
+      let result = NSArray(array: tests).filtered(using: !idGreaterThan5_predicate)
       XCTAssert(result.count == 5)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate)
+      let result = NSArray(array: tests).filtered(using: !textsStartWithF_predicate)
       XCTAssert(result.count == 8)
     }
     
@@ -134,44 +139,44 @@ class NSPredicateUtilsTests: XCTestCase {
     /// && Operator
     
     do {
-      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate && idGreaterThan5_predicate)
+      let result = NSArray(array: tests).filtered(using: !textsStartWithF_predicate && idGreaterThan5_predicate)
       XCTAssert(result.count == 5)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate && !idGreaterThan5_predicate)
+      let result = NSArray(array: tests).filtered(using: !textsStartWithF_predicate && !idGreaterThan5_predicate)
       XCTAssert(result.count == 3)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: textsStartWithF_predicate && textEndsWithE_predicate)
+      let result = NSArray(array: tests).filtered(using: textsStartWithF_predicate && textEndsWithE_predicate)
       XCTAssert(result.count == 1)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: textEqualToOne_predicate && idGreaterThan5_predicate)
+      let result = NSArray(array: tests).filtered(using: textEqualToOne_predicate && idGreaterThan5_predicate)
       XCTAssert(result.count == 0)
     }
     
     /// || Operator
     
     do {
-      let result = (tests as NSArray).filtered(using: !textsStartWithF_predicate || idGreaterThan5_predicate)
+      let result = NSArray(array: tests).filtered(using: !textsStartWithF_predicate || idGreaterThan5_predicate)
       XCTAssert(result.count == 8)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: textsStartWithF_predicate || !idGreaterThan5_predicate)
+      let result = NSArray(array: tests).filtered(using: textsStartWithF_predicate || !idGreaterThan5_predicate)
       XCTAssert(result.count == 5)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: textEqualToOne_predicate || textEndsWithE_predicate)
+      let result = NSArray(array: tests).filtered(using: textEqualToOne_predicate || textEndsWithE_predicate)
       XCTAssert(result.count == 4)
     }
     
     do {
-      let result = (tests as NSArray).filtered(using: !textEqualToOne_predicate || textEndsWithE_predicate)
+      let result = NSArray(array: tests).filtered(using: !textEqualToOne_predicate || textEndsWithE_predicate)
       XCTAssert(result.count == 10)
     }
     
