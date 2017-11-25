@@ -194,7 +194,7 @@ class UserDefaultsUtilsTests: XCTestCase {
 
 }
 
-// MARK: - UserDefaultsUtilsTests Namespace
+// MARK: - Fixtures
 
 extension UserDefaultsUtilsTests {
 

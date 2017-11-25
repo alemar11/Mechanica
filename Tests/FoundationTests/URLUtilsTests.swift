@@ -30,7 +30,7 @@ class URLUtilsTests: XCTestCase {
     ("testAddition", testAddition),
     ("testQueryParameters", testQueryParameters),
   ]
-  
+
   func testAddition() {
 
     let url   = URL(fileURLWithPath: "")
