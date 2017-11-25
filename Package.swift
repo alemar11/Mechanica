@@ -79,7 +79,6 @@ package.targets = [
 
                         
                         "StringFoundationUtilsTests.swift",
-                        //"URLUtilsTests.swift",
                         "UserDefaultsUtilsTests.swift"
     ])
 ]
