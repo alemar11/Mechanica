@@ -233,7 +233,7 @@ class NSPredicateUtilsTests: XCTestCase {
         XCTFail()
         fatalError()
       }
-      return (contact as! Contact).name == "Donald"
+      return (contact as! Contact).name.first == "Donald"
     }
     print("-----------------------\n\n\n\n")
 //    let emailPredicate = NSPredicate(format: "email contains 'tinrobots.org'")
