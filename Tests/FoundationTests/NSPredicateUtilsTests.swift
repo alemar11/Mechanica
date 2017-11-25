@@ -235,7 +235,7 @@ class NSPredicateUtilsTests: XCTestCase {
     let emailEqualToApple = NSPredicate { (contact, _) -> Bool in
       guard let contact = contact else { return false }
       guard contact is Contact else { XCTFail(); fatalError() }
-      return (contact as! Contact).email.ends(with: "apple.com")
+      return (contact as! Contact).email.hasSuffix("apple.com")
     }
     
     do {
