@@ -26,10 +26,10 @@ import XCTest
 
 class NSPredicateUtilsTests: XCTestCase {
   
-  static var allTests = [
-    //("testOperators", testOperators),
-    ("test3", test3)
-  ]
+  static var allTests = [ ("testOperators", testOperators) ]
+  
+  // Not implemented on Linux:
+  //    "NSPredicate.init(format:_:) is not yet implemented."
   
   func testPredicateComposition() {
     do {
@@ -60,132 +60,77 @@ class NSPredicateUtilsTests: XCTestCase {
     }
   }
   
-  //  func testOperators() {
-  //
-  //    final class TestClass: NSObject {
-  //      @objc let id: Int
-  //      @objc let text: String
-  //
-  //      init(id: Int, text: String) {
-  //        self.id = id
-  //        self.text = text
-  //      }
-  //
-  //      override var description: String {
-  //        return ("\(id),\(text)")
-  //      }
-  //    }
-  //
-  //    let tests = [
-  //      TestClass(id:1, text: "one"),
-  //      TestClass(id:2, text: "two"),
-  //      TestClass(id:3, text: "three"),
-  //      TestClass(id:4, text: "four"),
-  //      TestClass(id:5, text: "five"),
-  //      TestClass(id:6, text: "six"),
-  //      TestClass(id:7, text: "seven"),
-  //      TestClass(id:8, text: "eight"),
-  //      TestClass(id:9, text: "nine"),
-  //      TestClass(id:10, text: "ten")
-  //    ]
-  //
-  //    let textEqualToOne_predicate: NSPredicate
-  //    #if os(Linux)
-  //      textEqualToOne_predicate = NSPredicate(format: "text = %@", "one" as! CVarArg);
-  //    #else
-  //      textEqualToOne_predicate = NSPredicate(format: "text = %@", "one");
-  //    #endif
-  //    let idGreaterThan5_predicate = NSPredicate(format: "id > 5")
-  //    let textsStartWithF_predicate = NSPredicate(format: "text BEGINSWITH[cd] 'f'")
-  //    let textEndsWithE_predicate = NSPredicate(format: "text ENDSWITH[cd] 'e'")
-  //
-  //    do {
-  //      //let result = NSArray(array: tests).filtered(using: textEqualToOne_predicate)
-  //      let result = tests.filter { textEqualToOne_predicate.evaluate(with: $0) }
-  //      XCTAssert(result.count == 1)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: idGreaterThan5_predicate)
-  //      XCTAssert(result.count == 5)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: textsStartWithF_predicate)
-  //      XCTAssert(result.count == 2)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: textEndsWithE_predicate)
-  //      XCTAssert(result.count == 4)
-  //    }
-  //
-  //    /// ! Operator
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: !textEqualToOne_predicate)
-  //      XCTAssert(result.count == 9)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: !idGreaterThan5_predicate)
-  //      XCTAssert(result.count == 5)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: !textsStartWithF_predicate)
-  //      XCTAssert(result.count == 8)
-  //    }
-  //
-  //
-  //    /// && Operator
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: !textsStartWithF_predicate && idGreaterThan5_predicate)
-  //      XCTAssert(result.count == 5)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: !textsStartWithF_predicate && !idGreaterThan5_predicate)
-  //      XCTAssert(result.count == 3)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: textsStartWithF_predicate && textEndsWithE_predicate)
-  //      XCTAssert(result.count == 1)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: textEqualToOne_predicate && idGreaterThan5_predicate)
-  //      XCTAssert(result.count == 0)
-  //    }
-  //
-  //    /// || Operator
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: !textsStartWithF_predicate || idGreaterThan5_predicate)
-  //      XCTAssert(result.count == 8)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: textsStartWithF_predicate || !idGreaterThan5_predicate)
-  //      XCTAssert(result.count == 5)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: textEqualToOne_predicate || textEndsWithE_predicate)
-  //      XCTAssert(result.count == 4)
-  //    }
-  //
-  //    do {
-  //      let result = NSArray(array: tests).filtered(using: !textEqualToOne_predicate || textEndsWithE_predicate)
-  //      XCTAssert(result.count == 10)
-  //    }
-  //
-  //  }
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  // Not implemented on Linux:
+  //    "NSPredicate.init(format:_:) is not yet implemented."
+  
+  func testOperatorsExcludingLinux() {
+    
+    final class TestClass: NSObject {
+      @objc let id: Int
+      @objc let text: String
+      
+      init(id: Int, text: String) {
+        self.id = id
+        self.text = text
+      }
+      
+      override var description: String {
+        return ("\(id),\(text)")
+      }
+    }
+    
+    let tests = [
+      TestClass(id:1, text: "one"),
+      TestClass(id:2, text: "two"),
+      TestClass(id:3, text: "three"),
+      TestClass(id:4, text: "four"),
+      TestClass(id:5, text: "five"),
+      TestClass(id:6, text: "six"),
+      TestClass(id:7, text: "seven"),
+      TestClass(id:8, text: "eight"),
+      TestClass(id:9, text: "nine"),
+      TestClass(id:10, text: "ten")
+    ]
+    
+    let textEqualToOne: NSPredicate
+    #if os(Linux)
+      textEqualToOne = NSPredicate(format: "text = %@", "one" as! CVarArg);
+    #else
+      textEqualToOne = NSPredicate(format: "text = %@", "one");
+    #endif
+    let idGreaterThanFive = NSPredicate(format: "id > 5")
+    let textsStartWithF = NSPredicate(format: "text BEGINSWITH[cd] 'f'")
+    let textEndsWithE = NSPredicate(format: "text ENDSWITH[cd] 'e'")
+    
+    XCTAssert(tests.filter { textEqualToOne.evaluate(with: $0) }.count == 1)
+    XCTAssert(NSArray(array: tests).filtered(using: idGreaterThanFive).count == 5)
+    XCTAssert(NSArray(array: tests).filtered(using: textsStartWithF).count == 2)
+    XCTAssert(NSArray(array: tests).filtered(using: textEndsWithE).count == 4)
+    
+    /// ! Operator
+    XCTAssert(NSArray(array: tests).filtered(using: !textEqualToOne).count == 9)
+    XCTAssert(NSArray(array: tests).filtered(using: !idGreaterThanFive).count == 5)
+    XCTAssert(NSArray(array: tests).filtered(using: !textsStartWithF).count == 8)
+    
+    /// && Operator
+    XCTAssert(NSArray(array: tests).filtered(using: !textsStartWithF && idGreaterThanFive).count == 5)
+    XCTAssert(NSArray(array: tests).filtered(using: !textsStartWithF && !idGreaterThanFive).count == 3)
+    XCTAssert(NSArray(array: tests).filtered(using: textsStartWithF && textEndsWithE).count == 1)
+    XCTAssert(NSArray(array: tests).filtered(using: textEqualToOne && idGreaterThanFive).count == 0)
+    
+    /// || Operator
+    
+    XCTAssert(NSArray(array: tests).filtered(using: !textsStartWithF || idGreaterThanFive).count == 8)
+    XCTAssert(NSArray(array: tests).filtered(using: textsStartWithF || !idGreaterThanFive).count == 5)
+    XCTAssert(NSArray(array: tests).filtered(using: textEqualToOne || textEndsWithE).count == 4)
+    XCTAssert(NSArray(array: tests).filtered(using: !textEqualToOne || textEndsWithE).count == 10)
+  }
+  
+  #endif
   
   
-  
-  func test3() {
+  func testOperators() {
     
     final class Name : NSObject {
       let first: String
@@ -234,22 +179,14 @@ class NSPredicateUtilsTests: XCTestCase {
     }
     
     // When, Then
-    do {
-      let orPredicate = nameEqualToAlessandro || emailEqualToApple
-      let result = contacts.filter { orPredicate.evaluate(with: $0) }
-      XCTAssert(result.count == 3)
-    }
+    let orPredicate = nameEqualToAlessandro || emailEqualToApple
+    XCTAssert(contacts.filter { orPredicate.evaluate(with: $0) }.count == 3)
     
-    do {
-      let andPredicate = nameEqualToAlessandro && emailEqualToApple
-      let result = contacts.filter { andPredicate.evaluate(with: $0) }
-      XCTAssert(result.count == 0)
-    }
-    do {
-      let andPredicate = !nameEqualToAlessandro && emailEqualToApple
-      let result = contacts.filter { andPredicate.evaluate(with: $0) }
-      XCTAssert(result.count == 2)
-    }
+    let andPredicate = nameEqualToAlessandro && emailEqualToApple
+    XCTAssert(contacts.filter { andPredicate.evaluate(with: $0) }.count == 0)
     
+    let notWithAndPredicate = !nameEqualToAlessandro && emailEqualToApple
+    XCTAssert(contacts.filter { notWithAndPredicate.evaluate(with: $0) }.count == 2)
   }
+  
 }
