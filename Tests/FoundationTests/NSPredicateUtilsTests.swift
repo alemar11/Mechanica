@@ -219,30 +219,41 @@ class NSPredicateUtilsTests: XCTestCase {
   }
   
   func test3() {
-    let contacts = NSArray(array:[
-      Contact(name: Name(first: "Donald", last: "Robot"), email: "donald@test.com", phone: "555-555-5555"),
-      Contact(name: Name(first: "Melania", last: "Robot"), email: "melania@test.com", phone: "555-555-5556"),
-      Contact(name: Name(first: "Mike", last: "Pence"), email: "mike@tinrobots.org", phone: "555-555-5557"),
-      Contact(name: Name(first: "Karen", last: "Pence"), email: "karen@tinrobots.org", phone: "555-555-5558")
-      ])
+    let contacts = [
+      Contact(name: Name(first: "Steve", last: "Jobs"), email: "jobs@apple.com", phone: "555-555-5555"),
+      Contact(name: Name(first: "Tim", last: "Cook"), email: "cook@apple.com", phone: "555-555-5556"),
+      Contact(name: Name(first: "Alessandro", last: "Marzoli"), email: "alessandro@tinrobots.org", phone: "555-555-5557"),
+      Contact(name: Name(first: "Andrea", last: "Marzoli"), email: "andrea@tinrobots.org", phone: "555-555-5558")
+      ]
     
-    let k = NSPredicate(value: true)
-    let x = NSPredicate { (contact, _) -> Bool in
+    let nameEqualToAlessandro = NSPredicate { (contact, _) -> Bool in
       guard let contact = contact else { return false }
-      guard contact is Contact else {
-        XCTFail()
-        fatalError()
-      }
-      return (contact as! Contact).name.first == "Donald"
+      guard contact is Contact else { XCTFail(); fatalError() }
+      return (contact as! Contact).name.first == "Alessandro"
     }
-    print("-----------------------\n\n\n\n")
-//    let emailPredicate = NSPredicate(format: "email contains 'tinrobots.org'")
-//    let whContacts = contacts.filtered(using: emailPredicate)
-//    //print(whContacts)
-//
-//    let lastNamePredicate = NSPredicate(format: "%K = %@", "name.last" as! CVarArg, "Robot" as! CVarArg)
-//    let trumpContacts = contacts.filtered(using: lastNamePredicate)
-    //print(trumpContacts)
+    
+    let emailEqualToApple = NSPredicate { (contact, _) -> Bool in
+      guard let contact = contact else { return false }
+      guard contact is Contact else { XCTFail(); fatalError() }
+      return (contact as! Contact).email.ends(with: "apple.com")
+    }
+    
+    do {
+    let orPredicate = nameEqualToAlessandro || emailEqualToApple
+    let result = contacts.filter { orPredicate.evaluate(with: $0) }
+    XCTAssert(result.count == 3)
+    }
+    
+    do {
+      let andPredicate = nameEqualToAlessandro && emailEqualToApple
+      let result = contacts.filter { andPredicate.evaluate(with: $0) }
+      XCTAssert(result.count == 0)
+    }
+    do {
+      let andPredicate = !nameEqualToAlessandro && emailEqualToApple
+      let result = contacts.filter { andPredicate.evaluate(with: $0) }
+      XCTAssert(result.count == 2)
+    }
     
   }
 }
