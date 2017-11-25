@@ -229,7 +229,7 @@ class NSPredicateUtilsTests: XCTestCase {
     let emailPredicate = NSPredicate(format: "email contains 'tinrobots.org'")
     let whContacts = contacts.filtered(using: emailPredicate)
     print(whContacts)
-    let lastNamePredicate = NSPredicate(format: "%K = %@", "name.last", "Robot")
+    let lastNamePredicate = NSPredicate(format: "%K = %@", "name.last", "Robot" as! CVarArg)
     let trumpContacts = contacts.filtered(using: lastNamePredicate)
     print(trumpContacts)
     
