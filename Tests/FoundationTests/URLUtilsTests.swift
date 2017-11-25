@@ -26,6 +26,11 @@ import XCTest
 
 class URLUtilsTests: XCTestCase {
 
+  static var allTests = [
+    ("testAddition", testAddition),
+    ("testQueryParameters", testQueryParameters),
+  ]
+  
   func testAddition() {
 
     let url   = URL(fileURLWithPath: "")

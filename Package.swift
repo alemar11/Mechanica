@@ -79,7 +79,7 @@ package.targets = [
 
                         
                         "StringFoundationUtilsTests.swift",
-                        "URLUtilsTests.swift",
+                        //"URLUtilsTests.swift",
                         "UserDefaultsUtilsTests.swift"
     ])
 ]
