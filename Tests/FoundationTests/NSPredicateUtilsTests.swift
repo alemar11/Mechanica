@@ -227,8 +227,13 @@ class NSPredicateUtilsTests: XCTestCase {
       ])
     
     let k = NSPredicate(value: true)
-    let x = NSPredicate { (_, _) -> Bool in
-      return true
+    let x = NSPredicate { (contact, _) -> Bool in
+      guard let contact = contact else { return false }
+      guard contact is Contact else {
+        XCTFail()
+        fatalError()
+      }
+      return contact.name == "Donald"
     }
     print("-----------------------\n\n\n\n")
 //    let emailPredicate = NSPredicate(format: "email contains 'tinrobots.org'")
