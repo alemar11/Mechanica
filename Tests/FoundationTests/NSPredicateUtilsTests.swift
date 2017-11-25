@@ -27,7 +27,7 @@ import XCTest
 class NSPredicateUtilsTests: XCTestCase {
   
   static var allTests = [
-    ("testPredicateComposition", testPredicateComposition),
+    //("testPredicateComposition", testPredicateComposition),
     //("testOperators", testOperators),
      ("test3", test3)
   ]
@@ -228,11 +228,11 @@ class NSPredicateUtilsTests: XCTestCase {
     
     let emailPredicate = NSPredicate(format: "email contains 'tinrobots.org'")
     let whContacts = contacts.filtered(using: emailPredicate)
-    print(whContacts)
+    //print(whContacts)
     
     let lastNamePredicate = NSPredicate(format: "%K = %@", "name.last" as! CVarArg, "Robot" as! CVarArg)
     let trumpContacts = contacts.filtered(using: lastNamePredicate)
-    print(trumpContacts)
+    //print(trumpContacts)
     
   }
 }
