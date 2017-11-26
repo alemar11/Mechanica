@@ -490,7 +490,7 @@ extension String {
     return (major, minor, patch)
   }
 
-  #if !os(Linux)
+  //#if !os(Linux)
   // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**
@@ -504,7 +504,7 @@ extension String {
     return hasPrefix(prefix)
   }
 
-  #endif
+  //#endif
 
   /// **Mechanica**
   ///
