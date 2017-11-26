@@ -28,10 +28,10 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
   static var allTests = [
-    //("testOptionalInteger", testOptionalInteger),
-    ("testOptionalDouble", testOptionalDouble),
-    ("testOptionalFloat", testOptionalFloat),
-    ("testOptionalBool", testOptionalBool),
+//    ("testOptionalInteger", testOptionalInteger),
+//    ("testOptionalDouble", testOptionalDouble),
+//    ("testOptionalFloat", testOptionalFloat),
+//    ("testOptionalBool", testOptionalBool),
     ("testRemoveAll", testRemoveAll),
     ("testCodable", testCodable)
   ]
