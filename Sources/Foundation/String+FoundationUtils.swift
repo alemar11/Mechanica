@@ -152,7 +152,7 @@ extension String {
     return result
   }
 
-  #if !os(Linux)
+  //#if !os(Linux)
   // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**
@@ -166,7 +166,7 @@ extension String {
     return hasSuffix(suffix)
   }
 
-  #endif
+  //#endif
 
   /// **Mechanica**
   ///
