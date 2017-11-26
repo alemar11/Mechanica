@@ -25,21 +25,21 @@ import XCTest
 @testable import Mechanica
 
 class AssociatedValueSupportingTests: XCTestCase {
-  
+
   // MARK:- Associated Objects
-  
+
   func testValueAssociation() {
-    
+
     class Demo {
       let var1: String
       let var2: Int
-      
+
       init(var1: String, var2: Int) {
         self.var1 = var1
         self.var2 = var2
       }
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
@@ -47,7 +47,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       Mechanica.setAssociatedValue(value, forObject: demo, usingKey: &key)
       XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == value)
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
@@ -57,7 +57,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
       XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
@@ -67,7 +67,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
       XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = Demo(var1: "key", var2: 2)
@@ -77,7 +77,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
       XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
     }
-    
+
     do {
       struct DemoStruct { var var1: String }
       let demo = Demo(var1: "demo", var2: 1)
@@ -88,23 +88,23 @@ class AssociatedValueSupportingTests: XCTestCase {
       Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
       XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
     }
-    
+
   }
-  
+
   // MARK:- ValueAssociable Protocol
-  
+
   func testAssociatedValueSupportingClass() {
-    
+
     class Demo: AssociatedValueSupporting {
       let var1: String
       let var2: Int
-      
+
       init(var1: String, var2: Int) {
         self.var1 = var1
         self.var2 = var2
       }
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
@@ -112,7 +112,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == value )
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
@@ -122,7 +122,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
@@ -132,7 +132,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = Demo(var1: "key", var2: 2)
@@ -142,7 +142,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
-    
+
     do {
       struct DemoStruct { var var1: String }
       let demo = Demo(var1: "demo", var2: 1)
@@ -153,21 +153,21 @@ class AssociatedValueSupportingTests: XCTestCase {
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
-    
+
   }
-  
+
   func testAssociatedValueSupportingNSObject() {
-    
+
     class Demo: NSObject {
       let var1: String
       let var2: Int
-      
+
       init(var1: String, var2: Int) {
         self.var1 = var1
         self.var2 = var2
       }
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
@@ -175,7 +175,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       demo.setAssociatedValue(value, forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == value )
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
@@ -188,7 +188,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil )
       XCTAssert(demo.getAssociatedValue(forKey: &key2) == nil )
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
@@ -198,7 +198,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = UInt8(1)
@@ -208,7 +208,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
-    
+
     do {
       let demo  = Demo(var1: "demo", var2: 1)
       var key   = Demo(var1: "key", var2: 2)
@@ -218,7 +218,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
-    
+
     do {
       struct DemoStruct { var var1: String }
       let demo = Demo(var1: "demo", var2: 1)
@@ -229,7 +229,7 @@ class AssociatedValueSupportingTests: XCTestCase {
       demo.removeAssociatedValue(forKey: &key)
       XCTAssert(demo.getAssociatedValue(forKey: &key) == nil)
     }
-    
+
   }
-  
+
 }

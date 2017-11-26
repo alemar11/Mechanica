@@ -124,9 +124,9 @@ extension AssociatedValueSupporting {
 ///   - key: The key for the association.
 ///   - policy: The policy for the association.
 internal func setAssociatedValue<T>(_ value: T?,
-                                        forObject object: Any,
-                                        usingKey key: UnsafeRawPointer,
-                                        andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+                                    forObject object: Any,
+                                    usingKey key: UnsafeRawPointer,
+                                    andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
   Foundation.objc_setAssociatedObject(object, key, value, policy)
 }
 
@@ -150,7 +150,9 @@ internal func getAssociatedValue<T>(forObject object: Any, usingKey key: UnsafeR
 ///   - object: The source object for the association.
 ///   - key: The key for the association.
 ///   - policy: The policy for the association.
-internal func removeAssociatedValue(forObject object: Any, usingKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+internal func removeAssociatedValue(forObject object: Any,
+                                    usingKey key: UnsafeRawPointer,
+                                    andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
   Foundation.objc_setAssociatedObject(object, key, nil, policy)
 }
 

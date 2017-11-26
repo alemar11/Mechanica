@@ -75,9 +75,9 @@ package.targets = [
               exclude: ["AssociatedValueSupportingTests.swift",
                         "NSAttributedStringUtilsTests.swift",
                         "NSMutableAttributedStringUtilsTests.swift",
-                        "NSObjectProtocolSwizzlingTests.swift",
-                        //"UserDefaultsUtilsTests.swift"
-    ])
+                        "NSObjectProtocolSwizzlingTests.swift"
+    ]
+  )
 ]
   
 #endif

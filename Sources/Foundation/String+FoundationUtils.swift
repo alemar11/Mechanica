@@ -301,7 +301,7 @@ extension String {
     #else
       let ranges = self.lowercased().ranges(matching: emailPattern)
       guard ranges.count == 1 else { return false }
-      
+
       return ranges.first! == self.startIndex..<self.endIndex
     #endif
   }
