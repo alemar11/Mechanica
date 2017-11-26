@@ -156,6 +156,7 @@ class UserDefaultsUtilsTests: XCTestCase {
       let key = "PersonKey"
       //  When
       XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+      XCTAssertTrue(userDefaults.hasKey(key))
       //  Then
       let codedValue: UserDefaultsUtilsTests.Person? = userDefaults.codableValue(forKey: key)
       if let codedValue = codedValue {
