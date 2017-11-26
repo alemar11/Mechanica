@@ -50,8 +50,14 @@ class StringFoundationUtilsTests: XCTestCase {
     ("testReplace", testReplace),
     ("testPrefix", testPrefix),
     ("testSuffix", testSuffix),
-    ("testCondensingExcessiveSpaces", testCondensingExcessiveSpaces)
-    
+    ("testCondensingExcessiveSpaces", testCondensingExcessiveSpaces),
+    ("testCondensingExcessiveSpacesAndNewLines", testCondensingExcessiveSpacesAndNewLines),
+    ("testSemanticVersionComparison", testSemanticVersionComparison),
+    ("testFirstRange", testFirstRange),
+    ("testMatches", testMatches),
+    ("testTrim", testTrim),
+    ("testTrimmed", testTrimmed),
+    ("testCapitalizedFirstCharacter", testCapitalizedFirstCharacter)
     
   ]
   
