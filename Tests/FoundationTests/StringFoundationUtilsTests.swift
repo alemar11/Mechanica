@@ -972,6 +972,8 @@ class StringFoundationUtilsTests: XCTestCase {
     }
   }
 
+  #if !os(Linux)
+  
   @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
   func testRemovingAccentsOrDiacritics() {
     XCTAssertTrue("äöüÄÖÜ".removingAccentsOrDiacritics() == "aouAOU")
@@ -1018,6 +1020,8 @@ class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("\na".removingSuffix("a") == "\n")
 
   }
+  
+  #endif 
 
   func testRemovingCharacters() {
     do {
