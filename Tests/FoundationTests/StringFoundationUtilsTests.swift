@@ -33,7 +33,16 @@ class StringFoundationUtilsTests: XCTestCase {
     ("testFirstCharacterOfEachWord", testFirstCharacterOfEachWord),
     ("testStarts", testStarts),
     ("testEnds", testEnds),
-    ("testHasLetters", testHasLetters)
+    ("testHasLetters", testHasLetters),
+    ("testHasNumbers", testHasNumbers),
+    ("testIsBlank", testIsBlank),
+    ("testIsAlphabetic", testIsAlphabetic),
+    ("testIsAlphaNumeric", testIsAlphaNumeric),
+    ("testIsNumeric", testIsNumeric),
+    ("testIsValidUrl", testIsValidUrl),
+    ("testIsValidSchemedUrl", testIsValidSchemedUrl),
+    ("testIsValidHttpUrl", testIsValidHttpUrl),
+    ("testIsValidHttpsUrl", testIsValidHttpsUrl),
   ]
 
   func testBool() {
@@ -1021,7 +1030,7 @@ class StringFoundationUtilsTests: XCTestCase {
 
   }
   
-  #endif 
+  #endif
 
   func testRemovingCharacters() {
     do {
