@@ -27,10 +27,9 @@ XCTMain([
   testCase(NSObjectProtocolUtils.allTests),
   testCase(NSPredicateUtilsTests.allTests),
   testCase(StatUtilsTests.allTests),
-
   testCase(StringFoundationUtilsTests.allTests),
-  
-  testCase(URLUtilsTests.allTests)
+  testCase(URLUtilsTests.allTests),
+  testCase(UserDefaultsUtilsTests.allTests)
   ])
 
 

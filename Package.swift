@@ -76,10 +76,7 @@ package.targets = [
                         "NSAttributedStringUtilsTests.swift",
                         "NSMutableAttributedStringUtilsTests.swift",
                         "NSObjectProtocolSwizzlingTests.swift",
-
-                        
-                        //"StringFoundationUtilsTests.swift",
-                        "UserDefaultsUtilsTests.swift"
+                        //"UserDefaultsUtilsTests.swift"
     ])
 ]
   
