@@ -125,11 +125,12 @@ class UserDefaultsUtilsTests: XCTestCase {
   
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
   func testCodable() {
+    
     do {
       // Given
       let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
       let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
-      let key = "personKey"
+      let key = "PersonKey"
       //  When
       XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
       //  Then
@@ -163,43 +164,85 @@ class UserDefaultsUtilsTests: XCTestCase {
       XCTAssertFalse(userDefaults.hasKey(key))
     }
     
-    do {
-      // Given
-      let value = UserDefaultsUtilsTests.SecurePerson(firstname: "name1", surname: "surname1")
-      let value2 = UserDefaultsUtilsTests.SecurePerson(firstname: "name2", surname: "surname2")
-      let key = "personKey"
-      //  When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
-      //  Then
-      let codedValue: UserDefaultsUtilsTests.SecurePerson? = userDefaults.codableValue(forKey: key)
-      if let codedValue = codedValue {
-        XCTAssertTrue(codedValue == value)
-      } else {
-        XCTAssertNotNil(codedValue)
+    
+    #if !os(Linux)
+      
+      do {
+        // Given
+        let value = UserDefaultsUtilsTests.CodingPerson(firstname: "name1", surname: "surname1")
+        let value2 = UserDefaultsUtilsTests.CodingPerson(firstname: "name2", surname: "surname2")
+        let key = "CodingPersonKey"
+        //  When
+        XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+        //  Then
+        let codedValue: UserDefaultsUtilsTests.CodingPerson? = userDefaults.codableValue(forKey: key)
+        if let codedValue = codedValue {
+          XCTAssertTrue(codedValue == value)
+        } else {
+          XCTAssertNotNil(codedValue)
+        }
+        
+        //  When
+        XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
+        //  Then
+        XCTAssertTrue(userDefaults.hasKey(key))
+        let codedValue2: UserDefaultsUtilsTests.CodingPerson? = userDefaults.codableValue(forKey: key)
+        if let codedValue2 = codedValue2 {
+          XCTAssertTrue(codedValue2 == value2)
+        } else {
+          XCTAssertNotNil(codedValue2)
+        }
+        
+        // When
+        let nilValue: UserDefaultsUtilsTests.CodingPerson? = nil
+        XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
+        // Then
+        XCTAssertFalse(userDefaults.hasKey(key))
+        // When
+        XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+        XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
+        // Then
+        XCTAssertFalse(userDefaults.hasKey(key))
       }
       
-      //  When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
-      //  Then
-      XCTAssertTrue(userDefaults.hasKey(key))
-      let codedValue2: UserDefaultsUtilsTests.SecurePerson? = userDefaults.codableValue(forKey: key)
-      if let codedValue2 = codedValue2 {
-        XCTAssertTrue(codedValue2 == value2)
-      } else {
-        XCTAssertNotNil(codedValue2)
+      do {
+        // Given
+        let value = UserDefaultsUtilsTests.SecureCodingCodingPerson(firstname: "name1", surname: "surname1")
+        let value2 = UserDefaultsUtilsTests.SecureCodingCodingPerson(firstname: "name2", surname: "surname2")
+        let key = "SecureCodingPersonKey"
+        //  When
+        XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+        //  Then
+        let codedValue: UserDefaultsUtilsTests.SecureCodingCodingPerson? = userDefaults.codableValue(forKey: key)
+        if let codedValue = codedValue {
+          XCTAssertTrue(codedValue == value)
+        } else {
+          XCTAssertNotNil(codedValue)
+        }
+        
+        //  When
+        XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
+        //  Then
+        XCTAssertTrue(userDefaults.hasKey(key))
+        let codedValue2: UserDefaultsUtilsTests.SecureCodingCodingPerson? = userDefaults.codableValue(forKey: key)
+        if let codedValue2 = codedValue2 {
+          XCTAssertTrue(codedValue2 == value2)
+        } else {
+          XCTAssertNotNil(codedValue2)
+        }
+        
+        // When
+        let nilValue: UserDefaultsUtilsTests.SecureCodingCodingPerson? = nil
+        XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
+        // Then
+        XCTAssertFalse(userDefaults.hasKey(key))
+        // When
+        XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+        XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
+        // Then
+        XCTAssertFalse(userDefaults.hasKey(key))
       }
-      
-      // When
-      let nilValue: UserDefaultsUtilsTests.SecurePerson? = nil
-      XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
-      // Then
-      XCTAssertFalse(userDefaults.hasKey(key))
-      // When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
-      XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
-      // Then
-      XCTAssertFalse(userDefaults.hasKey(key))
-    }
+    #endif
   }
   
 }
@@ -208,8 +251,26 @@ class UserDefaultsUtilsTests: XCTestCase {
 
 extension UserDefaultsUtilsTests {
   
-  @objc(Person)
-  class Person: NSObject, NSCoding, Codable {
+  class Person: Codable {
+    
+    let surname: String
+    let firstname: String
+    
+    required init(firstname:String, surname:String) {
+      self.firstname = firstname
+      self.surname = surname
+    }
+    
+    static func == (left: Person, right: Person) -> Bool {
+      return left.firstname == right.firstname && left.surname == right.surname
+    }
+    
+  }
+  
+  #if !os(Linux)
+  
+  @objc(CodingPerson)
+  class CodingPerson: NSObject, NSCoding, Codable {
     
     @objc
     let surname: String
@@ -223,23 +284,23 @@ extension UserDefaultsUtilsTests {
     }
     
     required init?(coder aDecoder: NSCoder) {
-      firstname = aDecoder.decodeObject(forKey: #keyPath(Person.firstname)) as! String
-      surname = aDecoder.decodeObject(forKey: #keyPath(Person.surname)) as! String
+      firstname = aDecoder.decodeObject(forKey: #keyPath(CodingPerson.firstname)) as! String
+      surname = aDecoder.decodeObject(forKey: #keyPath(CodingPerson.surname)) as! String
     }
     
     func encode(with aCoder: NSCoder) {
-      aCoder.encode(firstname, forKey: #keyPath(Person.firstname))
-      aCoder.encode(surname, forKey: #keyPath(Person.surname))
+      aCoder.encode(firstname, forKey: #keyPath(CodingPerson.firstname))
+      aCoder.encode(surname, forKey: #keyPath(CodingPerson.surname))
     }
     
-    static func == (left: Person, right: Person) -> Bool {
+    static func == (left: CodingPerson, right: CodingPerson) -> Bool {
       return left.firstname == right.firstname && left.surname == right.surname
     }
     
   }
   
-  @objc(SecurePerson)
-  class SecurePerson: NSObject, NSSecureCoding, Codable {
+  @objc(SecureCodingCodingPerson)
+  class SecureCodingCodingPerson: NSObject, NSSecureCoding, Codable {
     
     static var supportsSecureCoding = true
     
@@ -256,8 +317,8 @@ extension UserDefaultsUtilsTests {
     
     required init?(coder aDecoder: NSCoder) {
       guard
-        let firstnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecurePerson.firstname))),
-        let surnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecurePerson.surname)))
+        let firstnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecureCodingCodingPerson.firstname))),
+        let surnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecureCodingCodingPerson.surname)))
         else {
           return nil
       }
@@ -267,14 +328,16 @@ extension UserDefaultsUtilsTests {
     }
     
     func encode(with aCoder: NSCoder) {
-      aCoder.encode(firstname, forKey: #keyPath(SecurePerson.firstname))
-      aCoder.encode(surname, forKey: #keyPath(SecurePerson.surname))
+      aCoder.encode(firstname, forKey: #keyPath(SecureCodingCodingPerson.firstname))
+      aCoder.encode(surname, forKey: #keyPath(SecureCodingCodingPerson.surname))
     }
     
-    static func == (left: SecurePerson, right: SecurePerson) -> Bool {
+    static func == (left: SecureCodingCodingPerson, right: SecureCodingCodingPerson) -> Bool {
       return left.firstname == right.firstname && left.surname == right.surname
     }
     
   }
+  
+  #endif
   
 }
