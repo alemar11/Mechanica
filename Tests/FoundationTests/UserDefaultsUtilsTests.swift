@@ -49,6 +49,8 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertTrue(!userDefaults.hasKey(key))
 
     userDefaults.set(10, forKey: key)
+    print(userDefaults.hasKey(key))
+    print(userDefaults.optionalInteger(forKey: key))
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalInteger(forKey: key))
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), 10)
