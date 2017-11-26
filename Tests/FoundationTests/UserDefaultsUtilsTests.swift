@@ -43,7 +43,6 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-
     userDefaults.removeAll()
   }
 
@@ -52,8 +51,6 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10, forKey: key)
-    print(userDefaults.synchronize())
-    print("---------------\n\n")
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalInteger(forKey: key))
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), 10)
