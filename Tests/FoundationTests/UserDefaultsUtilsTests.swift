@@ -51,6 +51,8 @@ class UserDefaultsUtilsTests: XCTestCase {
     userDefaults.set(10, forKey: key)
     print(userDefaults.hasKey(key))
     print(userDefaults.optionalInteger(forKey: key))
+    print(userDefaults.dictionaryRepresentation().hasKey(key))
+    print(userDefaults.dictionaryRepresentation())
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalInteger(forKey: key))
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), 10)
