@@ -300,7 +300,10 @@ extension String {
       return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
     #else
       // swiftlint:disable force_cast
-      let arg: CVarArg = NSString(string: emailPattern) as! CVarArg
+      //let arg: CVarArg = NSString(string: emailPattern) as! CVarArg
+      let arg = emailPattern.withCString {
+        return $0 as! CVarArg
+      }
       return NSPredicate(format: "SELF MATCHES[c] %@", arg).evaluate(with: self)
       // swiftlint:enable force_cast
     #endif
