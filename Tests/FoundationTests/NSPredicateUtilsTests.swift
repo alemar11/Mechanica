@@ -93,12 +93,7 @@ class NSPredicateUtilsTests: XCTestCase {
       TestClass(id:10, text: "ten")
     ]
 
-    let textEqualToOne: NSPredicate
-    #if os(Linux)
-      textEqualToOne = NSPredicate(format: "text = %@", "one" as! CVarArg);
-    #else
-      textEqualToOne = NSPredicate(format: "text = %@", "one");
-    #endif
+    let textEqualToOne = NSPredicate(format: "text = %@", "one");
     let idGreaterThanFive = NSPredicate(format: "id > 5")
     let textsStartWithF = NSPredicate(format: "text BEGINSWITH[cd] 'f'")
     let textEndsWithE = NSPredicate(format: "text ENDSWITH[cd] 'e'")

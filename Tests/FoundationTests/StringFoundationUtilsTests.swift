@@ -272,11 +272,15 @@ class StringFoundationUtilsTests: XCTestCase {
   func testIsValidEmail() {
     //valid emails
     XCTAssertTrue("test@tinrobots.org".isValidEmail)
+    XCTAssertTrue("TEST@tinrobots.org".isValidEmail)
+    XCTAssertTrue("test@tinrobots.ORG".isValidEmail)
+    XCTAssertTrue("test@TINROBOTS.org".isValidEmail)
     XCTAssertTrue("test123@tinrobots.org".isValidEmail)
     XCTAssertTrue("123test@tinrobots.org".isValidEmail)
     XCTAssertTrue("test.test@tinrobots.org".isValidEmail)
     XCTAssertTrue("test.test.test@tinrobots.org".isValidEmail)
     XCTAssertTrue("testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobots.org".isValidEmail)
+    XCTAssertTrue("TesttesttesTtesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobots.org".isValidEmail)
     XCTAssertTrue("testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobotstinrobotstinrobotstinrobots.org".isValidEmail)
     XCTAssertTrue("tEsT@tinrobots.xyz".isValidEmail)
     XCTAssertTrue("test@tinrobots.xyz".isValidEmail)
