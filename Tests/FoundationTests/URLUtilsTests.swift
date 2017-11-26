@@ -100,7 +100,7 @@ class URLUtilsTests: XCTestCase {
 //      let newURL3 = url3 + additionalPath
 //      let newURL4 = url4 + additionalPath
       // Then
-//      XCTAssertTrue(newURL.lastPathComponent == url.lastPathComponent)
+      XCTAssertTrue(newURL.lastPathComponent == url.lastPathComponent)
 //      XCTAssertTrue(newURL.pathExtension == "")
 //      XCTAssertTrue(newURL2.lastPathComponent == url2.lastPathComponent)
 //      XCTAssertTrue(newURL2.pathExtension == "")
