@@ -57,8 +57,28 @@ class StringFoundationUtilsTests: XCTestCase {
     ("testMatches", testMatches),
     ("testTrim", testTrim),
     ("testTrimmed", testTrimmed),
-    ("testCapitalizedFirstCharacter", testCapitalizedFirstCharacter)
-    
+    ("testCapitalizedFirstCharacter", testCapitalizedFirstCharacter),
+    ("testDecapitalizedFirstCharacter", testDecapitalizedFirstCharacter),
+    ("testPad", testPad),
+    ("testPadEnd", testPadEnd),
+    ("testPadding", testPadding),
+    ("testPaddingEnd", testPaddingEnd),
+    ("testPaddingStart", testPaddingStart),
+    ("testPadStart", testPadStart),
+    ("testRemovingCharacters", testRemovingCharacters),
+    ("testURLEscaped", testURLEscaped),
+    ("testSemanticVersion", testSemanticVersion),
+    ("testCamelCased", testCamelCased),
+    ("testKebabCased", testKebabCased),
+    ("testPascalCased", testPascalCased),
+    ("testSlugCased", testSlugCased),
+    ("testSnakeCased", testSnakeCased),
+    ("testSwapCased", testSwapCased),
+    ("testNSRange", testNSRange),
+    ("testContainsCaseSensitive", testContainsCaseSensitive),
+    ("testSubscript", testSubscript),
+    ("testReplacingCharacters", testReplacingCharacters),
+    ("testRandom", testRandom)
   ]
   
   func testBool() {
@@ -426,7 +446,6 @@ class StringFoundationUtilsTests: XCTestCase {
   }
   
   func testSemanticVersionComparison() {
-    
     // Equal
     
     /// true
@@ -586,6 +605,13 @@ class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("\(Int.max)".isSemanticVersionLesserOrEqual(to: ""))
     XCTAssertFalse("\(UInt.max)".isSemanticVersionLesserOrEqual(to: ""))
     
+  }
+  
+  func testSemanticVersion() {
+    XCTAssertTrue("1".semanticVersion == (1,0,0))
+    XCTAssertTrue("1.0".semanticVersion == (1,0,0))
+    XCTAssertTrue("1.0.0".semanticVersion == (1,0,0))
+    XCTAssertTrue("".semanticVersion == (0,0,0))
   }
   
   #if !os(Linux)
@@ -1111,13 +1137,6 @@ class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("Hello Günter".urlEscaped == "Hello%20G%C3%BCnter")
   }
   
-  func testSemanticVersion() {
-    XCTAssertTrue("1".semanticVersion == (1,0,0))
-    XCTAssertTrue("1.0".semanticVersion == (1,0,0))
-    XCTAssertTrue("1.0.0".semanticVersion == (1,0,0))
-    XCTAssertTrue("".semanticVersion == (0,0,0))
-  }
-  
   // MARK: - Case Operators
   
   func testCamelCased() {
@@ -1296,7 +1315,7 @@ class StringFoundationUtilsTests: XCTestCase {
   
 }
 
-// MARK: - Tests Resources
+// MARK: - Fixtures
 
 fileprivate extension String {
   
