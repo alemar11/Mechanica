@@ -24,7 +24,17 @@
 import XCTest
 @testable import Mechanica
 
-class StringNSStringTests: XCTestCase {
+class StringFoundationUtilsTests: XCTestCase {
+  
+  static var allTests = [
+    ("testBool", testBool),
+    ("testBase64Decoded", testBase64Decoded),
+    ("testBase64Encoded", testBase64Encoded),
+    ("testFirstCharacterOfEachWord", testFirstCharacterOfEachWord),
+    ("testStarts", testStarts),
+    ("testEnds", testEnds),
+    ("testHasLetters", testHasLetters)
+  ]
 
   func testBool() {
     do {

@@ -28,6 +28,8 @@ XCTMain([
   testCase(NSPredicateUtilsTests.allTests),
   testCase(StatUtilsTests.allTests),
 
+  testCase(StringFoundationUtilsTests.allTests),
+  
   testCase(URLUtilsTests.allTests)
   ])
 
