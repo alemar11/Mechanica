@@ -99,28 +99,43 @@ class UserDefaultsUtilsTests: XCTestCase {
   
   func testRemoveAll() {
     let key = UUID().uuidString
-    XCTAssertTrue(!userDefaults.hasKey(key))
+    XCTAssertFalse(userDefaults.hasKey(key))
     
     userDefaults.set(10, forKey: key)
-    XCTAssertNotNil(userDefaults.value(forKey: key))
+    #if !os(Linux)
+      XCTAssertNotNil(userDefaults.value(forKey: key))
+    #endif
+    XCTAssertNotNil(userDefaults.integer(forKey: key))
     
     let key2 = UUID().uuidString
-    XCTAssertTrue(!userDefaults.hasKey(key2))
+    XCTAssertFalse(userDefaults.hasKey(key2))
     
     userDefaults.set(Double(10), forKey: key2)
-    XCTAssertNotNil(userDefaults.value(forKey: key2))
+    #if !os(Linux)
+      XCTAssertNotNil(userDefaults.value(forKey: key2))
+    #endif
+    XCTAssertNotNil(userDefaults.double(forKey: key))
     
     let key3 = UUID().uuidString
-    XCTAssertTrue(!userDefaults.hasKey(key3))
+    XCTAssertFalse(userDefaults.hasKey(key3))
     
     userDefaults.set(10.0, forKey: key3)
-    XCTAssertNotNil(userDefaults.value(forKey: key3))
+    #if !os(Linux)
+      XCTAssertNotNil(userDefaults.value(forKey: key3))
+    #endif
+    XCTAssertNotNil(userDefaults.double(forKey: key3))
     
     userDefaults.removeAll()
     
+    #if !os(Linux)
     XCTAssertNil(userDefaults.value(forKey: key))
     XCTAssertNil(userDefaults.value(forKey: key2))
-    XCTAssertNil(userDefaults.value(forKey: key3))
+      XCTAssertNil(userDefaults.value(forKey: key3))
+    #endif
+    
+    XCTAssertFalse(userDefaults.hasKey(key))
+      XCTAssertFalse(userDefaults.hasKey(key2))
+      XCTAssertFalse(userDefaults.hasKey(key3))
   }
   
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
