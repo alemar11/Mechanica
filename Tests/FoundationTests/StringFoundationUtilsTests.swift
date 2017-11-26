@@ -528,6 +528,8 @@ class StringFoundationUtilsTests: XCTestCase {
 
   }
 
+  #if !os(Linux)
+  
   func testLastPathComponent() {
     XCTAssert("/tmp/scratch.tiff".lastPathComponent == "scratch.tiff")
     XCTAssert("/tmp/scratch".lastPathComponent == "scratch")
@@ -588,6 +590,8 @@ class StringFoundationUtilsTests: XCTestCase {
     XCTAssert("/tmp/".appendingPathExtension(ext) == "/tmp.tiff")
     XCTAssert("scratch".appendingPathExtension(ext) == "scratch.tiff")
   }
+  
+  #endif
 
   func testFirstRange() {
 
