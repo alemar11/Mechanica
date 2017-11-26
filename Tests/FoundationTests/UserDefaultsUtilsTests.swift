@@ -28,7 +28,7 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
   static var allTests = [
-    ("testOptionalInt", testOptionalInt),
+    //("testOptionalInteger", testOptionalInteger),
     ("testOptionalDouble", testOptionalDouble),
     ("testOptionalFloat", testOptionalFloat),
     ("testOptionalBool", testOptionalBool),
@@ -44,9 +44,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     userDefaults.removeAll()
   }
 
-  func testOptionalInt() {
+  func testOptionalInteger() {
     let key = UUID().uuidString
-    XCTAssertTrue(!userDefaults.hasKey(key))
+    XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10, forKey: key)
     print(userDefaults.hasKey(key))
@@ -63,7 +63,7 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalDouble() {
     let key = UUID().uuidString
-    XCTAssertTrue(!userDefaults.hasKey(key))
+    XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(Double(10), forKey: key)
     XCTAssertTrue(userDefaults.hasKey(key))
@@ -76,7 +76,7 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalFloat() {
     let key = UUID().uuidString
-    XCTAssertTrue(!userDefaults.hasKey(key))
+    XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10.1, forKey: key)
     XCTAssertTrue(userDefaults.hasKey(key))
@@ -89,7 +89,7 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalBool() {
     let key = UUID().uuidString
-    XCTAssertTrue(!userDefaults.hasKey(key))
+    XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(true, forKey: key)
     XCTAssertTrue(userDefaults.hasKey(key))
