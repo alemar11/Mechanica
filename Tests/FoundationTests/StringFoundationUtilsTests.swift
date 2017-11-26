@@ -354,14 +354,19 @@ class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue(s.prefix(maxLength: 4) == "Hell")
     XCTAssertTrue(s.prefix(maxLength: 5) == "Hello")
     XCTAssertTrue(s.prefix(maxLength: 6) == "Hello ")
+    #if !os(Linux)
+    // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
     XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World 🖖🏽")
     XCTAssertTrue(s.prefix(maxLength: 14) == "Hello World 🖖🏽")
     XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World 🖖🏽")
+    #endif
   }
 
   func testSuffix() {
     let s = "Hello World 🖖🏽"
     XCTAssertTrue(s.suffix(maxLength: -100) == "")
+    #if !os(Linux)
+    // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
     XCTAssertTrue(s.suffix(maxLength: 0) == "")
     XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
     XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
@@ -370,6 +375,7 @@ class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue(s.suffix(maxLength: 5) == "rld 🖖🏽")
     XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World 🖖🏽")
     XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World 🖖🏽")
+    #endif
   }
 
   func testCondensingExcessiveSpaces() {
