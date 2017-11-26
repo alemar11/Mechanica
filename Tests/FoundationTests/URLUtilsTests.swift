@@ -96,7 +96,7 @@ class URLUtilsTests: XCTestCase {
       // Given, When
       let additionalPath = ""
       let newURL = url + additionalPath
-//      let newURL2 = url2 + additionalPath
+      let newURL2 = url2 + additionalPath
 //      let newURL3 = url3 + additionalPath
 //      let newURL4 = url4 + additionalPath
       // Then
