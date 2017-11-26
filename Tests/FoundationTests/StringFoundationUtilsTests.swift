@@ -373,19 +373,34 @@ class StringFoundationUtilsTests: XCTestCase {
   }
   
   func testSuffix() {
-    let s = "Hello World 🖖🏽"
-    XCTAssertTrue(s.suffix(maxLength: -100) == "")
-    #if !os(Linux)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+    do {
+      let s = "Hello World 🖖🏽"
+      XCTAssertTrue(s.suffix(maxLength: -100) == "")
+      #if !os(Linux)
+        // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+        XCTAssertTrue(s.suffix(maxLength: 0) == "")
+        XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 3) == "d 🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 4) == "ld 🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 5) == "rld 🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World 🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World 🖖🏽")
+      #endif
+    }
+    
+    do {
+      let s = "Hello World ★"
+      XCTAssertTrue(s.suffix(maxLength: -100) == "")
       XCTAssertTrue(s.suffix(maxLength: 0) == "")
-      XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
-      XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
-      XCTAssertTrue(s.suffix(maxLength: 3) == "d 🖖🏽")
-      XCTAssertTrue(s.suffix(maxLength: 4) == "ld 🖖🏽")
-      XCTAssertTrue(s.suffix(maxLength: 5) == "rld 🖖🏽")
-      XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World 🖖🏽")
-      XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World 🖖🏽")
-    #endif
+      XCTAssertTrue(s.suffix(maxLength: 1) == "★")
+      XCTAssertTrue(s.suffix(maxLength: 2) == " ★")
+      XCTAssertTrue(s.suffix(maxLength: 3) == "d ★")
+      XCTAssertTrue(s.suffix(maxLength: 4) == "ld ★")
+      XCTAssertTrue(s.suffix(maxLength: 5) == "rld ★")
+      XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World ★")
+      XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World ★")
+    }
   }
   
   func testCondensingExcessiveSpaces() {
