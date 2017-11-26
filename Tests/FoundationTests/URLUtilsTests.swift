@@ -27,8 +27,8 @@ import XCTest
 class URLUtilsTests: XCTestCase {
 
   static var allTests = [
-    ("testAddition", testAddition),
-    //("testQueryParameters", testQueryParameters),
+    //("testAddition", testAddition),
+    ("testQueryParameters", testQueryParameters),
   ]
 
   func testAddition() {
