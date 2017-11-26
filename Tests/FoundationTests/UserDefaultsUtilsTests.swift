@@ -26,6 +26,9 @@ import XCTest
 
 class UserDefaultsUtilsTests: XCTestCase {
 
+  //TODO: add test for URL --> https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/UserDefaults.swift
+  //on Linux will be set to nil
+  
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
   static var allTests = [
     ("testOptionalInteger", testOptionalInteger),
@@ -49,7 +52,8 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10, forKey: key)
-    userDefaults.setValue(10, forKey: key)
+    print(userDefaults.synchronize())
+    print("---------------\n\n")
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalInteger(forKey: key))
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), 10)
