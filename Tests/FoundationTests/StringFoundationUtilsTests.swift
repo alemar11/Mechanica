@@ -43,6 +43,16 @@ class StringFoundationUtilsTests: XCTestCase {
     ("testIsValidSchemedUrl", testIsValidSchemedUrl),
     ("testIsValidHttpUrl", testIsValidHttpUrl),
     ("testIsValidHttpsUrl", testIsValidHttpsUrl),
+    ("testIsValidFileURL", testIsValidFileURL),
+    ("testIsValidEmail", testIsValidEmail),
+    ("testIsEmojiCountryFlag", testIsEmojiCountryFlag),
+    ("testContainsCharacters", testContainsCharacters),
+    ("testReplace", testReplace),
+    ("testPrefix", testPrefix),
+    ("testSuffix", testSuffix),
+    ("testCondensingExcessiveSpaces", testCondensingExcessiveSpaces)
+    
+    
   ]
 
   func testBool() {
@@ -259,7 +269,7 @@ class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("tinrobots.org".isValidFileUrl)
   }
 
-  func testIsValideEmail() {
+  func testIsValidEmail() {
     //valid emails
     XCTAssertTrue("test@tinrobots.org".isValidEmail)
     XCTAssertTrue("test123@tinrobots.org".isValidEmail)
