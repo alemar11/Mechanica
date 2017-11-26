@@ -691,7 +691,7 @@ extension String {
   ///
   /// Returns a new string made by appending to the receiver a given string.
   func appendingPathComponent(_ path: String) -> String {
-    let nsString = self as NSString
+    let nsString = NSString(string: self)
     return nsString.appendingPathComponent(path)
   }
 
@@ -699,7 +699,7 @@ extension String {
   ///
   /// Returns a new string made by appending to the receiver an extension separator followed by a given extension.
   func appendingPathExtension(_ ext: String) -> String? {
-    let nsString = self as NSString
+    let nsString = NSString(string: self)
     return nsString.appendingPathExtension(ext)
   }
 
@@ -708,14 +708,14 @@ extension String {
   /// Returns a `new` string made by deleting the last path component from the receiver, along with any final path separator.
   /// - Note: This method only works with file paths (not, for example, string representations of URLs).
   var deletingLastPathComponent: String {
-    return (self as NSString).deletingLastPathComponent
+    return NSString(string: self).deletingLastPathComponent
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` string made by deleting the extension (if any, and only the last) from the receiver.
   var deletingPathExtension: String {
-    return (self as NSString).deletingPathExtension
+    return NSString(string: self).deletingPathExtension
   }
 
   /// **Mechanica**
@@ -723,14 +723,14 @@ extension String {
   /// Returns the last path component of the receiver.
   /// - Note: This method only works with file paths (not, for example, string representations of URLs).
   var lastPathComponent: String {
-    return (self as NSString).lastPathComponent
+    return NSString(string: self).lastPathComponent
   }
 
   /// **Mechanica**
   ///
   /// Returns the file-system path components of the receiver.
   var pathComponents: [String] {
-    return (self as NSString).pathComponents
+    return NSString(string: self).pathComponents
   }
 
   /// **Mechanica**
@@ -738,7 +738,7 @@ extension String {
   /// Return the path extension, if any, of the string as interpreted as a path.
   /// - Note: This method only works with file paths (not, for example, string representations of URLs).
   var pathExtension: String {
-    return (self as NSString).pathExtension
+    return NSString(string: self).pathExtension
   }
 
   #endif
