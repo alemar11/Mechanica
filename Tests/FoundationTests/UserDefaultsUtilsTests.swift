@@ -28,10 +28,10 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
   static var allTests = [
-//    ("testOptionalInteger", testOptionalInteger),
-//    ("testOptionalDouble", testOptionalDouble),
-//    ("testOptionalFloat", testOptionalFloat),
-//    ("testOptionalBool", testOptionalBool),
+    ("testOptionalInteger", testOptionalInteger),
+    ("testOptionalDouble", testOptionalDouble),
+    ("testOptionalFloat", testOptionalFloat),
+    ("testOptionalBool", testOptionalBool),
     ("testRemoveAll", testRemoveAll),
     ("testCodable", testCodable)
   ]
@@ -49,10 +49,6 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10, forKey: key)
-    print(userDefaults.hasKey(key))
-    print(userDefaults.optionalInteger(forKey: key))
-    print(userDefaults.dictionaryRepresentation().hasKey(key))
-    print(userDefaults.dictionaryRepresentation())
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalInteger(forKey: key))
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), 10)
