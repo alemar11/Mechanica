@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -63,7 +63,7 @@ class StatUtilsTests: XCTestCase {
     let filePath = tmpPath + "/" + "file.txt"
 
     XCTAssertTrue(FileManager.default.createFile(atPath: filePath, contents: Data(), attributes: nil))
-    
+
     var result = Stat()
     stat(filePath, &result)
     XCTAssertFalse(result.isDirectory)

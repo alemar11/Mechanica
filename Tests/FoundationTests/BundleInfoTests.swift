@@ -29,7 +29,7 @@ class BundleInfoTests: XCTestCase {
   static var allTests = [("testBundle", testBundle)]
 
   func testBundle() {
-    // TODO: add Linux specific tests
+    // TODO: add Linux specific tests, add ProcessInfo test in a new test file.
 
     #if !os(Linux)
 

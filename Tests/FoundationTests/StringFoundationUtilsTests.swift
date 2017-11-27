@@ -24,7 +24,62 @@
 import XCTest
 @testable import Mechanica
 
-class StringNSStringTests: XCTestCase {
+class StringFoundationUtilsTests: XCTestCase {
+
+  static var allTests = [
+    ("testBool", testBool),
+    ("testBase64Decoded", testBase64Decoded),
+    ("testBase64Encoded", testBase64Encoded),
+    ("testFirstCharacterOfEachWord", testFirstCharacterOfEachWord),
+    ("testStarts", testStarts),
+    ("testEnds", testEnds),
+    ("testHasLetters", testHasLetters),
+    ("testHasNumbers", testHasNumbers),
+    ("testIsBlank", testIsBlank),
+    ("testIsAlphabetic", testIsAlphabetic),
+    ("testIsAlphaNumeric", testIsAlphaNumeric),
+    ("testIsNumeric", testIsNumeric),
+    ("testIsValidUrl", testIsValidUrl),
+    ("testIsValidSchemedUrl", testIsValidSchemedUrl),
+    ("testIsValidHttpUrl", testIsValidHttpUrl),
+    ("testIsValidHttpsUrl", testIsValidHttpsUrl),
+    ("testIsValidFileURL", testIsValidFileURL),
+    ("testIsValidEmail", testIsValidEmail),
+    ("testIsEmojiCountryFlag", testIsEmojiCountryFlag),
+    ("testContainsCharacters", testContainsCharacters),
+    ("testReplace", testReplace),
+    ("testPrefix", testPrefix),
+    ("testSuffix", testSuffix),
+    ("testCondensingExcessiveSpaces", testCondensingExcessiveSpaces),
+    ("testCondensingExcessiveSpacesAndNewLines", testCondensingExcessiveSpacesAndNewLines),
+    ("testSemanticVersionComparison", testSemanticVersionComparison),
+    ("testSemanticVersion", testSemanticVersion),
+    ("testFirstRange", testFirstRange),
+    ("testMatches", testMatches),
+    ("testTrim", testTrim),
+    ("testTrimmed", testTrimmed),
+    ("testCapitalizedFirstCharacter", testCapitalizedFirstCharacter),
+    ("testDecapitalizedFirstCharacter", testDecapitalizedFirstCharacter),
+    ("testPad", testPad),
+    ("testPadEnd", testPadEnd),
+    ("testPadding", testPadding),
+    ("testPaddingEnd", testPaddingEnd),
+    ("testPaddingStart", testPaddingStart),
+    ("testPadStart", testPadStart),
+    ("testRemovingCharacters", testRemovingCharacters),
+    ("testURLEscaped", testURLEscaped),
+    ("testCamelCased", testCamelCased),
+    ("testKebabCased", testKebabCased),
+    ("testPascalCased", testPascalCased),
+    ("testSlugCased", testSlugCased),
+    ("testSnakeCased", testSnakeCased),
+    ("testSwapCased", testSwapCased),
+    ("testNSRange", testNSRange),
+    ("testContainsCaseSensitive", testContainsCaseSensitive),
+    ("testSubscript", testSubscript),
+    ("testReplacingCharacters", testReplacingCharacters),
+    ("testRandom", testRandom)
+  ]
 
   func testBool() {
     do {
@@ -240,14 +295,18 @@ class StringNSStringTests: XCTestCase {
     XCTAssertFalse("tinrobots.org".isValidFileUrl)
   }
 
-  func testIsValideEmail() {
+  func testIsValidEmail() {
     //valid emails
     XCTAssertTrue("test@tinrobots.org".isValidEmail)
+    XCTAssertTrue("TEST@tinrobots.org".isValidEmail)
+    XCTAssertTrue("test@tinrobots.ORG".isValidEmail)
+    XCTAssertTrue("test@TINROBOTS.org".isValidEmail)
     XCTAssertTrue("test123@tinrobots.org".isValidEmail)
     XCTAssertTrue("123test@tinrobots.org".isValidEmail)
     XCTAssertTrue("test.test@tinrobots.org".isValidEmail)
     XCTAssertTrue("test.test.test@tinrobots.org".isValidEmail)
     XCTAssertTrue("testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobots.org".isValidEmail)
+    XCTAssertTrue("TesttesttesTtesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobots.org".isValidEmail)
     XCTAssertTrue("testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobotstinrobotstinrobotstinrobots.org".isValidEmail)
     XCTAssertTrue("tEsT@tinrobots.xyz".isValidEmail)
     XCTAssertTrue("test@tinrobots.xyz".isValidEmail)
@@ -312,31 +371,62 @@ class StringNSStringTests: XCTestCase {
   }
 
   func testPrefix() {
-    let s = "Hello World 🖖🏽"
-    XCTAssertTrue(s.prefix(maxLength: -100) == "")
-    XCTAssertTrue(s.prefix(maxLength: 0) == "")
-    XCTAssertTrue(s.prefix(maxLength: 1) == "H")
-    XCTAssertTrue(s.prefix(maxLength: 2) == "He")
-    XCTAssertTrue(s.prefix(maxLength: 3) == "Hel")
-    XCTAssertTrue(s.prefix(maxLength: 4) == "Hell")
-    XCTAssertTrue(s.prefix(maxLength: 5) == "Hello")
-    XCTAssertTrue(s.prefix(maxLength: 6) == "Hello ")
-    XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World 🖖🏽")
-    XCTAssertTrue(s.prefix(maxLength: 14) == "Hello World 🖖🏽")
-    XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World 🖖🏽")
+    do {
+      let s = "Hello World 🖖🏽"
+      XCTAssertTrue(s.prefix(maxLength: -100) == "")
+      XCTAssertTrue(s.prefix(maxLength: 0) == "")
+      XCTAssertTrue(s.prefix(maxLength: 1) == "H")
+      XCTAssertTrue(s.prefix(maxLength: 2) == "He")
+      XCTAssertTrue(s.prefix(maxLength: 3) == "Hel")
+      XCTAssertTrue(s.prefix(maxLength: 4) == "Hell")
+      XCTAssertTrue(s.prefix(maxLength: 5) == "Hello")
+      XCTAssertTrue(s.prefix(maxLength: 6) == "Hello ")
+      #if !os(Linux)
+        // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+        XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World 🖖🏽")
+        XCTAssertTrue(s.prefix(maxLength: 14) == "Hello World 🖖🏽")
+        XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World 🖖🏽")
+      #endif
+    }
+
+    do {
+      let s = "Hello World ★"
+      XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World ★")
+      XCTAssertTrue(s.prefix(maxLength: 14) == "Hello World ★")
+      XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World ★")
+
+    }
   }
 
   func testSuffix() {
-    let s = "Hello World 🖖🏽"
-    XCTAssertTrue(s.suffix(maxLength: -100) == "")
-    XCTAssertTrue(s.suffix(maxLength: 0) == "")
-    XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 3) == "d 🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 4) == "ld 🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 5) == "rld 🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World 🖖🏽")
-    XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World 🖖🏽")
+    do {
+      let s = "Hello World 🖖🏽"
+      XCTAssertTrue(s.suffix(maxLength: -100) == "")
+      #if !os(Linux)
+        // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+        XCTAssertTrue(s.suffix(maxLength: 0) == "")
+        XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 3) == "d 🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 4) == "ld 🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 5) == "rld 🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World 🖖🏽")
+        XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World 🖖🏽")
+      #endif
+    }
+
+    do {
+      let s = "Hello World ★"
+      XCTAssertTrue(s.suffix(maxLength: -100) == "")
+      XCTAssertTrue(s.suffix(maxLength: 0) == "")
+      XCTAssertTrue(s.suffix(maxLength: 1) == "★")
+      XCTAssertTrue(s.suffix(maxLength: 2) == " ★")
+      XCTAssertTrue(s.suffix(maxLength: 3) == "d ★")
+      XCTAssertTrue(s.suffix(maxLength: 4) == "ld ★")
+      XCTAssertTrue(s.suffix(maxLength: 5) == "rld ★")
+      XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World ★")
+      XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World ★")
+    }
   }
 
   func testCondensingExcessiveSpaces() {
@@ -356,7 +446,6 @@ class StringNSStringTests: XCTestCase {
   }
 
   func testSemanticVersionComparison() {
-
     // Equal
 
     /// true
@@ -518,6 +607,15 @@ class StringNSStringTests: XCTestCase {
 
   }
 
+  func testSemanticVersion() {
+    XCTAssertTrue("1".semanticVersion == (1,0,0))
+    XCTAssertTrue("1.0".semanticVersion == (1,0,0))
+    XCTAssertTrue("1.0.0".semanticVersion == (1,0,0))
+    XCTAssertTrue("".semanticVersion == (0,0,0))
+  }
+
+  #if !os(Linux)
+
   func testLastPathComponent() {
     XCTAssert("/tmp/scratch.tiff".lastPathComponent == "scratch.tiff")
     XCTAssert("/tmp/scratch".lastPathComponent == "scratch")
@@ -578,6 +676,8 @@ class StringNSStringTests: XCTestCase {
     XCTAssert("/tmp/".appendingPathExtension(ext) == "/tmp.tiff")
     XCTAssert("scratch".appendingPathExtension(ext) == "scratch.tiff")
   }
+
+  #endif
 
   func testFirstRange() {
 
@@ -958,6 +1058,8 @@ class StringNSStringTests: XCTestCase {
     }
   }
 
+  #if !os(Linux)
+
   @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
   func testRemovingAccentsOrDiacritics() {
     XCTAssertTrue("äöüÄÖÜ".removingAccentsOrDiacritics() == "aouAOU")
@@ -1005,6 +1107,8 @@ class StringNSStringTests: XCTestCase {
 
   }
 
+  #endif
+
   func testRemovingCharacters() {
     do {
       let s = "123Hello45 !World..5"
@@ -1031,13 +1135,6 @@ class StringNSStringTests: XCTestCase {
   func testURLEscaped() {
     XCTAssertTrue("Hello_World".urlEscaped == "Hello_World")
     XCTAssertTrue("Hello Günter".urlEscaped == "Hello%20G%C3%BCnter")
-  }
-
-  func testSemanticVersion() {
-    XCTAssertTrue("1".semanticVersion == (1,0,0))
-    XCTAssertTrue("1.0".semanticVersion == (1,0,0))
-    XCTAssertTrue("1.0.0".semanticVersion == (1,0,0))
-    XCTAssertTrue("".semanticVersion == (0,0,0))
   }
 
   // MARK: - Case Operators
@@ -1218,7 +1315,7 @@ class StringNSStringTests: XCTestCase {
 
 }
 
-// MARK: - Tests Resources
+// MARK: - Fixtures
 
 fileprivate extension String {
 

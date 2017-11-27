@@ -22,10 +22,14 @@ XCTMain([
   testCase(DataUtilsTests.allTests),
   testCase(DictionaryFoundationUtilsTests.allTests),
   testCase(FileManagerUtilsTests.allTests),
+  testCase(FoundationUtilsTests.allTests),
   testCase(LocaleUtilsTests.allTests),
-  testCase(NSAttributedStringUtilsTests.allTests),
-
-  testCase(StatUtilsTests.allTests)
+  testCase(NSObjectProtocolUtils.allTests),
+  testCase(NSPredicateUtilsTests.allTests),
+  testCase(StatUtilsTests.allTests),
+  testCase(StringFoundationUtilsTests.allTests),
+  testCase(URLUtilsTests.allTests),
+  testCase(UserDefaultsUtilsTests.allTests)
   ])
 
 

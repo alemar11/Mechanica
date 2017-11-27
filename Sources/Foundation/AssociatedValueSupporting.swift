@@ -76,8 +76,10 @@ extension AssociatedValueSupporting {
   ///   - value: The value to associate with the key key for object. Pass nil to clear an existing association.
   ///   - key: The key for the association.
   ///   - policy: The policy for the association.
-  public func setAssociatedValue<T>(_ value: T?, forKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
-     _setAssociatedValue(value, forObject: self, usingKey: key)
+  public func setAssociatedValue<T>(_ value: T?,
+                                    forKey key: UnsafeRawPointer,
+                                    andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+    Mechanica.setAssociatedValue(value, forObject: self, usingKey: key)
   }
 
   /// **Mechanica**
@@ -87,7 +89,7 @@ extension AssociatedValueSupporting {
   /// - Parameter key: The key for the association.
   /// - Returns: The value associated with the key for object.
   public func getAssociatedValue<T>(forKey key: UnsafeRawPointer) -> T? {
-    return _getAssociatedValue(forObject: self, usingKey: key)
+    return Mechanica.getAssociatedValue(forObject: self, usingKey: key)
   }
 
   /// **Mechanica**
@@ -97,21 +99,21 @@ extension AssociatedValueSupporting {
   /// - Parameters:
   ///   - key: The key for the association.
   ///   - policy: The policy for the association.
-  public func removeAssociatedValue(forKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
-    _removeAssociatedValue(forObject: self, usingKey: key, andPolicy: policy)
+  public func removeAssociatedValue(forKey key: UnsafeRawPointer,
+                                    andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+    Mechanica.removeAssociatedValue(forObject: self, usingKey: key, andPolicy: policy)
   }
 
   /// **Mechanica**
   ///
   /// Removes all the associated values.
   public func removeAllAssociatedValues() {
-    _removeAllAssociatedValues(forObject: self)
+    Mechanica.removeAllAssociatedValues(forObject: self)
   }
 }
 
 // MARK: - Associated Objects
 
-// swiftlint:disable private_over_fileprivate
 /// **Mechanica**
 ///
 /// Sets an associated value for a given object using a given key and association policy.
@@ -121,11 +123,11 @@ extension AssociatedValueSupporting {
 ///   - object: The source object for the association.
 ///   - key: The key for the association.
 ///   - policy: The policy for the association.
-fileprivate func _setAssociatedValue<T>(_ value: T?,
-                                        forObject object: Any,
-                                        usingKey key: UnsafeRawPointer,
-                                        andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
-  objc_setAssociatedObject(object, key, value, policy)
+internal func setAssociatedValue<T>(_ value: T?,
+                                    forObject object: Any,
+                                    usingKey key: UnsafeRawPointer,
+                                    andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+  Foundation.objc_setAssociatedObject(object, key, value, policy)
 }
 
 /// **Mechanica**
@@ -136,8 +138,8 @@ fileprivate func _setAssociatedValue<T>(_ value: T?,
 ///   - object: The source object for the association.
 ///   - key: The key for the association.
 /// - Returns: The value associated with the key for object.
-fileprivate func _getAssociatedValue<T>(forObject object: Any, usingKey key: UnsafeRawPointer) -> T? {
-  return objc_getAssociatedObject(object, key) as? T
+internal func getAssociatedValue<T>(forObject object: Any, usingKey key: UnsafeRawPointer) -> T? {
+  return Foundation.objc_getAssociatedObject(object, key) as? T
 }
 
 /// **Mechanica**
@@ -148,8 +150,10 @@ fileprivate func _getAssociatedValue<T>(forObject object: Any, usingKey key: Uns
 ///   - object: The source object for the association.
 ///   - key: The key for the association.
 ///   - policy: The policy for the association.
-fileprivate func _removeAssociatedValue(forObject object: Any, usingKey key: UnsafeRawPointer, andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
-  objc_setAssociatedObject(object, key, nil, policy)
+internal func removeAssociatedValue(forObject object: Any,
+                                    usingKey key: UnsafeRawPointer,
+                                    andPolicy policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+  Foundation.objc_setAssociatedObject(object, key, nil, policy)
 }
 
 /// **Mechanica**
@@ -160,9 +164,8 @@ fileprivate func _removeAssociatedValue(forObject object: Any, usingKey key: Uns
 ///   - object: The source object for the association.
 ///   - key: The key for the association.
 ///   - policy: The policy for the association.
-fileprivate func _removeAllAssociatedValues(forObject object: Any) {
-  objc_removeAssociatedObjects(object)
+internal func removeAllAssociatedValues(forObject object: Any) {
+  Foundation.objc_removeAssociatedObjects(object)
 }
-// swiftlint:enable private_over_fileprivate
 
 #endif

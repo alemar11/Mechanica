@@ -73,22 +73,11 @@ package.targets = [
   .testTarget(name: "FoundationTests",
               dependencies: ["Mechanica"],
               exclude: ["AssociatedValueSupportingTests.swift",
-                        "NSObjectProtocolSwizzlingTests.swift",
-
-                        "FoundationUtilsTests.swift",
-                        //"LocaleUtilsTests.swift",
-                        //"NSAttributedStringUtilsTests.swift",
-                
-                        "NSMutableAttributedStringOperatorsTests.swift",
+                        "NSAttributedStringUtilsTests.swift",
                         "NSMutableAttributedStringUtilsTests.swift",
-                        
-                        "NSObjectProtocolUtils.swift",
-                        "NSPredicateOperatorsTests.swift",
-                        "NSPredicateUtilsTests.swift",
-                        "StringFoundationUtilsTests.swift",
-                        "URLUtilsTests.swift",
-                        "UserDefaultsUtilsTests.swift"
-    ])
+                        "NSObjectProtocolSwizzlingTests.swift"
+    ]
+  )
 ]
   
 #endif

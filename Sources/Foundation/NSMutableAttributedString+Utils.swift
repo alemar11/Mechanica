@@ -25,6 +25,12 @@ import Foundation
 
 extension NSMutableAttributedString {
 
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  // Not implemented on Linux:
+  //    "mutableCopy(with:) is not yet implemented"
+  //    "append is not yet implemented"
+  //    NSAttributedStringKey
+
   // MARK: - Attributes
 
   /// **Mechanica**
@@ -66,9 +72,6 @@ extension NSMutableAttributedString {
     return a
   }
 
-  #if !os(Linux)
-  // Not implemented on Linux
-
   /// **Mechanica**
   ///
   /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left NSAttributedString.
@@ -76,8 +79,6 @@ extension NSMutableAttributedString {
     let a = NSMutableAttributedString(attributedString: lhs)
     return a + rhs
   }
-
-  #endif
 
   /// **Mechanica**
   ///
@@ -121,5 +122,7 @@ extension NSMutableAttributedString {
   public static func += (lhs: NSMutableAttributedString, rhs: String) {
     lhs.append(NSAttributedString(string: rhs))
   }
+
+  #endif
 
 }
