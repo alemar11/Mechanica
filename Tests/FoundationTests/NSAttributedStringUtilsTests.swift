@@ -77,7 +77,7 @@ class NSAttributedStringUtilsTests: XCTestCase {
       let s2 = NSAttributedString(string: "!!")
       let s3 = NSAttributedString(string: "🤖")
 
-      let s4 = s1 + s2 + s3
+      let s4 = s1 + s2 + s3 // NSAttributedString + NSAttributedString + NSAttributedString
       XCTAssertTrue(s4.string == "Hello World!!🤖")
       XCTAssertFalse(s4 is NSMutableAttributedString)
     }
@@ -88,7 +88,7 @@ class NSAttributedStringUtilsTests: XCTestCase {
       let s2 = "!!"
       let s3 = "🤖"
 
-      let s4 = s1 + s2 + s3
+      let s4 = s1 + s2 + s3 // NSAttributedString + String + String
       XCTAssertTrue(s4.string == "Hello World!!🤖")
       XCTAssertFalse(s4 is NSMutableAttributedString)
     }
@@ -99,10 +99,20 @@ class NSAttributedStringUtilsTests: XCTestCase {
       let s2 = NSAttributedString(string: "!!")
       let s3 = NSAttributedString(string: "🤖")
 
-      let s4 = s1 + s2 + s3
+      let s4 = s1 + s2 + s3 // String + NSAttributedString + NSAttributedString
       XCTAssertTrue(s4.string == "Hello World!!🤖")
       XCTAssertFalse(s4 is NSMutableAttributedString)
     }
+
+    do {
+      let s1 = "Hello World"
+      let s2 = NSAttributedString(string: "!!")
+
+      let s3 = s1 + s2 // String + NSAttributedString
+      XCTAssertTrue(s3.string == "Hello World!!")
+      XCTAssertFalse(s3 is NSMutableAttributedString)
+    }
+
   }
 
 }

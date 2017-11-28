@@ -24,26 +24,68 @@
 import XCTest
 @testable import Mechanica
 
-class DictionaryFoundationTests: XCTestCase {
+class DictionaryFoundationUtilsTests: XCTestCase {
+
+  static var allTests = [
+    ("testInitFromJSON", testInitFromJSON),
+    ("testJSONString", testJSONString),
+    ("testJSONData", testJSONData),
+    ("testLowercaseAllKeys", testLowercaseAllKeys)
+  ]
 
   func testInitFromJSON() {
 
     do {
       let string = "{\"foo\":\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
-      XCTAssertNotNil(dictionary)
+      if let dictionary = dictionary {
+        XCTAssertTrue(dictionary.keys.count == 2)
+        XCTAssertTrue(dictionary.values.count == 2)
+        XCTAssertTrue(dictionary["foo"] is String)
+        XCTAssertTrue(dictionary["foo"] as? String == "bar")
+        XCTAssertTrue(dictionary["val"] is Int)
+        XCTAssertTrue(dictionary["val"] as? Int == 1)
 
-      let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
-      let expectedDictionary2: Dictionary<String, Any> = ["foo": "bar", "val": Date()]
-      XCTAssertTrue(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary))
-      XCTAssertFalse(NSDictionary(dictionary: dictionary!).isEqual(to: expectedDictionary2))
+        #if !os(Linux)
+          let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
+          XCTAssertTrue(NSDictionary(dictionary: dictionary).isEqual(to: expectedDictionary))
+
+          let unExpectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": Date()]
+          XCTAssertFalse(NSDictionary(dictionary: dictionary).isEqual(to: unExpectedDictionary))
+        #endif
+
+      } else {
+        XCTAssertNotNil(dictionary)
+      }
+
     }
 
     do {
+      /// NSJSONSerialization uses NSNull objects.
+      let string = "{\"foo\":\"bar\",\"val\":null}"
+      let dictionary = Dictionary<String, Any>(json: string)
+
+      if let dictionary = dictionary {
+        XCTAssertTrue(dictionary["val"] is NSNull)
+      } else {
+        XCTAssertNotNil(dictionary)
+      }
+    }
+
+    do {
+      /// NSJSONSerialization uses NSNull objects
       let string = "{\"foo\":\"bar\",\"val\":null}"
       let dictionary = Dictionary<String, Any?>(json: string)
-      XCTAssertNotNil(dictionary)
-      XCTAssertTrue(dictionary!["val"]! == nil)
+
+      if let dictionary = dictionary {
+        XCTAssertTrue(dictionary["val"] is NSNull?)
+
+        #if !os(Linux)
+          XCTAssertTrue(dictionary["val"]! == nil)
+        #endif
+      } else {
+        XCTAssertNotNil(dictionary)
+      }
     }
 
     do {
@@ -66,10 +108,19 @@ class DictionaryFoundationTests: XCTestCase {
       let string = "{\"foo\":\"bar\",\"val\":1}"
       let dictionary = Dictionary<String, Any>(json: string)
       XCTAssertNotNil(dictionary)
+
       let json = dictionary!.jsonString()
       XCTAssertTrue(( json == string) || (json == "{\"val\":1,\"foo\":\"bar\"}") )
+
       let jsonPretty = dictionary!.jsonString(prettify: true)
-      XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}") || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}") )
+      if let jsonPretty = jsonPretty {
+        XCTAssertTrue(( jsonPretty == "{\n  \"foo\" : \"bar\",\n  \"val\" : 1\n}")
+          || (jsonPretty == "{\n  \"val\" : 1,\n  \"foo\" : \"bar\"\n}")
+          || (jsonPretty == "{\n  \"val\": 1,\n  \"foo\": \"bar\"\n}")
+          || (jsonPretty == "{\n  \"foo\": \"bar\",\n  \"val\": 1\n}"))
+      } else {
+        XCTAssertNotNil(jsonPretty)
+      }
     }
 
     do {

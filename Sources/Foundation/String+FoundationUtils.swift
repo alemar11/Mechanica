@@ -152,8 +152,8 @@ extension String {
     return result
   }
 
-  #if !os(Linux)
-  // BUG: https://bugs.swift.org/browse/SR-5627
+  //#if !os(Linux)
+  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**
   ///
@@ -166,7 +166,7 @@ extension String {
     return hasSuffix(suffix)
   }
 
-  #endif
+  //#endif
 
   /// **Mechanica**
   ///
@@ -291,14 +291,23 @@ extension String {
   public var isValidEmail: Bool {
     // https://medium.com/@darthpelo/email-validation-in-swift-3-0-acfebe4d879a
     // http://www.cocoawithlove.com/2009/06/verifying-that-string-is-email-address.html
+
     // swiftlint:disable line_length
     let emailPattern = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
     // swiftlint:enable line_length
-    return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
+
+    #if !os(Linux)
+      return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
+    #else
+      let ranges = self.lowercased().ranges(matching: emailPattern)
+      guard ranges.count == 1 else { return false }
+
+      return ranges.first! == self.startIndex..<self.endIndex
+    #endif
   }
 
   #if !os(Linux)
-  // BUG: https://bugs.swift.org/browse/SR-5627
+  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**
   ///
@@ -388,12 +397,14 @@ extension String {
     var randomString: String = ""
 
     for _ in 0..<length {
-      let randomValue = arc4random_uniform(UInt32(base.count))
+      let randomValue = mechanica_arc4random_uniform(UInt32(base.count))
       randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
     }
 
     return randomString
   }
+
+  #if !os(Linux)
 
   /// **Mechanica**
   ///
@@ -408,6 +419,8 @@ extension String {
   func removingAccentsOrDiacritics() -> String {
     return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
   }
+
+  #endif
 
   /// **Mechanica**
   ///
@@ -477,8 +490,8 @@ extension String {
     return (major, minor, patch)
   }
 
-  #if !os(Linux)
-  // BUG: https://bugs.swift.org/browse/SR-5627
+  //#if !os(Linux)
+  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**
   ///
@@ -491,7 +504,7 @@ extension String {
     return hasPrefix(prefix)
   }
 
-  #endif
+  //#endif
 
   /// **Mechanica**
   ///
@@ -535,6 +548,13 @@ extension String {
     }
 
     return ""
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a percent-escaped string following RFC 3986 for a query string key or value.
+  public var urlEscaped: String? {
+    return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
   }
 
   // MARK: - Subscript with NSRange
@@ -663,12 +683,15 @@ extension String {
   }
 
   // MARK: - NSString
+  #if !os(Linux)
+
+  // TODO: check if we can use NSString(self) instead of self as NSString on Linux
 
   /// **Mechanica**
   ///
   /// Returns a new string made by appending to the receiver a given string.
   func appendingPathComponent(_ path: String) -> String {
-    let nsString = self as NSString
+    let nsString = NSString(string: self)
     return nsString.appendingPathComponent(path)
   }
 
@@ -676,7 +699,7 @@ extension String {
   ///
   /// Returns a new string made by appending to the receiver an extension separator followed by a given extension.
   func appendingPathExtension(_ ext: String) -> String? {
-    let nsString = self as NSString
+    let nsString = NSString(string: self)
     return nsString.appendingPathExtension(ext)
   }
 
@@ -685,14 +708,14 @@ extension String {
   /// Returns a `new` string made by deleting the last path component from the receiver, along with any final path separator.
   /// - Note: This method only works with file paths (not, for example, string representations of URLs).
   var deletingLastPathComponent: String {
-    return (self as NSString).deletingLastPathComponent
+    return NSString(string: self).deletingLastPathComponent
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` string made by deleting the extension (if any, and only the last) from the receiver.
   var deletingPathExtension: String {
-    return (self as NSString).deletingPathExtension
+    return NSString(string: self).deletingPathExtension
   }
 
   /// **Mechanica**
@@ -700,14 +723,14 @@ extension String {
   /// Returns the last path component of the receiver.
   /// - Note: This method only works with file paths (not, for example, string representations of URLs).
   var lastPathComponent: String {
-    return (self as NSString).lastPathComponent
+    return NSString(string: self).lastPathComponent
   }
 
   /// **Mechanica**
   ///
   /// Returns the file-system path components of the receiver.
   var pathComponents: [String] {
-    return (self as NSString).pathComponents
+    return NSString(string: self).pathComponents
   }
 
   /// **Mechanica**
@@ -715,15 +738,10 @@ extension String {
   /// Return the path extension, if any, of the string as interpreted as a path.
   /// - Note: This method only works with file paths (not, for example, string representations of URLs).
   var pathExtension: String {
-    return (self as NSString).pathExtension
+    return NSString(string: self).pathExtension
   }
 
-  /// **Mechanica**
-  ///
-  /// Returns a percent-escaped string following RFC 3986 for a query string key or value.
-  public var urlEscaped: String? {
-    return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-  }
+  #endif
 
   // MARK: - Regular Expression
 

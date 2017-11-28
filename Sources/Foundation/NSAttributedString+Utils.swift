@@ -25,6 +25,11 @@ import Foundation
 
 extension NSAttributedString {
 
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  // Not implemented on Linux:
+  //    "mutableCopy(with:) is not yet implemented"
+  //    "append is not yet implemented"
+
   // MARK: - Initializers
 
   /// **Mechanica**
@@ -76,5 +81,7 @@ extension NSAttributedString {
     return (a + rhs).copy() as! NSAttributedString
     // swiftlint:enable force_cast
   }
+
+  #endif
 
 }
