@@ -685,8 +685,6 @@ extension String {
   // MARK: - NSString
   #if !os(Linux)
 
-  // TODO: check if we can use NSString(self) instead of self as NSString on Linux
-
   /// **Mechanica**
   ///
   /// Returns a new string made by appending to the receiver a given string.
