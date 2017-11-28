@@ -13,9 +13,7 @@ jobs:
         - source ~/.bashrc
     steps:
       - checkout
-      - run:
-          name: Swift build
-          command: sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y 
+      - run: apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y 
       - run:
           name: Print the Current Time
           command: date
