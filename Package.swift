@@ -17,7 +17,8 @@ let package = Package(
     .testTarget(name: "FoundationTests", dependencies: ["Mechanica"]),
     .testTarget(name: "SharedTests", dependencies: ["Mechanica"]),
     .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
-    .testTarget(name: "UIKitTests", dependencies: ["Mechanica"])
+    .testTarget(name: "UIKitTests", dependencies: ["Mechanica"]),
+    .testTarget(name: "AppKitTests", dependencies: ["Mechanica"])
     
     /*
      .target(name: "Mechanica", path: "Sources/StandardLibrary", sources: [
