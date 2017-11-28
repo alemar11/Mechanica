@@ -18,46 +18,7 @@ let package = Package(
     .testTarget(name: "SharedTests", dependencies: ["Mechanica"]),
     .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
     .testTarget(name: "UIKitTests", dependencies: ["Mechanica"]),
-    .testTarget(name: "AppKitTests", dependencies: ["Mechanica"])
-    
-    /*
-     .target(name: "Mechanica", path: "Sources/StandardLibrary", sources: [
-     "BinaryFloatingPoint+Utils.swift",
-     "BinaryInteger+Utils.swift",
-     "Bool+Utils.swift",
-     "Character+Utils.swift",
-     "Collection+Utils.swift",
-     "Dictionary+Utils.swift",
-     "ExpressibleByIntegerLiteral+Utils.swift",
-     "FixedWidthInteger+Utils.swift",
-     "FixedWidthIntegerRandomizable.swift",
-     "FloatingPoint+Utils.swift",
-     "Operators.swift",
-     "Optional+Utils.swift",
-     "RangeReplaceableCollection+Utils.swift",
-     "Sequence+Utils.swift",
-     "SignedInteger.swift",
-     "String+Utils.swift",
-     "Unicode+Utils.swift"
-     ]),
-     
-     .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"], sources: [
-     "BinaryFloatingPointUtilsTests.swift",
-     "BinaryIntegerUtilsTests.swift",
-     "BoolUtilsTests.swift",
-     "CollectionUtilsTests.swift",
-     "DictionaryUtilsTests.swift",
-     "FixedWidthIntegerRandomizableTests.swift",
-     "FloatingPointUtilsTests.swift",
-     "OperatorsTests.swift",
-     "OptionalUtilsTests.swift",
-     "RangeReplaceableCollectionUtilsTests.swift",
-     "SequenceUtilsTests.swift",
-     "SignedIntegerUtilsTests.swift",
-     "StringUtilsTests.swift",
-     "UnsignedIntegerUtilsTests.swift"
-     ]),
-     */
+    //.testTarget(name: "AppKitTests", dependencies: ["Mechanica"]) //currently empty
   ],
     swiftLanguageVersions: [4]
 )
