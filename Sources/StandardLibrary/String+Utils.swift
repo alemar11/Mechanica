@@ -24,7 +24,7 @@
 #if os(Linux)
   import Glibc
 #else
-  import Darwin
+  import Darwin.C
 #endif
 
 extension String {

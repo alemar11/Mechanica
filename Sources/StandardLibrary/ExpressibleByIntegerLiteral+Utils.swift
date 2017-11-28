@@ -22,7 +22,7 @@
 // SOFTWARE.
 
 #if !os(Linux)
-import Darwin
+import Darwin.C
 
 public extension ExpressibleByIntegerLiteral {
 

@@ -25,7 +25,7 @@
   import Glibc
   import SwiftShims
 #else
-  import Darwin
+  import Darwin.C
 #endif
 
 func mechanica_arc4random_uniform(_ upperBound: UInt32) -> UInt32 {
