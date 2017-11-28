@@ -5,7 +5,9 @@ jobs:
       - image: ibmcom/swift-ubuntu:4.0.2
     steps:
       - checkout
-      - run: sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y 
+      - run:
+          name: Swift build
+          command: swift build
       - run:
           name: Print the Current Time
           command: date
