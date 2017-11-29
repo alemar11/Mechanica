@@ -2,12 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: ibmcom/swift-ubuntu:4.0.2
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world!.
+          name: Swift build
+          command: swift build
       - run:
-          name: Print the Current Time
-          command: date
+          name: Swift test
+          command: swift test --parallel
