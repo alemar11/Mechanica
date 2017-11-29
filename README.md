@@ -1,7 +1,7 @@
 ![Mechanica: Swift Utils](https://raw.githubusercontent.com/tinrobots/Mechanica/assets/mechanica.png)
 
 [![Swift 4.0.2](https://img.shields.io/badge/Swift-4.0.2-orange.svg?style=flat)](https://developer.apple.com/swift)
-![Platforms](https://img.shields.io/badge/Platform-iOS%2010%2B%20|%20macOS%2010.12+%20|%20tvOS%2010+%20|%20watchOS%203+-blue.svg) 
+![Platforms](https://img.shields.io/badge/Platform-iOS%2010%2B%20|%20macOS%2010.12+%20|%20tvOS%2010+%20|%20watchOS%203+|%20Ubuntu%20Linux-blue.svg) 
 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Mechanica.svg)](https://cocoapods.org/pods/Mechanica)
@@ -9,7 +9,7 @@
 |Branch|Build Status|Code Coverage|Linux Build Status
 |----|----|----|----|
 |Master|[![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=master)](https://travis-ci.org/tinrobots/Mechanica)| ![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/master.svg)||
-|Develop|![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop)|![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg)| ![CircleCI](https://circleci.com/gh/tinrobots/Mechanica/tree/develop.svg?style=svg)|
+|Develop|![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop)|![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg)|![CircleCI](https://circleci.com/gh/tinrobots/Mechanica/tree/develop.svg?style=svg)|
 
 ## Mechanica
 [![GitHub release](https://img.shields.io/github/release/tinrobots/Mechanica.svg)](https://github.com/tinrobots/Mechanica/releases) 
