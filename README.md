@@ -14,7 +14,7 @@
 ## Mechanica
 [![GitHub release](https://img.shields.io/github/release/tinrobots/Mechanica.svg)](https://github.com/tinrobots/Mechanica/releases) 
 
-A library of Swift utils to ease your iOS | macOS | watchOS | tvOS development.
+A library of Swift utils to ease your iOS, macOS, watchOS, tvOS and Linux development.
 
 - [Requirements](#requirements)
 - [Documentation](#documentation)
