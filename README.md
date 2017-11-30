@@ -6,10 +6,10 @@
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Mechanica.svg)](https://cocoapods.org/pods/Mechanica)
 
-|Branch|Build Status|Code Coverage|Linux Build Status
+|Branch|TravisCI Build Status (all os)|Code Coverage|CircleCI Build Status (linux)
 |----|----|----|----|
-|Master|[![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=master)](https://travis-ci.org/tinrobots/Mechanica)| ![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/master.svg)||
-|Develop|![Build Status](https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop)|![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg)|![CircleCI](https://circleci.com/gh/tinrobots/Mechanica/tree/develop.svg?style=svg)|
+|Master|[![TravisCI](https://travis-ci.org/tinrobots/Mechanica.svg?branch=master)](https://travis-ci.org/tinrobots/Mechanica)| ![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/master.svg)|![CircleCI](https://circleci.com/gh/tinrobots/Mechanica/tree/master.svg?style=svg)|
+|Develop|![TravisCI](https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop)|![Code Coverage](https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg)|![CircleCI](https://circleci.com/gh/tinrobots/Mechanica/tree/develop.svg?style=svg)|
 
 ## Mechanica
 [![GitHub release](https://img.shields.io/github/release/tinrobots/Mechanica.svg)](https://github.com/tinrobots/Mechanica/releases) 
