@@ -44,17 +44,5 @@ extension URL {
 
     return parameters
   }
-}
-
-// MARK: - Operators
-
-extension URL {
-
-  /// **Mechanica**
-  ///
-  /// Creates a `new` URL constructed by appending the *rhs* path to the *lhs* URL.
-  static public func + (lhs: URL, rhs: String) -> URL {
-    return lhs.appendingPathComponent(rhs)
-  }
 
 }

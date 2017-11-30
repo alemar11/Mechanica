@@ -21,8 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// MARK: - Utils
-
 public extension Dictionary {
 
   /// **Mechanica**
@@ -49,11 +47,22 @@ public extension Dictionary {
     return removedElements
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns a random pair of (key,value) from `self`.
+  public func random() -> Element {
+    let index = Int.random(lowerBound: 0, upperBound: count)
+    let key =  Array(keys)[index]
+    let value = self[key]!
+
+    return (key, value)
+  }
+
 }
 
-// MARK: - ExpressibleByStringLiteral
-
 public extension Dictionary where Key: ExpressibleByStringLiteral {
+
+  // MARK: - ExpressibleByStringLiteral
 
   /// **Mechanica**
   ///
@@ -64,23 +73,6 @@ public extension Dictionary where Key: ExpressibleByStringLiteral {
         self[lowercaseKey] = removeValue(forKey: key)
       }
     }
-  }
-
-}
-
-// MARK: - Random
-
-extension Dictionary {
-
-  /// **Mechanica**
-  ///
-  /// Returns a random pair of (key,value) from `self`.
-  public func random() -> Element {
-    let index = Int.random(lowerBound: 0, upperBound: count)
-    let key =  Array(keys)[index]
-    let value = self[key]!
-
-    return (key, value)
   }
 
 }

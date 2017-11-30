@@ -51,6 +51,12 @@
                 <a href="Extensions/Color.html">Color</a>
               </li>
               <li class="nav-group-task">
+                <a href="Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Extensions/Dictionary.html">Dictionary</a>
               </li>
               <li class="nav-group-task">
@@ -153,6 +159,9 @@
                 <a href="Extensions/Unicode.html">Unicode</a>
               </li>
               <li class="nav-group-task">
+                <a href="Extensions/Unicode/Scalar.html">– Scalar</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Extensions/UserDefaults.html">UserDefaults</a>
               </li>
             </ul>
@@ -170,7 +179,7 @@
                 <a href="Functions/???(_:_:).html">???(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:9Mechanica8typeNameSSyp2of_tF">typeName(of:)</a>
+                <a href="Functions.html#/typeName(of:)">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -185,20 +194,6 @@
               </li>
             </ul>
           </li>
-          <li class="nav-group-name">
-            <a href="Typealiases.html">Typealiases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:9Mechanica5Colora">Color</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:9Mechanica4Fonta">Font</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:9Mechanica5Imagea">Image</a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -207,8 +202,8 @@
             
             <p><img src="https://raw.githubusercontent.com/tinrobots/Mechanica/assets/mechanica.png" alt="Mechanica: Swift Utils"></p>
 
-<p><a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat" alt="Swift 4.0"></a>
-<img src="https://img.shields.io/badge/Platform-iOS%2010%2B%20%7C%20macOS%2010.12+%20%7C%20tvOS%2010+%20%7C%20watchOS%203+-blue.svg" alt="Platforms"> </p>
+<p><a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/Swift-4.0.2-orange.svg?style=flat" alt="Swift 4.0.2"></a>
+<img src="https://img.shields.io/badge/Platform-iOS%2010%2B%20%7C%20macOS%2010.12+%20%7C%20tvOS%2010+%20%7C%20watchOS%203+%7C%20Ubuntu%20Linux-blue.svg" alt="Platforms"> </p>
 
 <p><a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a>
 <a href="https://cocoapods.org/pods/Mechanica"><img src="https://img.shields.io/cocoapods/v/Mechanica.svg" alt="CocoaPods Compatible"></a></p>
@@ -218,24 +213,27 @@
 <th>Branch</th>
 <th>Build Status</th>
 <th>Code Coverage</th>
+<th>Linux Build Status</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Master</td>
 <td><a href="https://travis-ci.org/tinrobots/Mechanica"><img src="https://travis-ci.org/tinrobots/Mechanica.svg?branch=master" alt="Build Status"></a></td>
 <td><img src="https://img.shields.io/codecov/c/github/tinrobots/Mechanica/master.svg" alt="Code Coverage"></td>
+<td></td>
 </tr>
 <tr>
 <td>Develop</td>
 <td><img src="https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop" alt="Build Status"></td>
 <td><img src="https://img.shields.io/codecov/c/github/tinrobots/Mechanica/develop.svg" alt="Code Coverage"></td>
+<td><img src="https://circleci.com/gh/tinrobots/Mechanica/tree/develop.svg?style=svg" alt="CircleCI"></td>
 </tr>
 </tbody></table>
 <h2 id='mechanica' class='heading'>Mechanica</h2>
 
 <p><a href="https://github.com/tinrobots/Mechanica/releases"><img src="https://img.shields.io/github/release/tinrobots/Mechanica.svg" alt="GitHub release"></a> </p>
 
-<p>A library of Swift utils to ease your iOS | macOS | watchOS | tvOS development.</p>
+<p>A library of Swift utils to ease your iOS, macOS, watchOS, tvOS and Linuxdevelopment.</p>
 
 <ul>
 <li><a href="#requirements">Requirements</a></li>
@@ -248,7 +246,7 @@
 <ul>
 <li>iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+</li>
 <li>Xcode 9.0</li>
-<li>Swift 4.0</li>
+<li>Swift 4.0.2</li>
 </ul>
 <h2 id='documentation' class='heading'>Documentation</h2>
 
@@ -295,6 +293,14 @@
 </code></pre>
 
 <p>Run <code>carthage update</code> to build the framework and drag the built <code>Mechanica.framework</code> into your Xcode project.</p>
+<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+
+<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for automating the distribution of Swift code and is integrated into the <code>swift</code> compiler. 
+Once you have your Swift package set up, adding Mechanica as a dependency is as easy as adding it to the <code>dependencies</code> value of your <code>Package.swift</code>.</p>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/tinrobots/Mechanica.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"1.2.0"</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre>
 <h3 id='manually' class='heading'>Manually</h3>
 
 <p>If you prefer not to use either of the aforementioned dependency managers, you can integrate Mechanica into your project manually.</p>
@@ -342,8 +348,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-11-11)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-11-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

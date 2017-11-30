@@ -66,6 +66,8 @@ extension Sequence {
 
 extension Sequence where Element: Equatable {
 
+  // MARK: - Equatable
+
   /// **Mechanica**
   ///
   /// Returns a collection of unique elements preserving their original order.
@@ -81,9 +83,9 @@ extension Sequence where Element: Equatable {
 
 }
 
-// MARK: - Hashable
-
 extension Sequence where Element: Hashable {
+
+  // MARK: - Hashable
 
   /// **Mechanica**
   ///
@@ -100,9 +102,9 @@ extension Sequence where Element: Hashable {
 
 }
 
-// MARK: - AnyObject
-
 extension Sequence where Element: AnyObject {
+
+  // MARK: - AnyObject
 
   /// **Mechanica**
   ///

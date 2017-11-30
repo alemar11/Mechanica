@@ -26,15 +26,20 @@ import XCTest
 
 class FloatingPointUtilsTests: XCTestCase {
 
-  var piFloat         = Float(3.141_592_653_589_793_238_46)   //  3.14159274
-  var piDouble        = 3.14159_26535_89793_23846             //  3.1415926535897931
-  var piFloat80       = Float80(3.14159_26535_89793_23846)    //  3.141592653589793116
-
-  var negativeDouble  = -147.956455                           //  -147.95645500000001
-  var randomFloat    = Float32(199.959019)                    //  199.959015
-  var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
+  static var allTests = [
+    ("testRounding", testRounding),
+    ("testCeiling", testCeiling),
+    ("testFlooring", testFlooring)
+  ]
 
   func testRounding() {
+    var piFloat         = Float(3.141_592_653_589_793_238_46)   //  3.14159274
+    var piDouble        = 3.14159_26535_89793_23846             //  3.1415926535897931
+    var piFloat80       = Float80(3.14159_26535_89793_23846)    //  3.141592653589793116
+    
+    var negativeDouble  = -147.956455                           //  -147.95645500000001
+    var randomFloat    = Float32(199.959019)                    //  199.959015
+    var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
 
     XCTAssertEqual(piFloat.rounded(to: 0), 3.0)
     XCTAssertEqual(piFloat.rounded(to: -1), 3.14159274)
@@ -86,6 +91,13 @@ class FloatingPointUtilsTests: XCTestCase {
   }
 
   func testCeiling() {
+    var piFloat         = Float(3.141_592_653_589_793_238_46)   //  3.14159274
+    var piDouble        = 3.14159_26535_89793_23846             //  3.1415926535897931
+    var piFloat80       = Float80(3.14159_26535_89793_23846)    //  3.141592653589793116
+    
+    var negativeDouble  = -147.956455                           //  -147.95645500000001
+    var randomFloat    = Float32(199.959019)                    //  199.959015
+    var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
 
     XCTAssertEqual(piFloat.ceiled(to: 0), 4.0)
     XCTAssertEqual(piFloat.ceiled(to: -1), 3.14159274)
@@ -137,6 +149,12 @@ class FloatingPointUtilsTests: XCTestCase {
   }
 
   func testFlooring() {
+    var piFloat         = Float(3.141_592_653_589_793_238_46)   //  3.14159274
+    var piDouble        = 3.14159_26535_89793_23846             //  3.1415926535897931
+    var piFloat80       = Float80(3.14159_26535_89793_23846)    //  3.141592653589793116
+    
+    var randomFloat    = Float32(199.959019)                    //  199.959015
+    var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
 
     XCTAssertEqual(piFloat.floored(to: 0), 3.0)
     XCTAssertEqual(piFloat.floored(to: -1), 3.14159274)

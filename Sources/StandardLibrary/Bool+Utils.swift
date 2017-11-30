@@ -21,8 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Darwin
-
 extension Bool {
 
   /// **Mechanica**
@@ -50,7 +48,7 @@ extension Bool {
   ///
   /// Returns `true` or `false` randomly.
   static public func random() -> Bool {
-    return arc4random_uniform(2) == 0
+    return mechanica_arc4random_uniform(2) == 0
   }
 
   /// **Mechanica**

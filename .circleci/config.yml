@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ibmcom/swift-ubuntu:4.0.2
+    steps:
+      - checkout
+      - run:
+          name: Swift build
+          command: swift build
+      - run:
+          name: Swift test
+          command: swift test --parallel

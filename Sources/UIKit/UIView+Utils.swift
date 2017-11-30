@@ -40,8 +40,8 @@ extension UIView {
   /// Take sceenshot with the current device's screen scale.
   internal func screenshot() -> UIImage {
     // note: by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
-    return UIGraphicsImageRenderer(size: bounds.size).image { _ in
-      drawHierarchy(in: CGRect(origin: .zero, size: bounds.size), afterScreenUpdates: true)
+    return UIGraphicsImageRenderer(bounds: bounds).image { rendererContext in
+      layer.render(in: rendererContext.cgContext)
     }
   }
 

@@ -21,6 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if !os(Linux)
+  // TODO: UserDefaults doesn't work on Linux with Swift 4.0.2 (it's working on Swift 4.1-snapshot)
+
 import Foundation
 
 public extension UserDefaults {
@@ -30,7 +33,39 @@ public extension UserDefaults {
   /// Returns `true` if `key` exists.
   public final func hasKey(_ key: String) -> Bool {
     //return object(forKey: key) != nil
-    return dictionaryRepresentation().hasKey(key)
+    return dictionaryRepresentation().hasKey(key) //not implemented on Linux (Swift 4.0.2)
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Parameter defaultName: A key in the current user's defaults database.
+  /// - Returns: The bool value associated with the specified key. If the specified key does not exist, this method returns nil.
+  public final func optionalBool(forKey defaultName: String) -> Bool? {
+    return (object(forKey: defaultName) as? NSNumber)?.boolValue
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Parameter defaultName: A key in the current user's defaults database.
+  /// - Returns: The double value associated with the specified key. If the specified key does not exist, this method returns nil.
+  public final func optionalDouble(forKey defaultName: String) -> Double? {
+    return (object(forKey: defaultName) as? NSNumber)?.doubleValue
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Parameter defaultName: A key in the current user's defaults database.
+  /// - Returns: The floating-point value associated with the specified key. If the key does not exist, this method returns nil.
+  public final func optionalFloat(forKey defaultName: String) -> Float? {
+    return (object(forKey: defaultName) as? NSNumber)?.floatValue
+  }
+
+  /// **Mechanica**
+  ///
+  /// - Parameter defaultName: A key in the current user's defaults database.
+  /// - Returns: The integer value associated with the specified key. If the specified key does not exist, this method returns nil.
+  public final func optionalInteger(forKey defaultName: String) -> Int? {
+    return (object(forKey: defaultName) as? NSNumber)?.intValue
   }
 
   /// **Mechanica**
@@ -45,43 +80,11 @@ public extension UserDefaults {
     }
   }
 
-  /// **Mechanica**
-  ///
-  /// - Parameter defaultName: A key in the current user's defaults database.
-  /// - Returns: The integer value associated with the specified key. If the specified key does not exist, this method returns nil.
-  public final func optionalInteger(forKey defaultName: String) -> Int? {
-    return (object(forKey: defaultName) as? NSNumber)?.intValue
-  }
-
-  /// **Mechanica**
-  ///
-  /// - Parameter defaultName: A key in the current user's defaults database.
-  /// - Returns: The floating-point value associated with the specified key. If the key does not exist, this method returns nil.
-  public final func optionalFloat(forKey defaultName: String) -> Float? {
-    return (object(forKey: defaultName) as? NSNumber)?.floatValue
-  }
-
-  /// **Mechanica**
-  ///
-  /// - Parameter defaultName: A key in the current user's defaults database.
-  /// - Returns: The double value associated with the specified key. If the specified key does not exist, this method returns nil.
-  public final func optionalDouble(forKey defaultName: String) -> Double? {
-    return (object(forKey: defaultName) as? NSNumber)?.doubleValue
-  }
-
-  /// **Mechanica**
-  ///
-  /// - Parameter defaultName: A key in the current user's defaults database.
-  /// - Returns: The bool value associated with the specified key. If the specified key does not exist, this method returns nil.
-  public final func optionalBool(forKey defaultName: String) -> Bool? {
-    return (object(forKey: defaultName) as? NSNumber)?.boolValue
-  }
-
 }
 
-// MARK: Codable
-
 extension UserDefaults {
+
+  // MARK: Codable
 
   /// **Mechanica**
   ///
@@ -116,3 +119,5 @@ extension UserDefaults {
   }
 
 }
+
+#endif

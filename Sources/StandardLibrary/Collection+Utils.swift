@@ -23,6 +23,8 @@
 
 extension Collection where Self.Index == Int, Element: Equatable {
 
+  // MARK: - Equatable
+
   /// **Mechanica**
   ///
   ///  Returns the first index where the specified value appears in the collection.

@@ -26,6 +26,12 @@ import XCTest
 
 class CollectionUtilsTests: XCTestCase {
 
+  static var allTests = [
+    ("testFirstIndex", testFirstIndex),
+    ("testLastIndex", testLastIndex),
+    ("testRandom", testRandom)
+  ]
+
   func testFirstIndex() {
     // Given
     let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]

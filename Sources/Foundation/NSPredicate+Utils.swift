@@ -45,9 +45,9 @@ extension NSPredicate {
 
 }
 
-// MARK: Operators
-
 extension NSPredicate {
+
+  // MARK: Operators
 
   /// **Mechanica**
   ///

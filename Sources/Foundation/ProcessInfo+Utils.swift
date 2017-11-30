@@ -25,14 +25,16 @@ import Foundation
 
 extension ProcessInfo {
 
-  #if os(macOS)
+  #if !os(Linux)
+  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
+
   /// **Mechanica**
   ///
-  ///  Returns true if the app is sandboxed.
-  public static var isSandboxed: Bool {
-    return processInfo.environment["APP_SANDBOX_CONTAINER_ID"].hasValue
+  ///  Returns true if SwiftPackage tests are running.
+  public static var isRunningSwiftPackageTests: Bool {
+    let testArguments = processInfo.arguments.filter { $0.ends(with: "xctest")}
+    return processInfo.environment["XCTestConfigurationFilePath"] == nil && testArguments.count > 0
   }
-  #endif
 
   /// **Mechanica**
   ///
@@ -48,12 +50,15 @@ extension ProcessInfo {
     return processInfo.environment["XCTestConfigurationFilePath"].hasValue
   }
 
+  #if os(macOS)
   /// **Mechanica**
   ///
-  ///  Returns true if SwiftPackage tests are running.
-  public static var isRunningSwiftPackageTests: Bool {
-    let testArguments = processInfo.arguments.filter { $0.ends(with: "xctest")}
-    return processInfo.environment["XCTestConfigurationFilePath"] == nil && testArguments.count > 0
+  ///  Returns true if the app is sandboxed.
+  public static var isSandboxed: Bool {
+    return processInfo.environment["APP_SANDBOX_CONTAINER_ID"].hasValue
   }
+  #endif
+
+  #endif
 
 }

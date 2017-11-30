@@ -26,6 +26,8 @@ import XCTest
 
 class LocaleUtilsTests: XCTestCase {
 
+  static var allTests = [("testPosix", testPosix)]
+
   func testPosix() {
     let test: Locale = .posix
     XCTAssertEqual(test.identifier, "en_US_POSIX")

@@ -26,6 +26,18 @@ import XCTest
 
 class RangeReplaceableCollectionUtilsTests: XCTestCase {
 
+  static var allTests = [
+    ("testAppending", testAppending),
+    ("testRemoveFirst", testRemoveFirst),
+    ("testRemovingFirst", testRemovingFirst),
+    ("testRemoveLast", testRemoveLast),
+    ("testRemovingLast", testRemovingLast),
+    ("testRemoveAll", testRemoveAll),
+    ("testRemovingAll", testRemovingAll),
+    ("testRemoveFirstOccurrence", testRemoveFirstOccurrence),
+    ("testRemoveLastOccurrence", testRemoveLastOccurrence)
+  ]
+
   func testAppending() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
 

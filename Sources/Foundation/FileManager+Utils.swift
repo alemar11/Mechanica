@@ -30,24 +30,22 @@ extension FileManager {
 
   /// **Mechanica**
   ///
-  /// Returns the container directory associated with the specified security application group Identifier.
-  public final func containerDirectory(for groupIdentifier: String) -> URL? {
-    return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
-  }
-
-  // MARK: - Delete
-
-  /// **Mechanica**
-  ///
   /// Cleans all contents in a directory `path`.
   ///
   /// - Parameter path: **directory** path (if it's not a directory path, nothing is done).
   /// - Throws:  throws an error in cases of failure.
   public final func cleanDirectory(atPath path: String) throws {
-    var isDirectory: ObjCBool = false
 
-    guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
-    guard isDirectory.boolValue == true else { return }
+//    #if !os(Linux)
+//      var isDirectory: ObjCBool = false
+//      guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
+//      guard isDirectory.boolValue == true else { return }
+//    #else
+      guard fileExists(atPath: path) == true else { return }
+      var result = Stat()
+      stat(path, &result)
+      guard result.isDirectory == true else { return }
+//    #endif
 
     let contents = try contentsOfDirectory(atPath: path)
 
@@ -57,12 +55,24 @@ extension FileManager {
     }
   }
 
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+
   /// **Mechanica**
   ///
-  /// Destroys a file or a directory at a given `path`; throws an error in cases of failure.
+  /// Returns the container directory associated with the specified security application group Identifier.
+  public final func containerDirectory(for groupIdentifier: String) -> URL? {
+    return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
+  }
+
+  #endif
+
+  /// **Mechanica**
+  ///
+  /// Delete a file or a directory at a given `path`.
   ///
   /// - Parameter path: directory or file path.
-  public final func destroyFileOrDirectory(atPath path: String) throws {
+  /// - Throws:  throws an error in cases of failure.
+  public final func deleteFileOrDirectory(atPath path: String) throws {
     guard fileExists(atPath: path) == true else { return }
 
     try removeItem(atPath: path)

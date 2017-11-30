@@ -21,41 +21,66 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
 import XCTest
 @testable import Mechanica
 
 class NSMutableAttributedStringUtilsTests: XCTestCase {
 
-  func testRemovingAttrbiutes() {
-    // Given
-    let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
-    attributedString += " "
-    attributedString += NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
-    let range = NSRange(location: 0, length: attributedString.length)
+  func testRemovingAttributes() {
 
-    var attributesCount = 0
-    var attributesCount2 = 0
+      do {
+        // Given
+        let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
+        attributedString += " "
+        attributedString += NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+        let range = NSRange(location: 0, length: attributedString.length)
 
-    attributedString.enumerateAttributes(in: range, options: []) { (attributes, _, _) in
-      if !attributes.keys.isEmpty { attributesCount += 1 }
+        var attributesCount = 0
+        var attributesCount2 = 0
+
+        attributedString.enumerateAttributes(in: range, options: []) { (attributes, _, _) in
+          if !attributes.keys.isEmpty { attributesCount += 1 }
+        }
+
+        // When
+        let notAttributedString = attributedString.removingAllAttributes()
+        let range2 = NSRange(location: 0, length: notAttributedString.length)
+
+        // Then
+        notAttributedString.enumerateAttributes(in: range2, options: []) { (attributes, _, _) in
+          if !attributes.keys.isEmpty { attributesCount2 += 1 }
+        }
+
+        XCTAssertTrue(attributesCount != attributesCount2)
+        XCTAssertTrue(attributesCount2 == 0)
+      }
+
+    do {
+      let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red, NSAttributedStringKey.strikethroughColor: Color.blue])
+      let range = NSRange(location: 0, length: attributedString.length)
+
+      var attributesCount = 0
+      var attributesCount2 = 0
+
+      attributedString.enumerateAttributes(in: range, options: []) { (attributes, _, _) in
+        if !attributes.keys.isEmpty { attributesCount += 1 }
+      }
+
+      // When
+      let notAttributedString = attributedString.removingAllAttributes()
+      let range2 = NSRange(location: 0, length: notAttributedString.length)
+
+      // Then
+      notAttributedString.enumerateAttributes(in: range2, options: []) { (attributes, _, _) in
+        if !attributes.keys.isEmpty { attributesCount2 += 1 }
+      }
+
+      XCTAssertTrue(attributesCount != attributesCount2)
+      XCTAssertTrue(attributesCount2 == 0)
     }
-
-    // When
-    let notAttributedString = attributedString.removingAllAttributes()
-    let range2 = NSRange(location: 0, length: notAttributedString.length)
-
-    // Then
-    notAttributedString.enumerateAttributes(in: range2, options: []) { (attributes, _, _) in
-      if !attributes.keys.isEmpty { attributesCount2 += 1 }
-    }
-
-    XCTAssertTrue(attributesCount != attributesCount2)
-    XCTAssertTrue(attributesCount2 == 0)
   }
 
-  func testRemoveAttrbiutes() {
+  func testRemoveAttributes() {
     // Given
     let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
     attributedString += " "
@@ -80,6 +105,145 @@ class NSMutableAttributedStringUtilsTests: XCTestCase {
 
     XCTAssertTrue(attributesCount != attributesCount2)
     XCTAssertTrue(attributesCount2 == 0)
+  }
+
+  func testAddition() {
+
+    /// addition between NSMutableAttributedStrings
+    do {
+      let s1 = NSMutableAttributedString(string: "Hello")
+      let s2 = NSMutableAttributedString(string: " ")
+      let s3 = NSMutableAttributedString(string: "World")
+
+      let s4 = s1 + s2 + s3
+      XCTAssertTrue(s4.string == "Hello World")
+    }
+
+    do {
+      let s1 = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
+      let s2 = NSMutableAttributedString(string: " ")
+      let s3 = NSMutableAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+
+      let s4 = s1 + s2 + s3
+      let firstCharAttributes = s4.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
+      let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
+      let redColor = firstCharAttributes[NSAttributedStringKey.foregroundColor] as? Color
+      let yellowColor = lastCharAttributes[NSAttributedStringKey.backgroundColor] as? Color
+      XCTAssertTrue(s1 !== s4)
+      XCTAssertNotNil(redColor)
+      XCTAssertNotNil(yellowColor)
+      XCTAssertTrue(redColor! == .red)
+      XCTAssertTrue(yellowColor! == .yellow)
+      XCTAssertTrue(s4.string == "Hello World")
+    }
+
+    /// addition between NSMutableAttributedStrings and NSAttributedString
+    do {
+      let s1 = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
+      let s2 = NSMutableAttributedString(string: " ")
+      let s3 = NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+
+      let s4 = s1 + s2 + s3
+      let firstCharAttributes = s4.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
+      let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
+      let redColor = firstCharAttributes[NSAttributedStringKey.foregroundColor] as? Color
+      let yellowColor = lastCharAttributes[NSAttributedStringKey.backgroundColor] as? Color
+      XCTAssertTrue(s1 !== s4)
+      XCTAssertNotNil(redColor)
+      XCTAssertNotNil(yellowColor)
+      XCTAssertTrue(redColor! == .red)
+      XCTAssertTrue(yellowColor! == .yellow)
+      XCTAssertTrue(s4.string == "Hello World")
+    }
+
+    /// addition between NSAttributedStrings and NSMutableAttributedString
+    do {
+      let s1 = NSAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
+      let s2 = NSMutableAttributedString(string: " ")
+      let s3 = NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+
+      let s4 = s1 + s2 + s3
+      let firstCharAttributes = s4.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
+      let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
+      let redColor = firstCharAttributes[NSAttributedStringKey.foregroundColor] as? Color
+      let yellowColor = lastCharAttributes[NSAttributedStringKey.backgroundColor] as? Color
+      XCTAssertTrue(s1 !== s4)
+      XCTAssertNotNil(redColor)
+      XCTAssertNotNil(yellowColor)
+      XCTAssertTrue(redColor! == .red)
+      XCTAssertTrue(yellowColor! == .yellow)
+      XCTAssertTrue(s4.string == "Hello World")
+    }
+
+    /// addition between NSAttributedString, String and NSMutableAttributedString
+    do {
+      let s1 = NSAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
+      let s2 = " "
+      let s3 = NSMutableAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+
+      let s4 = s1 + s2 + s3
+      let firstCharAttributes = s4.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
+      let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
+      let redColor = firstCharAttributes[NSAttributedStringKey.foregroundColor] as? Color
+      let yellowColor = lastCharAttributes[NSAttributedStringKey.backgroundColor] as? Color
+      XCTAssertTrue(s1 !== s4)
+      XCTAssertNotNil(redColor)
+      XCTAssertNotNil(yellowColor)
+      XCTAssertTrue(redColor! == .red)
+      XCTAssertTrue(yellowColor! == .yellow)
+      XCTAssertTrue(s4.string == "Hello World")
+    }
+
+    /// addition between NSMutableAttributedString and String
+    do {
+      let s1 = "Hello"
+      let s2 = " "
+      let s3 = NSMutableAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+
+      let s4 = s1 + s2 + s3
+      let firstCharAttributes = s4.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
+      let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
+      let yellowColor = lastCharAttributes[NSAttributedStringKey.backgroundColor] as? Color
+      XCTAssertTrue(firstCharAttributes.isEmpty)
+      XCTAssertNotNil(yellowColor)
+      XCTAssertTrue(yellowColor! == .yellow)
+      XCTAssertTrue(s4.string == "Hello World")
+    }
+
+  }
+
+  func testCompoundAddition() {
+    do {
+      let s = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
+      s += " "
+      s += NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+
+      let firstCharAttributes = s.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
+      let lastCharAttributes = s.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
+      let redColor = firstCharAttributes[NSAttributedStringKey.foregroundColor] as? Color
+      let yellowColor = lastCharAttributes[NSAttributedStringKey.backgroundColor] as? Color
+      XCTAssertNotNil(redColor)
+      XCTAssertNotNil(yellowColor)
+      XCTAssertTrue(redColor! == .red)
+      XCTAssertTrue(yellowColor! == .yellow)
+      XCTAssertTrue(s.string == "Hello World")
+    }
+
+    do {
+      let s = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey.foregroundColor: Color.red])
+      s += NSMutableAttributedString(string: " ")
+      s += NSAttributedString(string: "World", attributes: [NSAttributedStringKey.backgroundColor: Color.yellow])
+
+      let firstCharAttributes = s.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
+      let lastCharAttributes = s.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
+      let redColor = firstCharAttributes[NSAttributedStringKey.foregroundColor] as? Color
+      let yellowColor = lastCharAttributes[NSAttributedStringKey.backgroundColor] as? Color
+      XCTAssertNotNil(redColor)
+      XCTAssertNotNil(yellowColor)
+      XCTAssertTrue(redColor! == .red)
+      XCTAssertTrue(yellowColor! == .yellow)
+      XCTAssertTrue(s.string == "Hello World")
+    }
   }
 
 }
