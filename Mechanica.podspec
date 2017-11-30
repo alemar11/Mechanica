@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = 'Mechanica'
-  s.version           = '1.1.0'
+  s.version           = '1.2.0'
   s.license           = 'MIT'
   s.documentation_url = 'http://www.tinrobots.org/Mechanica'  
   s.summary           = 'A library of Swift utils to ease your iOS/macOS/watchOS/tvOS development.'
@@ -24,13 +24,10 @@ Pod::Spec.new do |s|
   
   s.ios.exclude_files = 'Sources/AppKit/*.swift'
 
+  s.tvos.exclude_files = 'Sources/AppKit/*.swift'
+
+  s.watchos.exclude_files = 'Sources/AppKit/*.swift'
+
   s.osx.exclude_files = 'Sources/UIKit/*.swift'
   
-  s.watchos.exclude_files = 'Sources/UIKit/UIButton+Utils.swift', 
-                            'Sources/UIKit/UIDevice+Utils.swift',
-                            'Sources/UIKit/UIGestureRecognizer+Utils.swift',
-                            'Sources/UILayoutPriority+Utils.swift',
-                            'Sources/UIView+Utils.swift',
-                            'Sources/UIViewController+Utils.swift',
-                            'Sources/UIWindow+Utils.swift'
 end
