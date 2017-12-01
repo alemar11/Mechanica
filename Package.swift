@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "Mechanica",
     products: [
-        .library(name: "Mechanica", targets: ["Mechanica"])
+        .library(name: "Mechanica", targets: ["Mechanica", "libc"])
     ],
     targets: [
         .target(
