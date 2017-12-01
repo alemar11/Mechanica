@@ -10,4 +10,4 @@ jobs:
           command: swift build
       - run:
           name: Swift test
-          command: swift test --parallel
+          command: swift test
