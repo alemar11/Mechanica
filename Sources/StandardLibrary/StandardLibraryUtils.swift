@@ -21,11 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+import libc
 #if os(Linux)
-  import Glibc
   import SwiftShims
-#else
-  import Darwin.C
 #endif
 
 func mechanica_arc4random_uniform(_ upperBound: UInt32) -> UInt32 {

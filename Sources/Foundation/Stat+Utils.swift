@@ -25,11 +25,7 @@
 // https://github.com/RubyNative/SwiftRuby
 // https://www.gnu.org/software/libc/manual/html_node/Testing-File-Type.html
 
-#if os(Linux)
-  import Glibc
-#else
-  import Darwin.C
-#endif
+import libc
 
 /// **Mechanica**
 ///
