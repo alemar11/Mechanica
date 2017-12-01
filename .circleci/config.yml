@@ -8,6 +8,9 @@ jobs:
     steps:
       - checkout
       - run: swift test
+      - run:
+          name: Swift build Release
+          command: swift build -c release -Xswiftc -static-stdlib       
 
   linux_swift_4.0.2:
     docker:
