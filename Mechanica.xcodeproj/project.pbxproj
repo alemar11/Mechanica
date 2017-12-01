@@ -276,7 +276,9 @@
 		23DC26D41F1E3F090093F7EE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC26D11F1E3F090093F7EE /* Operators.swift */; };
 		23DC26D51F1E3F090093F7EE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC26D11F1E3F090093F7EE /* Operators.swift */; };
 		23ECFEFB1FD15DD500D7B621 /* libc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C7BDF11FD1543100BCE0D5 /* libc.framework */; };
-		23ECFEFC1FD15F3C00D7B621 /* libc.h in Headers */ = {isa = PBXBuildFile; fileRef = 23C7BDF31FD1543100BCE0D5 /* libc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23ECFEFF1FD163F100D7B621 /* libc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C7BDF11FD1543100BCE0D5 /* libc.framework */; };
+		23ECFF021FD1640200D7B621 /* libc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C7BDF11FD1543100BCE0D5 /* libc.framework */; };
+		23ECFF051FD1641800D7B621 /* libc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C7BDF11FD1543100BCE0D5 /* libc.framework */; };
 		23EE2F4C1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
 		23EE2F4D1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
 		23EE2F4E1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
@@ -380,6 +382,34 @@
 			remoteGlobalIDString = 12B536E11D33ED29005C52A7;
 			remoteInfo = "Mechanica macOS";
 		};
+		23ECFEFD1FD1637A00D7B621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12B536991D33EB6B005C52A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23C7BDF01FD1543100BCE0D5;
+			remoteInfo = libc;
+		};
+		23ECFF001FD163F600D7B621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12B536991D33EB6B005C52A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23C7BDF01FD1543100BCE0D5;
+			remoteInfo = libc;
+		};
+		23ECFF031FD1640800D7B621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12B536991D33EB6B005C52A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23C7BDF01FD1543100BCE0D5;
+			remoteInfo = libc;
+		};
+		23ECFF061FD1642D00D7B621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12B536991D33EB6B005C52A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23C7BDF01FD1543100BCE0D5;
+			remoteInfo = libc;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -458,7 +488,6 @@
 		23C7967C1FB44E74006766FD /* SignedInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInteger.swift; sourceTree = "<group>"; };
 		23C7BDE71FD1531E00BCE0D5 /* libc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = libc.swift; sourceTree = "<group>"; };
 		23C7BDF11FD1543100BCE0D5 /* libc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		23C7BDF31FD1543100BCE0D5 /* libc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libc.h; sourceTree = "<group>"; };
 		23C7BDF41FD1543100BCE0D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23CC6B221FA71E04004D062B /* Image+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Utils.swift"; sourceTree = "<group>"; };
 		23CC6B281FA72051004D062B /* ImageUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtilsTests.swift; sourceTree = "<group>"; };
@@ -501,6 +530,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23ECFEFF1FD163F100D7B621 /* libc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +538,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23ECFF021FD1640200D7B621 /* libc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +546,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23ECFF051FD1641800D7B621 /* libc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,7 +794,6 @@
 			isa = PBXGroup;
 			children = (
 				23C7BDE71FD1531E00BCE0D5 /* libc.swift */,
-				23C7BDF31FD1543100BCE0D5 /* libc.h */,
 				23C7BDF41FD1543100BCE0D5 /* Info.plist */,
 			);
 			path = libc;
@@ -828,7 +859,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23ECFEFC1FD15F3C00D7B621 /* libc.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,6 +877,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				23ECFEFE1FD1637A00D7B621 /* PBXTargetDependency */,
 			);
 			name = "Mechanica iOS";
 			productName = "Mechanica iOS";
@@ -865,6 +896,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				23ECFF011FD163F600D7B621 /* PBXTargetDependency */,
 			);
 			name = "Mechanica watchOS";
 			productName = "Mechanica watchOS";
@@ -883,6 +915,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				23ECFF041FD1640800D7B621 /* PBXTargetDependency */,
 			);
 			name = "Mechanica tvOS";
 			productName = "Mechanica tvOS";
@@ -901,6 +934,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				23ECFF071FD1642D00D7B621 /* PBXTargetDependency */,
 			);
 			name = "Mechanica macOS";
 			productName = "Mechanica macOS";
@@ -1536,6 +1570,26 @@
 			target = 12B536E11D33ED29005C52A7 /* Mechanica macOS */;
 			targetProxy = 233404981EF7C927006DA3A9 /* PBXContainerItemProxy */;
 		};
+		23ECFEFE1FD1637A00D7B621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23C7BDF01FD1543100BCE0D5 /* libc */;
+			targetProxy = 23ECFEFD1FD1637A00D7B621 /* PBXContainerItemProxy */;
+		};
+		23ECFF011FD163F600D7B621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23C7BDF01FD1543100BCE0D5 /* libc */;
+			targetProxy = 23ECFF001FD163F600D7B621 /* PBXContainerItemProxy */;
+		};
+		23ECFF041FD1640800D7B621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23C7BDF01FD1543100BCE0D5 /* libc */;
+			targetProxy = 23ECFF031FD1640800D7B621 /* PBXContainerItemProxy */;
+		};
+		23ECFF071FD1642D00D7B621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23C7BDF01FD1543100BCE0D5 /* libc */;
+			targetProxy = 23ECFF061FD1642D00D7B621 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -1666,10 +1720,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1697,10 +1748,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1825,6 +1873,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1852,6 +1904,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1988,6 +2044,7 @@
 		23C7BDF71FD1543100BCE0D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
@@ -2006,22 +2063,27 @@
 				INFOPLIST_FILE = Sources/libc/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = libc;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator watchsimulator watchos appletvsimulator appletvos";
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = libc;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 armv7 armv7s";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
 		23C7BDF81FD1543100BCE0D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
@@ -2041,16 +2103,20 @@
 				INFOPLIST_FILE = Sources/libc/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = libc;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator watchsimulator watchos appletvsimulator appletvos";
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = libc;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				USE_HEADERMAP = NO;
+				VALID_ARCHS = "i386 x86_64 arm64 armv7 armv7s";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
