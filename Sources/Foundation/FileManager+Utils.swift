@@ -55,7 +55,7 @@ extension FileManager {
     }
   }
 
-  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  #if !os(Linux)
 
   /// **Mechanica**
   ///
