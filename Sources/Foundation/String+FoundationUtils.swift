@@ -152,9 +152,6 @@ extension String {
     return result
   }
 
-  //#if !os(Linux)
-  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
-
   /// **Mechanica**
   ///
   /// Returns *true* if `self` ends with a given suffix.
@@ -165,8 +162,6 @@ extension String {
 
     return hasSuffix(suffix)
   }
-
-  //#endif
 
   /// **Mechanica**
   ///
@@ -490,9 +485,6 @@ extension String {
     return (major, minor, patch)
   }
 
-  //#if !os(Linux)
-  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
-
   /// **Mechanica**
   ///
   /// Returns *true* if `self` starts with a given prefix.
@@ -503,8 +495,6 @@ extension String {
 
     return hasPrefix(prefix)
   }
-
-  //#endif
 
   /// **Mechanica**
   ///
