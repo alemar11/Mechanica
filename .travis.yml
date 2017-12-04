@@ -33,6 +33,7 @@ matrix:
         - swift --version
         - swift build
         - swift test
+        - swift build -c release -Xswiftc -static-stdlib
 
     # macOS: Swift Tests, CocoaPods and SwiftLint
     - os: osx
