@@ -40,7 +40,7 @@ public func typeName(of some: Any) -> String {
   return value
 }
 
-#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+#if !os(Linux)
 
 /// **Mechanica**
 ///
