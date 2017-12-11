@@ -24,11 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-class UserDefaultsUtilsTests: XCTestCase {
-
-  //TODO: add test for URL --> https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/UserDefaults.swift
-  //on Linux will be set to nil
-  
+extension UserDefaultsUtilsTests {
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
   static var allTests = [
     ("testOptionalInteger", testOptionalInteger),
@@ -38,7 +34,13 @@ class UserDefaultsUtilsTests: XCTestCase {
     ("testRemoveAll", testRemoveAll),
     ("testCodable", testCodable)
   ]
+}
 
+class UserDefaultsUtilsTests: XCTestCase {
+
+  //TODO: add test for URL --> https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/UserDefaults.swift
+  //on Linux will be set to nil
+  
   let userDefaults = UserDefaults.standard
 
   override func setUp() {

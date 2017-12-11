@@ -24,13 +24,15 @@
 import XCTest
 @testable import Mechanica
 
-class StatUtilsTests: XCTestCase {
-
+extension StatUtilsTests {
   static var allTests = [
     ("testIsDirectory", testIsDirectory),
     ("testIsFile", testIsFile),
     ("testIsLink", testIsLink)
   ]
+}
+
+class StatUtilsTests: XCTestCase {
 
   func testIsDirectory() throws {
     let tmpPath = "/tmp"

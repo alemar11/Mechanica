@@ -24,14 +24,16 @@
 import XCTest
 @testable import Mechanica
 
-class DictionaryFoundationUtilsTests: XCTestCase {
-
+extension DictionaryFoundationUtilsTests {
   static var allTests = [
     ("testInitFromJSON", testInitFromJSON),
     ("testJSONString", testJSONString),
     ("testJSONData", testJSONData),
     ("testLowercaseAllKeys", testLowercaseAllKeys)
   ]
+}
+
+class DictionaryFoundationUtilsTests: XCTestCase {
 
   func testInitFromJSON() {
 

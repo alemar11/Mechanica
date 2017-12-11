@@ -24,9 +24,11 @@
 import XCTest
 @testable import Mechanica
 
-class URLUtilsTests: XCTestCase {
-
+extension URLUtilsTests {
   static var allTests = [("testQueryParameters", testQueryParameters)]
+}
+
+class URLUtilsTests: XCTestCase {
 
   func testQueryParameters() {
     do {

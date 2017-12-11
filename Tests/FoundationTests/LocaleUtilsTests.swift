@@ -24,9 +24,11 @@
 import XCTest
 @testable import Mechanica
 
-class LocaleUtilsTests: XCTestCase {
-
+extension LocaleUtilsTests {
   static var allTests = [("testPosix", testPosix)]
+}
+
+class LocaleUtilsTests: XCTestCase {
 
   func testPosix() {
     let test: Locale = .posix

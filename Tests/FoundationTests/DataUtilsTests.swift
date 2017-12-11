@@ -24,9 +24,11 @@
 import XCTest
 @testable import Mechanica
 
-class DataUtilsTests: XCTestCase {
-
+extension DataUtilsTests {
   static var allTests = [("testBytes", testBytes)]
+}
+
+class DataUtilsTests: XCTestCase {
 
   func testBytes() {
     let data = "tinrobots".data(using: .utf8)
