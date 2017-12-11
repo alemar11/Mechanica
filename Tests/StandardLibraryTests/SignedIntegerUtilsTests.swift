@@ -24,9 +24,11 @@
 import XCTest
 @testable import Mechanica
 
-class SignedIntegerTests: XCTestCase {
-
+extension SignedIntegerTests {
   static var allTests = [ ("testBinaryString", testBinaryString) ]
+}
+
+class SignedIntegerTests: XCTestCase {
 
   // MARK: - BinaryConvertible
 

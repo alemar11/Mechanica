@@ -24,9 +24,11 @@
 import XCTest
 @testable import Mechanica
 
-class OperatorsTests: XCTestCase {
-
+extension OperatorsTests {
   static var allTests = [ ("testPercent", testPercent) ]
+}
+
+class OperatorsTests: XCTestCase {
 
   func testPercent() {
     do {

@@ -24,15 +24,17 @@
 import XCTest
 @testable import Mechanica
 
-class OptionalUtilsTests: XCTestCase {
-
+extension OptionalUtilsTests {
   static var allTests = [("testHasValue", testHasValue)]
+}
 
+class OptionalUtilsTests: XCTestCase {
+  
   func testHasValue(){
     var value: Any?
     XCTAssert(!value.hasValue)
     value = "tinrobots"
     XCTAssert(value.hasValue)
   }
-
+  
 }

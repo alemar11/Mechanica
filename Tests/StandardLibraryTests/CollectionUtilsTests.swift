@@ -24,13 +24,15 @@
 import XCTest
 @testable import Mechanica
 
-class CollectionUtilsTests: XCTestCase {
-
+extension CollectionUtilsTests {
   static var allTests = [
     ("testFirstIndex", testFirstIndex),
     ("testLastIndex", testLastIndex),
     ("testRandom", testRandom)
   ]
+}
+
+class CollectionUtilsTests: XCTestCase {
 
   func testFirstIndex() {
     // Given

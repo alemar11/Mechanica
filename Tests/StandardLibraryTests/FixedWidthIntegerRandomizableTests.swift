@@ -24,13 +24,15 @@
 import XCTest
 @testable import Mechanica
 
-class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
-
+extension FixedWidthIntegerIntervalRandomizableTests {
   static var allTests = [
     ("testRandomSignedIntegerWithBounds", testRandomSignedIntegerWithBounds),
     ("testRandomUnsignedIntegerWithBounds", testRandomUnsignedIntegerWithBounds),
     ("testOverflow", testOverflow)
   ]
+}
+
+class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
   func testRandomSignedIntegerWithBounds() {
 
