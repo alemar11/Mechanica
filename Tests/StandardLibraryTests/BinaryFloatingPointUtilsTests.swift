@@ -30,7 +30,7 @@ extension BinaryFloatingPointUtilsTests {
 
 class BinaryFloatingPointUtilsTests: XCTestCase {
 
- 
+
 
   // MARK: - BinaryConvertible
 
