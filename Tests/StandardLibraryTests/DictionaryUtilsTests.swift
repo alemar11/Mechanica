@@ -24,13 +24,15 @@
 import XCTest
 @testable import Mechanica
 
-class DictionaryUtilsTests: XCTestCase {
-
+extension DictionaryUtilsTests {
   static var allTests = [
     ("testHasKey", testHasKey),
     ("testRemoveAll", testRemoveAll),
     ("testRandom", testRandom)
   ]
+}
+
+class DictionaryUtilsTests: XCTestCase {
 
   func testHasKey() {
     do {

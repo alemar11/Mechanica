@@ -24,8 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-class StringUtilsTests: XCTestCase {
-
+extension StringUtilsTests {
   static var allTests = [
     ("testLength", testLength),
     ("testReverse", testReverse),
@@ -39,6 +38,9 @@ class StringUtilsTests: XCTestCase {
     ("testMultiply", testMultiply),
     ("testOptionalStringCoalescingOperator", testOptionalStringCoalescingOperator)
   ]
+}
+
+class StringUtilsTests: XCTestCase {
 
   func testLength() {
     XCTAssertTrue("".length == 0)

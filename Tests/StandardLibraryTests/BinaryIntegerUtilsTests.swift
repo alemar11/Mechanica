@@ -24,14 +24,16 @@
 import XCTest
 @testable import Mechanica
 
-class BinaryIntegerUtilsTests: XCTestCase {
-
+extension BinaryIntegerUtilsTests {
   static var allTests = [
     ("testIsEven", testIsEven),
     ("testIsOdd", testIsOdd),
     ("testIsPositive", testIsPositive),
     ("testIsNegative", testIsNegative)
   ]
+}
+
+class BinaryIntegerUtilsTests: XCTestCase {
 
   func testIsEven() {
     XCTAssertTrue(2.isEven)

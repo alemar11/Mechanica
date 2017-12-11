@@ -24,9 +24,13 @@
 import XCTest
 @testable import Mechanica
 
+extension BinaryFloatingPointUtilsTests {
+  static var allTests = [("testbinaryString", testbinaryString)]
+}
+
 class BinaryFloatingPointUtilsTests: XCTestCase {
 
-  static var allTests = [("testbinaryString", testbinaryString)]
+ 
 
   // MARK: - BinaryConvertible
 
