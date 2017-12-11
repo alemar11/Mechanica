@@ -34,12 +34,12 @@ extension BoolUtilsTests {
 }
 
 class BoolUtilsTests: XCTestCase {
-  
+
   func testInt() {
     XCTAssert(true.int == 1)
     XCTAssert(false.int == 0)
   }
-  
+
   func testRandom() {
     let b = Bool.random()
     switch b {
@@ -50,7 +50,7 @@ class BoolUtilsTests: XCTestCase {
       XCTAssert(true)
     }
   }
-  
+
   func testToggle() {
     let b1 = true
     XCTAssertTrue(b1.toggled == false)
@@ -58,9 +58,9 @@ class BoolUtilsTests: XCTestCase {
     b2.toggle()
     XCTAssertTrue(b2)
   }
-  
+
   // MARK:- BinaryConvertible
-  
+
   func testBinaryString() {
     XCTAssertEqual(true.binaryString, "1")
     XCTAssertEqual(false.binaryString, "0")

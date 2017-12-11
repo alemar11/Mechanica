@@ -29,12 +29,12 @@ extension OptionalUtilsTests {
 }
 
 class OptionalUtilsTests: XCTestCase {
-  
+
   func testHasValue(){
     var value: Any?
     XCTAssert(!value.hasValue)
     value = "tinrobots"
     XCTAssert(value.hasValue)
   }
-  
+
 }

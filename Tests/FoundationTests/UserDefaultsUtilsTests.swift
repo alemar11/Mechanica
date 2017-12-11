@@ -40,7 +40,7 @@ class UserDefaultsUtilsTests: XCTestCase {
 
   //TODO: add test for URL --> https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/UserDefaults.swift
   //on Linux will be set to nil
-  
+
   let userDefaults = UserDefaults.standard
 
   override func setUp() {

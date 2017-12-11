@@ -38,7 +38,7 @@ class FloatingPointUtilsTests: XCTestCase {
     var piFloat         = Float(3.141_592_653_589_793_238_46)   //  3.14159274
     var piDouble        = 3.14159_26535_89793_23846             //  3.1415926535897931
     var piFloat80       = Float80(3.14159_26535_89793_23846)    //  3.141592653589793116
-    
+
     var negativeDouble  = -147.956455                           //  -147.95645500000001
     var randomFloat    = Float32(199.959019)                    //  199.959015
     var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
@@ -96,7 +96,7 @@ class FloatingPointUtilsTests: XCTestCase {
     var piFloat         = Float(3.141_592_653_589_793_238_46)   //  3.14159274
     var piDouble        = 3.14159_26535_89793_23846             //  3.1415926535897931
     var piFloat80       = Float80(3.14159_26535_89793_23846)    //  3.141592653589793116
-    
+
     var negativeDouble  = -147.956455                           //  -147.95645500000001
     var randomFloat    = Float32(199.959019)                    //  199.959015
     var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
@@ -154,7 +154,7 @@ class FloatingPointUtilsTests: XCTestCase {
     var piFloat         = Float(3.141_592_653_589_793_238_46)   //  3.14159274
     var piDouble        = 3.14159_26535_89793_23846             //  3.1415926535897931
     var piFloat80       = Float80(3.14159_26535_89793_23846)    //  3.141592653589793116
-    
+
     var randomFloat    = Float32(199.959019)                    //  199.959015
     var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
 
