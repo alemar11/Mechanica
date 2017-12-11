@@ -24,7 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-extension FileManager {
+extension FileManagerUtilsTests {
   static var allTests = [
     ("testDestroyFileOrDirectory", testDestroyFileOrDirectory),
     ("testCleanDirectory", testCleanDirectory)

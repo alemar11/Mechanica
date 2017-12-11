@@ -25,12 +25,10 @@ import XCTest
 @testable import Mechanica
 
 extension NSPredicateUtilsTests {
-  static var allTests = [("testPosix", testPosix)]
+  static var allTests = [ ("testOperators", testOperators)]
 }
 
 class NSPredicateUtilsTests: XCTestCase {
-
-  static var allTests = [ ("testOperators", testOperators) ]
 
   // Not implemented on Linux:
   //    "NSPredicate.init(format:_:) is not yet implemented."
