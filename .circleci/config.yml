@@ -17,6 +17,7 @@ jobs:
     docker:
       - image: ibmcom/swift-ubuntu:4.0.2
     steps:
+      - checkout
       - run: 
           name: Swift Test
           command: swift test
