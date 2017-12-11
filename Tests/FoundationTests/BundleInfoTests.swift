@@ -24,9 +24,11 @@
 import XCTest
 @testable import Mechanica
 
-class BundleInfoTests: XCTestCase {
-
+extension BundleInfoTests {
   static var allTests = [("testBundle", testBundle)]
+}
+
+class BundleInfoTests: XCTestCase {
 
   func testBundle() {
     // TODO: add Linux specific tests, add ProcessInfo test in a new test file.

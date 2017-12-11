@@ -24,9 +24,11 @@
 import XCTest
 @testable import Mechanica
 
-class FoundationUtilsTests: XCTestCase {
-
+extension FoundationUtilsTests {
   static var allTests = [("testTypeName", testTypeName)]
+}
+
+class FoundationUtilsTests: XCTestCase {
 
   internal class Demo {}
 

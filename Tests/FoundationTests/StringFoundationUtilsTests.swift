@@ -24,8 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-class StringFoundationUtilsTests: XCTestCase {
-
+extension StringFoundationUtilsTests {
   static var allTests = [
     ("testBool", testBool),
     ("testBase64Decoded", testBase64Decoded),
@@ -80,6 +79,9 @@ class StringFoundationUtilsTests: XCTestCase {
     ("testReplacingCharacters", testReplacingCharacters),
     ("testRandom", testRandom)
   ]
+}
+
+class StringFoundationUtilsTests: XCTestCase {
 
   func testBool() {
     do {

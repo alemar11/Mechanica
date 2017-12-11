@@ -25,6 +25,13 @@ import XCTest
 @testable import Mechanica
 
 extension FileManager {
+  static var allTests = [
+    ("testDestroyFileOrDirectory", testDestroyFileOrDirectory),
+    ("testCleanDirectory", testCleanDirectory)
+  ]
+}
+
+extension FileManager {
 
   #if !os(Linux)
   // Not implemented on Linux: url(for:in:appropriateFor:create:)
@@ -49,11 +56,6 @@ extension FileManager {
 
 @available(iOS 10, tvOS 10, watchOS 3, macOS 10.12, *)
 class FileManagerUtilsTests: XCTestCase {
-
-  static var allTests = [
-    ("testDestroyFileOrDirectory", testDestroyFileOrDirectory),
-    ("testCleanDirectory", testCleanDirectory)
-  ]
 
   func testDestroyFileOrDirectory() throws {
     // Given

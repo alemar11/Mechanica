@@ -24,6 +24,10 @@
 import XCTest
 @testable import Mechanica
 
+extension NSPredicateUtilsTests {
+  static var allTests = [("testPosix", testPosix)]
+}
+
 class NSPredicateUtilsTests: XCTestCase {
 
   static var allTests = [ ("testOperators", testOperators) ]
