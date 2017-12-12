@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '3.0'
 
   s.source_files =  'Sources/*.swift', 
-                    'Sources/*.{h,m}',
+                    'Support/*.{h,m}',
                     'Sources/AppKit/*.swift',
                     'Sources/Foundation/*.swift',
                     'Sources/Shared/*.swift',
