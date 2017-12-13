@@ -54,7 +54,6 @@ extension FileManager {
 
 }
 
-@available(iOS 10, tvOS 10, watchOS 3, macOS 10.12, *)
 class FileManagerUtilsTests: XCTestCase {
 
   func testDestroyFileOrDirectory() throws {
