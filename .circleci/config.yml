@@ -13,9 +13,9 @@ jobs:
           name: Swift build Release
           command: swift build -c release -Xswiftc -static-stdlib       
 
-  linux_swift_4.0.2:
+  linux_swift_4.0.3:
     docker:
-      - image: ibmcom/swift-ubuntu:4.0.2
+      - image: ibmcom/swift-ubuntu:4.0.3
     steps:
       - checkout
       - run: 
@@ -30,4 +30,4 @@ workflows:
   workflow:
     jobs:
       - linux_swift_4
-      - linux_swift_4.0.2
+      - linux_swift_4.0.3
