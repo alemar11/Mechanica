@@ -77,6 +77,7 @@ extension StringFoundationUtilsTests {
     ("testContainsCaseSensitive", testContainsCaseSensitive),
     ("testSubscript", testSubscript),
     ("testReplacingCharacters", testReplacingCharacters),
+    ("testReplacingFirstOccurrence", testReplacingFirstOccurrence),
     ("testRandom", testRandom)
   ]
 }
@@ -353,23 +354,28 @@ class StringFoundationUtilsTests: XCTestCase {
   }
 
   func testReplace() {
-    XCTAssertTrue("AaBbCc".replace("a", with: "Z") == "AZBbCc")
-    XCTAssertTrue("AaBbCc".replace("a", with: "a") == "AaBbCc")
-    XCTAssertFalse("AaBbCc".replace("a", with: "A") == "AaBbCc")
-    XCTAssertTrue("AaBbCc".replace("", with: "A") == "AaBbCc")
-    XCTAssertTrue("AaBbCc".replace("AaBbCc", with: "123") == "123")
-    XCTAssertTrue("aaBbCa".replace("a", with: "1") == "11BbC1")
+    XCTAssertEqual("AaBbCc".replace("a", with: "Z"), "AZBbCc")
+    XCTAssertEqual("AaBbCc".replace("a", with: "a"), "AaBbCc")
+    XCTAssertNotEqual("AaBbCc".replace("a", with: "A"), "AaBbCc")
+    XCTAssertEqual("AaBbCc".replace("", with: "A"), "AaBbCc")
+    XCTAssertEqual("AaBbCc".replace("AaBbCc", with: "123"), "123")
+    XCTAssertEqual("aaBbCa".replace("a", with: "1"), "11BbC1")
+    XCTAssertEqual("AaBbCc🤔".replace("🤔", with: "🤔🤔"), "AaBbCc🤔🤔")
+    XCTAssertEqual("".replace("🤔", with: "🤔🤔"), "")
+    XCTAssertEqual("".replace("", with: "🤔"), "")
+    XCTAssertEqual("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".replace("\u{200B}", with: " "), "Italy 🇮🇹 🇮🇹 🇮🇹")
+    XCTAssertEqual("AaBbCc".replace("a", with: "Z", caseSensitive: false), "ZZBbCc")
+    XCTAssertEqual("AaBbCc".replace("a", with: "a", caseSensitive: false), "aaBbCc")
+    XCTAssertEqual("AaBbCc".replace("a", with: "A", caseSensitive: false), "AABbCc")
+    XCTAssertEqual("AaBbCc".replace("", with: "A", caseSensitive: false), "AaBbCc")
+  }
 
-    XCTAssertTrue("AaBbCc🤔".replace("🤔", with: "🤔🤔") == "AaBbCc🤔🤔")
-    XCTAssertTrue("".replace("🤔", with: "🤔🤔") == "")
-    XCTAssertTrue("".replace("", with: "🤔") == "")
-
-    XCTAssertTrue("Italy 🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹".replace("\u{200B}", with: " ") == "Italy 🇮🇹 🇮🇹 🇮🇹")
-
-    XCTAssertTrue("AaBbCc".replace("a", with: "Z", caseSensitive: false) == "ZZBbCc")
-    XCTAssertTrue("AaBbCc".replace("a", with: "a", caseSensitive: false) == "aaBbCc")
-    XCTAssertTrue("AaBbCc".replace("a", with: "A", caseSensitive: false) == "AABbCc")
-    XCTAssertTrue("AaBbCc".replace("", with: "A", caseSensitive: false) == "AaBbCc")
+  func testReplacingFirstOccurrence() {
+    XCTAssertEqual("x x x".replacingFirstOccurrence(of: "x", with: "!"), "! x x")
+    XCTAssertEqual("xxx".replacingFirstOccurrence(of: "x", with: "!"), "!xx")
+    XCTAssertEqual("x x x".replacingFirstOccurrence(of: "x ", with: " "), " x x")
+    XCTAssertEqual("x x 🧐".replacingFirstOccurrence(of: "🧐", with: "🇮🇹"), "x x 🇮🇹")
+    XCTAssertEqual("".replacingFirstOccurrence(of: "🧐", with: "🇮🇹"), "")
   }
 
   func testPrefix() {
