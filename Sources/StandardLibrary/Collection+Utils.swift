@@ -55,6 +55,20 @@ extension Collection where Self.Index == Int {
 
   /// **Mechanica**
   ///
+  /// - Parameter index: the index of the desired element.
+  /// - Returns: Returns the element at a given index or nil if not exists.
+  /// Example:
+  ///
+  ///     let array = [1, 2, 3]
+  ///     array[100] -> crash
+  ///     array.at(100) -> nil
+  ///
+  public func at(_ index: Int) -> Element? {
+    return (index < self.count) ? self[index] : nil
+  }
+
+  /// **Mechanica**
+  ///
   /// Returns a random element from `self`.
   public func random() -> Element {
     let index = Int.random(lowerBound: startIndex, upperBound: endIndex)
