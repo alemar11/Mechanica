@@ -475,6 +475,14 @@ extension String {
 
   /// **Mechanica**
   ///
+  /// Returns a `new` string in which the first occurrence of a target is replaced by another given string.
+  func replacingFirstOccurrence(of string: String, with replacement: String) -> String {
+    guard let range = self.range(of: string) else { return self }
+    return replacingCharacters(in: range, with: replacement)
+  }
+
+  /// **Mechanica**
+  ///
   /// If `self` is a semantic version, returns a tuple with major, minor and patch components.
   public var semanticVersion: (Int, Int, Int) {
     let versionComponents = ensureSemanticVersionCorrectness().components(separatedBy: ".")
