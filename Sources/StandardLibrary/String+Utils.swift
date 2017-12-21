@@ -31,6 +31,15 @@ extension String {
 
   // MARK: - Standard Library
 
+  /// Creates a string containing the given 'StaticString'.
+  ///
+  /// - Parameter staticString: The 'StaticString' to convert to a string.
+  init(staticString: StaticString) {
+    self = staticString.withUTF8Buffer {
+      String(decoding: $0, as: UTF8.self)
+    }
+  }
+
   /// **Mechanica**
   ///
   /// Returns a `new` string containing the first character of the `String`.
