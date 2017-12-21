@@ -26,6 +26,7 @@ import XCTest
 
 extension CollectionUtilsTests {
   static var allTests = [
+    ("testAtIndex", testAtIndex),
     ("testFirstIndex", testFirstIndex),
     ("testLastIndex", testLastIndex),
     ("testRandom", testRandom)
@@ -33,6 +34,17 @@ extension CollectionUtilsTests {
 }
 
 class CollectionUtilsTests: XCTestCase {
+
+  func testAtIndex() {
+    let array: [Any] = [1, 2, "3", "4", 0]
+    XCTAssertEqual(array.at(0)! as! Int, 1)
+    XCTAssertEqual(array.at(1)! as! Int, 2)
+    XCTAssertEqual(array.at(2)! as! String, "3")
+    XCTAssertEqual(array.at(3)! as! String, "4")
+    XCTAssertNil(array.at(5))
+    XCTAssertNil(array.at(10))
+    XCTAssertNil(array.at(100))
+  }
 
   func testFirstIndex() {
     // Given
