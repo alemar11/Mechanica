@@ -29,19 +29,36 @@
 
     /// **Mechanica**
     ///
-    /// Returns an image with a given `color` and `size` (default is 1x1).
-    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+    /// Returns an image with a background `color`, `size` and `scale`.
+    /// - Parameters:
+    ///   - color: The background UIColor.
+    ///   - size: The image size (default is 1x1).
+    ///   - scale: The scale factor to apply; if you specify a value of 0.0, the scale factor is set to the scale factor of the device’s main screen.
+    /// - Note: The size of the rectangle is beeing rounded from UIKit.
+    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1), scale: CGFloat = 0.0) {
       let rect = CGRect(origin: .zero, size: size)
 
-      UIGraphicsBeginImageContextWithOptions(size, false, 0)
-      defer { UIGraphicsEndImageContext() }
+      if #available(iOS 10, tvOS 10, *) {
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = scale
+        let renderer = UIGraphicsImageRenderer(size: size, format: format)
+        let image = renderer.image { (context) in
+          color.setFill()
+          context.fill(rect)
+        }
+        guard let cgImage = image.cgImage else { return nil }
+        self.init(cgImage: cgImage)
 
-      color.setFill()
-      UIRectFill(rect)
+      } else {
+        // left only for reference
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        color.setFill()
+        UIRectFill(rect)
 
-      guard let image = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return nil }
-
-      self.init(cgImage: image)
+        guard let cgImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return nil }
+        self.init(cgImage: cgImage)
+      }
     }
 
   }
