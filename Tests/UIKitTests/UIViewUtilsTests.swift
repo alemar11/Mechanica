@@ -43,6 +43,7 @@ class UIWiewUtilsTests: XCTestCase {
     view2.backgroundColor = .green
     view1.addSubview(view2)
     let screenshot = view1.screenshot()
+
     XCTAssertTrue(screenshot.size.width == 100)
     XCTAssertTrue(screenshot.size.height == 50)
     XCTAssertFalse(screenshot.size.width == 50)

@@ -30,8 +30,7 @@ extension UIView {
   /// **Mechanica**
   ///
   /// A Boolean value that determines whether the view’s autoresizing mask is translated into Auto Layout constraints.
-  internal var usesAutoLayout: Bool {
-    //TODO: review
+  public var usesAutoLayout: Bool {
     get { return !translatesAutoresizingMaskIntoConstraints }
     set { translatesAutoresizingMaskIntoConstraints = !newValue }
   }
@@ -39,14 +38,11 @@ extension UIView {
   /// **Mechanica**
   ///
   /// Take sceenshot with the current device's screen scale.
-  internal func screenshot() -> UIImage {
-    //TODO: review
-    // note: by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
-    return UIGraphicsImageRenderer(bounds: bounds).image { rendererContext in
-      //layer.render(in: rendererContext.cgContext)
-      drawHierarchy(in: CGRect(origin: .zero, size: bounds.size), afterScreenUpdates: true)
-    }
-
+  /// If an animation is running it captures the final frame of the animation.
+  public func screenshot() -> UIImage {
+    /// https://stackoverflow.com/questions/19066717/how-to-render-view-into-image-faster
+    // by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
+    return UIGraphicsImageRenderer(bounds: bounds).image { layer.render(in: $0.cgContext) }
   }
 
 }
