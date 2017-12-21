@@ -42,10 +42,9 @@ extension Image {
   /// Initializes a `new` image object from a Base-64 encoded String.
   ///
   /// - parameter base64String: The string to parse.
-  public convenience init?(base64Encoded: String) {
-    //TODO: review
+  public convenience init?(base64Encoded base64String: String) {
     guard
-      let url = URL(string: base64Encoded),
+      let url = URL(string: base64String),
       let data = try? Data(contentsOf: url)
       else {
         return nil
