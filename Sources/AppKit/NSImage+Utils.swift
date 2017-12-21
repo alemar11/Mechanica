@@ -32,7 +32,7 @@ extension NSImage {
   /// - Parameters:
   ///   - name: The name of the image.
   ///   - bundle: The bundle containing the image file or asset catalog, if nil the behavior is identical to `init(named:)`.
-  /// - Returns: Returns the image object associated with the specified filename.
+  /// - Returns: The image object associated with the specified filename.
   internal class func imageNamed(name: String, in bundle: Bundle?) -> NSImage? {
     //TODO: review
     let imageName = NSImage.Name(rawValue: name)

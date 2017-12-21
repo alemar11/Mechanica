@@ -44,7 +44,7 @@ extension Sequence {
   /// **Mechanica**
   ///
   /// - Parameter criteria: The criteria closure takes an `Element` and returns its classification.
-  /// - Returns: Returns a grouped dictionary with the keys that the criteria function returns.
+  /// - Returns: A grouped dictionary with the keys that the criteria function returns.
   public func grouped<Key>(by criteria: (Element) -> (Key)) -> [Key: [Element]] {
     return Dictionary(grouping: self, by: {return criteria($0)})
   }

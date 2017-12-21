@@ -51,7 +51,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// Removes the first element that matches the given `condition` and returns a tuple with a `new` collection and the removed element.
   /// - Parameters:
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  /// - Returns: Returns a tuple with a `new` collection and the removed element.
+  /// - Returns: A tuple with a `new` collection and the removed element.
   public func removingFirst(where condition: (Element) -> Bool) -> (Self, Element?) {
     var copy = self
     let removed = copy.removeFirst(where: condition)
@@ -80,7 +80,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// Removes the last element that matches the given `condition` and returns a tuple with a `new` collection and the removed element.
   /// - Parameters:
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  /// - Returns: Returns a tuple with a `new` collection and the removed element.
+  /// - Returns: A tuple with a `new` collection and the removed element.
   public func removingLast(where condition: (Element) -> Bool) -> (Self, Element?) {
     var copy = self
     let removed = copy.removeLast(where: condition)
@@ -114,7 +114,7 @@ extension RangeReplaceableCollection where Self.Index == Int {
   /// Removes all the elements that matches the given `condition` and returns a tuple with a `new` collection and the removed elements.
   /// - Parameters:
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  /// - Returns: Returns a tuple with a `new` collection and the removed elements.
+  /// - Returns: A tuple with a `new` collection and the removed elements.
   /// - Note: use `filter` if you don't need the removed element.
   public func removingAll(where condition: (Element) -> Bool) -> (Self, [Element]) {
     var copy = self

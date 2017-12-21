@@ -56,7 +56,7 @@ extension Collection where Self.Index == Int {
   /// **Mechanica**
   ///
   /// - Parameter index: the index of the desired element.
-  /// - Returns: Returns the element at a given index or nil if not exists.
+  /// - Returns: The element at a given index or nil if not exists.
   /// Example:
   ///
   ///     let array = [1, 2, 3]

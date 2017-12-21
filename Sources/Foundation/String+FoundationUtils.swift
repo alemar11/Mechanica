@@ -576,7 +576,7 @@ extension String {
   ///
   ///  - parameter substring: substring
   ///
-  ///  - Returns: range of the first occurrence or nil.
+  ///  - Returns: The range of the first occurrence or nil.
   public subscript (substring: String) -> Range<String.Index>? {
     let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex) )
 
@@ -746,7 +746,7 @@ extension String {
   /// - Parameters:
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
-  /// - Returns: returns the first matched string for `self`.
+  /// - Returns: The first match of the regular expression within `self`.
   func firstMatch(for pattern: String, options: NSRegularExpression.Options = []) -> String? {
     guard let range = firstRange(matching: pattern) else { return nil }
 
@@ -758,7 +758,7 @@ extension String {
   /// - Parameters:
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
-  /// - Returns: returns a the first matched range for `self` or nil.
+  /// - Returns: The first match's range of the regular expression within `self`.
   public func firstRange(matching pattern: String, options: NSRegularExpression.Options = []) -> Range<String.Index>? {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return nil }
 
@@ -772,7 +772,7 @@ extension String {
   /// - Parameters:
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
-  /// - Returns: returns a list of matched strings for `self`.
+  /// - Returns: A list of matched strings for `self`.
   func matches(for pattern: String, options: NSRegularExpression.Options = []) -> [String] {
     var strings = [String]()
 
@@ -805,7 +805,7 @@ extension String {
   /// - Parameters:
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
-  /// - Returns: returns a list of matched ranges for `self`.
+  /// - Returns: A list of matched ranges for `self`.
   public func ranges(matching pattern: String, options: NSRegularExpression.Options = []) -> [Range<String.Index>] {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return [] }
     let matches = regex.matches(in: self, options: [], range: NSRange(startIndex..<endIndex, in: self))
