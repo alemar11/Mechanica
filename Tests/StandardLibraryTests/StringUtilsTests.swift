@@ -26,6 +26,7 @@ import XCTest
 
 extension StringUtilsTests {
   static var allTests = [
+    ("testInitStaticString", testInitStaticString),
     ("testLength", testLength),
     ("testReverse", testReverse),
     ("testFirst", testFirst),
@@ -42,6 +43,21 @@ extension StringUtilsTests {
 
 class StringUtilsTests: XCTestCase {
 
+  func testInitStaticString() {
+    do {
+      let ss: StaticString = "🇮🇹🧐"
+      XCTAssertEqual(String(staticString: ss), "🇮🇹🧐")
+    }
+    do {
+      let ss: StaticString = ""
+      XCTAssertEqual(String(staticString: ss), "")
+    }
+    do {
+      let ss: StaticString = "123qwert#!!%@%d"
+      XCTAssertEqual(String(staticString: ss), "123qwert#!!%@%d")
+    }
+  }
+
   func testLength() {
     XCTAssertTrue("".length == 0)
     XCTAssertTrue(" ".length == 1)
@@ -50,10 +66,10 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue("🇮🇹".length == 1)
 
     #if !os(Linux)
-    // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
-    XCTAssertTrue("👍🏻".length == 1) //2
-    XCTAssertTrue("👍🏽".length == 1) //2
-    XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
+      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+      XCTAssertTrue("👍🏻".length == 1) //2
+      XCTAssertTrue("👍🏽".length == 1) //2
+      XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
     #endif
   }
 
@@ -118,9 +134,9 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s4.truncate(at: 4) == "a🇮🇹bb…")
 
     #if !os(Linux)
-    // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
-    XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹…")
-    XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹…")
+      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+      XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹…")
+      XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹…")
     #endif
 
     let s5 = "\u{2126}"
@@ -141,11 +157,11 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s8.truncate(at: 1) == "👍…")
 
     #if !os(Linux)
-    // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
-    XCTAssertTrue(s8.truncate(at: 2) == "👍👍🏻…")
-    XCTAssertTrue(s8.truncate(at: 3) == "👍👍🏻👍🏼…")
-    XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍🏼👍🏾")
-    XCTAssertTrue(s8.truncate(at: 5) == "👍👍🏻👍🏼👍🏾")
+      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+      XCTAssertTrue(s8.truncate(at: 2) == "👍👍🏻…")
+      XCTAssertTrue(s8.truncate(at: 3) == "👍👍🏻👍🏼…")
+      XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍🏼👍🏾")
+      XCTAssertTrue(s8.truncate(at: 5) == "👍👍🏻👍🏼👍🏾")
     #endif
 
     //flags sperated by a ZERO WIDTH SPACE
