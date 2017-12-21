@@ -24,10 +24,13 @@
 import XCTest
 @testable import Mechanica
 
+#if os(iOS) || os(tvOS)
+
 class UIImageTests: XCTestCase {
     
   func testInitWithColorAndSize() {
     let scale = UIScreen.main.scale
+
     XCTAssertEqual(UIImage(color: .red)?.size, CGSize(width: 1*scale, height: 1*scale))
     XCTAssertEqual(UIImage(color: .red, size: CGSize(width: 50, height: 50))?.size, CGSize(width: 50*scale, height: 50*scale))
     XCTAssertNil(UIImage(color: .red, size: CGSize(width: 0, height: 0)))
@@ -39,3 +42,5 @@ class UIImageTests: XCTestCase {
   }
     
 }
+
+#endif

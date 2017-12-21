@@ -39,10 +39,13 @@ extension Image {
 
   /// **Mechanica**
   ///
-  /// Initializes and returns the image object with the specified base64 data.
-  public convenience init?(base64EncodedString: String) {
+  /// Initializes a `new` image object from a Base-64 encoded String.
+  ///
+  /// - parameter base64String: The string to parse.
+  public convenience init?(base64Encoded: String) {
+    //TODO: review
     guard
-      let url = URL(string: base64EncodedString),
+      let url = URL(string: base64Encoded),
       let data = try? Data(contentsOf: url)
       else {
         return nil
@@ -50,6 +53,7 @@ extension Image {
 
     self.init(data: data)
   }
+
 
   /// **Mechanica**
   ///
