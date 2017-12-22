@@ -476,7 +476,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns a `new` string in which the first occurrence of a target is replaced by another given string.
-  func replacingFirstOccurrence(of string: String, with replacement: String) -> String {
+  public func replacingFirstOccurrence(of string: String, with replacement: String) -> String {
     guard let range = self.range(of: string) else { return self }
     return replacingCharacters(in: range, with: replacement)
   }
@@ -686,7 +686,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns a new string made by appending to the receiver a given string.
-  func appendingPathComponent(_ path: String) -> String {
+  public func appendingPathComponent(_ path: String) -> String {
     let nsString = NSString(string: self)
     return nsString.appendingPathComponent(path)
   }
@@ -694,7 +694,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns a new string made by appending to the receiver an extension separator followed by a given extension.
-  func appendingPathExtension(_ ext: String) -> String? {
+  public func appendingPathExtension(_ ext: String) -> String? {
     let nsString = NSString(string: self)
     return nsString.appendingPathExtension(ext)
   }
@@ -703,14 +703,14 @@ extension String {
   ///
   /// Returns a `new` string made by deleting the last path component from the receiver, along with any final path separator.
   /// - Note: This method only works with file paths (not, for example, string representations of URLs).
-  var deletingLastPathComponent: String {
+  public var deletingLastPathComponent: String {
     return NSString(string: self).deletingLastPathComponent
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` string made by deleting the extension (if any, and only the last) from the receiver.
-  var deletingPathExtension: String {
+  public var deletingPathExtension: String {
     return NSString(string: self).deletingPathExtension
   }
 
@@ -718,14 +718,14 @@ extension String {
   ///
   /// Returns the last path component of the receiver.
   /// - Note: This method only works with file paths (not, for example, string representations of URLs).
-  var lastPathComponent: String {
+  public var lastPathComponent: String {
     return NSString(string: self).lastPathComponent
   }
 
   /// **Mechanica**
   ///
   /// Returns the file-system path components of the receiver.
-  var pathComponents: [String] {
+  public var pathComponents: [String] {
     return NSString(string: self).pathComponents
   }
 
@@ -733,7 +733,7 @@ extension String {
   ///
   /// Return the path extension, if any, of the string as interpreted as a path.
   /// - Note: This method only works with file paths (not, for example, string representations of URLs).
-  var pathExtension: String {
+  public var pathExtension: String {
     return NSString(string: self).pathExtension
   }
 
@@ -747,7 +747,7 @@ extension String {
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
   /// - Returns: The first match of the regular expression within `self`.
-  func firstMatch(for pattern: String, options: NSRegularExpression.Options = []) -> String? {
+  public func firstMatch(for pattern: String, options: NSRegularExpression.Options = []) -> String? {
     guard let range = firstRange(matching: pattern) else { return nil }
 
     return String(self[range])
@@ -773,7 +773,7 @@ extension String {
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
   /// - Returns: A list of matched strings for `self`.
-  func matches(for pattern: String, options: NSRegularExpression.Options = []) -> [String] {
+  public func matches(for pattern: String, options: NSRegularExpression.Options = []) -> [String] {
     var strings = [String]()
 
     for range in ranges(matching: pattern, options: options) {
