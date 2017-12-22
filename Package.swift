@@ -13,13 +13,13 @@ let package = Package(
     .testTarget(name: "SharedTests", dependencies: ["Mechanica"]),
     .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
     .testTarget(name: "UIKitTests", dependencies: ["Mechanica"]),
-    //.testTarget(name: "AppKitTests", dependencies: ["Mechanica"]) //currently empty
+    .testTarget(name: "AppKitTests", dependencies: ["Mechanica"])
   ],
-    swiftLanguageVersions: [4]
+  swiftLanguageVersions: [4]
 )
 
 #if os(Linux)
-  
+
 package.targets = [
   .target(name: "Mechanica",
           path: "Sources",
@@ -37,5 +37,5 @@ package.targets = [
     ]
   )
 ]
-  
+
 #endif
