@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -21,41 +21,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+import XCTest
+@testable import Mechanica
+
 #if os(macOS)
 
-import AppKit
+class NSImageUtilsTests: XCTestCase {
 
-extension NSImage {
+    func testCGImage() throws {
+      let url = URL(string:"https://raw.githubusercontent.com/tinrobots/Mechanica/test-resources/pic.png")!
+      let data = try Data(contentsOf: url)
+      let image = NSImage(data: data)
+      let cgImage = image?.cgImage
 
-  /// **Mechanica**
-  ///
-  /// - Parameters:
-  ///   - name: The name of the image.
-  ///   - bundle: The bundle containing the image file or asset catalog, if nil the behavior is identical to `init(named:)`.
-  /// - Returns: The image object associated with the specified filename.
-  internal class func imageNamed(name: String, in bundle: Bundle?) -> NSImage? {
-    //TODO: review
-    let imageName = NSImage.Name(rawValue: name)
-
-    guard let bundle = bundle else { return NSImage(named: imageName) }
-
-    if let image = bundle.image(forResource: imageName) {
-      image.setName(imageName)
-      return image
+      XCTAssertNotNil(cgImage)
+      XCTAssertEqual(cgImage!.width, 483)
+      XCTAssertEqual(cgImage!.height, 221)
     }
-
-    return nil
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a CGImage object for the image data associated.
-  public var cgImage: CGImage? {
-    let imageData = self.tiffRepresentation
-    guard let source = CGImageSourceCreateWithData(imageData! as CFData, nil) else { return nil }
-    return CGImageSourceCreateImageAtIndex(source, 0, nil)
-  }
-
+    
 }
 
 #endif
