@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.3.1
+- Access level fixes.
+
 ### 1.3.0
 - Added more utils.
 - More UIKit and AppKit tests.
