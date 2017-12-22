@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.3.0
+- Added more utils.
+- More UIKit and AppKit tests.
+- Bugfixes. 
+
 ### 1.2.0 🐧
 - Added support for Linux (Stantard Library and Foundation Utils).
 - Better separation between Standard Library and Foundation utils.
