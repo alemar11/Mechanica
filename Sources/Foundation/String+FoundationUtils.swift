@@ -166,7 +166,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Makes sure that we always have a semantic version in the form MAJOR.MINOR.PATCH
-  func ensureSemanticVersionCorrectness() -> String {
+  public func ensureSemanticVersionCorrectness() -> String {
     if self.isEmpty { return "0.0.0" }
 
     var copy = self
@@ -187,7 +187,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns a list containing the first character of each word contained in `self`.
-  func firstCharacterOfEachWord() -> [String] {
+  public func firstCharacterOfEachWord() -> [String] {
     return components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.map { String($0.prefix(1)) }
   }
 
@@ -411,7 +411,7 @@ extension String {
   ///     let stripped = string.stripCombiningMarks -> aouAOU
   ///
   @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
-  func removingAccentsOrDiacritics() -> String {
+  public func removingAccentsOrDiacritics() -> String {
     return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
   }
 
