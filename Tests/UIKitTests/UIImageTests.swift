@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -27,7 +27,7 @@ import XCTest
 #if os(iOS) || os(tvOS)
 
 class UIImageTests: XCTestCase {
-    
+
   func testInitWithColorAndSize() {
     let scale = UIScreen.main.scale
 
@@ -40,7 +40,7 @@ class UIImageTests: XCTestCase {
     XCTAssertEqual(UIImage(color: .red, scale: 4.0)?.size, CGSize(width: 4, height: 4))
     XCTAssertEqual(UIImage(color: .red, size: CGSize(width: 11.3, height: 3.11), scale: 4.0)?.size, CGSize(width: (11.3*4.0).ceiled(to: 0), height: (3.11*4.0).ceiled(to: 0)))
   }
-    
+
 }
 
 #endif

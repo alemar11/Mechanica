@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2017 Tinrobots.
@@ -38,7 +38,7 @@ class NSImageUtilsTests: XCTestCase {
       XCTAssertEqual(cgImage!.width, 483)
       XCTAssertEqual(cgImage!.height, 221)
     }
-    
+
 }
 
 #endif
