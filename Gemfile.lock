@@ -84,7 +84,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocoapods
   jazzy
 
 BUNDLED WITH
