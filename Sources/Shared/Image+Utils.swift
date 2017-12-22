@@ -53,7 +53,6 @@ extension Image {
     self.init(data: data)
   }
 
-
   /// **Mechanica**
   ///
   /// Checks if the image has alpha component.
