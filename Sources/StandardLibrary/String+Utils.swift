@@ -34,7 +34,7 @@ extension String {
   /// Creates a string containing the given 'StaticString'.
   ///
   /// - Parameter staticString: The 'StaticString' to convert to a string.
-  init(staticString: StaticString) {
+  public init(staticString: StaticString) {
     self = staticString.withUTF8Buffer {
       String(decoding: $0, as: UTF8.self)
     }
