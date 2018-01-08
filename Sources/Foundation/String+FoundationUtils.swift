@@ -564,7 +564,7 @@ extension String {
   ///  - parameter range: NSRange
   ///
   ///  - Returns: Substring in NSRange or nil.
-  public subscript (nsRange: NSRange) -> String? {
+  public subscript (nsRange: NSRange) -> Substring? {
     guard let range = Range(nsRange) else { return nil }
 
     return self[range]
