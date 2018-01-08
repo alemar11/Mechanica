@@ -394,7 +394,7 @@ extension String {
   ///  - parameter range: range
   ///
   ///  - Returns: Substring in Range or nil.
-  public subscript (range: Range<Int>) -> String? {
+  public subscript (range: Range<Int>) -> Substring? {
     guard 0...length ~= range.lowerBound else { return nil }
     guard 0...length ~= range.upperBound else { return nil }
 
@@ -402,7 +402,47 @@ extension String {
     let end = index(startIndex, offsetBy: range.upperBound)
     let range = Range(uncheckedBounds: (lower: start, upper: end))
 
-    return String(self[range])
+    return self[range]
+  }
+
+  // TEST
+  // String[0...11]
+  internal subscript(range: ClosedRange<Int>) -> Substring? {
+    guard 0...length ~= range.lowerBound else { return nil }
+    guard 0...length ~= range.upperBound else { return nil }
+
+    let start = index(startIndex, offsetBy: range.lowerBound)
+    let end = index(startIndex, offsetBy: range.upperBound)
+    let closedRange = ClosedRange(uncheckedBounds: (lower: start, upper: end))
+
+    return self[closedRange]
+  }
+
+    // TEST
+  // String[..<11]
+  internal subscript(value: PartialRangeUpTo<Int>) -> Substring? {
+    guard 0...length ~= value.upperBound else { return nil }
+
+    let end = index(startIndex, offsetBy: value.upperBound)
+    return self[..<end]
+  }
+
+    // TEST
+  // String[...11]
+  internal subscript(value: PartialRangeThrough<Int>) -> Substring? {
+     guard 0...length ~= value.upperBound else { return nil }
+
+    let end = index(startIndex, offsetBy: value.upperBound)
+    return self[...end]
+  }
+
+    // TEST
+  // String[11...]
+  internal subscript(value: PartialRangeFrom<Int>) -> Substring? {
+    guard 0...length ~= value.lowerBound else { return nil }
+
+    let start = index(startIndex, offsetBy: value.lowerBound)
+    return self[start...]
   }
 
   // MARK: - Operators
