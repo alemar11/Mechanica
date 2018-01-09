@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.4.0
+- Better String subscription methods.
+
 ### 1.3.1
 - Access level fixes.
 
