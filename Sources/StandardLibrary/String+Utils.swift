@@ -484,7 +484,7 @@ extension String {
   ///     myString[..<14] -> nil
   ///     myString[..<(-1)] -> nil
   ///
-  public subscript(range:  PartialRangeThrough<Int>) -> Substring? {
+  public subscript(range: PartialRangeThrough<Int>) -> Substring? {
     guard 0..<count ~= range.upperBound else { return nil }
 
     let end = index(startIndex, offsetBy: range.upperBound)
