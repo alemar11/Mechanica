@@ -559,15 +559,21 @@ extension String {
 
   /// **Mechanica**
   ///
-  ///  Returns the substring in the given `NSRange`
+  ///  Returns a substring for a given `NSRange`.
   ///
-  ///  - parameter range: NSRange
+  ///  - parameter range: NSRange.
   ///
   ///  - Returns: Substring in NSRange or nil.
   public subscript (nsRange: NSRange) -> Substring? {
     guard let range = Range(nsRange) else { return nil }
 
-    return self[range]
+    guard 0...count ~= range.lowerBound else { return nil }
+    guard 0...count ~= range.upperBound else { return nil }
+
+    let start = index(startIndex, offsetBy: range.lowerBound)
+    let end = index(startIndex, offsetBy: range.upperBound)
+
+    return self[Range(uncheckedBounds: (lower: start, upper: end))]
   }
 
   /// **Mechanica**

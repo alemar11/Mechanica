@@ -381,67 +381,134 @@ extension String {
   ///  - parameter index: index Position of the character to get
   ///
   ///  - Returns: Character as String or nil if the index is out of bounds
-  public subscript (index: Int) -> String? {
+  ///
+  /// Example:
+  ///
+  ///     let myString = "Hello world"
+  ///     myString[0] -> "H"
+  ///     myString[3] -> "l"
+  ///     myString[10] -> "d"
+  ///     myString[11] -> nil
+  ///     myString[-1] -> nil
+  ///
+  public subscript (index: Int) -> Character? {
     guard 0..<count ~= index else { return nil }
 
-    return String(Array(self)[index])
+    return Array(self)[index]
   }
 
   /// **Mechanica**
   ///
-  ///   Returns the substring in the given range.
+  ///   Returns a substring for the given range.
   ///
-  ///  - parameter range: range
+  /// - Parameter range: a `CountableRange` range.
   ///
-  ///  - Returns: Substring in Range or nil.
-  public subscript (range: Range<Int>) -> Substring? {
-    guard 0...length ~= range.lowerBound else { return nil }
-    guard 0...length ~= range.upperBound else { return nil }
+  /// Example:
+  ///
+  ///     let myString = "Hello world"
+  ///     myString[0..<0] -> ""
+  ///     myString[0..<1] -> "Hello worl"
+  ///     myString[0..<10] -> "Hello world"
+  ///     myString[0..<11] -> nil
+  ///     myString[11..<14] -> nil
+  ///     myString[-1..<11] -> nil
+  ///
+  public subscript (range: CountableRange<Int>) -> Substring? {
+    guard 0...count ~= range.lowerBound else { return nil }
+    guard 0...count ~= range.upperBound else { return nil }
 
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(startIndex, offsetBy: range.upperBound)
-    let range = Range(uncheckedBounds: (lower: start, upper: end))
 
-    return self[range]
+    return self[start..<end]
   }
 
-  // TEST
-  // String[0...11]
-  internal subscript(range: ClosedRange<Int>) -> Substring? {
-    guard 0...length ~= range.lowerBound else { return nil }
-    guard 0...length ~= range.upperBound else { return nil }
+  /// **Mechanica**
+  ///
+  ///   Returns a substring for the given range.
+  /// - Parameter range: a `CountableClosedRange` range.
+  ///
+  /// Example:
+  ///
+  ///     let myString = "Hello world"
+  ///     myString[0...0]
+  ///     myString[0...1]
+  ///     myString[0...10]
+  ///     myString[0...11]
+  ///     myString[11...14]
+  ///     myString[-1...11]
+  ///
+  public subscript (range: CountableClosedRange<Int>) -> Substring? {
+    guard 0..<count ~= range.lowerBound else { return nil }
+    guard 0..<count ~= range.upperBound else { return nil }
 
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(startIndex, offsetBy: range.upperBound)
-    let closedRange = ClosedRange(uncheckedBounds: (lower: start, upper: end))
 
-    return self[closedRange]
+    return self[start...end]
   }
 
-    // TEST
-  // String[..<11]
-  internal subscript(value: PartialRangeUpTo<Int>) -> Substring? {
-    guard 0...length ~= value.upperBound else { return nil }
+  /// **Mechanica**
+  ///
+  ///   Returns a substring for the given range.
+  /// - Parameter range: a `PartialRangeUpTo` range.
+  ///
+  /// Example:
+  ///
+  ///     let myString = "Hello world"
+  ///     myString[0...0] -> "H"
+  ///     myString[0...1] -> "He"
+  ///     myString[0...10] -> "Hello world"
+  ///     myString[0...11] -> nil
+  ///     myString[11...14] -> nil
+  ///     myString[-1...11] -> nil
+  ///
+  public subscript (range: PartialRangeUpTo<Int>) -> Substring? {
+    guard 0...count ~= range.upperBound else { return nil }
 
-    let end = index(startIndex, offsetBy: value.upperBound)
+    let end = index(startIndex, offsetBy: range.upperBound)
+
     return self[..<end]
   }
 
-    // TEST
-  // String[...11]
-  internal subscript(value: PartialRangeThrough<Int>) -> Substring? {
-     guard 0...length ~= value.upperBound else { return nil }
+  /// **Mechanica**
+  ///
+  /// - Parameter range: a `PartialRangeThrough` range.
+  /// Example:
+  ///
+  ///     let myString = "Hello world"
+  ///     myString[..<0] -> ""
+  ///     myString[..<1] -> "H"
+  ///     myString[..<10] -> "Hello worl"
+  ///     myString[..<11] -> "Hello world"
+  ///     myString[..<14] -> nil
+  ///     myString[..<(-1)] -> nil
+  ///
+  public subscript(range:  PartialRangeThrough<Int>) -> Substring? {
+    guard 0..<count ~= range.upperBound else { return nil }
 
-    let end = index(startIndex, offsetBy: value.upperBound)
+    let end = index(startIndex, offsetBy: range.upperBound)
     return self[...end]
   }
 
-    // TEST
-  // String[11...]
-  internal subscript(value: PartialRangeFrom<Int>) -> Substring? {
-    guard 0...length ~= value.lowerBound else { return nil }
+  /// **Mechanica**
+  ///
+  ///   Returns a substring for the given range.
+  /// - Parameter range: a `CountablePartialRangeFrom` range.
+  /// Example:
+  ///
+  ///     let myString = "Hello world"
+  ///     myString[0...] -> "Hello world"
+  ///     myString[1...] -> "ello world"
+  ///     myString[10...] -> "d"
+  ///     myString[11...] -> nil
+  ///     myString[14...] -> nil
+  ///     myString[(-1)...] -> nil
+  ///
+  public subscript (range: CountablePartialRangeFrom<Int>) -> Substring? {
+    guard 0..<count ~= range.lowerBound else { return nil }
 
-    let start = index(startIndex, offsetBy: value.lowerBound)
+    let start = index(startIndex, offsetBy: range.lowerBound)
     return self[start...]
   }
 
@@ -449,6 +516,7 @@ extension String {
 
   /// **Mechanica**
   ///
+  ///   Returns a substring for the given range.
   /// Creates a `new` string representing the given string repeated the specified number of times.
   public static func * (lhs: String, rhs: Int) -> String {
     return  String(repeating: lhs, count: rhs)
@@ -456,6 +524,7 @@ extension String {
 
   /// **Mechanica**
   ///
+  ///   Returns a substring for the given range.
   /// Creates a `new` string representing the given string repeated the specified number of times.
   public static func * (lhs: Int, rhs: String) -> String {
     return  String(repeating: rhs, count: lhs)
