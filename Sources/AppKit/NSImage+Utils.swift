@@ -49,7 +49,7 @@ extension NSImage {
 
   /// **Mechanica**
   ///
-  /// Returns a CGImage object for the image data associated.
+  /// Returns a CGImage object for the associated image data.
   public var cgImage: CGImage? {
     let imageData = self.tiffRepresentation
     guard let source = CGImageSourceCreateWithData(imageData! as CFData, nil) else { return nil }
