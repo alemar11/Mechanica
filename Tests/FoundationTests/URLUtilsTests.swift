@@ -27,29 +27,50 @@ import XCTest
 extension URLUtilsTests {
   static var allTests = [
     ("testQueryParameters", testQueryParameters),
+    ("testDeletingLastPathComponents", testDeletingLastPathComponents),
     ("testIsParent", testIsParent),
     ]
 }
 
 class URLUtilsTests: XCTestCase {
-
+  
   func testQueryParameters() {
     do {
       let url = URL(string: "http://tinrobots.org/services/test/demo?v=1.1&q=hello")
-
+      
       if let queryParameters = url?.queryParameters {
         XCTAssertEqual(queryParameters["v"], Optional("1.1"))
         XCTAssertEqual(queryParameters["q"], Optional("hello"))
         XCTAssertEqual(queryParameters["other"], nil)
       }
     }
-
+    
     do {
       let url = URL(string: "http://tinrobots.org/services/test/demo?")
       XCTAssertNil(url!.queryParameters)
     }
   }
-
+  
+  func testDeletingLastPathComponents() {
+    do {
+      var url = URL(string: "http://tinrobots.org/services/test/demo")!
+      url.deleteLastPathComponents(0)
+      XCTAssertEqual(url, URL(string: "http://tinrobots.org/services/test/demo")!)
+      url.deleteLastPathComponents(2)
+      XCTAssertEqual(url, URL(string: "http://tinrobots.org/services/")!)
+      url.deleteLastPathComponents(3)
+      XCTAssertEqual(url, URL(string: "http://tinrobots.org/../../")!)
+    }
+    
+    do {
+      var url = URL(string: "http://tinrobots.org")!
+      url.deleteLastPathComponents(0)
+      XCTAssertEqual(url, URL(string: "http://tinrobots.org")!)
+      url.deleteLastPathComponents(2)
+      XCTAssertEqual(url, URL(string: "http://tinrobots.org")!)
+    }
+  }
+  
   func testIsParent() {
     let url = URL(string: "/path/to/folder")!
     XCTAssertTrue(url.isParent(of: URL(string: "/path/to/folder/child")!))
@@ -57,5 +78,5 @@ class URLUtilsTests: XCTestCase {
     XCTAssertFalse(url.isParent(of: URL(string: "/")!))
     XCTAssertFalse(url.isParent(of: URL(string: ".")!))
   }
-
+  
 }

@@ -29,7 +29,10 @@ import XCTest
 class NSImageUtilsTests: XCTestCase {
 
     func testCGImage() throws {
-      let url = URL(string:"https://raw.githubusercontent.com/tinrobots/Mechanica/test-resources/pic.png")!
+      var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
+      resources.appendPathComponent("Resources")
+
+      let url = resources.appendingPathComponent("pic.png")
       let data = try Data(contentsOf: url)
       let image = NSImage(data: data)
       let cgImage = image?.cgImage
