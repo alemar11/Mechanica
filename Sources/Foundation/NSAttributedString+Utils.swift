@@ -77,9 +77,8 @@ extension NSAttributedString {
   /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left String.
   static public func + (lhs: String, rhs: NSAttributedString) -> NSAttributedString {
     let a = NSMutableAttributedString(string: lhs)
-    // swiftlint:disable force_cast
+    // swiftlint:disable:next force_cast
     return (a + rhs).copy() as! NSAttributedString
-    // swiftlint:enable force_cast
   }
 
   #endif

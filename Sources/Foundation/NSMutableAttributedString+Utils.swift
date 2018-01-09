@@ -65,7 +65,7 @@ extension NSMutableAttributedString {
   ///
   /// Returns a `new` NSMutableAttributedString appending the right NSAttributedString to the left NSMutableAttributedString.
   public static func + (lhs: NSMutableAttributedString, rhs: NSAttributedString) -> NSMutableAttributedString {
-    // swiftlint:disable force_cast
+    // swiftlint:disable:next force_cast
     let a = lhs.mutableCopy() as! NSMutableAttributedString
     // swiftlint:enable force_cast
     a.append(rhs)
@@ -84,9 +84,8 @@ extension NSMutableAttributedString {
   ///
   /// Returns a `new` NSMutableAttributedString appending the right String to the left NSMutableAttributedString.
   public static func + (lhs: NSMutableAttributedString, rhs: String) -> NSMutableAttributedString {
-    // swiftlint:disable force_cast
+    // swiftlint:disable:next force_cast
     let a = lhs.mutableCopy() as! NSMutableAttributedString
-    // swiftlint:enable force_cast
     let b = NSMutableAttributedString(string: rhs)
     return a + b
   }
@@ -96,9 +95,8 @@ extension NSMutableAttributedString {
   /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left String.
   public static func + (lhs: String, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
     let a = NSMutableAttributedString(string: lhs)
-    // swiftlint:disable force_cast
+    // swiftlint:disable:next force_cast
     let b = rhs.mutableCopy() as! NSMutableAttributedString
-    // swiftlint:enable force_cast
     return a + b
   }
 
