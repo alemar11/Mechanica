@@ -25,7 +25,10 @@ import XCTest
 @testable import Mechanica
 
 extension URLUtilsTests {
-  static var allTests = [("testQueryParameters", testQueryParameters)]
+  static var allTests = [
+    ("testQueryParameters", testQueryParameters),
+    ("testIsParent", testIsParent),
+    ]
 }
 
 class URLUtilsTests: XCTestCase {
@@ -45,6 +48,14 @@ class URLUtilsTests: XCTestCase {
       let url = URL(string: "http://tinrobots.org/services/test/demo?")
       XCTAssertNil(url!.queryParameters)
     }
+  }
+
+  func testIsParent() {
+    let url = URL(string: "/path/to/folder")!
+    XCTAssertTrue(url.isParent(of: URL(string: "/path/to/folder/child")!))
+    XCTAssertFalse(url.isParent(of: URL(string: "/path/folder/child")!))
+    XCTAssertFalse(url.isParent(of: URL(string: "/")!))
+    XCTAssertFalse(url.isParent(of: URL(string: ".")!))
   }
 
 }
