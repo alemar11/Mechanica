@@ -75,6 +75,29 @@ extension URL {
 
   /// **Mechanica**
   ///
+  /// Returns true if the URL is a directory.
+  var isDirectory: Bool {
+    //    #if os(iOS) || os(watchOS) || os(tvOS) || os(macOS)
+    //      guard let resourceMap = try? self.resourceValues(forKeys: [.isDirectoryKey]) else { return false }
+    //      return resourceMap.isDirectory ?? false
+    //    #elseif os(Linux)
+    var result = Stat()
+    stat(path, &result)
+    return result.isDirectory
+    //    #endif
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns true if the URL is a regular file.
+  var isFile: Bool {
+    var result = Stat()
+    stat(path, &result)
+    return result.isFile
+  }
+
+  /// **Mechanica**
+  ///
   /// Tests if a `URL` is a child node of a parent.
   ///
   /// - Parameter child: The URL to test.

@@ -78,5 +78,36 @@ class URLUtilsTests: XCTestCase {
     XCTAssertFalse(url.isParent(of: URL(string: "/")!))
     XCTAssertFalse(url.isParent(of: URL(string: ".")!))
   }
-  
+
+  func testIsDirectory() throws {
+    // Given
+    let folderPath = "/tmp/org.tinrobots.Mechanica-\(UUID().uuidString)"
+
+    // When, Then
+    let url = URL(fileURLWithPath: folderPath)
+    XCTAssertFalse(url.isDirectory)
+    XCTAssertFalse(url.isFile)
+
+    if !FileManager.default.fileExists(atPath: folderPath) {
+      try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: false, attributes: nil)
+    }
+
+    XCTAssertTrue(url.isDirectory)
+    XCTAssertFalse(url.isFile)
+
+    // When, Then
+    let filePath = folderPath + "/" + "TestFile.txt"
+    let url2 = URL(fileURLWithPath: filePath)
+    XCTAssertFalse(url2.isDirectory)
+    XCTAssertFalse(url.isFile)
+
+    XCTAssertTrue(FileManager.default.createFile(atPath: filePath, contents: Data(), attributes: nil))
+    XCTAssertTrue(url2.isFile)
+    XCTAssertFalse(url2.isDirectory)
+
+    /// destroy the tmp folder
+    try FileManager.default.deleteFileOrDirectory(atPath: folderPath)
+    XCTAssertFalse(FileManager.default.fileExists(atPath: folderPath))
+  }
+
 }
