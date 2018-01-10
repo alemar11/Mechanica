@@ -31,8 +31,12 @@ import XCTest
     func testImageNamed() {
       let bundle = Bundle(for: NSImageUtilsTests.self)
       let image = NSImage.imageNamed(name: "pic", in: bundle)
-      XCTAssertNotNil(image)
-      XCTAssertEqual(image!.name()?.rawValue, "pic")
+
+      if !ProcessInfo.isRunningSwiftPackageTests {
+        // Not implemented (SPM): https://bugs.swift.org/browse/SR-2866
+        XCTAssertNotNil(image)
+        XCTAssertEqual(image!.name()?.rawValue, "pic")
+      }
     }
 
     func testCGImage() throws {
