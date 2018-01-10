@@ -35,12 +35,12 @@ extension NSImage {
   /// - Returns: The image object associated with the specified filename.
   internal class func imageNamed(name: String, in bundle: Bundle?) -> NSImage? {
     //TODO: review
-    let imageName = NSImage.Name(rawValue: name)
+    let name = NSImage.Name(rawValue: name)
 
-    guard let bundle = bundle else { return NSImage(named: imageName) }
+    guard let bundle = bundle else { return NSImage(named: name) }
 
-    if let image = bundle.image(forResource: imageName) {
-      image.setName(imageName)
+    if let image = bundle.image(forResource: name) {
+      image.setName(name)
       return image
     }
 
