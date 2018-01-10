@@ -28,6 +28,7 @@ extension URLUtilsTests {
   static var allTests = [
     ("testQueryParameters", testQueryParameters),
     ("testDeletingLastPathComponents", testDeletingLastPathComponents),
+    ("testIsDirectoryOrFile", testIsDirectoryOrFile),
     ("testIsParent", testIsParent),
     ]
 }
@@ -79,7 +80,7 @@ class URLUtilsTests: XCTestCase {
     XCTAssertFalse(url.isParent(of: URL(string: ".")!))
   }
 
-  func testIsDirectory() throws {
+  func testIsDirectoryOrFile() throws {
     // Given
     let folderPath = "/tmp/org.tinrobots.Mechanica-\(UUID().uuidString)"
 
