@@ -27,6 +27,22 @@ import Foundation
 
 extension Bundle {
 
+  #if !os(Linux)
+
+  /// **Mechanica**
+  ///
+  /// Returns the app identifier (`bundleIdenfier` or its `executable` file name).
+  public var appIdentifier: String? {
+    if let identifier = bundleIdentifier, !identifier.isBlank { //i.e. org.tinrobots.App
+      return identifier
+    } else if let identifier = executableFileName, !identifier.isBlank { //i.e. AppExecutableName
+      return identifier
+    }
+    return nil
+  }
+
+  #endif
+
   /// **Mechanica**
   ///
   /// Returns the user-visible name of the `Bundle`; used by Siri and visible on the Home screen in iOS.
