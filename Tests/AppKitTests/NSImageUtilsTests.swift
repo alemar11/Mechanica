@@ -26,7 +26,14 @@ import XCTest
 
 #if os(macOS)
 
-class NSImageUtilsTests: XCTestCase {
+  class NSImageUtilsTests: XCTestCase {
+
+    func testImageNamed() {
+      let bundle = Bundle(for: NSImageUtilsTests.self)
+      let image = NSImage.imageNamed(name: "pic", in: bundle)
+      XCTAssertNotNil(image)
+      XCTAssertEqual(image!.name()?.rawValue, "pic")
+    }
 
     func testCGImage() throws {
       var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
@@ -42,6 +49,6 @@ class NSImageUtilsTests: XCTestCase {
       XCTAssertEqual(cgImage!.height, 221)
     }
 
-}
+  }
 
 #endif
