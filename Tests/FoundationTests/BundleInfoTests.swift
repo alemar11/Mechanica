@@ -29,12 +29,12 @@ extension BundleInfoTests {
 }
 
 class BundleInfoTests: XCTestCase {
-
+  
   func testBundle() {
     // TODO: add Linux specific tests, add ProcessInfo test in a new test file.
-
+    
     #if !os(Linux)
-
+      
       // Given, When
       let bundle = Mechanica.bundle
       // Then
@@ -43,28 +43,32 @@ class BundleInfoTests: XCTestCase {
         XCTAssertNotNil(bundle.shortVersionString)
         XCTAssertNil(bundle.displayName)
         XCTAssertEqual(bundle.executableFileName, "Mechanica")
-
+        
       } else if ProcessInfo.isRunningSwiftPackageTests {
         XCTAssertNil(bundle.version)
         XCTAssertNil(bundle.shortVersionString)
         XCTAssertNil(bundle.displayName)
         XCTAssertEqual(bundle.executableFileName, "MechanicaPackageTests")
-
+        
       } else {
         XCTFail("Missing ProcessInfo details.")
       }
-
+      
     #endif
-
+    
   }
-
+  
   #if !os(Linux)
-
+  
   func testAppIdentifier() {
-    XCTAssertEqual(Mechanica.bundle.appIdentifier, "org.tinrobots.Mechanica")
+    if ProcessInfo.isRunningSwiftPackageTests {
+      XCTAssertEqual(Mechanica.bundle.appIdentifier, "MechanicaPackageTests")
+    } else {
+      XCTAssertEqual(Mechanica.bundle.appIdentifier, "org.tinrobots.Mechanica")
+    }
     XCTAssertEqual(Bundle.main.appIdentifier, "xctest")
   }
-
+  
   #endif
-
+  
 }
