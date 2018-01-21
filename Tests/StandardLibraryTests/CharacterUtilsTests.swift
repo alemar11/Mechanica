@@ -40,11 +40,13 @@ class CharacterUtilsTests: XCTestCase {
     XCTAssertTrue(Character("🇯🇵").isFlag)
     XCTAssertTrue(Character("🇨🇦").isFlag)
     XCTAssertTrue(Character("🇦🇶").isFlag)
-//
-//    XCTAssertFalse(Character("🏴").isFlag)
+
+    XCTAssertFalse(Character("🏴").isFlag)
 //    XCTAssertFalse(Character("🏁").isFlag)
 //    XCTAssertFalse(Character("🏳️").isFlag)
+    #if !os(Linux)
     XCTAssertFalse(Character("🏳️‍🌈").isFlag)
+    #endif
 
     XCTAssertFalse(Character("a").isFlag)
     XCTAssertFalse(Character(".").isFlag)
