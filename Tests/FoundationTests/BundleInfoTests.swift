@@ -56,7 +56,7 @@ class BundleInfoTests: XCTestCase {
 
     #else
 
-      let bundle = Bundle(for: BundleInfoTests.self)
+      let bundle = Bundle(identifier: "org.tinrobots.Mechanica")
       print("\n\n")
       print("================================")
       print(bundle)
