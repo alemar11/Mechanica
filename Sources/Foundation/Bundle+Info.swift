@@ -41,8 +41,6 @@ extension Bundle {
     return nil
   }
 
-  #endif
-
   /// **Mechanica**
   ///
   /// Returns the user-visible name of the `Bundle`; used by Siri and visible on the Home screen in iOS.
@@ -70,5 +68,7 @@ extension Bundle {
   public final var version: String? {
     return infoDictionary?["CFBundleVersion"] as? String
   }
+
+  #endif
 
 }

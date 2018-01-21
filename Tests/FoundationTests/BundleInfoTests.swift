@@ -24,16 +24,15 @@
 import XCTest
 @testable import Mechanica
 
-extension BundleInfoTests {
-  static var allTests = [("testBundle", testBundle)]
-}
+#if !os(Linux)
 
-class BundleInfoTests: XCTestCase {
-  
-  func testBundle() {
-    // TODO: add Linux specific tests
-    
-    #if !os(Linux)
+  extension BundleInfoTests {
+    static var allTests = [("testBundle", testBundle)]
+  }
+
+  class BundleInfoTests: XCTestCase {
+
+    func testBundle() {
       
       // Given, When
       let bundle = Mechanica.bundle
@@ -54,34 +53,21 @@ class BundleInfoTests: XCTestCase {
         XCTFail("Missing ProcessInfo details.")
       }
 
-    #else
-
-      let bundle = Bundle(identifier: "org.tinrobots.Mechanica")!
-      print("\n\n")
-      print("================================")
-      print(bundle)
-      print(bundle.version)
-      print(bundle.shortVersionString)
-      print(bundle.displayName)
-      print(bundle.executableFileName)
-      print("================================")
-      print("\n\n")
-      
-    #endif
-    
-  }
-  
-  #if !os(Linux)
-  
-  func testAppIdentifier() {
-    if ProcessInfo.isRunningSwiftPackageTests {
-      XCTAssertEqual(Mechanica.bundle.appIdentifier, "MechanicaPackageTests")
-    } else {
-      XCTAssertEqual(Mechanica.bundle.appIdentifier, "org.tinrobots.Mechanica")
     }
-    XCTAssertEqual(Bundle.main.appIdentifier, "xctest")
+
+    #if !os(Linux)
+
+    func testAppIdentifier() {
+      if ProcessInfo.isRunningSwiftPackageTests {
+        XCTAssertEqual(Mechanica.bundle.appIdentifier, "MechanicaPackageTests")
+      } else {
+        XCTAssertEqual(Mechanica.bundle.appIdentifier, "org.tinrobots.Mechanica")
+      }
+      XCTAssertEqual(Bundle.main.appIdentifier, "xctest")
+    }
+
+    #endif
+
   }
-  
-  #endif
-  
-}
+
+#endif

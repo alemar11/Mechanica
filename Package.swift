@@ -23,13 +23,14 @@ let package = Package(
 package.targets = [
   .target(name: "Mechanica",
           path: "Sources",
-          exclude: ["AssociatedValueSupporting.swift", "NSObjectProtocol+Swizzling.swift"],
+          exclude: ["AssociatedValueSupporting.swift", "BundleInfoTests.swift", NSObjectProtocol+Swizzling.swift"],
           sources: ["StandardLibrary", "Foundation"]
   ),
   .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
   .testTarget(name: "FoundationTests",
               dependencies: ["Mechanica"],
               exclude: ["AssociatedValueSupportingTests.swift",
+                        "BundleInfoTests.swift",
                         "NSAttributedStringUtilsTests.swift",
                         "NSMutableAttributedStringUtilsTests.swift",
                         "NSObjectProtocolSwizzlingTests.swift",
