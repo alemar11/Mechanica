@@ -33,14 +33,13 @@ extension NSImage {
   ///   - name: The name of the image.
   ///   - bundle: The bundle containing the image file or asset catalog, if nil the behavior is identical to `init(named:)`.
   /// - Returns: The image object associated with the specified filename.
-  internal class func imageNamed(name: String, in bundle: Bundle?) -> NSImage? {
-    //TODO: review
-    let imageName = NSImage.Name(rawValue: name)
+  public class func imageNamed(name: String, in bundle: Bundle?) -> NSImage? {
+    let name = NSImage.Name(rawValue: name)
 
-    guard let bundle = bundle else { return NSImage(named: imageName) }
+    guard let bundle = bundle else { return NSImage(named: name) }
 
-    if let image = bundle.image(forResource: imageName) {
-      image.setName(imageName)
+    if let image = bundle.image(forResource: name) {
+      image.setName(name)
       return image
     }
 
@@ -49,7 +48,7 @@ extension NSImage {
 
   /// **Mechanica**
   ///
-  /// Returns a CGImage object for the image data associated.
+  /// Returns a CGImage object for the associated image data.
   public var cgImage: CGImage? {
     let imageData = self.tiffRepresentation
     guard let source = CGImageSourceCreateWithData(imageData! as CFData, nil) else { return nil }

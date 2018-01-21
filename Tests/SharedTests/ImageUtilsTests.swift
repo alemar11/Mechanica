@@ -45,8 +45,11 @@ class ImageUtilsTests: XCTestCase {
   }
 
   func testHasAlpha() {
-    let url = URL(string:"https://raw.githubusercontent.com/tinrobots/Mechanica/test-resources/pic.png")!
-    let url2 = URL(string: "https://raw.githubusercontent.com/tinrobots/Mechanica/test-resources/pic_no_alpha.jpeg")!
+    var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
+    resources.appendPathComponent("Resources")
+
+    let url =  resources.appendingPathComponent("pic.png")
+    let url2 = resources.appendingPathComponent("pic_no_alpha.jpeg")
 
     let image: Image
     let imageNoAlpha: Image

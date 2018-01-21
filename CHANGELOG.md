@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.4.0
+- Better String subscription methods.
+- More URL utils.
+
 ### 1.3.1
 - Access level fixes.
 

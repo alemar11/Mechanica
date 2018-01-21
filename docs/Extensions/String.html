@@ -1303,9 +1303,9 @@ The default trailing is the ellipsis (…).</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:SS9MechanicaE9subscriptSSSgSici"></a>
+                    <a name="/s:SS9MechanicaE9subscripts9CharacterVSgSici"></a>
                     <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:SS9MechanicaE9subscriptSSSgSici">subscript(_:)</a>
+                    <a class="token" href="#/s:SS9MechanicaE9subscripts9CharacterVSgSici">subscript(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1313,16 +1313,25 @@ The default trailing is the ellipsis (…).</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p><em>Mechanica</em>*</p>
+                        <p><strong>Mechanica</strong></p>
 
 <p>Gets the character at the specified index as String.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>let myString = "Hello world"
+myString[0] -&gt; "H"
+myString[3] -&gt; "l"
+myString[10] -&gt; "d"
+myString[11] -&gt; nil
+myString[-1] -&gt; nil
+</code></pre>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Character</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -1355,9 +1364,9 @@ The default trailing is the ellipsis (…).</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:SS9MechanicaE9subscriptSSSgs5RangeVySiGci"></a>
+                    <a name="/s:SS9MechanicaE9subscripts9SubstringVSgs14CountableRangeVySiGci"></a>
                     <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:SS9MechanicaE9subscriptSSSgs5RangeVySiGci">subscript(_:)</a>
+                    <a class="token" href="#/s:SS9MechanicaE9subscripts9SubstringVSgs14CountableRangeVySiGci">subscript(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1365,16 +1374,26 @@ The default trailing is the ellipsis (…).</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p><em>Mechanica</em>*</p>
+                        <p><strong>Mechanica</strong></p>
 
-<p>Returns the substring in the given range.</p>
+<p>Returns a substring for the given range.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>let myString = "Hello world"
+myString[0..&lt;0] -&gt; ""
+myString[0..&lt;1] -&gt; "Hello worl"
+myString[0..&lt;10] -&gt; "Hello world"
+myString[0..&lt;11] -&gt; nil
+myString[11..&lt;14] -&gt; nil
+myString[-1..&lt;11] -&gt; nil
+</code></pre>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">Range</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">CountableRange</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Substring</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -1390,16 +1409,240 @@ The default trailing is the ellipsis (…).</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>range</p>
+                                  <p>a <code>CountableRange</code> range.</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE9subscripts9SubstringVSgs20CountableClosedRangeVySiGci"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE9subscripts9SubstringVSgs20CountableClosedRangeVySiGci">subscript(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a substring for the given range.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>let myString = "Hello world"
+myString[0...0]
+myString[0...1]
+myString[0...10]
+myString[0...11]
+myString[11...14]
+myString[-1...11]
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">CountableClosedRange</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Substring</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
                       <div>
-                        <h4>Return Value</h4>
-                        <p>Substring in Range or nil.</p>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>range</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a <code>CountableClosedRange</code> range.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE9subscripts9SubstringVSgs16PartialRangeUpToVySiGci"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE9subscripts9SubstringVSgs16PartialRangeUpToVySiGci">subscript(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a substring for the given range.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>let myString = "Hello world"
+myString[0...0] -&gt; "H"
+myString[0...1] -&gt; "He"
+myString[0...10] -&gt; "Hello world"
+myString[0...11] -&gt; nil
+myString[11...14] -&gt; nil
+myString[-1...11] -&gt; nil
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">PartialRangeUpTo</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Substring</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>range</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a <code>PartialRangeUpTo</code> range.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE9subscripts9SubstringVSgs19PartialRangeThroughVySiGci"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE9subscripts9SubstringVSgs19PartialRangeThroughVySiGci">subscript(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span><span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">PartialRangeThrough</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Substring</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>range</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a <code>PartialRangeThrough</code> range.
+Example:</p>
+
+<p>let myString = <q>Hello world</q>
+myString[..<0] -> &ldquo;<q>
+myString[..<1] -></q>H<q>
+myString[..<10] -></q>Hello worl<q>
+myString[..<11] -></q>Hello world&rdquo;
+myString[..<14] -> nil
+myString[..&lt;(-1)] -&gt; nil</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE9subscripts9SubstringVSgs25CountablePartialRangeFromVySiGci"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE9subscripts9SubstringVSgs25CountablePartialRangeFromVySiGci">subscript(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a substring for the given range.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">CountablePartialRangeFrom</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Substring</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>range</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a <code>CountablePartialRangeFrom</code> range.
+Example:</p>
+
+<p>let myString = <q>Hello world</q>
+myString[0&hellip;] -&gt; <q>Hello world</q>
+myString[1&hellip;] -&gt; <q>ello world</q>
+myString[10&hellip;] -&gt; <q>d</q>
+myString[11&hellip;] -&gt; nil
+myString[14&hellip;] -&gt; nil
+myString[(-1)&hellip;] -&gt; nil</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -1430,7 +1673,8 @@ The default trailing is the ellipsis (…).</p>
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Creates a <code>new</code> string representing the given string repeated the specified number of times.</p>
+<p>Returns a substring for the given range.
+Creates a <code>new</code> string representing the given string repeated the specified number of times.</p>
 
                       </div>
                       <div class="declaration">
@@ -1459,7 +1703,8 @@ The default trailing is the ellipsis (…).</p>
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Creates a <code>new</code> string representing the given string repeated the specified number of times.</p>
+<p>Returns a substring for the given range.
+Creates a <code>new</code> string representing the given string repeated the specified number of times.</p>
 
                       </div>
                       <div class="declaration">
@@ -1846,6 +2091,64 @@ White space and new lines at the beginning or ending of the <code>String</code> 
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">ends</span><span class="p">(</span><span class="n">with</span> <span class="nv">suffix</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">caseSensitive</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE32ensureSemanticVersionCorrectnessSSyF"></a>
+                    <a name="//apple_ref/swift/Method/ensureSemanticVersionCorrectness()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE32ensureSemanticVersionCorrectnessSSyF">ensureSemanticVersionCorrectness()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Makes sure that we always have a semantic version in the form MAJOR.MINOR.PATCH</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">ensureSemanticVersionCorrectness</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE24firstCharacterOfEachWordSaySSGyF"></a>
+                    <a name="//apple_ref/swift/Method/firstCharacterOfEachWord()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE24firstCharacterOfEachWordSaySSGyF">firstCharacterOfEachWord()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a list containing the first character of each word contained in <code>self</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">firstCharacterOfEachWord</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -2437,6 +2740,40 @@ White space and new lines at the beginning or ending of the <code>String</code> 
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:SS9MechanicaE27removingAccentsOrDiacriticsSSyF"></a>
+                    <a name="//apple_ref/swift/Method/removingAccentsOrDiacritics()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE27removingAccentsOrDiacriticsSSyF">removingAccentsOrDiacritics()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a <code>new</code> String stripped of all accents and diacritics.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>let string = "äöüÄÖÜ" -&gt; ÄÖÜ
+let stripped = string.stripCombiningMarks -&gt; aouAOU
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removingAccentsOrDiacritics</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:SS9MechanicaE16removeCharactersy10Foundation12CharacterSetV2in_tF"></a>
                     <a name="//apple_ref/swift/Method/removeCharacters(in:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:SS9MechanicaE16removeCharactersy10Foundation12CharacterSetV2in_tF">removeCharacters(in:)</a>
@@ -2616,6 +2953,35 @@ White space and new lines at the beginning or ending of the <code>String</code> 
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replacingCharacters</span><span class="p">(</span><span class="k">in</span> <span class="nv">range</span><span class="p">:</span> <span class="kt">CountableRange</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">with</span> <span class="nv">replacement</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE24replacingFirstOccurrenceS2S2of_SS4withtF"></a>
+                    <a name="//apple_ref/swift/Method/replacingFirstOccurrence(of:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE24replacingFirstOccurrenceS2S2of_SS4withtF">replacingFirstOccurrence(of:with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a <code>new</code> string in which the first occurrence of a target is replaced by another given string.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replacingFirstOccurrence</span><span class="p">(</span><span class="n">of</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">with</span> <span class="nv">replacement</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -3154,6 +3520,235 @@ string.swapCased() -&gt; "hELLO wORLD"
             </div>
             <div class="task-group">
               <div class="task-name-container">
+                <a name="/NSString"></a>
+                <a name="//apple_ref/swift/Section/NSString" class="dashAnchor"></a>
+                <a href="#/NSString">
+                  <h3 class="section-name">NSString</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE22appendingPathComponentS2SF"></a>
+                    <a name="//apple_ref/swift/Method/appendingPathComponent(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE22appendingPathComponentS2SF">appendingPathComponent(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a new string made by appending to the receiver a given string.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">appendingPathComponent</span><span class="p">(</span><span class="n">_</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE22appendingPathExtensionSSSgSSF"></a>
+                    <a name="//apple_ref/swift/Method/appendingPathExtension(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE22appendingPathExtensionSSSgSSF">appendingPathExtension(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a new string made by appending to the receiver an extension separator followed by a given extension.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">appendingPathExtension</span><span class="p">(</span><span class="n">_</span> <span class="nv">ext</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE25deletingLastPathComponentSSv"></a>
+                    <a name="//apple_ref/swift/Property/deletingLastPathComponent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE25deletingLastPathComponentSSv">deletingLastPathComponent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a <code>new</code> string made by deleting the last path component from the receiver, along with any final path separator.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method only works with file paths (not, for example, string representations of URLs).
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">deletingLastPathComponent</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE21deletingPathExtensionSSv"></a>
+                    <a name="//apple_ref/swift/Property/deletingPathExtension" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE21deletingPathExtensionSSv">deletingPathExtension</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a <code>new</code> string made by deleting the extension (if any, and only the last) from the receiver.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">deletingPathExtension</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE17lastPathComponentSSv"></a>
+                    <a name="//apple_ref/swift/Property/lastPathComponent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE17lastPathComponentSSv">lastPathComponent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the last path component of the receiver.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method only works with file paths (not, for example, string representations of URLs).
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">lastPathComponent</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE14pathComponentsSaySSGv"></a>
+                    <a name="//apple_ref/swift/Property/pathComponents" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE14pathComponentsSaySSGv">pathComponents</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the file-system path components of the receiver.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">pathComponents</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE13pathExtensionSSv"></a>
+                    <a name="//apple_ref/swift/Property/pathExtension" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE13pathExtensionSSv">pathExtension</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Return the path extension, if any, of the string as interpreted as a path.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method only works with file paths (not, for example, string representations of URLs).
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">pathExtension</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
                 <a name="/Regular%20Expression"></a>
                 <a name="//apple_ref/swift/Section/Regular Expression" class="dashAnchor"></a>
                 <a href="#/Regular%20Expression">
@@ -3161,6 +3756,68 @@ string.swapCased() -&gt; "hELLO wORLD"
                 </a>
               </div>
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE10firstMatchSSSgSS3for_So19NSRegularExpressionC7OptionsV7optionstF"></a>
+                    <a name="//apple_ref/swift/Method/firstMatch(for:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE10firstMatchSSSgSS3for_So19NSRegularExpressionC7OptionsV7optionstF">firstMatch(for:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">firstMatch</span><span class="p">(</span><span class="k">for</span> <span class="nv">pattern</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSRegularExpression</span><span class="o">.</span><span class="kt">Options</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pattern</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a regular expression pattern.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a list of <code>NSRegularExpression.Options</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The first match of the regular expression within <code>self</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -3219,6 +3876,68 @@ string.swapCased() -&gt; "hELLO wORLD"
                       <div>
                         <h4>Return Value</h4>
                         <p>The first match&rsquo;s range of the regular expression within <code>self</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE7matchesSaySSGSS3for_So19NSRegularExpressionC7OptionsV7optionstF"></a>
+                    <a name="//apple_ref/swift/Method/matches(for:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE7matchesSaySSGSS3for_So19NSRegularExpressionC7OptionsV7optionstF">matches(for:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">matches</span><span class="p">(</span><span class="k">for</span> <span class="nv">pattern</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSRegularExpression</span><span class="o">.</span><span class="kt">Options</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pattern</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a regular expression pattern.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a list of <code>NSRegularExpression.Options</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A list of matched strings for <code>self</code>.</p>
                       </div>
                     </section>
                   </div>
@@ -3290,7 +4009,7 @@ string.swapCased() -&gt; "hELLO wORLD"
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2017-12-22)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-01-09)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

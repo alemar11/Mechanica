@@ -33,6 +33,11 @@ extension StringUtilsTests {
     ("testLast", testLast),
     ("testTruncate", testTruncate),
     ("testSubscript", testSubscript),
+    ("testSubscriptWithRange", testSubscriptWithCountableRange),
+    ("testSubscriptWithClosedRange", testSubscriptWithCountableClosedRange),
+    ("testSubscriptWithPartialRangeUpTo", testSubscriptWithPartialRangeUpTo),
+    ("testSubscriptWithPartialRangeThrough", testSubscriptWithPartialRangeThrough),
+    ("testSubscriptWithCountablePartialRangeFrom", testSubscriptWithCountablePartialRangeFrom),
     ("testIsHomogeneous", testIsHomogeneous),
     ("testIsLowercased", testIsLowercased),
     ("testIsUppercased", testIsUppercased),
@@ -186,24 +191,81 @@ class StringUtilsTests: XCTestCase {
     XCTAssertTrue(string[string.length - 1] == "🇮🇹")
     XCTAssertTrue(string[0..<1] == "∆")
     XCTAssertTrue(string[1..<6] == "Test😗")
+  }
 
-    // MARK: - Range
+  func testSubscriptWithCountableRange() {
+    let string = "∆Test😗🇮🇹"
 
-    XCTAssertTrue(string[Range(0..<3)] == "∆Te")
-    XCTAssertTrue(string[Range(3..<3)] == "")
-    XCTAssertTrue(string[Range(3..<6)] == "st😗")
-    XCTAssertTrue(string[Range(0..<string.length)] == "∆Test😗🇮🇹")
-    XCTAssertNil(string[Range(string.length ..< string.length+1)])
-    XCTAssertTrue(string[Range(string.length ..< string.length)] == "")
+    XCTAssertEqual(string[0 ..< 0]!, "")
+    XCTAssertEqual(string[0 ..< 3], "∆Te")
+    XCTAssertEqual(string[3 ..< 4], "s")
+    XCTAssertEqual(string[3 ..< 3], "")
+    XCTAssertEqual(string[3 ..< 6], "st😗")
+    XCTAssertEqual(string[0 ..< string.length], "∆Test😗🇮🇹")
+    XCTAssertNil(string[string.length ..< string.length+1])
+    XCTAssertEqual(string[string.length ..< string.length], "")
 
-    XCTAssertNil(string[Range(1 ..< 100)])
-    XCTAssertNil(string[Range(-1 ..< 1)])
-    XCTAssertNil(string[Range(1 ..< string.length+1)])
-    XCTAssertNil(string[Range(100 ..< 200)])
-    XCTAssertNil(string[Range(-1 ..< string.length)])
-    XCTAssertNil(string[Range(-1 ..< 1)])
-    XCTAssertNil(string[Range(string.length+10 ..< string.length+10)])
+    XCTAssertNil(string[1 ..< 100])
+    XCTAssertNil(string[-1 ..< 1])
+    XCTAssertNil(string[1 ..< string.length+1])
+    XCTAssertNil(string[100 ..< 200])
+    XCTAssertNil(string[-1 ..< string.length])
+    XCTAssertNil(string[-1 ..< 1])
+    XCTAssertNil(string[string.length+10 ..< string.length+10])
+  }
 
+  func testSubscriptWithCountableClosedRange() {
+    let string = "∆Test😗🇮🇹"
+
+    XCTAssertEqual(string[0 ... 2], "∆Te")
+    XCTAssertEqual(string[3 ... 3], "s")
+    XCTAssertEqual(string[3 ... 5], "st😗")
+    XCTAssertEqual(string[0 ... string.length-1], "∆Test😗🇮🇹")
+
+    XCTAssertNil(string[string.length ... string.length])
+    XCTAssertEqual(string[string.length ..< string.length], "")
+
+    XCTAssertNil(string[1 ..< 100])
+    XCTAssertNil(string[-1 ..< 1])
+    XCTAssertNil(string[1 ..< string.length+1])
+    XCTAssertNil(string[100 ..< 200])
+    XCTAssertNil(string[-1 ..< string.length])
+    XCTAssertNil(string[-1 ..< 1])
+    XCTAssertNil(string[string.length+10 ..< string.length+10])
+  }
+
+  func testSubscriptWithPartialRangeUpTo() {
+    let string = "∆Test😗🇮🇹"
+
+    XCTAssertEqual(string[..<0], "")
+    XCTAssertEqual(string[..<1], "∆")
+    XCTAssertEqual(string[..<7], "∆Test😗🇮🇹")
+
+    XCTAssertNil(string[..<100])
+    XCTAssertNil(string[..<(-1)])
+  }
+
+  func testSubscriptWithPartialRangeThrough() {
+    let string = "∆Test😗🇮🇹"
+
+    XCTAssertEqual(string[...0], "∆")
+    XCTAssertEqual(string[...1], "∆T")
+    XCTAssertEqual(string[...6], "∆Test😗🇮🇹")
+
+    XCTAssertNil(string[...7])
+    XCTAssertNil(string[...100])
+    XCTAssertNil(string[...(-1)])
+  }
+
+  func testSubscriptWithCountablePartialRangeFrom() {
+    let string = "∆Test😗🇮🇹"
+
+    XCTAssertEqual(string[0...], "∆Test😗🇮🇹")
+    XCTAssertEqual(string[5...], "😗🇮🇹")
+
+    XCTAssertNil(string[(-1)...])
+    XCTAssertNil(string[7...])
+    XCTAssertNil(string[100...])
   }
 
   func testIsHomogeneous() {

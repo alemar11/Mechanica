@@ -26,10 +26,24 @@ import XCTest
 
 #if os(macOS)
 
-class NSImageUtilsTests: XCTestCase {
+  class NSImageUtilsTests: XCTestCase {
+
+    func testImageNamed() {
+      let bundle = Bundle(for: NSImageUtilsTests.self)
+      let image = NSImage.imageNamed(name: "pic", in: bundle)
+
+      if !ProcessInfo.isRunningSwiftPackageTests {
+        // Not implemented (SPM): https://bugs.swift.org/browse/SR-2866
+        XCTAssertNotNil(image)
+        XCTAssertEqual(image!.name()?.rawValue, "pic")
+      }
+    }
 
     func testCGImage() throws {
-      let url = URL(string:"https://raw.githubusercontent.com/tinrobots/Mechanica/test-resources/pic.png")!
+      var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
+      resources.appendPathComponent("Resources")
+
+      let url = resources.appendingPathComponent("pic.png")
       let data = try Data(contentsOf: url)
       let image = NSImage(data: data)
       let cgImage = image?.cgImage
@@ -39,6 +53,6 @@ class NSImageUtilsTests: XCTestCase {
       XCTAssertEqual(cgImage!.height, 221)
     }
 
-}
+  }
 
 #endif
