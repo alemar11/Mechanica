@@ -3,6 +3,7 @@ import XCTest
 @testable import FoundationTests
 
 XCTMain([
+  // Standard Library
   testCase(BinaryFloatingPointUtilsTests.allTests),
   testCase(BinaryIntegerUtilsTests.allTests),
   testCase(BoolUtilsTests.allTests),
@@ -19,6 +20,7 @@ XCTMain([
   testCase(StringUtilsTests.allTests),
   testCase(UnsignedIntegerUtilsTests.allTests),
 
+  // Foundation
   testCase(BundleInfoTests.allTests),
   testCase(DataUtilsTests.allTests),
   testCase(DictionaryFoundationUtilsTests.allTests),
@@ -27,6 +29,7 @@ XCTMain([
   testCase(LocaleUtilsTests.allTests),
   testCase(NSObjectProtocolUtils.allTests),
   testCase(NSPredicateUtilsTests.allTests),
+  testCase(ProcessInfoTests.allTests),
   testCase(StatUtilsTests.allTests),
   testCase(StringFoundationUtilsTests.allTests),
   testCase(URLUtilsTests.allTests),
