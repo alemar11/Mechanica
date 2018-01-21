@@ -31,7 +31,7 @@ extension BundleInfoTests {
 class BundleInfoTests: XCTestCase {
   
   func testBundle() {
-    // TODO: add Linux specific tests, add ProcessInfo test in a new test file.
+    // TODO: add Linux specific tests
     
     #if !os(Linux)
       
@@ -53,6 +53,18 @@ class BundleInfoTests: XCTestCase {
       } else {
         XCTFail("Missing ProcessInfo details.")
       }
+
+    #else
+      
+      print("\n\n")
+      print("================================")
+      print(bundle)
+      print(bundle.version)
+      print(bundle.shortVersionString)
+      print(bundle.displayName)
+      print(bundle.executableFileName)
+      print("================================")
+      print("\n\n")
       
     #endif
     
