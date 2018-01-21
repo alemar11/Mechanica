@@ -29,7 +29,8 @@ extension ProcessInfoTests {
     ("testSystemStartingDate", testSystemStartingDate),
     ("testIsSanboxed", testIsSanboxed),
     ("testIsRunningUnitTests", testIsRunningUnitTests),
-    ("testIsRunningXcodeUnitTests", testIsRunningXcodeUnitTests)
+    ("testIsRunningXcodeUnitTests", testIsRunningXcodeUnitTests),
+    ("testIsRunningSwiftPackageTests", testIsRunningSwiftPackageTests)
   ]
 }
 
@@ -52,18 +53,31 @@ class ProcessInfoTests: XCTestCase {
   }
 
   func testIsRunningXcodeUnitTests() {
+    print("\n\n========================")
+    print(ProcessInfo.processInfo.environment)
+    print("========================\n\n")
     #if os(Linux)
       XCTAssertFalse(ProcessInfo.isRunningXcodeUnitTests)
     #else
-      //TODO: missing test
+
+      if let name = ProcessInfo.processInfo.environment["XPC_SERVICE_NAME"], name.contains("Xcode", caseSensitive: true) {
+        XCTAssertTrue(ProcessInfo.isRunningXcodeUnitTests)
+      } else {
+        XCTAssertFalse(ProcessInfo.isRunningXcodeUnitTests)
+      }
+
     #endif
   }
 
-  func test() {
+  func testIsRunningSwiftPackageTests() {
     #if os(Linux)
       XCTAssertTrue(ProcessInfo.isRunningSwiftPackageTests)
     #else
-      //TODO: missing test
+      if let name = ProcessInfo.processInfo.environment["XPC_SERVICE_NAME"], name.contains("Xcode", caseSensitive: true) {
+        XCTAssertFalse(ProcessInfo.isRunningSwiftPackageTests)
+      } else {
+        XCTAssertTrue(ProcessInfo.isRunningSwiftPackageTests)
+      }
     #endif
   }
 
