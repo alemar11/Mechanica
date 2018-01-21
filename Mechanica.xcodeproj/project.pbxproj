@@ -286,6 +286,9 @@
 		23DC2C842014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */; };
 		23DC2C852014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */; };
 		23DC2C862014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */; };
+		23DC2C882015056100270CA3 /* CharacterUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC2C872015056100270CA3 /* CharacterUtilsTests.swift */; };
+		23DC2C892015056100270CA3 /* CharacterUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC2C872015056100270CA3 /* CharacterUtilsTests.swift */; };
+		23DC2C8A2015056100270CA3 /* CharacterUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC2C872015056100270CA3 /* CharacterUtilsTests.swift */; };
 		23EE2F4C1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
 		23EE2F4D1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
 		23EE2F4E1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
@@ -481,6 +484,7 @@
 		23D9229B1EFA670900629E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23DC26D11F1E3F090093F7EE /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Operators.swift; sourceTree = "<group>"; };
 		23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessInfoTests.swift; sourceTree = "<group>"; };
+		23DC2C872015056100270CA3 /* CharacterUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUtilsTests.swift; sourceTree = "<group>"; };
 		23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NSPredicateUtilsTests.swift; sourceTree = "<group>"; };
 		23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSPredicate+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
@@ -630,6 +634,7 @@
 				237F17541E90000800726553 /* SignedIntegerUtilsTests.swift */,
 				237F17591E90000800726553 /* StringUtilsTests.swift */,
 				237F175D1E90000800726553 /* UnsignedIntegerUtilsTests.swift */,
+				23DC2C872015056100270CA3 /* CharacterUtilsTests.swift */,
 			);
 			path = StandardLibraryTests;
 			sourceTree = "<group>";
@@ -1333,6 +1338,7 @@
 				237F17AA1E90000900726553 /* NSObjectProtocolSwizzlingTests.swift in Sources */,
 				23D779381F6671F600724053 /* NSMutableAttributedStringUtilsTests.swift in Sources */,
 				237F17891E90000900726553 /* FixedWidthIntegerRandomizableTests.swift in Sources */,
+				23DC2C882015056100270CA3 /* CharacterUtilsTests.swift in Sources */,
 				237F17651E90000900726553 /* BinaryFloatingPointUtilsTests.swift in Sources */,
 				237F17B91E90000900726553 /* SignedIntegerUtilsTests.swift in Sources */,
 				238493331FEBB35100307263 /* UIImageTests.swift in Sources */,
@@ -1379,6 +1385,7 @@
 				237F17AB1E90000900726553 /* NSObjectProtocolSwizzlingTests.swift in Sources */,
 				237F178A1E90000900726553 /* FixedWidthIntegerRandomizableTests.swift in Sources */,
 				237F17661E90000900726553 /* BinaryFloatingPointUtilsTests.swift in Sources */,
+				23DC2C892015056100270CA3 /* CharacterUtilsTests.swift in Sources */,
 				23B5805F1F94E64600A365C0 /* UIDeviceUtilsTests.swift in Sources */,
 				23F6A1691EC8DF6500D20502 /* FoundationUtilsTests.swift in Sources */,
 				238493341FEBB35100307263 /* UIImageTests.swift in Sources */,
@@ -1433,6 +1440,7 @@
 				23078BEE1F20E1480074D955 /* OperatorsTests.swift in Sources */,
 				237F17881E90000900726553 /* FloatingPointUtilsTests.swift in Sources */,
 				23C27C3A1E9E5BAB006C235E /* UserDefaultsUtilsTests.swift in Sources */,
+				23DC2C8A2015056100270CA3 /* CharacterUtilsTests.swift in Sources */,
 				237F17A61E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
 				237F17B81E90000900726553 /* SequenceUtilsTests.swift in Sources */,
 				237F177F1E90000900726553 /* DictionaryUtilsTests.swift in Sources */,
