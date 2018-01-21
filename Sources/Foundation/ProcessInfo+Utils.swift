@@ -50,6 +50,13 @@ extension ProcessInfo {
     return processInfo.environment["XCTestConfigurationFilePath"].hasValue
   }
 
+  /// **Mechanica**
+  ///
+  /// - Returns: Returns the system (re)starting date.
+  public static var systemStartingDate: Date {
+    return Date(timeIntervalSinceNow: -processInfo.systemUptime)
+  }
+
   #if os(macOS)
   /// **Mechanica**
   ///
