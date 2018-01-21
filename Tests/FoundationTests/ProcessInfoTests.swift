@@ -53,19 +53,14 @@ class ProcessInfoTests: XCTestCase {
   }
 
   func testIsRunningXcodeUnitTests() {
-    print("\n\n========================")
-    print(ProcessInfo.processInfo.environment)
-    print("========================\n\n")
     #if os(Linux)
       XCTAssertFalse(ProcessInfo.isRunningXcodeUnitTests)
     #else
-
       if let name = ProcessInfo.processInfo.environment["XPC_SERVICE_NAME"], name.contains("Xcode", caseSensitive: true) {
         XCTAssertTrue(ProcessInfo.isRunningXcodeUnitTests)
       } else {
         XCTAssertFalse(ProcessInfo.isRunningXcodeUnitTests)
       }
-
     #endif
   }
 
