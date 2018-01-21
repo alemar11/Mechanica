@@ -25,8 +25,8 @@ extension Character {
 
   /// **Mechanica**
   ///
-  /// Returns `true` if `self` is a flag.
-  public var isFlag: Bool {
+  /// Returns `true` if `self` is an emoji country flag.
+  public var isEmojiCountryFlag: Bool {
     let scalars = unicodeScalars
     return scalars.count == 2 && scalars.first!.isRegionalIndicator && scalars.last!.isRegionalIndicator
   }
