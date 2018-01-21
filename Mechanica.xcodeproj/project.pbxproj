@@ -623,6 +623,7 @@
 				237F17381E90000800726553 /* BinaryFloatingPointUtilsTests.swift */,
 				237F17451E90000800726553 /* BinaryIntegerUtilsTests.swift */,
 				237F17391E90000800726553 /* BoolUtilsTests.swift */,
+				23DC2C872015056100270CA3 /* CharacterUtilsTests.swift */,
 				237F173B1E90000800726553 /* CollectionUtilsTests.swift */,
 				237F17401E90000800726553 /* DictionaryUtilsTests.swift */,
 				237F17441E90000800726553 /* FixedWidthIntegerRandomizableTests.swift */,
@@ -634,7 +635,6 @@
 				237F17541E90000800726553 /* SignedIntegerUtilsTests.swift */,
 				237F17591E90000800726553 /* StringUtilsTests.swift */,
 				237F175D1E90000800726553 /* UnsignedIntegerUtilsTests.swift */,
-				23DC2C872015056100270CA3 /* CharacterUtilsTests.swift */,
 			);
 			path = StandardLibraryTests;
 			sourceTree = "<group>";
