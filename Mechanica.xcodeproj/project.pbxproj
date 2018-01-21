@@ -277,6 +277,9 @@
 		23DC26D31F1E3F090093F7EE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC26D11F1E3F090093F7EE /* Operators.swift */; };
 		23DC26D41F1E3F090093F7EE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC26D11F1E3F090093F7EE /* Operators.swift */; };
 		23DC26D51F1E3F090093F7EE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC26D11F1E3F090093F7EE /* Operators.swift */; };
+		23DC2C842014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */; };
+		23DC2C852014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */; };
+		23DC2C862014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */; };
 		23EE2F4C1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
 		23EE2F4D1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
 		23EE2F4E1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */; };
@@ -469,6 +472,7 @@
 		23D9229A1EFA670900629E17 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		23D9229B1EFA670900629E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23DC26D11F1E3F090093F7EE /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Operators.swift; sourceTree = "<group>"; };
+		23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessInfoTests.swift; sourceTree = "<group>"; };
 		23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = NSPredicateUtilsTests.swift; sourceTree = "<group>"; };
 		23EE2F4F1F16A3FA0087DE67 /* NSPredicate+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSPredicate+Utils.swift"; sourceTree = "<group>"; };
 		23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "RangeReplaceableCollection+Utils.swift"; sourceTree = "<group>"; };
@@ -661,6 +665,7 @@
 				237F175E1E90000800726553 /* URLUtilsTests.swift */,
 				23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */,
 				237E6FA61FC8321F0025F5CD /* StatUtilsTests.swift */,
+				23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */,
 			);
 			path = FoundationTests;
 			sourceTree = "<group>";
@@ -1323,6 +1328,7 @@
 				237F17C81E90000900726553 /* StringUtilsTests.swift in Sources */,
 				237F176B1E90000900726553 /* BundleInfoTests.swift in Sources */,
 				231874C11FA78EF600FA797F /* UIWindowUtilsTests.swift in Sources */,
+				23DC2C842014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */,
 				2307D06F1F8FA35D00FDBA2A /* LocaleUtilsTests.swift in Sources */,
 				237F17741E90000900726553 /* ColorUtilsTests.swift in Sources */,
 				2364078A1FBB2EFE003D2AF0 /* DataUtilsTests.swift in Sources */,
@@ -1368,6 +1374,7 @@
 				237F17C91E90000900726553 /* StringUtilsTests.swift in Sources */,
 				237F176C1E90000900726553 /* BundleInfoTests.swift in Sources */,
 				2307D0701F8FA35D00FDBA2A /* LocaleUtilsTests.swift in Sources */,
+				23DC2C852014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */,
 				231874C21FA78EF600FA797F /* UIWindowUtilsTests.swift in Sources */,
 				237F17751E90000900726553 /* ColorUtilsTests.swift in Sources */,
 				2364078B1FBB2EFE003D2AF0 /* DataUtilsTests.swift in Sources */,
@@ -1413,6 +1420,7 @@
 				23EE2F4E1F16A3520087DE67 /* NSPredicateUtilsTests.swift in Sources */,
 				237F17D91E90000900726553 /* URLUtilsTests.swift in Sources */,
 				237F17D61E90000900726553 /* UnsignedIntegerUtilsTests.swift in Sources */,
+				23DC2C862014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */,
 				23C7967B1FB449B2006766FD /* OptionalUtilsTests.swift in Sources */,
 				23C551C81FED505900CED86D /* NSImageUtilsTests.swift in Sources */,
 				237F176A1E90000900726553 /* BoolUtilsTests.swift in Sources */,
