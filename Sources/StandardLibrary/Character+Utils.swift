@@ -31,9 +31,6 @@ extension Character {
     return scalars.count == 2 && scalars.first!.isRegionalIndicator && scalars.last!.isRegionalIndicator
   }
 
-
-  //#if !os(Linux)
-  // Not implemented on Linux: Can't form a Character from a String containing more than one extended grapheme cluster
   /// **Mechanica**
   ///
   /// Returns `true` if `self` is a a white space.
@@ -45,7 +42,5 @@ extension Character {
       return false
     }
   }
-
-  //#endif
 
 }
