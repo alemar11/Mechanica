@@ -42,8 +42,8 @@ class CharacterUtilsTests: XCTestCase {
     XCTAssertTrue(Character("🇦🇶").isFlag)
 
     XCTAssertFalse(Character("🏴").isFlag)
-//    XCTAssertFalse(Character("🏁").isFlag)
-//    XCTAssertFalse(Character("🏳️").isFlag)
+    XCTAssertFalse(Character("🏁").isFlag)
+    XCTAssertFalse(Character("🏳️").isFlag)
     #if !os(Linux)
     XCTAssertFalse(Character("🏳️‍🌈").isFlag)
     #endif
