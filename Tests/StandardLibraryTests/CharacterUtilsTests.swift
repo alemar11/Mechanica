@@ -36,10 +36,10 @@ class CharacterUtilsTests: XCTestCase {
     
   func testIsFlag() {
     //TODO: enable this for xOS
-//    XCTAssertTrue(Character("🇮🇹").isFlag)
-//    XCTAssertTrue(Character("🇯🇵").isFlag)
-//    XCTAssertTrue(Character("🇨🇦").isFlag)
-//    XCTAssertTrue(Character("🇦🇶").isFlag)
+    XCTAssertTrue(Character("🇮🇹").isFlag)
+    XCTAssertTrue(Character("🇯🇵").isFlag)
+    XCTAssertTrue(Character("🇨🇦").isFlag)
+    XCTAssertTrue(Character("🇦🇶").isFlag)
 //
 //    XCTAssertFalse(Character("🏴").isFlag)
 //    XCTAssertFalse(Character("🏁").isFlag)
