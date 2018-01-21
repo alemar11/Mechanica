@@ -55,7 +55,7 @@ class BundleInfoTests: XCTestCase {
       }
 
     #else
-      
+      let bundle = Mechanica.bundle
       print("\n\n")
       print("================================")
       print(bundle)
