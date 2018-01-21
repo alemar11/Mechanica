@@ -235,7 +235,7 @@ extension String {
   public var isEmojiCountryFlag: Bool {
     guard count == 1 else { return false }
 
-    return first!.isFlag
+    return first!.isEmojiCountryFlag
   }
 
   /// **Mechanica**

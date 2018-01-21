@@ -26,7 +26,7 @@ import XCTest
 
 extension CharacterUtilsTests {
   static var allTests = [
-    ("testIsFlag", testIsFlag),
+    ("testIsEmojiCountryFlag", testIsEmojiCountryFlag),
     ("testIsWhitespace", testIsWhitespace)
 
   ]
@@ -34,25 +34,23 @@ extension CharacterUtilsTests {
 
 class CharacterUtilsTests: XCTestCase {
     
-  func testIsFlag() {
-    //TODO: enable this for xOS
-    XCTAssertTrue(Character("🇮🇹").isFlag)
-    XCTAssertTrue(Character("🇯🇵").isFlag)
-    XCTAssertTrue(Character("🇨🇦").isFlag)
-    XCTAssertTrue(Character("🇦🇶").isFlag)
-
-    XCTAssertFalse(Character("🏴").isFlag)
-    XCTAssertFalse(Character("🏁").isFlag)
-    XCTAssertFalse(Character("🏳️").isFlag)
+  func testIsEmojiCountryFlag() {
+    XCTAssertTrue(Character("🇮🇹").isEmojiCountryFlag)
+    XCTAssertTrue(Character("🇯🇵").isEmojiCountryFlag)
+    XCTAssertTrue(Character("🇨🇦").isEmojiCountryFlag)
+    XCTAssertTrue(Character("🇦🇶").isEmojiCountryFlag)
+    XCTAssertFalse(Character("🏴").isEmojiCountryFlag)
+    XCTAssertFalse(Character("🏁").isEmojiCountryFlag)
+    XCTAssertFalse(Character("🏳️").isEmojiCountryFlag)
     #if !os(Linux)
-    XCTAssertFalse(Character("🏳️‍🌈").isFlag)
+    XCTAssertFalse(Character("🏳️‍🌈").isEmojiCountryFlag) // it crashes on Linux
     #endif
 
-    XCTAssertFalse(Character("a").isFlag)
-    XCTAssertFalse(Character(".").isFlag)
-    XCTAssertFalse(Character("🚩").isFlag)
-    XCTAssertFalse(Character("\\").isFlag)
-    XCTAssertFalse(Character("😇").isFlag)
+    XCTAssertFalse(Character("a").isEmojiCountryFlag)
+    XCTAssertFalse(Character(".").isEmojiCountryFlag)
+    XCTAssertFalse(Character("🚩").isEmojiCountryFlag)
+    XCTAssertFalse(Character("\\").isEmojiCountryFlag)
+    XCTAssertFalse(Character("😇").isEmojiCountryFlag)
   }
 
   func testIsWhitespace() {
