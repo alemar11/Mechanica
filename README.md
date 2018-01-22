@@ -20,6 +20,7 @@ A library of Swift utils to ease your iOS, macOS, watchOS, tvOS and Linux develo
 - [Documentation](#documentation)
 - [Installation](#installation)
 - [License](#license)
+- [Contributing](#contributing)
 
 ## Requirements
 
@@ -133,3 +134,8 @@ $ git submodule add https://github.com/tinrobots/Mechanica.git
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/alemar11/Console/blob/master/LICENSE)
 
 Mechanica is released under the MIT license. See [LICENSE](./LICENSE.md) for details.
+
+## Contributing
+
+Pull requests are welcome!  
+[Show your ❤ with a ★](https://github.com/tinrobots/mechanica/stargazers)
