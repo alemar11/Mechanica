@@ -160,10 +160,7 @@
                 <a href="../Extensions/URL.html">URL</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Unicode.html">Unicode</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Unicode/Scalar.html">– Scalar</a>
+                <a href="../Extensions/Unicode.Scalar.html">Unicode.Scalar</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UserDefaults.html">UserDefaults</a>
@@ -245,25 +242,6 @@
                           <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">staticString</span><span class="p">:</span> <span class="kt">StaticString</span><span class="p">)</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>staticString</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The &lsquo;StaticString&rsquo; to convert to a string.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -484,37 +462,6 @@ string.padding(length: 15, withToken: "*") -&gt; "**Hello World**"
                         </div>
                       </div>
                       <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>length</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The final length of your string. If the provided length is less than or equal to the original string, the original string is returned.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>token</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The string used to pad the String (defaults to a white space).</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
                         <h4>Return Value</h4>
                         <p>The padded copy of the string.</p>
                       </div>
@@ -562,38 +509,6 @@ string.pad(length: 15, withToken: "*") -&gt; "**Hello World**"
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>length</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The final length of your string. If the provided length is less than or equal to the original string, the original string is returned.
-If the the sum-total of characters added is odd, the left side of the string will have one less instance of the token.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>token</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The string used to pad the String (defaults to a white space).</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -632,37 +547,6 @@ string.paddingStart(length: 15, withToken: "*") -&gt; "****Hello World"
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">paddingStart</span><span class="p">(</span><span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">with</span> <span class="nv">token</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">" "</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>length</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The final length of your string.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>token</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The string used to pad the String (defaults to a white space).</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                       <div>
                         <h4>Return Value</h4>
@@ -707,37 +591,6 @@ string.padStart(length: 15, withToken: "*") -&gt; "****Hello World"
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>length</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The final length of your string.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>token</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The string used to pad the String (defaults to a white space).</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -776,37 +629,6 @@ string.paddingEnd(length: 15, withToken: "*", ) -&gt; "Hello World****"
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">paddingEnd</span><span class="p">(</span><span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">with</span> <span class="nv">token</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">" "</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>length</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The final length of your string.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>token</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The string used to pad the String (defaults to a white space).</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                       <div>
                         <h4>Return Value</h4>
@@ -851,37 +673,6 @@ string.padEnd(length: 15, withToken: "*", ) -&gt; "Hello World****"
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>length</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The final length of your string.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>token</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The string used to pad the String (defaults to a white space).</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -916,25 +707,6 @@ string.padEnd(length: 15, withToken: "*", ) -&gt; "Hello World****"
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>maxLength</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>substring max lenght</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -967,25 +739,6 @@ string.padEnd(length: 15, withToken: "*", ) -&gt; "Hello World****"
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removingPrefix</span><span class="p">(</span><span class="nv">upToPosition</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>upToPosition</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>position (included) up to which remove the prefix.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -1020,25 +773,6 @@ string.padEnd(length: 15, withToken: "*", ) -&gt; "Hello World****"
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>prefix</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>prefix to be removed.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -1072,25 +806,6 @@ string.padEnd(length: 15, withToken: "*", ) -&gt; "Hello World****"
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>fromPosition</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>position (included) from which remove the suffix</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -1123,25 +838,6 @@ string.padEnd(length: 15, withToken: "*", ) -&gt; "Hello World****"
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removingSuffix</span><span class="p">(</span><span class="n">_</span> <span class="nv">suffix</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>prefix</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>prefix to be removed.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -1206,25 +902,6 @@ string.padEnd(length: 15, withToken: "*", ) -&gt; "Hello World****"
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>maxLength</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>substring max lenght</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -1254,37 +931,6 @@ The default trailing is the ellipsis (…).</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">truncate</span><span class="p">(</span><span class="n">at</span> <span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">withTrailing</span> <span class="nv">trailing</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"…"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>length</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>number of characters after which the <code>String</code> is truncated</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>trailing</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>optional trailing string</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -1336,25 +982,6 @@ myString[-1] -&gt; nil
                         </div>
                       </div>
                       <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>index</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>index Position of the character to get</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
                         <h4>Return Value</h4>
                         <p>Character as String or nil if the index is out of bounds</p>
                       </div>
@@ -1397,25 +1024,6 @@ myString[-1..&lt;11] -&gt; nil
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>range</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a <code>CountableRange</code> range.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -1454,25 +1062,6 @@ myString[-1...11]
                           <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">CountableClosedRange</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Substring</span><span class="p">?</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>range</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a <code>CountableClosedRange</code> range.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -1513,25 +1102,6 @@ myString[-1...11] -&gt; nil
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>range</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a <code>PartialRangeUpTo</code> range.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -1558,34 +1128,6 @@ myString[-1...11] -&gt; nil
                           <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span><span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">PartialRangeThrough</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Substring</span><span class="p">?</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>range</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a <code>PartialRangeThrough</code> range.
-Example:</p>
-
-<p>let myString = <q>Hello world</q>
-myString[..<0] -> &ldquo;<q>
-myString[..<1] -></q>H<q>
-myString[..<10] -></q>Hello worl<q>
-myString[..<11] -></q>Hello world&rdquo;
-myString[..<14] -> nil
-myString[..&lt;(-1)] -&gt; nil</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -1615,34 +1157,6 @@ myString[..&lt;(-1)] -&gt; nil</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">CountablePartialRangeFrom</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Substring</span><span class="p">?</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>range</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a <code>CountablePartialRangeFrom</code> range.
-Example:</p>
-
-<p>let myString = <q>Hello world</q>
-myString[0&hellip;] -&gt; <q>Hello world</q>
-myString[1&hellip;] -&gt; <q>ello world</q>
-myString[10&hellip;] -&gt; <q>d</q>
-myString[11&hellip;] -&gt; nil
-myString[14&hellip;] -&gt; nil
-myString[(-1)&hellip;] -&gt; nil</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -1950,37 +1464,6 @@ White space and new lines at the beginning or ending of the <code>String</code> 
                         </div>
                       </div>
                       <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>string</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>String to match.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>caseSensitive</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Search option: <em>true</em> for case-sensitive, false for case-insensitive. (if <em>true</em> this function is equivalent to <code>self.contains(...)</code>)</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
                         <h4>Return Value</h4>
                         <p><em>true</em> if contains match, otherwise false.</p>
                       </div>
@@ -2012,25 +1495,6 @@ White space and new lines at the beginning or ending of the <code>String</code> 
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">containsCharacters</span><span class="p">(</span><span class="k">in</span> <span class="nv">characterSet</span><span class="p">:</span> <span class="kt">CharacterSet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>characterSet</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The <code>CharacterSet</code> used to test the string.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                       <div>
                         <h4>Return Value</h4>
@@ -2855,49 +2319,6 @@ let stripped = string.stripCombiningMarks -&gt; aouAOU
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>target</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>target string</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>replacement</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>replacement string</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>caseSensitive</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p><code>*true*</code> (default) for a case-sensitive replacemente</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -3131,25 +2552,6 @@ let stripped = string.stripCombiningMarks -&gt; aouAOU
                         </div>
                       </div>
                       <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>set</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>characters to strip</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
                         <h4>Return Value</h4>
                         <p>stripped string</p>
                       </div>
@@ -3183,25 +2585,6 @@ let stripped = string.stripCombiningMarks -&gt; aouAOU
                         </div>
                       </div>
                       <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>set</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>characters to strip</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
                         <h4>Return Value</h4>
                         <p>stripped string</p>
                       </div>
@@ -3233,6 +2616,50 @@ let stripped = string.stripCombiningMarks -&gt; aouAOU
                           <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">urlEscaped</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Subscript%20with%20NSRange"></a>
+                <a name="//apple_ref/swift/Section/Subscript with NSRange" class="dashAnchor"></a>
+                <a href="#/Subscript%20with%20NSRange">
+                  <h3 class="section-name">Subscript with NSRange</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE9subscripts9SubstringVSgSC8_NSRangeVci"></a>
+                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE9subscripts9SubstringVSgSC8_NSRangeVci">subscript(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><em>Mechanica</em>*</p>
+
+<p>Returns a substring for a given <code>NSRange</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">subscript</span> <span class="p">(</span><span class="nv">nsRange</span><span class="p">:</span> <span class="kt">NSRange</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Substring</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Substring in NSRange or nil.</p>
                       </div>
                     </section>
                   </div>
@@ -3781,37 +3208,6 @@ string.swapCased() -&gt; "hELLO wORLD"
                         </div>
                       </div>
                       <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>pattern</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a regular expression pattern.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>options</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a list of <code>NSRegularExpression.Options</code>.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
                         <h4>Return Value</h4>
                         <p>The first match of the regular expression within <code>self</code>.</p>
                       </div>
@@ -3841,37 +3237,6 @@ string.swapCased() -&gt; "hELLO wORLD"
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">firstRange</span><span class="p">(</span><span class="n">matching</span> <span class="nv">pattern</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">NSRegularExpression</span><span class="o">.</span><span class="kt">Options</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="kt">Range</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="o">&gt;</span><span class="p">?</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>pattern</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a regular expression pattern.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>options</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a list of <code>NSRegularExpression.Options</code>.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                       <div>
                         <h4>Return Value</h4>
@@ -3905,37 +3270,6 @@ string.swapCased() -&gt; "hELLO wORLD"
                         </div>
                       </div>
                       <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>pattern</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a regular expression pattern.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>options</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a list of <code>NSRegularExpression.Options</code>.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
                         <h4>Return Value</h4>
                         <p>A list of matched strings for <code>self</code>.</p>
                       </div>
@@ -3967,37 +3301,6 @@ string.swapCased() -&gt; "hELLO wORLD"
                         </div>
                       </div>
                       <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>pattern</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a regular expression pattern.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>options</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>a list of <code>NSRegularExpression.Options</code>.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
                         <h4>Return Value</h4>
                         <p>A list of matched ranges for <code>self</code>.</p>
                       </div>
@@ -4009,8 +3312,8 @@ string.swapCased() -&gt; "hELLO wORLD"
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-01-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-01-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
