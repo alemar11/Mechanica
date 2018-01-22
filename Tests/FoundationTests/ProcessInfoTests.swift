@@ -56,7 +56,8 @@ class ProcessInfoTests: XCTestCase {
     #if os(Linux)
       XCTAssertFalse(ProcessInfo.isRunningXcodeUnitTests)
     #else
-      if let name = ProcessInfo.processInfo.environment["XPC_SERVICE_NAME"], name.contains("Xcode", caseSensitive: true) {
+      print(ProcessInfo.processInfo.environment)
+      if let name = ProcessInfo.processInfo.environment["XPC_SERVICE_NAME"], name.contains("com.apple", caseSensitive: true) {
         XCTAssertTrue(ProcessInfo.isRunningXcodeUnitTests)
       } else {
         XCTAssertFalse(ProcessInfo.isRunningXcodeUnitTests)
@@ -68,7 +69,7 @@ class ProcessInfoTests: XCTestCase {
     #if os(Linux)
       XCTAssertTrue(ProcessInfo.isRunningSwiftPackageTests)
     #else
-      if let name = ProcessInfo.processInfo.environment["XPC_SERVICE_NAME"], name.contains("Xcode", caseSensitive: true) {
+      if let name = ProcessInfo.processInfo.environment["XPC_SERVICE_NAME"], name.contains("com.apple", caseSensitive: true) {
         XCTAssertFalse(ProcessInfo.isRunningSwiftPackageTests)
       } else {
         XCTAssertTrue(ProcessInfo.isRunningSwiftPackageTests)
