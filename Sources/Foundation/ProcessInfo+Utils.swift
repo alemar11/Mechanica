@@ -25,9 +25,6 @@ import Foundation
 
 extension ProcessInfo {
 
-  //#if !os(Linux)
-  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
-
   /// **Mechanica**
   ///
   ///  Returns true if SwiftPackage tests are running.
@@ -65,7 +62,5 @@ extension ProcessInfo {
     return processInfo.environment["APP_SANDBOX_CONTAINER_ID"].hasValue
   }
   #endif
-
-  //#endif
 
 }
