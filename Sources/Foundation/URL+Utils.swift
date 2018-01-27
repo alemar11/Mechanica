@@ -55,7 +55,6 @@ extension URL {
     self = deletingLastPathComponents(numberOfPathComponents)
   }
 
-
   /// **Mechanica**
   ///
   /// - Parameter numberOfPathComponents: components to be removed.
