@@ -160,7 +160,10 @@
                 <a href="../Extensions/URL.html">URL</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Unicode.Scalar.html">Unicode.Scalar</a>
+                <a href="../Extensions/Unicode.html">Unicode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Unicode/Scalar.html">– Scalar</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UserDefaults.html">UserDefaults</a>
@@ -177,7 +180,7 @@
                 <a href="../Functions.html#/s:9Mechanica1roPS2fF">%(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions/???(_:_:).html">???(_:_:)</a>
+                <a href="../Functions.html#/s:9Mechanica3qqqoiSSxSg_SSyXKtlF">???(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/typeName(of:)">typeName(of:)</a>
@@ -201,8 +204,7 @@
         <section>
           <section class="section">
             <h1>UserDefaults</h1>
-            <p>Undocumented</p>
-
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -220,7 +222,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns <code>true</code> if <code>key</code> exists.</p>
 
                       </div>
                     </section>
@@ -239,7 +243,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
 
                       </div>
                     </section>
@@ -258,7 +262,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
 
                       </div>
                     </section>
@@ -277,7 +281,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
 
                       </div>
                     </section>
@@ -296,7 +300,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
 
                       </div>
                     </section>
@@ -315,7 +319,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Removes all keys and values from user defaults.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method only removes keys on the receiver <code>UserDefaults</code> object.
+    System-defined keys will still be present afterwards.
+    <code>resetStandardUserDefaults</code> simply resets the in-memory user defaults object.
+
+</div>
 
                       </div>
                     </section>
@@ -345,7 +358,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the object conformig to <code>Codable</code> associated with the specified key, or nil if the key was not found.</p>
 
                       </div>
                     </section>
@@ -364,7 +379,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Stores an object conformig to <code>Codable</code> (or removes the value if nil is passed as the value) for the provided key.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    An error if any value throws an error during encoding.
+
+</div>
 
                       </div>
                     </section>
@@ -375,8 +397,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-01-22)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-01-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

@@ -160,7 +160,10 @@
                 <a href="../Extensions/URL.html">URL</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Unicode.Scalar.html">Unicode.Scalar</a>
+                <a href="../Extensions/Unicode.html">Unicode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Unicode/Scalar.html">– Scalar</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UserDefaults.html">UserDefaults</a>
@@ -177,7 +180,7 @@
                 <a href="../Functions.html#/s:9Mechanica1roPS2fF">%(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions/???(_:_:).html">???(_:_:)</a>
+                <a href="../Functions.html#/s:9Mechanica3qqqoiSSxSg_SSyXKtlF">???(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/typeName(of:)">typeName(of:)</a>
@@ -201,7 +204,9 @@
         <section>
           <section class="section">
             <h1>Color</h1>
-            <p>Undocumented</p>
+            <p><strong>Mechanica</strong></p>
+
+<p>Alias for NSColor.</p>
 
           </section>
           <section class="section task-group-section">
@@ -220,7 +225,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the hexadecimal string representation of <code>self</code> in the sRGB space.</p>
 
                       </div>
                     </section>
@@ -239,7 +246,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Initializes and returns a <strong>random</strong> color object in the sRGB space.</p>
 
                       </div>
                     </section>
@@ -269,7 +278,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the color&rsquo;s RGBA components as Ints.</p>
 
                       </div>
                     </section>
@@ -288,7 +299,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the color&rsquo;s RGBA components as a tuple of <code>CGFloat</code>.</p>
 
                       </div>
                     </section>
@@ -307,7 +320,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Creates a <code>new</code> color in the <strong>sRGB</strong> color space (if needed)  guard letthat matches (or <em>closely approximates</em>) the current color.
+Although the new color might have different component values, it looks the same as the original.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <a href="https://developer.apple.com/videos/play/wwdc2016/712/?time=2368">WWDC 2016 - 712</a>
+
+</div>
 
                       </div>
                     </section>
@@ -337,7 +358,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a sRGB color from a hexadecimal integer.</p>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="nf">Color</span><span class="p">(</span><span class="nv">hex</span><span class="p">:</span> <span class="mh">0xFF0000</span><span class="p">)</span>
+<span class="nf">Color</span><span class="p">(</span><span class="nv">hex</span><span class="p">:</span> <span class="mh">0xFF0000</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                     </section>
@@ -356,7 +384,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Creates and returns an Color object given an hex color string.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Supported formats: <code>RGB</code>, <code>#RGB</code>, <code>RGBA</code>, <code>#RGBA</code>, <code>RRGGBB</code>, <code>#RRGGBB</code>, <code>RRGGBBAA</code>, <code>#RRGGBBAA</code>).</p>
+
+</div>
 
                       </div>
                     </section>
@@ -386,7 +421,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the components that make up the color in the HSBA color space.</p>
 
                       </div>
                     </section>
@@ -416,7 +453,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>Mechanica</strong></p>
+
+<p>Blends two colors together.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The sum of the two percentages must be 1.0 otherwise the blendind operation is not executed.
+
+</div>
 
                       </div>
                     </section>
@@ -427,8 +471,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-01-22)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-01-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
