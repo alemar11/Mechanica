@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.X.Y (Work in progress)
+- Added Font utils for bold and italic traits.
+
 ### 1.4.0
 - Better String subscription methods.
 - More URL utils.

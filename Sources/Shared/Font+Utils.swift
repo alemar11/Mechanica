@@ -27,10 +27,100 @@
   ///
   /// Alias for UIFont.
   public typealias Font = UIKit.UIFont
+
+  /// **Mechanica**
+  ///
+  /// Alias for UIFontDescriptorSymbolicTraits.
+  public typealias FontDescriptorSymbolicTraits = UIKit.UIFontDescriptorSymbolicTraits
 #elseif os(macOS)
   import AppKit
   /// **Mechanica**
   ///
   /// Alias for NSFont.
   public typealias Font = AppKit.NSFont
+
+  /// **Mechanica**
+  ///
+  /// Alias for NSFontDescriptor.SymbolicTraits.
+  public typealias FontDescriptorSymbolicTraits = AppKit.NSFontDescriptor.SymbolicTraits
 #endif
+
+extension Font {
+
+  /// **Mechanica**
+  ///
+  /// Applies the specified traits to `self` without changing the current size.
+  func withTraits(_ traits: FontDescriptorSymbolicTraits) -> Font? {
+    let descriptor = fontDescriptor.withSymbolicTraits(traits)
+    //size 0 means keep the size as it is
+    let size = CGFloat(0) //TODO: use "pointSize" instead of 0?
+
+    #if os(macOS)
+      return Font(descriptor: descriptor, size: size) ?? self
+    #else
+      guard let d = descriptor else { return self }
+      return UIFont(descriptor: d, size: size)
+    #endif
+  }
+
+  /// **Mechanica**
+  ///
+  /// Applies the *bold* trait.
+  ///
+  /// Example:
+  ///
+  ///     let font = Font.preferredFont(forTextStyle: .headline).bold() // iOS/tvOS/watchOS
+  ///     let font = Font.systemFont(ofSize: 16).bold() // macOS
+  ///
+  func bold() -> Font {
+    let traits: FontDescriptorSymbolicTraits
+    #if os(macOS)
+      traits = .bold
+    #else
+      traits = .traitBold
+    #endif
+    return withTraits([fontDescriptor.symbolicTraits, traits]) ?? self
+  }
+
+  /// **Mechanica**
+  ///
+  /// Applies the *italic* trait.
+  ///
+  /// Example:
+  ///
+  ///     let font = Font.preferredFont(forTextStyle: .headline).italic() // iOS/tvOS/watchOS
+  ///     let font = Font.systemFont(ofSize: 16).italic() // macOS
+  ///
+  func italic() -> Font {
+    let traits: FontDescriptorSymbolicTraits
+    #if os(macOS)
+      traits = .italic
+    #else
+      traits = .traitItalic
+    #endif
+    return withTraits([fontDescriptor.symbolicTraits, traits]) ?? self
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns true if the font contains the bold trait.
+  var isBold: Bool {
+    #if os(macOS)
+      return fontDescriptor.symbolicTraits.contains(.bold)
+    #else
+      return fontDescriptor.symbolicTraits.contains(.traitBold)
+    #endif
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns true if the font contains the italic trait.
+  var isItalic: Bool {
+    #if os(macOS)
+      return fontDescriptor.symbolicTraits.contains(.italic)
+    #else
+      return fontDescriptor.symbolicTraits.contains(.traitItalic)
+    #endif
+  }
+
+}
