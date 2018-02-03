@@ -50,7 +50,7 @@ extension Font {
   /// **Mechanica**
   ///
   /// Applies the specified traits to `self` without changing the current size.
-  func withTraits(_ traits: FontDescriptorSymbolicTraits) -> Font? {
+  public func withTraits(_ traits: FontDescriptorSymbolicTraits) -> Font? {
     let descriptor = fontDescriptor.withSymbolicTraits(traits)
     //size 0 means keep the size as it is
     let size = CGFloat(0) //TODO: use "pointSize" instead of 0?
@@ -72,7 +72,7 @@ extension Font {
   ///     let font = Font.preferredFont(forTextStyle: .headline).bold() // iOS/tvOS/watchOS
   ///     let font = Font.systemFont(ofSize: 16).bold() // macOS
   ///
-  func bold() -> Font {
+  public func bold() -> Font {
     let traits: FontDescriptorSymbolicTraits
     #if os(macOS)
       traits = .bold
@@ -91,7 +91,7 @@ extension Font {
   ///     let font = Font.preferredFont(forTextStyle: .headline).italic() // iOS/tvOS/watchOS
   ///     let font = Font.systemFont(ofSize: 16).italic() // macOS
   ///
-  func italic() -> Font {
+  public func italic() -> Font {
     let traits: FontDescriptorSymbolicTraits
     #if os(macOS)
       traits = .italic
@@ -104,7 +104,7 @@ extension Font {
   /// **Mechanica**
   ///
   /// Returns true if the font contains the bold trait.
-  var isBold: Bool {
+  public var isBold: Bool {
     #if os(macOS)
       return fontDescriptor.symbolicTraits.contains(.bold)
     #else
@@ -115,7 +115,7 @@ extension Font {
   /// **Mechanica**
   ///
   /// Returns true if the font contains the italic trait.
-  var isItalic: Bool {
+  public var isItalic: Bool {
     #if os(macOS)
       return fontDescriptor.symbolicTraits.contains(.italic)
     #else
