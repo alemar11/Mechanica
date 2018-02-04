@@ -67,38 +67,48 @@ extension Font {
   ///
   /// Applies the *bold* trait.
   ///
+  /// - Parameter removingExistingTraits: if true only the bold trait will be applied, others traits will be removed.
+  /// - Returns: A new Font with the bold trait.
+  ///
   /// Example:
   ///
-  ///     let font = Font.preferredFont(forTextStyle: .headline).bold() // iOS/tvOS/watchOS
+  ///     let font = Font.preferredFont(forTextStyle: .body).bold() // iOS/tvOS/watchOS
   ///     let font = Font.systemFont(ofSize: 16).bold() // macOS
   ///
-  public func bold() -> Font {
+  public func bold(removingExistingTraits: Bool = false) -> Font {
     let traits: FontDescriptorSymbolicTraits
     #if os(macOS)
       traits = .bold
     #else
       traits = .traitBold
     #endif
-    return withTraits([fontDescriptor.symbolicTraits, traits]) ?? self
+    let finalTraits = (removingExistingTraits) ? traits : [fontDescriptor.symbolicTraits, traits]
+
+    return withTraits(finalTraits) ?? self
   }
 
   /// **Mechanica**
   ///
   /// Applies the *italic* trait.
   ///
+  /// - Parameter removingExistingTraits: if true only the italic trait will be applied, others traits will be removed.
+  /// - Returns: A new Font with the italic trait.
+  ///
   /// Example:
   ///
-  ///     let font = Font.preferredFont(forTextStyle: .headline).italic() // iOS/tvOS/watchOS
+  ///     let font = Font.preferredFont(forTextStyle: .body).italic() // iOS/tvOS/watchOS
   ///     let font = Font.systemFont(ofSize: 16).italic() // macOS
   ///
-  public func italic() -> Font {
+  public func italic(removingExistingTraits: Bool = false) -> Font {
     let traits: FontDescriptorSymbolicTraits
     #if os(macOS)
       traits = .italic
     #else
       traits = .traitItalic
     #endif
-    return withTraits([fontDescriptor.symbolicTraits, traits]) ?? self
+    let finalTraits = (removingExistingTraits) ? traits : [fontDescriptor.symbolicTraits, traits]
+
+    return withTraits(finalTraits) ?? self
   }
 
   /// **Mechanica**
