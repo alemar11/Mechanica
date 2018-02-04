@@ -81,10 +81,10 @@ class FontUtilsTests: XCTestCase {
 
   func testIsBoldOrIsItalic() {
 
-    #if !os(macOS)
+    #if os(iOS)
       do {
         // Given
-        let font = Font.preferredFont(forTextStyle: .headline) // this is bold by default
+        let font = Font.preferredFont(forTextStyle: .headline) // this is bold by default on iOS
 
         // When, Then
         let italicAndBoldFont = font.italic()
@@ -102,11 +102,35 @@ class FontUtilsTests: XCTestCase {
         // It is only supposed to give you back a descriptor that will actually match a font.
         // https://stackoverflow.com/questions/19822862/unbolding-a-uifontdescriptor
         let onlyItalicFont = italicAndBoldFont.italic(removingExistingTraits: true)
-        // there is no variant of the headline font that is italic but not bold.
+        // there is no variant of the headline font that is italic but not bold on iOS.
         XCTAssertTrue(onlyItalicFont.isBold)
         XCTAssertTrue(onlyItalicFont.isItalic)
 
-        XCTAssertTrue(onlyItalicFont.removingBold().isBold) // headline style will alwaus retain its bold trait.
+        XCTAssertTrue(onlyItalicFont.removingBold().isBold) // headline style will always retain its bold trait.
+      }
+    #endif
+
+    #if os(tvOS)
+      do {
+        // Given
+        let font = Font.preferredFont(forTextStyle: .headline)
+
+        // When, Then
+        let italicAndBoldFont = font.italic()
+        XCTAssertFalse(italicAndBoldFont.isBold)
+        XCTAssertTrue(italicAndBoldFont.isItalic)
+
+        // When, Then
+        let onlyBoldFont = italicAndBoldFont.bold(removingExistingTraits: true)
+        XCTAssertFalse(onlyBoldFont.isBold) // on tvOS the headline style is never bold
+        XCTAssertFalse(onlyBoldFont.isItalic)
+
+        // When, Then
+        let onlyItalicFont = italicAndBoldFont.italic(removingExistingTraits: true)
+        XCTAssertFalse(onlyItalicFont.isBold)
+        XCTAssertTrue(onlyItalicFont.isItalic)
+
+        XCTAssertFalse(onlyItalicFont.removingBold().isBold)
       }
     #endif
 
