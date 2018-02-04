@@ -92,11 +92,6 @@ extension Sequence where Element: Hashable {
     return Set(elements).isSubset(of:Set(self))
   }
 
-  // TODO, FIXME: wip
-//  private func containsAll(_ elements: [Element]) -> Bool {
-//    return Set(elements).subtracting(Set(self)).isEmpty
-//  }
-
   /// **Mechanica**
   ///
   /// Returns a collection of tuples where it's indicated the frequencies of the elements in the sequence.
