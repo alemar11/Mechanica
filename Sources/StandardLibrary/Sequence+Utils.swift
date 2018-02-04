@@ -87,8 +87,10 @@ extension Sequence where Element: Hashable {
 
   // MARK: - Hashable
 
-  // TODO: wip
-  private func contains(_ elements: [Element]) -> Bool {
+  /// **Mechanica**
+  ///
+  /// Returns true if the `Sequence` contains all the given elements.
+  public func contains(_ elements: [Element]) -> Bool {
     return Set(elements).isSubset(of:Set(self))
   }
 

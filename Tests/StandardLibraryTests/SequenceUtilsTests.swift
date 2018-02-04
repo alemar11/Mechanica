@@ -28,6 +28,7 @@ extension SequenceUtilsTests {
   static var allTests = [
     ("testHasSome", testHasSome),
     ("testHasAll", testHasAll),
+    ("testContains", testContains),
     ("testContatinsObjectIdentical", testContatinsObjectIdentical),
     ("testCount", testCount),
     ("testGroupedBy", testGroupedBy),
@@ -83,6 +84,26 @@ class SequenceUtilsTests: XCTestCase {
     XCTAssertTrue(list2.hasAllElements{$0.value1 == "demo1"})
     XCTAssertFalse(list2.hasAllElements{$0.value1 == "demo11"})
     XCTAssertFalse(list.hasAllElements{$0.value1 == "demo12"})
+  }
+
+  func testContains() {
+    let array1 = [1, 2, 3, 4, 5]
+    let array2 = [1, 8, 0]
+    let array3 = [1,5, 4]
+    let array4 = [1, 4, 0, 8, 5, 9]
+    let emptyArray =  [Int]()
+
+    XCTAssertTrue(emptyArray.contains(emptyArray))
+    XCTAssertFalse(emptyArray.contains(array1))
+    XCTAssertTrue(array1.contains(emptyArray))
+    XCTAssertFalse(array1.contains(array2))
+    XCTAssertTrue(array1.contains(array3))
+    XCTAssertTrue(array1.contains(array1))
+    XCTAssertFalse(array3.contains(array1))
+    XCTAssertTrue(array4.contains(array2))
+    XCTAssertTrue(array4.contains(array3))
+    XCTAssertFalse(array2.contains(array4))
+    XCTAssertFalse(array3.contains(array4))
   }
 
   // MARK: - AnyObject
