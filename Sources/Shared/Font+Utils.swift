@@ -97,7 +97,11 @@ extension Font {
   public func removingBold() -> Font {
     guard isBold else { return self }
     var traits = fontDescriptor.symbolicTraits
-    traits.remove([.traitBold])
+    #if os(macOS)
+     traits.remove([.bold])
+    #else
+      traits.remove([.traitBold])
+    #endif
 
     return withTraits(traits)
   }
@@ -136,7 +140,11 @@ extension Font {
   public func removingItalic() -> Font {
     guard isItalic else { return self }
     var traits = fontDescriptor.symbolicTraits
-    traits.remove([.traitItalic])
+    #if os(macOS)
+      traits.remove([.italic])
+    #else
+      traits.remove([.traitItalic])
+    #endif
 
     return withTraits(traits)
   }
