@@ -38,6 +38,10 @@ class FontUtilsTests: XCTestCase {
     XCTAssertNotNil(boldFont)
     XCTAssertTrue(boldFont.isBold)
     XCTAssertFalse(boldFont.isItalic)
+
+    let removedBoldFont = font.removingBold()
+    XCTAssertFalse(removedBoldFont.isBold)
+    XCTAssertFalse(removedBoldFont.isItalic)
   }
 
   func testItalic() {
@@ -51,6 +55,10 @@ class FontUtilsTests: XCTestCase {
     let italicFont = font.italic()
     XCTAssertTrue(italicFont.isItalic)
     XCTAssertFalse(italicFont.isBold)
+
+    let removedItalicFont = font.removingItalic()
+    XCTAssertFalse(removedItalicFont.isBold)
+    XCTAssertFalse(removedItalicFont.isItalic)
   }
 
   func testBoldAndItalic() {
@@ -64,6 +72,10 @@ class FontUtilsTests: XCTestCase {
     let boldAndItalicFont = font.bold().italic()
     XCTAssertTrue(boldAndItalicFont.isItalic)
     XCTAssertTrue(boldAndItalicFont.isBold)
+
+    let removedBoldAndItalicFont = font.removingBold().removingItalic()
+    XCTAssertFalse(removedBoldAndItalicFont.isBold)
+    XCTAssertFalse(removedBoldAndItalicFont.isItalic)
   }
 
 
@@ -88,10 +100,13 @@ class FontUtilsTests: XCTestCase {
         // The "Using Fonts With Text Kit" WWDC session sheds a bit of light on what might be happening here.
         // Around 18:00 in the video, slide 18 in the PDF a note is made that fontDescriptorWithSymbolicTraits: performs a font matching procedure internally.
         // It is only supposed to give you back a descriptor that will actually match a font.
+        // https://stackoverflow.com/questions/19822862/unbolding-a-uifontdescriptor
         let onlyItalicFont = italicAndBoldFont.italic(removingExistingTraits: true)
         // there is no variant of the headline font that is italic but not bold.
         XCTAssertTrue(onlyItalicFont.isBold)
         XCTAssertTrue(onlyItalicFont.isItalic)
+
+        XCTAssertTrue(onlyItalicFont.removingBold().isBold) // headline style will alwaus retain its bold trait.
       }
     #endif
 
@@ -103,8 +118,8 @@ class FontUtilsTests: XCTestCase {
 
       // When, Then
       let italicAndBoldFont = font.italic().bold()
-      XCTAssertTrue(italicAndBoldFont.isBold)
-      XCTAssertTrue(italicAndBoldFont.isItalic)
+      print(italicAndBoldFont.isBold)
+      print(italicAndBoldFont.isItalic)
 
       // When, Then
       let onlyBoldFont = italicAndBoldFont.bold(removingExistingTraits: true)
