@@ -21,30 +21,142 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS)
-
 import UIKit
 
 extension UIView {
 
   /// **Mechanica**
   ///
-  /// A Boolean value that determines whether the view’s autoresizing mask is translated into Auto Layout constraints.
-  public var usesAutoLayout: Bool {
-    get { return !translatesAutoresizingMaskIntoConstraints }
-    set { translatesAutoresizingMaskIntoConstraints = !newValue }
+  /// The radius to use when drawing rounded corners.
+  /// - Note: Inspectable from Storyboard.
+  @IBInspectable
+  var cornerRadius: CGFloat {
+    get {
+      return layer.cornerRadius
+    }
+    set {
+      layer.cornerRadius = newValue
+    }
   }
 
   /// **Mechanica**
   ///
-  /// Take sceenshot with the current device's screen scale.
-  /// If an animation is running it captures the final frame of the animation.
-  public func screenshot() -> UIImage {
-    /// https://stackoverflow.com/questions/19066717/how-to-render-view-into-image-faster
-    // by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
-    return UIGraphicsImageRenderer(bounds: bounds).image { layer.render(in: $0.cgContext) }
+  /// The width of the view's border.
+  /// - Note: Inspectable from Storyboard.
+  @IBInspectable
+  var borderWidth: CGFloat {
+    get {
+      return layer.borderWidth
+    }
+    set {
+      layer.borderWidth = newValue
+    }
+  }
+
+  /// **Mechanica**
+  ///
+  /// The color of the view's border.
+  /// - Note: Inspectable from Storyboard.
+  @IBInspectable
+  var borderColor: UIColor? {
+    get {
+      guard let color = layer.borderColor else { return nil }
+      return UIColor(cgColor: color)
+    }
+    set {
+      if let color = newValue {
+        layer.borderColor = color.cgColor
+      } else {
+        layer.borderColor = nil
+      }
+    }
+  }
+
+  /// **Mechanica**
+  ///
+  /// The blur radius (in points) used to render the view's shadow.
+  /// - Note: Inspectable from Storyboard.
+  @IBInspectable
+  var shadowRadius: CGFloat {
+    get {
+      return layer.shadowRadius
+    }
+    set {
+      layer.shadowRadius = newValue
+    }
+  }
+
+  /// **Mechanica**
+  ///
+  /// The opacity of the view's shadow.
+  /// - Note: Inspectable from Storyboard.
+  @IBInspectable
+  var shadowOpacity: Float {
+    get {
+      return layer.shadowOpacity
+    }
+    set {
+      layer.shadowOpacity = newValue
+    }
+  }
+
+  /// **Mechanica**
+  ///
+  /// The offset (in points) of the view's shadow.
+  /// - Note: Inspectable from Storyboard.
+  @IBInspectable
+  var shadowOffset: CGSize {
+    get {
+      return layer.shadowOffset
+    }
+    set {
+      layer.shadowOffset = newValue
+    }
+  }
+
+  /// **Mechanica**
+  ///
+  /// The color of the view's shadow.
+  /// - Note: Inspectable from Storyboard.
+  @IBInspectable
+  var shadowColor: UIColor? {
+    get {
+      guard let color = layer.shadowColor else { return nil }
+      return UIColor(cgColor: color)
+    }
+    set {
+      if let color = newValue {
+        layer.shadowColor = color.cgColor
+      } else {
+        layer.shadowColor = nil
+      }
+    }
   }
 
 }
+
+#if os(iOS) || os(tvOS)
+
+  extension UIView {
+
+    /// **Mechanica**
+    ///
+    /// A Boolean value that determines whether the view’s autoresizing mask is translated into Auto Layout constraints.
+    public var usesAutoLayout: Bool {
+      get { return !translatesAutoresizingMaskIntoConstraints }
+      set { translatesAutoresizingMaskIntoConstraints = !newValue }
+    }
+
+    /// **Mechanica**
+    ///
+    /// Take sceenshot with the current device's screen scale.
+    /// If an animation is running it captures the final frame of the animation.
+    public func screenshot() -> UIImage {
+      /// https://stackoverflow.com/questions/19066717/how-to-render-view-into-image-faster
+      // by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
+      return UIGraphicsImageRenderer(bounds: bounds).image { layer.render(in: $0.cgContext) }
+    }
+
+  }
 
 #endif
