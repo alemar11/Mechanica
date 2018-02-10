@@ -385,9 +385,13 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Generates a `new` random alphanumeric string of a given length (default 8).
-  public static func random(length: UInt32 = 8) -> String {
-    let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+  /// Generates a `new` random `String`.
+  ///
+  /// - Parameters:
+  ///   - length: The length (defaults to 8) of the generated string.
+  ///   - base: The characters to be used to generate the new string (the default characters are the alphanumeric ones).
+  /// - Returns: A `new` random alphanumeric `String`.
+  public static func random(length: UInt32 = 8, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     var randomString: String = ""
 
     for _ in 0..<length {

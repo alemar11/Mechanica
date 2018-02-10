@@ -1319,6 +1319,32 @@ class StringFoundationUtilsTests: XCTestCase {
       XCTAssertTrue(randomString.isAlphaNumeric)
     }
 
+    do {
+      let randomString = String.random(length: 1, charachters: "a")
+      XCTAssertEqual(randomString.length, 1)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+      XCTAssertEqual(randomString, "a")
+    }
+
+    do {
+      let randomString = String.random(length: 3, charachters: "aaaaa")
+      XCTAssertEqual(randomString.length, 3)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+      XCTAssertEqual(randomString, "aaa")
+    }
+
+    do {
+      let randomString = String.random(length: 1, charachters: "a0bc123")
+      XCTAssertEqual(randomString.length, 1)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+      XCTAssertTrue("a0bc123".contains(randomString, caseSensitive: false))
+    }
+
+    do {
+      let randomString = String.random(length: 1000, charachters: "a0bc?123")
+      XCTAssertEqual(randomString.length, 1000)
+    }
+
   }
 
 }
