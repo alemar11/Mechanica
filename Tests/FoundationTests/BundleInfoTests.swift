@@ -24,50 +24,38 @@
 import XCTest
 @testable import Mechanica
 
-#if !os(Linux)
-
-  extension BundleInfoTests {
-    static var allTests = [("testBundle", testBundle)]
-  }
-
-  class BundleInfoTests: XCTestCase {
-
-    func testBundle() {
+class BundleInfoTests: XCTestCase {
+  
+  func testBundle() {
+    
+    // Given, When
+    let bundle = Mechanica.bundle
+    // Then
+    if ProcessInfo.isRunningXcodeUnitTests {
+      XCTAssertNotNil(bundle.version)
+      XCTAssertNotNil(bundle.shortVersionString)
+      XCTAssertNil(bundle.displayName)
+      XCTAssertEqual(bundle.executableFileName, "Mechanica")
       
-      // Given, When
-      let bundle = Mechanica.bundle
-      // Then
-      if ProcessInfo.isRunningXcodeUnitTests {
-        XCTAssertNotNil(bundle.version)
-        XCTAssertNotNil(bundle.shortVersionString)
-        XCTAssertNil(bundle.displayName)
-        XCTAssertEqual(bundle.executableFileName, "Mechanica")
-        
-      } else if ProcessInfo.isRunningSwiftPackageTests {
-        XCTAssertNil(bundle.version)
-        XCTAssertNil(bundle.shortVersionString)
-        XCTAssertNil(bundle.displayName)
-        XCTAssertEqual(bundle.executableFileName, "MechanicaPackageTests")
-        
-      } else {
-        XCTFail("Missing ProcessInfo details.")
-      }
-
+    } else if ProcessInfo.isRunningSwiftPackageTests {
+      XCTAssertNil(bundle.version)
+      XCTAssertNil(bundle.shortVersionString)
+      XCTAssertNil(bundle.displayName)
+      XCTAssertEqual(bundle.executableFileName, "MechanicaPackageTests")
+      
+    } else {
+      XCTFail("Missing ProcessInfo details.")
     }
-
-    #if !os(Linux)
-
-    func testAppIdentifier() {
-      if ProcessInfo.isRunningSwiftPackageTests {
-        XCTAssertEqual(Mechanica.bundle.appIdentifier, "MechanicaPackageTests")
-      } else {
-        XCTAssertEqual(Mechanica.bundle.appIdentifier, "org.tinrobots.Mechanica")
-      }
-      XCTAssertEqual(Bundle.main.appIdentifier, "xctest")
-    }
-
-    #endif
-
+    
   }
-
-#endif
+  
+  func testAppIdentifier() {
+    if ProcessInfo.isRunningSwiftPackageTests {
+      XCTAssertEqual(Mechanica.bundle.appIdentifier, "MechanicaPackageTests")
+    } else {
+      XCTAssertEqual(Mechanica.bundle.appIdentifier, "org.tinrobots.Mechanica")
+    }
+    XCTAssertEqual(Bundle.main.appIdentifier, "xctest")
+  }
+  
+}
