@@ -78,7 +78,8 @@ extension StringFoundationUtilsTests {
     ("testSubscript", testSubscript),
     ("testReplacingCharacters", testReplacingCharacters),
     ("testReplacingFirstOccurrence", testReplacingFirstOccurrence),
-    ("testRandom", testRandom)
+    ("testRandom", testRandom),
+    ("testRandomWithRangeLenght", testRandomWithRangeLenght)
   ]
 }
 
@@ -1343,6 +1344,47 @@ class StringFoundationUtilsTests: XCTestCase {
     do {
       let randomString = String.random(length: 1000, charachters: "a0bc?123")
       XCTAssertEqual(randomString.length, 1000)
+    }
+
+    do {
+      let randomString = String.random(length: 1000, charachters: "")
+      XCTAssertEqual(randomString.length, 0)
+      XCTAssertEqual(randomString, "")
+    }
+
+  }
+
+  func testRandomWithRangeLenght() {
+    do {
+      let range = UInt32(1)...UInt32(2)
+      let randomString = String.random(length: range, charachters: "a")
+      XCTAssertTrue(randomString.length == 1 || randomString.length == 2)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+      XCTAssertTrue(randomString == "a" || randomString == "aa")
+    }
+
+    do {
+      let range = UInt32(1)...UInt32(1)
+      let randomString = String.random(length: range, charachters: "ab")
+      XCTAssertTrue(randomString.length == 1)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+      XCTAssertTrue(randomString == "a" || randomString == "b")
+    }
+
+    do {
+      let range = UInt32(1)...UInt32(1000)
+      let randomString = String.random(length: range)
+      XCTAssertTrue(randomString.length >= 1 && randomString.length <= 1000)
+      XCTAssertTrue(randomString.isAlphaNumeric)
+      print(randomString.count)
+      print(randomString)
+    }
+
+    do {
+      let range = UInt32(1)...UInt32(100)
+      let randomString = String.random(length: range, charachters: "")
+      XCTAssertTrue(randomString.length == 0)
+      XCTAssertTrue(randomString == "")
     }
 
   }

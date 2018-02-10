@@ -392,6 +392,7 @@ extension String {
   ///   - base: The characters to be used to generate the new string (the default characters are the alphanumeric ones).
   /// - Returns: A `new` random alphanumeric `String`.
   public static func random(length: UInt32 = 8, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
+    guard !base.isEmpty else { return "" }
     var randomString: String = ""
 
     for _ in 0..<length {
@@ -400,6 +401,25 @@ extension String {
     }
 
     return randomString
+  }
+
+  /// **Mechanica**
+  ///
+  /// Generates a `new` random `String`.
+  ///
+  /// - Parameters:
+  ///   - between: The range of possible lenghts for the new string.
+  ///   - base: The characters to be used to generate the new string (the default characters are the alphanumeric ones).
+  /// - Returns: A `new` random alphanumeric `String`.
+  public static func random(length between: CountableClosedRange<UInt32>, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
+    guard !base.isEmpty else { return "" }
+    let min = between.lowerBound
+    let max = between.upperBound
+    guard min > 0 && max >= min else { return "" }
+
+    let randomLenght = UInt32.random(lowerBound: min, upperBound: max)
+
+    return random(length: randomLenght, charachters: base)
   }
 
   #if !os(Linux)
