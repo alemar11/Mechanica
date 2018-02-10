@@ -1376,8 +1376,6 @@ class StringFoundationUtilsTests: XCTestCase {
       let randomString = String.random(length: range)
       XCTAssertTrue(randomString.length >= 1 && randomString.length <= 1000)
       XCTAssertTrue(randomString.isAlphaNumeric)
-      print(randomString.count)
-      print(randomString)
     }
 
     do {
