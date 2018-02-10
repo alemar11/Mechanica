@@ -62,6 +62,15 @@ extension Sequence {
     return count
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns an array with the contents the sequence shuffled.
+  func shuffled() -> [Element] {
+    var result = Array(self)
+    result.shuffle()
+    return result
+  }
+
 }
 
 extension Sequence where Element: Equatable {
