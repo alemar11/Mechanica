@@ -2714,9 +2714,9 @@ White space and new lines at the beginning or ending of the <code>String</code> 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:SS9MechanicaE6randomSSs6UInt32V6length_tFZ"></a>
-                    <a name="//apple_ref/swift/Method/random(length:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:SS9MechanicaE6randomSSs6UInt32V6length_tFZ">random(length:)</a>
+                    <a name="/s:SS9MechanicaE6randomSSs6UInt32V6length_SS11charachterstFZ"></a>
+                    <a name="//apple_ref/swift/Method/random(length:charachters:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE6randomSSs6UInt32V6length_SS11charachterstFZ">random(length:charachters:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2726,16 +2726,115 @@ White space and new lines at the beginning or ending of the <code>String</code> 
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Generates a <code>new</code> random alphanumeric string of a given length (default 8).</p>
+<p>Generates a <code>new</code> random <code>String</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">random</span><span class="p">(</span><span class="nv">length</span><span class="p">:</span> <span class="kt">UInt32</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">random</span><span class="p">(</span><span class="nv">length</span><span class="p">:</span> <span class="kt">UInt32</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">charachters</span> <span class="nv">base</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>length</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The length (defaults to 8) of the generated string.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>base</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The characters to be used to generate the new string (the default characters are the alphanumeric ones).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>new</code> random alphanumeric <code>String</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SS9MechanicaE6randomSSs20CountableClosedRangeVys6UInt32VG6length_SS11charachterstFZ"></a>
+                    <a name="//apple_ref/swift/Method/random(length:charachters:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SS9MechanicaE6randomSSs20CountableClosedRangeVys6UInt32VG6length_SS11charachterstFZ">random(length:charachters:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Generates a <code>new</code> random <code>String</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">random</span><span class="p">(</span><span class="n"><a href="../Extensions/String.html#/s:SS9MechanicaE6lengthSiv">length</a></span> <span class="nv">between</span><span class="p">:</span> <span class="kt">CountableClosedRange</span><span class="o">&lt;</span><span class="kt">UInt32</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">charachters</span> <span class="nv">base</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>between</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The range of possible lenghts for the new string.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>base</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The characters to be used to generate the new string (the default characters are the alphanumeric ones).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>new</code> random alphanumeric <code>String</code>.</p>
                       </div>
                     </section>
                   </div>
@@ -4075,7 +4174,7 @@ White space and new lines at the beginning or ending of the <code>String</code> 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-02-04)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-02-10)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
