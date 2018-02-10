@@ -24,6 +24,8 @@
 import XCTest
 @testable import Mechanica
 
+#if os(iOS) || os(tvOS) || os(watchOS)
+
 class UIWiewUtilsTests: XCTestCase {
 
   func testCornerRadius() {
@@ -117,3 +119,5 @@ class UIWiewUtilsTests: XCTestCase {
   #endif
 
 }
+
+#endif
