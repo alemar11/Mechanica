@@ -2,6 +2,7 @@
 
 ### 1.X.Y (Work in progress)
 - Added Font utils for bold and italic traits.
+- Added shuffling methods for collections and sequences.
 
 ### 1.4.0
 - Better String subscription methods.
