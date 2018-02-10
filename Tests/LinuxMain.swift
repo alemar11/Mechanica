@@ -22,7 +22,6 @@ XCTMain([
   testCase(UnsignedIntegerUtilsTests.allTests),
 
   // Foundation
-  //testCase(BundleInfoTests.allTests),
   testCase(DataUtilsTests.allTests),
   testCase(DictionaryFoundationUtilsTests.allTests),
   testCase(FileManagerUtilsTests.allTests),
@@ -40,5 +39,6 @@ XCTMain([
 
 /**
  * Missing files:
- * FoundationUtils.swift
+ * BundleInfoTests.swift (Foundation)
+ * FoundationUtilsTests.swift (Foundation)
 */
