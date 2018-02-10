@@ -1,6 +1,7 @@
 # Changelog
 
 ### 1.5.0 (Work in progress)
+
 - Added more UIView utils.
 - Added Font utils for bold and italic traits.
 - Added shuffling methods for collections and sequences.
@@ -8,6 +9,7 @@
 - Bugfixes.
 
 ### 1.4.0
+
 - Better String subscription methods.
 - More URL utils.
 - More Character utils.
@@ -15,14 +17,17 @@
 - Bugfixes.
 
 ### 1.3.1
+
 - Access level fixes.
 
 ### 1.3.0
+
 - Added more utils.
 - More UIKit and AppKit tests.
 - Bugfixes. 
 
 ### 1.2.0 🐧
+
 - Added support for Linux (Stantard Library and Foundation Utils).
 - Better separation between Standard Library and Foundation utils.
 - Bugfixes.
@@ -38,7 +43,7 @@
 
 ### 1.0.0 ⭐
 
-- Mechanica is now completely migrated to **Swift 4**.  🤓
+- Mechanica is now completely migrated to **Swift 4**. 🤓
 - Better Core Data API.
 - Added dictionary extensions.
 - Added NSAttributedString extensions.
