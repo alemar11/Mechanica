@@ -87,7 +87,6 @@ class FontUtilsTests: XCTestCase {
       do {
         // Given
         let font = Font.preferredFont(forTextStyle: .headline) // this is bold by default on iOS
-        print(UIDevice.current.systemVersion)
         let iOS_10 = UIDevice.current.systemVersion.contains("10.", caseSensitive: false)
 
         // When, Then
@@ -161,8 +160,6 @@ class FontUtilsTests: XCTestCase {
 
       // When, Then
       let italicAndBoldFont = font.italic().bold()
-      print(italicAndBoldFont.isBold)
-      print(italicAndBoldFont.isItalic)
 
       // When, Then
       let onlyBoldFont = italicAndBoldFont.bold(removingExistingTraits: true)
