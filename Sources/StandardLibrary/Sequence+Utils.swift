@@ -100,7 +100,7 @@ extension Sequence where Element: Hashable {
   ///
   /// Returns true if the `Sequence` contains all the given elements.
   public func contains(_ elements: [Element]) -> Bool {
-    return Set(elements).isSubset(of:Set(self))
+    return Set(elements).isSubset(of: Set(self))
   }
 
   /// **Mechanica**
