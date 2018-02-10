@@ -641,6 +641,7 @@
 				237F17401E90000800726553 /* DictionaryUtilsTests.swift */,
 				237F17441E90000800726553 /* FixedWidthIntegerRandomizableTests.swift */,
 				237F17431E90000800726553 /* FloatingPointUtilsTests.swift */,
+				23A57101202F6F8700263B00 /* MutableCollectionUtilsTests.swift */,
 				23078BEB1F20E1480074D955 /* OperatorsTests.swift */,
 				237F17511E90000800726553 /* OptionalUtilsTests.swift */,
 				237F17521E90000800726553 /* RangeReplaceableCollectionUtilsTests.swift */,
@@ -648,7 +649,6 @@
 				237F17541E90000800726553 /* SignedIntegerUtilsTests.swift */,
 				237F17591E90000800726553 /* StringUtilsTests.swift */,
 				237F175D1E90000800726553 /* UnsignedIntegerUtilsTests.swift */,
-				23A57101202F6F8700263B00 /* MutableCollectionUtilsTests.swift */,
 			);
 			path = StandardLibraryTests;
 			sourceTree = "<group>";
@@ -745,15 +745,15 @@
 				23D12CDD1F9A649400720D4F /* FixedWidthInteger+Utils.swift */,
 				D28CAEE51E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift */,
 				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
+				23A570FC202F6D3000263B00 /* MutableCollection+Utils.swift */,
 				23DC26D11F1E3F090093F7EE /* Operators.swift */,
 				12B9562A1D880B3B00F75DD5 /* Optional+Utils.swift */,
 				23EE9B181E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift */,
 				239B92641F274E55009A9433 /* Sequence+Utils.swift */,
 				23C7967C1FB44E74006766FD /* SignedInteger.swift */,
+				23EF01071FBCF98C002B0FDD /* StandardLibraryUtils.swift */,
 				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
 				2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */,
-				23EF01071FBCF98C002B0FDD /* StandardLibraryUtils.swift */,
-				23A570FC202F6D3000263B00 /* MutableCollection+Utils.swift */,
 			);
 			path = StandardLibrary;
 			sourceTree = "<group>";
