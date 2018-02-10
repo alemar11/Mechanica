@@ -61,10 +61,10 @@ class MutableCollectionUtilsTests: XCTestCase {
       elements.shuffle()
       // Then
       XCTAssertEqual(elements.count, copy.count)
-      let shuffled = NSArray(array: elements)
+      let afterShuffle = NSArray(array: elements)
       let beforeShuffle = NSArray(array: copy)
-      let filtered = shuffled.filter { !beforeShuffle.contains($0) }
-      XCTAssertEqual(filtered.count, 0)
+      let unexeptectedElements = afterShuffle.filter { !beforeShuffle.contains($0) }
+      XCTAssertEqual(unexeptectedElements.count, 0)
     }
   }
 
