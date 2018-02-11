@@ -50,6 +50,7 @@ extension Dictionary {
   public func jsonData(prettify: Bool = false) -> Data? {
     guard JSONSerialization.isValidJSONObject(self) else { return nil }
     let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
+
     return try? JSONSerialization.data(withJSONObject: self, options: options)
   }
 
@@ -61,6 +62,7 @@ extension Dictionary {
   /// - Returns: optional JSON String.
   public func jsonString(prettify: Bool = false) -> String? {
     guard let jsonData = jsonData(prettify: prettify) else { return nil }
+    
     return String(data: jsonData, encoding: .utf8)
   }
 
