@@ -413,11 +413,7 @@ extension String {
   /// - Returns: A `new` random alphanumeric `String`.
   public static func random(length between: CountableClosedRange<UInt32>, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
-    let min = between.lowerBound
-    let max = between.upperBound
-    guard min > 0 && max >= min else { return "" }
-
-    let randomLenght = UInt32.random(lowerBound: min, upperBound: max)
+    let randomLenght = UInt32.random(lowerBound: between.lowerBound, upperBound: between.upperBound)
 
     return random(length: randomLenght, charachters: base)
   }
