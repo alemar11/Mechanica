@@ -94,12 +94,16 @@ class UIWiewUtilsTests: XCTestCase {
 
   func testUseAutolayout() {
     let view = UIView()
+    let view2 = UIView()
 
     view.usesAutoLayout = true
     XCTAssertFalse(view.translatesAutoresizingMaskIntoConstraints)
 
     view.usesAutoLayout = false
     XCTAssertTrue(view.translatesAutoresizingMaskIntoConstraints)
+
+    view2.translatesAutoresizingMaskIntoConstraints = false
+    XCTAssertTrue(view2.usesAutoLayout)
   }
 
   func testScreenshot() {
