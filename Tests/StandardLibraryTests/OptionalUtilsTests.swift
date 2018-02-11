@@ -25,16 +25,59 @@ import XCTest
 @testable import Mechanica
 
 extension OptionalUtilsTests {
-  static var allTests = [("testHasValue", testHasValue)]
+  static var allTests = [
+    ("testHasValue", testHasValue),
+    ("testOr", testOr),
+    ("testOrWithAutoclosure", testOrWithAutoclosure),
+    ("testOrWithClosure", testOrWithClosure),
+    ("testOrThrowException", testOrThrowException)
+  ]
 }
 
 class OptionalUtilsTests: XCTestCase {
-
-  func testHasValue(){
+  
+  func testHasValue() {
     var value: Any?
     XCTAssert(!value.hasValue)
     value = "tinrobots"
     XCTAssert(value.hasValue)
   }
-
+  
+  func testOr() {
+    let value1: String? = "hello"
+    XCTAssertEqual(value1.or("world"), "hello")
+    
+    let value2: String? = nil
+    XCTAssertEqual(value2.or("world"), "world")
+  }
+  
+  func testOrWithAutoclosure() {
+    func runMe() -> String {
+      return "world"
+    }
+    let value1: String? = "hello"
+    XCTAssertEqual(value1.or(else: runMe()), "hello")
+    
+    let value2: String? = nil
+    XCTAssertEqual(value2.or(else: runMe()), "world")
+  }
+  
+  func testOrWithClosure() {
+    let value1: String? = "hello"
+    XCTAssertEqual(value1.or(else: { return "world" }), "hello")
+    
+    let value2: String? = nil
+    XCTAssertEqual(value2.or(else: { return "world" }), "world")
+  }
+  
+  func testOrThrowException() {
+    enum DemoError: Error { case test }
+    
+    let value1: String? = "hello"
+    XCTAssertNoThrow(try value1.or(throw: DemoError.test))
+    
+    let value2: String? = nil
+    XCTAssertThrowsError(try value2.or(throw: DemoError.test))
+  }
+  
 }
