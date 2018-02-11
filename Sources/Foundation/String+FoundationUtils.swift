@@ -303,6 +303,7 @@ extension String {
   #if !os(Linux)
   // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
+  // swiftlint:disable identifier_name
   /// **Mechanica**
   ///
   /// Different implementation for `isValidEmail` computed property.
@@ -316,6 +317,7 @@ extension String {
 
     return matches[0].url?.absoluteString == "mailto:\(self)"
   }
+  // swiftlint:enable identifier_name
 
   #endif
 

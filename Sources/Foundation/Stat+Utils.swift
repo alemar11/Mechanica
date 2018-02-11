@@ -158,4 +158,6 @@ internal func S_ISSOCK(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFSOCK)
 }
 
+//swiftlint:enable private_over_fileprivate
+
 //swiftlint:enable identifier_name

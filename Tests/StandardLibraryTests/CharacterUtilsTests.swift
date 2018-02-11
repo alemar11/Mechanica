@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -33,7 +33,7 @@ extension CharacterUtilsTests {
 }
 
 class CharacterUtilsTests: XCTestCase {
-    
+
   func testIsEmojiCountryFlag() {
     XCTAssertTrue(Character("🇮🇹").isEmojiCountryFlag)
     XCTAssertTrue(Character("🇯🇵").isEmojiCountryFlag)
@@ -64,5 +64,5 @@ class CharacterUtilsTests: XCTestCase {
     XCTAssertFalse(Character("\\").isWhitespace)
     XCTAssertFalse(Character("😇").isWhitespace)
   }
-    
+
 }
