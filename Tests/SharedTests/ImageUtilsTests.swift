@@ -44,12 +44,9 @@ class ImageUtilsTests: XCTestCase {
 
   }
 
-  func testHasAlpha() {
-    var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
-    resources.appendPathComponent("Resources")
-
-    let url =  resources.appendingPathComponent("pic.png")
-    let url2 = resources.appendingPathComponent("pic_no_alpha.jpeg")
+  func testHasAlpha() throws {
+    let url =  resources().appendingPathComponent("pic.png")
+    let url2 = resources().appendingPathComponent("pic_no_alpha.jpeg")
 
     let image: Image
     let imageNoAlpha: Image
@@ -58,14 +55,41 @@ class ImageUtilsTests: XCTestCase {
       image = NSImage(contentsOf: url)!
       imageNoAlpha = NSImage(contentsOf: url2)!
     #elseif os(iOS) || os(tvOS) || os(watchOS)
-      let data = try! Data(contentsOf: url)
-      let data2 = try! Data(contentsOf: url2)
+      let data = try Data(contentsOf: url)
+      let data2 = try Data(contentsOf: url2)
       image = Image(data: data)!
       imageNoAlpha = Image(data: data2)!
     #endif
 
     XCTAssertTrue(image.hasAlpha)
     XCTAssertFalse(imageNoAlpha.hasAlpha)
+  }
+
+  func testData() throws {
+    let url1 =  resources().appendingPathComponent("pic.png")
+    let url2 = resources().appendingPathComponent("pic_no_alpha.jpeg")
+
+    let image1: Image
+    let image2: Image
+
+    #if os(macOS)
+      image1 = NSImage(contentsOf: url1)!
+      image2 = NSImage(contentsOf: url2)!
+    #elseif os(iOS) || os(tvOS) || os(watchOS)
+      let data = try Data(contentsOf: url1)
+      let data2 = try Data(contentsOf: url2)
+      image1 = Image(data: data)!
+      image2 = Image(data: data2)!
+    #endif
+
+    XCTAssertNotNil(image1.data)
+    XCTAssertNotNil(image2.data)
+  }
+
+  private func resources() -> URL {
+    var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
+    resources.appendPathComponent("Resources")
+    return resources
   }
 
 }
