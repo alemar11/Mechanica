@@ -21,13 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-
 #if os(iOS) || os(tvOS) || watchOS
-  
+
   import UIKit
-  
+
   extension UIView {
-    
+
     /// **Mechanica**
     ///
     /// The radius to use when drawing rounded corners.
@@ -41,7 +40,7 @@
         layer.cornerRadius = newValue
       }
     }
-    
+
     /// **Mechanica**
     ///
     /// The width of the view's border.
@@ -55,7 +54,7 @@
         layer.borderWidth = newValue
       }
     }
-    
+
     /// **Mechanica**
     ///
     /// The color of the view's border.
@@ -74,7 +73,7 @@
         }
       }
     }
-    
+
     /// **Mechanica**
     ///
     /// The blur radius (in points) used to render the view's shadow.
@@ -88,7 +87,7 @@
         layer.shadowRadius = newValue
       }
     }
-    
+
     /// **Mechanica**
     ///
     /// The opacity of the view's shadow.
@@ -102,7 +101,7 @@
         layer.shadowOpacity = newValue
       }
     }
-    
+
     /// **Mechanica**
     ///
     /// The offset (in points) of the view's shadow.
@@ -116,7 +115,7 @@
         layer.shadowOffset = newValue
       }
     }
-    
+
     /// **Mechanica**
     ///
     /// The color of the view's shadow.
@@ -135,15 +134,15 @@
         }
       }
     }
-    
+
   }
-  
+
 #endif
 
 #if os(iOS) || os(tvOS)
-  
+
   extension UIView {
-    
+
     /// **Mechanica**
     ///
     /// A Boolean value that determines whether the view’s autoresizing mask is translated into Auto Layout constraints.
@@ -151,7 +150,7 @@
       get { return !translatesAutoresizingMaskIntoConstraints }
       set { translatesAutoresizingMaskIntoConstraints = !newValue }
     }
-    
+
     /// **Mechanica**
     ///
     /// Take sceenshot with the current device's screen scale.
@@ -161,7 +160,7 @@
       // by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
       return UIGraphicsImageRenderer(bounds: bounds).image { layer.render(in: $0.cgContext) }
     }
-    
+
   }
-  
+
 #endif

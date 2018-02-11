@@ -303,10 +303,11 @@ extension String {
   #if !os(Linux)
   // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
+  // swiftlint:disable identifier_name
   /// **Mechanica**
   ///
   /// Different implementation for `isValidEmail` computed property.
-  private var _isValidEmail: Bool {
+  internal var _isValidEmail: Bool {
     guard !self.lowercased().hasPrefix("mailto:") else { return false }
     guard let emailDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return false }
 
@@ -316,6 +317,7 @@ extension String {
 
     return matches[0].url?.absoluteString == "mailto:\(self)"
   }
+  // swiftlint:enable identifier_name
 
   #endif
 
@@ -413,11 +415,7 @@ extension String {
   /// - Returns: A `new` random alphanumeric `String`.
   public static func random(length between: CountableClosedRange<UInt32>, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
-    let min = between.lowerBound
-    let max = between.upperBound
-    guard min > 0 && max >= min else { return "" }
-
-    let randomLenght = UInt32.random(lowerBound: min, upperBound: max)
+    let randomLenght = UInt32.random(lowerBound: between.lowerBound, upperBound: between.upperBound)
 
     return random(length: randomLenght, charachters: base)
   }
@@ -431,7 +429,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "äöüÄÖÜ" -> ÄÖÜ
-  ///     let stripped = string.stripCombiningMarks -> aouAOU
+  ///     let stripped = string.removingAccentsOrDiacritics() -> aouAOU
   ///
   @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
   public func removingAccentsOrDiacritics() -> String {

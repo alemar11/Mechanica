@@ -97,6 +97,6 @@ class FoundationUtilsTests: XCTestCase {
     XCTAssertEqual(typeName(of: DemoEnum2.self), "DemoEnum2")
 
   }
-  
+
 }
 

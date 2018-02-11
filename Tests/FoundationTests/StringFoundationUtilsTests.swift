@@ -332,6 +332,45 @@ class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("test🤓@tin.robots.org".isValidEmail)
     XCTAssertFalse("test@tinrobots.org.🤓".isValidEmail)
     XCTAssertFalse("test@tinrobots.🤓.org".isValidEmail)
+
+    /// tests for the internal _isValidEmail
+
+    #if !os(Linux)
+
+    //valid emails
+    XCTAssertTrue("test@tinrobots.org"._isValidEmail)
+    XCTAssertTrue("TEST@tinrobots.org"._isValidEmail)
+    XCTAssertTrue("test@tinrobots.ORG"._isValidEmail)
+    XCTAssertTrue("test@TINROBOTS.org"._isValidEmail)
+    XCTAssertTrue("test123@tinrobots.org"._isValidEmail)
+    XCTAssertTrue("123test@tinrobots.org"._isValidEmail)
+    XCTAssertTrue("test.test@tinrobots.org"._isValidEmail)
+    XCTAssertTrue("test.test.test@tinrobots.org"._isValidEmail)
+    XCTAssertTrue("testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobots.org"._isValidEmail)
+    XCTAssertTrue("TesttesttesTtesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobots.org"._isValidEmail)
+    XCTAssertTrue("testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest@tinrobotstinrobotstinrobotstinrobots.org"._isValidEmail)
+    XCTAssertTrue("tEsT@tinrobots.xyz"._isValidEmail)
+    XCTAssertTrue("test@tinrobots.xyz"._isValidEmail)
+    XCTAssertTrue("test@tin.robots.org"._isValidEmail)
+
+    //invalid emails
+    XCTAssertFalse("mailto:test@.tinrobots.org"._isValidEmail)
+    XCTAssertFalse("test@.tinrobots.org"._isValidEmail)
+    XCTAssertFalse("test.@tinrobots.org"._isValidEmail)
+    XCTAssertFalse("te@st@tinrobots.org"._isValidEmail)
+    XCTAssertFalse("test@tinrobots..org"._isValidEmail)
+    XCTAssertFalse("test@tinrobots.org."._isValidEmail)
+    XCTAssertFalse("test@tinrobotsorg"._isValidEmail)
+    XCTAssertFalse("testtinrobots.org"._isValidEmail)
+    XCTAssertFalse("@tinrobots..org"._isValidEmail)
+    XCTAssertFalse("    @tinrobots..org"._isValidEmail)
+    XCTAssertFalse("test @tinrobots.org"._isValidEmail)
+    XCTAssertFalse("test @ tinrobots.org"._isValidEmail)
+    XCTAssertFalse("test🤓@tin.robots.org"._isValidEmail)
+    XCTAssertFalse("test@tinrobots.org.🤓"._isValidEmail)
+    XCTAssertFalse("test@tinrobots.🤓.org"._isValidEmail)
+
+    #endif
   }
 
   func testIsEmojiCountryFlag() {
