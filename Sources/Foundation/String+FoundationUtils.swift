@@ -306,7 +306,7 @@ extension String {
   /// **Mechanica**
   ///
   /// Different implementation for `isValidEmail` computed property.
-  private var _isValidEmail: Bool {
+  internal var _isValidEmail: Bool {
     guard !self.lowercased().hasPrefix("mailto:") else { return false }
     guard let emailDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return false }
 
@@ -427,7 +427,7 @@ extension String {
   /// Example:
   ///
   ///     let string = "äöüÄÖÜ" -> ÄÖÜ
-  ///     let stripped = string.stripCombiningMarks -> aouAOU
+  ///     let stripped = string.removingAccentsOrDiacritics() -> aouAOU
   ///
   @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
   public func removingAccentsOrDiacritics() -> String {
