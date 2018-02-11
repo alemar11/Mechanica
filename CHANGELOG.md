@@ -1,10 +1,11 @@
 # Changelog
 
-### 1.5.0 (Work in progress)
+### 1.5.0
 
 - Added more UIView utils.
 - Added Font utils for bold and italic traits.
 - Added shuffling methods for collections and sequences.
+- Added more Optional utils.
 - Better random string generation methods.
 - Bugfixes.
 
