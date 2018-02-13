@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -26,21 +26,24 @@
 import XCTest
 @testable import Mechanica
 
-class UIImageTests: XCTestCase {
+class UIButtonUtilsTests: XCTestCase {
 
-  func testInitWithColorAndSize() {
-    let scale = UIScreen.main.scale
+    func testSetBackgroundColor() {
+      // Given
+      let size = CGSize(width: 200, height: 50)
+      let rect = CGRect(origin: .zero, size: size)
+      let button = UIButton(frame: rect)
+      XCTAssertNil(button.backgroundImage(for: .normal))
+      XCTAssertNil(button.backgroundImage(for: .highlighted))
 
-    XCTAssertEqual(UIImage(color: .red)?.size, CGSize(width: 1*scale, height: 1*scale))
-    XCTAssertEqual(UIImage(color: .red, size: CGSize(width: 50, height: 50))?.size, CGSize(width: 50*scale, height: 50*scale))
-    XCTAssertNil(UIImage(color: .red, size: CGSize(width: 0, height: 0)))
-    XCTAssertEqual(UIImage(color: .red, size: CGSize(width: 11.3, height: 3.11))?.size, CGSize(width: (11.3*scale).ceiled(to: 0), height: (3.11*scale).ceiled(to: 0)))
-    XCTAssertEqual(UIImage(color: .red, scale: 1.0)?.size, CGSize(width: 1, height: 1))
-    XCTAssertEqual(UIImage(color: .red, scale: 3.0)?.size, CGSize(width: 3, height: 3))
-    XCTAssertEqual(UIImage(color: .red, scale: 4.0)?.size, CGSize(width: 4, height: 4))
-    XCTAssertEqual(UIImage(color: .red, size: CGSize(width: 11.3, height: 3.11), scale: 4.0)?.size, CGSize(width: (11.3*4.0).ceiled(to: 0), height: (3.11*4.0).ceiled(to: 0)))
-  }
+      // When
+      button.setBackgroundColor(.red, for: .normal)
 
+      // Then
+      XCTAssertNotNil(button.backgroundImage(for: .normal))
+      XCTAssertNotNil(button.backgroundImage(for: .highlighted))
+    }
+    
 }
 
 #endif
