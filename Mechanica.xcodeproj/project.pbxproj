@@ -94,6 +94,8 @@
 		233B48BE1E6F1398003D5341 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */; };
 		233D622A203378E5005E580C /* UIButtonUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233D6229203378E5005E580C /* UIButtonUtilsTests.swift */; };
 		233D622B203378E5005E580C /* UIButtonUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233D6229203378E5005E580C /* UIButtonUtilsTests.swift */; };
+		233D622D203384EA005E580C /* UIViewControllerUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233D622C203384EA005E580C /* UIViewControllerUtilsTests.swift */; };
+		233D622E203384EA005E580C /* UIViewControllerUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233D622C203384EA005E580C /* UIViewControllerUtilsTests.swift */; };
 		235DCB8B1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
 		235DCB8C1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
 		235DCB8D1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
@@ -433,6 +435,7 @@
 		23280BE21F28C492008B6196 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = IDETemplateMacros.plist; path = Mechanica.xcodeproj/xcshareddata/IDETemplateMacros.plist; sourceTree = SOURCE_ROOT; };
 		233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		233D6229203378E5005E580C /* UIButtonUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonUtilsTests.swift; sourceTree = "<group>"; };
+		233D622C203384EA005E580C /* UIViewControllerUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerUtilsTests.swift; sourceTree = "<group>"; };
 		235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "BinaryFloatingPoint+Utils.swift"; sourceTree = "<group>"; };
 		2363FED41F6E76EC0067257A /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		2364077E1FBB11E2003D2AF0 /* UIViewUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewUtilsTests.swift; sourceTree = "<group>"; };
@@ -674,6 +677,7 @@
 				23B5805D1F94E64600A365C0 /* UIDeviceUtilsTests.swift */,
 				238493321FEBB35100307263 /* UIImageTests.swift */,
 				23690FE71F837295008C0B7E /* UILayoutPriorityUtilsTests.swift */,
+				233D622C203384EA005E580C /* UIViewControllerUtilsTests.swift */,
 				2364077E1FBB11E2003D2AF0 /* UIViewUtilsTests.swift */,
 				231874C01FA78EF600FA797F /* UIWindowUtilsTests.swift */,
 			);
@@ -1381,6 +1385,7 @@
 				237F177D1E90000900726553 /* DictionaryUtilsTests.swift in Sources */,
 				236407821FBB11EE003D2AF0 /* UIViewUtilsTests.swift in Sources */,
 				237F17C81E90000900726553 /* StringUtilsTests.swift in Sources */,
+				233D622D203384EA005E580C /* UIViewControllerUtilsTests.swift in Sources */,
 				237F176B1E90000900726553 /* BundleInfoTests.swift in Sources */,
 				231874C11FA78EF600FA797F /* UIWindowUtilsTests.swift in Sources */,
 				23DC2C842014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */,
@@ -1431,6 +1436,7 @@
 				237F177E1E90000900726553 /* DictionaryUtilsTests.swift in Sources */,
 				236407831FBB11EF003D2AF0 /* UIViewUtilsTests.swift in Sources */,
 				237F17C91E90000900726553 /* StringUtilsTests.swift in Sources */,
+				233D622E203384EA005E580C /* UIViewControllerUtilsTests.swift in Sources */,
 				237F176C1E90000900726553 /* BundleInfoTests.swift in Sources */,
 				2307D0701F8FA35D00FDBA2A /* LocaleUtilsTests.swift in Sources */,
 				23DC2C852014FA0A00270CA3 /* ProcessInfoTests.swift in Sources */,
