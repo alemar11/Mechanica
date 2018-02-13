@@ -21,10 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if os(iOS) || os(tvOS) || os(watchOS)
+
 import XCTest
 @testable import Mechanica
-
-#if os(iOS) || os(tvOS) || os(watchOS)
 
 class UIWiewUtilsTests: XCTestCase {
 

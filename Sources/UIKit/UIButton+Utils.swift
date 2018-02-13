@@ -30,7 +30,11 @@ extension UIButton {
   /// **Mechanica**
   ///
   /// Sets the background `color` to use for the specified button `state`.
-  public func setBackgroundColor(_ color: UIColor, for state: UIControlState) {
+  ///
+  /// - Parameters:
+  ///   - color: The background color to use for the specified state.
+  ///   - state: The state that uses the specified image (defaults to normal.
+  public func setBackgroundColor(_ color: UIColor, for state: UIControlState = .normal) {
     let colorImage = UIImage(color: color, size: CGSize(width: 1, height: 1))
 
     setBackgroundImage(colorImage, for: state)
