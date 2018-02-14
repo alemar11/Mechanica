@@ -44,7 +44,8 @@ matrix:
       before_script:
         - swiftlint --reporter "emoji"  
       script:
-        - set -o pipefail  
+        - set -o pipefail
+        - swiftlint version
         - swift --version
         - swift build
         - swift test
