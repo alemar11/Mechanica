@@ -24,7 +24,6 @@
 import XCTest
 @testable import Mechanica
 
-#if os(Linux)
 extension UserDefaultsUtilsTests {
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
   static var allTests = [
@@ -36,7 +35,6 @@ extension UserDefaultsUtilsTests {
     ("testCodable", testCodable)
   ]
 }
-#endif
 
 class UserDefaultsUtilsTests: XCTestCase {
 
