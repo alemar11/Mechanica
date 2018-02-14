@@ -255,24 +255,24 @@ extension Color {
 
     guard let components1 = firstColor.rgba, let components2 = secondColor.rgba else { return nil }
 
-    let r1 = components1.red
-    let r2 = components2.red
+    let red1 = components1.red
+    let red2 = components2.red
 
-    let g1 = components1.green
-    let g2 = components2.green
+    let green1 = components1.green
+    let green2 = components2.green
 
-    let b1 = components1.blue
-    let b2 = components2.blue
+    let blue1 = components1.blue
+    let blue2 = components2.blue
 
-    let a1 = firstColor.cgColor.alpha
-    let a2 = secondColor.cgColor.alpha
+    let alpha1 = firstColor.cgColor.alpha
+    let alpha2 = secondColor.cgColor.alpha
 
-    let r = (level1 * r1) + (level2 * r2)
-    let g = (level1 * g1) + (level2 * g2)
-    let b = (level1 * b1) + (level2 * b2)
-    let a = (level1 * a1) + (level2 * a2)
+    let red = (level1 * red1) + (level2 * red2)
+    let green = (level1 * green1) + (level2 * green2)
+    let blue = (level1 * blue1) + (level2 * blue2)
+    let alpha = (level1 * alpha1) + (level2 * alpha2)
 
-    return Color(red: r, green: g, blue: b, alpha: a)
+    return Color(red: red, green: green, blue: blue, alpha: alpha)
   }
 
 }

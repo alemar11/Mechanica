@@ -58,8 +58,8 @@ extension Font {
     #if os(macOS)
       return Font(descriptor: descriptor, size: size) ?? self
     #else
-      guard let d = descriptor else { return self }
-      return UIFont(descriptor: d, size: size)
+      guard let desc = descriptor else { return self }
+      return UIFont(descriptor: desc, size: size)
     #endif
   }
 
