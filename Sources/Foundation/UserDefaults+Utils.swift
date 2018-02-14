@@ -21,9 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if !os(Linux)
-  // TODO: UserDefaults doesn't work on Linux with Swift 4.0.2 (it's working on Swift 4.1-snapshot)
-
 import Foundation
 
 public extension UserDefaults {
@@ -119,5 +116,3 @@ extension UserDefaults {
   }
 
 }
-
-#endif

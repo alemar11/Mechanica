@@ -33,7 +33,7 @@ XCTMain([
   testCase(StatUtilsTests.allTests),
   testCase(StringFoundationUtilsTests.allTests),
   testCase(URLUtilsTests.allTests),
-  //testCase(UserDefaultsUtilsTests.allTests)
+  testCase(UserDefaultsUtilsTests.allTests)
   ])
 
 
