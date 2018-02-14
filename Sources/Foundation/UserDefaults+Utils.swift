@@ -29,8 +29,11 @@ public extension UserDefaults {
   ///
   /// Returns `true` if `key` exists.
   public final func hasKey(_ key: String) -> Bool {
-    //return object(forKey: key) != nil
-    return dictionaryRepresentation().hasKey(key) //not implemented on Linux (Swift 4.0.2)
+    #if os(Linux)
+      return object(forKey: key) != nil
+    #else
+      return dictionaryRepresentation().hasKey(key) //not implemented on Linux (Swift 4.0.2)
+    #endif
   }
 
   /// **Mechanica**
