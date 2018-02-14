@@ -25,7 +25,9 @@ import XCTest
 @testable import Mechanica
 
 extension UserDefaultsUtilsTests {
+  #if !os(Linux)
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
+  #endif
   static var allTests = [
     ("testOptionalInteger", testOptionalInteger),
     ("testOptionalDouble", testOptionalDouble),
