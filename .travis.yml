@@ -6,10 +6,10 @@ env:
     - MACOS_FRAMEWORK_SCHEME="Mechanica macOS"
     - TVOS_FRAMEWORK_SCHEME="Mechanica tvOS"
     - WATCHOS_FRAMEWORK_SCHEME="Mechanica watchOS"
-    - IOS_SDK=iphonesimulator11.2
+    - IOS_SDK=iphonesimulator11.3
     - MACOS_SDK=macosx10.13
-    - TVOS_SDK=appletvsimulator11.2
-    - WATCHOS_SDK=watchsimulator4.2
+    - TVOS_SDK=appletvsimulator11.3
+    - WATCHOS_SDK=watchsimulator4.3
     - XCODE_RUN_TESTS="NO"
 
 matrix:
