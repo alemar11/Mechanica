@@ -30,21 +30,34 @@
     /// **Mechanica**
     ///
     /// Returns the distance between two points.
+    /// - Parameters:
+    ///   - point1: The first point.
+    ///   - point2: The second point.
+    /// - Returns: the distance between between two points.
+    static func distance(from point1: CGPoint, to point2: CGPoint) -> CGFloat {
+      return sqrt(pow(point2.x-point1.x,2)+pow(point2.y-point1.y,2))
+    }
+
+    /// **Mechanica**
+    ///
+    /// Returns the distance between `self` and another `point`..
     /// - Parameter point: The point to which to calculate the distance.
     /// - Returns: the distance between `self` and `point`.
     public func distance(to point: CGPoint) -> CGFloat {
-      return sqrt(pow(point.x - x, 2) + pow(point.y - y, 2))
+      return CGPoint.distance(from: self, to: point)
     }
 
     /// **Mechanica**
     ///
     /// Checks if a point is on a straight line.
     /// - Parameters:
-    ///   - firstPoint: <#firstPoint description#>
-    ///   - secondPoint: <#secondPoint description#>
+    ///   - firstPoint: The first point that defines a straight line.
+    ///   - secondPoint: The second point that defines a straight line.
     /// - Returns: *true* if `self` lies on the straigth lined defined by `firstPoint` and `secondPoint`.
     public func isOnStraightLine(passingThrough firstPoint: CGPoint, and secondPoint: CGPoint) -> Bool {
-      return (firstPoint.y - self.y) * (firstPoint.x - secondPoint.x) == (firstPoint.y - secondPoint.y) * (firstPoint.x - self.x)
+      let v1 =  (firstPoint.y - self.y) * (firstPoint.x - secondPoint.x)
+      let v2 = (firstPoint.y - secondPoint.y) * (firstPoint.x - self.x)
+      return v1 == v2
     }
   }
 

@@ -86,6 +86,9 @@
 		231874BC1FA78CE000FA797F /* NSImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231874BB1FA78CE000FA797F /* NSImage+Utils.swift */; };
 		231874C11FA78EF600FA797F /* UIWindowUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231874C01FA78EF600FA797F /* UIWindowUtilsTests.swift */; };
 		231874C21FA78EF600FA797F /* UIWindowUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231874C01FA78EF600FA797F /* UIWindowUtilsTests.swift */; };
+		231972A2204C8007001008FA /* CGPointUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231972A1204C8007001008FA /* CGPointUtilsTests.swift */; };
+		231972A3204C8007001008FA /* CGPointUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231972A1204C8007001008FA /* CGPointUtilsTests.swift */; };
+		231972A4204C8007001008FA /* CGPointUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231972A1204C8007001008FA /* CGPointUtilsTests.swift */; };
 		231B2EF31F72808900854AA1 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231B2EF21F72808900854AA1 /* UIView+Utils.swift */; };
 		231B2EF51F72808900854AA1 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231B2EF21F72808900854AA1 /* UIView+Utils.swift */; };
 		233B48BB1E6F1398003D5341 /* Dictionary+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */; };
@@ -443,6 +446,7 @@
 		230949061F9236FF00CA5895 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
 		231874BB1FA78CE000FA797F /* NSImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Utils.swift"; sourceTree = "<group>"; };
 		231874C01FA78EF600FA797F /* UIWindowUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowUtilsTests.swift; sourceTree = "<group>"; };
+		231972A1204C8007001008FA /* CGPointUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointUtilsTests.swift; sourceTree = "<group>"; };
 		231B2EF21F72808900854AA1 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		23280BE21F28C492008B6196 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = IDETemplateMacros.plist; path = Mechanica.xcodeproj/xcshareddata/IDETemplateMacros.plist; sourceTree = SOURCE_ROOT; };
 		233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -633,6 +637,7 @@
 		12B536EE1D33ED6A005C52A7 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				231972A0204C7FE9001008FA /* CoreGraphicsTests */,
 				238E5B141FB5BF4700331C85 /* AppKitTests */,
 				238E5B151FB5BF5200331C85 /* FoundationTests */,
 				237250642004E0F50000A442 /* Resources */,
@@ -641,6 +646,14 @@
 				238E5B131FB5BF3F00331C85 /* UIKitTests */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		231972A0204C7FE9001008FA /* CoreGraphicsTests */ = {
+			isa = PBXGroup;
+			children = (
+				231972A1204C8007001008FA /* CGPointUtilsTests.swift */,
+			);
+			path = CoreGraphicsTests;
 			sourceTree = "<group>";
 		};
 		237250642004E0F50000A442 /* Resources */ = {
@@ -1437,6 +1450,7 @@
 				237F178C1E90000900726553 /* BinaryIntegerUtilsTests.swift in Sources */,
 				23A57102202F6F8700263B00 /* MutableCollectionUtilsTests.swift in Sources */,
 				237F17C21E90000900726553 /* StringFoundationUtilsTests.swift in Sources */,
+				231972A2204C8007001008FA /* CGPointUtilsTests.swift in Sources */,
 				23F6A1681EC8DF6500D20502 /* FoundationUtilsTests.swift in Sources */,
 				237F17831E90000900726553 /* FileManagerUtilsTests.swift in Sources */,
 				23690FE81F837295008C0B7E /* UILayoutPriorityUtilsTests.swift in Sources */,
@@ -1488,6 +1502,7 @@
 				237F17B41E90000900726553 /* RangeReplaceableCollectionUtilsTests.swift in Sources */,
 				23A57103202F6F8700263B00 /* MutableCollectionUtilsTests.swift in Sources */,
 				237F178D1E90000900726553 /* BinaryIntegerUtilsTests.swift in Sources */,
+				231972A3204C8007001008FA /* CGPointUtilsTests.swift in Sources */,
 				237F17C31E90000900726553 /* StringFoundationUtilsTests.swift in Sources */,
 				237F17841E90000900726553 /* FileManagerUtilsTests.swift in Sources */,
 				23690FE91F837295008C0B7E /* UILayoutPriorityUtilsTests.swift in Sources */,
@@ -1509,6 +1524,7 @@
 				23B5C7FB2026131F00E070D7 /* FontUtilsTests.swift in Sources */,
 				23CC6B2B1FA72051004D062B /* ImageUtilsTests.swift in Sources */,
 				23F6A16A1EC8DF6500D20502 /* FoundationUtilsTests.swift in Sources */,
+				231972A4204C8007001008FA /* CGPointUtilsTests.swift in Sources */,
 				238E5B101FB5B2D300331C85 /* Color+Flat.swift in Sources */,
 				2307D0711F8FA35D00FDBA2A /* LocaleUtilsTests.swift in Sources */,
 				237F17BB1E90000900726553 /* SignedIntegerUtilsTests.swift in Sources */,
