@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -26,22 +26,11 @@
 import XCTest
 @testable import Mechanica
 
-class UIButtonUtilsTests: XCTestCase {
+class UIViewControllerUtilsTests: XCTestCase {
 
-  func testSetBackgroundColor() {
-    // Given
-    let size = CGSize(width: 200, height: 50)
-    let rect = CGRect(origin: .zero, size: size)
-    let button = UIButton(frame: rect)
-    XCTAssertNil(button.backgroundImage(for: .normal))
-    XCTAssertNil(button.backgroundImage(for: .highlighted))
-
-    // When
-    button.setBackgroundColor(.red, for: .normal)
-
-    // Then
-    XCTAssertNotNil(button.backgroundImage(for: .normal))
-    XCTAssertNotNil(button.backgroundImage(for: .highlighted))
+  func testIsVisible() {
+    let viewController = UIViewController()
+    XCTAssertFalse(viewController.isVisible)
   }
 
 }

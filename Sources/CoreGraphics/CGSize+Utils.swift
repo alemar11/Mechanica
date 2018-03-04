@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -21,29 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-import XCTest
-@testable import Mechanica
+  import CoreGraphics
 
-class UIButtonUtilsTests: XCTestCase {
-
-  func testSetBackgroundColor() {
-    // Given
-    let size = CGSize(width: 200, height: 50)
-    let rect = CGRect(origin: .zero, size: size)
-    let button = UIButton(frame: rect)
-    XCTAssertNil(button.backgroundImage(for: .normal))
-    XCTAssertNil(button.backgroundImage(for: .highlighted))
-
-    // When
-    button.setBackgroundColor(.red, for: .normal)
-
-    // Then
-    XCTAssertNotNil(button.backgroundImage(for: .normal))
-    XCTAssertNotNil(button.backgroundImage(for: .highlighted))
-  }
-
-}
+  extension CGSize {}
 
 #endif

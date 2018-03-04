@@ -1,6 +1,9 @@
 # macOS
 .DS_Store
 
+# Miscellanea
+Gemfile.lock
+
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
