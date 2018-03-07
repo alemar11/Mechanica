@@ -21,16 +21,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS)
-
 import XCTest
 @testable import Mechanica
 
-class UIViewControllerUtilsTests: XCTestCase {
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-  func testIsVisible() {
-    let viewController = UIViewController()
-    XCTAssertFalse(viewController.isVisible)
+class CGRectUtilsTests: XCTestCase {
+
+  func testInit() {
+    let rect = CGRect(width: 100, height: 50)
+    XCTAssertEqual(rect.origin, .zero)
+    XCTAssertEqual(rect.size, CGSize(width: 100, height: 50))
+  }
+
+  func testFloor() {
+    XCTAssertEqual(CGRect.zero.floor, .zero)
+    XCTAssertEqual(CGRect(x: 10, y: 11, width: 12, height: 13).floor, CGRect(x: 10, y: 11, width: 12, height: 13))
+    XCTAssertEqual(CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).floor, CGRect(x: 10, y: 11, width: 12, height: 13))
+  }
+
+  func testCeiled() {
+    XCTAssertEqual(CGRect.zero.ceil, .zero)
+    XCTAssertEqual(CGRect(x: 10, y: 11, width: 12, height: 13).ceil, CGRect(x: 10, y: 11, width: 12, height: 13))
+    XCTAssertEqual(CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).ceil, CGRect(x: 11, y: 12, width: 13, height: 13))
   }
 
 }

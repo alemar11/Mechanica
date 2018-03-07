@@ -21,16 +21,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS)
-
 import XCTest
 @testable import Mechanica
 
-class UIViewControllerUtilsTests: XCTestCase {
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-  func testIsVisible() {
-    let viewController = UIViewController()
-    XCTAssertFalse(viewController.isVisible)
+class CGSizeUtilsTests: XCTestCase {
+
+  func testAspectFit() {
+    XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: .zero), .zero)
+    XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 70, height: 30)), CGSize(width: 60, height: 30))
+    XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 100, height: 50)), CGSize(width: 100, height: 50))
+    XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 150, height: 50)), CGSize(width: 100, height: 50))
+    XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 150, height: 60)), CGSize(width: 120, height: 60))
   }
 
 }

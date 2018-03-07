@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -33,9 +33,9 @@
     ///
     /// - Parameter size: The size to fit into.
     /// - Returns: The scale to fit into the given size.
-//    public func scaleToFit(size: CGSize) -> CGFloat {
-//      return fmin(size.width / width, size.height / height)
-//    }
+    public func scaleToFit(boundingSize size: CGSize) -> CGFloat {
+      return fmin(size.width / width, size.height / height)
+    }
 
     /// **Mechanica**
     ///
@@ -43,8 +43,13 @@
     ///
     /// - Parameter size: The size to fit into.
     /// - Returns: Returns a `CGSize` to fit `self` into the `size` by maintaining the aspect ratio.
+    ///
+    /// Example:
+    ///
+    ///     CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 70, height: 30)) -> CGSize(width: 60, height: 30)
+    ///
     public func aspectFit(boundingSize size: CGSize) -> CGSize {
-      let minRatio = fmin(size.width / width, size.height / height)
+      let minRatio = scaleToFit(boundingSize: size)
 
       return CGSize(width: width * minRatio, height: height * minRatio)
     }

@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -47,7 +47,12 @@
 
     /// **Mechanica**
     ///
-    /// Returns
+    /// Returns a `CGRect` with all its components floored.
+    ///
+    /// Example:
+    ///
+    ///     CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).floor -> CGRect(x: 10, y: 11, width: 12, height: 13)
+    ///
     public var floor: CGRect {
       return CGRect(
         x: CoreGraphics.floor(origin.x),
@@ -59,7 +64,12 @@
 
     /// **Mechanica**
     ///
-    /// Returns
+    /// Returns a `CGRect` with all its components ceiled.
+    ///
+    /// Example:
+    ///
+    ///     CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).ceil -> CGRect(x: 11, y: 12, width: 13, height: 13)
+    ///
     public var ceil: CGRect {
       return CGRect(
         x: CoreGraphics.ceil(origin.x),
