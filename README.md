@@ -131,7 +131,7 @@ $ git submodule add https://github.com/tinrobots/Mechanica.git
 
 ## License
 
-[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/alemar11/Console/blob/master/LICENSE)
+[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/tinrobots/Mechanica/blob/master/LICENSE.md))
 
 Mechanica is released under the MIT license. See [LICENSE](./LICENSE.md) for details.
 

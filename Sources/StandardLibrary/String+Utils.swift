@@ -266,14 +266,15 @@ extension String {
   /// Example:
   ///
   ///     "hello".removingPrefix(upToPosition: 1) -> "ello"
+  ///     "hello".removingPrefix(upToPosition: 1) -> ""
   ///
   ///  - parameter upToPosition: position (included) up to which remove the prefix.
   public func removingPrefix(upToPosition: Int = 1) -> String {
     guard upToPosition >= 0 && upToPosition <= length else { return "" }
 
-    let startIndex = index(self.startIndex, offsetBy: upToPosition)
-
-    return String(self[startIndex...])
+    //let startIndex = index(self.startIndex, offsetBy: upToPosition)
+    //return String(self[startIndex...])
+    return String(dropFirst(upToPosition))
   }
 
   #if !os(Linux)
@@ -304,13 +305,14 @@ extension String {
   /// Example:
   ///
   ///     "hello".removingSuffix(fromPosition: 1) -> "hell"
+  ///     "hello".removingSuffix(fromPosition: 10) -> ""
   ///
   public func removingSuffix(fromPosition: Int = 1) -> String {
     guard fromPosition >= 0 && fromPosition <= length else { return "" }
 
-    let startIndex = index(endIndex, offsetBy: -fromPosition)
-
-    return String(self[..<startIndex])
+    //let startIndex = index(endIndex, offsetBy: -fromPosition)
+    //return String(self[..<startIndex])
+    return String(dropLast(fromPosition))
   }
 
   #if !os(Linux)
