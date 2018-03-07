@@ -23,8 +23,32 @@
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-  import CoreGraphics
+  import CoreGraphics.CGGeometry
 
-  extension CGSize {}
+  public extension CGSize {
+
+    /// **Mechanica**
+    ///
+    ///  Returns the scale to fit `self` into a different `size`.
+    ///
+    /// - Parameter size: The size to fit into.
+    /// - Returns: The scale to fit into the given size.
+//    public func scaleToFit(size: CGSize) -> CGFloat {
+//      return fmin(size.width / width, size.height / height)
+//    }
+
+    /// **Mechanica**
+    ///
+    /// Returns a `CGSize` to fit `self` into the `size` by maintaining the aspect ratio.
+    ///
+    /// - Parameter size: The size to fit into.
+    /// - Returns: Returns a `CGSize` to fit `self` into the `size` by maintaining the aspect ratio.
+    public func aspectFit(boundingSize size: CGSize) -> CGSize {
+      let minRatio = fmin(size.width / width, size.height / height)
+
+      return CGSize(width: width * minRatio, height: height * minRatio)
+    }
+
+  }
 
 #endif

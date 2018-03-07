@@ -25,6 +25,50 @@
 
   import CoreGraphics
 
-  extension CGRect {}
+  extension CGRect {
+
+    /// **Mechanica**
+    ///
+    /// Returns a `CGRect` value initialized with an origin at (0,0) and the provided width and height.
+    ///
+    /// - Parameters:
+    ///   - width: The width.
+    ///   - height: The height.
+    public init(width: CGFloat, height: CGFloat) {
+      self.init(x: 0, y: 0, width: width, height: height)
+    }
+
+    /// **Mechanica**
+    ///
+    /// Returns the `CGRect` area.
+    public var area: CGFloat {
+      return height * width
+    }
+
+    /// **Mechanica**
+    ///
+    /// Returns
+    public var floor: CGRect {
+      return CGRect(
+        x: CoreGraphics.floor(origin.x),
+        y: CoreGraphics.floor(origin.y),
+        width: CoreGraphics.floor(size.width),
+        height: CoreGraphics.floor(size.height)
+      )
+    }
+
+    /// **Mechanica**
+    ///
+    /// Returns
+    public var ceil: CGRect {
+      return CGRect(
+        x: CoreGraphics.ceil(origin.x),
+        y: CoreGraphics.ceil(origin.y),
+        width: CoreGraphics.ceil(size.width),
+        height: CoreGraphics.ceil(size.height)
+      )
+    }
+
+  }
 
 #endif
