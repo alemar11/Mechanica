@@ -46,6 +46,13 @@ class CGRectUtilsTests: XCTestCase {
     XCTAssertEqual(CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).ceil, CGRect(x: 11, y: 12, width: 13, height: 13))
   }
 
+  func testArea() {
+    XCTAssertEqual(CGRect.zero.area, 0)
+    XCTAssertEqual(CGRect(width: 100, height: 50).area, 5000)
+    XCTAssertEqual(CGRect(width: 100, height: 0).area, 0)
+    XCTAssertEqual(CGRect(width: 100, height: 0.1).area, 10)
+  }
+
 }
 
 #endif
