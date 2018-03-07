@@ -36,6 +36,47 @@ class CGSizeUtilsTests: XCTestCase {
     XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 150, height: 60)), CGSize(width: 120, height: 60))
   }
 
+  func testAdd() {
+    //TODO: work in progress
+  }
+
+  func testAddEqual() {
+
+  }
+
+  func testSubtract() {
+    
+  }
+
+  func testSubtractEqual() {
+
+  }
+
+  func testMultiplyScalar() {
+
+  }
+
+  func testMultiplyScalarEqual() {
+
+  }
+
+  func testOperators() {
+    var size = CGSize(width: 10, height: 10)
+    let size2 = CGSize(width: 10, height: 10)
+    XCTAssertEqual(CGSize(width: 20, height: 20), size + size2)
+    XCTAssertEqual(CGSize(width: 0, height: 0), size - size2)
+    XCTAssertEqual(CGSize(width: 20, height: 20), size * 2)
+
+    size += size2
+    XCTAssertEqual(CGSize(width: 20, height: 20), size)
+
+    size -= size2
+    XCTAssertEqual(CGSize(width: 10, height: 10), size)
+
+    size *= 2
+    XCTAssertEqual(CGSize(width: 20, height: 20), size)
+  }
+
 }
 
 #endif

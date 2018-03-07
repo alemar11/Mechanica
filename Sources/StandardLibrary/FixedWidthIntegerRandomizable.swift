@@ -31,8 +31,8 @@
 
 /// **Mechanica**
 ///
-/// FixedWidthInteger random protocol.
-public protocol FixedWidthIntegerRandomizable {
+/// `FixedWidthInteger` random protocol.
+public protocol FixedWidthIntegerRandomizable where Self: FixedWidthInteger {
 
   /// **Mechanica**
   ///

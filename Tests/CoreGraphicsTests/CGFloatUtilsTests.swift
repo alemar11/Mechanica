@@ -21,25 +21,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if !os(Linux)
-  import Darwin.C
+import XCTest
+@testable import Mechanica
 
-  public extension ExpressibleByIntegerLiteral {
-    //FIXME: now always returns Integers!, split into BinaryFloatingPoint and BinaryInteger/FixedWidthInteger?
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-    /// **Mechanica**
-    ///
-    /// Returns a random integer value.
-    public static func random() -> Self {
-      return arc4random(type: Self.self)
+class CGFloatUtilsTests: XCTestCase {
+    
+  func testRandom() {
+    XCTAssertEqual(CGFloat.random(lowerBound: 10.5, upperBound: 10.5), 10.5)
+    //print(CGFloat.random(lowerBound: 0, upperBound: 10))
+
+    for _ in 1...1000 {
+      //TODO: limit random() function?
+//      if let x = Int(exactly: CGFloat.random()) {
+//        print(x)
+//      }
     }
-
   }
-
-  private func arc4random<T: ExpressibleByIntegerLiteral>(type: T.Type) -> T {
-    var result: T = 0
-    arc4random_buf(&result, MemoryLayout<T>.size)
-    return result
-  }
+    
+}
 
 #endif
