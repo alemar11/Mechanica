@@ -36,7 +36,7 @@ public protocol FixedWidthIntegerRandomizable where Self: FixedWidthInteger {
 
   /// **Mechanica**
   ///
-  /// Returns a random value between `lowerBound` and `upperBound` -1 values.
+  /// Returns a random value between `lowerBound` and `upperBound`-1 values.
   static func random(lowerBound: Self, upperBound: Self) -> Self
 
 }
@@ -63,8 +63,8 @@ extension UInt {
   /// - Parameters:
   ///   - lowerBound: lowerBound value
   ///   - upperBound: upperBound value
-  /// - Returns: A random UInt between `lowerBound` and `upperBound` -1 values. [lowerBound, upperBound)
-  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  /// - Returns: A random UInt between `lowerBound` and `upperBound`-1 values.
+  /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: UInt, upperBound: UInt) -> UInt {
     switch _wordSize {
     case 32: return UInt(UInt32.random(lowerBound: UInt32(lowerBound), upperBound: UInt32(upperBound)))
@@ -82,7 +82,7 @@ extension UInt64 {
   /// - Parameters:
   ///   - lowerBound: lowerBound value
   ///   - upperBound: upperBound value
-  /// - Returns: A random UInt64 between `lowerBound` and `upperBound` -1 values.
+  /// - Returns: A random UInt64 between `lowerBound` and `upperBound`-1 values.
   /// - Warning: The range is exclusive [lowerBound, upperBound).
   public static func random(lowerBound: UInt64, upperBound: UInt64) -> UInt64 {
     guard lowerBound != upperBound else { return lowerBound }
@@ -126,8 +126,8 @@ extension UInt32 {
   /// - Parameters:
   ///   - lowerBound: lowerBound value
   ///   - upperBound: upperBound value
-  /// - Returns: A random UInt32 between `lowerBound` and `upperBound` -1 values.
-  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  /// - Returns: A random UInt32 between `lowerBound` and `upperBound`-1 values.
+  /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: UInt32, upperBound: UInt32) -> UInt32 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
@@ -144,8 +144,8 @@ extension UInt16 {
   /// - Parameters:
   ///   - lowerBound: lowerBound value
   ///   - upperBound: upperBound value
-  /// - Returns: A random UInt16 between `lowerBound` and `upperBound` -1 values.
-  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  /// - Returns: A random UInt16 between `lowerBound` and `upperBound`-1 values.
+  /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: UInt16, upperBound: UInt16) -> UInt16 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
@@ -162,8 +162,8 @@ extension UInt8 {
   /// - Parameters:
   ///   - lowerBound: lowerBound value
   ///   - upperBound: upperBound value
-  /// - Returns: A random UInt8 between `lowerBound` and `upperBound` -1 values.
-  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  /// - Returns: A random UInt8 between `lowerBound` and `upperBound`-1 values.
+  /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: UInt8, upperBound: UInt8) -> UInt8 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
@@ -182,8 +182,8 @@ extension Int {
   /// - Parameters:
   ///   - lowerBound: lowerBound value
   ///   - upperBound: upperBound value
-  /// - Returns: A random Int between `lowerBound` and `upperBound` -1 values.
-  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  /// - Returns: A random Int between `lowerBound` and `upperBound`-1 values.
+  /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: Int, upperBound: Int) -> Int {
     switch _wordSize {
     case 32: return Int(Int32.random(lowerBound: Int32(lowerBound), upperBound: Int32(upperBound)))
@@ -201,8 +201,8 @@ extension Int64 {
   /// - Parameters:
   ///   - lowerBound: lowerBound value
   ///   - upperBound: upperBound value
-  /// - Returns: A random Int64 between `lowerBound` and `upperBound` -1 values.
-  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  /// - Returns: A random Int64 between `lowerBound` and `upperBound`-1 values.
+  /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: Int64, upperBound: Int64) -> Int64 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
@@ -227,8 +227,8 @@ extension Int32 {
   /// - Parameters:
   ///   - lowerBound: lowerBound value
   ///   - upperBound: upperBound value
-  /// - Returns: A random Int32 between `lowerBound` and `upperBound` -1 values.
-  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  /// - Returns: A random Int32 between `lowerBound` and `upperBound`-1 values.
+  /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: Int32, upperBound: Int32) -> Int32 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
@@ -246,8 +246,8 @@ extension Int16 {
   /// - Parameters:
   ///   - lowerBound: lowerBound value
   ///   - upperBound: upperBound value
-  /// - Returns: A random Int16 between `lowerBound` and `upperBound` -1 values.
-  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  /// - Returns: A random Int16 between `lowerBound` and `upperBound`-1 values.
+  /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: Int16, upperBound: Int16) -> Int16 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
@@ -265,8 +265,8 @@ extension Int8 {
   /// - Parameters:
   ///   - lowerBound: lowerBound value
   ///   - upperBound: upperBound value
-  /// - Returns: A random Int8 between `lowerBound` and `upperBound` -1 values.
-  /// - Warning: The range is exclusive [lowerBound, upperBound).
+  /// - Returns: A random Int8 between `lowerBound` and `upperBound`-1 values.
+  /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: Int8, upperBound: Int8) -> Int8 {
     guard lowerBound != upperBound else { return lowerBound }
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")

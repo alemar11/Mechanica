@@ -798,6 +798,7 @@
 				2302A2CC1F8FFE7A001A92A8 /* Character+Utils.swift */,
 				23964A011E5B034800C8E0DF /* Collection+Utils.swift */,
 				233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */,
+				23377D2320508A850014A740 /* ExpressibleByIntegerLiteral+Utils.swift */,
 				23D12CDD1F9A649400720D4F /* FixedWidthInteger+Utils.swift */,
 				D28CAEE51E3F2DDA008BC5B9 /* FixedWidthIntegerRandomizable.swift */,
 				D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */,
@@ -810,7 +811,6 @@
 				23EF01071FBCF98C002B0FDD /* StandardLibraryUtils.swift */,
 				12B9562B1D880B3B00F75DD5 /* String+Utils.swift */,
 				2302A2D11F8FFEF1001A92A8 /* Unicode+Utils.swift */,
-				23377D2320508A850014A740 /* ExpressibleByIntegerLiteral+Utils.swift */,
 			);
 			path = StandardLibrary;
 			sourceTree = "<group>";

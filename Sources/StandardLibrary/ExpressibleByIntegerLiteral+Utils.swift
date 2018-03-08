@@ -25,11 +25,10 @@
   import Darwin.C
 
   public extension ExpressibleByIntegerLiteral {
-    //FIXME: now always returns Integers!, split into BinaryFloatingPoint and BinaryInteger/FixedWidthInteger?
 
     /// **Mechanica**
     ///
-    /// Returns a random integer value.
+    /// Returns a random value.
     public static func random() -> Self {
       return arc4random(type: Self.self)
     }
