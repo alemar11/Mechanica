@@ -78,42 +78,35 @@ import XCTest
     }
 
     func testAdd() {
-      //TODO: work in progress
+       XCTAssertEqual(CGSize(width: 20, height: 20), CGSize(width: 10, height: 10) + CGSize(width: 10, height: 10))
+       XCTAssertEqual(CGSize(width: 20, height: 20), CGSize(width: 20, height: 20) + CGSize.zero)
     }
 
     func testAddEqual() {
+      var size = CGSize(width: 10, height: 10)
 
+      size += CGSize(width: 10, height: 10)
+      XCTAssertEqual(CGSize(width: 20, height: 20), size)
     }
 
     func testSubtract() {
-
+      XCTAssertEqual(CGSize(width: 0, height: 0), CGSize(width: 10, height: 10) - CGSize(width: 10, height: 10))
     }
 
     func testSubtractEqual() {
+      var size = CGSize(width: 10, height: 10)
+      
+      size -= CGSize(width: 10, height: 10)
+      XCTAssertEqual(CGSize.zero, size)
 
     }
 
     func testMultiplyScalar() {
-
+       XCTAssertEqual(CGSize(width: 20, height: 20), CGSize(width: 10, height: 10) * 2)
     }
 
     func testMultiplyScalarEqual() {
-
-    }
-
-    func testOperators() {
       var size = CGSize(width: 10, height: 10)
-      let size2 = CGSize(width: 10, height: 10)
-      XCTAssertEqual(CGSize(width: 20, height: 20), size + size2)
-      XCTAssertEqual(CGSize(width: 0, height: 0), size - size2)
-      XCTAssertEqual(CGSize(width: 20, height: 20), size * 2)
-
-      size += size2
-      XCTAssertEqual(CGSize(width: 20, height: 20), size)
-
-      size -= size2
-      XCTAssertEqual(CGSize(width: 10, height: 10), size)
-
       size *= 2
       XCTAssertEqual(CGSize(width: 20, height: 20), size)
     }
