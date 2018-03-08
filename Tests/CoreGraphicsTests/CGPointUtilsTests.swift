@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -40,7 +40,7 @@ import XCTest
       XCTAssertEqual(CGPoint(x: 14, y: 30).distance(to: CGPoint(x: 23, y: 21)), 12.7279, accuracy: 0.0001)
       XCTAssertEqual(CGPoint(x: 12.12, y: 11.11).distance(to: CGPoint(x: 14.41, y: 13.31)), 3.1755, accuracy: 0.0001)
     }
-    
+
     func testStraightLine() {
       XCTAssertTrue(CGPoint(x: 1, y: 2).isOnStraightLine(passingThrough: CGPoint(x:0, y:0), and: CGPoint(x:0, y:0)))
       XCTAssertTrue(CGPoint(x: 1, y: 2).isOnStraightLine(passingThrough: CGPoint(x:1, y:1), and: CGPoint(x:1, y:3)))
