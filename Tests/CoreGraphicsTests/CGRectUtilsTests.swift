@@ -38,7 +38,7 @@ class CGRectUtilsTests: XCTestCase {
     XCTAssertEqual(CGRect.zero.rounded(rule: .down), .zero)
     XCTAssertEqual(CGRect(x: 10, y: 11, width: 12, height: 13).rounded(rule: .down), CGRect(x: 10, y: 11, width: 12, height: 13))
     XCTAssertEqual(CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).rounded(rule: .down), CGRect(x: 10, y: 11, width: 12, height: 13))
-    XCTAssertEqual(CGRect.zero.ceil, .zero)
+    XCTAssertEqual(CGRect.zero.rounded(rule: .up), .zero)
     XCTAssertEqual(CGRect(x: 10, y: 11, width: 12, height: 13).rounded(rule: .up), CGRect(x: 10, y: 11, width: 12, height: 13))
     XCTAssertEqual(CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).rounded(rule: .up), CGRect(x: 11, y: 12, width: 13, height: 13))
   }
