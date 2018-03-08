@@ -22,39 +22,20 @@
 // SOFTWARE.
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-
+  
   import CoreGraphics
-
+  
   extension CGFloat {
-
+    
     public var degreesToRadians: CGFloat {
       return CGFloat.pi * self / 180.0
     }
-
+    
     public var radiansToDegrees: CGFloat {
       return self * 180 / CGFloat.pi
     }
-
-    public static func random(lowerBound: CGFloat, upperBound: CGFloat) -> CGFloat {
-      return CGFloat.random() * (upperBound - lowerBound) + lowerBound
-    }
-
-    /// Returns a random floating point number between 0.0 and 1.0, inclusive.
-    public static func random() -> CGFloat {
-      return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
-    }
-//
-//    /// Returns a random floating point number in the range min...max, inclusive.
-//    public static func random(within: Range<CGFloat>) -> CGFloat {
-//      return CGFloat.random() * (within.upperBound - within.lowerBound) + within.lowerBound
-//    }
-//
-//    /// Returns a random floating point number in the range min...max, inclusive.
-//    public static func random(within: ClosedRange<CGFloat>) -> CGFloat {
-//      return CGFloat.random() * (within.upperBound - within.lowerBound) + within.lowerBound
-//    }
-
-
+    
+    
     ///  Returns the shortest angle between two angles. The result is always between -π and π.
     public static func shortestAngleInRadians(from first: CGFloat, to second: CGFloat) -> CGFloat {
       // https://github.com/raywenderlich/SKTUtils/blob/master/SKTUtils/CGFloat%2BExtensions.swift
@@ -69,5 +50,5 @@
       return angle
     }
   }
-
+  
 #endif

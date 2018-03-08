@@ -28,17 +28,7 @@ import XCTest
 
 class CGFloatUtilsTests: XCTestCase {
     
-  func testRandom() {
-    XCTAssertEqual(CGFloat.random(lowerBound: 10.5, upperBound: 10.5), 10.5)
-    //print(CGFloat.random(lowerBound: 0, upperBound: 10))
 
-    for _ in 1...1000 {
-      //TODO: limit random() function?
-//      if let x = Int(exactly: CGFloat.random()) {
-//        print(x)
-//      }
-    }
-  }
     
 }
 

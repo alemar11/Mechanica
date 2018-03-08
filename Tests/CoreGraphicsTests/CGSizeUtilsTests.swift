@@ -30,10 +30,31 @@ class CGSizeUtilsTests: XCTestCase {
 
   func testAspectFit() {
     XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: .zero), .zero)
-    XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 70, height: 30)), CGSize(width: 60, height: 30))
-    XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 100, height: 50)), CGSize(width: 100, height: 50))
-    XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 150, height: 50)), CGSize(width: 100, height: 50))
-    XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 150, height: 60)), CGSize(width: 120, height: 60))
+
+    do {
+      let size = CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 70, height: 30))
+      XCTAssertEqual(size.width, 60)
+      XCTAssertEqual(size.height, 30)
+    }
+
+    do {
+      let size = CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 100, height: 50))
+      XCTAssertEqual(size.width, 100)
+      XCTAssertEqual(size.height, 50)
+    }
+
+    do {
+      let size = CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 150, height: 50))
+      XCTAssertEqual(size.width, 100)
+      XCTAssertEqual(size.height, 50)
+    }
+
+    do {
+      let size = CGSize(width: 100, height: 50).aspectFit(boundingSize: CGSize(width: 150, height: 60))
+      XCTAssertEqual(size.width, 120)
+      XCTAssertEqual(size.height, 60)
+    }
+
   }
 
   func testAdd() {
