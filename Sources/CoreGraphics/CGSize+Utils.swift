@@ -66,7 +66,7 @@
     ///
     /// Example:
     ///
-    ///     CGSize(
+    ///     CGSize(width: 10, height: 10) + CGSize(width: 20, height: 10) -> CGSize(width: 30, height: 20)
     ///
     public static func + (lhs: CGSize, rhs: CGSize) -> CGSize {
       return CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
@@ -78,7 +78,8 @@
     ///
     /// Example:
     ///
-    ///     var
+    ///     var size = CGSize(width: 10, height: 10)
+    ///     size += CGSize(width: 20, height: 10) -> point is equal to CGSize(width: 30, height: 20)
     ///
     public static func += (lhs: inout CGSize, rhs: CGSize) {
       lhs = CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
@@ -90,7 +91,7 @@
     ///
     /// Example:
     ///
-    ///     CGSize(
+    ///     CGSize(width: 20, height: 10) - CGSize(width: 10, height: 5) -> CGSize(width: 10, height: 5)
     ///
     public static func - (lhs: CGSize, rhs: CGSize) -> CGSize {
       return CGSize(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
@@ -102,7 +103,8 @@
     ///
     /// Example:
     ///
-    ///     var
+    ///     var size = CGSize(width: 20, height: 10)
+    ///     size -= CGSize(width: 10, height: 5) -> point is equal to CGSize(width: 10, height: 5)
     ///
     public static func -= (lhs: inout CGSize, rhs: CGSize) {
       lhs = CGSize(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
@@ -114,7 +116,7 @@
     ///
     /// Example:
     ///
-    ///     CGSize(
+    ///     CGSize(width: 20, height: 10) * 3 -> CGSize(width: 60, height: 30)
     ///
     public static func * (size: CGSize, scalar: CGFloat) -> CGSize {
       return CGSize(width: size.width * scalar, height: size.height * scalar)
@@ -126,8 +128,8 @@
     ///
     /// Example:
     ///
-    ///     var point = CGPoint(x: 1, y: 2)
-    ///     point *= 3 -> point is equal to CGPoint(x: 3, y: 6)
+    ///     var size = CGSize(width: 20, height: 10)
+    ///     size *= 3 -> point is equal to CGSize(width: 60, height: 30)
     ///
     public static func *= (size: inout CGSize, scalar: CGFloat) {
       size = CGSize(width: size.width * scalar, height: size.height * scalar)

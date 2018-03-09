@@ -79,6 +79,7 @@ import XCTest
 
     func testAdd() {
        XCTAssertEqual(CGSize(width: 20, height: 20), CGSize(width: 10, height: 10) + CGSize(width: 10, height: 10))
+       XCTAssertEqual(CGSize(width: 30, height: 20), CGSize(width: 10, height: 10) + CGSize(width: 20, height: 10))
        XCTAssertEqual(CGSize(width: 20, height: 20), CGSize(width: 20, height: 20) + CGSize.zero)
     }
 
@@ -91,6 +92,7 @@ import XCTest
 
     func testSubtract() {
       XCTAssertEqual(CGSize(width: 0, height: 0), CGSize(width: 10, height: 10) - CGSize(width: 10, height: 10))
+       XCTAssertEqual(CGSize(width: -10, height: 0), CGSize(width: 10, height: 10) - CGSize(width: 20, height: 10))
     }
 
     func testSubtractEqual() {
