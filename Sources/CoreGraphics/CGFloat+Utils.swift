@@ -26,16 +26,33 @@
   import CoreGraphics
   
   extension CGFloat {
-    
+
+    /// **Mechanica**
+    ///
+    /// Desc
+    ///
+    /// Example:
+    ///
+    ///     CGFloat(180).degreesToRadians -> π
+    ///
     public var degreesToRadians: CGFloat {
       return CGFloat.pi * self / 180.0
     }
-    
+
+    /// **Mechanica**
+    ///
+    /// Desc
+    ///
+    /// Example:
+    ///
+    ///     CGFloat(π).radiansToDegrees -> 180
+    ///
     public var radiansToDegrees: CGFloat {
       return self * 180 / CGFloat.pi
     }
     
-    
+    /// **Mechanica**
+    ///
     ///  Returns the shortest angle between two angles. The result is always between -π and π.
     public static func shortestAngleInRadians(from first: CGFloat, to second: CGFloat) -> CGFloat {
       // https://github.com/raywenderlich/SKTUtils/blob/master/SKTUtils/CGFloat%2BExtensions.swift
