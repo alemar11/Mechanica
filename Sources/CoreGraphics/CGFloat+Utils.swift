@@ -29,8 +29,6 @@
 
     /// **Mechanica**
     ///
-    /// Desc
-    ///
     /// Example:
     ///
     ///     CGFloat(180).degreesToRadians -> π
@@ -40,8 +38,6 @@
     }
 
     /// **Mechanica**
-    ///
-    /// Desc
     ///
     /// Example:
     ///
@@ -54,6 +50,11 @@
     /// **Mechanica**
     ///
     ///  Returns the shortest angle between two angles. The result is always between -π and π.
+    ///
+    /// Example:
+    ///
+    ///     CGFloat.shortestAngleInRadians(from: 0, to: 3π/2) -> -π/2
+    ///
     public static func shortestAngleInRadians(from first: CGFloat, to second: CGFloat) -> CGFloat {
       // https://github.com/raywenderlich/SKTUtils/blob/master/SKTUtils/CGFloat%2BExtensions.swift
       let twoPi = CGFloat(.pi * 2.0)
