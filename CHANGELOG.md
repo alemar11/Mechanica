@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.6.0 (WIP)
+- Added CoreGraphics utils.
+- More tests.
+- Bugfixes.
+
 ### 1.5.0
 
 - Added more UIView utils.
