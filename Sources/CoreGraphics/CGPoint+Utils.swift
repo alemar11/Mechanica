@@ -79,7 +79,7 @@
 
     /// **Mechanica**
     ///
-    /// Adds a CGPoints to `self`.
+    /// Adds a `CGPoint` to `self`.
     ///
     /// Example:
     ///
@@ -104,7 +104,7 @@
 
     /// **Mechanica**
     ///
-    /// Subtracts a CGPoints from `self`.
+    /// Subtracts a `CGPoint` from `self`.
     ///
     /// Example:
     ///

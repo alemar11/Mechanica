@@ -47,35 +47,19 @@
 
     /// **Mechanica**
     ///
-    /// Returns a `CGRect` with all its components floored.
+    /// Returns a `CGRect` rounded to an integral value using the specified rounding `rule`.
     ///
     /// Example:
     ///
-    ///     CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).floor -> CGRect(x: 10, y: 11, width: 12, height: 13)
+    ///     CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).rounded(rule: .down) -> CGRect(x: 10, y: 11, width: 12, height: 13)
+    ///     CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).rounded(rule: .up) -> CGRect(x: 11, y: 12, width: 13, height: 13)
     ///
-    public var floor: CGRect {
+    public func rounded(rule: FloatingPointRoundingRule) -> CGRect {
       return CGRect(
-        x: CoreGraphics.floor(origin.x),
-        y: CoreGraphics.floor(origin.y),
-        width: CoreGraphics.floor(size.width),
-        height: CoreGraphics.floor(size.height)
-      )
-    }
-
-    /// **Mechanica**
-    ///
-    /// Returns a `CGRect` with all its components ceiled.
-    ///
-    /// Example:
-    ///
-    ///     CGRect(x: 10.3, y: 11.5, width: 12.7, height: 13.0).ceil -> CGRect(x: 11, y: 12, width: 13, height: 13)
-    ///
-    public var ceil: CGRect {
-      return CGRect(
-        x: CoreGraphics.ceil(origin.x),
-        y: CoreGraphics.ceil(origin.y),
-        width: CoreGraphics.ceil(size.width),
-        height: CoreGraphics.ceil(size.height)
+        x: origin.x.rounded(rule),
+        y: origin.y.rounded(rule),
+        width: size.width.rounded(rule),
+        height: size.height.rounded(rule)
       )
     }
 
