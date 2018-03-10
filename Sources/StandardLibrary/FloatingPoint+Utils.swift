@@ -21,11 +21,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(Linux)
-  import Glibc
-#else
-  import Darwin.C
-#endif
+//#if os(Linux)
+//  import Glibc
+//#else
+//  import Darwin.C
+//#endif
 
 extension FloatingPoint {
 
@@ -40,12 +40,12 @@ extension FloatingPoint {
   ///     piFloat.rounded(to: 0) -> 3.0
   ///     piFloat.rounded(to: 7) -> 3.1415927
   ///
-  public func rounded(to decimalPlaces: Int) -> Self {
+  public func rounded(to decimalPlaces: Int, rule: FloatingPointRoundingRule = .toNearestOrAwayFromZero) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
     for _ in 0..<decimalPlaces { divisor *= 10 }
 
-    return (self * divisor).rounded() / divisor
+    return (self * divisor).rounded(rule) / divisor
   }
 
   /// **Mechanica**
@@ -59,8 +59,8 @@ extension FloatingPoint {
   ///     piFloat.round(to: 3) -> piFloat is 3.142
   ///     piFloat.round(to: 7) -> piFloat is 3.1415927
   ///
-  public mutating func round(to decimalPlaces: Int) {
-    self = rounded(to: decimalPlaces)
+  public mutating func round(to decimalPlaces: Int, rule: FloatingPointRoundingRule = .toNearestOrAwayFromZero) {
+    self = rounded(to: decimalPlaces, rule: rule)
   }
 
   /// **Mechanica**
@@ -74,16 +74,19 @@ extension FloatingPoint {
   ///     piFloat.ceiled(to: 0) -> 4.0
   ///     piFloat.ceiled(to: 5) -> 3.1416
   ///
+  @available(*, deprecated, message: "Use rounded(to:rule:)")
   public func ceiled(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
     for _ in 0..<decimalPlaces { divisor *= 10  }
 
-    #if os(Linux)
-      return Glibc.ceil(self * divisor) / divisor
-    #else
-      return Darwin.ceil(self * divisor) / divisor // equals to (self * divisor).rounded(.up) / divisor
-    #endif
+    return (self * divisor).rounded(.up) / divisor
+
+//    #if os(Linux)
+//      return Glibc.ceil(self * divisor) / divisor
+//    #else
+//      return Darwin.ceil(self * divisor) / divisor // equals to (self * divisor).rounded(.up) / divisor
+//    #endif
   }
 
   /// **Mechanica**
@@ -97,6 +100,7 @@ extension FloatingPoint {
   ///     piFloat.ceil(to: 0) -> piFloat is 4.0
   ///     piFloat.ceil(to: 5) -> piFloat is 3.1416
   ///
+  @available(*, deprecated, message: "Use round(to:rule:)")
   public mutating func ceil(to decimalPlaces: Int) {
     self = ceiled(to: decimalPlaces)
   }
@@ -112,16 +116,19 @@ extension FloatingPoint {
   ///     piFloat.floored(to: 0) -> 3.0
   ///     piFloat.floored(to: 5) -> 3.14159
   ///
+  @available(*, deprecated, message: "Use rounded(to:rule:)")
   public func floored(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
     for _ in 0..<decimalPlaces { divisor *= 10 }
 
-    #if os(Linux)
-      return Glibc.floor(self * divisor) / divisor
-    #else
-      return Darwin.floor(self * divisor) / divisor // equals to (self * divisor).rounded(.down) / divisor
-    #endif
+    return (self * divisor).rounded(.down) / divisor
+
+//    #if os(Linux)
+//      return Glibc.floor(self * divisor) / divisor
+//    #else
+//      return Darwin.floor(self * divisor) / divisor // equals to (self * divisor).rounded(.down) / divisor
+//    #endif
   }
 
   /// **Mechanica**
@@ -135,6 +142,7 @@ extension FloatingPoint {
   ///     piFloat.floor(to: 0) -> piFloat is 3.0
   ///     piFloat.floor(to: 5) -> piFloat is 3.14159
   ///
+  @available(*, deprecated, message: "Use round(to:rule:)")
   public mutating func floor(to decimalPlaces: Int) {
     self = floored(to: decimalPlaces)
   }
