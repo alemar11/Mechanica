@@ -33,7 +33,8 @@ package.targets = [
                         "BundleInfoTests.swift",
                         "NSAttributedStringUtilsTests.swift",
                         "NSMutableAttributedStringUtilsTests.swift",
-                        "NSObjectProtocolSwizzlingTests.swift"
+                        "NSObjectProtocolSwizzlingTests.swift",
+                        "UserDefaultsUtilsTests.swift"
     ]
   )
 ]
