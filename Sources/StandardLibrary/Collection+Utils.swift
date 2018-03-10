@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-extension Collection where Self.Index == Int, Element: Equatable {
+extension Collection where Element: Equatable {
 
   // MARK: - Equatable
 
@@ -42,7 +42,7 @@ extension Collection where Self.Index == Int, Element: Equatable {
   ///  After using lastIndex(of:) to find the last position of a particular element in a collection, you can use it to access the element by subscripting.
   /// - Parameter element: Index of the last element found (if any).
   public func lastIndex(of element: Element) -> Self.Index? {
-    for idx in stride(from: endIndex-1, through: 0, by: -1) {
+    for idx in indices.reversed() {
       guard element == self[idx] else { continue }
       return idx
     }
