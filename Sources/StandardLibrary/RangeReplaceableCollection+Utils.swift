@@ -66,11 +66,6 @@ extension RangeReplaceableCollection where Self: MutableCollection {
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   @discardableResult
   public mutating func removeLast(where condition: (Element) -> Bool) -> Element? {
-//    for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
-//      guard condition(self[idx]) else { continue }
-//
-//      return remove(at: idx)
-//    }
     for idx in indices.reversed() {
       guard condition(self[idx]) else { continue }
 
@@ -101,22 +96,22 @@ extension RangeReplaceableCollection where Self: MutableCollection {
   @discardableResult
   public mutating func remove(where condition: (Element) -> Bool) -> [Element] {
     var removed: [Element] = []
-    guard var i = index(where: condition) else { return [] }
-    removed.append(self[i])
+    guard var idx = index(where: condition) else { return [] }
+    removed.append(self[idx])
 
-    var j = index(after: i)
-    while j < endIndex {
-      if !condition(self[j]) {
-        self[i] = self[j]
-        i = index(after: i)
+    var jdx = index(after: idx)
+    while jdx < endIndex {
+      if !condition(self[jdx]) {
+        self[idx] = self[jdx]
+        idx = index(after: idx)
       } else {
-        removed.append(self[j])
-
+        removed.append(self[jdx])
       }
-      j = index(after: j)
+      
+      jdx = index(after: jdx)
     }
 
-    removeSubrange(i...)
+    removeSubrange(idx...)
 
     return removed
   }
