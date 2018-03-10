@@ -99,7 +99,7 @@ extension RangeReplaceableCollection where Self: MutableCollection {
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   /// - Note: use `filter` if you don't need the removed element.
   @discardableResult
-  mutating func remove(where condition: (Element) -> Bool) -> [Element] {
+  public mutating func remove(where condition: (Element) -> Bool) -> [Element] {
     var removed: [Element] = []
     guard var i = index(where: condition) else { return [] }
     removed.append(self[i])
@@ -141,6 +141,7 @@ extension RangeReplaceableCollection where Self: MutableCollection {
   /// - Parameters:
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   /// - Note: use `filter` if you don't need the removed element.
+  @available(*, deprecated, message: "Use remove(where:)")
   @discardableResult
   public mutating func removeAll(where condition: (Element) -> Bool) -> [Element] {
     return remove(where: condition)
@@ -153,6 +154,7 @@ extension RangeReplaceableCollection where Self: MutableCollection {
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   /// - Returns: A tuple with a `new` collection and the removed elements.
   /// - Note: use `filter` if you don't need the removed element.
+  @available(*, deprecated, message: "Use removing(where:)")
   public func removingAll(where condition: (Element) -> Bool) -> (Self, [Element]) {
     return removing(where: condition)
   }

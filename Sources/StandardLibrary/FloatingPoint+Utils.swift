@@ -21,12 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-//#if os(Linux)
-//  import Glibc
-//#else
-//  import Darwin.C
-//#endif
-
 extension FloatingPoint {
 
   /// **Mechanica**
@@ -81,12 +75,6 @@ extension FloatingPoint {
     for _ in 0..<decimalPlaces { divisor *= 10  }
 
     return (self * divisor).rounded(.up) / divisor
-
-//    #if os(Linux)
-//      return Glibc.ceil(self * divisor) / divisor
-//    #else
-//      return Darwin.ceil(self * divisor) / divisor // equals to (self * divisor).rounded(.up) / divisor
-//    #endif
   }
 
   /// **Mechanica**
@@ -123,12 +111,6 @@ extension FloatingPoint {
     for _ in 0..<decimalPlaces { divisor *= 10 }
 
     return (self * divisor).rounded(.down) / divisor
-
-//    #if os(Linux)
-//      return Glibc.floor(self * divisor) / divisor
-//    #else
-//      return Darwin.floor(self * divisor) / divisor // equals to (self * divisor).rounded(.down) / divisor
-//    #endif
   }
 
   /// **Mechanica**
