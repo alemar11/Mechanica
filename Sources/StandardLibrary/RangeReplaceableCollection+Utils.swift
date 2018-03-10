@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-extension RangeReplaceableCollection where Self.Index == Int {
+extension RangeReplaceableCollection where Self: MutableCollection {
 
   /// **Mechanica**
   ///
@@ -66,12 +66,16 @@ extension RangeReplaceableCollection where Self.Index == Int {
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   @discardableResult
   public mutating func removeLast(where condition: (Element) -> Bool) -> Element? {
-    for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
+//    for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
+//      guard condition(self[idx]) else { continue }
+//
+//      return remove(at: idx)
+//    }
+    for idx in indices.reversed() {
       guard condition(self[idx]) else { continue }
 
       return remove(at: idx)
     }
-
     return nil
   }
 
@@ -95,16 +99,24 @@ extension RangeReplaceableCollection where Self.Index == Int {
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   /// - Note: use `filter` if you don't need the removed element.
   @discardableResult
-  public mutating func removeAll(where condition: (Element) -> Bool) -> [Element] {
-    var removed: [Element]  = []
+  public mutating func remove(where condition: (Element) -> Bool) -> [Element] {
+    var removed: [Element] = []
+    guard var i = index(where: condition) else { return [] }
+    removed.append(self[i])
 
-    for idx in stride(from: self.endIndex-1, through: 0, by: -1) {
-      let element = self[idx]
-      guard condition(element) else { continue }
+    var j = index(after: i)
+    while j < endIndex {
+      if !condition(self[j]) {
+        self[i] = self[j]
+        i = index(after: i)
+      } else {
+        removed.append(self[j])
 
-      remove(at: idx)
-      removed.insert(element, at: 0)
+      }
+      j = index(after: j)
     }
+
+    removeSubrange(i...)
 
     return removed
   }
@@ -116,16 +128,40 @@ extension RangeReplaceableCollection where Self.Index == Int {
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   /// - Returns: A tuple with a `new` collection and the removed elements.
   /// - Note: use `filter` if you don't need the removed element.
-  public func removingAll(where condition: (Element) -> Bool) -> (Self, [Element]) {
+  public func removing(where condition: (Element) -> Bool) -> (Self, [Element]) {
     var copy = self
-    let removed = copy.removeAll(where: condition)
+    let removed = copy.remove(where: condition)
 
     return (copy, removed)
   }
 
+  /// **Mechanica**
+  ///
+  /// Removes all the elements that matches the given `condition` and returns all the removed element (if any).
+  /// - Parameters:
+  ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  /// - Note: use `filter` if you don't need the removed element.
+  @available(*, deprecated, message: "Use remove(where:)")
+  @discardableResult
+  public mutating func removeAll(where condition: (Element) -> Bool) -> [Element] {
+    return remove(where: condition)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Removes all the elements that matches the given `condition` and returns a tuple with a `new` collection and the removed elements.
+  /// - Parameters:
+  ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
+  /// - Returns: A tuple with a `new` collection and the removed elements.
+  /// - Note: use `filter` if you don't need the removed element.
+  @available(*, deprecated, message: "Use removing(where:)")
+  public func removingAll(where condition: (Element) -> Bool) -> (Self, [Element]) {
+    return removing(where: condition)
+  }
+
 }
 
-extension RangeReplaceableCollection where Self.Index == Int, Element: Equatable {
+extension RangeReplaceableCollection where Element: Equatable {
 
   /// **Mechanica**
   /// Removes the first specified element from the collection (if exists).

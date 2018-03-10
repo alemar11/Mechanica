@@ -25,6 +25,13 @@ extension Sequence {
 
   /// **Mechanica**
   ///
+  /// Returns true only if all the elements match the `condition`.
+  public func containsOnly(where condition: (Element) -> Bool ) -> Bool {
+    return !contains { !condition($0) }
+  }
+
+  /// **Mechanica**
+  ///
   /// Returns true if there is at least one element `matching` the predicate.
   /// - Parameters:
   ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.

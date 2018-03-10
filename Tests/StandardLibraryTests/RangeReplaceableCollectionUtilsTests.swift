@@ -31,8 +31,10 @@ extension RangeReplaceableCollectionUtilsTests {
     ("testRemovingFirst", testRemovingFirst),
     ("testRemoveLast", testRemoveLast),
     ("testRemovingLast", testRemovingLast),
-    ("testRemoveAll", testRemoveAll),
-    ("testRemovingAll", testRemovingAll),
+    ("testRemove", testRemoveAll),
+    ("testRemoving", testRemovingAll),
+    ("testRemoveAll", testRemoveAll), // deprecated
+    ("testRemovingAll", testRemovingAll), // deprecated
     ("testRemoveFirstOccurrence", testRemoveFirstOccurrence),
     ("testRemoveLastOccurrence", testRemoveLastOccurrence)
   ]
@@ -126,6 +128,45 @@ class RangeReplaceableCollectionUtilsTests: XCTestCase {
       XCTAssertTrue(newAll.count == 11)
       XCTAssertTrue(newAll == newAll)
       XCTAssertTrue(removed == nil)
+    }
+
+  }
+
+  func testRemove() {
+    var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
+
+    let removedElements = all.remove { $0.isEven }
+    XCTAssertNotNil(removedElements)
+    XCTAssertTrue(removedElements == [0, 2, 4, 6, 8, 10])
+    XCTAssertTrue(all.count == 5)
+    XCTAssertTrue(all == [1, 3, 5, 7, 9])
+
+    let removedElements2 = all.remove { $0 == 11 }
+    XCTAssertTrue(removedElements2.isEmpty)
+    XCTAssertTrue(all.count == 5)
+    XCTAssertTrue(all == [1, 3, 5, 7, 9])
+
+    let removedElements3 = all.remove { $0 % 3 == 0 }
+    XCTAssertNotNil(removedElements3)
+    XCTAssertTrue(all.count == 3)
+    XCTAssertTrue(all == [1, 5, 7])
+  }
+
+  func testRemoving() {
+    let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
+
+    do {
+      let (newAll, removed) = all.removing { $0.isEven }
+      XCTAssertTrue(newAll == [1, 3, 5, 7, 9])
+      XCTAssertTrue(all.count == 11)
+      XCTAssertTrue(removed == [0, 2, 4, 6, 8, 10])
+    }
+
+    do {
+      let (newAll, removed) = all.removing { $0 == 11 }
+      XCTAssertTrue(newAll.count == 11)
+      XCTAssertTrue(newAll == newAll)
+      XCTAssertTrue(removed.isEmpty)
     }
 
   }
