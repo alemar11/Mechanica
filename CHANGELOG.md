@@ -2,6 +2,8 @@
 
 ### 1.6.0 (WIP)
 - Added CoreGraphics utils.
+- More Sequence utils.
+- Better performance in some RangeReplaceableCollection utils.
 - More tests.
 - Bugfixes.
 
