@@ -28,7 +28,7 @@ extension UserDefaultsUtilsTests {
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
   static var allTests = [
     ("testOptionalInteger", testOptionalInteger),
-    //("testOptionalDouble", testOptionalDouble),
+    ("testOptionalDouble", testOptionalDouble),
     //("testOptionalFloat", testOptionalFloat),
     //("testOptionalBool", testOptionalBool),
     ////("testRemoveAll", testRemoveAll),
