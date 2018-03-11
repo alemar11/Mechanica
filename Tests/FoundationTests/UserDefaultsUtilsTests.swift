@@ -28,9 +28,9 @@ extension UserDefaultsUtilsTests {
   @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
   static var allTests = [
     ("testOptionalInteger", testOptionalInteger),
-    //("testOptionalDouble", testOptionalDouble),
-    //("testOptionalFloat", testOptionalFloat),
-    //("testOptionalBool", testOptionalBool),
+    ("testOptionalDouble", testOptionalDouble),
+    ("testOptionalFloat", testOptionalFloat),
+    ("testOptionalBool", testOptionalBool),
     ////("testRemoveAll", testRemoveAll),
     //("testCodable", testCodable)
   ]
@@ -80,8 +80,13 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalDouble(forKey: key))
     XCTAssertEqual(userDefaults.optionalDouble(forKey: key), Double(10))
-    
+
+    #if !os(Linux)
     userDefaults.set(nil, forKey: key)
+    XCTAssertEqual(userDefaults.optionalDouble(forKey: key), .none)
+    #endif
+
+    userDefaults.set("hello world", forKey: key)
     XCTAssertEqual(userDefaults.optionalDouble(forKey: key), .none)
   }
   
@@ -94,8 +99,13 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalFloat(forKey: key))
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), 10.1)
-    
+
+    #if !os(Linux)
     userDefaults.set(nil, forKey: key)
+    XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
+    #endif
+
+    userDefaults.set("hello world", forKey: key)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
   }
   
@@ -108,10 +118,15 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalBool(forKey: key))
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), true)
-    
+
+    #if !os(Linux)
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
+    #endif
+
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
+    userDefaults.set("hello world", forKey: key)
+    XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
   }
   
   #if !os(Linux)
