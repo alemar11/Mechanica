@@ -58,8 +58,13 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertNotNil(userDefaults.optionalInteger(forKey: key))
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), 10)
 
+    #if !os(Linux)
     userDefaults.set(nil, forKey: key)
-//    XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
+    XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
+    #endif
+    userDefaults.set("hello world", forKey: key)
+    XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
+    }
   }
   
   func testOptionalDouble() {
