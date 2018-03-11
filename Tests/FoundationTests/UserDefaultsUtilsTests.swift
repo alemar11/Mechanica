@@ -30,9 +30,9 @@ extension UserDefaultsUtilsTests {
     ("testOptionalInteger", testOptionalInteger),
     ("testOptionalDouble", testOptionalDouble),
     ("testOptionalFloat", testOptionalFloat),
-    ("testOptionalBool", testOptionalBool),
+    //("testOptionalBool", testOptionalBool),
     //("testRemoveAll", testRemoveAll),
-    //("testCodable", testCodable)
+    ("testCodable", testCodable)
   ]
 }
 
@@ -40,14 +40,7 @@ class UserDefaultsUtilsTests: XCTestCase {
   
   //TODO: add test for URL --> https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/UserDefaults.swift
   //on Linux will be set to nil
-  
-  //  let userDefaults = UserDefaults.standard
-  //
-  //  override func setUp() {
-  //    super.setUp()
-  //    userDefaults.removeAll()
-  //  }
-  
+
   func testOptionalInteger() {
     let userDefaults = UserDefaults.standard
     let key = UUID().uuidString
@@ -124,9 +117,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
     #endif
 
-//    XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
-//    userDefaults.set("hello world", forKey: key)
-//    XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
+    XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
+    userDefaults.set("hello world", forKey: key)
+    XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
   }
   
   #if !os(Linux)
