@@ -110,6 +110,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     userDefaults.set(true, forKey: key)
     print("\n\n---------")
     print(userDefaults.object(forKey: key))
+    print(userDefaults.bool(forKey: key))
     print("\n\n---------")
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalBool(forKey: key))
