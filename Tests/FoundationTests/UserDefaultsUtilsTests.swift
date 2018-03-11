@@ -64,7 +64,6 @@ class UserDefaultsUtilsTests: XCTestCase {
     #endif
     userDefaults.set("hello world", forKey: key)
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
-    }
   }
   
   func testOptionalDouble() {
