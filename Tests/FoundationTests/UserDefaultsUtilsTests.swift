@@ -30,7 +30,7 @@ extension UserDefaultsUtilsTests {
     ("testOptionalInteger", testOptionalInteger),
     ("testOptionalDouble", testOptionalDouble),
     ("testOptionalFloat", testOptionalFloat),
-    //("testOptionalBool", testOptionalBool),
+    ("testOptionalBool", testOptionalBool),
     //("testRemoveAll", testRemoveAll),
     ("testCodable", testCodable)
   ]
@@ -108,6 +108,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key))
     
     userDefaults.set(true, forKey: key)
+    print("\n\n---------)
+    print(userDefaults.object(forKey: key))
+    print("\n\n---------)
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalBool(forKey: key))
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), true)
