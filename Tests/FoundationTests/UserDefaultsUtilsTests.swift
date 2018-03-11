@@ -62,6 +62,11 @@ class UserDefaultsUtilsTests: XCTestCase {
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
     #endif
+
+    userDefaults.set(10, forKey: key)
+    userDefaults.removeObject(forKey: key)
+    XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
+
     userDefaults.set("hello world", forKey: key)
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
   }
