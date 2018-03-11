@@ -29,9 +29,9 @@ extension UserDefaultsUtilsTests {
   static var allTests = [
     ("testOptionalInteger", testOptionalInteger),
     ("testOptionalDouble", testOptionalDouble),
-    //("testOptionalFloat", testOptionalFloat),
-    //("testOptionalBool", testOptionalBool),
-    ////("testRemoveAll", testRemoveAll),
+    ("testOptionalFloat", testOptionalFloat),
+    ("testOptionalBool", testOptionalBool),
+    //("testRemoveAll", testRemoveAll),
     //("testCodable", testCodable)
   ]
 }
