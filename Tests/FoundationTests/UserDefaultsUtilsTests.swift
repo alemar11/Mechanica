@@ -82,7 +82,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalDouble(forKey: key), Double(10))
     
     userDefaults.set(nil, forKey: key)
-    XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
+    XCTAssertEqual(userDefaults.optionalDouble(forKey: key), .none)
   }
   
   func testOptionalFloat() {
@@ -96,7 +96,7 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), 10.1)
     
     userDefaults.set(nil, forKey: key)
-    XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
+    XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
   }
   
   func testOptionalBool() {
