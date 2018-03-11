@@ -24,18 +24,18 @@
 import Foundation
 
 public extension UserDefaults {
-
+  
   /// **Mechanica**
   ///
   /// Returns `true` if `key` exists.
   public final func hasKey(_ key: String) -> Bool {
     #if os(Linux)
-      return object(forKey: key) != nil
+    return object(forKey: key) != nil
     #else
-      return dictionaryRepresentation().hasKey(key) //not implemented on Linux (Swift 4.0.2)
+    return dictionaryRepresentation().hasKey(key) // it seems implemented on Linux (Swift 4.1) but it's not working
     #endif
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -43,7 +43,7 @@ public extension UserDefaults {
   public final func optionalBool(forKey defaultName: String) -> Bool? {
     return (object(forKey: defaultName) as? NSNumber)?.boolValue
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -51,7 +51,7 @@ public extension UserDefaults {
   public final func optionalDouble(forKey defaultName: String) -> Double? {
     return (object(forKey: defaultName) as? NSNumber)?.doubleValue
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -59,7 +59,7 @@ public extension UserDefaults {
   public final func optionalFloat(forKey defaultName: String) -> Float? {
     return (object(forKey: defaultName) as? NSNumber)?.floatValue
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -67,7 +67,9 @@ public extension UserDefaults {
   public final func optionalInteger(forKey defaultName: String) -> Int? {
     return (object(forKey: defaultName) as? NSNumber)?.intValue
   }
-
+  
+  #if !os(Linux)
+  
   /// **Mechanica**
   ///
   /// Removes all keys and values from user defaults.
@@ -79,13 +81,15 @@ public extension UserDefaults {
       removeObject(forKey: key)
     }
   }
-
+  
+  #endif
+  
 }
 
 extension UserDefaults {
-
+  
   // MARK: Codable
-
+  
   /// **Mechanica**
   ///
   /// Returns the object conformig to `Codable` associated with the specified key, or nil if the key was not found.
@@ -96,7 +100,7 @@ extension UserDefaults {
     guard let encodedData = data(forKey: defaultName) else { return nil }
     return try? JSONDecoder().decode(T.self, from: encodedData)
   }
-
+  
   /// **Mechanica**
   ///
   /// Stores an object conformig to `Codable` (or removes the value if nil is passed as the value) for the provided key.
@@ -114,10 +118,10 @@ extension UserDefaults {
       } catch {
         throw error
       }
-
+      
     } else {
       removeObject(forKey: defaultName)
     }
   }
-
+  
 }
