@@ -57,8 +57,8 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalInteger(forKey: key))
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), 10)
-//
-//    userDefaults.set(nil, forKey: key)
+
+    userDefaults.set(nil, forKey: key)
 //    XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
   }
   
