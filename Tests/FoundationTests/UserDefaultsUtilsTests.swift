@@ -124,9 +124,9 @@ class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
     #endif
 
-    XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
-    userDefaults.set("hello world", forKey: key)
-    XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
+//    XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
+//    userDefaults.set("hello world", forKey: key)
+//    XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
   }
   
   #if !os(Linux)
