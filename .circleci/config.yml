@@ -41,6 +41,6 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - linux_swift_4_0
-      - linux_swift_4_0_3
+      #- linux_swift_4_0
+      #- linux_swift_4_0_3
       - linux_swift_snapshot_4_1_0
