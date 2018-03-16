@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -22,9 +22,9 @@
 // SOFTWARE.
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-  
+
   import CoreGraphics
-  
+
   extension CGFloat {
 
     /// **Mechanica**
@@ -46,7 +46,7 @@
     public var radiansToDegrees: CGFloat {
       return self * 180 / CGFloat.pi
     }
-    
+
     /// **Mechanica**
     ///
     ///  Returns the shortest angle between two angles. The result is always between -π and π.
@@ -68,5 +68,5 @@
       return angle
     }
   }
-  
+
 #endif

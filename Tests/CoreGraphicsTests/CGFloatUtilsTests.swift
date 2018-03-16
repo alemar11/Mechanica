@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -27,7 +27,7 @@ import XCTest
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   class CGFloatUtilsTests: XCTestCase {
-    
+
     func testDegreesToRadians() {
       XCTAssertEqual(CGFloat(180).degreesToRadians, CGFloat.pi)
       XCTAssertEqual(CGFloat(45).degreesToRadians, CGFloat.pi/4)
@@ -56,7 +56,7 @@ import XCTest
       XCTAssertEqual(CGFloat.shortestAngleInRadians(from: CGFloat(250).degreesToRadians, to: CGFloat(190).degreesToRadians).rounded(), CGFloat(-60).degreesToRadians.rounded()) // from 250° to 190° = 60°
       XCTAssertEqual(CGFloat.shortestAngleInRadians(from: CGFloat(190).degreesToRadians, to: CGFloat(250).degreesToRadians).rounded(), CGFloat(60).degreesToRadians.rounded())
     }
-    
+
   }
 
 #endif

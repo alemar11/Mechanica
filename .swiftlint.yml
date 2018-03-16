@@ -36,10 +36,4 @@ type_name:
     warning: 50
     error: 50
 
-  type_name:
-  min_length: 3 # only warning
-  max_length: # warning and error
-    warning: 50
-    error: 50
-
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
