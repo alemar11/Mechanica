@@ -46,8 +46,10 @@
         return CGPoint(x: midX, y: midY)
       }
       set {
+        // swiftlint:disable identifier_name
         let x = newValue.x - width / 2.0
         let y = newValue.y - height / 2.0
+        // swiftlint:enable identifier_name
         let newOrigin = CGPoint(x: x, y: y)
 
         self.origin = newOrigin
