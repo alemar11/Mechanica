@@ -28,7 +28,7 @@ extension OperatorsTests {
   static var allTests = [ ("testPercent", testPercent) ]
 }
 
-class OperatorsTests: XCTestCase {
+final class OperatorsTests: XCTestCase {
 
   func testPercent() {
     do {

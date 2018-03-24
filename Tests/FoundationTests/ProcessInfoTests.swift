@@ -34,7 +34,7 @@ extension ProcessInfoTests {
   ]
 }
 
-class ProcessInfoTests: XCTestCase {
+final class ProcessInfoTests: XCTestCase {
 
   func testSystemStartingDate() {
     let date = ProcessInfo.systemStartingDate

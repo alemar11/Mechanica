@@ -26,7 +26,7 @@
 import XCTest
 @testable import Mechanica
 
-class UIDeviceUtilsTests: XCTestCase {
+final class UIDeviceUtilsTests: XCTestCase {
 
   func testDeviceInterface() {
     #if os(iOS)

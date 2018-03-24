@@ -39,7 +39,7 @@ extension SequenceUtilsTests {
   ]
 }
 
-class SequenceUtilsTests: XCTestCase {
+final class SequenceUtilsTests: XCTestCase {
 
   private struct Demo {
     let value1: String

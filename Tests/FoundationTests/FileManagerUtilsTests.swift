@@ -54,7 +54,7 @@ extension FileManager {
 
 }
 
-class FileManagerUtilsTests: XCTestCase {
+final class FileManagerUtilsTests: XCTestCase {
 
   func testDestroyFileOrDirectory() throws {
     // Given

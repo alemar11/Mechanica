@@ -28,7 +28,7 @@ extension LocaleUtilsTests {
   static var allTests = [("testPosix", testPosix)]
 }
 
-class LocaleUtilsTests: XCTestCase {
+final class LocaleUtilsTests: XCTestCase {
 
   func testPosix() {
     let test: Locale = .posix

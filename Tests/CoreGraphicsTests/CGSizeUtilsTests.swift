@@ -26,7 +26,7 @@ import XCTest
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-  class CGSizeUtilsTests: XCTestCase {
+  final class CGSizeUtilsTests: XCTestCase {
 
     func testAspectFit() {
       XCTAssertEqual(CGSize(width: 100, height: 50).aspectFit(boundingSize: .zero), .zero)

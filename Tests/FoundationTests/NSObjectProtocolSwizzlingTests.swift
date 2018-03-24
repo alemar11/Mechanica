@@ -37,7 +37,7 @@ extension Test {
   @objc func methodSix(string: String) -> String { return "--" + string + "--" }
 }
 
-class NSObjectSwizzlingTests: XCTestCase {
+final class NSObjectSwizzlingTests: XCTestCase {
 
   override func setUp() {
     super.setUp()

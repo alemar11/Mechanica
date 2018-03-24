@@ -32,7 +32,7 @@ extension FloatingPointUtilsTests {
   ]
 }
 
-class FloatingPointUtilsTests: XCTestCase {
+final class FloatingPointUtilsTests: XCTestCase {
 
   func testRounding() {
     var piFloat         = Float(3.141_592_653_589_793_238_46)   //  3.14159274

@@ -24,7 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-class NSObjectProtocolUtils: XCTestCase {
+final class NSObjectProtocolUtils: XCTestCase {
 
   static var allTests = [("testClassName", testClassName)]
 

@@ -33,7 +33,7 @@ extension CollectionUtilsTests {
   ]
 }
 
-class CollectionUtilsTests: XCTestCase {
+final class CollectionUtilsTests: XCTestCase {
 
   func testAtIndex() {
     let array: [Any] = [1, 2, "3", "4", 0]

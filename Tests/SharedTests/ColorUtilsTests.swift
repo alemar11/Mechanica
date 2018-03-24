@@ -25,7 +25,7 @@
 import XCTest
 @testable import Mechanica
 
-class ColorUtilsTests: XCTestCase {
+final class ColorUtilsTests: XCTestCase {
 
   // MARK - RGBA
 

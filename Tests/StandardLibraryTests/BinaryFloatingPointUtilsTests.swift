@@ -28,7 +28,7 @@ extension BinaryFloatingPointUtilsTests {
   static var allTests = [("testbinaryString", testbinaryString)]
 }
 
-class BinaryFloatingPointUtilsTests: XCTestCase {
+final class BinaryFloatingPointUtilsTests: XCTestCase {
 
   // MARK: - BinaryConvertible
 

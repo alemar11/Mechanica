@@ -26,7 +26,7 @@
 import XCTest
 @testable import Mechanica
 
-class UIButtonUtilsTests: XCTestCase {
+final class UIButtonUtilsTests: XCTestCase {
 
   func testSetBackgroundColor() {
     // Given

@@ -33,7 +33,7 @@ extension BinaryIntegerUtilsTests {
   ]
 }
 
-class BinaryIntegerUtilsTests: XCTestCase {
+final class BinaryIntegerUtilsTests: XCTestCase {
 
   func testIsEven() {
     XCTAssertTrue(2.isEven)

@@ -32,7 +32,7 @@ extension CharacterUtilsTests {
   ]
 }
 
-class CharacterUtilsTests: XCTestCase {
+final class CharacterUtilsTests: XCTestCase {
 
   func testIsEmojiCountryFlag() {
     XCTAssertTrue(Character("🇮🇹").isEmojiCountryFlag)

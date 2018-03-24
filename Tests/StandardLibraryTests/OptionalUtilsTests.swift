@@ -34,7 +34,7 @@ extension OptionalUtilsTests {
   ]
 }
 
-class OptionalUtilsTests: XCTestCase {
+final class OptionalUtilsTests: XCTestCase {
 
   func testHasValue() {
     var value: Any?

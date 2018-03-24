@@ -26,7 +26,7 @@
 import XCTest
 @testable import Mechanica
 
-  class UIWindowUtilsTests: XCTestCase {
+  final class UIWindowUtilsTests: XCTestCase {
 
     func testTopViewController() {
       // we can't test presented view controller

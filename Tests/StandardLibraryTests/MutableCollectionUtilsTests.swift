@@ -28,7 +28,7 @@ extension MutableCollectionUtilsTests {
   static var allTests = [ ("testShuffle", testShuffle) ]
 }
 
-class MutableCollectionUtilsTests: XCTestCase {
+final class MutableCollectionUtilsTests: XCTestCase {
 
   func testShuffle() {
     do {

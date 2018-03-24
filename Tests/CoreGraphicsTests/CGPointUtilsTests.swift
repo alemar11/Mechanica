@@ -26,7 +26,7 @@ import XCTest
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-  class CGPointUtilsTests: XCTestCase {
+  final class CGPointUtilsTests: XCTestCase {
 
     func testDistance() {
       // https://www.mathportal.org/calculators/analytic-geometry/distance-and-midpoint-calculator.php

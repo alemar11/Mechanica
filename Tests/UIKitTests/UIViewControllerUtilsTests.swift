@@ -26,7 +26,7 @@
 import XCTest
 @testable import Mechanica
 
-class UIViewControllerUtilsTests: XCTestCase {
+final class UIViewControllerUtilsTests: XCTestCase {
 
   func testIsVisible() {
     let viewController = UIViewController()

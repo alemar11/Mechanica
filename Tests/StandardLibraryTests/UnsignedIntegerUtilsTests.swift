@@ -28,7 +28,7 @@ extension UnsignedIntegerUtilsTests {
   static var allTests = [ ("testBinaryString", testBinaryString) ]
 }
 
-class UnsignedIntegerUtilsTests: XCTestCase {
+final class UnsignedIntegerUtilsTests: XCTestCase {
 
   // MARK: - BinaryConvertible
 

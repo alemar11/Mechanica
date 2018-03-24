@@ -26,7 +26,7 @@
 import XCTest
 @testable import Mechanica
 
-class UIImageTests: XCTestCase {
+final class UIImageTests: XCTestCase {
 
   func testInitWithColorAndSize() {
     let scale = UIScreen.main.scale

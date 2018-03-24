@@ -26,7 +26,7 @@ import XCTest
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-  class CGFloatUtilsTests: XCTestCase {
+  final class CGFloatUtilsTests: XCTestCase {
 
     func testDegreesToRadians() {
       XCTAssertEqual(CGFloat(180).degreesToRadians, CGFloat.pi)

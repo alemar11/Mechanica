@@ -26,7 +26,7 @@ import XCTest
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-class CGRectUtilsTests: XCTestCase {
+final class CGRectUtilsTests: XCTestCase {
 
   func testInit() {
     let rect = CGRect(width: 100, height: 50)
