@@ -95,6 +95,8 @@ extension RangeReplaceableCollection where Self: MutableCollection {
   /// - Note: use `filter` if you don't need the removed element.
   @discardableResult
   public mutating func remove(where condition: (Element) -> Bool) -> [Element] {
+    // TODO: to be deprecated once implemented:
+    // https://github.com/apple/swift-evolution/blob/master/proposals/0197-remove-where.md
     var removed: [Element] = []
     guard var idx = index(where: condition) else { return [] }
     removed.append(self[idx])

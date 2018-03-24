@@ -34,6 +34,8 @@ extension Bool {
   ///
   /// Returns a `new` Bool with the inverted value of `self`.
   public var toggled: Bool {
+    // TODO: to be deprecated once implemented:
+    // https://github.com/apple/swift-evolution/blob/master/proposals/0199-bool-toggle.md (Swift 4.2)
     return !self
   }
 
