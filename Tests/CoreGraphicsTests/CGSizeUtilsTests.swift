@@ -97,7 +97,7 @@ import XCTest
 
     func testSubtractEqual() {
       var size = CGSize(width: 10, height: 10)
-      
+
       size -= CGSize(width: 10, height: 10)
       XCTAssertEqual(CGSize.zero, size)
 

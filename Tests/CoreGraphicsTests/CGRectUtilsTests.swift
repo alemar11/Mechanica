@@ -34,6 +34,20 @@ class CGRectUtilsTests: XCTestCase {
     XCTAssertEqual(rect.size, CGSize(width: 100, height: 50))
   }
 
+  func testCenter() {
+    var rect = CGRect(width: 100, height: 50)
+    XCTAssertEqual(rect.center, CGPoint(x: 50, y: 25))
+    rect.center = CGPoint(x: 50, y: 25)
+    XCTAssertEqual(rect.center, CGPoint(x: 50, y: 25))
+
+    rect.center = .zero
+    XCTAssertEqual(rect.center, .zero)
+    XCTAssertEqual(rect.origin, CGPoint(x: -50, y: -25))
+
+    rect.center = CGPoint(x: 100, y: 30)
+    XCTAssertEqual(rect.origin, CGPoint(x: 50, y: 5))
+  }
+
   func testRounded() {
     XCTAssertEqual(CGRect.zero.rounded(rule: .down), .zero)
     XCTAssertEqual(CGRect(x: 10, y: 11, width: 12, height: 13).rounded(rule: .down), CGRect(x: 10, y: 11, width: 12, height: 13))
