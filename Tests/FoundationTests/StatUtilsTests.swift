@@ -32,7 +32,7 @@ extension StatUtilsTests {
   ]
 }
 
-class StatUtilsTests: XCTestCase {
+final class StatUtilsTests: XCTestCase {
 
   func testIsDirectory() throws {
     let tmpPath = "/tmp"

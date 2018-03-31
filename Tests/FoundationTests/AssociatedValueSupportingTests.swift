@@ -24,7 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-class AssociatedValueSupportingTests: XCTestCase {
+final class AssociatedValueSupportingTests: XCTestCase {
 
   // MARK:- Associated Objects
 

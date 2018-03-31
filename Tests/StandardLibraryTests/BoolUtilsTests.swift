@@ -33,7 +33,7 @@ extension BoolUtilsTests {
   ]
 }
 
-class BoolUtilsTests: XCTestCase {
+final class BoolUtilsTests: XCTestCase {
 
   func testInt() {
     XCTAssert(true.int == 1)

@@ -28,7 +28,7 @@ extension FoundationUtilsTests {
   static var allTests = [("testTypeName", testTypeName)]
 }
 
-class FoundationUtilsTests: XCTestCase {
+final class FoundationUtilsTests: XCTestCase {
 
   internal class Demo {}
 

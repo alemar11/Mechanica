@@ -1,6 +1,6 @@
 ![Mechanica: Swift Utils](https://raw.githubusercontent.com/tinrobots/Mechanica/assets/mechanica.png)
 
-[![Swift 4.0.3](https://img.shields.io/badge/Swift-4.0.3-orange.svg?style=flat)](https://developer.apple.com/swift)
+[![Swift 4.1](https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat)](https://developer.apple.com/swift)
 ![Platforms](https://img.shields.io/badge/Platform-iOS%2010%2B%20|%20macOS%2010.12+%20|%20tvOS%2010+%20|%20watchOS%203+|%20Ubuntu%20Linux-blue.svg) 
 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -25,8 +25,8 @@ A library of Swift utils to ease your iOS, macOS, watchOS, tvOS and Linux develo
 ## Requirements
 
 - iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+
-- Xcode 9.2
-- Swift 4.0.3
+- Xcode 9.3
+- Swift 4.1
 
 ## Documentation
 
@@ -54,7 +54,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Mechanica', '~> 1.3'
+    pod 'Mechanica', '~> 1.6'
 end
 ```
 
@@ -78,7 +78,7 @@ $ brew install carthage
 To integrate Mechanica into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "tinrobots/Mechanica" ~> 1.3.0
+github "tinrobots/Mechanica" ~> 1.6.0
 ```
 
 Run `carthage update` to build the framework and drag the built `Mechanica.framework` into your Xcode project.
@@ -90,7 +90,7 @@ Once you have your Swift package set up, adding Mechanica as a dependency is as 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/tinrobots/Mechanica.git", from: "1.3.0")
+    .package(url: "https://github.com/tinrobots/Mechanica.git", from: "1.6.0")
 ]
 ```
 
@@ -131,7 +131,7 @@ $ git submodule add https://github.com/tinrobots/Mechanica.git
 
 ## License
 
-[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/alemar11/Console/blob/master/LICENSE)
+[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/tinrobots/Mechanica/blob/master/LICENSE.md))
 
 Mechanica is released under the MIT license. See [LICENSE](./LICENSE.md) for details.
 

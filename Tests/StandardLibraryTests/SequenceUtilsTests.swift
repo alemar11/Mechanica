@@ -26,6 +26,7 @@ import XCTest
 
 extension SequenceUtilsTests {
   static var allTests = [
+    ("testContainsOnly", testContainsOnly),
     ("testHasSome", testHasSome),
     ("testHasAll", testHasAll),
     ("testContains", testContains),
@@ -38,7 +39,7 @@ extension SequenceUtilsTests {
   ]
 }
 
-class SequenceUtilsTests: XCTestCase {
+final class SequenceUtilsTests: XCTestCase {
 
   private struct Demo {
     let value1: String
@@ -71,6 +72,13 @@ class SequenceUtilsTests: XCTestCase {
                        Demo(value1: "demo1",value2: 1)]
 
   private let list3 = ["a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "l": 9, "m": 10]
+
+  func testContainsOnly() {
+    XCTAssertTrue("aaaaaa".containsOnly { $0 == Character("a") })
+    XCTAssertFalse("aaaaab".containsOnly { $0 == Character("a") })
+    XCTAssertFalse("aaaaaa".containsOnly { $0 == Character("c") })
+    XCTAssertTrue([0, 2, 4, 6].containsOnly { $0.isEven } )
+  }
 
   func testHasSome() {
 

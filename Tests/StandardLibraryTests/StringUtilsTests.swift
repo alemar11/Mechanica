@@ -46,7 +46,7 @@ extension StringUtilsTests {
   ]
 }
 
-class StringUtilsTests: XCTestCase {
+final class StringUtilsTests: XCTestCase {
 
   func testInitStaticString() {
     do {

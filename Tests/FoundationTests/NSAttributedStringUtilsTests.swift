@@ -24,7 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-class NSAttributedStringUtilsTests: XCTestCase {
+final class NSAttributedStringUtilsTests: XCTestCase {
 
   func testInitHTML(){
     do {

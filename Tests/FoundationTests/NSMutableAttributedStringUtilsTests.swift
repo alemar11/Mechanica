@@ -24,7 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-class NSMutableAttributedStringUtilsTests: XCTestCase {
+final class NSMutableAttributedStringUtilsTests: XCTestCase {
 
   func testRemovingAttributes() {
 

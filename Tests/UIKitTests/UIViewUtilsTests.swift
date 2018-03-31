@@ -26,7 +26,7 @@
 import XCTest
 @testable import Mechanica
 
-class UIWiewUtilsTests: XCTestCase {
+final class UIWiewUtilsTests: XCTestCase {
 
   func testCornerRadius() {
     let view = UIView()

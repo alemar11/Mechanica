@@ -33,7 +33,7 @@ extension DictionaryFoundationUtilsTests {
   ]
 }
 
-class DictionaryFoundationUtilsTests: XCTestCase {
+final class DictionaryFoundationUtilsTests: XCTestCase {
 
   func testInitFromJSON() {
 

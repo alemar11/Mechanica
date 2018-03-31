@@ -21,21 +21,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if !os(Linux)
-  // TODO: UserDefaults doesn't work on Linux with Swift 4.0.2 (it's working on Swift 4.1-snapshot)
-
 import Foundation
 
 public extension UserDefaults {
-
+  
   /// **Mechanica**
   ///
   /// Returns `true` if `key` exists.
   public final func hasKey(_ key: String) -> Bool {
-    //return object(forKey: key) != nil
-    return dictionaryRepresentation().hasKey(key) //not implemented on Linux (Swift 4.0.2)
+    #if os(Linux)
+    return object(forKey: key) != nil
+    #else
+    return dictionaryRepresentation().hasKey(key) // it seems implemented on Linux (Swift 4.1) but it's not working
+    #endif
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -43,7 +43,7 @@ public extension UserDefaults {
   public final func optionalBool(forKey defaultName: String) -> Bool? {
     return (object(forKey: defaultName) as? NSNumber)?.boolValue
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -51,7 +51,7 @@ public extension UserDefaults {
   public final func optionalDouble(forKey defaultName: String) -> Double? {
     return (object(forKey: defaultName) as? NSNumber)?.doubleValue
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -59,7 +59,7 @@ public extension UserDefaults {
   public final func optionalFloat(forKey defaultName: String) -> Float? {
     return (object(forKey: defaultName) as? NSNumber)?.floatValue
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -67,7 +67,9 @@ public extension UserDefaults {
   public final func optionalInteger(forKey defaultName: String) -> Int? {
     return (object(forKey: defaultName) as? NSNumber)?.intValue
   }
-
+  
+  #if !os(Linux)
+  
   /// **Mechanica**
   ///
   /// Removes all keys and values from user defaults.
@@ -79,23 +81,26 @@ public extension UserDefaults {
       removeObject(forKey: key)
     }
   }
-
+  
+  #endif
+  
 }
 
 extension UserDefaults {
-
+  
   // MARK: Codable
-
+  
   /// **Mechanica**
   ///
   /// Returns the object conformig to `Codable` associated with the specified key, or nil if the key was not found.
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
+  /// - Note: The returned object is decoded from a JSON rapresentation.
   public final func codableValue<T: Codable>(forKey defaultName: String) -> T? {
     guard let encodedData = data(forKey: defaultName) else { return nil }
     return try? JSONDecoder().decode(T.self, from: encodedData)
   }
-
+  
   /// **Mechanica**
   ///
   /// Stores an object conformig to `Codable` (or removes the value if nil is passed as the value) for the provided key.
@@ -104,6 +109,7 @@ extension UserDefaults {
   ///   - value: The object to store in the defaults database.
   ///   - defaultName: The key with which to associate with the value.
   /// - Throws: An error if any value throws an error during encoding.
+  /// - Note: The object is encoded as a JSON.
   public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String) throws {
     if let value = value {
       do {
@@ -112,12 +118,10 @@ extension UserDefaults {
       } catch {
         throw error
       }
-
+      
     } else {
       removeObject(forKey: defaultName)
     }
   }
-
+  
 }
-
-#endif

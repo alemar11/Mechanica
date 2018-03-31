@@ -28,7 +28,7 @@ extension NSPredicateUtilsTests {
   static var allTests = [ ("testOperators", testOperators)]
 }
 
-class NSPredicateUtilsTests: XCTestCase {
+final class NSPredicateUtilsTests: XCTestCase {
 
   // Not implemented on Linux:
   //    "NSPredicate.init(format:_:) is not yet implemented."

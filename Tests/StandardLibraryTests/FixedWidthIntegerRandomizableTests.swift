@@ -32,7 +32,7 @@ extension FixedWidthIntegerIntervalRandomizableTests {
   ]
 }
 
-class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
+final class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
   func testRandomSignedIntegerWithBounds() {
 

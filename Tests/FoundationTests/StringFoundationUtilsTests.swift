@@ -83,7 +83,7 @@ extension StringFoundationUtilsTests {
   ]
 }
 
-class StringFoundationUtilsTests: XCTestCase {
+final class StringFoundationUtilsTests: XCTestCase {
 
   func testBool() {
     do {

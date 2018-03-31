@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -26,7 +26,7 @@
 import XCTest
 @testable import Mechanica
 
-class UIViewControllerUtilsTests: XCTestCase {
+final class UIViewControllerUtilsTests: XCTestCase {
 
   func testIsVisible() {
     let viewController = UIViewController()

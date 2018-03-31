@@ -26,7 +26,7 @@ import XCTest
 
 #if os(macOS)
 
-  class NSImageUtilsTests: XCTestCase {
+  final class NSImageUtilsTests: XCTestCase {
 
     func testImageNamed() {
       let bundle = Bundle(for: NSImageUtilsTests.self)

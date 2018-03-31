@@ -28,7 +28,7 @@ extension DataUtilsTests {
   static var allTests = [("testBytes", testBytes)]
 }
 
-class DataUtilsTests: XCTestCase {
+final class DataUtilsTests: XCTestCase {
 
   func testBytes() {
     let data = "tinrobots".data(using: .utf8)

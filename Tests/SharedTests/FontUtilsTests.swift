@@ -24,7 +24,7 @@
 import XCTest
 @testable import Mechanica
 
-class FontUtilsTests: XCTestCase {
+final class FontUtilsTests: XCTestCase {
 
   func testBold() {
     let font: Font

@@ -54,11 +54,11 @@ extension NSMutableAttributedString {
   /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left NSMutableAttributedString.
   public static func + (lhs: NSMutableAttributedString, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
     // swiftlint:disable force_cast
-    let a = lhs.mutableCopy() as! NSMutableAttributedString
-    let b = rhs.mutableCopy() as! NSMutableAttributedString
+    let leftMutableAttributedString = lhs.mutableCopy() as! NSMutableAttributedString
+    let rightMutableAttributedString = rhs.mutableCopy() as! NSMutableAttributedString
     // swiftlint:enable force_cast
-    a.append(b)
-    return a
+    leftMutableAttributedString.append(rightMutableAttributedString)
+    return leftMutableAttributedString
   }
 
   /// **Mechanica**
@@ -66,18 +66,18 @@ extension NSMutableAttributedString {
   /// Returns a `new` NSMutableAttributedString appending the right NSAttributedString to the left NSMutableAttributedString.
   public static func + (lhs: NSMutableAttributedString, rhs: NSAttributedString) -> NSMutableAttributedString {
     // swiftlint:disable:next force_cast
-    let a = lhs.mutableCopy() as! NSMutableAttributedString
+    let leftMutableAttributedString = lhs.mutableCopy() as! NSMutableAttributedString
     // swiftlint:enable force_cast
-    a.append(rhs)
-    return a
+    leftMutableAttributedString.append(rhs)
+    return leftMutableAttributedString
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left NSAttributedString.
   public static func + (lhs: NSAttributedString, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
-    let a = NSMutableAttributedString(attributedString: lhs)
-    return a + rhs
+    let mutableAttributedString = NSMutableAttributedString(attributedString: lhs)
+    return mutableAttributedString + rhs
   }
 
   /// **Mechanica**
@@ -85,19 +85,19 @@ extension NSMutableAttributedString {
   /// Returns a `new` NSMutableAttributedString appending the right String to the left NSMutableAttributedString.
   public static func + (lhs: NSMutableAttributedString, rhs: String) -> NSMutableAttributedString {
     // swiftlint:disable:next force_cast
-    let a = lhs.mutableCopy() as! NSMutableAttributedString
-    let b = NSMutableAttributedString(string: rhs)
-    return a + b
+    let leftMutableAttributedString = lhs.mutableCopy() as! NSMutableAttributedString
+    let rightMutableAttributedString = NSMutableAttributedString(string: rhs)
+    return leftMutableAttributedString + rightMutableAttributedString
   }
 
   /// **Mechanica**
   ///
   /// Returns a `new` NSMutableAttributedString appending the right NSMutableAttributedString to the left String.
   public static func + (lhs: String, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
-    let a = NSMutableAttributedString(string: lhs)
+    let leftMutableAttributedString = NSMutableAttributedString(string: lhs)
     // swiftlint:disable:next force_cast
-    let b = rhs.mutableCopy() as! NSMutableAttributedString
-    return a + b
+    let rightMutableAttributedString = rhs.mutableCopy() as! NSMutableAttributedString
+    return leftMutableAttributedString + rightMutableAttributedString
   }
 
   /// **Mechanica**

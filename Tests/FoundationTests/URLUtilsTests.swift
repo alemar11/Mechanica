@@ -33,7 +33,7 @@ extension URLUtilsTests {
     ]
 }
 
-class URLUtilsTests: XCTestCase {
+final class URLUtilsTests: XCTestCase {
 
   func testQueryParameters() {
     do {

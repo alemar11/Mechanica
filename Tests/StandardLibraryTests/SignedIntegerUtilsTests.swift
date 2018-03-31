@@ -28,7 +28,7 @@ extension SignedIntegerTests {
   static var allTests = [ ("testBinaryString", testBinaryString) ]
 }
 
-class SignedIntegerTests: XCTestCase {
+final class SignedIntegerTests: XCTestCase {
 
   // MARK: - BinaryConvertible
 

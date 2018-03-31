@@ -32,7 +32,7 @@ extension DictionaryUtilsTests {
   ]
 }
 
-class DictionaryUtilsTests: XCTestCase {
+final class DictionaryUtilsTests: XCTestCase {
 
   func testHasKey() {
     do {

@@ -1,5 +1,14 @@
 # Changelog
 
+### 1.6.0
+
+- Swift 4.1 🎉
+- Added CoreGraphics utils.
+- More Sequence utils.
+- Better performance in some RangeReplaceableCollection utils.
+- More tests.
+- Bugfixes.
+
 ### 1.5.0
 
 - Added more UIView utils.

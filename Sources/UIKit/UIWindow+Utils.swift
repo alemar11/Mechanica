@@ -42,7 +42,6 @@ extension UIWindow {
 
       } else if let presentingViewController = viewController?.presentedViewController {
         return visibleViewController(from: presentingViewController)
-        
       }
       return viewController
     }
