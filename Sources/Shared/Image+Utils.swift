@@ -21,13 +21,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if canImport(UIKit)
   import UIKit
   /// **Mechanica**
   ///
   /// Alias for UIImage.
   public typealias Image = UIKit.UIImage
-#elseif os(macOS)
+#elseif canImport(AppKit)
   import AppKit
   /// **Mechanica**
   ///
@@ -58,10 +58,10 @@ extension Image {
   /// Checks if the image has alpha component.
   public var hasAlpha: Bool {
     let result: Bool
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if canImport(UIKit)
       guard let alpha = cgImage?.alphaInfo else { return false }
 
-    #elseif os(macOS)
+    #elseif canImport(AppKit)
       var imageRect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
       guard let imageRef = cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return false }
 
@@ -82,10 +82,10 @@ extension Image {
   ///
   /// Convert the image to data.
   public var data: Data? {
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if canImport(UIKit)
       return hasAlpha ? UIImagePNGRepresentation(self) : UIImageJPEGRepresentation(self, 1.0)
 
-    #elseif os(macOS)
+    #elseif canImport(AppKit)
       guard let data = tiffRepresentation else { return nil }
       let imageFileType: NSBitmapImageRep.FileType = hasAlpha ? .png : .jpeg
 

@@ -21,13 +21,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if canImport(UIKit)
   import UIKit
   /// **Mechanica**
   ///
   /// Alias for UIColor.
   public typealias Color = UIKit.UIColor
-#elseif os(macOS)
+#elseif canImport(AppKit)
   import AppKit
   /// **Mechanica**
   ///
