@@ -79,7 +79,7 @@ extension StringFoundationUtilsTests {
     ("testReplacingCharacters", testReplacingCharacters),
     ("testReplacingFirstOccurrence", testReplacingFirstOccurrence),
     ("testRandom", testRandom),
-    ("testRandomWithRangeLenght", testRandomWithRangeLenght)
+    ("testRandomWithRangelength", testRandomWithRangelength)
   ]
 }
 
@@ -1393,7 +1393,7 @@ final class StringFoundationUtilsTests: XCTestCase {
 
   }
 
-  func testRandomWithRangeLenght() {
+  func testRandomWithRangelength() {
     do {
       let range = UInt32(1)...UInt32(2)
       let randomString = String.random(length: range, charachters: "a")

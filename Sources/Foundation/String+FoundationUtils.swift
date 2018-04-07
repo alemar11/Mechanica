@@ -410,14 +410,14 @@ extension String {
   /// Generates a `new` random `String`.
   ///
   /// - Parameters:
-  ///   - between: The range of possible lenghts for the new string.
+  ///   - between: The range of possible lengths for the new string.
   ///   - base: The characters to be used to generate the new string (the default characters are the alphanumeric ones).
   /// - Returns: A `new` random alphanumeric `String`.
   public static func random(length between: CountableClosedRange<UInt32>, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
-    let randomLenght = UInt32.random(lowerBound: between.lowerBound, upperBound: between.upperBound)
+    let randomlength = UInt32.random(lowerBound: between.lowerBound, upperBound: between.upperBound)
 
-    return random(length: randomLenght, charachters: base)
+    return random(length: randomlength, charachters: base)
   }
 
   #if !os(Linux)

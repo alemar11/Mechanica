@@ -251,7 +251,7 @@ extension String {
   ///  Returns a substring, up to maxLength in length, containing the initial elements of the `String`.
   ///
   ///  - Warning: If maxLength exceeds self.count, the result contains all the elements of self.
-  ///  - parameter maxLength: substring max lenght
+  ///  - parameter maxLength: substring max length.
   ///
   public func prefix(maxLength: Int) -> String {
     guard maxLength > 0 else { return "" }
@@ -347,7 +347,7 @@ extension String {
   ///  Returns a slice, up to maxLength in length, containing the final elements of `String`.
   ///
   ///  - Warning: If maxLength exceeds `String` character count, the result contains all the elements of `String`.
-  ///  - parameter maxLength: substring max lenght
+  ///  - parameter maxLength: substring max length
   public func suffix(maxLength: Int) -> String {
     guard maxLength > 0 else { return "" }
 
