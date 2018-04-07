@@ -68,7 +68,6 @@ extension FloatingPoint {
   ///     piFloat.ceiled(to: 0) -> 4.0
   ///     piFloat.ceiled(to: 5) -> 3.1416
   ///
-  @available(*, deprecated, message: "Use rounded(to:rule:)")
   public func ceiled(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
@@ -88,7 +87,6 @@ extension FloatingPoint {
   ///     piFloat.ceil(to: 0) -> piFloat is 4.0
   ///     piFloat.ceil(to: 5) -> piFloat is 3.1416
   ///
-  @available(*, deprecated, message: "Use round(to:rule:)")
   public mutating func ceil(to decimalPlaces: Int) {
     self = ceiled(to: decimalPlaces)
   }
@@ -104,7 +102,6 @@ extension FloatingPoint {
   ///     piFloat.floored(to: 0) -> 3.0
   ///     piFloat.floored(to: 5) -> 3.14159
   ///
-  @available(*, deprecated, message: "Use rounded(to:rule:)")
   public func floored(to decimalPlaces: Int) -> Self {
     guard decimalPlaces >= 0 else { return self }
     var divisor: Self = 1
@@ -124,7 +121,6 @@ extension FloatingPoint {
   ///     piFloat.floor(to: 0) -> piFloat is 3.0
   ///     piFloat.floor(to: 5) -> piFloat is 3.14159
   ///
-  @available(*, deprecated, message: "Use round(to:rule:)")
   public mutating func floor(to decimalPlaces: Int) {
     self = floored(to: decimalPlaces)
   }
