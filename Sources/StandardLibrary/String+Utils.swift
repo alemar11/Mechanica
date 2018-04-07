@@ -358,16 +358,14 @@ extension String {
   ///  - parameter trailing: optional trailing string
   ///
   public func truncate(at length: Int, withTrailing trailing: String? = "…") -> String {
-
-    switch length {
-    case 0..<self.length:
-      return self.prefix(maxLength: length) + (trailing ?? "")
-    case _ where length >= self.length:
-      return self // no truncation needed
-    default:
-      return ""
+    var truncated = self.prefix(maxLength: length)
+    if 0..<self.length ~= length {
+      if let trailing = trailing {
+         truncated.append(trailing)
+      }
     }
-
+    
+    return truncated
   }
 
   // MARK: - Subscript Methods

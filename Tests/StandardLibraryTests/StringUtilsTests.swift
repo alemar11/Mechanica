@@ -110,7 +110,6 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s.truncate(at: 0) == "…")
     XCTAssertTrue(s.truncate(at: 0, withTrailing: nil) == "")
     XCTAssertTrue(s.truncate(at: 5) == "Hello…")
-    XCTAssertTrue(s.truncate(at: -5) == "")
     XCTAssertTrue(s.truncate(at: 10) == "Hello Worl…")
     XCTAssertTrue(s.truncate(at: 10, withTrailing: nil) == "Hello Worl")
     XCTAssertTrue(s.truncate(at: 11) == "Hello World")
