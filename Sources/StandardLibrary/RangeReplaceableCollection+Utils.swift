@@ -132,30 +132,6 @@ extension RangeReplaceableCollection where Self: MutableCollection {
     return (copy, removed)
   }
 
-  /// **Mechanica**
-  ///
-  /// Removes all the elements that matches the given `condition` and returns all the removed element (if any).
-  /// - Parameters:
-  ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  /// - Note: use `filter` if you don't need the removed element.
-  @available(*, deprecated, message: "Use remove(where:)")
-  @discardableResult
-  public mutating func removeAll(where condition: (Element) -> Bool) -> [Element] {
-    return remove(where: condition)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Removes all the elements that matches the given `condition` and returns a tuple with a `new` collection and the removed elements.
-  /// - Parameters:
-  ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
-  /// - Returns: A tuple with a `new` collection and the removed elements.
-  /// - Note: use `filter` if you don't need the removed element.
-  @available(*, deprecated, message: "Use removing(where:)")
-  public func removingAll(where condition: (Element) -> Bool) -> (Self, [Element]) {
-    return removing(where: condition)
-  }
-
 }
 
 extension RangeReplaceableCollection where Element: Equatable {
