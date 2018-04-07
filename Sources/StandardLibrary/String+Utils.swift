@@ -265,11 +265,11 @@ extension String {
   ///
   /// Example:
   ///
-  ///     "hello".removingPrefix(upToPosition: 1) -> "ello"
-  ///     "hello".removingPrefix(upToPosition: 1) -> ""
+  ///     "hello".droppingPrefix(upToPosition: 1) -> "ello"
+  ///     "hello".droppingPrefix(upToPosition: 1) -> ""
   ///
   ///  - parameter upToPosition: position (included) up to which remove the prefix.
-  public func removingPrefix(upToPosition: Int = 1) -> String {
+  public func droppingPrefix(upToPosition: Int = 1) -> String {
     guard upToPosition >= 0 && upToPosition <= length else { return "" }
 
     //let startIndex = index(self.startIndex, offsetBy: upToPosition)
@@ -286,13 +286,13 @@ extension String {
   ///
   /// Example:
   ///
-  ///     "hello".removingPrefix("hel") -> "lo"
+  ///     "hello".droppingPrefix("hel") -> "lo"
   ///
   ///  - parameter prefix: prefix to be removed.
-  public func removingPrefix(_ prefix: String) -> String {
+  public func droppingPrefix(_ prefix: String) -> String {
     guard hasPrefix(prefix) else { return self }
 
-    return removingPrefix(upToPosition: prefix.length)
+    return droppingPrefix(upToPosition: prefix.length)
   }
 
   #endif
@@ -304,10 +304,10 @@ extension String {
   ///
   /// Example:
   ///
-  ///     "hello".removingSuffix(fromPosition: 1) -> "hell"
-  ///     "hello".removingSuffix(fromPosition: 10) -> ""
+  ///     "hello".droppingSuffix(fromPosition: 1) -> "hell"
+  ///     "hello".droppingSuffix(fromPosition: 10) -> ""
   ///
-  public func removingSuffix(fromPosition: Int = 1) -> String {
+  public func droppingSuffix(fromPosition: Int = 1) -> String {
     guard fromPosition >= 0 && fromPosition <= length else { return "" }
 
     //let startIndex = index(endIndex, offsetBy: -fromPosition)
@@ -324,13 +324,13 @@ extension String {
   ///
   /// Example:
   ///
-  ///     "hello".removingSuffix("0") -> "hell"
+  ///     "hello".droppingSuffix("0") -> "hell"
   ///
   ///  - parameter prefix: prefix to be removed.
-  public func removingSuffix(_ suffix: String) -> String {
+  public func droppingSuffix(_ suffix: String) -> String {
     guard hasSuffix(suffix) else { return self }
 
-    return removingSuffix(fromPosition: suffix.length)
+    return droppingSuffix(fromPosition: suffix.length)
   }
 
   #endif
