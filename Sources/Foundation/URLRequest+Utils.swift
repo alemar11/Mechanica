@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -28,6 +28,7 @@ extension URLRequest {
   /// **Mechanica**
   ///
   /// Returns a cURL command representation of `self`.
+  /// - Note: Logging URL requests in whole may expose sensitive data: make sure to disable this feature for production builds.
   private var cURL: String? { //TODO: work in progress, add a pretty param?
     guard let url = url else { return nil }
 

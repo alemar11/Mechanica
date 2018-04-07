@@ -109,7 +109,7 @@ extension RangeReplaceableCollection where Self: MutableCollection {
       } else {
         removed.append(self[jdx])
       }
-      
+
       jdx = index(after: jdx)
     }
 

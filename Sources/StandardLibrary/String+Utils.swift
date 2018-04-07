@@ -364,7 +364,7 @@ extension String {
          truncated.append(trailing)
       }
     }
-    
+
     return truncated
   }
 

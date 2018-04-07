@@ -37,7 +37,7 @@ extension MutableCollection {
       let distance: IndexDistance = numericCast(mechanica_arc4random_uniform(numericCast(unshuffledCount)))
       #endif
       let indexToSwap = index(firstUnshuffled, offsetBy: distance)
-      
+
       swapAt(firstUnshuffled, indexToSwap)
     }
 
