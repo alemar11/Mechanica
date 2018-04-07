@@ -421,7 +421,6 @@ final class StringFoundationUtilsTests: XCTestCase {
   func testPrefix() {
     do {
       let s = "Hello World 🖖🏽"
-      XCTAssertTrue(s.prefix(maxLength: -100) == "")
       XCTAssertTrue(s.prefix(maxLength: 0) == "")
       XCTAssertTrue(s.prefix(maxLength: 1) == "H")
       XCTAssertTrue(s.prefix(maxLength: 2) == "He")
@@ -449,7 +448,6 @@ final class StringFoundationUtilsTests: XCTestCase {
   func testSuffix() {
     do {
       let s = "Hello World 🖖🏽"
-      XCTAssertTrue(s.suffix(maxLength: -100) == "")
       #if !os(Linux)
         // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
         XCTAssertTrue(s.suffix(maxLength: 0) == "")
@@ -465,7 +463,6 @@ final class StringFoundationUtilsTests: XCTestCase {
 
     do {
       let s = "Hello World ★"
-      XCTAssertTrue(s.suffix(maxLength: -100) == "")
       XCTAssertTrue(s.suffix(maxLength: 0) == "")
       XCTAssertTrue(s.suffix(maxLength: 1) == "★")
       XCTAssertTrue(s.suffix(maxLength: 2) == " ★")
