@@ -28,9 +28,10 @@ extension URLRequest {
   /// **Mechanica**
   ///
   /// Returns a cURL command representation of `self`.
-  private var curl: String { //TODO: work in progress, add a pretty param?
-    guard let url = url else { return "" }
-    var baseCommand = "curl \(url.absoluteString)"
+  private var cURL: String? { //TODO: work in progress, add a pretty param?
+    guard let url = url else { return nil }
+
+    var baseCommand = "curl -i -k \(url.absoluteString)"
 
     if httpMethod == "HEAD" {
       baseCommand += " --head"
@@ -49,6 +50,7 @@ extension URLRequest {
     }
 
     if let data = httpBody, let body = String(data: data, encoding: .utf8) {
+      //let escapedBody = body.replacingOccurrences(of: "'", with: "'\\''")
       command.append("-d '\(body)'")
     }
 
