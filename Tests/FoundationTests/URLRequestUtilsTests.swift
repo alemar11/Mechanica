@@ -50,12 +50,16 @@ final class URLRequestUtilsTests: XCTestCase {
       var request = URLRequest(url: url)
       request.allHTTPHeaderFields = ["Content-Type": "application/json"]
       request.httpMethod = "POST"
-      let body = ["key1": "value1", "key2": "value"]
+      let body = ["key1": "value1", "key2": "value2"]
       let data = try JSONSerialization.data(withJSONObject: body)
       request.httpBody = data
+
       // Then
-      XCTAssertEqual(request.cURL(prettyPrinted: false)!, "curl -i http://localhost:3000/test -X POST -H \'Content-Type: application/json\' -d \'{\"key2\":\"value\",\"key1\":\"value1\"}\'")
-      XCTAssertEqual(request.cURL(prettyPrinted: true)!, "curl -i http://localhost:3000/test \\\n\t-X POST \\\n\t-H \'Content-Type: application/json\' \\\n\t-d \'{\"key2\":\"value\",\"key1\":\"value1\"}\'")
+      let prettyCURL = request.cURL(prettyPrinted: false)!
+      XCTAssertTrue(prettyCURL == "curl -i http://localhost:3000/test -X POST -H \'Content-Type: application/json\' -d \'{\"key2\":\"value2\",\"key1\":\"value1\"}\'" || prettyCURL == "curl -i http://localhost:3000/test -X POST -H \'Content-Type: application/json\' -d \'{\"key1\":\"value1\",\"key2\":\"value2\"}\'")
+
+      let cURL = request.cURL(prettyPrinted: true)!
+      XCTAssertTrue(cURL == "curl -i http://localhost:3000/test \\\n\t-X POST \\\n\t-H \'Content-Type: application/json\' \\\n\t-d \'{\"key2\":\"value2\",\"key1\":\"value1\"}\'" || cURL == "curl -i http://localhost:3000/test \\\n\t-X POST \\\n\t-H \'Content-Type: application/json\' \\\n\t-d \'{\"key1\":\"value1\",\"key2\":\"value2\"}\'")
     }
 
     do {
