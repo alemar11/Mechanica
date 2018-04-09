@@ -35,15 +35,17 @@ final class URLRequestUtilsTests: XCTestCase {
   func testCURL() throws {
     
     do {
+      // Given, When
       let url = URL(string: "https://api.github.com/users/alemar11")!
       var request = URLRequest(url: url)
       request.allHTTPHeaderFields = ["Accept": "application/vnd.github.v3.full+json"]
-      
+      // Then
       XCTAssertEqual(request.cURL(prettyPrinted: false), "curl -i https://api.github.com/users/alemar11 -H 'Accept: application/vnd.github.v3.full+json'")
       XCTAssertEqual(request.cURL(prettyPrinted: true), "curl -i https://api.github.com/users/alemar11 \\\n\t-H 'Accept: application/vnd.github.v3.full+json'")
     }
     
     do {
+      // Given, When
       let url = URL(string: "http://localhost:3000/test")!
       var request = URLRequest(url: url)
       request.allHTTPHeaderFields = ["Content-Type": "application/json"]
@@ -51,16 +53,32 @@ final class URLRequestUtilsTests: XCTestCase {
       let body = ["key1": "value1", "key2": "value"]
       let data = try JSONSerialization.data(withJSONObject: body)
       request.httpBody = data
-      
+      // Then
       XCTAssertEqual(request.cURL(prettyPrinted: false)!, "curl -i http://localhost:3000/test -X POST -H \'Content-Type: application/json\' -d \'{\"key2\":\"value\",\"key1\":\"value1\"}\'")
       XCTAssertEqual(request.cURL(prettyPrinted: true)!, "curl -i http://localhost:3000/test \\\n\t-X POST \\\n\t-H \'Content-Type: application/json\' \\\n\t-d \'{\"key2\":\"value\",\"key1\":\"value1\"}\'")
     }
+
+    do {
+      // Given, When
+      var components = URLComponents(string: "http://localhost:3000/test")!
+      components.queryItems = [
+        URLQueryItem(name: "q1", value: "v1"),
+        URLQueryItem(name: "q2", value: "v2")
+      ]
+      let url = components.url!
+      var request = URLRequest(url: url)
+      request.allHTTPHeaderFields = ["Content-Type": "application/json"]
+      // Then
+      XCTAssertEqual(request.cURL(prettyPrinted: false)!, "curl -i http://localhost:3000/test?q1=v1&q2=v2 -H \'Content-Type: application/json\'")
+      XCTAssertEqual(request.cURL(prettyPrinted: true)!, "curl -i http://localhost:3000/test?q1=v1&q2=v2 \\\n\t-H \'Content-Type: application/json\'")
+    }
     
     do {
+      // Given, When
       let url = URL(string: "http://www.tinrobots.org")!
       var request = URLRequest(url: url)
       request.httpMethod = "HEAD"
-      
+      // Then
       XCTAssertEqual(request.cURL(prettyPrinted: false), "curl -i http://www.tinrobots.org --head")
     }
     
