@@ -32,6 +32,7 @@ XCTMain([
   testCase(ProcessInfoTests.allTests),
   testCase(StatUtilsTests.allTests),
   testCase(StringFoundationUtilsTests.allTests),
+  testCase(URLRequestUtilsTests.allTests),
   testCase(URLUtilsTests.allTests),
   testCase(UserDefaultsUtilsTests.allTests)
   ])

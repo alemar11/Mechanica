@@ -29,10 +29,10 @@ extension URLRequest {
   ///
   /// Returns a cURL command representation of `self`.
   /// - Note: Logging URL requests in whole may expose sensitive data: make sure to disable this feature for production builds.
-  private var cURL: String? { //TODO: work in progress, add a pretty param?
+  public func cURL(prettyPrinted: Bool = false) -> String? {
     guard let url = url else { return nil }
 
-    var baseCommand = "curl -i -k \(url.absoluteString)"
+    var baseCommand = "curl -i \(url.absoluteString)"
 
     if httpMethod == "HEAD" {
       baseCommand += " --head"
@@ -55,7 +55,8 @@ extension URLRequest {
       command.append("-d '\(body)'")
     }
 
-    return command.joined(separator: " \\\n\t")
+    let separator = !prettyPrinted ? " " :  " \\\n\t"
+    return command.joined(separator: separator)
   }
 
 }

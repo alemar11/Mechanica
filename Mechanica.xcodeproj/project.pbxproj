@@ -115,6 +115,9 @@
 		233D622B203378E5005E580C /* UIButtonUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233D6229203378E5005E580C /* UIButtonUtilsTests.swift */; };
 		233D622D203384EA005E580C /* UIViewControllerUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233D622C203384EA005E580C /* UIViewControllerUtilsTests.swift */; };
 		233D622E203384EA005E580C /* UIViewControllerUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233D622C203384EA005E580C /* UIViewControllerUtilsTests.swift */; };
+		234A3B0E207BB63D001CBD51 /* URLRequestUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */; };
+		234A3B0F207BB63D001CBD51 /* URLRequestUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */; };
+		234A3B10207BB63D001CBD51 /* URLRequestUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */; };
 		235DCB8B1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
 		235DCB8C1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
 		235DCB8D1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
@@ -473,6 +476,7 @@
 		233B48BA1E6F1398003D5341 /* Dictionary+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Dictionary+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		233D6229203378E5005E580C /* UIButtonUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonUtilsTests.swift; sourceTree = "<group>"; };
 		233D622C203384EA005E580C /* UIViewControllerUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerUtilsTests.swift; sourceTree = "<group>"; };
+		234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestUtilsTests.swift; sourceTree = "<group>"; };
 		235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "BinaryFloatingPoint+Utils.swift"; sourceTree = "<group>"; };
 		2363FED41F6E76EC0067257A /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		2364077E1FBB11E2003D2AF0 /* UIViewUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewUtilsTests.swift; sourceTree = "<group>"; };
@@ -766,6 +770,7 @@
 				23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */,
 				237E6FA61FC8321F0025F5CD /* StatUtilsTests.swift */,
 				23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */,
+				234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */,
 			);
 			path = FoundationTests;
 			sourceTree = "<group>";
@@ -1462,6 +1467,7 @@
 				23B2ED721EC8CE28006365BD /* NSObjectProtocolUtils.swift in Sources */,
 				23377D0E205075580014A740 /* CGSizeUtilsTests.swift in Sources */,
 				237F17621E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */,
+				234A3B0E207BB63D001CBD51 /* URLRequestUtilsTests.swift in Sources */,
 				237F17861E90000900726553 /* FloatingPointUtilsTests.swift in Sources */,
 				237F17A41E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
 				23CC6B291FA72051004D062B /* ImageUtilsTests.swift in Sources */,
@@ -1517,6 +1523,7 @@
 				237F17631E90000900726553 /* AssociatedValueSupportingTests.swift in Sources */,
 				23377D0F205075580014A740 /* CGSizeUtilsTests.swift in Sources */,
 				23078BED1F20E1480074D955 /* OperatorsTests.swift in Sources */,
+				234A3B0F207BB63D001CBD51 /* URLRequestUtilsTests.swift in Sources */,
 				237F17871E90000900726553 /* FloatingPointUtilsTests.swift in Sources */,
 				23C27C391E9E5BAB006C235E /* UserDefaultsUtilsTests.swift in Sources */,
 				237F17A51E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
@@ -1574,6 +1581,7 @@
 				237F17881E90000900726553 /* FloatingPointUtilsTests.swift in Sources */,
 				23C27C3A1E9E5BAB006C235E /* UserDefaultsUtilsTests.swift in Sources */,
 				23DC2C8A2015056100270CA3 /* CharacterUtilsTests.swift in Sources */,
+				234A3B10207BB63D001CBD51 /* URLRequestUtilsTests.swift in Sources */,
 				237F17A61E90000900726553 /* NSAttributedStringUtilsTests.swift in Sources */,
 				23377D22205084EA0014A740 /* CGFloatUtilsTests.swift in Sources */,
 				23377D10205075580014A740 /* CGSizeUtilsTests.swift in Sources */,
