@@ -26,13 +26,13 @@ import XCTest
 
 extension URLRequestUtilsTests {
   static var allTests = [
-    ("testCURL", testCURL),
+    ("testCURL", testCURLRepresentation),
     ]
 }
 
 final class URLRequestUtilsTests: XCTestCase {
   
-  func testCURL() throws {
+  func testCURLRepresentation() throws {
     
     do {
       // Given, When
@@ -40,8 +40,8 @@ final class URLRequestUtilsTests: XCTestCase {
       var request = URLRequest(url: url)
       request.allHTTPHeaderFields = ["Accept": "application/vnd.github.v3.full+json"]
       // Then
-      XCTAssertEqual(request.cURL(prettyPrinted: false), "curl -i https://api.github.com/users/alemar11 -H 'Accept: application/vnd.github.v3.full+json'")
-      XCTAssertEqual(request.cURL(prettyPrinted: true), "curl -i https://api.github.com/users/alemar11 \\\n\t-H 'Accept: application/vnd.github.v3.full+json'")
+      XCTAssertEqual(request.cURLRepresentation(prettyPrinted: false), "curl -i -H \"Accept: application/vnd.github.v3.full+json\" \"https://api.github.com/users/alemar11\"")
+      XCTAssertEqual(request.cURLRepresentation(prettyPrinted: true), "curl -i \\\n\t-H \"Accept: application/vnd.github.v3.full+json\" \\\n\t\"https://api.github.com/users/alemar11\"")
     }
     
     do {
@@ -55,11 +55,15 @@ final class URLRequestUtilsTests: XCTestCase {
       request.httpBody = data
 
       // Then
-      let prettyCURL = request.cURL(prettyPrinted: false)!
-      XCTAssertTrue(prettyCURL == "curl -i http://localhost:3000/test -X POST -H \'Content-Type: application/json\' -d \'{\"key2\":\"value2\",\"key1\":\"value1\"}\'" || prettyCURL == "curl -i http://localhost:3000/test -X POST -H \'Content-Type: application/json\' -d \'{\"key1\":\"value1\",\"key2\":\"value2\"}\'")
+      let prettyCURL = request.cURLRepresentation(prettyPrinted: false)!
+      let value1 = "curl -i -X POST -H \"Content-Type: application/json\" -d \"{\\\"key1\\\":\\\"value1\\\",\\\"key2\\\":\\\"value2\\\"}\" \"http://localhost:3000/test\""
+      let value2 = "curl -i -X POST -H \"Content-Type: application/json\" -d \"{\\\"key2\\\":\\\"value2\\\",\\\"key1\\\":\\\"value1\\\"}\" \"http://localhost:3000/test\""
+      XCTAssertTrue(prettyCURL == value1 || prettyCURL == value2)
 
-      let cURL = request.cURL(prettyPrinted: true)!
-      XCTAssertTrue(cURL == "curl -i http://localhost:3000/test \\\n\t-X POST \\\n\t-H \'Content-Type: application/json\' \\\n\t-d \'{\"key2\":\"value2\",\"key1\":\"value1\"}\'" || cURL == "curl -i http://localhost:3000/test \\\n\t-X POST \\\n\t-H \'Content-Type: application/json\' \\\n\t-d \'{\"key1\":\"value1\",\"key2\":\"value2\"}\'")
+      let cURL = request.cURLRepresentation(prettyPrinted: true)!
+       let value1_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key1\\\":\\\"value1\\\",\\\"key2\\\":\\\"value2\\\"}\" \\\n\t\"http://localhost:3000/test\""
+      let value2_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key2\\\":\\\"value2\\\",\\\"key1\\\":\\\"value1\\\"}\" \\\n\t\"http://localhost:3000/test\""
+      XCTAssertTrue(cURL == value1_pretty || cURL == value2_pretty)
     }
 
     do {
@@ -73,8 +77,8 @@ final class URLRequestUtilsTests: XCTestCase {
       var request = URLRequest(url: url)
       request.allHTTPHeaderFields = ["Content-Type": "application/json"]
       // Then
-      XCTAssertEqual(request.cURL(prettyPrinted: false)!, "curl -i http://localhost:3000/test?q1=v1&q2=v2 -H \'Content-Type: application/json\'")
-      XCTAssertEqual(request.cURL(prettyPrinted: true)!, "curl -i http://localhost:3000/test?q1=v1&q2=v2 \\\n\t-H \'Content-Type: application/json\'")
+      XCTAssertEqual(request.cURLRepresentation(prettyPrinted: false)!, "curl -i -H \"Content-Type: application/json\" \"http://localhost:3000/test?q1=v1&q2=v2\"")
+      XCTAssertEqual(request.cURLRepresentation(prettyPrinted: true)!, "curl -i \\\n\t-H \"Content-Type: application/json\" \\\n\t\"http://localhost:3000/test?q1=v1&q2=v2\"")
     }
     
     do {
@@ -83,9 +87,22 @@ final class URLRequestUtilsTests: XCTestCase {
       var request = URLRequest(url: url)
       request.httpMethod = "HEAD"
       // Then
-      XCTAssertEqual(request.cURL(prettyPrinted: false), "curl -i http://www.tinrobots.org --head")
+      XCTAssertEqual(request.cURLRepresentation(prettyPrinted: false), "curl -i --head \"http://www.tinrobots.org\"")
+      XCTAssertEqual(request.cURLRepresentation(prettyPrinted: true), "curl -i \\\n\t--head \\\n\t\"http://www.tinrobots.org\"")
     }
     
+  }
+
+  func testCURLRepresentationWithURLSession() throws {
+    // TODO: implement
+  }
+
+  func testCURLRepresentationWithURLCredential() throws {
+    // TODO: implement
+  }
+
+  func testCURLRepresentationWithWithURLSessionAndURLCredential() throws {
+    // TODO: implement
   }
   
 }
