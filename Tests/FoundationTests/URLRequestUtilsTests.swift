@@ -95,6 +95,23 @@ final class URLRequestUtilsTests: XCTestCase {
 
   func testCURLRepresentationWithURLSession() throws {
     // TODO: implement
+    /*
+     https://tools.ietf.org/html/rfc7230#section-3.2.2
+
+     A sender MUST NOT generate multiple header fields with the same field
+     name in a message unless either the entire field value for that
+     header field is defined as a comma-separated list [i.e., #(values)]
+     or the header field is a well-known exception (as noted below).
+
+     A recipient MAY combine multiple header fields with the same field
+     name into one "field-name: field-value" pair, without changing the
+     semantics of the message, by appending each subsequent field value to
+     the combined field value in order, separated by a comma.  The order
+     in which header fields with the same field name are received is
+     therefore significant to the interpretation of the combined field
+     value; a proxy MUST NOT change the order of these field values when
+     forwarding a message.
+     */
   }
 
   func testCURLRepresentationWithURLCredential() throws {
