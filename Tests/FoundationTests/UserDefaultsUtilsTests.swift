@@ -32,7 +32,9 @@ extension UserDefaultsUtilsTests {
     ("testOptionalFloat", testOptionalFloat),
     //("testOptionalBool", testOptionalBool),
     //("testRemoveAll", testRemoveAll),
-    ("testCodable", testCodable)
+    ("testCodableSetAndRemove", testCodableSetAndRemove),
+    ("testCodableSetAndReset", testCodableSetAndReset),
+    ("testCodableSetResetAndRemove", testCodableSetResetAndRemove)
   ]
 }
 
@@ -45,7 +47,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalInteger() {
     let userDefaults = UserDefaults.standard
-    let key = UUID().uuidString
+    let key = "\(#function)\(#line)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10, forKey: key)
@@ -68,7 +70,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalDouble() {
     let userDefaults = UserDefaults.standard
-    let key = UUID().uuidString
+    let key = "\(#function)\(#line)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(Double(10), forKey: key)
@@ -87,7 +89,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalFloat() {
     let userDefaults = UserDefaults.standard
-    let key = UUID().uuidString
+    let key = "\(#function)\(#line)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10.1, forKey: key)
@@ -106,7 +108,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalBool() {
     let userDefaults = UserDefaults.standard
-    let key = UUID().uuidString
+    let key = "\(#function)\(#line)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(true, forKey: key)
@@ -130,7 +132,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   func testRemoveAll() {
     let userDefaults = UserDefaults.standard
-    let key = UUID().uuidString
+    let key = "\(#function)\(#line)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10, forKey: key)
@@ -176,128 +178,108 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   #endif
 
-  @available(iOS 11, tvOS 11, watchOS 4, macOS 10.13, *)
-  func testCodable() {
+  func testCodableSetAndRemove() {
+    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
+
     let userDefaults = UserDefaults.standard
-    do {
-      // Given
-      let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
-      let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
-      let key = "PersonKey"
-      //  When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
-      XCTAssertTrue(userDefaults.hasKey(key))
-      //  Then
-      let codedValue: UserDefaultsUtilsTests.Person? = userDefaults.codableValue(forKey: key)
-      if let codedValue = codedValue {
-        XCTAssertTrue(codedValue == value)
-      } else {
-        XCTAssertNotNil(codedValue)
-      }
+    let key = "\(#function)\(#line)"
 
-      //  When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
-      //  Then
-      XCTAssertTrue(userDefaults.hasKey(key))
-      let codedValue2: UserDefaultsUtilsTests.Person? = userDefaults.codableValue(forKey: key)
-      if let codedValue2 = codedValue2 {
-        XCTAssertTrue(codedValue2 == value2)
-      } else {
-        XCTAssertNotNil(codedValue2)
-      }
-
-      // When
-      let nilValue: UserDefaultsUtilsTests.Person? = nil
-      XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
-      // Then
-      XCTAssertFalse(userDefaults.hasKey(key))
-      // When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
-      XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
-      // Then
-      XCTAssertFalse(userDefaults.hasKey(key))
-    }
-
-
-    #if !os(Linux)
-
-    do {
-      // Given
-      let value = UserDefaultsUtilsTests.CodingPerson(firstname: "name1", surname: "surname1")
-      let value2 = UserDefaultsUtilsTests.CodingPerson(firstname: "name2", surname: "surname2")
-      let key = "CodingPersonKey"
-      //  When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
-      //  Then
-      let codedValue: UserDefaultsUtilsTests.CodingPerson? = userDefaults.codableValue(forKey: key)
-      if let codedValue = codedValue {
-        XCTAssertTrue(codedValue == value)
-      } else {
-        XCTAssertNotNil(codedValue)
-      }
-
-      //  When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
-      //  Then
-      XCTAssertTrue(userDefaults.hasKey(key))
-      let codedValue2: UserDefaultsUtilsTests.CodingPerson? = userDefaults.codableValue(forKey: key)
-      if let codedValue2 = codedValue2 {
-        XCTAssertTrue(codedValue2 == value2)
-      } else {
-        XCTAssertNotNil(codedValue2)
-      }
-
-      // When
-      let nilValue: UserDefaultsUtilsTests.CodingPerson? = nil
-      XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
-      // Then
-      XCTAssertFalse(userDefaults.hasKey(key))
-      // When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
-      XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
-      // Then
-      XCTAssertFalse(userDefaults.hasKey(key))
-    }
-
-    do {
-      // Given
-      let value = UserDefaultsUtilsTests.SecureCodingCodingPerson(firstname: "name1", surname: "surname1")
-      let value2 = UserDefaultsUtilsTests.SecureCodingCodingPerson(firstname: "name2", surname: "surname2")
-      let key = "SecureCodingPersonKey"
-      //  When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
-      //  Then
-      let codedValue: UserDefaultsUtilsTests.SecureCodingCodingPerson? = userDefaults.codableValue(forKey: key)
-      if let codedValue = codedValue {
-        XCTAssertTrue(codedValue == value)
-      } else {
-        XCTAssertNotNil(codedValue)
-      }
-
-      //  When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
-      //  Then
-      XCTAssertTrue(userDefaults.hasKey(key))
-      let codedValue2: UserDefaultsUtilsTests.SecureCodingCodingPerson? = userDefaults.codableValue(forKey: key)
-      if let codedValue2 = codedValue2 {
-        XCTAssertTrue(codedValue2 == value2)
-      } else {
-        XCTAssertNotNil(codedValue2)
-      }
-
-      // When
-      let nilValue: UserDefaultsUtilsTests.SecureCodingCodingPerson? = nil
-      XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
-      // Then
-      XCTAssertFalse(userDefaults.hasKey(key))
-      // When
-      XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
-      XCTAssertNoThrow(try userDefaults.set(codableValue: nilValue, forKey: key))
-      // Then
-      XCTAssertFalse(userDefaults.hasKey(key))
-    }
-    #endif
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+    XCTAssertNoThrow(try userDefaults.set(codableValue: Optional<UserDefaultsUtilsTests.Person>.none, forKey: key))
+    XCTAssertFalse(userDefaults.hasKey(key), "UserDefaults shouldn't have the key \(key) in: \(userDefaults.dictionaryRepresentation().keys).")
   }
+
+  func testCodableSetAndReset() {
+    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
+    let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
+
+    let userDefaults = UserDefaults.standard
+    let key = "\(#function)\(#line)"
+
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+    XCTAssertTrue(userDefaults.hasKey(key))
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
+    XCTAssertTrue(userDefaults.hasKey(key))
+    XCTAssertEqual(userDefaults.codableValue(forKey: key), value2)
+  }
+
+  func testCodableSetResetAndRemove() {
+    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
+    let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
+
+    let userDefaults = UserDefaults.standard
+    let key = "\(#function)\(#line)"
+
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+    XCTAssertTrue(userDefaults.hasKey(key))
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
+    XCTAssertTrue(userDefaults.hasKey(key))
+    XCTAssertEqual(userDefaults.codableValue(forKey: key), value2)
+
+    XCTAssertNoThrow(try userDefaults.set(codableValue: Optional<UserDefaultsUtilsTests.Person>.none, forKey: key))
+    XCTAssertFalse(userDefaults.hasKey(key), "UserDefaults shouldn't have the key \(key) in: \(userDefaults.dictionaryRepresentation().keys).")
+  }
+
+  #if !os(Linux)
+
+  func testCodableWithCodingSetAndReset() {
+    let value = UserDefaultsUtilsTests.CodingPerson(firstname: "name1", surname: "surname1")
+    let value2 = UserDefaultsUtilsTests.CodingPerson(firstname: "name2", surname: "surname2")
+
+    let userDefaults = UserDefaults.standard
+    userDefaults.removeAll()
+    let key = "\(#function)\(#line)"
+
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+    XCTAssertTrue(userDefaults.hasKey(key))
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
+    XCTAssertTrue(userDefaults.hasKey(key))
+    let person2: CodingPerson? = userDefaults.codableValue(forKey: key)
+    
+    XCTAssertEqual(person2, value2)
+  }
+
+  func testCodableWithCodingSetAndRemove() {
+    let value = UserDefaultsUtilsTests.CodingPerson(firstname: "name1", surname: "surname1")
+    let userDefaults = UserDefaults.standard
+
+    userDefaults.removeAll()
+    let key = "\(#function)\(#line)"
+
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+    XCTAssertNoThrow(try userDefaults.set(codableValue: Optional<UserDefaultsUtilsTests.Person>.none, forKey: key))
+    XCTAssertFalse(userDefaults.hasKey(key), "UserDefaults shouldn't have the key \(key) in: \(userDefaults.dictionaryRepresentation().keys).")
+  }
+
+  func testCodableWithSecureCodingSetAndReset() {
+    let value = UserDefaultsUtilsTests.SecureCodingPerson(firstname: "name1", surname: "surname1")
+    let value2 = UserDefaultsUtilsTests.SecureCodingPerson(firstname: "name2", surname: "surname2")
+
+    let userDefaults = UserDefaults.standard
+    userDefaults.removeAll()
+    let key = "\(#function)\(#line)"
+
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+    XCTAssertTrue(userDefaults.hasKey(key))
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
+    XCTAssertTrue(userDefaults.hasKey(key))
+    let person2: UserDefaultsUtilsTests.SecureCodingPerson? = userDefaults.codableValue(forKey: key)
+    XCTAssertEqual(person2, value2)
+  }
+
+  func testCodableWithSecureCodingSetAndRemove() {
+    let value = UserDefaultsUtilsTests.SecureCodingPerson(firstname: "name1", surname: "surname1")
+    let userDefaults = UserDefaults.standard
+
+    userDefaults.removeAll()
+    let key = "\(#function)\(#line)"
+
+    XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+    XCTAssertNoThrow(try userDefaults.set(codableValue: Optional<UserDefaultsUtilsTests.Person>.none, forKey: key))
+    XCTAssertFalse(userDefaults.hasKey(key), "UserDefaults shouldn't have the key \(key) in: \(userDefaults.dictionaryRepresentation().keys).")
+  }
+
+  #endif
 
 }
 
@@ -305,7 +287,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
 extension UserDefaultsUtilsTests {
 
-  class Person: Codable {
+  class Person: Codable, Equatable {
 
     let surname: String
     let firstname: String
@@ -347,14 +329,17 @@ extension UserDefaultsUtilsTests {
       aCoder.encode(surname, forKey: #keyPath(CodingPerson.surname))
     }
 
-    static func == (left: CodingPerson, right: CodingPerson) -> Bool {
-      return left.firstname == right.firstname && left.surname == right.surname
+    override func isEqual(_ object: Any?) -> Bool {
+      if let rhs = object as? CodingPerson {
+        return surname == rhs.surname && firstname == rhs.firstname
+      }
+      return false
     }
 
   }
 
-  @objc(SecureCodingCodingPerson)
-  class SecureCodingCodingPerson: NSObject, NSSecureCoding, Codable {
+  @objc(SecureCodingPerson)
+  class SecureCodingPerson: NSObject, NSSecureCoding, Codable {
 
     static var supportsSecureCoding = true
 
@@ -371,8 +356,8 @@ extension UserDefaultsUtilsTests {
 
     required init?(coder aDecoder: NSCoder) {
       guard
-        let firstnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecureCodingCodingPerson.firstname))),
-        let surnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecureCodingCodingPerson.surname)))
+        let firstnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecureCodingPerson.firstname))),
+        let surnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecureCodingPerson.surname)))
         else {
           return nil
       }
@@ -382,12 +367,15 @@ extension UserDefaultsUtilsTests {
     }
 
     func encode(with aCoder: NSCoder) {
-      aCoder.encode(firstname, forKey: #keyPath(SecureCodingCodingPerson.firstname))
-      aCoder.encode(surname, forKey: #keyPath(SecureCodingCodingPerson.surname))
+      aCoder.encode(firstname, forKey: #keyPath(SecureCodingPerson.firstname))
+      aCoder.encode(surname, forKey: #keyPath(SecureCodingPerson.surname))
     }
 
-    static func == (left: SecureCodingCodingPerson, right: SecureCodingCodingPerson) -> Bool {
-      return left.firstname == right.firstname && left.surname == right.surname
+    override func isEqual(_ object: Any?) -> Bool {
+      if let rhs = object as? SecureCodingPerson {
+        return surname == rhs.surname && firstname == rhs.firstname
+      }
+      return false
     }
 
   }

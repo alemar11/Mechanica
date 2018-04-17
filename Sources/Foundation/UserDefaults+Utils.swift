@@ -98,6 +98,7 @@ extension UserDefaults {
   /// - Note: The returned object is decoded from a JSON rapresentation.
   public final func codableValue<T: Codable>(forKey defaultName: String) -> T? {
     guard let encodedData = data(forKey: defaultName) else { return nil }
+    
     return try? JSONDecoder().decode(T.self, from: encodedData)
   }
 
@@ -111,15 +112,11 @@ extension UserDefaults {
   /// - Throws: An error if any value throws an error during encoding.
   /// - Note: The object is encoded as a JSON.
   public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String) throws {
-    if let value = value {
-      do {
-        let encodedData = try JSONEncoder().encode(value)
-        set(encodedData, forKey: defaultName)
-      } catch {
-        throw error
-      }
-
-    } else {
+    switch value {
+    case .some(let value):
+      let encodedData = try JSONEncoder().encode(value)
+      set(encodedData, forKey: defaultName)
+    case .none:
       removeObject(forKey: defaultName)
     }
   }
