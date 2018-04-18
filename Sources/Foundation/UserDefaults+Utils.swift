@@ -97,9 +97,9 @@ extension UserDefaults {
   /// - Parameter defaultName: A key in the current user's defaults database.
   /// - Note: The returned object is decoded from a JSON rapresentation.
   public final func codableValue<T: Codable>(forKey defaultName: String) -> T? {
-    guard let encodedData = data(forKey: defaultName) else { return nil }
-    
-    return try? JSONDecoder().decode(T.self, from: encodedData)
+    guard let string = string(forKey: defaultName), let data = string.data(using: .utf8) else { return nil }
+
+    return try? JSONDecoder().decode(T.self, from: data)
   }
 
   /// **Mechanica**
@@ -114,8 +114,9 @@ extension UserDefaults {
   public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String) throws {
     switch value {
     case .some(let value):
-      let encodedData = try JSONEncoder().encode(value)
-      set(encodedData, forKey: defaultName)
+      let data = try JSONEncoder().encode(value)
+      let string = String(data: data, encoding: .utf8)
+      set(string, forKey: defaultName)
     case .none:
       removeObject(forKey: defaultName)
     }

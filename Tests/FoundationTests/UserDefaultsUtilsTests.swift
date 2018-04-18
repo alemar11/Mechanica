@@ -179,7 +179,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
   #endif
 
   func testCodableSetAndRemove() {
-    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
+    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1", url: URL(string: "http:www.tinrobots.org")!)
 
     let userDefaults = UserDefaults.standard
     let key = "\(#function)\(#line)"
@@ -190,8 +190,8 @@ final class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testCodableSetAndReset() {
-    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
-    let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
+    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1", url: URL(string: "http:www.tinrobots.org")!)
+    let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2", url: URL(string:"http:www.tinrobots2.org")!)
 
     let userDefaults = UserDefaults.standard
     let key = "\(#function)\(#line)"
@@ -204,8 +204,8 @@ final class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testCodableSetResetAndRemove() {
-    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1")
-    let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2")
+    let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1", url: URL(string: "http:www.tinrobots.org")!)
+    let value2 = UserDefaultsUtilsTests.Person(firstname: "name2", surname: "surname2", url: URL(string: "http:www.tinrobots2.org")!)
 
     let userDefaults = UserDefaults.standard
     let key = "\(#function)\(#line)"
@@ -223,8 +223,8 @@ final class UserDefaultsUtilsTests: XCTestCase {
   #if !os(Linux)
 
   func testCodableWithCodingSetAndReset() {
-    let value = UserDefaultsUtilsTests.CodingPerson(firstname: "name1", surname: "surname1")
-    let value2 = UserDefaultsUtilsTests.CodingPerson(firstname: "name2", surname: "surname2")
+    let value = UserDefaultsUtilsTests.CodingPerson(firstname: "name1", surname: "surname1", url: URL(string: "http:www.tinrobots.org")!)
+    let value2 = UserDefaultsUtilsTests.CodingPerson(firstname: "name2", surname: "surname2", url: URL(string: "http:www.tinrobots2.org")!)
 
     let userDefaults = UserDefaults.standard
     userDefaults.removeAll()
@@ -240,7 +240,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testCodableWithCodingSetAndRemove() {
-    let value = UserDefaultsUtilsTests.CodingPerson(firstname: "name1", surname: "surname1")
+    let value = UserDefaultsUtilsTests.CodingPerson(firstname: "name1", surname: "surname1", url: URL(string: "http:www.tinrobots2.org")!)
     let userDefaults = UserDefaults.standard
 
     userDefaults.removeAll()
@@ -252,8 +252,8 @@ final class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testCodableWithSecureCodingSetAndReset() {
-    let value = UserDefaultsUtilsTests.SecureCodingPerson(firstname: "name1", surname: "surname1")
-    let value2 = UserDefaultsUtilsTests.SecureCodingPerson(firstname: "name2", surname: "surname2")
+    let value = UserDefaultsUtilsTests.SecureCodingPerson(firstname: "name1", surname: "surname1", url: URL(string: "http:www.tinrobots.org")!)
+    let value2 = UserDefaultsUtilsTests.SecureCodingPerson(firstname: "name2", surname: "surname2", url: URL(string: "http:www.tinrobots2.org")!)
 
     let userDefaults = UserDefaults.standard
     userDefaults.removeAll()
@@ -268,7 +268,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testCodableWithSecureCodingSetAndRemove() {
-    let value = UserDefaultsUtilsTests.SecureCodingPerson(firstname: "name1", surname: "surname1")
+    let value = UserDefaultsUtilsTests.SecureCodingPerson(firstname: "name1", surname: "surname1", url: URL(string: "http:www.tinrobots.org")!)
     let userDefaults = UserDefaults.standard
 
     userDefaults.removeAll()
@@ -291,14 +291,16 @@ extension UserDefaultsUtilsTests {
 
     let surname: String
     let firstname: String
+    let url: URL
 
-    required init(firstname:String, surname:String) {
+    required init(firstname: String, surname: String, url: URL) {
       self.firstname = firstname
       self.surname = surname
+      self.url = url
     }
 
     static func == (left: Person, right: Person) -> Bool {
-      return left.firstname == right.firstname && left.surname == right.surname
+      return left.firstname == right.firstname && left.surname == right.surname && left.url == right.url
     }
 
   }
@@ -314,24 +316,30 @@ extension UserDefaultsUtilsTests {
     @objc
     let firstname: String
 
-    required init(firstname:String, surname:String) {
+    @objc
+    let url: URL
+
+    required init(firstname: String, surname: String, url: URL) {
       self.firstname = firstname
       self.surname = surname
+      self.url = url
     }
 
     required init?(coder aDecoder: NSCoder) {
       firstname = aDecoder.decodeObject(forKey: #keyPath(CodingPerson.firstname)) as! String
       surname = aDecoder.decodeObject(forKey: #keyPath(CodingPerson.surname)) as! String
+      url = aDecoder.decodeObject(forKey: #keyPath(CodingPerson.url)) as! URL
     }
 
     func encode(with aCoder: NSCoder) {
       aCoder.encode(firstname, forKey: #keyPath(CodingPerson.firstname))
       aCoder.encode(surname, forKey: #keyPath(CodingPerson.surname))
+      aCoder.encode(url, forKey: #keyPath(CodingPerson.url))
     }
 
     override func isEqual(_ object: Any?) -> Bool {
       if let rhs = object as? CodingPerson {
-        return surname == rhs.surname && firstname == rhs.firstname
+        return surname == rhs.surname && firstname == rhs.firstname && rhs.url == url
       }
       return false
     }
@@ -349,21 +357,27 @@ extension UserDefaultsUtilsTests {
     @objc
     let firstname: String
 
-    required init(firstname:String, surname:String) {
+    @objc
+    let url: URL
+
+    required init(firstname: String, surname: String, url: URL) {
       self.firstname = firstname
       self.surname = surname
+      self.url = url
     }
 
     required init?(coder aDecoder: NSCoder) {
       guard
         let firstnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecureCodingPerson.firstname))),
-        let surnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecureCodingPerson.surname)))
+        let surnameDecoded = aDecoder.decodeObject(of: NSString.self, forKey: (#keyPath(SecureCodingPerson.surname))),
+        let urlDecoded = aDecoder.decodeObject(of: NSURL.self, forKey: (#keyPath(SecureCodingPerson.url)))
         else {
           return nil
       }
 
       self.firstname = firstnameDecoded as String
       self.surname = surnameDecoded as String
+      self.url = urlDecoded as URL
     }
 
     func encode(with aCoder: NSCoder) {
@@ -373,7 +387,7 @@ extension UserDefaultsUtilsTests {
 
     override func isEqual(_ object: Any?) -> Bool {
       if let rhs = object as? SecureCodingPerson {
-        return surname == rhs.surname && firstname == rhs.firstname
+        return surname == rhs.surname && firstname == rhs.firstname && rhs.url == url
       }
       return false
     }
