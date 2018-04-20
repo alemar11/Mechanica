@@ -29,6 +29,7 @@ extension URLRequest {
   ///
   /// Returns a cURL command representation of `self`.
   /// - Note: Logging URL requests in whole may expose sensitive data: make sure to disable this feature for production builds.
+  // swiftlint:disable:next cyclomatic_complexity
   func cURLRepresentation(session: URLSession? = nil, credential: URLCredential? = nil, prettyPrinted: Bool = false) -> String? {
     var components = ["curl -i"]
     guard let url = url else { return nil }
