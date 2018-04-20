@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if canImport(UIKit)
   import UIKit
   /// **Mechanica**
   ///
@@ -32,7 +32,7 @@
   ///
   /// Alias for UIFontDescriptorSymbolicTraits.
   public typealias FontDescriptorSymbolicTraits = UIKit.UIFontDescriptorSymbolicTraits
-#elseif os(macOS)
+#elseif canImport(AppKit)
   import AppKit
   /// **Mechanica**
   ///

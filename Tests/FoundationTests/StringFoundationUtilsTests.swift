@@ -79,7 +79,7 @@ extension StringFoundationUtilsTests {
     ("testReplacingCharacters", testReplacingCharacters),
     ("testReplacingFirstOccurrence", testReplacingFirstOccurrence),
     ("testRandom", testRandom),
-    ("testRandomWithRangeLenght", testRandomWithRangeLenght)
+    ("testRandomWithRangelength", testRandomWithRangelength)
   ]
 }
 
@@ -421,7 +421,6 @@ final class StringFoundationUtilsTests: XCTestCase {
   func testPrefix() {
     do {
       let s = "Hello World 🖖🏽"
-      XCTAssertTrue(s.prefix(maxLength: -100) == "")
       XCTAssertTrue(s.prefix(maxLength: 0) == "")
       XCTAssertTrue(s.prefix(maxLength: 1) == "H")
       XCTAssertTrue(s.prefix(maxLength: 2) == "He")
@@ -449,7 +448,6 @@ final class StringFoundationUtilsTests: XCTestCase {
   func testSuffix() {
     do {
       let s = "Hello World 🖖🏽"
-      XCTAssertTrue(s.suffix(maxLength: -100) == "")
       #if !os(Linux)
         // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
         XCTAssertTrue(s.suffix(maxLength: 0) == "")
@@ -465,7 +463,6 @@ final class StringFoundationUtilsTests: XCTestCase {
 
     do {
       let s = "Hello World ★"
-      XCTAssertTrue(s.suffix(maxLength: -100) == "")
       XCTAssertTrue(s.suffix(maxLength: 0) == "")
       XCTAssertTrue(s.suffix(maxLength: 1) == "★")
       XCTAssertTrue(s.suffix(maxLength: 2) == " ★")
@@ -1117,41 +1114,41 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("è".removingAccentsOrDiacritics() == "e")
   }
 
-  func testRemovingPrefix() {
+  func testdroppingPrefix() {
 
     let s = "hello"
-    XCTAssertTrue(s.removingPrefix(upToPosition: 0) == "hello")
-    XCTAssertTrue(s.removingPrefix() == "ello")
-    XCTAssertTrue(s.removingPrefix(upToPosition: 1) == "ello")
-    XCTAssertTrue(s.removingPrefix(upToPosition: 3) == "lo")
-    XCTAssertTrue(s.removingPrefix(upToPosition: 5) == "")
-    XCTAssertTrue(s.removingPrefix(upToPosition: 100) == "")
-    XCTAssertTrue(s.removingPrefix(upToPosition: -1) == "")
-    XCTAssertTrue("".removingPrefix(upToPosition: 1) == "")
-    XCTAssertTrue(s.removingPrefix("") == "hello")
-    XCTAssertTrue(s.removingPrefix("h") == "ello")
-    XCTAssertTrue(s.removingPrefix("hel") == "lo")
-    XCTAssertTrue(s.removingPrefix("abc") == "hello")
-    XCTAssertTrue(s.removingPrefix("\n") == "hello")
-    XCTAssertTrue("\na".removingPrefix("\n") == "a")
+    XCTAssertTrue(s.droppingPrefix(upToPosition: 0) == "hello")
+    XCTAssertTrue(s.droppingPrefix() == "ello")
+    XCTAssertTrue(s.droppingPrefix(upToPosition: 1) == "ello")
+    XCTAssertTrue(s.droppingPrefix(upToPosition: 3) == "lo")
+    XCTAssertTrue(s.droppingPrefix(upToPosition: 5) == "")
+    XCTAssertTrue(s.droppingPrefix(upToPosition: 100) == "")
+    XCTAssertTrue(s.droppingPrefix(upToPosition: -1) == "")
+    XCTAssertTrue("".droppingPrefix(upToPosition: 1) == "")
+    XCTAssertTrue(s.droppingPrefix("") == "hello")
+    XCTAssertTrue(s.droppingPrefix("h") == "ello")
+    XCTAssertTrue(s.droppingPrefix("hel") == "lo")
+    XCTAssertTrue(s.droppingPrefix("abc") == "hello")
+    XCTAssertTrue(s.droppingPrefix("\n") == "hello")
+    XCTAssertTrue("\na".droppingPrefix("\n") == "a")
   }
 
-  func testRemovingSuffix() {
+  func testdroppingSuffix() {
 
     let s = "hello"
-    XCTAssertTrue(s.removingSuffix(fromPosition: 0) == "hello")
-    XCTAssertTrue(s.removingSuffix() == "hell")
-    XCTAssertTrue(s.removingSuffix(fromPosition: 1) == "hell")
-    XCTAssertTrue(s.removingSuffix(fromPosition: 3) == "he")
-    XCTAssertTrue(s.removingSuffix(fromPosition: 5) == "")
-    XCTAssertTrue(s.removingSuffix(fromPosition: 100) == "")
-    XCTAssertTrue(s.removingSuffix(fromPosition: -1) == "")
-    XCTAssertTrue("".removingSuffix(fromPosition: 1) == "")
-    XCTAssertTrue(s.removingSuffix("abc") == "hello")
-    XCTAssertTrue(s.removingSuffix("o") == "hell")
-    XCTAssertTrue(s.removingSuffix("llo") == "he")
-    XCTAssertTrue(s.removingSuffix("hello") == "")
-    XCTAssertTrue("\na".removingSuffix("a") == "\n")
+    XCTAssertTrue(s.droppingSuffix(fromPosition: 0) == "hello")
+    XCTAssertTrue(s.droppingSuffix() == "hell")
+    XCTAssertTrue(s.droppingSuffix(fromPosition: 1) == "hell")
+    XCTAssertTrue(s.droppingSuffix(fromPosition: 3) == "he")
+    XCTAssertTrue(s.droppingSuffix(fromPosition: 5) == "")
+    XCTAssertTrue(s.droppingSuffix(fromPosition: 100) == "")
+    XCTAssertTrue(s.droppingSuffix(fromPosition: -1) == "")
+    XCTAssertTrue("".droppingSuffix(fromPosition: 1) == "")
+    XCTAssertTrue(s.droppingSuffix("abc") == "hello")
+    XCTAssertTrue(s.droppingSuffix("o") == "hell")
+    XCTAssertTrue(s.droppingSuffix("llo") == "he")
+    XCTAssertTrue(s.droppingSuffix("hello") == "")
+    XCTAssertTrue("\na".droppingSuffix("a") == "\n")
 
   }
 
@@ -1393,7 +1390,7 @@ final class StringFoundationUtilsTests: XCTestCase {
 
   }
 
-  func testRandomWithRangeLenght() {
+  func testRandomWithRangelength() {
     do {
       let range = UInt32(1)...UInt32(2)
       let randomString = String.random(length: range, charachters: "a")

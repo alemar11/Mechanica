@@ -21,13 +21,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if canImport(UIKit)
   import UIKit
   /// **Mechanica**
   ///
   /// Alias for UIColor.
   public typealias Color = UIKit.UIColor
-#elseif os(macOS)
+#elseif canImport(AppKit)
   import AppKit
   /// **Mechanica**
   ///
@@ -53,7 +53,7 @@ extension Color {
     // drand48() generates a random number between 0 to 1
     let red = CGFloat(drand48()), green = CGFloat(drand48()), blue = CGFloat(drand48()), alpha = randomAlpha ? CGFloat(drand48()) : 1.0
 
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if canImport(UIKit)
       return self.init(red: red, green: green, blue: blue, alpha: alpha)
     #else
       return self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
@@ -89,7 +89,7 @@ extension Color {
 
     guard let color = compatibleSRGBColor else { return nil }
 
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if canImport(UIKit)
       guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else { return nil }
     #elseif os(macOS)
       color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
@@ -106,7 +106,7 @@ extension Color {
   public final func convertedToCompatibleSRGBColor() -> Color? {
     let convertedColor: Color?
 
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if canImport(UIKit)
       guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) else { return nil }
       if cgColor.colorSpace == colorSpace {
         convertedColor  = self
@@ -148,7 +148,7 @@ extension Color {
     let green = CGFloat((hex & 0x00FF00) >> 8) / 255
     let blue  = CGFloat(hex & 0x0000FF) / 255
 
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if canImport(UIKit)
       self.init(red: red, green: green, blue: blue, alpha: alpha)
 
     #else
@@ -210,7 +210,7 @@ extension Color {
   public final var hsba: HSBA? {
     var hue: CGFloat = .nan, saturation: CGFloat = .nan, brightness: CGFloat = .nan, alpha: CGFloat = .nan
 
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if canImport(UIKit)
       guard self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) else { return nil }
 
     #else

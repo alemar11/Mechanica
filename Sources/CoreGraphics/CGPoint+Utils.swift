@@ -55,8 +55,10 @@
     ///   - secondPoint: The second point that defines a straight line.
     /// - Returns: *true* if `self` lies on the straigth lined defined by `firstPoint` and `secondPoint`.
     public func isOnStraightLine(passingThrough firstPoint: CGPoint, and secondPoint: CGPoint) -> Bool {
+      // swiftlint:disable identifier_name
       let v1 =  (firstPoint.y - self.y) * (firstPoint.x - secondPoint.x)
       let v2 = (firstPoint.y - secondPoint.y) * (firstPoint.x - self.x)
+      // swiftlint:enable identifier_name
       return v1 == v2
     }
   }

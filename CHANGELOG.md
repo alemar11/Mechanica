@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.7.0 (WIP)
+- Added cURL representation.
+- More String utils.
+- More tests.
+- Bugfixes.
+
 ### 1.6.0
 
 - Swift 4.1 🎉

@@ -45,14 +45,12 @@ extension FixedWidthInteger {
   var binaryString: String {
     var result: [String] = []
 
-    // swiftlint:disable variable_name
     for i in 0..<(Self.bitWidth / 8) {
       let byte = UInt8(truncatingIfNeeded: self >> (i * 8))
       let byteString = String(byte, radix: 2)
       let padding = String(repeating: "0", count: 8 - byteString.count)
       result.append(padding + byteString)
     }
-    // swiftlint:enable variable_name
 
     //return "0b" + result.reversed().joined(separator: "_")
      return result.reversed().joined(separator: "")

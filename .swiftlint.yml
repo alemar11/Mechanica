@@ -36,4 +36,17 @@ type_name:
     warning: 50
     error: 50
 
+identifier_name:
+  excluded:
+    - id
+    - i
+    - j
+    - k
+
+  explicit_failure_calls:
+    name: "Avoid asserting 'false'"
+    regex: '((assert|precondition)\(false)'
+    message: "Use assertionFailure() or preconditionFailure() instead."
+    severity: warning  
+
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
