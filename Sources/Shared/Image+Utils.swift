@@ -80,6 +80,11 @@ extension Image {
 
   /// **Mechanica**
   ///
+  /// Returns whether the image is opaque.
+  public var isOpaque: Bool { return !hasAlpha }
+
+  /// **Mechanica**
+  ///
   /// Convert the image to data.
   public var data: Data? {
     #if canImport(UIKit)

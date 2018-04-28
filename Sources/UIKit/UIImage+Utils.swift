@@ -60,6 +60,110 @@ extension UIImage {
      */
   }
 
-}
+  /// **Mechanica**
+  ///
+  /// Returns a new version of the image scaled to the specified size.
+  ///
+  /// - parameter size: The size to use when scaling the new image.
+  /// - returns: A new image object.
+  public func scaled(to size: CGSize) -> UIImage {
+    assert(size.width > 0 && size.height > 0, "An image with zero width or height cannot be scaled properly.")
+
+    UIGraphicsBeginImageContextWithOptions(size, isOpaque, 0.0)
+    draw(in: CGRect(origin: .zero, size: size))
+
+    let scaledImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
+    UIGraphicsEndImageContext()
+
+    return scaledImage
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a new version of the image scaled to fit the specified size by changing the aspect ratio of the content if necessary.
+  ///
+  /// - parameter size: The size to use when scaling the new image.
+  /// - returns: A new image object.
+  public func scaled(toFill size: CGSize) -> UIImage {
+    assert(size.width > 0 && size.height > 0, "An image with zero width or height cannot be scaled properly.")
+
+    let aspectWidth = size.width / self.size.width;
+    let aspectHeight = size.height / self.size.height;
+    let aspectRatio = max(aspectWidth, aspectHeight)
+
+    return scaled(to:  CGSize(width: self.size.width * aspectRatio, height: self.size.height * aspectRatio))
+  }
+
+  /// **Mechanica**
+  ///
+    /// Returns a new version of the image scaled from the center while maintaining the aspect ratio to fit within
+    /// a specified size.
+    ///
+    /// The resulting image contains an alpha component used to pad the width or height with the necessary transparent
+    /// pixels to fit the specified size.
+    ///
+    /// - parameter size: The size to use when scaling the new image.
+    ///
+    /// - returns: A new image object.
+    public func aspectScaled(toFit size: CGSize) -> UIImage {
+      assert(size.width > 0 && size.height > 0, "An image with zero width or height cannot be scaled properly.")
+
+      let imageAspectRatio = self.size.width / self.size.height
+      let canvasAspectRatio = size.width / size.height
+
+      var resizeFactor: CGFloat
+
+      if imageAspectRatio > canvasAspectRatio {
+        resizeFactor = size.width / self.size.width
+      } else {
+        resizeFactor = size.height / self.size.height
+      }
+
+      let scaledSize = CGSize(width: self.size.width * resizeFactor, height: self.size.height * resizeFactor)
+      let origin = CGPoint(x: (size.width - scaledSize.width) / 2.0, y: (size.height - scaledSize.height) / 2.0)
+
+      UIGraphicsBeginImageContextWithOptions(size, false, 0.0) // TODO: opaque as optional
+      draw(in: CGRect(origin: origin, size: scaledSize))
+
+      let scaledImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
+      UIGraphicsEndImageContext()
+
+      return scaledImage
+    }
+
+    /// Returns a new version of the image scaled from the center while maintaining the aspect ratio to fill a
+    /// specified size. Any pixels that fall outside the specified size are clipped.
+    ///
+    /// - parameter size: The size to use when scaling the new image.
+    ///
+    /// - returns: A new image object.
+    public func aspectScaled(toFill size: CGSize) -> UIImage {
+      assert(size.width > 0 && size.height > 0, "An image with zero width or height cannot be scaled properly.")
+
+      let imageAspectRatio = self.size.width / self.size.height
+      let canvasAspectRatio = size.width / size.height
+
+      var resizeFactor: CGFloat
+
+      if imageAspectRatio > canvasAspectRatio {
+        resizeFactor = size.height / self.size.height
+      } else {
+        resizeFactor = size.width / self.size.width
+      }
+
+      let scaledSize = CGSize(width: self.size.width * resizeFactor, height: self.size.height * resizeFactor)
+      let origin = CGPoint(x: (size.width - scaledSize.width) / 2.0, y: (size.height - scaledSize.height) / 2.0)
+
+      UIGraphicsBeginImageContextWithOptions(size, isOpaque, 0.0)
+      draw(in: CGRect(origin: origin, size: scaledSize))
+
+      let scaledImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
+      UIGraphicsEndImageContext()
+
+      return scaledImage
+    }
+  }
+
+
 
 #endif
