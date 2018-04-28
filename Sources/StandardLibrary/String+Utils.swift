@@ -111,8 +111,8 @@ extension String {
   public func padding(length: Int, with token: String = " ") -> String {
     guard count < length else { return self }
 
-    let delta = Int(ceil(Double(length-count)/2))
-    return paddingStart(length: length-delta, with: token).paddingEnd(length: length, with: token)
+    let delta = Int(ceil(Double(length - count) / 2))
+    return paddingStart(length: length - delta, with: token).paddingEnd(length: length, with: token)
   }
 
   /// **Mechanica**
@@ -270,8 +270,8 @@ extension String {
   public func droppingPrefix(upToPosition: Int = 1) -> String {
     guard upToPosition >= 0 && upToPosition <= length else { return "" }
 
-    //let startIndex = index(self.startIndex, offsetBy: upToPosition)
-    //return String(self[startIndex...])
+    // let startIndex = index(self.startIndex, offsetBy: upToPosition)
+    // return String(self[startIndex...])
     return String(dropFirst(upToPosition))
   }
 
@@ -308,8 +308,8 @@ extension String {
   public func droppingSuffix(fromPosition: Int = 1) -> String {
     guard fromPosition >= 0 && fromPosition <= length else { return "" }
 
-    //let startIndex = index(endIndex, offsetBy: -fromPosition)
-    //return String(self[..<startIndex])
+    // let startIndex = index(endIndex, offsetBy: -fromPosition)
+    // return String(self[..<startIndex])
     return String(dropLast(fromPosition))
   }
 
@@ -515,7 +515,7 @@ extension String {
   ///   Returns a substring for the given range.
   /// Creates a `new` string representing the given string repeated the specified number of times.
   public static func * (lhs: String, rhs: Int) -> String {
-    return  String(repeating: lhs, count: rhs)
+    return String(repeating: lhs, count: rhs)
   }
 
   /// **Mechanica**
@@ -523,7 +523,7 @@ extension String {
   ///   Returns a substring for the given range.
   /// Creates a `new` string representing the given string repeated the specified number of times.
   public static func * (lhs: Int, rhs: String) -> String {
-    return  String(repeating: rhs, count: lhs)
+    return String(repeating: rhs, count: lhs)
   }
 
 }

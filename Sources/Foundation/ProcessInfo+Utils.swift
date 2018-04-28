@@ -29,7 +29,7 @@ extension ProcessInfo {
   ///
   ///  Returns true if SwiftPackage tests are running.
   public static var isRunningSwiftPackageTests: Bool {
-    let testArguments = processInfo.arguments.filter { $0.ends(with: "xctest")}
+    let testArguments = processInfo.arguments.filter { $0.ends(with: "xctest") }
     return processInfo.environment["XCTestConfigurationFilePath"] == nil && testArguments.count > 0
   }
 

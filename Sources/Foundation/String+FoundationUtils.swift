@@ -70,6 +70,7 @@ extension String {
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
   public func capitalizedFirstCharacter() -> String {
     guard !isEmpty else { return self }
+
     let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
     let result = capitalizedFirstCharacher + String(dropFirst())
 
@@ -90,7 +91,7 @@ extension String {
   ///  - Returns: A `new` string where all white spaces repetitions are replaced with a single white space.
   public func condensingExcessiveSpaces() -> String {
     let components = self.components(separatedBy: .whitespaces)
-    let filtered = components.filter {!$0.isEmpty}
+    let filtered = components.filter { !$0.isEmpty }
 
     return filtered.joined(separator: " ")
   }
@@ -103,7 +104,7 @@ extension String {
   ///  - Returns: A `new` string where all white spaces and new lines repetitions are replaced with a single white space.
   public func condensingExcessiveSpacesAndNewlines() -> String {
     let components = self.components(separatedBy: .whitespacesAndNewlines)
-    let filtered = components.filter {!$0.isBlank}
+    let filtered = components.filter { !$0.isBlank }
 
     return filtered.joined(separator: " ")
   }
@@ -133,8 +134,10 @@ extension String {
   /// - Returns: *true* if all the characters in the string belong to the `CharacterSet`, otherwise false.
   public func containsCharacters(in characterSet: CharacterSet) -> Bool {
     guard !isEmpty else { return false }
+
     for scalar in unicodeScalars {
       guard characterSet.contains(scalar) else { return false }
+
     }
 
     return true
@@ -479,7 +482,7 @@ extension String {
   /// Returns a `new` string in which the characters in a specified `CountableClosedRange` range of the String are replaced by a given string.
   public func replacingCharacters(in range: CountableClosedRange<Int>, with replacement: String) -> String {
     let start = index(startIndex, offsetBy: range.lowerBound)
-    let end   = index(start, offsetBy: range.count)
+    let end = index(start, offsetBy: range.count)
 
     return replacingCharacters(in: start ..< end, with: replacement)
   }
@@ -489,7 +492,7 @@ extension String {
   /// Returns a `new` string in which the characters in a specified `CountableRange` range of the String are replaced by a given string.
   public func replacingCharacters(in range: CountableRange<Int>, with replacement: String) -> String {
     let start = index(startIndex, offsetBy: range.lowerBound)
-    let end   = index(start, offsetBy: range.count)
+    let end = index(start, offsetBy: range.count)
 
     return replacingCharacters(in: start ..< end, with: replacement)
   }
@@ -704,7 +707,7 @@ extension String {
   ///
   /// - Returns: The swap cased copy of the `String`.
   public func swapCased() -> String {
-    return map({String($0).isLowercased ? String($0).uppercased() : String($0).lowercased()}).joined()
+    return map({ String($0).isLowercased ? String($0).uppercased() : String($0).lowercased() }).joined()
   }
 
   // MARK: - NSString
@@ -816,6 +819,7 @@ extension String {
   @available(*, deprecated, message: "Swift 4 supports conversion between NSRange and Range ( Range.init?(_:in) )")
   private func range(from nsRange: NSRange) -> Range<Index>? {
     guard let range = Range(nsRange) else { return nil }
+
     let utf16Start = UTF16Index(encodedOffset: range.lowerBound)
     let utf16End = UTF16Index(encodedOffset: range.upperBound)
 

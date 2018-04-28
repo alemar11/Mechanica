@@ -32,7 +32,7 @@ public func typeName(of some: Any) -> String {
 
   // match a word inside "(" and " in" https://regex101.com/r/eO6eB7/17
   let pattern = "(?<=\\()[^()]{1,}(?=\\sin)"
-  //if let result = value.range(of: pattern, options: .regularExpression) { return value[result] }
+  // if let result = value.range(of: pattern, options: .regularExpression) { return value[result] }
   if let result = value.firstRange(matching: pattern) {
     return String(value[result])
   }

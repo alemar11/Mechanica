@@ -49,9 +49,9 @@ extension NSObjectProtocol {
   /// The next best place to perform the swizzling is in initialize, a method called right before the first method of your class is invoked.
   /// - SeeAlso: [Effective method swizzling with Swift](https://www.uraimo.com/2015/10/23/effective-method-swizzling-with-swift/)
   public static func swizzle(method originalSelector: Selector, with swizzledSelector: Selector) {
-    let originalMethod  = class_getInstanceMethod(self, originalSelector)!
-    let swizzledMethod  = class_getInstanceMethod(self, swizzledSelector)!
-    let isMethodAdded   = class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
+    let originalMethod = class_getInstanceMethod(self, originalSelector)!
+    let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)!
+    let isMethodAdded = class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
 
     if isMethodAdded {
       class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))

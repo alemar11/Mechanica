@@ -53,7 +53,7 @@ extension Sequence {
   /// - Parameter criteria: The criteria closure takes an `Element` and returns its classification.
   /// - Returns: A grouped dictionary with the keys that the criteria function returns.
   public func grouped<Key>(by criteria: (Element) -> (Key)) -> [Key: [Element]] {
-    return Dictionary(grouping: self, by: {return criteria($0)})
+    return Dictionary(grouping: self, by: { return criteria($0) })
   }
 
   /// **Mechanica**
@@ -133,7 +133,7 @@ extension Sequence where Element: AnyObject {
   ///
   /// Returns true if the `Sequence` contains an element identical (referential equality) to an `object`.
   public func containsObjectIdentical(to object: AnyObject) -> Bool {
-    return contains {$0 === object}
+    return contains { $0 === object }
   }
 
 }

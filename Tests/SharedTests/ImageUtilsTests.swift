@@ -52,17 +52,20 @@ final class ImageUtilsTests: XCTestCase {
     let imageNoAlpha: Image
 
     #if os(macOS)
-      image = NSImage(contentsOf: url)!
-      imageNoAlpha = NSImage(contentsOf: url2)!
+    image = NSImage(contentsOf: url)!
+    imageNoAlpha = NSImage(contentsOf: url2)!
     #elseif os(iOS) || os(tvOS) || os(watchOS)
-      let data = try Data(contentsOf: url)
-      let data2 = try Data(contentsOf: url2)
-      image = Image(data: data)!
-      imageNoAlpha = Image(data: data2)!
+    let data = try Data(contentsOf: url)
+    let data2 = try Data(contentsOf: url2)
+    image = Image(data: data)!
+    imageNoAlpha = Image(data: data2)!
     #endif
 
     XCTAssertTrue(image.hasAlpha)
+    XCTAssertFalse(image.isOpaque)
+
     XCTAssertFalse(imageNoAlpha.hasAlpha)
+    XCTAssertTrue(imageNoAlpha.isOpaque)
   }
 
   func testData() throws {
@@ -73,13 +76,13 @@ final class ImageUtilsTests: XCTestCase {
     let image2: Image
 
     #if os(macOS)
-      image1 = NSImage(contentsOf: url1)!
-      image2 = NSImage(contentsOf: url2)!
+    image1 = NSImage(contentsOf: url1)!
+    image2 = NSImage(contentsOf: url2)!
     #elseif os(iOS) || os(tvOS) || os(watchOS)
-      let data = try Data(contentsOf: url1)
-      let data2 = try Data(contentsOf: url2)
-      image1 = Image(data: data)!
-      image2 = Image(data: data2)!
+    let data = try Data(contentsOf: url1)
+    let data2 = try Data(contentsOf: url2)
+    image1 = Image(data: data)!
+    image2 = Image(data: data2)!
     #endif
 
     XCTAssertNotNil(image1.data)
@@ -90,6 +93,28 @@ final class ImageUtilsTests: XCTestCase {
     var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
     resources.appendPathComponent("Resources")
     return resources
+  }
+
+  func testInflate() {
+    let url1 =  resources().appendingPathComponent("pic.png")
+
+    let image1: Image
+
+    #if os(macOS)
+    image1 = NSImage(contentsOf: url1)!
+
+    #elseif os(iOS) || os(tvOS) || os(watchOS)
+    let data = try! Data(contentsOf: url1)
+    image1 = Image(data: data)!
+    #endif
+
+    XCTAssertFalse(image1.isInflated)
+
+    image1.inflate()
+    XCTAssertTrue(image1.isInflated)
+
+    image1.inflate()
+    XCTAssertTrue(image1.isInflated)
   }
 
 }

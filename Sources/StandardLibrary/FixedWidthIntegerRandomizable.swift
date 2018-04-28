@@ -86,6 +86,7 @@ extension UInt64 {
   /// - Warning: The range is exclusive [lowerBound, upperBound).
   public static func random(lowerBound: UInt64, upperBound: UInt64) -> UInt64 {
     guard lowerBound != upperBound else { return lowerBound }
+
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
     guard upperBound > UInt64(UInt32.max ) else {
@@ -131,6 +132,7 @@ extension UInt32 {
   /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: UInt32, upperBound: UInt32) -> UInt32 {
     guard lowerBound != upperBound else { return lowerBound }
+
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
     return mechanica_arc4random_uniform(upperBound - lowerBound) + lowerBound
@@ -149,6 +151,7 @@ extension UInt16 {
   /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: UInt16, upperBound: UInt16) -> UInt16 {
     guard lowerBound != upperBound else { return lowerBound }
+
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
     return UInt16(mechanica_arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
@@ -167,6 +170,7 @@ extension UInt8 {
   /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: UInt8, upperBound: UInt8) -> UInt8 {
     guard lowerBound != upperBound else { return lowerBound }
+
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
     return UInt8(mechanica_arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound)) + UInt32(lowerBound))
@@ -206,6 +210,7 @@ extension Int64 {
   /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: Int64, upperBound: Int64) -> Int64 {
     guard lowerBound != upperBound else { return lowerBound }
+
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
     let (partialValue, overflow) = upperBound.subtractingReportingOverflow(lowerBound)
@@ -233,6 +238,7 @@ extension Int32 {
   /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: Int32, upperBound: Int32) -> Int32 {
     guard lowerBound != upperBound else { return lowerBound }
+
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
     let random = mechanica_arc4random_uniform(UInt32(Int64(upperBound) - Int64(lowerBound)))
@@ -252,6 +258,7 @@ extension Int16 {
   /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: Int16, upperBound: Int16) -> Int16 {
     guard lowerBound != upperBound else { return lowerBound }
+
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
     let random = mechanica_arc4random_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))
@@ -271,6 +278,7 @@ extension Int8 {
   /// - Warning: `lowerBound` is inclusive and `upperBound` is exclusive.
   public static func random(lowerBound: Int8, upperBound: Int8) -> Int8 {
     guard lowerBound != upperBound else { return lowerBound }
+
     precondition(lowerBound < upperBound, "\(upperBound) should be greater than \(lowerBound).")
 
     let random = mechanica_arc4random_uniform(UInt32(Int32(upperBound) - Int32(lowerBound)))

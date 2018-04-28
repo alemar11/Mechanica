@@ -2,6 +2,7 @@
 
 ### 1.7.0 (WIP)
 - Added cURL representation.
+- Added UIImage utils (rounding and scaling).
 - More String utils.
 - More tests.
 - Bugfixes.

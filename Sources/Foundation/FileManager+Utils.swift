@@ -42,9 +42,11 @@ extension FileManager {
 //      guard isDirectory.boolValue == true else { return }
 //    #else
       guard fileExists(atPath: path) == true else { return }
+
       var result = Stat()
       stat(path, &result)
       guard result.isDirectory == true else { return }
+
 //    #endif
 
     let contents = try contentsOfDirectory(atPath: path)
@@ -54,17 +56,6 @@ extension FileManager {
       try removeItem(atPath: path)
     }
   }
-
-  #if !os(Linux)
-
-  /// **Mechanica**
-  ///
-  /// Returns the container directory associated with the specified security application group Identifier.
-  public final func containerDirectory(for groupIdentifier: String) -> URL? {
-    return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
-  }
-
-  #endif
 
   /// **Mechanica**
   ///
