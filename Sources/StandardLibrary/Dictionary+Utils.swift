@@ -52,7 +52,7 @@ public extension Dictionary {
   /// Returns a random pair of (key,value) from `self`.
   public func random() -> Element {
     let index = Int.random(lowerBound: 0, upperBound: count)
-    let key =  Array(keys)[index]
+    let key = Array(keys)[index]
     let value = self[key]!
 
     return (key, value)

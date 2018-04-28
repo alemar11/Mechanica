@@ -109,16 +109,16 @@ extension Color {
     #if canImport(UIKit)
       guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) else { return nil }
       if cgColor.colorSpace == colorSpace {
-        convertedColor  = self
+        convertedColor = self
       } else {
         guard let compatibleSRGBColor = cgColor.converted(to: colorSpace, intent: .defaultIntent, options: nil) else { return nil }
-         convertedColor =  Color(cgColor: compatibleSRGBColor)
+         convertedColor = Color(cgColor: compatibleSRGBColor)
       }
 
     #elseif os(macOS)
       let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
       let compatibleSRGBColor = rgbColorSpaces.contains(colorSpace) ? self : usingColorSpace(.sRGB)
-      convertedColor =  compatibleSRGBColor
+      convertedColor = compatibleSRGBColor
 
     #endif
 
@@ -144,9 +144,9 @@ extension Color {
   ///   - hex: The hex component of the color object, specified as a value from 0x000000 to 0xFFFFFF
   ///   - alpha: The opacity component of the color object, specified as a value from 0.0 to 1.0 (optional).
   public convenience init(hex: UInt32, alpha: CGFloat = 1) {
-    let red   = CGFloat((hex & 0xFF0000) >> 16) / 255
+    let red = CGFloat((hex & 0xFF0000) >> 16) / 255
     let green = CGFloat((hex & 0x00FF00) >> 8) / 255
-    let blue  = CGFloat(hex & 0x0000FF) / 255
+    let blue = CGFloat(hex & 0x0000FF) / 255
 
     #if canImport(UIKit)
       self.init(red: red, green: green, blue: blue, alpha: alpha)
@@ -183,7 +183,7 @@ extension Color {
       return nil // invalid format
     }
 
-    guard let hexEquivalent = Int64.init(formattedHexString, radix: 16) else { return nil }
+    guard let hexEquivalent = Int64(formattedHexString, radix: 16) else { return nil }
 
     let red = CGFloat((hexEquivalent & 0xFF000000) >> 24) / 255.0
     let green = CGFloat((hexEquivalent & 0x00FF0000) >> 16) / 255.0
@@ -247,8 +247,8 @@ extension Color {
     let total = firstPercentage + secondPercentage
     guard total == 1.0 else { return nil }
 
-    let level1 = firstPercentage/total
-    let level2 = secondPercentage/total
+    let level1 = firstPercentage / total
+    let level2 = secondPercentage / total
 
     guard level1 > 0 else { return secondColor.copy() as? Color }
     guard level2 > 0 else { return firstColor.copy() as? Color }

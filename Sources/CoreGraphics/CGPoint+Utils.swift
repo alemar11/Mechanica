@@ -35,7 +35,7 @@
     ///   - point2: The second point.
     /// - Returns: the distance between between two points.
     static func distance(from point1: CGPoint, to point2: CGPoint) -> CGFloat {
-      return sqrt(pow(point2.x-point1.x, 2)+pow(point2.y-point1.y, 2))
+      return sqrt(pow(point2.x - point1.x, 2) + pow(point2.y - point1.y, 2))
     }
 
     /// **Mechanica**
@@ -55,11 +55,9 @@
     ///   - secondPoint: The second point that defines a straight line.
     /// - Returns: *true* if `self` lies on the straigth lined defined by `firstPoint` and `secondPoint`.
     public func isOnStraightLine(passingThrough firstPoint: CGPoint, and secondPoint: CGPoint) -> Bool {
-      // swiftlint:disable identifier_name
-      let v1 =  (firstPoint.y - self.y) * (firstPoint.x - secondPoint.x)
-      let v2 = (firstPoint.y - secondPoint.y) * (firstPoint.x - self.x)
-      // swiftlint:enable identifier_name
-      return v1 == v2
+      let point1 = (firstPoint.y - self.y) * (firstPoint.x - secondPoint.x)
+      let point2 = (firstPoint.y - secondPoint.y) * (firstPoint.x - self.x)
+      return point1 == point2
     }
   }
 

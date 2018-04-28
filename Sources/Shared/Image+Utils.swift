@@ -61,7 +61,7 @@ extension Image {
     guard let alphaInfo = cgImage?.alphaInfo else { return false }
 
     #elseif canImport(AppKit)
-    var imageRect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+    var imageRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
     guard let imageRef = cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return false }
 
     let alphaInfo = imageRef.alphaInfo
@@ -96,6 +96,7 @@ extension Image {
 
     #elseif canImport(AppKit)
     guard let data = tiffRepresentation else { return nil }
+
     let imageFileType: NSBitmapImageRep.FileType = hasAlpha ? .png : .jpeg
 
     return NSBitmapImageRep(data: data)? .representation(using: imageFileType, properties: [:])

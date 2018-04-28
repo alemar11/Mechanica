@@ -58,6 +58,7 @@ extension URLRequest {
       if let credentials = credentialStorage.credentials(for: protectionSpace)?.values {
         for credential in credentials {
           guard let user = credential.user, let password = credential.password else { continue }
+
           components.append("-u \(user):\(password)")
         }
 

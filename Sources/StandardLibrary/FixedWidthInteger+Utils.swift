@@ -52,7 +52,7 @@ extension FixedWidthInteger {
       result.append(padding + byteString)
     }
 
-    //return "0b" + result.reversed().joined(separator: "_")
+    // return "0b" + result.reversed().joined(separator: "_")
      return result.reversed().joined(separator: "")
   }
 

@@ -52,7 +52,7 @@ extension Font {
   /// Applies the specified traits to `self` without changing the current size.
   public func withTraits(_ traits: FontDescriptorSymbolicTraits) -> Font {
     let descriptor = fontDescriptor.withSymbolicTraits(traits)
-    //size 0 means keep the size as it is
+    // size 0 means keep the size as it is
     let size = CGFloat(0) // TODO: use "pointSize" instead of 0?
 
     #if os(macOS)
@@ -97,6 +97,7 @@ extension Font {
   /// Returns a `new` font removing the bold trait.
   public func removingBold() -> Font {
     guard isBold else { return self }
+
     var traits = fontDescriptor.symbolicTraits
     #if os(macOS)
      traits.remove([.bold])
@@ -141,6 +142,7 @@ extension Font {
   /// Returns a `new` font removing the italic trait.
   public func removingItalic() -> Font {
     guard isItalic else { return self }
+
     var traits = fontDescriptor.symbolicTraits
     #if os(macOS)
       traits.remove([.italic])

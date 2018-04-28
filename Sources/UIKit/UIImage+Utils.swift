@@ -46,6 +46,7 @@ extension UIImage {
       context.fill(rect)
     }
     guard let cgImage = image.cgImage else { return nil }
+
     self.init(cgImage: cgImage)
 
     // left only for reference
@@ -56,6 +57,7 @@ extension UIImage {
      UIRectFill(rect)
 
      guard let cgImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return nil }
+
      self.init(cgImage: cgImage)
      */
   }

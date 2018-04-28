@@ -63,9 +63,8 @@ internal extension Stat {
 
 // MARK: - Symbols in <sys/stat.h> that are not defined in Foundation
 
-//swiftlint:disable identifier_name
-
-//swiftlint:disable private_over_fileprivate
+// swiftlint:disable identifier_name
+// swiftlint:disable private_over_fileprivate
 
 /// **Mechanica**
 ///
@@ -107,7 +106,7 @@ fileprivate let S_IFLNK: Int = 0o120000
 /// This is the file type constant of a socket.
 fileprivate let S_IFSOCK: Int = 0o140000
 
-//swiftlint:enable private_over_fileprivate
+// swiftlint:enable private_over_fileprivate
 
 /// **Mechanica**
 ///
@@ -158,6 +157,5 @@ internal func S_ISSOCK(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFSOCK)
 }
 
-//swiftlint:enable private_over_fileprivate
-
-//swiftlint:enable identifier_name
+// swiftlint:enable private_over_fileprivate
+// swiftlint:enable identifier_name
