@@ -56,26 +56,54 @@ final class UIImageTests: XCTestCase {
   }
 
   func testAspectScaleToFit() {
+    do {
     let image = robotImage.copy() as! Image
     let size = CGSize(width: 50, height: 70)
     let scaled = image.aspectScaled(toFill: size)
     XCTAssertEqual(scaled.size, size)
+    }
+
+    do {
+      let image = picImage.copy() as! Image
+      let size = CGSize(width: 50, height: 70)
+      let scaled = image.aspectScaled(toFill: size)
+      XCTAssertEqual(scaled.size, size)
+    }
   }
 
   func testRounding() {
-    let image = robotImage.copy() as! Image
-    let circle = image.roundedIntoCircle()
-    XCTAssertEqual(circle.size, image.size)
+    do {
+      let image = robotImage.copy() as! Image
+      let circle = image.roundedIntoCircle()
+      XCTAssertEqual(circle.size, image.size)
 
-    let rounded = image.rounded(withCornerRadius: 10, divideRadiusByImageScale: true)
-    XCTAssertEqual(rounded.size, image.size)
+      let rounded = image.rounded(withCornerRadius: 10, divideRadiusByImageScale: true)
+      XCTAssertEqual(rounded.size, image.size)
+    }
+
+    do {
+      let image = picImage.copy() as! Image /// 483 x 221
+      let circle = image.roundedIntoCircle()
+      XCTAssertEqual(circle.size.height, image.size.height)
+      XCTAssertEqual(circle.size.width, image.size.height)
+
+      let rounded = image.rounded(withCornerRadius: 10, divideRadiusByImageScale: true)
+      XCTAssertEqual(rounded.size, image.size)
+    }
   }
 
   private lazy var robotImage: Image = {
-  let url =  resources().appendingPathComponent("robot.png")
-  let data = try! Data(contentsOf: url)
-  let image = Image(data: data)!
-  return image
+    let url =  resources().appendingPathComponent("robot.png")
+    let data = try! Data(contentsOf: url)
+    let image = Image(data: data)!
+    return image
+  }()
+
+  private lazy var picImage: Image = {
+    let url =  resources().appendingPathComponent("pic.png")
+    let data = try! Data(contentsOf: url)
+    let image = Image(data: data)!
+    return image
   }()
 
   private func resources() -> URL {
