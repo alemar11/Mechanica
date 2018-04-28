@@ -1,2 +1,7 @@
 # macOS
 .DS_Store
+
+.build/
+Mechanica.xcodeproj/
+build/
+docs/
