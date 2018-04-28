@@ -108,13 +108,13 @@ final class ImageUtilsTests: XCTestCase {
     image1 = Image(data: data)!
     #endif
 
-    XCTAssertFalse(image1.inflated)
+    XCTAssertFalse(image1.isInflated)
 
     image1.inflate()
-    XCTAssertTrue(image1.inflated)
+    XCTAssertTrue(image1.isInflated)
 
     image1.inflate()
-    XCTAssertTrue(image1.inflated)
+    XCTAssertTrue(image1.isInflated)
   }
 
 }

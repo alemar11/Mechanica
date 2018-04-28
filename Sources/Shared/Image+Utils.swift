@@ -113,7 +113,7 @@ extension Image {
   /// **Mechanica**
   ///
   /// Returns whether the image is inflated.
-  public var inflated: Bool {
+  public var isInflated: Bool {
     get {
       if let inflated = objc_getAssociatedObject(self, &AssociatedKey.inflated) as? Bool {
         return inflated
@@ -133,9 +133,9 @@ extension Image {
   ///
   /// - Note: Inflating compressed image formats (such as PNG or JPEG) in a background queue can significantly improve drawing performance on the main thread.
   public func inflate() {
-    guard !inflated else { return }
+    guard !isInflated else { return }
 
-    inflated = true
+    isInflated = true
     _ = cgImage?.dataProvider?.data
   }
 
