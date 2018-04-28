@@ -55,17 +55,6 @@ extension FileManager {
     }
   }
 
-  #if !os(Linux)
-
-  /// **Mechanica**
-  ///
-  /// Returns the container directory associated with the specified security application group Identifier.
-  public final func containerDirectory(for groupIdentifier: String) -> URL? {
-    return containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
-  }
-
-  #endif
-
   /// **Mechanica**
   ///
   /// Delete a file or a directory at a given `path`.

@@ -30,6 +30,11 @@ internal let bundleIdentifier = "org.tinrobots.Mechanica"
 
 /// **Mechanica**
 ///
+/// Associated Key prefix.
+internal let associatedKeyPrefix = "Mechanica.AssociatedKey"
+
+/// **Mechanica**
+///
 /// Mechanica Bundle
 internal var bundle: Bundle {
   class Object {}
