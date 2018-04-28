@@ -117,9 +117,8 @@ extension Image {
     get {
       if let inflated = objc_getAssociatedObject(self, &AssociatedKey.inflated) as? Bool {
         return inflated
-      } else {
-        return false
       }
+      return false
     }
     set {
       objc_setAssociatedObject(self, &AssociatedKey.inflated, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
