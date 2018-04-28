@@ -235,7 +235,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertNoThrow(try userDefaults.set(codableValue: value2, forKey: key))
     XCTAssertTrue(userDefaults.hasKey(key))
     let person2: CodingPerson? = userDefaults.codableValue(forKey: key)
-    
+
     XCTAssertEqual(person2, value2)
   }
 

@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -31,9 +31,9 @@ extension URLRequestUtilsTests {
 }
 
 final class URLRequestUtilsTests: XCTestCase {
-  
+
   func testCURLRepresentation() throws {
-    
+
     do {
       // Given, When
       let url = URL(string: "https://api.github.com/users/alemar11")!
@@ -43,7 +43,7 @@ final class URLRequestUtilsTests: XCTestCase {
       XCTAssertEqual(request.cURLRepresentation(prettyPrinted: false), "curl -i -H \"Accept: application/vnd.github.v3.full+json\" \"https://api.github.com/users/alemar11\"")
       XCTAssertEqual(request.cURLRepresentation(prettyPrinted: true), "curl -i \\\n\t-H \"Accept: application/vnd.github.v3.full+json\" \\\n\t\"https://api.github.com/users/alemar11\"")
     }
-    
+
     do {
       // Given, When
       let url = URL(string: "http://localhost:3000/test")!
@@ -80,7 +80,7 @@ final class URLRequestUtilsTests: XCTestCase {
       XCTAssertEqual(request.cURLRepresentation(prettyPrinted: false)!, "curl -i -H \"Content-Type: application/json\" \"http://localhost:3000/test?q1=v1&q2=v2\"")
       XCTAssertEqual(request.cURLRepresentation(prettyPrinted: true)!, "curl -i \\\n\t-H \"Content-Type: application/json\" \\\n\t\"http://localhost:3000/test?q1=v1&q2=v2\"")
     }
-    
+
     do {
       // Given, When
       let url = URL(string: "http://www.tinrobots.org")!
@@ -90,7 +90,7 @@ final class URLRequestUtilsTests: XCTestCase {
       XCTAssertEqual(request.cURLRepresentation(prettyPrinted: false), "curl -i --head \"http://www.tinrobots.org\"")
       XCTAssertEqual(request.cURLRepresentation(prettyPrinted: true), "curl -i \\\n\t--head \\\n\t\"http://www.tinrobots.org\"")
     }
-    
+
   }
 
   func testCURLRepresentationWithURLSession() throws {
@@ -121,5 +121,5 @@ final class URLRequestUtilsTests: XCTestCase {
   func testCURLRepresentationWithWithURLSessionAndURLCredential() throws {
     // TODO: implement
   }
-  
+
 }

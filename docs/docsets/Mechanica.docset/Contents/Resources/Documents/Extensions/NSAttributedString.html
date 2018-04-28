@@ -43,6 +43,18 @@
                 <a href="../Extensions/Bundle.html">Bundle</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/CGFloat.html">CGFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CGPoint.html">CGPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CGRect.html">CGRect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CGSize.html">CGSize</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/Character.html">Character</a>
               </li>
               <li class="nav-group-task">
@@ -53,9 +65,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Data.html">Data</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Dictionary.html">Dictionary</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Dictionary.html">Dictionary</a>
@@ -186,7 +195,7 @@
                 <a href="../Functions.html#/s:9Mechanica3qqqoiSSxSg_SSyXKtlF">???(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/typeName(of:)">typeName(of:)</a>
+                <a href="../Functions.html#/s:9Mechanica8typeNameSSyp2of_tF">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -201,12 +210,47 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/Color">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Mechanica5Colora">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/Font">Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Mechanica4Fonta">Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/FontDescriptorSymbolicTraits">FontDescriptorSymbolicTraits</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Mechanica28FontDescriptorSymbolicTraitsa">FontDescriptorSymbolicTraits</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/Image">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Mechanica5Imagea">Image</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
         <section>
           <section class="section">
             <h1>NSAttributedString</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NSAttributedString</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCopying</span><span class="p">,</span> <span class="kt">NSMutableCopying</span><span class="p">,</span> <span class="kt">NSSecureCoding</span></code></pre>
+
+                </div>
+              </div>
             
           </section>
           <section class="section task-group-section">
@@ -222,9 +266,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:So18NSAttributedStringC9MechanicaEABSgSS4html_Sb20allowLossyConversiontcfc"></a>
                     <a name="//apple_ref/swift/Method/init(html:allowLossyConversion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">init(html:allowLossyConversion:)</a>
+                    <a class="token" href="#/s:So18NSAttributedStringC9MechanicaEABSgSS4html_Sb20allowLossyConversiontcfc">init(html:allowLossyConversion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -248,6 +292,46 @@
 </div>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">html</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">allowLossyConversion</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>html</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>an HTML string.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>allowLossyConversion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>If it is <em>true</em> and the receiver can’t be converted without losing some information, some characters may be removed or altered in conversion.
+For example, in converting a character from NSUnicodeStringEncoding to NSASCIIStringEncoding, the character ‘Á’ becomes ‘A’, losing the accent.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -265,9 +349,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:So18NSAttributedStringC9MechanicaE1poiA2B_ABtFZ"></a>
                     <a name="//apple_ref/swift/Method/+(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">+(_:_:)</a>
+                    <a class="token" href="#/s:So18NSAttributedStringC9MechanicaE1poiA2B_ABtFZ">+(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -280,6 +364,43 @@
 <p>Returns a <code>new</code> NSAttributedString appending the right NSAttributedString to the left NSAttributedString.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">+</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">NSAttributedString</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">NSAttributedString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSAttributedString</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So18NSAttributedStringC9MechanicaE1poiABSS_ABtFZ"></a>
+                    <a name="//apple_ref/swift/Method/+(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So18NSAttributedStringC9MechanicaE1poiABSS_ABtFZ">+(_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a <code>new</code> NSAttributedString appending the right NSAttributedString to the left String.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">+</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt">NSAttributedString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSAttributedString</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -288,8 +409,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-02-10)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-04-28)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
