@@ -107,7 +107,7 @@ extension Image {
 extension Image {
 
   private struct AssociatedKey {
-    static var inflated = "\(associatedKeyPrefix).UIImage.inflated"
+    static var isInflated = "\(associatedKeyPrefix).UIImage.isInflated"
   }
 
   /// **Mechanica**
@@ -115,13 +115,13 @@ extension Image {
   /// Returns whether the image is inflated.
   public var isInflated: Bool {
     get {
-      if let inflated = objc_getAssociatedObject(self, &AssociatedKey.inflated) as? Bool {
+      if let inflated = objc_getAssociatedObject(self, &AssociatedKey.isInflated) as? Bool {
         return inflated
       }
       return false
     }
     set {
-      objc_setAssociatedObject(self, &AssociatedKey.inflated, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+      objc_setAssociatedObject(self, &AssociatedKey.isInflated, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
   }
 
