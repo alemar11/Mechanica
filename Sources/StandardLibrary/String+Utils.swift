@@ -257,7 +257,6 @@ extension String {
     results.reserveCapacity(length)
 
     while startIndex < self.endIndex {
-      print("ciao")
       let endIndex = self.index(startIndex, offsetBy: length, limitedBy: self.endIndex) ?? self.endIndex
       print(endIndex)
       results.append(self[startIndex..<endIndex])
