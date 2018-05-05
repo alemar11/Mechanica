@@ -32,6 +32,7 @@ extension StringUtilsTests {
     ("testFirst", testFirst),
     ("testLast", testLast),
     ("testTruncate", testTruncate),
+    ("testSplit", testSplit),
     ("testSubscript", testSubscript),
     ("testSubscriptWithRange", testSubscriptWithCountableRange),
     ("testSubscriptWithClosedRange", testSubscriptWithCountableClosedRange),
@@ -175,6 +176,15 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s9.truncate(at: 3) == "🇮🇹​🇮🇹…")
     XCTAssertTrue(s9.truncate(at: 4) == "🇮🇹​🇮🇹​…")
     XCTAssertTrue(s9.truncate(at: 5) == "🇮🇹​🇮🇹​🇮🇹")
+  }
+
+  func testSplit() {
+    let string = "∆Test😗🇮🇹"
+    XCTAssertTrue(string.split(by: 0).isEmpty)
+    XCTAssertEqual(string.split(by: 1), ["∆", "T", "e", "s", "t", "😗", "🇮🇹"])
+    XCTAssertEqual(string.split(by: 3), ["∆Te", "st😗", "🇮🇹"])
+    XCTAssertEqual(string.split(by: 100), [string])
+    XCTAssertEqual("There are fourty-eight characters in this string".split(by: 20), ["There are fourty-eig", "ht characters in thi","s string"])
   }
 
   func testSubscript() {
