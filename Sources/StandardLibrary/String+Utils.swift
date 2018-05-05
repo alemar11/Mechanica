@@ -249,6 +249,12 @@ extension String {
   /// **Mechanica**
   ///
   /// Splits a string into substrings of a given `length`.
+  ///
+  /// Example:
+  ///
+  ///     let string = "Hello"
+  ///     string.split(by: 2) -> ["He", "ll", "o"]
+  ///
   public func split(by length: Int) -> [String] {
     guard length != 0 else { return []}
     
