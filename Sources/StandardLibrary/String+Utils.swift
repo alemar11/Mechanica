@@ -256,8 +256,8 @@ extension String {
   ///     string.split(by: 2) -> ["He", "ll", "o"]
   ///
   public func split(by length: Int) -> [String] {
-    guard length != 0 else { return []}
-    
+    guard length != 0 else { return [] }
+
     var startIndex = self.startIndex
     var results = [Substring]()
     results.reserveCapacity(length)
