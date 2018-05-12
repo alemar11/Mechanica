@@ -26,7 +26,7 @@ extension MutableCollection {
   /// **Mechanica**
   ///
   /// Shuffles the collection contents using the Fisher-Yates (fast an uniform) algorithm.
-  mutating func shuffle() {
+  public mutating func shuffle() {
     let elementsCount = count
     guard elementsCount > 1 else { return }
 
@@ -41,6 +41,16 @@ extension MutableCollection {
       swapAt(firstUnshuffled, indexToSwap)
     }
 
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a new collection with all the elements shuffled using the Fisher-Yates (fast an uniform) algorithm.
+  public func shuffled() -> Self {
+    var copy = self
+    copy.shuffle()
+
+    return copy
   }
 
 }
