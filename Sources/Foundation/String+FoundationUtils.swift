@@ -802,15 +802,15 @@ extension String {
   /// - Parameters:
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
-  /// - Returns: A list of matched strings for `self`.
+  /// - Returns: A list of matches of the regular expression within `self`.
   public func matches(for pattern: String, options: NSRegularExpression.Options = []) -> [String] {
-    var strings = [String]()
+    var matches = [String]()
 
     for range in ranges(matching: pattern, options: options) {
-      strings.append(String(self[range]))
+      matches.append(String(self[range]))
     }
 
-    return strings
+    return matches
   }
 
   /// **Mechanica**
