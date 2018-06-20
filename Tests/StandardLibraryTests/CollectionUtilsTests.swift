@@ -29,8 +29,7 @@ extension CollectionUtilsTests {
     ("testAtIndex", testAtIndex),
     ("testFirstIndex", testFirstIndex),
     ("testLastIndex", testLastIndex),
-    ("testRandom", testRandom),
-    ("testSplit", testSplit),
+    ("testRandom", testRandom)
   ]
 }
 
@@ -135,20 +134,6 @@ final class CollectionUtilsTests: XCTestCase {
 
       } while foundFirst == false || foundSecond == false || foundThird == false
     }
-  }
-
-  func testSplit() {
-    let string = "∆Test😗🇮🇹"
-    XCTAssertTrue(string.split(by: 0).isEmpty)
-    XCTAssertEqual(string.split(by: 1), ["∆", "T", "e", "s", "t", "😗", "🇮🇹"])
-    XCTAssertEqual(string.split(by: 3), ["∆Te", "st😗", "🇮🇹"])
-    XCTAssertEqual(string.split(by: 100).map { String($0) }, [string])
-    XCTAssertEqual("There are fourty-eight characters in this string".split(by: 20), ["There are fourty-eig", "ht characters in thi","s string"])
-
-    let array = [1, 2, 3, 4, 5, 6]
-    XCTAssertEqual(array.split(by: 1).map { Array($0) }, [[1], [2], [3], [4], [5], [6]])
-    XCTAssertEqual(array.split(by: 4).map { Array($0) }, [[1, 2, 3, 4], [5, 6]])
-    XCTAssertEqual(array.split(by: 100).map { Array($0) }, [[1, 2, 3, 4, 5, 6]])
   }
 
 }

@@ -78,6 +78,37 @@ extension Sequence {
     return result
   }
 
+  /// **Mechanica**
+  ///
+  /// Splits `self` into partitions of a given `length`.
+  ///
+  /// Example:
+  ///
+  ///     let string = "Hello"
+  ///     string.split(by: 2) -> ["He", "ll", "o"]
+  ///
+  public func split(by length: Int) -> [[Element]] {
+    guard length != 0 else { return [] }
+
+    var result: [[Element]] = []
+    var batch: [Element] = []
+
+    for element in self {
+      batch.append(element)
+
+      if batch.count == length {
+        result.append(batch)
+        batch = []
+      }
+    }
+
+    if !batch.isEmpty {
+      result.append(batch)
+    }
+
+    return result
+  }
+
 }
 
 extension Sequence where Element: Equatable {

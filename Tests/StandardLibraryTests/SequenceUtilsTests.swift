@@ -35,6 +35,7 @@ extension SequenceUtilsTests {
     ("testGroupedBy", testGroupedBy),
     ("testFrequencies", testFrequencies),
     ("testShuffled", testShuffled),
+    ("testSplit", testSplit),
     ("testUniqueElements", testUniqueElements)
   ]
 }
@@ -288,6 +289,20 @@ final class SequenceUtilsTests: XCTestCase {
       return lhs.value == rhs.value
     }
 
+  }
+
+  func testSplit() {
+    let string = "∆Test😗🇮🇹"
+    XCTAssertTrue(string.split(by: 0).isEmpty)
+    XCTAssertEqual(string.split(by: 1).map { String($0) }, ["∆", "T", "e", "s", "t", "😗", "🇮🇹"])
+    XCTAssertEqual(string.split(by: 3).map { String($0) }, ["∆Te", "st😗", "🇮🇹"])
+    XCTAssertEqual(string.split(by: 100).map { String($0) }, [string])
+    XCTAssertEqual("There are fourty-eight characters in this string".split(by: 20).map { String($0) }, ["There are fourty-eig", "ht characters in thi","s string"])
+
+    let array = [1, 2, 3, 4, 5, 6]
+    XCTAssertEqual(array.split(by: 1), [[1], [2], [3], [4], [5], [6]])
+    XCTAssertEqual(array.split(by: 4), [[1, 2, 3, 4], [5, 6]])
+    XCTAssertEqual(array.split(by: 100), [[1, 2, 3, 4, 5, 6]])
   }
 
   func testUniqueElements() {

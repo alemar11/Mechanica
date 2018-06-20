@@ -27,6 +27,7 @@ extension MutableCollection {
   ///
   /// Shuffles the collection contents using the Fisher-Yates (fast an uniform) algorithm.
   public mutating func shuffle() {
+    // TODO: deprecated in Swift 4.2
     let elementsCount = count
     guard elementsCount > 1 else { return }
 

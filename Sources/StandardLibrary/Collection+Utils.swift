@@ -21,6 +21,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+extension Collection {
+
+  /// **Mechanica**
+  ///
+  /// - Parameter index: the index of the desired element.
+  /// - Returns: The element at a given index or nil if not exists.
+  /// Example:
+  ///
+  ///     let array = [1, 2, 3]
+  ///     array[100] -> crash
+  ///     array.at(100) -> nil
+  ///
+  public func at(_ index: Index) -> Element? {
+    return (index < endIndex) ? self[index] : nil
+  }
+}
+
 extension Collection where Element: Equatable {
 
   // MARK: - Equatable
@@ -49,49 +66,9 @@ extension Collection where Element: Equatable {
     return nil
   }
 
-  /// **Mechanica**
-  ///
-  /// Splits `self` into subsequences of a given `length`.
-  ///
-  /// Example:
-  ///
-  ///     let string = "Hello"
-  ///     string.split(by: 2) -> ["He", "ll", "o"]
-  ///
-  public func split(by length: Int) -> [Self.SubSequence] {
-    guard length != 0 else { return [] }
-
-    var startIndex = self.startIndex
-    var results = [Self.SubSequence]()
-    results.reserveCapacity(length)
-
-    while startIndex < self.endIndex {
-      let endIndex = self.index(startIndex, offsetBy: length, limitedBy: self.endIndex) ?? self.endIndex
-      let subsequence = self[startIndex..<endIndex]
-      results.append(subsequence)
-      startIndex = endIndex
-    }
-
-    return results
-  }
-
 }
 
 extension Collection where Self.Index == Int {
-
-  /// **Mechanica**
-  ///
-  /// - Parameter index: the index of the desired element.
-  /// - Returns: The element at a given index or nil if not exists.
-  /// Example:
-  ///
-  ///     let array = [1, 2, 3]
-  ///     array[100] -> crash
-  ///     array.at(100) -> nil
-  ///
-  public func at(_ index: Int) -> Element? {
-    return (index < self.count) ? self[index] : nil
-  }
 
   /// **Mechanica**
   ///
