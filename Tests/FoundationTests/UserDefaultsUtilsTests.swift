@@ -179,15 +179,12 @@ final class UserDefaultsUtilsTests: XCTestCase {
   #endif
 
   func testCodableSetAndRemove() {
-    // https://stackoverflow.com/questions/16640930/nsuserdefaults-wont-delete-object-for-key
-    // If we use a Codable struct, sometimes the remove operation doesn't work on the simulator
     let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1", url: URL(string: "http:www.tinrobots.org")!)
-    let userDefaults = UserDefaults.standard
 
+    let userDefaults = UserDefaults.standard
     let key = "\(#function)\(#line)"
 
     XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
-    XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNoThrow(try userDefaults.set(codableValue: Optional<UserDefaultsUtilsTests.Person>.none, forKey: key))
     XCTAssertFalse(userDefaults.hasKey(key), "UserDefaults shouldn't have the key \(key) in: \(userDefaults.dictionaryRepresentation().keys).")
   }
@@ -290,7 +287,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
 extension UserDefaultsUtilsTests {
 
-  class Person: NSObject, Codable {
+  class Person: Codable, Equatable {
 
     let surname: String
     let firstname: String
@@ -302,11 +299,8 @@ extension UserDefaultsUtilsTests {
       self.url = url
     }
 
-    override func isEqual(_ object: Any?) -> Bool {
-      if let rhs = object as? Person {
-        return surname == rhs.surname && firstname == rhs.firstname && rhs.url == url
-      }
-      return false
+    static func == (left: Person, right: Person) -> Bool {
+      return left.firstname == right.firstname && left.surname == right.surname && left.url == right.url
     }
 
   }
