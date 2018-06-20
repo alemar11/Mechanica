@@ -186,6 +186,8 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
     XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
     XCTAssertNoThrow(try userDefaults.set(codableValue: Optional<UserDefaultsUtilsTests.Person>.none, forKey: key))
+    // Sometimes the remove operation doesn't work on the simulator
+    // https://stackoverflow.com/questions/16640930/nsuserdefaults-wont-delete-object-for-key
     XCTAssertFalse(userDefaults.hasKey(key), "UserDefaults shouldn't have the key \(key) in: \(userDefaults.dictionaryRepresentation().keys).")
   }
 
