@@ -94,12 +94,14 @@ extension UserDefaults {
   ///
   /// Returns the object conformig to `Codable` associated with the specified key, or nil if the key was not found.
   ///
-  /// - Parameter defaultName: A key in the current user's defaults database.
+  /// - Parameters:
+  ///   - defaultName: A key in the current user's defaults database.
+  ///   - jsonDecoder: An object that decode the value from a JSON object.
   /// - Note: The returned object is decoded from a JSON rapresentation.
-  public final func codableValue<T: Codable>(forKey defaultName: String) -> T? {
-    guard let string = string(forKey: defaultName), let data = string.data(using: .utf8) else { return nil }
+  public final func codableValue<T: Codable>(forKey defaultName: String, jsonDecoder: JSONDecoder = JSONDecoder()) -> T? {
+    guard let data = data(forKey: defaultName) else { return nil }
 
-    return try? JSONDecoder().decode(T.self, from: data)
+    return try? jsonDecoder.decode(T.self, from: data)
   }
 
   /// **Mechanica**
@@ -109,16 +111,16 @@ extension UserDefaults {
   /// - Parameters:
   ///   - value: The object to store in the defaults database.
   ///   - defaultName: The key with which to associate with the value.
+  ///   - jsonEncoder: An object that encodes the value as JSON object.
   /// - Throws: An error if any value throws an error during encoding.
   /// - Note: The object is encoded as a JSON.
-  public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String) throws {
+  public final func set<T: Codable>(codableValue value: T?, forKey defaultName: String, jsonEncoder: JSONEncoder = JSONEncoder()) throws {
     switch value {
     case .some(let value):
-      let data = try JSONEncoder().encode(value)
-      let string = String(data: data, encoding: .utf8)
-      set(string, forKey: defaultName)
+      let data = try jsonEncoder.encode(value)
+      set(data, forKey: defaultName)
     case .none:
-      removeObject(forKey: defaultName)
+      set(nil, forKey: defaultName)
     }
   }
 

@@ -179,13 +179,18 @@ final class UserDefaultsUtilsTests: XCTestCase {
   #endif
 
   func testCodableSetAndRemove() {
+    // https://stackoverflow.com/questions/16640930/nsuserdefaults-wont-delete-object-for-key
+    // If we use a Codable struct, sometimes the remove operation doesn't work on the simulator
     let value = UserDefaultsUtilsTests.Person(firstname: "name1", surname: "surname1", url: URL(string: "http:www.tinrobots.org")!)
-
     let userDefaults = UserDefaults.standard
+
     let key = "\(#function)\(#line)"
 
     XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
+    XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNoThrow(try userDefaults.set(codableValue: Optional<UserDefaultsUtilsTests.Person>.none, forKey: key))
+
+    XCTAssertNil(userDefaults.value(forKey: key))
     XCTAssertFalse(userDefaults.hasKey(key), "UserDefaults shouldn't have the key \(key) in: \(userDefaults.dictionaryRepresentation().keys).")
   }
 
@@ -287,7 +292,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
 extension UserDefaultsUtilsTests {
 
-  class Person: Codable, Equatable {
+  class Person: NSObject, Codable {
 
     let surname: String
     let firstname: String
@@ -299,8 +304,11 @@ extension UserDefaultsUtilsTests {
       self.url = url
     }
 
-    static func == (left: Person, right: Person) -> Bool {
-      return left.firstname == right.firstname && left.surname == right.surname && left.url == right.url
+    override func isEqual(_ object: Any?) -> Bool {
+      if let rhs = object as? Person {
+        return surname == rhs.surname && firstname == rhs.firstname && rhs.url == url
+      }
+      return false
     }
 
   }
@@ -395,5 +403,15 @@ extension UserDefaultsUtilsTests {
   }
 
   #endif
+
+}
+
+extension UserDefaults {
+
+  static func createCleanForTest(label: StaticString = #file) -> UserDefaults {
+    let suiteName = "UnitTest-UserDefaults-\(label)-\(UUID().uuidString)"
+    UserDefaults().removePersistentDomain(forName: suiteName)
+    return UserDefaults(suiteName: suiteName)!
+  }
 
 }
