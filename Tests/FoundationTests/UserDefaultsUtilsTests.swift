@@ -189,8 +189,6 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertNoThrow(try userDefaults.set(codableValue: value, forKey: key))
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNoThrow(try userDefaults.set(codableValue: Optional<UserDefaultsUtilsTests.Person>.none, forKey: key))
-
-    XCTAssertNil(userDefaults.value(forKey: key))
     XCTAssertFalse(userDefaults.hasKey(key), "UserDefaults shouldn't have the key \(key) in: \(userDefaults.dictionaryRepresentation().keys).")
   }
 
