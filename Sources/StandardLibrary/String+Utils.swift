@@ -264,7 +264,6 @@ extension String {
 
     while startIndex < self.endIndex {
       let endIndex = self.index(startIndex, offsetBy: length, limitedBy: self.endIndex) ?? self.endIndex
-      print(endIndex)
       results.append(self[startIndex..<endIndex])
       startIndex = endIndex
     }
