@@ -49,6 +49,32 @@ extension Collection where Element: Equatable {
     return nil
   }
 
+  /// **Mechanica**
+  ///
+  /// Splits `self` into subsequences of a given `length`.
+  ///
+  /// Example:
+  ///
+  ///     let string = "Hello"
+  ///     string.split(by: 2) -> ["He", "ll", "o"]
+  ///
+  public func split(by length: Int) -> [Self.SubSequence] {
+    guard length != 0 else { return [] }
+
+    var startIndex = self.startIndex
+    var results = [Self.SubSequence]()
+    results.reserveCapacity(length)
+
+    while startIndex < self.endIndex {
+      let endIndex = self.index(startIndex, offsetBy: length, limitedBy: self.endIndex) ?? self.endIndex
+      let subsequence = self[startIndex..<endIndex]
+      results.append(subsequence)
+      startIndex = endIndex
+    }
+
+    return results
+  }
+
 }
 
 extension Collection where Self.Index == Int {

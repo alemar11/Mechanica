@@ -38,7 +38,6 @@ extension StringUtilsTests {
     ("testPaddingEnd", testPaddingEnd),
     ("testPaddingStart", testPaddingStart),
     ("testPadStart", testPadStart),
-    ("testSplit", testSplit),
     ("testSubscript", testSubscript),
     ("testSubscriptWithRange", testSubscriptWithCountableRange),
     ("testSubscriptWithClosedRange", testSubscriptWithCountableClosedRange),
@@ -418,15 +417,6 @@ final class StringUtilsTests: XCTestCase {
     }
   }
   
-  func testSplit() {
-    let string = "∆Test😗🇮🇹"
-    XCTAssertTrue(string.split(by: 0).isEmpty)
-    XCTAssertEqual(string.split(by: 1), ["∆", "T", "e", "s", "t", "😗", "🇮🇹"])
-    XCTAssertEqual(string.split(by: 3), ["∆Te", "st😗", "🇮🇹"])
-    XCTAssertEqual(string.split(by: 100), [string])
-    XCTAssertEqual("There are fourty-eight characters in this string".split(by: 20), ["There are fourty-eig", "ht characters in thi","s string"])
-  }
-
   func testSubscript() {
     let string = "∆Test😗🇮🇹"
 

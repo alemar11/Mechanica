@@ -248,31 +248,6 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Splits a string into substrings of a given `length`.
-  ///
-  /// Example:
-  ///
-  ///     let string = "Hello"
-  ///     string.split(by: 2) -> ["He", "ll", "o"]
-  ///
-  public func split(by length: Int) -> [String] {
-    guard length != 0 else { return [] }
-
-    var startIndex = self.startIndex
-    var results = [Substring]()
-    results.reserveCapacity(length)
-
-    while startIndex < self.endIndex {
-      let endIndex = self.index(startIndex, offsetBy: length, limitedBy: self.endIndex) ?? self.endIndex
-      results.append(self[startIndex..<endIndex])
-      startIndex = endIndex
-    }
-
-    return results.map { String($0) }
-  }
-
-  /// **Mechanica**
-  ///
   ///  Returns a substring, up to maxLength in length, containing the initial elements of the `String`.
   ///
   ///  - Warning: If maxLength exceeds self.count, the result contains all the elements of self.
