@@ -474,7 +474,7 @@ final class StringUtilsTests: XCTestCase {
       XCTAssertEqual(string, "12a123")
     }
   }
-  
+
   func testSubscript() {
     let string = "∆Test😗🇮🇹"
 
