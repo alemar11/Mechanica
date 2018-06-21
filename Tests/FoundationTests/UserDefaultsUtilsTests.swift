@@ -32,9 +32,9 @@ extension UserDefaultsUtilsTests {
     ("testOptionalFloat", testOptionalFloat),
     //("testOptionalBool", testOptionalBool),
     //("testRemoveAll", testRemoveAll),
-    ("testCodableSetAndRemove", testCodableSetAndRemove),
+    //("testCodableSetAndRemove", testCodableSetAndRemove),
     ("testCodableSetAndReset", testCodableSetAndReset),
-    ("testCodableSetResetAndRemove", testCodableSetResetAndRemove)
+    //("testCodableSetResetAndRemove", testCodableSetResetAndRemove)
   ]
 }
 
