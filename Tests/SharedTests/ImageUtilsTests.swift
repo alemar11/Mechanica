@@ -45,8 +45,8 @@ final class ImageUtilsTests: XCTestCase {
   }
 
   func testHasAlpha() throws {
-    let url =  resources().appendingPathComponent("pic.png")
-    let url2 = resources().appendingPathComponent("pic_no_alpha.jpeg")
+    let url = Resource.glasses.url
+    let url2 = Resource.glassesWithoutAlpha.url
 
     let image: Image
     let imageNoAlpha: Image
@@ -69,8 +69,8 @@ final class ImageUtilsTests: XCTestCase {
   }
 
   func testData() throws {
-    let url1 =  resources().appendingPathComponent("pic.png")
-    let url2 = resources().appendingPathComponent("pic_no_alpha.jpeg")
+    let url1 = Resource.glasses.url
+    let url2 = Resource.glassesWithoutAlpha.url
 
     let image1: Image
     let image2: Image
@@ -89,14 +89,8 @@ final class ImageUtilsTests: XCTestCase {
     XCTAssertNotNil(image2.data)
   }
 
-  private func resources() -> URL {
-    var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
-    resources.appendPathComponent("Resources")
-    return resources
-  }
-
   func testInflate() {
-    let url1 =  resources().appendingPathComponent("pic.png")
+    let url1 = Resource.glasses.url
 
     let image1: Image
 

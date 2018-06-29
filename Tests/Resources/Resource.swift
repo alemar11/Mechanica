@@ -1,4 +1,4 @@
-//
+// 
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -21,37 +21,34 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import XCTest
+import Foundation
 @testable import Mechanica
 
-#if os(macOS)
+enum Resource {
 
-  final class NSImageUtilsTests: XCTestCase {
+  case glasses
+  case glassesWithoutAlpha
+  case robot
 
-    func testImageNamed() {
-      let bundle = Bundle(for: NSImageUtilsTests.self)
-      let image = NSImage.imageNamed(name: "pic", in: bundle)
-
-      if !ProcessInfo.isRunningSwiftPackageTests {
-        // Not implemented (SPM): https://bugs.swift.org/browse/SR-2866
-        XCTAssertNotNil(image)
-        XCTAssertEqual(image!.name()?.rawValue, "pic")
-      }
+  var url: URL {
+    switch self {
+    case .glasses:
+      return Resource.folderURL.appendingPathComponent("glasses.png")
+    case .glassesWithoutAlpha:
+      return Resource.folderURL.appendingPathComponent("glasses_without_alpha.jpeg")
+    case .robot:
+      return Resource.folderURL.appendingPathComponent("robot.png")
     }
-
-    func testCGImage() throws {
-      var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
-      resources.appendPathComponent("Resources")
-
-      let data = try Data(contentsOf: Resource.glasses.url)
-      let image = NSImage(data: data)
-      let cgImage = image?.cgImage
-
-      XCTAssertNotNil(cgImage)
-      XCTAssertEqual(cgImage!.width, 483)
-      XCTAssertEqual(cgImage!.height, 221)
-    }
-
   }
 
-#endif
+  var data : Data {
+    return try! Data(contentsOf: url)
+  }
+
+  static var folderURL: URL {
+    var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
+    resources.appendPathComponent("Resources")
+    return resources
+  }
+
+}
