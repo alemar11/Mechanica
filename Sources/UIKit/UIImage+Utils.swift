@@ -98,7 +98,7 @@ extension UIImage {
   ///
   /// - returns: A new image object.
   public func aspectScaled(toFit size: CGSize) -> UIImage {
-    assert(size.width > 0 && size.height > 0, "An image with zero width or height cannot be scaled properly.")
+    assert(size.width > 0 && size.height > 0, "You cannot safely scale an image to a zero width or height")
 
     let imageAspectRatio = self.size.width / self.size.height
     let canvasAspectRatio = size.width / size.height
@@ -114,7 +114,13 @@ extension UIImage {
     let scaledSize = CGSize(width: self.size.width * resizeFactor, height: self.size.height * resizeFactor)
     let origin = CGPoint(x: (size.width - scaledSize.width) / 2.0, y: (size.height - scaledSize.height) / 2.0)
 
-    UIGraphicsBeginImageContextWithOptions(size, false, 0.0) // TODO: opaque as optional
+//    let format = UIGraphicsImageRendererFormat()
+//    format.scale = 0.0
+//    let renderer = UIGraphicsImageRenderer(size: size, format: format)
+//    let scaledImage = renderer.image { (context) in
+//      draw(in: CGRect(origin: origin, size: scaledSize))
+//    }
+    UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
     draw(in: CGRect(origin: origin, size: scaledSize))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext() ?? self

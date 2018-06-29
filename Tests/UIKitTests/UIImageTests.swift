@@ -24,7 +24,13 @@
 #if os(iOS) || os(tvOS)
 
 import XCTest
+import UIKit
 @testable import Mechanica
+
+let scale = Int(UIScreen.main.scale.rounded())
+let squareSize = CGSize(width: 50, height: 50)
+let horizontalRectangularSize = CGSize(width: 60, height: 30)
+let verticalRectangularSize = CGSize(width: 30, height: 60)
 
 final class UIImageTests: XCTestCase {
   
@@ -40,7 +46,19 @@ final class UIImageTests: XCTestCase {
     XCTAssertEqual(UIImage(color: .red, scale: 4.0)?.size, CGSize(width: 4, height: 4))
     XCTAssertEqual(UIImage(color: .red, size: CGSize(width: 11.3, height: 3.11), scale: 4.0)?.size, CGSize(width: (11.3*4.0).ceiled(to: 0), height: (3.11*4.0).ceiled(to: 0)))
   }
-  
+
+  func testThatImageIsAspectScaledToFitSquareSize() {
+    executeImageAspectScaledToFitSizeTest(squareSize)
+  }
+
+  func testThatImageIsAspectScaledToFitHorizontalRectangularSize() {
+    executeImageAspectScaledToFitSizeTest(horizontalRectangularSize)
+  }
+
+  func testThatImageIsAspectScaledToFitVerticalRectangularSize() {
+    executeImageAspectScaledToFitSizeTest(verticalRectangularSize)
+  }
+
   func testScale() {
     let image = Image(data: Resource.robot.data)!.copy() as! Image
     let size = CGSize(width: 50, height: 70)
@@ -91,7 +109,142 @@ final class UIImageTests: XCTestCase {
       XCTAssertEqual(rounded.size, image.size)
     }
   }
+
+  private func executeImageAspectScaledToFitSizeTest(_ size: CGSize) {
+    // Given
+    let w = Int(size.width.rounded())
+    let h = Int(size.height.rounded())
+
+    let bundle = Bundle(for: UIImageTests.self)
+    let resourceURL = bundle.url(forResource: "apple", withExtension: "jpg")!
+    let data = try! Data(contentsOf: resourceURL)
+
+    let resourceURL2 = bundle.url(forResource: "apple-aspect.scaled.to.fit-\(w)x\(h)-@\(scale)x", withExtension: "png")!
+    let data2 = try! Data(contentsOf: resourceURL2)
+
+    print(resourceURL)
+    let apple = UIImage(data: data, scale: UIScreen.main.scale)!
+    // When
+    let scaledAppleImage = apple.aspectScaled(toFit: size)
+
+    // Then
+    // /Users/a.marzoli/Developer/x/Mechanica/Tests/Resources/Images/Modified/apple-aspect.scaled.to.fit-60x30-@3x
+    //let name = "apple-aspect.scaled.to.fit-\(w)x\(h)-@\(scale)x.png"
+
+    let expectedAppleImage = UIImage(data: data2, scale: CGFloat(scale))!
+    XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "image scale should be equal to screen scale")
+
+    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 4), "scaled apple image pixels do not match")
+
+  }
   
+}
+
+#endif
+
+#if !os(macOS)
+
+import UIKit
+
+extension UIImage {
+  func isEqualToImage(_ image: UIImage, withinTolerance tolerance: UInt8 = 3) -> Bool {
+    guard size.equalTo(image.size) else {
+      print(size)
+      print(image.size)
+      return false
+    }
+
+    let image1 = imageWithPNGRepresentation().renderedImage()
+    let image2 = image.imageWithPNGRepresentation().renderedImage()
+
+    guard let rendered1 = image1, let rendered2 = image2 else {
+      return false
+    }
+
+    let pixelData1 = rendered1.cgImage?.dataProvider?.data
+    let pixelData2 = rendered2.cgImage?.dataProvider?.data
+
+    guard let validPixelData1 = pixelData1, let validPixelData2 = pixelData2 else { return false }
+
+    let data1 = Data(bytes: CFDataGetBytePtr(validPixelData1), count: CFDataGetLength(validPixelData1))
+    let data2 = Data(bytes: CFDataGetBytePtr(validPixelData2), count: CFDataGetLength(validPixelData2))
+
+    guard data1.count == data2.count else {
+      return false
+    }
+
+    for index in 0..<data1.count {
+      let byte1 = data1[index]
+      let byte2 = data2[index]
+      let delta = UInt8(abs(Int(byte1) - Int(byte2)))
+
+      guard delta <= tolerance else { return false }
+    }
+
+    return true
+  }
+
+  public func renderedImage() -> UIImage? {
+    // Do not attempt to render animated images
+    guard images == nil else { return nil }
+
+    // Do not attempt to render if not backed by a CGImage
+    guard let image = cgImage?.copy() else { return nil }
+
+    let width = image.width
+    let height = image.height
+    let bitsPerComponent = image.bitsPerComponent
+
+    // Do not attempt to render if too large or has more than 8-bit components
+    guard width * height <= 4096 * 4096 && bitsPerComponent <= 8 else { return nil }
+
+    let bytesPerRow: Int = 0
+    let colorSpace = CGColorSpaceCreateDeviceRGB()
+    var bitmapInfo = image.bitmapInfo
+
+    // Fix alpha channel issues if necessary
+    let alpha = (bitmapInfo.rawValue & CGBitmapInfo.alphaInfoMask.rawValue)
+
+    if alpha == CGImageAlphaInfo.none.rawValue {
+      bitmapInfo.remove(.alphaInfoMask)
+      bitmapInfo = CGBitmapInfo(rawValue: bitmapInfo.rawValue | CGImageAlphaInfo.noneSkipFirst.rawValue)
+    } else if !(alpha == CGImageAlphaInfo.noneSkipFirst.rawValue) || !(alpha == CGImageAlphaInfo.noneSkipLast.rawValue) {
+      bitmapInfo.remove(.alphaInfoMask)
+      bitmapInfo = CGBitmapInfo(rawValue: bitmapInfo.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
+    }
+
+    // Render the image
+    let context = CGContext(
+      data: nil,
+      width: width,
+      height: height,
+      bitsPerComponent: bitsPerComponent,
+      bytesPerRow: bytesPerRow,
+      space: colorSpace,
+      bitmapInfo: bitmapInfo.rawValue
+    )
+
+    context?.draw(image, in: CGRect(x: 0.0, y: 0.0, width: CGFloat(width), height: CGFloat(height)))
+
+    // Make sure the inflation was successful
+    guard let renderedImage = context?.makeImage() else { return nil }
+
+    return UIImage(cgImage: renderedImage, scale: self.scale, orientation: imageOrientation)
+  }
+
+  /**
+   Modifies the underlying UIImage data to use a PNG representation.
+   This is important in verifying pixel data between two images. If one has been exported out with PNG
+   compression and another has not, the image data between the two images will never be equal. This helper
+   method helps ensure comparisons will be valid.
+   - returns: The PNG representation image.
+   */
+  func imageWithPNGRepresentation() -> UIImage {
+    let data = UIImagePNGRepresentation(self)!
+    let image = UIImage(data: data, scale: UIScreen.main.scale)!
+
+    return image
+  }
 }
 
 #endif
