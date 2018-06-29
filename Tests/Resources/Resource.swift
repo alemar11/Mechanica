@@ -29,6 +29,7 @@ enum Resource {
   case glasses
   case glassesWithoutAlpha
   case robot
+  case apple
 
   var url: URL {
     switch self {
@@ -38,6 +39,8 @@ enum Resource {
       return Resource.folderURL.appendingPathComponent("glasses_without_alpha.jpeg")
     case .robot:
       return Resource.folderURL.appendingPathComponent("robot.png")
+    case .apple:
+      return Resource.folderURL.appendingPathComponent("Images/Original/apple.jpg")
     }
   }
 

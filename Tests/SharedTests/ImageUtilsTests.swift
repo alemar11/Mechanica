@@ -45,27 +45,26 @@ final class ImageUtilsTests: XCTestCase {
   }
 
   func testHasAlpha() throws {
-    let url = Resource.glasses.url
-    let url2 = Resource.glassesWithoutAlpha.url
-
-    let image: Image
-    let imageNoAlpha: Image
+    let glasses: Image
+    let glassesWithoutAlpha: Image
+    let apple: Image
 
     #if os(macOS)
-    image = NSImage(contentsOf: url)!
-    imageNoAlpha = NSImage(contentsOf: url2)!
+    glasses = NSImage(contentsOf: Resource.glasses.url)!
+    imageNoAlpha = NSImage(contentsOf: Resource.glassesWithoutAlpha.url)!
+    apple = NSImage(contentsOf: Resource.apple.data)!
     #elseif os(iOS) || os(tvOS) || os(watchOS)
-    let data = try Data(contentsOf: url)
-    let data2 = try Data(contentsOf: url2)
-    image = Image(data: data)!
-    imageNoAlpha = Image(data: data2)!
+    glasses = Image(data: Resource.glasses.data)!
+    glassesWithoutAlpha = Image(data: Resource.glassesWithoutAlpha.data)!
+    apple = Image(data: Resource.apple.data)!
     #endif
 
-    XCTAssertTrue(image.hasAlpha)
-    XCTAssertFalse(image.isOpaque)
+    XCTAssertTrue(glasses.hasAlpha)
+    XCTAssertFalse(glasses.isOpaque)
+    XCTAssertTrue(apple.isOpaque)
 
-    XCTAssertFalse(imageNoAlpha.hasAlpha)
-    XCTAssertTrue(imageNoAlpha.isOpaque)
+    XCTAssertFalse(glassesWithoutAlpha.hasAlpha)
+    XCTAssertTrue(glassesWithoutAlpha.isOpaque)
   }
 
   func testData() throws {
