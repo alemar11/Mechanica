@@ -61,7 +61,7 @@ final class UIImageUtilsTests: XCTestCase {
     executeImageScaledToSizeTest(verticalRectangularSize)
   }
 
-   // MARK: - Aspect Fit
+  // MARK: - Aspect Fit
 
   func testAspectScaledToFitSquareSize() {
     executeImageAspectScaledToFitSizeTest(squareSize)
@@ -73,6 +73,52 @@ final class UIImageUtilsTests: XCTestCase {
 
   func testAspectScaledToFitVerticalRectangularSize() {
     executeImageAspectScaledToFitSizeTest(verticalRectangularSize)
+  }
+
+  // MARK: - Circle
+
+  func testThatImageIsRoundedIntoCircle() {
+    // Given
+    let appleData = Resource.apple.data
+    let appleCircleData = Resource.circle(name: "apple-circle.png").data
+
+    // When
+    let apple = UIImage(data: appleData, scale: UIScreen.main.scale)!
+    let circularAppleImage = apple.roundedIntoCircle()
+
+    // Then
+    let expectedAppleImage = UIImage(data: appleCircleData, scale: CGFloat(scale))!
+    XCTAssertTrue(circularAppleImage.isEqualToImage(expectedAppleImage), "Rounded apple image pixels do not match")
+    XCTAssertEqual(circularAppleImage.scale, CGFloat(scale), "image scale should be equal to screen scale")
+
+    let expectedAppleSize = expectedImageSizeForCircularImage(circularAppleImage)
+    XCTAssertEqual(circularAppleImage.size, expectedAppleSize, "The image size (\(circularAppleImage.size)) should be equal to the expected scale (\(expectedAppleSize)).")
+  }
+
+  private func expectedImageSizeForCircularImage(_ image: UIImage) -> CGSize {
+    let dimension = min(image.size.width, image.size.height)
+    return CGSize(width: dimension, height: dimension)
+  }
+
+  // MARK: - Round
+
+  func testRoundedCorners() {
+    // Given
+    let radius: CGFloat = 20
+
+    let appleData = Resource.apple.data
+    let appleRadiusData = Resource.radius(name: "apple-radius-\(Int(radius)).png").data
+
+    // When
+    let apple = UIImage(data: appleData, scale: UIScreen.main.scale)!
+    let radiusAppleImage = apple.rounded(withCornerRadius: radius, divideRadiusByImageScale: true)
+
+    // Then
+    let expectedAppleImage = UIImage(data: appleRadiusData, scale: CGFloat(scale))!
+
+    XCTAssertTrue(radiusAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 8), "rounded apple image pixels do not match")
+
+    XCTAssertEqual(radiusAppleImage.scale, CGFloat(scale), "image scale should be equal to screen scale")
   }
 
   // MARK: - Aspect Fill
@@ -89,26 +135,7 @@ final class UIImageUtilsTests: XCTestCase {
     executeImageAspectScaledToFillSizeTest(verticalRectangularSize)
   }
 
-  func testRounding() {
-    do {
-      let image = Image(data: Resource.robot.data)!.copy() as! Image
-      let circle = image.roundedIntoCircle()
-      XCTAssertEqual(circle.size, image.size)
-      
-      let rounded = image.rounded(withCornerRadius: 10, divideRadiusByImageScale: true)
-      XCTAssertEqual(rounded.size, image.size)
-    }
-    
-    do {
-      let image = Image(data: Resource.glasses.data)!.copy() as! Image /// 483 x 221
-      let circle = image.roundedIntoCircle()
-      XCTAssertEqual(circle.size.height, image.size.height)
-      XCTAssertEqual(circle.size.width, image.size.height)
-      
-      let rounded = image.rounded(withCornerRadius: 10, divideRadiusByImageScale: true)
-      XCTAssertEqual(rounded.size, image.size)
-    }
-  }
+  // MARK: - Utils
 
   private func executeImageScaledToSizeTest(_ size: CGSize) {
     // Given
@@ -175,7 +202,9 @@ import UIKit
 
 extension UIImage {
   func isEqualToImage(_ image: UIImage, withinTolerance tolerance: UInt8 = 3) -> Bool {
-    guard size.equalTo(image.size) else { return false }
+    guard size.equalTo(image.size) else {
+      return false
+    }
 
     let image1 = imageWithPNGRepresentation().renderedImage()
     let image2 = image.imageWithPNGRepresentation().renderedImage()
@@ -201,7 +230,9 @@ extension UIImage {
       let byte2 = data2[index]
       let delta = UInt8(abs(Int(byte1) - Int(byte2)))
 
-      guard delta <= tolerance else { return false }
+      guard delta <= tolerance else {
+        return false
+      }
     }
 
     return true
@@ -263,7 +294,7 @@ extension UIImage {
    - returns: The PNG representation image.
    */
   func imageWithPNGRepresentation() -> UIImage {
-    let data = UIImagePNGRepresentation(self)!
+    let data = UIImagePNGRepresentation(self)! //TODO: Swift 4.2 .pngData
     let image = UIImage(data: data, scale: UIScreen.main.scale)!
 
     return image

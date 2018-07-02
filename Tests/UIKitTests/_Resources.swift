@@ -30,6 +30,9 @@ enum Resource {
   case glassesWithoutAlpha
   case robot
   case apple
+  case circle(name: String)
+  case radius(name: String)
+  case scaled(name: String)
   case scaledToFit(name: String)
   case scaledToFill(name: String)
 
@@ -43,6 +46,12 @@ enum Resource {
       return Resource.folderURL.appendingPathComponent("robot.png")
     case .apple:
       return Resource.folderURL.appendingPathComponent("Images/Original/apple.jpg")
+    case .circle(let name):
+      return Resource.folderURL.appendingPathComponent("Images/Modified/Circle/\(name)")
+    case .radius(let name):
+      return Resource.folderURL.appendingPathComponent("Images/Modified/Radius/\(name)")
+    case .scaled(let name):
+      return Resource.folderURL.appendingPathComponent("Images/Modified/Scale/\(name)")
     case .scaledToFit(let name):
       return Resource.folderURL.appendingPathComponent("Images/Modified/AspectScaleToFit/\(name)")
     case .scaledToFill(let name):

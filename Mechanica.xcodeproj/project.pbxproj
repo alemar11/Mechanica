@@ -320,6 +320,96 @@
 		23CC6B2A1FA72051004D062B /* ImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC6B281FA72051004D062B /* ImageUtilsTests.swift */; };
 		23CC6B2B1FA72051004D062B /* ImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CC6B281FA72051004D062B /* ImageUtilsTests.swift */; };
 		23D12CE11F9A649400720D4F /* FixedWidthInteger+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D12CDD1F9A649400720D4F /* FixedWidthInteger+Utils.swift */; };
+		23D26BB320EA2FD8000EC368 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B8F20EA2FD8000EC368 /* apple.jpg */; };
+		23D26BB420EA2FD8000EC368 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B8F20EA2FD8000EC368 /* apple.jpg */; };
+		23D26BB520EA2FD8000EC368 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B8F20EA2FD8000EC368 /* apple.jpg */; };
+		23D26BB620EA2FD8000EC368 /* apple-scaled-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9220EA2FD8000EC368 /* apple-scaled-60x30-@2x.png */; };
+		23D26BB720EA2FD8000EC368 /* apple-scaled-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9220EA2FD8000EC368 /* apple-scaled-60x30-@2x.png */; };
+		23D26BB820EA2FD8000EC368 /* apple-scaled-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9220EA2FD8000EC368 /* apple-scaled-60x30-@2x.png */; };
+		23D26BB920EA2FD8000EC368 /* apple-scaled-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9320EA2FD8000EC368 /* apple-scaled-50x50-@2x.png */; };
+		23D26BBA20EA2FD8000EC368 /* apple-scaled-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9320EA2FD8000EC368 /* apple-scaled-50x50-@2x.png */; };
+		23D26BBB20EA2FD8000EC368 /* apple-scaled-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9320EA2FD8000EC368 /* apple-scaled-50x50-@2x.png */; };
+		23D26BBC20EA2FD8000EC368 /* apple-scaled-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9420EA2FD8000EC368 /* apple-scaled-30x60-@1x.png */; };
+		23D26BBD20EA2FD8000EC368 /* apple-scaled-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9420EA2FD8000EC368 /* apple-scaled-30x60-@1x.png */; };
+		23D26BBE20EA2FD8000EC368 /* apple-scaled-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9420EA2FD8000EC368 /* apple-scaled-30x60-@1x.png */; };
+		23D26BBF20EA2FD8000EC368 /* apple-scaled-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9520EA2FD8000EC368 /* apple-scaled-50x50-@3x.png */; };
+		23D26BC020EA2FD8000EC368 /* apple-scaled-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9520EA2FD8000EC368 /* apple-scaled-50x50-@3x.png */; };
+		23D26BC120EA2FD8000EC368 /* apple-scaled-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9520EA2FD8000EC368 /* apple-scaled-50x50-@3x.png */; };
+		23D26BC220EA2FD8000EC368 /* apple-scaled-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9620EA2FD8000EC368 /* apple-scaled-60x30-@3x.png */; };
+		23D26BC320EA2FD8000EC368 /* apple-scaled-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9620EA2FD8000EC368 /* apple-scaled-60x30-@3x.png */; };
+		23D26BC420EA2FD8000EC368 /* apple-scaled-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9620EA2FD8000EC368 /* apple-scaled-60x30-@3x.png */; };
+		23D26BC520EA2FD8000EC368 /* apple-scaled-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9720EA2FD8000EC368 /* apple-scaled-30x60-@3x.png */; };
+		23D26BC620EA2FD8000EC368 /* apple-scaled-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9720EA2FD8000EC368 /* apple-scaled-30x60-@3x.png */; };
+		23D26BC720EA2FD8000EC368 /* apple-scaled-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9720EA2FD8000EC368 /* apple-scaled-30x60-@3x.png */; };
+		23D26BC820EA2FD8000EC368 /* apple-scaled-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9820EA2FD8000EC368 /* apple-scaled-50x50-@1x.png */; };
+		23D26BC920EA2FD8000EC368 /* apple-scaled-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9820EA2FD8000EC368 /* apple-scaled-50x50-@1x.png */; };
+		23D26BCA20EA2FD8000EC368 /* apple-scaled-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9820EA2FD8000EC368 /* apple-scaled-50x50-@1x.png */; };
+		23D26BCB20EA2FD8000EC368 /* apple-scaled-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9920EA2FD8000EC368 /* apple-scaled-30x60-@2x.png */; };
+		23D26BCC20EA2FD8000EC368 /* apple-scaled-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9920EA2FD8000EC368 /* apple-scaled-30x60-@2x.png */; };
+		23D26BCD20EA2FD8000EC368 /* apple-scaled-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9920EA2FD8000EC368 /* apple-scaled-30x60-@2x.png */; };
+		23D26BCE20EA2FD8000EC368 /* apple-scaled-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9A20EA2FD8000EC368 /* apple-scaled-60x30-@1x.png */; };
+		23D26BCF20EA2FD8000EC368 /* apple-scaled-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9A20EA2FD8000EC368 /* apple-scaled-60x30-@1x.png */; };
+		23D26BD020EA2FD8000EC368 /* apple-scaled-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9A20EA2FD8000EC368 /* apple-scaled-60x30-@1x.png */; };
+		23D26BD120EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9C20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png */; };
+		23D26BD220EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9C20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png */; };
+		23D26BD320EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9C20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png */; };
+		23D26BD420EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9D20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png */; };
+		23D26BD520EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9D20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png */; };
+		23D26BD620EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9D20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png */; };
+		23D26BD720EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9E20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png */; };
+		23D26BD820EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9E20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png */; };
+		23D26BD920EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9E20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png */; };
+		23D26BDA20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9F20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png */; };
+		23D26BDB20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9F20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png */; };
+		23D26BDC20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26B9F20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png */; };
+		23D26BDD20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA020EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png */; };
+		23D26BDE20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA020EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png */; };
+		23D26BDF20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA020EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png */; };
+		23D26BE020EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA120EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png */; };
+		23D26BE120EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA120EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png */; };
+		23D26BE220EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA120EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png */; };
+		23D26BE320EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA220EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png */; };
+		23D26BE420EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA220EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png */; };
+		23D26BE520EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA220EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png */; };
+		23D26BE620EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA320EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png */; };
+		23D26BE720EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA320EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png */; };
+		23D26BE820EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA320EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png */; };
+		23D26BE920EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA420EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png */; };
+		23D26BEA20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA420EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png */; };
+		23D26BEB20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA420EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png */; };
+		23D26BEC20EA2FD8000EC368 /* apple-radius-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA620EA2FD8000EC368 /* apple-radius-20.png */; };
+		23D26BED20EA2FD8000EC368 /* apple-radius-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA620EA2FD8000EC368 /* apple-radius-20.png */; };
+		23D26BEE20EA2FD8000EC368 /* apple-radius-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA620EA2FD8000EC368 /* apple-radius-20.png */; };
+		23D26BEF20EA2FD8000EC368 /* apple-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA820EA2FD8000EC368 /* apple-circle.png */; };
+		23D26BF020EA2FD8000EC368 /* apple-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA820EA2FD8000EC368 /* apple-circle.png */; };
+		23D26BF120EA2FD8000EC368 /* apple-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BA820EA2FD8000EC368 /* apple-circle.png */; };
+		23D26BF220EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAA20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png */; };
+		23D26BF320EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAA20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png */; };
+		23D26BF420EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAA20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png */; };
+		23D26BF520EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAB20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png */; };
+		23D26BF620EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAB20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png */; };
+		23D26BF720EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAB20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png */; };
+		23D26BF820EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAC20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png */; };
+		23D26BF920EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAC20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png */; };
+		23D26BFA20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAC20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png */; };
+		23D26BFB20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAD20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png */; };
+		23D26BFC20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAD20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png */; };
+		23D26BFD20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAD20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png */; };
+		23D26BFE20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAE20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png */; };
+		23D26BFF20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAE20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png */; };
+		23D26C0020EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAE20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png */; };
+		23D26C0120EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAF20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png */; };
+		23D26C0220EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAF20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png */; };
+		23D26C0320EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BAF20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png */; };
+		23D26C0420EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BB020EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png */; };
+		23D26C0520EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BB020EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png */; };
+		23D26C0620EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BB020EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png */; };
+		23D26C0720EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BB120EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png */; };
+		23D26C0820EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BB120EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png */; };
+		23D26C0920EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BB120EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png */; };
+		23D26C0A20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BB220EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png */; };
+		23D26C0B20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BB220EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png */; };
+		23D26C0C20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D26BB220EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png */; };
 		23D6A8521F9B72DF00AEC35A /* UIGestureRecognizer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6A8511F9B72DF00AEC35A /* UIGestureRecognizer+Utils.swift */; };
 		23D6A8541F9B72DF00AEC35A /* UIGestureRecognizer+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6A8511F9B72DF00AEC35A /* UIGestureRecognizer+Utils.swift */; };
 		23D6A8571F9B73BD00AEC35A /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D6A8561F9B73BD00AEC35A /* UIViewController+Utils.swift */; };
@@ -366,36 +456,6 @@
 		23F97E4F20E66D03007C4889 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F97E4E20E66D03007C4889 /* Resource.swift */; };
 		23F97E5020E66D03007C4889 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F97E4E20E66D03007C4889 /* Resource.swift */; };
 		23F97E5120E66D03007C4889 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F97E4E20E66D03007C4889 /* Resource.swift */; };
-		23F9817620E67961007C4889 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23F97F2C20E67961007C4889 /* apple.jpg */; };
-		23F9817720E67961007C4889 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23F97F2C20E67961007C4889 /* apple.jpg */; };
-		23F9817820E67961007C4889 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23F97F2C20E67961007C4889 /* apple.jpg */; };
-		23F9818420E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817B20E67D82007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png */; };
-		23F9818520E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817B20E67D82007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png */; };
-		23F9818620E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817B20E67D82007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png */; };
-		23F9818720E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817C20E67D82007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png */; };
-		23F9818820E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817C20E67D82007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png */; };
-		23F9818920E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817C20E67D82007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png */; };
-		23F9818A20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817D20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png */; };
-		23F9818B20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817D20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png */; };
-		23F9818C20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817D20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png */; };
-		23F9818D20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817E20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png */; };
-		23F9818E20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817E20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png */; };
-		23F9818F20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817E20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png */; };
-		23F9819020E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817F20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png */; };
-		23F9819120E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817F20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png */; };
-		23F9819220E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9817F20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png */; };
-		23F9819320E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818020E67D83007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png */; };
-		23F9819420E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818020E67D83007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png */; };
-		23F9819520E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818020E67D83007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png */; };
-		23F9819620E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818120E67D83007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png */; };
-		23F9819720E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818120E67D83007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png */; };
-		23F9819820E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818120E67D83007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png */; };
-		23F9819920E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818220E67D83007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png */; };
-		23F9819A20E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818220E67D83007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png */; };
-		23F9819B20E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818220E67D83007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png */; };
-		23F9819C20E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818320E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png */; };
-		23F9819D20E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818320E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png */; };
-		23F9819E20E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23F9818320E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png */; };
 		D205B0601DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */; };
 		D205B0611DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */; };
 		D205B0621DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */; };
@@ -576,6 +636,36 @@
 		23CC6B221FA71E04004D062B /* Image+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Utils.swift"; sourceTree = "<group>"; };
 		23CC6B281FA72051004D062B /* ImageUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtilsTests.swift; sourceTree = "<group>"; };
 		23D12CDD1F9A649400720D4F /* FixedWidthInteger+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FixedWidthInteger+Utils.swift"; sourceTree = "<group>"; };
+		23D26B8F20EA2FD8000EC368 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
+		23D26B9220EA2FD8000EC368 /* apple-scaled-60x30-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-scaled-60x30-@2x.png"; sourceTree = "<group>"; };
+		23D26B9320EA2FD8000EC368 /* apple-scaled-50x50-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-scaled-50x50-@2x.png"; sourceTree = "<group>"; };
+		23D26B9420EA2FD8000EC368 /* apple-scaled-30x60-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-scaled-30x60-@1x.png"; sourceTree = "<group>"; };
+		23D26B9520EA2FD8000EC368 /* apple-scaled-50x50-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-scaled-50x50-@3x.png"; sourceTree = "<group>"; };
+		23D26B9620EA2FD8000EC368 /* apple-scaled-60x30-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-scaled-60x30-@3x.png"; sourceTree = "<group>"; };
+		23D26B9720EA2FD8000EC368 /* apple-scaled-30x60-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-scaled-30x60-@3x.png"; sourceTree = "<group>"; };
+		23D26B9820EA2FD8000EC368 /* apple-scaled-50x50-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-scaled-50x50-@1x.png"; sourceTree = "<group>"; };
+		23D26B9920EA2FD8000EC368 /* apple-scaled-30x60-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-scaled-30x60-@2x.png"; sourceTree = "<group>"; };
+		23D26B9A20EA2FD8000EC368 /* apple-scaled-60x30-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-scaled-60x30-@1x.png"; sourceTree = "<group>"; };
+		23D26B9C20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-50x50-@3x.png"; sourceTree = "<group>"; };
+		23D26B9D20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-60x30-@3x.png"; sourceTree = "<group>"; };
+		23D26B9E20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-60x30-@2x.png"; sourceTree = "<group>"; };
+		23D26B9F20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-30x60-@1x.png"; sourceTree = "<group>"; };
+		23D26BA020EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-50x50-@2x.png"; sourceTree = "<group>"; };
+		23D26BA120EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-30x60-@2x.png"; sourceTree = "<group>"; };
+		23D26BA220EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-50x50-@1x.png"; sourceTree = "<group>"; };
+		23D26BA320EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-60x30-@1x.png"; sourceTree = "<group>"; };
+		23D26BA420EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-30x60-@3x.png"; sourceTree = "<group>"; };
+		23D26BA620EA2FD8000EC368 /* apple-radius-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-radius-20.png"; sourceTree = "<group>"; };
+		23D26BA820EA2FD8000EC368 /* apple-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-circle.png"; sourceTree = "<group>"; };
+		23D26BAA20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fill-30x60-@3x.png"; sourceTree = "<group>"; };
+		23D26BAB20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fill-60x30-@1x.png"; sourceTree = "<group>"; };
+		23D26BAC20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fill-30x60-@2x.png"; sourceTree = "<group>"; };
+		23D26BAD20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fill-50x50-@1x.png"; sourceTree = "<group>"; };
+		23D26BAE20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fill-30x60-@1x.png"; sourceTree = "<group>"; };
+		23D26BAF20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fill-50x50-@2x.png"; sourceTree = "<group>"; };
+		23D26BB020EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fill-60x30-@2x.png"; sourceTree = "<group>"; };
+		23D26BB120EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fill-60x30-@3x.png"; sourceTree = "<group>"; };
+		23D26BB220EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fill-50x50-@3x.png"; sourceTree = "<group>"; };
 		23D6A8511F9B72DF00AEC35A /* UIGestureRecognizer+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Utils.swift"; sourceTree = "<group>"; };
 		23D6A8561F9B73BD00AEC35A /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		23D7792E1F66706200724053 /* NSMutableAttributedString+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Utils.swift"; sourceTree = "<group>"; };
@@ -595,16 +685,6 @@
 		23F6A1671EC8DF6500D20502 /* FoundationUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FoundationUtilsTests.swift; sourceTree = "<group>"; };
 		23F97E4D20E66B4C007C4889 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = SOURCE_ROOT; };
 		23F97E4E20E66D03007C4889 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		23F97F2C20E67961007C4889 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
-		23F9817B20E67D82007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-50x50-@2x.png"; sourceTree = "<group>"; };
-		23F9817C20E67D82007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-30x60-@3x.png"; sourceTree = "<group>"; };
-		23F9817D20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-60x30-@3x.png"; sourceTree = "<group>"; };
-		23F9817E20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-60x30-@1x.png"; sourceTree = "<group>"; };
-		23F9817F20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-60x30-@2x.png"; sourceTree = "<group>"; };
-		23F9818020E67D83007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-30x60-@2x.png"; sourceTree = "<group>"; };
-		23F9818120E67D83007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-50x50-@3x.png"; sourceTree = "<group>"; };
-		23F9818220E67D83007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-30x60-@1x.png"; sourceTree = "<group>"; };
-		23F9818320E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-aspect.scaled.to.fit-50x50-@1x.png"; sourceTree = "<group>"; };
 		D205B05F1DF6F855002D78EF /* FloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "FloatingPoint+Utils.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Bundle+Info.swift"; sourceTree = "<group>"; };
 		D220818C1E07FEB700BE4268 /* URL+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "URL+Utils.swift"; sourceTree = "<group>"; };
@@ -737,7 +817,7 @@
 		237250642004E0F50000A442 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				23F97E5220E678BF007C4889 /* Images */,
+				23D26B8D20EA2FD8000EC368 /* Images */,
 				23C438EB2094841F0085AE62 /* robot.png */,
 				237250652004E0F50000A442 /* glasses_without_alpha.jpeg */,
 				237250662004E0F50000A442 /* glasses.png */,
@@ -922,6 +1002,99 @@
 			path = CoreGraphics;
 			sourceTree = "<group>";
 		};
+		23D26B8D20EA2FD8000EC368 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				23D26B8E20EA2FD8000EC368 /* Original */,
+				23D26B9020EA2FD8000EC368 /* Modified */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		23D26B8E20EA2FD8000EC368 /* Original */ = {
+			isa = PBXGroup;
+			children = (
+				23D26B8F20EA2FD8000EC368 /* apple.jpg */,
+			);
+			path = Original;
+			sourceTree = "<group>";
+		};
+		23D26B9020EA2FD8000EC368 /* Modified */ = {
+			isa = PBXGroup;
+			children = (
+				23D26B9120EA2FD8000EC368 /* Scale */,
+				23D26B9B20EA2FD8000EC368 /* AspectScaleToFit */,
+				23D26BA520EA2FD8000EC368 /* Radius */,
+				23D26BA720EA2FD8000EC368 /* Circle */,
+				23D26BA920EA2FD8000EC368 /* AspectScaleToFill */,
+			);
+			path = Modified;
+			sourceTree = "<group>";
+		};
+		23D26B9120EA2FD8000EC368 /* Scale */ = {
+			isa = PBXGroup;
+			children = (
+				23D26B9220EA2FD8000EC368 /* apple-scaled-60x30-@2x.png */,
+				23D26B9320EA2FD8000EC368 /* apple-scaled-50x50-@2x.png */,
+				23D26B9420EA2FD8000EC368 /* apple-scaled-30x60-@1x.png */,
+				23D26B9520EA2FD8000EC368 /* apple-scaled-50x50-@3x.png */,
+				23D26B9620EA2FD8000EC368 /* apple-scaled-60x30-@3x.png */,
+				23D26B9720EA2FD8000EC368 /* apple-scaled-30x60-@3x.png */,
+				23D26B9820EA2FD8000EC368 /* apple-scaled-50x50-@1x.png */,
+				23D26B9920EA2FD8000EC368 /* apple-scaled-30x60-@2x.png */,
+				23D26B9A20EA2FD8000EC368 /* apple-scaled-60x30-@1x.png */,
+			);
+			path = Scale;
+			sourceTree = "<group>";
+		};
+		23D26B9B20EA2FD8000EC368 /* AspectScaleToFit */ = {
+			isa = PBXGroup;
+			children = (
+				23D26B9C20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png */,
+				23D26B9D20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png */,
+				23D26B9E20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png */,
+				23D26B9F20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png */,
+				23D26BA020EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png */,
+				23D26BA120EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png */,
+				23D26BA220EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png */,
+				23D26BA320EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png */,
+				23D26BA420EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png */,
+			);
+			path = AspectScaleToFit;
+			sourceTree = "<group>";
+		};
+		23D26BA520EA2FD8000EC368 /* Radius */ = {
+			isa = PBXGroup;
+			children = (
+				23D26BA620EA2FD8000EC368 /* apple-radius-20.png */,
+			);
+			path = Radius;
+			sourceTree = "<group>";
+		};
+		23D26BA720EA2FD8000EC368 /* Circle */ = {
+			isa = PBXGroup;
+			children = (
+				23D26BA820EA2FD8000EC368 /* apple-circle.png */,
+			);
+			path = Circle;
+			sourceTree = "<group>";
+		};
+		23D26BA920EA2FD8000EC368 /* AspectScaleToFill */ = {
+			isa = PBXGroup;
+			children = (
+				23D26BAA20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png */,
+				23D26BAB20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png */,
+				23D26BAC20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png */,
+				23D26BAD20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png */,
+				23D26BAE20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png */,
+				23D26BAF20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png */,
+				23D26BB020EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png */,
+				23D26BB120EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png */,
+				23D26BB220EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png */,
+			);
+			path = AspectScaleToFill;
+			sourceTree = "<group>";
+		};
 		23D922981EFA670900629E17 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -935,55 +1108,6 @@
 				237EF6901FA4B23000B54A7A /* Package.swift */,
 			);
 			path = Support;
-			sourceTree = "<group>";
-		};
-		23F97E5220E678BF007C4889 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				23F97E5520E67960007C4889 /* Modified */,
-				23F97F2B20E67961007C4889 /* Original */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
-		23F97E5520E67960007C4889 /* Modified */ = {
-			isa = PBXGroup;
-			children = (
-				23F9817A20E67D4A007C4889 /* AspectScaleToFit */,
-				23F9817920E67D41007C4889 /* AspectScaleToFill */,
-			);
-			path = Modified;
-			sourceTree = "<group>";
-		};
-		23F97F2B20E67961007C4889 /* Original */ = {
-			isa = PBXGroup;
-			children = (
-				23F97F2C20E67961007C4889 /* apple.jpg */,
-			);
-			path = Original;
-			sourceTree = "<group>";
-		};
-		23F9817920E67D41007C4889 /* AspectScaleToFill */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AspectScaleToFill;
-			sourceTree = "<group>";
-		};
-		23F9817A20E67D4A007C4889 /* AspectScaleToFit */ = {
-			isa = PBXGroup;
-			children = (
-				23F9818220E67D83007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png */,
-				23F9818020E67D83007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png */,
-				23F9817C20E67D82007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png */,
-				23F9818320E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png */,
-				23F9817B20E67D82007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png */,
-				23F9818120E67D83007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png */,
-				23F9817E20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png */,
-				23F9817F20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png */,
-				23F9817D20E67D83007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png */,
-			);
-			path = AspectScaleToFit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1266,19 +1390,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F9818420E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */,
-				23F9819320E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */,
-				23F9819920E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */,
-				23F9819020E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */,
-				23F9817620E67961007C4889 /* apple.jpg in Resources */,
-				23F9818D20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */,
-				23F9818A20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */,
-				23F9819C20E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */,
-				23F9818720E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */,
+				23D26BDD20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */,
+				23D26C0720EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png in Resources */,
+				23D26BE020EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */,
 				2372506A2004E0F60000A442 /* glasses.png in Resources */,
-				23F9819620E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */,
 				23C438EC2094842A0085AE62 /* robot.png in Resources */,
+				23D26BE920EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */,
+				23D26BE620EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */,
+				23D26BB320EA2FD8000EC368 /* apple.jpg in Resources */,
+				23D26BF220EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png in Resources */,
+				23D26BEC20EA2FD8000EC368 /* apple-radius-20.png in Resources */,
+				23D26BDA20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */,
+				23D26C0A20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png in Resources */,
 				237250672004E0F50000A442 /* glasses_without_alpha.jpeg in Resources */,
+				23D26C0120EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png in Resources */,
+				23D26BD420EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */,
+				23D26BF820EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png in Resources */,
+				23D26BBC20EA2FD8000EC368 /* apple-scaled-30x60-@1x.png in Resources */,
+				23D26BCE20EA2FD8000EC368 /* apple-scaled-60x30-@1x.png in Resources */,
+				23D26BFE20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png in Resources */,
+				23D26BB920EA2FD8000EC368 /* apple-scaled-50x50-@2x.png in Resources */,
+				23D26BFB20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png in Resources */,
+				23D26C0420EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png in Resources */,
+				23D26BF520EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png in Resources */,
+				23D26BC520EA2FD8000EC368 /* apple-scaled-30x60-@3x.png in Resources */,
+				23D26BB620EA2FD8000EC368 /* apple-scaled-60x30-@2x.png in Resources */,
+				23D26BD120EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */,
+				23D26BD720EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */,
+				23D26BE320EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */,
+				23D26BC820EA2FD8000EC368 /* apple-scaled-50x50-@1x.png in Resources */,
+				23D26BEF20EA2FD8000EC368 /* apple-circle.png in Resources */,
+				23D26BCB20EA2FD8000EC368 /* apple-scaled-30x60-@2x.png in Resources */,
+				23D26BBF20EA2FD8000EC368 /* apple-scaled-50x50-@3x.png in Resources */,
+				23D26BC220EA2FD8000EC368 /* apple-scaled-60x30-@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1286,19 +1430,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F9818520E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */,
-				23F9819420E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */,
-				23F9819A20E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */,
-				23F9819120E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */,
-				23F9817720E67961007C4889 /* apple.jpg in Resources */,
-				23F9818E20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */,
-				23F9818B20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */,
-				23F9819D20E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */,
-				23F9818820E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */,
+				23D26BDE20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */,
+				23D26C0820EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png in Resources */,
+				23D26BE120EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */,
 				2372506B2004E0F60000A442 /* glasses.png in Resources */,
-				23F9819720E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */,
 				23C438EE2094842A0085AE62 /* robot.png in Resources */,
+				23D26BEA20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */,
+				23D26BE720EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */,
+				23D26BB420EA2FD8000EC368 /* apple.jpg in Resources */,
+				23D26BF320EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png in Resources */,
+				23D26BED20EA2FD8000EC368 /* apple-radius-20.png in Resources */,
+				23D26BDB20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */,
+				23D26C0B20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png in Resources */,
 				237250682004E0F60000A442 /* glasses_without_alpha.jpeg in Resources */,
+				23D26C0220EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png in Resources */,
+				23D26BD520EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */,
+				23D26BF920EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png in Resources */,
+				23D26BBD20EA2FD8000EC368 /* apple-scaled-30x60-@1x.png in Resources */,
+				23D26BCF20EA2FD8000EC368 /* apple-scaled-60x30-@1x.png in Resources */,
+				23D26BFF20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png in Resources */,
+				23D26BBA20EA2FD8000EC368 /* apple-scaled-50x50-@2x.png in Resources */,
+				23D26BFC20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png in Resources */,
+				23D26C0520EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png in Resources */,
+				23D26BF620EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png in Resources */,
+				23D26BC620EA2FD8000EC368 /* apple-scaled-30x60-@3x.png in Resources */,
+				23D26BB720EA2FD8000EC368 /* apple-scaled-60x30-@2x.png in Resources */,
+				23D26BD220EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */,
+				23D26BD820EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */,
+				23D26BE420EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */,
+				23D26BC920EA2FD8000EC368 /* apple-scaled-50x50-@1x.png in Resources */,
+				23D26BF020EA2FD8000EC368 /* apple-circle.png in Resources */,
+				23D26BCC20EA2FD8000EC368 /* apple-scaled-30x60-@2x.png in Resources */,
+				23D26BC020EA2FD8000EC368 /* apple-scaled-50x50-@3x.png in Resources */,
+				23D26BC320EA2FD8000EC368 /* apple-scaled-60x30-@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1306,19 +1470,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23F9818620E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */,
-				23F9819520E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */,
-				23F9819B20E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */,
-				23F9819220E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */,
-				23F9817820E67961007C4889 /* apple.jpg in Resources */,
-				23F9818F20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */,
-				23F9818C20E67D84007C4889 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */,
-				23F9819E20E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */,
-				23F9818920E67D84007C4889 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */,
+				23D26BDF20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@2x.png in Resources */,
+				23D26C0920EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@3x.png in Resources */,
+				23D26BE220EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@2x.png in Resources */,
 				2372506C2004E0F60000A442 /* glasses.png in Resources */,
-				23F9819820E67D84007C4889 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */,
 				23C438F02094842B0085AE62 /* robot.png in Resources */,
+				23D26BEB20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@3x.png in Resources */,
+				23D26BE820EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@1x.png in Resources */,
+				23D26BB520EA2FD8000EC368 /* apple.jpg in Resources */,
+				23D26BF420EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@3x.png in Resources */,
+				23D26BEE20EA2FD8000EC368 /* apple-radius-20.png in Resources */,
+				23D26BDC20EA2FD8000EC368 /* apple-aspect.scaled.to.fit-30x60-@1x.png in Resources */,
+				23D26C0C20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@3x.png in Resources */,
 				237250692004E0F60000A442 /* glasses_without_alpha.jpeg in Resources */,
+				23D26C0320EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@2x.png in Resources */,
+				23D26BD620EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@3x.png in Resources */,
+				23D26BFA20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@2x.png in Resources */,
+				23D26BBE20EA2FD8000EC368 /* apple-scaled-30x60-@1x.png in Resources */,
+				23D26BD020EA2FD8000EC368 /* apple-scaled-60x30-@1x.png in Resources */,
+				23D26C0020EA2FD8000EC368 /* apple-aspect.scaled.to.fill-30x60-@1x.png in Resources */,
+				23D26BBB20EA2FD8000EC368 /* apple-scaled-50x50-@2x.png in Resources */,
+				23D26BFD20EA2FD8000EC368 /* apple-aspect.scaled.to.fill-50x50-@1x.png in Resources */,
+				23D26C0620EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@2x.png in Resources */,
+				23D26BF720EA2FD8000EC368 /* apple-aspect.scaled.to.fill-60x30-@1x.png in Resources */,
+				23D26BC720EA2FD8000EC368 /* apple-scaled-30x60-@3x.png in Resources */,
+				23D26BB820EA2FD8000EC368 /* apple-scaled-60x30-@2x.png in Resources */,
+				23D26BD320EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@3x.png in Resources */,
+				23D26BD920EA2FD8000EC368 /* apple-aspect.scaled.to.fit-60x30-@2x.png in Resources */,
+				23D26BE520EA2FD8000EC368 /* apple-aspect.scaled.to.fit-50x50-@1x.png in Resources */,
+				23D26BCA20EA2FD8000EC368 /* apple-scaled-50x50-@1x.png in Resources */,
+				23D26BF120EA2FD8000EC368 /* apple-circle.png in Resources */,
+				23D26BCD20EA2FD8000EC368 /* apple-scaled-30x60-@2x.png in Resources */,
+				23D26BC120EA2FD8000EC368 /* apple-scaled-50x50-@3x.png in Resources */,
+				23D26BC420EA2FD8000EC368 /* apple-scaled-60x30-@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

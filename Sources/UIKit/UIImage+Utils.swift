@@ -33,13 +33,13 @@ extension UIImage {
   /// - Parameters:
   ///   - color: The background UIColor.
   ///   - size: The image size (default is 1x1).
-  ///   - scale: The scale factor to apply; if you specify a value of 0.0, the scale factor is set to the scale factor of the device’s main screen.
+  ///   - scaleFactor: The scale factor to apply; if you specify a value of 0.0, the scale factor is set to the scale factor of the device’s main screen.
   /// - Note: The size of the rectangle is beeing rounded from UIKit.
-  public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1), scale: CGFloat = 0.0) {
+  public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1), scale scaleFactor: CGFloat = 0.0) {
     let rect = CGRect(origin: .zero, size: size)
 
     let format = UIGraphicsImageRendererFormat()
-    format.scale = scale
+    format.scale = scaleFactor
     let renderer = UIGraphicsImageRenderer(size: size, format: format)
     let image = renderer.image { (context) in
       color.setFill()
@@ -72,12 +72,15 @@ extension UIImage {
   ///
   /// Returns a new version of the image scaled to the specified size.
   ///
-  /// - parameter size: The size to use when scaling the new image.
+  /// - Parameters:
+  ///   - size: The size to use when scaling the new image.
+  ///   - scale scaleFactor: The display scale of the image renderer context (defaults to the scale of the main screen).
+  ///
   /// - returns: A new image object.
-  public func scaled(to size: CGSize) -> UIImage {
+  public func scaled(to size: CGSize, scale scaleFactor: CGFloat = 0.0) -> UIImage {
     assert(size.width > 0 && size.height > 0, "An image with zero width or height cannot be scaled properly.")
 
-    UIGraphicsBeginImageContextWithOptions(size, isOpaque, 0.0)
+    UIGraphicsBeginImageContextWithOptions(size, isOpaque, scaleFactor)
     draw(in: CGRect(origin: .zero, size: size))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
@@ -86,18 +89,18 @@ extension UIImage {
     return scaledImage
   }
 
+
   /// **Mechanica**
   ///
   /// Returns a new version of the image scaled from the center while maintaining the aspect ratio to fit within
   /// a specified size.
   ///
-  /// The resulting image contains an alpha component used to pad the width or height with the necessary transparent
-  /// pixels to fit the specified size.
+  /// - Parameters:
+  ///   - size: The size to use when scaling the new image.
+  ///   - scaleFactor: The display scale of the image renderer context (defaults to the scale of the main screen).
   ///
-  /// - parameter size: The size to use when scaling the new image.
-  ///
-  /// - returns: A new image object.
-  public func aspectScaled(toFit size: CGSize) -> UIImage {
+  /// - Returns: A new image object.
+  public func aspectScaled(toFit size: CGSize, scale scaleFactor: CGFloat = 0.0) -> UIImage {
     assert(size.width > 0 && size.height > 0, "You cannot safely scale an image to a zero width or height")
 
     let imageAspectRatio = self.size.width / self.size.height
@@ -114,17 +117,12 @@ extension UIImage {
     let scaledSize = CGSize(width: self.size.width * resizeFactor, height: self.size.height * resizeFactor)
     let origin = CGPoint(x: (size.width - scaledSize.width) / 2.0, y: (size.height - scaledSize.height) / 2.0)
 
-//    let format = UIGraphicsImageRendererFormat()
-//    format.scale = 0.0
-//    let renderer = UIGraphicsImageRenderer(size: size, format: format)
-//    let scaledImage = renderer.image { (context) in
-//      draw(in: CGRect(origin: origin, size: scaledSize))
-//    }
-    UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-    draw(in: CGRect(origin: origin, size: scaledSize))
-
-    let scaledImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
-    UIGraphicsEndImageContext()
+    let format = UIGraphicsImageRendererFormat()
+    format.scale = scaleFactor
+    let renderer = UIGraphicsImageRenderer(size: size, format: format)
+    let scaledImage = renderer.image { (context) in
+      draw(in: CGRect(origin: origin, size: scaledSize))
+    }
 
     return scaledImage
   }
@@ -134,10 +132,12 @@ extension UIImage {
   /// Returns a new version of the image scaled from the center while maintaining the aspect ratio to fill a
   /// specified size. Any pixels that fall outside the specified size are clipped.
   ///
-  /// - parameter size: The size to use when scaling the new image.
+  /// - Parameters:
+  ///   - size: The size to use when scaling the new image.
+  ///   - scaleFactor: The display scale of the image renderer context (defaults to the scale of the main screen).
   ///
   /// - returns: A new `UIImage` object.
-  public func aspectScaled(toFill size: CGSize) -> UIImage {
+  public func aspectScaled(toFill size: CGSize, scale scaleFactor: CGFloat = 0.0) -> UIImage {
     assert(size.width > 0 && size.height > 0, "An image with zero width or height cannot be scaled properly.")
 
     let imageAspectRatio = self.size.width / self.size.height
@@ -154,7 +154,7 @@ extension UIImage {
     let scaledSize = CGSize(width: self.size.width * resizeFactor, height: self.size.height * resizeFactor)
     let origin = CGPoint(x: (size.width - scaledSize.width) / 2.0, y: (size.height - scaledSize.height) / 2.0)
 
-    UIGraphicsBeginImageContextWithOptions(size, isOpaque, 0.0)
+    UIGraphicsBeginImageContextWithOptions(size, isOpaque, scaleFactor)
     draw(in: CGRect(origin: origin, size: scaledSize))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
@@ -178,10 +178,11 @@ extension UIImage {
   ///                                       @3x (i.e. single image from web server). Set to `false` for images loaded
   ///                                       from an asset catalog with varying resolutions for each screen scale.
   ///                                       `false` by default.
+  /// - parameter scaleFactor:                    The display scale of the image renderer context (defaults to the scale of the main screen).
   ///
   /// - returns: A new `UIImage` object.
-  public func rounded(withCornerRadius radius: CGFloat, divideRadiusByImageScale: Bool = false) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+  public func rounded(withCornerRadius radius: CGFloat, divideRadiusByImageScale: Bool = false, scale scaleFactor: CGFloat = 0.0) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(size, false,scaleFactor)
 
     let scaledRadius = divideRadiusByImageScale ? radius / scale : radius
 
@@ -200,8 +201,10 @@ extension UIImage {
   ///
   /// Returns a new version of the image rounded into a circle.
   ///
+  /// - parameter scaleFactor: The display scale of the image renderer context (defaults to the scale of the main screen).
+  ///
   /// - returns: A new `UIImage` object.
-  public func roundedIntoCircle() -> UIImage {
+  public func roundedIntoCircle(scale scaleFactor: CGFloat = 0.0) -> UIImage {
     let radius = min(size.width, size.height) / 2.0
     var squareImage = self
 
@@ -211,7 +214,7 @@ extension UIImage {
       squareImage = aspectScaled(toFill: squareSize)
     }
 
-    UIGraphicsBeginImageContextWithOptions(squareImage.size, false, 0.0)
+    UIGraphicsBeginImageContextWithOptions(squareImage.size, false, scaleFactor)
 
     let clippingPath = UIBezierPath(
       roundedRect: CGRect(origin: CGPoint.zero, size: squareImage.size),
