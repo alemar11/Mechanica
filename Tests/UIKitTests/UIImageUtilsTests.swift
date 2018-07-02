@@ -32,7 +32,7 @@ let squareSize = CGSize(width: 50, height: 50)
 let horizontalRectangularSize = CGSize(width: 60, height: 30)
 let verticalRectangularSize = CGSize(width: 30, height: 60)
 
-final class UIImageTests: XCTestCase {
+final class UIImageUtilsTests: XCTestCase {
   
   func testInitWithColorAndSize() {
     let scale = UIScreen.main.scale
