@@ -31,6 +31,7 @@ enum Resource {
   case robot
   case apple
   case scaledToFit(name: String)
+  case scaledToFill(name: String)
 
   var url: URL {
     switch self {
@@ -44,6 +45,8 @@ enum Resource {
       return Resource.folderURL.appendingPathComponent("Images/Original/apple.jpg")
     case .scaledToFit(let name):
       return Resource.folderURL.appendingPathComponent("Images/Modified/AspectScaleToFit/\(name)")
+    case .scaledToFill(let name):
+      return Resource.folderURL.appendingPathComponent("Images/Modified/AspectScaleToFill/\(name)")
     }
   }
 

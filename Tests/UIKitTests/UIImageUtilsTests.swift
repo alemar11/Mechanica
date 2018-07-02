@@ -59,6 +59,18 @@ final class UIImageUtilsTests: XCTestCase {
     executeImageAspectScaledToFitSizeTest(verticalRectangularSize)
   }
 
+  func testAspectScaledToFillSquareSize() {
+    executeImageAspectScaledToFillSizeTest(squareSize)
+  }
+
+  func testAspectScaledToFillHorizontalRectangularSize() {
+    executeImageAspectScaledToFillSizeTest(horizontalRectangularSize)
+  }
+
+  func testAspectScaledToFillVerticalRectangularSize() {
+    executeImageAspectScaledToFillSizeTest(verticalRectangularSize)
+  }
+
   func testScale() {
     let image = Image(data: Resource.robot.data)!.copy() as! Image
     let size = CGSize(width: 50, height: 70)
@@ -66,13 +78,13 @@ final class UIImageUtilsTests: XCTestCase {
     XCTAssertEqual(scaled.size, size)
   }
   
-  func testAspectScaleToFill() {
-    let image = Image(data: Resource.robot.data)!.copy() as! Image
-    let size = CGSize(width: 50, height: 70)
-    let scaled = image.aspectScaled(toFit: size)
-    XCTAssertEqual(scaled.size, size)
-  }
-  
+//  func testAspectScaleToFill() {
+//    let image = Image(data: Resource.robot.data)!.copy() as! Image
+//    let size = CGSize(width: 50, height: 70)
+//    let scaled = image.aspectScaled(toFit: size)
+//    XCTAssertEqual(scaled.size, size)
+//  }
+
 //  func testAspectScaleToFit() {
 //    do {
 //      let image = Image(data: Resource.robot.data)!.copy() as! Image
@@ -124,6 +136,24 @@ final class UIImageUtilsTests: XCTestCase {
 
     // Then
     let expectedAppleImage = UIImage(data: appleScaledToFitData, scale: CGFloat(scale))!
+    XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
+    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 4), "The scaled apple image pixels do not match")
+  }
+
+  private func executeImageAspectScaledToFillSizeTest(_ size: CGSize) {
+    // Given
+    let w = Int(size.width.rounded())
+    let h = Int(size.height.rounded())
+
+    let appleData = Resource.apple.data
+    let appleScaledToFillData = Resource.scaledToFill(name: "apple-aspect.scaled.to.fill-\(w)x\(h)-@\(scale)x.png").data
+
+    // When
+    let apple = UIImage(data: appleData, scale: UIScreen.main.scale)!
+    let scaledAppleImage = apple.aspectScaled(toFill: size)
+
+    // Then
+    let expectedAppleImage = UIImage(data: appleScaledToFillData, scale: CGFloat(scale))!
     XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
     XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 4), "The scaled apple image pixels do not match")
   }
