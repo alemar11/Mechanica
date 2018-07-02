@@ -102,9 +102,9 @@ extension URLRequest {
       components.append("-H \"\(field): \(escapedValue)\"")
     }
 
-    if let httpBodyData = httpBody, let httpBody = String(data: httpBodyData, encoding: .utf8) {
-      var escapedBody = httpBody.replacingOccurrences(of: "\\\"", with: "\\\\\"")
-      escapedBody = escapedBody.replacingOccurrences(of: "\"", with: "\\\"")
+    if let bodyString = httpBodyString {
+      var escapedBody = bodyString.replacingOccurrences(of: "\\\"", with: "\\\\\"")
+      escapedBody = bodyString.replacingOccurrences(of: "\"", with: "\\\"")
 
       components.append("-d \"\(escapedBody)\"")
     }
@@ -113,6 +113,32 @@ extension URLRequest {
 
     let separator = !prettyPrinted ? " " :  " \\\n\t"
     return components.joined(separator: separator)
+  }
+
+  fileprivate var httpBodyString: String? {
+    // The httpBodyStream and httpBody are mutually exclusive - only one can be set on a given request.
+    if let httpBodyData = httpBody {
+      return String(data: httpBodyData, encoding: .utf8)
+    }
+
+    if let httpBodyStream = httpBodyStream {
+      let data = NSMutableData()
+      var buffer = [UInt8](repeating: 0, count: 4096)
+
+      httpBodyStream.open()
+      while httpBodyStream.hasBytesAvailable {
+        let length = httpBodyStream.read(&buffer, maxLength: 4096)
+        if length == 0 {
+          break
+        } else {
+          data.append(&buffer, length: length)
+        }
+      }
+
+      return String(data: data as Data, encoding: .utf8)
+    }
+
+    return nil
   }
 
 }

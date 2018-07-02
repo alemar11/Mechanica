@@ -93,6 +93,37 @@ final class URLRequestUtilsTests: XCTestCase {
 
   }
 
+  func testCURLRepresentationWithBodyStream() throws {
+    // Given
+    let url = URL(string: "http://localhost:3000/test")!
+    var request = URLRequest(url: url)
+
+    request.allHTTPHeaderFields = ["Content-Type": "application/json"]
+    request.httpMethod = "POST"
+
+    let body = ["key1": "value1", "key2": "value2"]
+    let data = try JSONSerialization.data(withJSONObject: body)
+    request.httpBodyStream = InputStream(data: data)
+
+    // When, Then
+    let cURL = request.cURLRepresentation(prettyPrinted: false)!
+    let value1 = "curl -i -X POST -H \"Content-Type: application/json\" -d \"{\\\"key1\\\":\\\"value1\\\",\\\"key2\\\":\\\"value2\\\"}\" \"http://localhost:3000/test\""
+    let value2 = "curl -i -X POST -H \"Content-Type: application/json\" -d \"{\\\"key2\\\":\\\"value2\\\",\\\"key1\\\":\\\"value1\\\"}\" \"http://localhost:3000/test\""
+
+    XCTAssertTrue(cURL == value1 || cURL == value2)
+
+
+    // create a copy because otherwise the httpBodyStream is lost
+    var request2 = request
+    request2.httpBodyStream = InputStream(data: data)
+
+    let prettyCURL = request2.cURLRepresentation(prettyPrinted: true)!
+    let value1_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key1\\\":\\\"value1\\\",\\\"key2\\\":\\\"value2\\\"}\" \\\n\t\"http://localhost:3000/test\""
+    let value2_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key2\\\":\\\"value2\\\",\\\"key1\\\":\\\"value1\\\"}\" \\\n\t\"http://localhost:3000/test\""
+
+    XCTAssertTrue(prettyCURL == value1_pretty || prettyCURL == value2_pretty)
+  }
+
   func testCURLRepresentationWithURLSession() throws {
     // TODO: implement
     /*

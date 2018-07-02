@@ -897,12 +897,12 @@
 				237F174F1E90000800726553 /* NSObjectProtocolSwizzlingTests.swift */,
 				23B2ED711EC8CE28006365BD /* NSObjectProtocolUtils.swift */,
 				23EE2F4B1F16A3520087DE67 /* NSPredicateUtilsTests.swift */,
+				23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */,
+				237E6FA61FC8321F0025F5CD /* StatUtilsTests.swift */,
 				237F17571E90000800726553 /* StringFoundationUtilsTests.swift */,
+				234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */,
 				237F175E1E90000800726553 /* URLUtilsTests.swift */,
 				23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */,
-				237E6FA61FC8321F0025F5CD /* StatUtilsTests.swift */,
-				23DC2C832014FA0A00270CA3 /* ProcessInfoTests.swift */,
-				234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */,
 			);
 			path = FoundationTests;
 			sourceTree = "<group>";
