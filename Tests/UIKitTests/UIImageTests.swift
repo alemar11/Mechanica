@@ -47,15 +47,15 @@ final class UIImageTests: XCTestCase {
     XCTAssertEqual(UIImage(color: .red, size: CGSize(width: 11.3, height: 3.11), scale: 4.0)?.size, CGSize(width: (11.3*4.0).ceiled(to: 0), height: (3.11*4.0).ceiled(to: 0)))
   }
 
-  func testThatImageIsAspectScaledToFitSquareSize() {
+  func testAspectScaledToFitSquareSize() {
     executeImageAspectScaledToFitSizeTest(squareSize)
   }
 
-  func testThatImageIsAspectScaledToFitHorizontalRectangularSize() {
+  func testAspectScaledToFitHorizontalRectangularSize() {
     executeImageAspectScaledToFitSizeTest(horizontalRectangularSize)
   }
 
-  func testThatImageIsAspectScaledToFitVerticalRectangularSize() {
+  func testAspectScaledToFitVerticalRectangularSize() {
     executeImageAspectScaledToFitSizeTest(verticalRectangularSize)
   }
 
@@ -73,22 +73,22 @@ final class UIImageTests: XCTestCase {
     XCTAssertEqual(scaled.size, size)
   }
   
-  func testAspectScaleToFit() {
-    do {
-      let image = Image(data: Resource.robot.data)!.copy() as! Image
-      let size = CGSize(width: 50, height: 70)
-      let scaled = image.aspectScaled(toFill: size)
-      XCTAssertEqual(scaled.size, size)
-    }
-    
-    do {
-      let image = Image(data: Resource.glasses.data)!.copy() as! Image
-      let size = CGSize(width: 50, height: 70)
-      let scaled = image.aspectScaled(toFill: size)
-      XCTAssertEqual(scaled.size, size)
-    }
-  }
-  
+//  func testAspectScaleToFit() {
+//    do {
+//      let image = Image(data: Resource.robot.data)!.copy() as! Image
+//      let size = CGSize(width: 50, height: 70)
+//      let scaled = image.aspectScaled(toFill: size)
+//      XCTAssertEqual(scaled.size, size)
+//    }
+//
+//    do {
+//      let image = Image(data: Resource.glasses.data)!.copy() as! Image
+//      let size = CGSize(width: 50, height: 70)
+//      let scaled = image.aspectScaled(toFill: size)
+//      XCTAssertEqual(scaled.size, size)
+//    }
+//  }
+
   func testRounding() {
     do {
       let image = Image(data: Resource.robot.data)!.copy() as! Image
@@ -115,27 +115,17 @@ final class UIImageTests: XCTestCase {
     let w = Int(size.width.rounded())
     let h = Int(size.height.rounded())
 
-    let bundle = Bundle(for: UIImageTests.self)
-    let resourceURL = bundle.url(forResource: "apple", withExtension: "jpg")!
-    let data = try! Data(contentsOf: resourceURL)
+    let appleData = Resource.apple.data
+    let appleScaledToFitData = Resource.scaledToFit(name: "apple-aspect.scaled.to.fit-\(w)x\(h)-@\(scale)x.png").data
 
-    let resourceURL2 = bundle.url(forResource: "apple-aspect.scaled.to.fit-\(w)x\(h)-@\(scale)x", withExtension: "png")!
-    let data2 = try! Data(contentsOf: resourceURL2)
-
-    print(resourceURL)
-    let apple = UIImage(data: data, scale: UIScreen.main.scale)!
     // When
+    let apple = UIImage(data: appleData, scale: UIScreen.main.scale)!
     let scaledAppleImage = apple.aspectScaled(toFit: size)
 
     // Then
-    // /Users/a.marzoli/Developer/x/Mechanica/Tests/Resources/Images/Modified/apple-aspect.scaled.to.fit-60x30-@3x
-    //let name = "apple-aspect.scaled.to.fit-\(w)x\(h)-@\(scale)x.png"
-
-    let expectedAppleImage = UIImage(data: data2, scale: CGFloat(scale))!
-    XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "image scale should be equal to screen scale")
-
-    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 4), "scaled apple image pixels do not match")
-
+    let expectedAppleImage = UIImage(data: appleScaledToFitData, scale: CGFloat(scale))!
+    XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
+    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 4), "The scaled apple image pixels do not match")
   }
   
 }
@@ -148,11 +138,7 @@ import UIKit
 
 extension UIImage {
   func isEqualToImage(_ image: UIImage, withinTolerance tolerance: UInt8 = 3) -> Bool {
-    guard size.equalTo(image.size) else {
-      print(size)
-      print(image.size)
-      return false
-    }
+    guard size.equalTo(image.size) else { return false }
 
     let image1 = imageWithPNGRepresentation().renderedImage()
     let image2 = image.imageWithPNGRepresentation().renderedImage()
