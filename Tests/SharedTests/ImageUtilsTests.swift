@@ -51,8 +51,8 @@ final class ImageUtilsTests: XCTestCase {
 
     #if os(macOS)
     glasses = NSImage(contentsOf: Resource.glasses.url)!
-    imageNoAlpha = NSImage(contentsOf: Resource.glassesWithoutAlpha.url)!
-    apple = NSImage(contentsOf: Resource.apple.data)!
+    glassesWithoutAlpha = NSImage(contentsOf: Resource.glassesWithoutAlpha.url)!
+    apple = NSImage(contentsOf: Resource.apple.url)!
     #elseif os(iOS) || os(tvOS) || os(watchOS)
     glasses = Image(data: Resource.glasses.data)!
     glassesWithoutAlpha = Image(data: Resource.glassesWithoutAlpha.data)!
