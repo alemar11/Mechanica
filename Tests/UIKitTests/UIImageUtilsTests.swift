@@ -125,7 +125,7 @@ final class UIImageUtilsTests: XCTestCase {
     // Then
     let expectedAppleImage = UIImage(data: appleScaledData, scale: CGFloat(scale))!
 
-    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage), "scaled apple image pixels do not match.")
+    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 4), "The scaled apple image pixels do not match.")
     XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
   }
 
