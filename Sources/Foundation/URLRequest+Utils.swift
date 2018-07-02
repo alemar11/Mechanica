@@ -28,11 +28,25 @@ extension URLRequest {
   /// **Mechanica**
   ///
   /// Returns a cURL command representation of `self`.
-  /// - Note: Logging URL requests in whole may expose sensitive data: make sure to disable this feature for production builds.
+  ///
+  /// - Parameters:
+  ///   - session: an URLSession to use to get more headers, credentials or cookies.
+  ///   - prettyPrinted: if true, the output will have a more readable format.
+  /// - Returns: Returns a cURL command representation of `self`.
   // swiftlint:disable:next cyclomatic_complexity
-  func cURLRepresentation(session: URLSession? = nil, credential: URLCredential? = nil, prettyPrinted: Bool = false) -> String? {
-    var components = ["curl -i"]
+  func cURLRepresentation(session: URLSession? = nil, prettyPrinted: Bool = false) -> String? {
     guard let url = url else { return nil }
+
+    var components = ["curl -i"]
+
+    func appendCredential(_ credential: URLCredential?) {
+      guard
+        let credential = credential,
+        let user = credential.user,
+        let password = credential.password
+        else { return }
+      components.append("-u \(user):\(password)")
+    }
 
     if httpMethod == "HEAD" {
       components.append("--head")
@@ -42,6 +56,7 @@ extension URLRequest {
       components.append("-X \(method)")
     }
 
+    /// Credential
     if
       let session = session,
       let host = url.host,
@@ -57,23 +72,15 @@ extension URLRequest {
 
       if let credentials = credentialStorage.credentials(for: protectionSpace)?.values {
         for credential in credentials {
-          guard let user = credential.user, let password = credential.password else { continue }
-
-          components.append("-u \(user):\(password)")
-        }
-
-      } else {
-        if
-          let credential = credential,
-          let user = credential.user,
-          let password = credential.password
-        {
-          components.append("-u \(user):\(password)")
+          appendCredential(credential)
         }
       }
     }
 
-    if let session = session, session.configuration.httpShouldSetCookies {
+    /// Cookies
+    if
+      let session = session,
+      session.configuration.httpShouldSetCookies {
       if
         let cookieStorage = session.configuration.httpCookieStorage,
         let cookies = cookieStorage.cookies(for: url), !cookies.isEmpty
@@ -83,9 +90,30 @@ extension URLRequest {
       }
     }
 
+    /// Headers
+    /*
+     https://tools.ietf.org/html/rfc7230#section-3.2.2
+
+     A sender MUST NOT generate multiple header fields with the same field
+     name in a message unless either the entire field value for that
+     header field is defined as a comma-separated list [i.e., #(values)]
+     or the header field is a well-known exception (as noted below).
+
+     A recipient MAY combine multiple header fields with the same field
+     name into one "field-name: field-value" pair, without changing the
+     semantics of the message, by appending each subsequent field value to
+     the combined field value in order, separated by a comma.  The order
+     in which header fields with the same field name are received is
+     therefore significant to the interpretation of the combined field
+     value; a proxy MUST NOT change the order of these field values when
+     forwarding a message.
+     */
     var headers: [AnyHashable: Any] = [:]
 
-    if let session = session, let additionalHeaders = session.configuration.httpAdditionalHeaders {
+    if
+      let session = session,
+      let additionalHeaders = session.configuration.httpAdditionalHeaders
+    {
       for (field, value) in additionalHeaders where field != AnyHashable("Cookie") {
         headers[field] = value
       }
@@ -102,6 +130,7 @@ extension URLRequest {
       components.append("-H \"\(field): \(escapedValue)\"")
     }
 
+    /// Body
     if let bodyString = httpBodyString {
       var escapedBody = bodyString.replacingOccurrences(of: "\\\"", with: "\\\\\"")
       escapedBody = bodyString.replacingOccurrences(of: "\"", with: "\\\"")

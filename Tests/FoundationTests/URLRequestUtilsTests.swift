@@ -22,6 +22,7 @@
 // SOFTWARE.
 
 import XCTest
+import Foundation
 @testable import Mechanica
 
 extension URLRequestUtilsTests {
@@ -61,7 +62,7 @@ final class URLRequestUtilsTests: XCTestCase {
       XCTAssertTrue(prettyCURL == value1 || prettyCURL == value2)
 
       let cURL = request.cURLRepresentation(prettyPrinted: true)!
-       let value1_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key1\\\":\\\"value1\\\",\\\"key2\\\":\\\"value2\\\"}\" \\\n\t\"http://localhost:3000/test\""
+      let value1_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key1\\\":\\\"value1\\\",\\\"key2\\\":\\\"value2\\\"}\" \\\n\t\"http://localhost:3000/test\""
       let value2_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key2\\\":\\\"value2\\\",\\\"key1\\\":\\\"value1\\\"}\" \\\n\t\"http://localhost:3000/test\""
       XCTAssertTrue(cURL == value1_pretty || cURL == value2_pretty)
     }
@@ -125,32 +126,70 @@ final class URLRequestUtilsTests: XCTestCase {
   }
 
   func testCURLRepresentationWithURLSession() throws {
-    // TODO: implement
-    /*
-     https://tools.ietf.org/html/rfc7230#section-3.2.2
+    // Given
+    var urlString = "http://example.com"
+    urlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
 
-     A sender MUST NOT generate multiple header fields with the same field
-     name in a message unless either the entire field value for that
-     header field is defined as a comma-separated list [i.e., #(values)]
-     or the header field is a well-known exception (as noted below).
+    let url = URL(string: urlString)!
+    var request = URLRequest(url: url)
 
-     A recipient MAY combine multiple header fields with the same field
-     name into one "field-name: field-value" pair, without changing the
-     semantics of the message, by appending each subsequent field value to
-     the combined field value in order, separated by a comma.  The order
-     in which header fields with the same field name are received is
-     therefore significant to the interpretation of the combined field
-     value; a proxy MUST NOT change the order of these field values when
-     forwarding a message.
-     */
+    request.allHTTPHeaderFields = ["Content-Type": "application/json"]
+
+    let credential = URLCredential(user: "AaA", password: "BBb", persistence: .forSession)
+    let host = url.host!
+    let protectionSpace = URLProtectionSpace(host: host, port: url.port ?? 0, protocol: url.scheme, realm: host, authenticationMethod: NSURLAuthenticationMethodHTTPBasic)
+
+    let configuration = URLSessionConfiguration.default
+    configuration.httpCookieAcceptPolicy = .always
+    configuration.httpShouldSetCookies = true
+    configuration.httpAdditionalHeaders = ["Content-Type": "application/json", "Test": "Mechanica"]
+    let date = Date(timeIntervalSinceNow: 31536000)
+    var cookieProperties = [HTTPCookiePropertyKey: Any]()
+    cookieProperties[.name] = "cookiename"
+    cookieProperties[.value] = "cookievalue"
+    cookieProperties[.domain] = urlString
+    cookieProperties[.path] = "/"
+    cookieProperties[.version] = NSNumber(value: 11)
+    cookieProperties[.expires] = date
+    let cookie = HTTPCookie(properties: cookieProperties)!
+
+//    let storage = HTTPCookieStorage()
+//    storage.setCookies([cookie], for: url, mainDocumentURL: url)
+    let storage = MockHTTPCookieStorage()
+    storage.setCookies([cookie], for: url, mainDocumentURL: nil)
+
+     HTTPCookieStorage.shared.setCookies([cookie], for: url, mainDocumentURL: nil)
+    HTTPCookieStorage.shared.setCookie(cookie)
+
+    print(HTTPCookieStorage.shared.cookies)
+    print(HTTPCookieStorage.shared.cookies(for: url))
+
+    //HTTPCookieStorage.shared.setCookies([cookie], for: url, mainDocumentURL: nil)
+    configuration.httpCookieStorage = storage
+
+
+    let session = URLSession(configuration: configuration)
+    print(session.configuration.httpCookieStorage?.cookies(for: url))
+
+    URLCredentialStorage.shared.setDefaultCredential(credential, for: protectionSpace)
+
+    let cURL = request.cURLRepresentation(session: session, prettyPrinted: false)!
+    let expectedValue = "curl -i -u AaA:BBb -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"https://example.com\""
+    print(cURL)
+    XCTAssertTrue(cURL == expectedValue)
   }
 
-  func testCURLRepresentationWithURLCredential() throws {
-    // TODO: implement
-  }
+  private class MockHTTPCookieStorage: HTTPCookieStorage {
+    var _cookies = [URL: [HTTPCookie]]()
 
-  func testCURLRepresentationWithWithURLSessionAndURLCredential() throws {
-    // TODO: implement
+    override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
+      guard let url = URL else { return }
+      _cookies[url] = cookies
+    }
+
+    override func cookies(for URL: URL) -> [HTTPCookie]? {
+      return _cookies[url]
+    }
   }
 
 }
