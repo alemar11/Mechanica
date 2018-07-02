@@ -1,3 +1,4 @@
+#TODO: https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageDescriptionV4_2.md
 TEST_RESOURCE_FILE = ./Tests/Resources/Resource.swift
 APPKIT_TESTS_FOLDER = ./Tests/AppKitTests
 UIKIT_TESTS_FOLDER = ./Tests/UIKitTests
