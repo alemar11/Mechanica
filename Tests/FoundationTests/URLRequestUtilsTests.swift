@@ -171,7 +171,7 @@ final class URLRequestUtilsTests: XCTestCase {
     var _cookies = [URL: [HTTPCookie]]()
 
 
-    init(name: String = "") {
+    public init(name: String = "") {
       super.init()
     }
 //    override init() {
