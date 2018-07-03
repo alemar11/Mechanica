@@ -29,8 +29,8 @@ extension URLRequestUtilsTests {
   static var allTests = [
     ("testCURLRepresentation", testCURLRepresentation),
     ("testCURLRepresentationWithBodyStream", testCURLRepresentationWithBodyStream),
-    ("testCURLRepresentationWithURLSession", testCURLRepresentationWithURLSession),
-    ]
+    //("testCURLRepresentationWithURLSession", testCURLRepresentationWithURLSession), //TODO: it's not compiling on Linux
+  ]
 }
 
 final class URLRequestUtilsTests: XCTestCase {
@@ -127,6 +127,8 @@ final class URLRequestUtilsTests: XCTestCase {
     XCTAssertTrue(prettyCURL == value1_pretty || prettyCURL == value2_pretty)
   }
   
+  #if os(iOS) || os(tvOS) || os(macOS)
+  
   func testCURLRepresentationWithURLSession() throws {
     // Given
     var urlString = "http://example.com"
@@ -156,7 +158,7 @@ final class URLRequestUtilsTests: XCTestCase {
     cookieProperties[.expires] = date
     let cookie = HTTPCookie(properties: cookieProperties)!
     
-    let storage = MockHTTPCookieStorage(test: "\(#file)\(#line)")
+    let storage = MockHTTPCookieStorage()
     storage.setCookies([cookie], for: url, mainDocumentURL: nil)
     configuration.httpCookieStorage = storage
     
@@ -169,22 +171,18 @@ final class URLRequestUtilsTests: XCTestCase {
     XCTAssertTrue(cURL == expectedValue)
   }
   
-}
-
-public class MockHTTPCookieStorage: HTTPCookieStorage {
-  var _cookies = [URL: [HTTPCookie]]()
-  
-  public init(test: String = "") {
-    print("test")
-    super.init()
+  public class MockHTTPCookieStorage: HTTPCookieStorage {
+    var _cookies = [URL: [HTTPCookie]]()
+    
+    public override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
+      guard let url = URL else { return }
+      _cookies[url] = cookies
+    }
+    
+    public override func cookies(for URL: URL) -> [HTTPCookie]? {
+      return _cookies[URL]
+    }
   }
+  #endif
   
-  public override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
-    guard let url = URL else { return }
-    _cookies[url] = cookies
-  }
-  
-  public override func cookies(for URL: URL) -> [HTTPCookie]? {
-    return _cookies[URL]
-  }
 }
