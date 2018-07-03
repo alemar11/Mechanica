@@ -172,7 +172,7 @@ final class URLRequestUtilsTests: XCTestCase {
 
 
     init(name: String = "") {
-      
+      super.init()
     }
 //    override init() {
 //
