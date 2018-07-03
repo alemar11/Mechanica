@@ -103,6 +103,9 @@
                 <a href="../Extensions/Locale.html">Locale</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/MutableCollection.html">MutableCollection</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/NSAttributedString.html">NSAttributedString</a>
               </li>
               <li class="nav-group-task">
@@ -255,6 +258,65 @@
           </section>
           <section class="section task-group-section">
             <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s10CollectionP9MechanicaE2at7ElementQzSg5IndexQzF"></a>
+                    <a name="//apple_ref/swift/Method/at(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s10CollectionP9MechanicaE2at7ElementQzSg5IndexQzF">at(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">at</span><span class="p">(</span><span class="n">_</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the index of the desired element.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The element at a given index or nil if not exists.
+Example:</p>
+
+<p>let array = [1, 2, 3]
+array[100] -&gt; crash
+array.at(100) -&gt; nil</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
               <div class="task-name-container">
                 <a name="/Equatable"></a>
                 <a name="//apple_ref/swift/Section/Equatable" class="dashAnchor"></a>
@@ -378,61 +440,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s10CollectionP9MechanicaSi5IndexRtzrlE2at7ElementQzSgSiF"></a>
-                    <a name="//apple_ref/swift/Method/at(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s10CollectionP9MechanicaSi5IndexRtzrlE2at7ElementQzSgSiF">at(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">at</span><span class="p">(</span><span class="n">_</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>index</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>the index of the desired element.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The element at a given index or nil if not exists.
-Example:</p>
-
-<p>let array = [1, 2, 3]
-array[100] -&gt; crash
-array.at(100) -&gt; nil</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:s10CollectionP9MechanicaSi5IndexRtzrlE6random7ElementQzyF"></a>
                     <a name="//apple_ref/swift/Method/random()" class="dashAnchor"></a>
                     <a class="token" href="#/s:s10CollectionP9MechanicaSi5IndexRtzrlE6random7ElementQzyF">random()</a>
@@ -464,7 +471,7 @@ array.at(100) -&gt; nil</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-04-28)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-07-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

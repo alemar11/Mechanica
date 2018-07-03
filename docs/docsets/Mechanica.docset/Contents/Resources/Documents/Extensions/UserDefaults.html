@@ -103,6 +103,9 @@
                 <a href="../Extensions/Locale.html">Locale</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/MutableCollection.html">MutableCollection</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/NSAttributedString.html">NSAttributedString</a>
               </li>
               <li class="nav-group-task">
@@ -535,9 +538,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So12UserDefaultsC9MechanicaE12codableValuexSgSS6forKey_ts9DecodableRzs9EncodableRzlF"></a>
-                    <a name="//apple_ref/swift/Method/codableValue(forKey:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So12UserDefaultsC9MechanicaE12codableValuexSgSS6forKey_ts9DecodableRzs9EncodableRzlF">codableValue(forKey:)</a>
+                    <a name="/s:So12UserDefaultsC9MechanicaE12codableValuexSgSS6forKey_10Foundation11JSONDecoderC11jsonDecoderts9DecodableRzs9EncodableRzlF"></a>
+                    <a name="//apple_ref/swift/Method/codableValue(forKey:jsonDecoder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So12UserDefaultsC9MechanicaE12codableValuexSgSS6forKey_10Foundation11JSONDecoderC11jsonDecoderts9DecodableRzs9EncodableRzlF">codableValue(forKey:jsonDecoder:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -559,7 +562,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="n">codableValue</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">forKey</span> <span class="n">defaultName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="n">codableValue</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">forKey</span> <span class="n">defaultName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">jsonDecoder</span><span class="p">:</span> <span class="kt">JSONDecoder</span> <span class="o">=</span> <span class="kt">JSONDecoder</span><span class="p">())</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -579,6 +582,18 @@
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>jsonDecoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An object that decode the value from a JSON object.</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -588,9 +603,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So12UserDefaultsC9MechanicaE3setyxSg12codableValue_SS6forKeytKs9DecodableRzs9EncodableRzlF"></a>
-                    <a name="//apple_ref/swift/Method/set(codableValue:forKey:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So12UserDefaultsC9MechanicaE3setyxSg12codableValue_SS6forKeytKs9DecodableRzs9EncodableRzlF">set(codableValue:forKey:)</a>
+                    <a name="/s:So12UserDefaultsC9MechanicaE3setyxSg12codableValue_SS6forKey10Foundation11JSONEncoderC11jsonEncodertKs9DecodableRzs9EncodableRzlF"></a>
+                    <a name="//apple_ref/swift/Method/set(codableValue:forKey:jsonEncoder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So12UserDefaultsC9MechanicaE3setyxSg12codableValue_SS6forKey10Foundation11JSONEncoderC11jsonEncodertKs9DecodableRzs9EncodableRzlF">set(codableValue:forKey:jsonEncoder:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -617,7 +632,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="k">set</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">codableValue</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">?,</span> <span class="n">forKey</span> <span class="n">defaultName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="k">set</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Codable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">codableValue</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span><span class="p">?,</span> <span class="n">forKey</span> <span class="n">defaultName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">jsonEncoder</span><span class="p">:</span> <span class="kt">JSONEncoder</span> <span class="o">=</span> <span class="kt">JSONEncoder</span><span class="p">())</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -649,6 +664,18 @@
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>jsonEncoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An object that encodes the value as JSON object.</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -660,7 +687,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-04-28)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-07-03)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
