@@ -150,19 +150,20 @@ extension URLRequest {
       return String(data: httpBodyData, encoding: .utf8)
     }
 
+    let maxLength = 4096
+
     if let httpBodyStream = httpBodyStream {
       let data = NSMutableData()
-      var buffer = [UInt8](repeating: 0, count: 4096)
+      var buffer = [UInt8](repeating: 0, count: maxLength)
 
       httpBodyStream.open()
       while httpBodyStream.hasBytesAvailable {
-        let length = httpBodyStream.read(&buffer, maxLength: 4096)
-        if length == 0 {
-          break
-        } else {
-          data.append(&buffer, length: length)
-        }
+        let length = httpBodyStream.read(&buffer, maxLength: maxLength)
+        guard length != 0 else { break }
+
+        data.append(&buffer, length: length)
       }
+      httpBodyStream.close()
 
       return String(data: data as Data, encoding: .utf8)
     }
