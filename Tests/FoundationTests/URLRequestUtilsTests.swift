@@ -143,6 +143,7 @@ final class URLRequestUtilsTests: XCTestCase {
     configuration.httpCookieAcceptPolicy = .always
     configuration.httpShouldSetCookies = true
     configuration.httpAdditionalHeaders = ["Content-Type": "application/json", "Test": "Mechanica"]
+
     let date = Date(timeIntervalSinceNow: 31536000)
     var cookieProperties = [HTTPCookiePropertyKey: Any]()
     cookieProperties[.name] = "cookiename"
@@ -153,29 +154,16 @@ final class URLRequestUtilsTests: XCTestCase {
     cookieProperties[.expires] = date
     let cookie = HTTPCookie(properties: cookieProperties)!
 
-//    let storage = HTTPCookieStorage()
-//    storage.setCookies([cookie], for: url, mainDocumentURL: url)
     let storage = MockHTTPCookieStorage()
     storage.setCookies([cookie], for: url, mainDocumentURL: nil)
-
-     HTTPCookieStorage.shared.setCookies([cookie], for: url, mainDocumentURL: nil)
-    HTTPCookieStorage.shared.setCookie(cookie)
-
-    print(HTTPCookieStorage.shared.cookies)
-    print(HTTPCookieStorage.shared.cookies(for: url))
-
-    //HTTPCookieStorage.shared.setCookies([cookie], for: url, mainDocumentURL: nil)
     configuration.httpCookieStorage = storage
 
-
     let session = URLSession(configuration: configuration)
-    print(session.configuration.httpCookieStorage?.cookies(for: url))
-
     URLCredentialStorage.shared.setDefaultCredential(credential, for: protectionSpace)
 
+    // When, Then
     let cURL = request.cURLRepresentation(session: session, prettyPrinted: false)!
-    let expectedValue = "curl -i -u AaA:BBb -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"https://example.com\""
-    print(cURL)
+    let expectedValue = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
     XCTAssertTrue(cURL == expectedValue)
   }
 
@@ -188,7 +176,7 @@ final class URLRequestUtilsTests: XCTestCase {
     }
 
     override func cookies(for URL: URL) -> [HTTPCookie]? {
-      return _cookies[url]
+      return _cookies[URL]
     }
   }
 
