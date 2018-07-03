@@ -39,40 +39,40 @@ extension RangeReplaceableCollectionUtilsTests {
 }
 
 final class RangeReplaceableCollectionUtilsTests: XCTestCase {
-
+  
   func testAppending() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-
+    
     let newAll = all.appending(11)
     XCTAssertTrue(all.count == 11)
     XCTAssertTrue(newAll.count == 12)
     XCTAssertTrue(newAll.last == 11)
-
+    
   }
-
+  
   func testRemoveFirst() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-
+    
     let removedElement = all.removeFirst { $0.isEven }
     XCTAssertNotNil(removedElement)
     XCTAssertTrue(removedElement! == 0)
     XCTAssertTrue(all.count == 10)
     XCTAssertTrue(all == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-
+    
     let removedElement2 = all.removeFirst { $0 == 11 }
     XCTAssertNil(removedElement2)
     XCTAssertTrue(all.count == 10)
     XCTAssertTrue(all == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-
+    
     let removedElement3 = all.removeFirst { $0 % 3 == 0 }
     XCTAssertNotNil(removedElement3)
     XCTAssertTrue(all.count == 9)
     XCTAssertTrue(all == [1, 2, 4, 5, 6, 7, 8, 9, 10])
   }
-
+  
   func testRemovingFirst() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-
+    
     do {
       let (newAll, removed) = all.removingFirst { $0.isEven }
       XCTAssertTrue(newAll.count == 10)
@@ -80,39 +80,39 @@ final class RangeReplaceableCollectionUtilsTests: XCTestCase {
       XCTAssertTrue(all.count == 11)
       XCTAssertTrue(removed == 0)
     }
-
+    
     do {
       let (newAll, removed) = all.removingFirst { $0 == 11 }
       XCTAssertTrue(newAll.count == 11)
       XCTAssertTrue(newAll == newAll)
       XCTAssertTrue(removed == nil)
     }
-
+    
   }
-
+  
   func testRemoveLast() {
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-
+    
     let removedElement = all.removeLast { $0.isEven  }
     XCTAssertNotNil(removedElement)
     XCTAssertTrue(removedElement! == 10)
     XCTAssertTrue(all.count == 10)
     XCTAssertTrue(all == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-
+    
     let removedElement2 = all.removeLast { $0 == 11 }
     XCTAssertNil(removedElement2)
     XCTAssertTrue(all.count == 10)
     XCTAssertTrue(all == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-
+    
     let removedElements3 = all.removeLast { $0 % 3 == 0 }
     XCTAssertNotNil(removedElements3)
     XCTAssertTrue(all.count == 9)
     XCTAssertTrue(all == [0, 1, 2, 3, 4, 5, 6, 7, 8])
   }
-
+  
   func testRemovingLast() {
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-
+    
     do {
       let (newAll, removed) = all.removingLast { $0.isEven }
       XCTAssertTrue(newAll.count == 10)
@@ -120,164 +120,168 @@ final class RangeReplaceableCollectionUtilsTests: XCTestCase {
       XCTAssertTrue(all.count == 11)
       XCTAssertTrue(removed == 10)
     }
-
+    
     do {
       let (newAll, removed) = all.removingLast { $0 == 11 }
       XCTAssertTrue(newAll.count == 11)
       XCTAssertTrue(newAll == newAll)
       XCTAssertTrue(removed == nil)
     }
-
+    
   }
-
+  
   func testRemove() {
+    #if !swift(>=4.2)
     var all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-
+    
     let removedElements = all.remove { $0.isEven }
     XCTAssertNotNil(removedElements)
     XCTAssertTrue(removedElements == [0, 2, 4, 6, 8, 10])
     XCTAssertTrue(all.count == 5)
     XCTAssertTrue(all == [1, 3, 5, 7, 9])
-
+    
     let removedElements2 = all.remove { $0 == 11 }
     XCTAssertTrue(removedElements2.isEmpty)
     XCTAssertTrue(all.count == 5)
     XCTAssertTrue(all == [1, 3, 5, 7, 9])
-
+    
     let removedElements3 = all.remove { $0 % 3 == 0 }
     XCTAssertNotNil(removedElements3)
     XCTAssertTrue(all.count == 3)
     XCTAssertTrue(all == [1, 5, 7])
+    #endif
   }
-
+  
   func testRemoving() {
+    #if !swift(>=4.2)
     let all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // 11 elements
-
+    
     do {
       let (newAll, removed) = all.removing { $0.isEven }
       XCTAssertTrue(newAll == [1, 3, 5, 7, 9])
       XCTAssertTrue(all.count == 11)
       XCTAssertTrue(removed == [0, 2, 4, 6, 8, 10])
     }
-
+    
     do {
       let (newAll, removed) = all.removing { $0 == 11 }
       XCTAssertTrue(newAll.count == 11)
       XCTAssertTrue(newAll == newAll)
       XCTAssertTrue(removed.isEmpty)
     }
-
+    #endif
+    
   }
-
+  
   // MARK - Equatable
-
+  
   func testRemoveFirstOccurrence() {
-
+    
     do {
       // Given
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
-
+      
       // When
       let occurrence = array.removeFirstOccurrence(of: "a")
       // Then
       XCTAssertTrue(occurrence == "a")
       XCTAssertTrue(array == ["b", "c", "c", "d", "e", "f", "g", "a", "a"])
-
+      
       // When
       let occurrence2 = array.removeFirstOccurrence(of: "c")
       // Then
       XCTAssertTrue(occurrence2 == "c")
       XCTAssertTrue(array == ["b", "c", "d", "e", "f", "g", "a", "a"])
     }
-
+    
     do {
       // Given
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
-
+      
       // When
       let occurrence = array.removeFirstOccurrence(of: "k")
       // Then
       XCTAssertNil(occurrence)
       XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"])
-
+      
       // When
       let occurrence2 = array.removeFirstOccurrence(of: "a")
       // Then
       XCTAssertTrue(occurrence2 == "a")
       XCTAssertTrue(array == ["b", "c", "c", "d", "e", "f", "g", "a", "a"])
     }
-
+    
     do {
       // Given
       var array = [1, 2, 3, 4, 3, 1, 1, 5, 2, 6]
-
+      
       // When
       let occurrence = array.removeFirstOccurrence(of: 3)
       // Then
       XCTAssertTrue(occurrence == 3)
       XCTAssertTrue(array == [1, 2, 4, 3, 1, 1, 5, 2, 6])
-
+      
       // When
       let occurrence2 = array.removeFirstOccurrence(of: 3)
       // Then
       XCTAssertTrue(occurrence2 == 3)
       XCTAssertTrue(array == [1, 2, 4, 1, 1, 5, 2, 6])
     }
-
+    
   }
-
+  
   func testRemoveLastOccurrence() {
-
+    
     do {
       // Given
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
-
+      
       // When
       let occurrence = array.removeLastOccurrence(of: "a")
       // Then
       XCTAssertTrue(occurrence == "a")
       XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a"])
-
+      
       // When
       let occurrence2 = array.removeLastOccurrence(of: "c")
       // Then
       XCTAssertTrue(occurrence2 == "c")
       XCTAssertTrue(array == ["a", "b", "c", "d", "e", "f", "g", "a"])
     }
-
+    
     do {
       // Given
       var array = ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"]
-
+      
       // When
       let occurrence = array.removeLastOccurrence(of: "k")
       // Then
       XCTAssertNil(occurrence)
       XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a", "a"])
-
+      
       // When
       let occurrence2 = array.removeLastOccurrence(of: "a")
       // Then
       XCTAssertTrue(occurrence2 == "a")
       XCTAssertTrue(array == ["a", "b", "c", "c", "d", "e", "f", "g", "a"])
     }
-
+    
     do {
       // Given
       var array = [1, 2, 3, 4, 3, 1, 1, 5, 2, 6]
-
+      
       // When
       let occurrence = array.removeLastOccurrence(of: 3)
       // Then
       XCTAssertTrue(occurrence == 3)
       XCTAssertTrue(array == [1, 2, 3, 4, 1, 1, 5, 2, 6])
-
+      
       // When
       let occurrence2 = array.removeLastOccurrence(of: 3)
       // Then
       XCTAssertTrue(occurrence2 == 3)
       XCTAssertTrue(array == [1, 2, 4, 1, 1, 5, 2, 6])
     }
-
+    
   }
 }
