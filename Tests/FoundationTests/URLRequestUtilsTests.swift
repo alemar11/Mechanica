@@ -170,8 +170,12 @@ final class URLRequestUtilsTests: XCTestCase {
   class MockHTTPCookieStorage: HTTPCookieStorage {
     var _cookies = [URL: [HTTPCookie]]()
 
+
+    init(name: String = "") {
+      
+    }
 //    override init() {
-//      
+//
 //    }
 
     override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
