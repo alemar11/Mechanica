@@ -167,25 +167,21 @@ final class URLRequestUtilsTests: XCTestCase {
     XCTAssertTrue(cURL == expectedValue)
   }
 
-  class MockHTTPCookieStorage: HTTPCookieStorage {
-    var _cookies = [URL: [HTTPCookie]]()
+}
 
+class MockHTTPCookieStorage: HTTPCookieStorage {
+  var _cookies = [URL: [HTTPCookie]]()
 
-    public init(name: String = "") {
-      super.init()
-    }
-//    override init() {
-//
-//    }
-
-    override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
-      guard let url = URL else { return }
-      _cookies[url] = cookies
-    }
-
-    override func cookies(for URL: URL) -> [HTTPCookie]? {
-      return _cookies[URL]
-    }
+  override init() {
+    super.init()
   }
 
+  override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
+    guard let url = URL else { return }
+    _cookies[url] = cookies
+  }
+
+  override func cookies(for URL: URL) -> [HTTPCookie]? {
+    return _cookies[URL]
+  }
 }
