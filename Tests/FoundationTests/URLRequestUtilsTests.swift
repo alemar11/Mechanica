@@ -154,7 +154,7 @@ final class URLRequestUtilsTests: XCTestCase {
     cookieProperties[.expires] = date
     let cookie = HTTPCookie(properties: cookieProperties)!
 
-    let storage = MockHTTPCookieStorage()
+    let storage = MockHTTPCookieStorage(test: "\(#file)\(#line)")
     storage.setCookies([cookie], for: url, mainDocumentURL: nil)
     configuration.httpCookieStorage = storage
 
@@ -169,15 +169,19 @@ final class URLRequestUtilsTests: XCTestCase {
 
 }
 
-class MockHTTPCookieStorage: HTTPCookieStorage {
+public class MockHTTPCookieStorage: HTTPCookieStorage {
   var _cookies = [URL: [HTTPCookie]]()
 
-  override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
+  public init(test: String = "") {
+    print("test")
+  }
+
+  public override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
     guard let url = URL else { return }
     _cookies[url] = cookies
   }
 
-  override func cookies(for URL: URL) -> [HTTPCookie]? {
+  public override func cookies(for URL: URL) -> [HTTPCookie]? {
     return _cookies[URL]
   }
 }
