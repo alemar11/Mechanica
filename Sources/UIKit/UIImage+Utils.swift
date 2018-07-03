@@ -89,7 +89,6 @@ extension UIImage {
     return scaledImage
   }
 
-
   /// **Mechanica**
   ///
   /// Returns a new version of the image scaled from the center while maintaining the aspect ratio to fit within
@@ -120,7 +119,7 @@ extension UIImage {
     let format = UIGraphicsImageRendererFormat()
     format.scale = scaleFactor
     let renderer = UIGraphicsImageRenderer(size: size, format: format)
-    let scaledImage = renderer.image { (context) in
+    let scaledImage = renderer.image { _ in
       draw(in: CGRect(origin: origin, size: scaledSize))
     }
 
@@ -182,7 +181,7 @@ extension UIImage {
   ///
   /// - returns: A new `UIImage` object.
   public func rounded(withCornerRadius radius: CGFloat, divideRadiusByImageScale: Bool = false, scale scaleFactor: CGFloat = 0.0) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false,scaleFactor)
+    UIGraphicsBeginImageContextWithOptions(size, false, scaleFactor)
 
     let scaledRadius = divideRadiusByImageScale ? radius / scale : radius
 

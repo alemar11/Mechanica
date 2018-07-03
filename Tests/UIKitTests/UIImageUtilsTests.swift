@@ -33,10 +33,10 @@ let horizontalRectangularSize = CGSize(width: 60, height: 30)
 let verticalRectangularSize = CGSize(width: 30, height: 60)
 
 final class UIImageUtilsTests: XCTestCase {
-  
+
   func testInitWithColorAndSize() {
     let scale = UIScreen.main.scale
-    
+
     XCTAssertEqual(UIImage(color: .red)?.size, CGSize(width: 1*scale, height: 1*scale))
     XCTAssertEqual(UIImage(color: .red, size: CGSize(width: 50, height: 50))?.size, CGSize(width: 50*scale, height: 50*scale))
     XCTAssertNil(UIImage(color: .red, size: CGSize(width: 0, height: 0)))
@@ -191,7 +191,7 @@ final class UIImageUtilsTests: XCTestCase {
     XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
     XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 4), "The scaled apple image pixels do not match.")
   }
-  
+
 }
 
 #endif
