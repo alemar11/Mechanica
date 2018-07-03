@@ -30,20 +30,17 @@ import XCTest
 
     func testImageNamed() {
       let bundle = Bundle(for: NSImageUtilsTests.self)
-      let image = NSImage.imageNamed(name: "pic", in: bundle)
+      let image = NSImage.imageNamed(name: "glasses", in: bundle)
 
       if !ProcessInfo.isRunningSwiftPackageTests {
         // Not implemented (SPM): https://bugs.swift.org/browse/SR-2866
         XCTAssertNotNil(image)
-        XCTAssertEqual(image!.name()?.rawValue, "pic")
+        XCTAssertEqual(image!.name()?.rawValue, "glasses")
       }
     }
 
     func testCGImage() throws {
-      var resources = URL(fileURLWithPath: #file, isDirectory: false).deletingLastPathComponents(2)
-      resources.appendPathComponent("Resources")
-
-      let data = try Data(contentsOf: Resource.glasses.url)
+      let data = Resource.glasses.data
       let image = NSImage(data: data)
       let cgImage = image?.cgImage
 
