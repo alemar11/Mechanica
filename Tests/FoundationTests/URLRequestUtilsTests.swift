@@ -174,6 +174,7 @@ public class MockHTTPCookieStorage: HTTPCookieStorage {
 
   public init(test: String = "") {
     print("test")
+    super.init()
   }
 
   public override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
