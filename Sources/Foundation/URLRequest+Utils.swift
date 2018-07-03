@@ -153,7 +153,7 @@ extension URLRequest {
     let maxLength = 4096
 
     if let httpBodyStream = httpBodyStream {
-      let data = NSMutableData()
+      var data = Data()
       var buffer = [UInt8](repeating: 0, count: maxLength)
 
       httpBodyStream.open()
@@ -161,11 +161,11 @@ extension URLRequest {
         let length = httpBodyStream.read(&buffer, maxLength: maxLength)
         guard length != 0 else { break }
 
-        data.append(&buffer, length: length)
+        data.append(&buffer, count: length)
       }
       httpBodyStream.close()
 
-      return String(data: data as Data, encoding: .utf8)
+      return String(data: data, encoding: .utf8)
     }
 
     return nil
