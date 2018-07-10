@@ -32,19 +32,19 @@ import XCTest
       // we can't test presented view controller
 
       let window = UIWindow()
-      XCTAssertNil(window.topViewController)
+      XCTAssertNil(window.topMostViewController)
 
       let navigationController = UINavigationController()
       window.rootViewController = navigationController
-      XCTAssertTrue(window.topViewController == navigationController)
+      XCTAssertTrue(window.topMostViewController == navigationController)
 
       let viewController = UIViewController()
       navigationController.show(viewController, sender: nil)
-      XCTAssertTrue(window.topViewController == viewController)
+      XCTAssertTrue(window.topMostViewController == viewController)
 
       let tabBarController = UITabBarController()
       window.rootViewController = tabBarController
-      XCTAssertTrue(window.topViewController == tabBarController)
+      XCTAssertTrue(window.topMostViewController == tabBarController)
 
       let viewControllerTab1 = UIViewController()
       viewControllerTab1.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
@@ -53,8 +53,8 @@ import XCTest
       tabBarController.viewControllers = [viewControllerTab1, viewControllerTab2]
       tabBarController.selectedIndex = 0
 
-      XCTAssertTrue(window.topViewController == viewControllerTab1)
-      XCTAssertTrue(window.topViewController != viewControllerTab2)
+      XCTAssertTrue(window.topMostViewController == viewControllerTab1)
+      XCTAssertTrue(window.topMostViewController != viewControllerTab2)
       XCTAssertTrue(tabBarController.selectedViewController == viewControllerTab1)
 
     }

@@ -30,8 +30,8 @@ extension UIWindow {
   /// **Mechanica**
   ///
   /// Returns the topmost UIViewController.
-  public var topViewController: UIViewController? {
-    guard var topViewController = rootViewController else { return nil }
+  public var topMostViewController: UIViewController? {
+    guard var topMostViewController = rootViewController else { return nil }
 
     func visibleViewController(from viewController: UIViewController?) -> UIViewController? {
       if let tabBarController = (viewController as? UITabBarController)?.selectedViewController {
@@ -46,7 +46,7 @@ extension UIWindow {
       return viewController
     }
 
-    return visibleViewController(from: topViewController)
+    return visibleViewController(from: topMostViewController)
 
   }
 

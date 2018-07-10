@@ -1,6 +1,6 @@
 # Changelog
 
-### 1.7.0 (WIP)
+### 1.7.0
 - Added cURL representation.
 - Added UIImage utils (rounding and scaling).
 - More String utils.
