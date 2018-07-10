@@ -30,6 +30,8 @@ extension Bool {
     return self ? 1 : 0
   }
 
+  #if !swift(>=4.2)
+
   /// **Mechanica**
   ///
   /// Returns a `new` Bool with the inverted value of `self`.
@@ -38,6 +40,8 @@ extension Bool {
     // https://github.com/apple/swift-evolution/blob/master/proposals/0199-bool-toggle.md (Swift 4.2)
     return !self
   }
+
+  #endif
 
   /// **Mechanica**
   ///

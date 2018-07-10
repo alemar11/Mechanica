@@ -22,12 +22,15 @@
 // SOFTWARE.
 
 import XCTest
+import Foundation
 @testable import Mechanica
 
 extension URLRequestUtilsTests {
   static var allTests = [
-    ("testCURL", testCURLRepresentation),
-    ]
+    ("testCURLRepresentation", testCURLRepresentation),
+    ("testCURLRepresentationWithBodyStream", testCURLRepresentationWithBodyStream),
+    //("testCURLRepresentationWithURLSession", testCURLRepresentationWithURLSession), //TODO: it's not compiling on Linux
+  ]
 }
 
 final class URLRequestUtilsTests: XCTestCase {
@@ -61,7 +64,7 @@ final class URLRequestUtilsTests: XCTestCase {
       XCTAssertTrue(prettyCURL == value1 || prettyCURL == value2)
 
       let cURL = request.cURLRepresentation(prettyPrinted: true)!
-       let value1_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key1\\\":\\\"value1\\\",\\\"key2\\\":\\\"value2\\\"}\" \\\n\t\"http://localhost:3000/test\""
+      let value1_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key1\\\":\\\"value1\\\",\\\"key2\\\":\\\"value2\\\"}\" \\\n\t\"http://localhost:3000/test\""
       let value2_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key2\\\":\\\"value2\\\",\\\"key1\\\":\\\"value1\\\"}\" \\\n\t\"http://localhost:3000/test\""
       XCTAssertTrue(cURL == value1_pretty || cURL == value2_pretty)
     }
@@ -93,33 +96,127 @@ final class URLRequestUtilsTests: XCTestCase {
 
   }
 
+  func testCURLRepresentationWithBodyStream() throws {
+    // Given
+    let url = URL(string: "http://localhost:3000/test")!
+    var request = URLRequest(url: url)
+
+    request.allHTTPHeaderFields = ["Content-Type": "application/json"]
+    request.httpMethod = "POST"
+
+    let body = ["key1": "value1", "key2": "value2"]
+    let data = try JSONSerialization.data(withJSONObject: body)
+    request.httpBodyStream = InputStream(data: data)
+
+    // When, Then
+    let cURL = request.cURLRepresentation(prettyPrinted: false)!
+    let value1 = "curl -i -X POST -H \"Content-Type: application/json\" -d \"{\\\"key1\\\":\\\"value1\\\",\\\"key2\\\":\\\"value2\\\"}\" \"http://localhost:3000/test\""
+    let value2 = "curl -i -X POST -H \"Content-Type: application/json\" -d \"{\\\"key2\\\":\\\"value2\\\",\\\"key1\\\":\\\"value1\\\"}\" \"http://localhost:3000/test\""
+
+    XCTAssertTrue(cURL == value1 || cURL == value2)
+
+
+    // create a copy because otherwise the httpBodyStream is lost
+    var request2 = request
+    request2.httpBodyStream = InputStream(data: data)
+
+    let prettyCURL = request2.cURLRepresentation(prettyPrinted: true)!
+    let value1_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key1\\\":\\\"value1\\\",\\\"key2\\\":\\\"value2\\\"}\" \\\n\t\"http://localhost:3000/test\""
+    let value2_pretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-d \"{\\\"key2\\\":\\\"value2\\\",\\\"key1\\\":\\\"value1\\\"}\" \\\n\t\"http://localhost:3000/test\""
+
+    XCTAssertTrue(prettyCURL == value1_pretty || prettyCURL == value2_pretty)
+  }
+
+  func testCURLRepresentationWithEmptyBodyStream() throws {
+    // Given
+    let url = URL(string: "http://localhost:3000/test")!
+    var request = URLRequest(url: url)
+
+    request.allHTTPHeaderFields = ["Content-Type": "application/json"]
+    request.httpMethod = "POST"
+
+    request.httpBodyStream = InputStream(data: Data())
+
+    // When, Then
+    let cURL = request.cURLRepresentation(prettyPrinted: false)!
+    let value = "curl -i -X POST -H \"Content-Type: application/json\" \"http://localhost:3000/test\""
+
+    XCTAssertTrue(cURL == value || cURL == value)
+
+
+    // create a copy because otherwise the httpBodyStream is lost
+    var request2 = request
+    request2.httpBodyStream = InputStream(data:  Data())
+
+    let prettyCURL = request2.cURLRepresentation(prettyPrinted: true)!
+    let valuePretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t\"http://localhost:3000/test\""
+
+    XCTAssertTrue(prettyCURL == valuePretty)
+  }
+
+  #if os(iOS) || os(tvOS) || os(macOS)
+
   func testCURLRepresentationWithURLSession() throws {
-    // TODO: implement
-    /*
-     https://tools.ietf.org/html/rfc7230#section-3.2.2
+    // Given
+    var urlString = "http://example.com"
+    urlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
 
-     A sender MUST NOT generate multiple header fields with the same field
-     name in a message unless either the entire field value for that
-     header field is defined as a comma-separated list [i.e., #(values)]
-     or the header field is a well-known exception (as noted below).
+    let url = URL(string: urlString)!
+    var request = URLRequest(url: url)
 
-     A recipient MAY combine multiple header fields with the same field
-     name into one "field-name: field-value" pair, without changing the
-     semantics of the message, by appending each subsequent field value to
-     the combined field value in order, separated by a comma.  The order
-     in which header fields with the same field name are received is
-     therefore significant to the interpretation of the combined field
-     value; a proxy MUST NOT change the order of these field values when
-     forwarding a message.
-     */
+    request.allHTTPHeaderFields = ["Content-Type": "application/json"]
+
+    let credential = URLCredential(user: "AaA", password: "BBb", persistence: .forSession)
+    let host = url.host!
+    let protectionSpace = URLProtectionSpace(host: host, port: url.port ?? 0, protocol: url.scheme, realm: host, authenticationMethod: NSURLAuthenticationMethodHTTPBasic)
+
+    let configuration = URLSessionConfiguration.default
+    configuration.httpCookieAcceptPolicy = .always
+    configuration.httpShouldSetCookies = true
+    configuration.httpAdditionalHeaders = ["Content-Type": "application/json", "Test": "Mechanica"]
+
+    let date = Date(timeIntervalSinceNow: 31536000)
+    var cookieProperties = [HTTPCookiePropertyKey: Any]()
+    cookieProperties[.name] = "cookiename"
+    cookieProperties[.value] = "cookievalue"
+    cookieProperties[.domain] = urlString
+    cookieProperties[.path] = "/"
+    cookieProperties[.version] = NSNumber(value: 11)
+    cookieProperties[.expires] = date
+    let cookie = HTTPCookie(properties: cookieProperties)!
+
+    let storage = MockHTTPCookieStorage()
+    storage.setCookies([cookie], for: url, mainDocumentURL: nil)
+    configuration.httpCookieStorage = storage
+
+    let session = URLSession(configuration: configuration)
+    URLCredentialStorage.shared.setDefaultCredential(credential, for: protectionSpace)
+
+    // CredStore - performQuery - Error copying matching creds.  Error=-25300 ...
+    // https://github.com/Alamofire/Alamofire/issues/2467
+
+    // When, Then
+    let cURL = request.cURLRepresentation(session: session, prettyPrinted: false)!
+    let expectedValue = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
+    XCTAssertTrue(cURL == expectedValue)
   }
 
-  func testCURLRepresentationWithURLCredential() throws {
-    // TODO: implement
-  }
+  class MockHTTPCookieStorage: HTTPCookieStorage {
+    var _cookies = [URL: [HTTPCookie]]()
 
-  func testCURLRepresentationWithWithURLSessionAndURLCredential() throws {
-    // TODO: implement
+    override init() {
+      super.init() // not compiling on Linux
+    }
+
+    override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
+      guard let url = URL else { return }
+      _cookies[url] = cookies
+    }
+
+    override func cookies(for URL: URL) -> [HTTPCookie]? {
+      return _cookies[URL]
+    }
   }
+  #endif
 
 }

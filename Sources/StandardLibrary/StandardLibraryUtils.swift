@@ -21,6 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+//TODO: remove with Swift 4.2
+
 #if canImport(Glibc)
   import Glibc
   import SwiftShims

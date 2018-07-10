@@ -23,24 +23,35 @@
 
 extension MutableCollection {
 
+  #if !swift(>=4.2)
+
   /// **Mechanica**
   ///
   /// Shuffles the collection contents using the Fisher-Yates (fast an uniform) algorithm.
-  mutating func shuffle() {
+  public mutating func shuffle() {
+    // TODO: deprecated in Swift 4.2
     let elementsCount = count
     guard elementsCount > 1 else { return }
 
     for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: elementsCount, to: 1, by: -1)) {
-      #if swift(>=4.1)
-        let distance: Int = numericCast(mechanica_arc4random_uniform(numericCast(unshuffledCount)))
-      #else
-      let distance: IndexDistance = numericCast(mechanica_arc4random_uniform(numericCast(unshuffledCount)))
-      #endif
+      let distance: Int = numericCast(mechanica_arc4random_uniform(numericCast(unshuffledCount)))
       let indexToSwap = index(firstUnshuffled, offsetBy: distance)
 
       swapAt(firstUnshuffled, indexToSwap)
     }
 
   }
+
+  /// **Mechanica**
+  ///
+  /// Returns a new collection with all the elements shuffled using the Fisher-Yates (fast an uniform) algorithm.
+  public func shuffled() -> Self {
+    var copy = self
+    copy.shuffle()
+
+    return copy
+  }
+
+  #endif
 
 }
