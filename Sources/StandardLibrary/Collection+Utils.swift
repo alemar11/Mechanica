@@ -21,6 +21,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+extension Collection {
+
+  /// **Mechanica**
+  ///
+  /// - Parameter index: the index of the desired element.
+  /// - Returns: The element at a given index or nil if not exists.
+  /// Example:
+  ///
+  ///     let array = [1, 2, 3]
+  ///     array[100] -> crash
+  ///     array.at(100) -> nil
+  ///
+  public func at(_ index: Index) -> Element? {
+    return (index < endIndex) ? self[index] : nil
+  }
+}
+
 extension Collection where Element: Equatable {
 
   // MARK: - Equatable
@@ -52,20 +69,6 @@ extension Collection where Element: Equatable {
 }
 
 extension Collection where Self.Index == Int {
-
-  /// **Mechanica**
-  ///
-  /// - Parameter index: the index of the desired element.
-  /// - Returns: The element at a given index or nil if not exists.
-  /// Example:
-  ///
-  ///     let array = [1, 2, 3]
-  ///     array[100] -> crash
-  ///     array.at(100) -> nil
-  ///
-  public func at(_ index: Int) -> Element? {
-    return (index < self.count) ? self[index] : nil
-  }
 
   /// **Mechanica**
   ///

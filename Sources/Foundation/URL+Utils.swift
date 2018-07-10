@@ -51,7 +51,7 @@ extension URL {
   ///
   /// This function may either remove a path component or append /...
   /// If the URL has an empty path (e.g., http://www.example.com), then this function will return the URL unchanged.
-  mutating func deleteLastPathComponents(_ numberOfPathComponents: Int) {
+  public mutating func deleteLastPathComponents(_ numberOfPathComponents: Int) {
     self = deletingLastPathComponents(numberOfPathComponents)
   }
 
@@ -62,7 +62,7 @@ extension URL {
   ///
   /// This function may either remove a path component or append /...
   /// If the URL has an empty path (e.g., http://www.example.com), then this function will return the URL unchanged.
-  func deletingLastPathComponents(_ numberOfPathComponents: Int) -> URL {
+  public func deletingLastPathComponents(_ numberOfPathComponents: Int) -> URL {
     var copy = self
 
     for _ in 0..<numberOfPathComponents {
