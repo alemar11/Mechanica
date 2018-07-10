@@ -127,6 +127,33 @@ final class URLRequestUtilsTests: XCTestCase {
     XCTAssertTrue(prettyCURL == value1_pretty || prettyCURL == value2_pretty)
   }
 
+  func testCURLRepresentationWithEmptyBodyStream() throws {
+    // Given
+    let url = URL(string: "http://localhost:3000/test")!
+    var request = URLRequest(url: url)
+
+    request.allHTTPHeaderFields = ["Content-Type": "application/json"]
+    request.httpMethod = "POST"
+
+    request.httpBodyStream = InputStream(data: Data())
+
+    // When, Then
+    let cURL = request.cURLRepresentation(prettyPrinted: false)!
+    let value = "curl -i -X POST -H \"Content-Type: application/json\" \"http://localhost:3000/test\""
+
+    XCTAssertTrue(cURL == value || cURL == value)
+
+
+    // create a copy because otherwise the httpBodyStream is lost
+    var request2 = request
+    request2.httpBodyStream = InputStream(data:  Data())
+
+    let prettyCURL = request2.cURLRepresentation(prettyPrinted: true)!
+    let valuePretty = "curl -i \\\n\t-X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t\"http://localhost:3000/test\""
+
+    XCTAssertTrue(prettyCURL == valuePretty)
+  }
+
   #if os(iOS) || os(tvOS) || os(macOS)
 
   func testCURLRepresentationWithURLSession() throws {
@@ -164,6 +191,9 @@ final class URLRequestUtilsTests: XCTestCase {
 
     let session = URLSession(configuration: configuration)
     URLCredentialStorage.shared.setDefaultCredential(credential, for: protectionSpace)
+
+    // CredStore - performQuery - Error copying matching creds.  Error=-25300 ...
+    // https://github.com/Alamofire/Alamofire/issues/2467
 
     // When, Then
     let cURL = request.cURLRepresentation(session: session, prettyPrinted: false)!

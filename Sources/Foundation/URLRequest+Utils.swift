@@ -165,6 +165,8 @@ extension URLRequest {
       }
       httpBodyStream.close()
 
+      guard !data.isEmpty else { return nil }
+
       return String(data: data, encoding: .utf8)
     }
 
