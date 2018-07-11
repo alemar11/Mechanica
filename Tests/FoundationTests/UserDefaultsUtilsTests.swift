@@ -42,8 +42,26 @@ final class UserDefaultsUtilsTests: XCTestCase {
   // TODO: set a boolean it's not working on Linux (Swift 4.1)
   // TODO: set nil to remove an object is not working on Linux (Swift 4.1)
 
+  var testDefaults: UserDefaults!
+
+  override func setUp() {
+    super.setUp()
+    #if !os(Linux)
+    testDefaults = UserDefaults(suiteName: "UserDefaultsUtilsTests")!
+    #else
+    testDefaults = UserDefaults(suiteName: UUID().uuidString)! //TODO: Linux doesn't support `removePersistentDomain` (Swift 4.1.2)
+    #endif
+  }
+
+  override func tearDown() {
+    #if !os(Linux)
+    UserDefaults().removePersistentDomain(forName: "UserDefaultsUtilsTests")
+    #endif
+    super.tearDown()
+  }
+
   func testOptionalInteger() {
-    let userDefaults = UserDefaults.standard
+    let userDefaults = testDefaults!
     let key = "\(#function)\(#line)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
@@ -66,7 +84,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testOptionalDouble() {
-    let userDefaults = UserDefaults.standard
+    let userDefaults = testDefaults!
     let key = "\(#function)\(#line)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
@@ -85,7 +103,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testOptionalFloat() {
-    let userDefaults = UserDefaults.standard
+    let userDefaults = testDefaults!
     let key = "\(#function)\(#line)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
@@ -104,7 +122,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
   }
 
   func testOptionalBool() {
-    let userDefaults = UserDefaults.standard
+    let userDefaults = testDefaults!
     let key = "\(#function)\(#line)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
@@ -128,7 +146,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
   #if !os(Linux)
 
   func testRemoveAll() {
-    let userDefaults = UserDefaults.standard
+    let userDefaults = testDefaults!
     let key = "\(#function)\(#line)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
