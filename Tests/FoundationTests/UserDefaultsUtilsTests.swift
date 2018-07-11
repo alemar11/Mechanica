@@ -46,11 +46,17 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
+    #if !os(Linux)
     testDefaults = UserDefaults(suiteName: "UserDefaultsUtilsTests")!
+    #else
+    testDefaults = UserDefaults(suiteName: UUID().uuidString)! //TODO: Linux doesn't support `removePersistentDomain` (Swift 4.1.2)
+    #endif
   }
 
   override func tearDown() {
+    #if !os(Linux)
     UserDefaults().removePersistentDomain(forName: "UserDefaultsUtilsTests")
+    #endif
     super.tearDown()
   }
 
