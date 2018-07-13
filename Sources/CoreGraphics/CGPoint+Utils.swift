@@ -35,7 +35,7 @@
     ///   - point2: The second point.
     /// - Returns: the distance between between two points.
     static func distance(from point1: CGPoint, to point2: CGPoint) -> CGFloat {
-      //return sqrt(pow(point2.x - point1.x, 2) + pow(point2.y - point1.y, 2))
+      // return sqrt(pow(point2.x - point1.x, 2) + pow(point2.y - point1.y, 2))
       return hypot(point1.x - point2.x, point1.y - point2.y)
     }
 

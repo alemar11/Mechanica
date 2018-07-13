@@ -36,7 +36,7 @@ extension MutableCollectionUtilsTests {
 }
 
 final class MutableCollectionUtilsTests: XCTestCase {
-  
+
   func testShuffle() {
     do {
       // Given
@@ -48,7 +48,7 @@ final class MutableCollectionUtilsTests: XCTestCase {
       XCTAssertEqual(elements.count, copy.count)
       XCTAssertEqual(elements.sorted(), copy.sorted())
     }
-    
+
     do {
       // Given
       var elements = [1, 2, 3, 1]
@@ -59,7 +59,7 @@ final class MutableCollectionUtilsTests: XCTestCase {
       XCTAssertEqual(elements.count, copy.count)
       XCTAssertEqual(elements.sorted(), copy.sorted())
     }
-    
+
     do {
       // Given
       var elements: [Any] = [1, "robots", 3, 1.11]
@@ -74,33 +74,33 @@ final class MutableCollectionUtilsTests: XCTestCase {
       XCTAssertEqual(unexeptectedElements.count, 0)
     }
   }
-  
+
   func testShuffled() {
     do {
       // Given, When
       let elements = ["a"]
       let shuffled =  elements.shuffled()
-      
+
       // Then
       XCTAssertEqual(elements.count, shuffled.count)
       XCTAssertEqual(elements.sorted(), shuffled.sorted())
     }
-    
+
     do {
       // Given, When
       let elements = [1, 2, 3, 1]
       let shuffled = elements.shuffled()
-      
+
       // Then
       XCTAssertEqual(elements.count, shuffled.count)
       XCTAssertEqual(elements.sorted(), shuffled.sorted())
     }
-    
+
     do {
       // Given, When
       let elements: [Any] = [1, "robots", 3, 1.11]
       let shuffled = elements.shuffled()
-      
+
       // Then
       XCTAssertEqual(elements.count, shuffled.count)
       let beforeShuffle = NSArray(array: elements)
@@ -109,5 +109,5 @@ final class MutableCollectionUtilsTests: XCTestCase {
       XCTAssertEqual(unexeptectedElements.count, 0)
     }
   }
-  
+
 }
