@@ -27,7 +27,7 @@ extension Data {
 
   /// **Mechanica**
   ///
-  /// Return data as an array of bytes.
+  /// Returns `self` as an array of bytes.
   public var bytes: [UInt8] {
     return [UInt8](self)
   }

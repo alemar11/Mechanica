@@ -91,7 +91,7 @@ final class AssociatedValueSupportingTests: XCTestCase {
 
   }
 
-  // MARK:- ValueAssociable Protocol
+  // MARK:- AssociatedValueSupporting Protocol
 
   func testAssociatedValueSupportingClass() {
 
