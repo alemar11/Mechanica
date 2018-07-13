@@ -23,6 +23,8 @@
 
 import Foundation
 
+// TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md (Swift 4.2?)
+
 extension String {
 
   // MARK: - Foundation
@@ -212,6 +214,7 @@ extension String {
   ///
   /// Returns true if the `String` contains only letters.
   public var isAlphabetic: Bool {
+    // TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md (Swift 4.2?)
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
   }
 
