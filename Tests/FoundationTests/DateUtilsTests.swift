@@ -53,7 +53,7 @@ extension DateUtilsTests {
     ("testUnixTimestamp", testUnixTimestamp),
     ("testAdding", testAdding),
     ("testAdd", testAdd),
-    //("testChanging", testChanging),
+    ("testChanging", testChanging),
     ("testDateString", testDateString),
     ("testIsInCurrent", testIsInCurrent),
     ("testSecondsSince", testSecondsSince),
