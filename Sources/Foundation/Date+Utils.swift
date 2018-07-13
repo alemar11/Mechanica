@@ -339,7 +339,7 @@ public extension Date {
     return timeIntervalSince(date) / (3600 * 24)
   }
 
-// MARK: - Methods
+  // MARK: - Methods
 
   /// **Mechanica**
   ///
@@ -402,7 +402,7 @@ public extension Date {
   public func changing(_ component: Calendar.Component, value: Int, usingCalendar calendar: Calendar = .current) -> Date? {
     switch component {
     case .nanosecond:
-      let allowedRange = calendar.range(of: .nanosecond, in: .second, for: self)!
+      guard let allowedRange = calendar.range(of: .nanosecond, in: .second, for: self) else { return nil }
       guard allowedRange.contains(value) else { return nil }
 
       let currentNanoseconds = calendar.component(.nanosecond, from: self)
@@ -410,7 +410,7 @@ public extension Date {
       return calendar.date(byAdding: .nanosecond, value: nanosecondsToAdd, to: self)
 
     case .second:
-      let allowedRange = calendar.range(of: .second, in: .minute, for: self)!
+      guard let allowedRange = calendar.range(of: .second, in: .minute, for: self) else { return nil }
       guard allowedRange.contains(value) else { return nil }
 
       let currentSeconds = calendar.component(.second, from: self)
@@ -418,7 +418,7 @@ public extension Date {
       return calendar.date(byAdding: .second, value: secondsToAdd, to: self)
 
     case .minute:
-      let allowedRange = calendar.range(of: .minute, in: .hour, for: self)!
+      guard let allowedRange = calendar.range(of: .minute, in: .hour, for: self) else { return nil }
       guard allowedRange.contains(value) else { return nil }
 
       let currentMinutes = calendar.component(.minute, from: self)
@@ -426,7 +426,7 @@ public extension Date {
       return calendar.date(byAdding: .minute, value: minutesToAdd, to: self)
 
     case .hour:
-      let allowedRange = calendar.range(of: .hour, in: .day, for: self)!
+      guard let allowedRange = calendar.range(of: .hour, in: .day, for: self) else { return nil }
       guard allowedRange.contains(value) else { return nil }
 
       let currentHour = calendar.component(.hour, from: self)
@@ -434,7 +434,7 @@ public extension Date {
       return calendar.date(byAdding: .hour, value: hoursToAdd, to: self)
 
     case .day:
-      let allowedRange = calendar.range(of: .day, in: .month, for: self)!
+      guard let allowedRange = calendar.range(of: .day, in: .month, for: self) else { return nil }
       guard allowedRange.contains(value) else { return nil }
 
       let currentDay = calendar.component(.day, from: self)
@@ -442,7 +442,7 @@ public extension Date {
       return calendar.date(byAdding: .day, value: daysToAdd, to: self)
 
     case .month:
-      let allowedRange = calendar.range(of: .month, in: .year, for: self)!
+      guard let allowedRange = calendar.range(of: .month, in: .year, for: self) else { return nil }
       guard allowedRange.contains(value) else { return nil }
 
       let currentMonth = calendar.component(.month, from: self)
@@ -538,7 +538,7 @@ public extension Date {
   public func isWithin(_ value: UInt, _ component: Calendar.Component, of date: Date, usingCalendar calendar: Calendar = .current) -> Bool {
     let components = calendar.dateComponents([component], from: self, to: date)
     let componentValue = components.value(for: component)!
-    print(componentValue)
+    print("\(component) -> \(componentValue)")
     print(value)
     return abs(componentValue) <= value
   }
@@ -614,43 +614,43 @@ public extension Date {
 
 // TODO
 /*
-extension DispatchTimeInterval {
+ extension DispatchTimeInterval {
 
-  /// **Mechanica**
-  ///
-  /// Returns a dispatch time interval in nanoseconds from a `Double` number of seconds
-  ///
-  /// Example:
-  ///
-  ///    let timeInEightAndHalf: DispatchTime = .now() + .seconds(8.5)
-  public static func seconds(_ amount: Double) -> DispatchTimeInterval {
-    // http://ericasadun.com/2017/05/23/5-easy-dispatch-tricks/
-    let delay = Double(NSEC_PER_SEC) * amount
-    return DispatchTimeInterval.nanoseconds(Int(delay))
-  }
-}
+ /// **Mechanica**
+ ///
+ /// Returns a dispatch time interval in nanoseconds from a `Double` number of seconds
+ ///
+ /// Example:
+ ///
+ ///    let timeInEightAndHalf: DispatchTime = .now() + .seconds(8.5)
+ public static func seconds(_ amount: Double) -> DispatchTimeInterval {
+ // http://ericasadun.com/2017/05/23/5-easy-dispatch-tricks/
+ let delay = Double(NSEC_PER_SEC) * amount
+ return DispatchTimeInterval.nanoseconds(Int(delay))
+ }
+ }
 
-extension DispatchTime {
-  /// Returns a dispatch time offset by `duration` seconds from `now`
-  ///
-  /// Example:
-  ///
-  ///    DispatchQueue.main.asyncAfter(deadline: .secondsFromNow($0)) {...}
-  ///
-  public static func secondsFromNow(_ duration: Double) -> DispatchTime {
-    // http://ericasadun.com/2017/05/23/5-easy-dispatch-tricks/
-    return DispatchTime.now() + duration
-  }
-}
+ extension DispatchTime {
+ /// Returns a dispatch time offset by `duration` seconds from `now`
+ ///
+ /// Example:
+ ///
+ ///    DispatchQueue.main.asyncAfter(deadline: .secondsFromNow($0)) {...}
+ ///
+ public static func secondsFromNow(_ duration: Double) -> DispatchTime {
+ // http://ericasadun.com/2017/05/23/5-easy-dispatch-tricks/
+ return DispatchTime.now() + duration
+ }
+ }
 
-extension DateComponents {
-  /// **Mechanica**
-  ///
-  /// Returns a DispatchTime that's been component offset from now
-  public var dispatchTime: DispatchTime? {
-    guard let offsetDate = Calendar.autoupdatingCurrent.date(byAdding: self, to: Date()) else { return nil }
-    let seconds = offsetDate.timeIntervalSinceNow
-    return DispatchTime.now() + seconds
-  }
-}
+ extension DateComponents {
+ /// **Mechanica**
+ ///
+ /// Returns a DispatchTime that's been component offset from now
+ public var dispatchTime: DispatchTime? {
+ guard let offsetDate = Calendar.autoupdatingCurrent.date(byAdding: self, to: Date()) else { return nil }
+ let seconds = offsetDate.timeIntervalSinceNow
+ return DispatchTime.now() + seconds
+ }
+ }
  */
