@@ -897,6 +897,7 @@
 				237F17371E90000800726553 /* AssociatedValueSupportingTests.swift */,
 				237F173A1E90000800726553 /* BundleInfoTests.swift */,
 				236407891FBB2EFE003D2AF0 /* DataUtilsTests.swift */,
+				23374AC720F8B3CD00768B5D /* DateUtilsTests.swift */,
 				238E5B1B1FB5C6EC00331C85 /* DictionaryFoundationUtilsTests.swift */,
 				237F17421E90000800726553 /* FileManagerUtilsTests.swift */,
 				23F6A1671EC8DF6500D20502 /* FoundationUtilsTests.swift */,
@@ -912,7 +913,6 @@
 				234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */,
 				237F175E1E90000800726553 /* URLUtilsTests.swift */,
 				23C27C371E9E5BAB006C235E /* UserDefaultsUtilsTests.swift */,
-				23374AC720F8B3CD00768B5D /* DateUtilsTests.swift */,
 			);
 			path = FoundationTests;
 			sourceTree = "<group>";
