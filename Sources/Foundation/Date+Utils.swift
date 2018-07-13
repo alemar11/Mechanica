@@ -528,22 +528,6 @@ public extension Date {
 
   /// **Mechanica**
   ///
-  /// Checks if date is within a component of another date.
-  ///
-  /// - Parameters:
-  ///   - value: number of times component is used in creating range
-  ///   - component: Calendar.Component to use.
-  ///   - date: Date to compare self to.
-  /// - Returns: true if the date is within a component of another date.
-  public func isWithin(_ value: UInt, _ component: Calendar.Component, of date: Date, usingCalendar calendar: Calendar = .current) -> Bool {
-    let components = calendar.dateComponents([component], from: self, to: date)
-    let componentValue = components.value(for: component)!
-    
-    return abs(componentValue) <= value
-  }
-
-  /// **Mechanica**
-  ///
   /// Generates a random date between two dates.
   ///
   /// Example:

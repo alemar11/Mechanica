@@ -61,7 +61,6 @@ extension DateUtilsTests {
     ("testHoursSince", testHoursSince),
     ("testDaysSince", testDaysSince),
     ("testIsBetween", testIsBetween),
-    //("testIsWithin", testIsWithin), // Some cases fails on Linux as of Swift 4.1.2
     ("testNewDateFromIso8601String", testNewDateFromIso8601String),
     ("testNewDateFromUnixTimestamp", testNewDateFromUnixTimestamp),
     ("testRandom", testRandom)
@@ -523,43 +522,6 @@ final class DateUtilsTests: XCTestCase {
     XCTAssertFalse(date1.isBetween(date2, date3))
     XCTAssert(date1.isBetween(date1, date2, includingBounds: true))
     XCTAssertFalse(date1.isBetween(date1, date2))
-  }
-
-  func testIsWithin() {
-    let date1 = Date(timeIntervalSince1970: 60 * 60 * 24) // 1970-01-01T00:00:00.000Z
-    let date2 = date1.addingTimeInterval(60 * 60) // 1970-01-01T00:01:00.000Z, one hour later than date1
-
-    XCTAssertFalse(date1.isWithin(1, .second, of: date2), "\(date1) isn't within 1 second of \(date2)")
-    XCTAssertFalse(date1.isWithin(1, .minute, of: date2), "\(date1) isn't within 1 minute of \(date2)")
-    XCTAssert(date1.isWithin(1, .hour, of: date2), "\(date1) isn't within 1 hour of \(date2)")
-    XCTAssert(date1.isWithin(1, .day, of: date2), "\(date1) isn't within 1 day of \(date2)")
-
-    XCTAssertFalse(date2.isWithin(1, .second, of: date1), "\(date2) isn't within 1 second of \(date1)")
-    XCTAssertFalse(date2.isWithin(1, .minute, of: date1), "\(date2) isn't within 1 minute of \(date1)")
-    XCTAssert(date2.isWithin(1, .hour, of: date1), "\(date2) isn't within 1 hour of \(date1)") // Fails on Linux 9223372036854775807 <= 1
-    XCTAssert(date2.isWithin(61, .minute, of: date1), "\(date2) isn't within 61 minute of \(date1)")
-    XCTAssert(date2.isWithin(1, .day, of: date1), "\(date2) isn't within 1 day of \(date1)")
-
-    XCTAssert(date1.isWithin(1, .second, of: date1), "\(date1) isn't within 1 second of \(date1)")
-    XCTAssert(date1.isWithin(1, .minute, of: date1), "\(date1) isn't within 1 minute of \(date1)")
-    XCTAssert(date1.isWithin(1, .hour, of: date1), "\(date1) isn't within 1 hour of \(date1)")
-    XCTAssert(date1.isWithin(1, .day, of: date1), "\(date1) isn't within 1 day of \(date1)")
-
-    var dateComponents = DateComponents()
-    dateComponents.year = 1983
-    dateComponents.month = 4
-    dateComponents.day = 11
-    dateComponents.timeZone = TimeZone(abbreviation: "UTC")
-    dateComponents.hour = 14
-    dateComponents.minute = 30
-
-    let someDateTime = Calendar.current.date(from: dateComponents)!
-    let someDataTime2 = someDateTime.addingTimeInterval(60*60*24)
-    XCTAssert(someDateTime.isWithin(1, .day, of: someDataTime2))
-    XCTAssertFalse(someDateTime.isWithin(1, .hour, of: someDataTime2))
-
-    // Invalid
-    XCTAssertFalse(Date().isWithin(1, .calendar, of: Date()))
   }
 
   func testNewDateFromIso8601String() {
