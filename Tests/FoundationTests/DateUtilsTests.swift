@@ -53,7 +53,7 @@ extension DateUtilsTests {
     ("testUnixTimestamp", testUnixTimestamp),
     ("testAdding", testAdding),
     ("testAdd", testAdd),
-    ("testChanging", testChanging),
+    //("testChanging", testChanging), // enumerateDates(startingAfter:matching:options:using:) not yet implemented Swift 4.1.2
     ("testDateString", testDateString),
     ("testIsInCurrent", testIsInCurrent),
     ("testSecondsSince", testSecondsSince),
