@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -166,45 +166,45 @@ final class DateUtilsTests: XCTestCase {
     let oldDate = Date(timeIntervalSince1970: 512) // 1970-01-01T00:08:32.000Z
     let futureDate = Date(timeIntervalSinceNow: 512)
 
-    XCTAssert(futureDate.isInFuture)
-    XCTAssertFalse(oldDate.isInFuture)
+    XCTAssert(futureDate.isFuture)
+    XCTAssertFalse(oldDate.isFuture)
   }
 
   func testIsInPast() {
     let oldDate = Date(timeIntervalSince1970: 512) // 1970-01-01T00:08:32.000Z
     let futureDate = Date(timeIntervalSinceNow: 512)
 
-    XCTAssert(oldDate.isInPast)
-    XCTAssertFalse(futureDate.isInPast)
+    XCTAssert(oldDate.isPast)
+    XCTAssertFalse(futureDate.isPast)
   }
 
   func testIsInToday() {
-    XCTAssert(Date().isInToday())
-    let tomorrow = Date().adding(.day, value: 1)
-    XCTAssertFalse(tomorrow.isInToday())
-    let yesterday = Date().adding(.day, value: -1)
-    XCTAssertFalse(yesterday.isInToday())
+    XCTAssert(Date().isToday())
+    let tomorrow = Date().adding(.day, value: 1)!
+    XCTAssertFalse(tomorrow.isToday())
+    let yesterday = Date().adding(.day, value: -1)!
+    XCTAssertFalse(yesterday.isToday())
   }
 
   func testIsInYesterday() {
-    XCTAssertFalse(Date().isInYesterday())
-    let tomorrow = Date().adding(.day, value: 1)
-    XCTAssertFalse(tomorrow.isInYesterday())
-    let yesterday = Date().adding(.day, value: -1)
-    XCTAssert(yesterday.isInYesterday())
+    XCTAssertFalse(Date().isYesterday())
+    let tomorrow = Date().adding(.day, value: 1)!
+    XCTAssertFalse(tomorrow.isYesterday())
+    let yesterday = Date().adding(.day, value: -1)!
+    XCTAssert(yesterday.isYesterday())
   }
 
   func testIsInTomorrow() {
-    XCTAssertFalse(Date().isInTomorrow())
-    let tomorrow = Date().adding(.day, value: 1)
-    XCTAssert(tomorrow.isInTomorrow())
-    let yesterday = Date().adding(.day, value: -1)
-    XCTAssertFalse(yesterday.isInTomorrow())
+    XCTAssertFalse(Date().isTomorrow())
+    let tomorrow = Date().adding(.day, value: 1)!
+    XCTAssert(tomorrow.isTomorrow())
+    let yesterday = Date().adding(.day, value: -1)!
+    XCTAssertFalse(yesterday.isTomorrow())
   }
 
   func testIsInWeekend() {
     let date = Date()
-    XCTAssertEqual(date.isInWeekend(), Calendar.current.isDateInWeekend(date))
+    XCTAssertEqual(date.isWeekend(), Calendar.current.isDateInWeekend(date))
   }
 
   func testIsWorkday() {
@@ -215,23 +215,25 @@ final class DateUtilsTests: XCTestCase {
   func testIsInCurrentWeek() {
     let date = Date()
     XCTAssert(date.isInCurrentWeek())
-    let dateOneYearFromNow = date.adding(.year, value: 1)
+    let dateOneYearFromNow = date.adding(.year, value: 1)!
     XCTAssertFalse(dateOneYearFromNow.isInCurrentWeek())
   }
 
   func testIsInCurrentMonth() {
     let date = Date()
     XCTAssert(date.isInCurrentMonth())
-    let dateOneYearFromNow = date.adding(.year, value: 1)
+    let dateOneYearFromNow = date.adding(.year, value: 1)!
     XCTAssertFalse(dateOneYearFromNow.isInCurrentMonth())
   }
 
   func testIsInCurrentYear() {
     let date = Date()
     XCTAssert(date.isInCurrentYear())
-    let dateOneYearFromNow = date.adding(.year, value: 1)
+    let dateOneYearFromNow = date.adding(.year, value: 1)!
     XCTAssertFalse(dateOneYearFromNow.isInCurrentYear())
   }
+
+  // MARK: - Utilities
 
   func testiso8601Representation() {
     let date = Date(timeIntervalSince1970: 512) // 1970-01-01T00:08:32.000Z
@@ -246,47 +248,49 @@ final class DateUtilsTests: XCTestCase {
     XCTAssertEqual(date2.unixTimestamp, 100)
   }
 
+  // MARK: - Methods
+
   func testAdding() {
     let date = Date(timeIntervalSince1970: 3610) // Jan 1, 1970, 3:00:10 AM
     XCTAssertEqual(date.adding(.second, value: 0), date)
     let date1 = date.adding(.second, value: 10)
-    XCTAssertEqual(date1.second(), date.second() + 10)
-    XCTAssertEqual(date1.adding(.second, value: -10), date)
+    XCTAssertEqual(date1?.second(), date.second() + 10)
+    XCTAssertEqual(date1?.adding(.second, value: -10), date)
 
     XCTAssertEqual(date.adding(.minute, value: 0), date)
     let date2 = date.adding(.minute, value: 10)
-    XCTAssertEqual(date2.minute(), date.minute() + 10)
-    XCTAssertEqual(date2.adding(.minute, value: -10), date)
+    XCTAssertEqual(date2?.minute(), date.minute() + 10)
+    XCTAssertEqual(date2?.adding(.minute, value: -10), date)
 
     XCTAssertEqual(date.adding(.hour, value: 0), date)
     let date3 = date.adding(.hour, value: 2)
-    XCTAssertEqual(date3.hour(), date.hour() + 2)
-    XCTAssertEqual(date3.adding(.hour, value: -2), date)
+    XCTAssertEqual(date3?.hour(), date.hour() + 2)
+    XCTAssertEqual(date3?.adding(.hour, value: -2), date)
 
     XCTAssertEqual(date.adding(.day, value: 0), date)
     let date4 = date.adding(.day, value: 2)
-    XCTAssertEqual(date4.day(), date.day() + 2)
-    XCTAssertEqual(date4.adding(.day, value: -2), date)
+    XCTAssertEqual(date4?.day(), date.day() + 2)
+    XCTAssertEqual(date4?.adding(.day, value: -2), date)
 
     XCTAssertEqual(date.adding(.weekOfYear, value: 0), date)
     let date5 = date.adding(.weekOfYear, value: 1)
-    XCTAssertEqual(date5.day(), date.day() + 7)
-    XCTAssertEqual(date5.adding(.weekOfYear, value: -1), date)
+    XCTAssertEqual(date5?.day(), date.day() + 7)
+    XCTAssertEqual(date5?.adding(.weekOfYear, value: -1), date)
 
     XCTAssertEqual(date.adding(.weekOfMonth, value: 0), date)
     let date6 = date.adding(.weekOfMonth, value: 1)
-    XCTAssertEqual(date6.day(), date.day() + 7)
-    XCTAssertEqual(date6.adding(.weekOfMonth, value: -1), date)
+    XCTAssertEqual(date6?.day(), date.day() + 7)
+    XCTAssertEqual(date6?.adding(.weekOfMonth, value: -1), date)
 
     XCTAssertEqual(date.adding(.month, value: 0), date)
     let date7 = date.adding(.month, value: 2)
-    XCTAssertEqual(date7.month(), date.month() + 2)
-    XCTAssertEqual(date7.adding(.month, value: -2), date)
+    XCTAssertEqual(date7?.month(), date.month() + 2)
+    XCTAssertEqual(date7?.adding(.month, value: -2), date)
 
     XCTAssertEqual(date.adding(.year, value: 0), date)
     let date8 = date.adding(.year, value: 4)
-    XCTAssertEqual(date8.year(), date.year() + 4)
-    XCTAssertEqual(date8.adding(.year, value: -4), date)
+    XCTAssertEqual(date8?.year(), date.year() + 4)
+    XCTAssertEqual(date8?.adding(.year, value: -4), date)
   }
 
   func testAdd() {
@@ -480,23 +484,34 @@ final class DateUtilsTests: XCTestCase {
   func testIsWithin() {
     let date1 = Date(timeIntervalSince1970: 60 * 60 * 24) // 1970-01-01T00:00:00.000Z
     let date2 = date1.addingTimeInterval(60 * 60) // 1970-01-01T00:01:00.000Z, one hour later than date1
-    // The regular
+
     XCTAssertFalse(date1.isWithin(1, .second, of: date2))
     XCTAssertFalse(date1.isWithin(1, .minute, of: date2))
     XCTAssert(date1.isWithin(1, .hour, of: date2))
     XCTAssert(date1.isWithin(1, .day, of: date2))
 
-    // The other way around
     XCTAssertFalse(date2.isWithin(1, .second, of: date1))
     XCTAssertFalse(date2.isWithin(1, .minute, of: date1))
     XCTAssert(date2.isWithin(1, .hour, of: date1))
     XCTAssert(date2.isWithin(1, .day, of: date1))
 
-    // With itself
     XCTAssert(date1.isWithin(1, .second, of: date1))
     XCTAssert(date1.isWithin(1, .minute, of: date1))
     XCTAssert(date1.isWithin(1, .hour, of: date1))
     XCTAssert(date1.isWithin(1, .day, of: date1))
+
+    var dateComponents = DateComponents()
+    dateComponents.year = 1983
+    dateComponents.month = 4
+    dateComponents.day = 11
+    dateComponents.timeZone = TimeZone(abbreviation: "UTC")
+    dateComponents.hour = 14
+    dateComponents.minute = 30
+
+    let someDateTime = Calendar.current.date(from: dateComponents)!
+    let someDataTime2 = someDateTime.addingTimeInterval(60*60*24)
+    XCTAssert(someDateTime.isWithin(1, .day, of: someDataTime2))
+    XCTAssertFalse(someDateTime.isWithin(1, .hour, of: someDataTime2))
 
     // Invalid
     XCTAssertFalse(Date().isWithin(1, .calendar, of: Date()))

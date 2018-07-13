@@ -923,6 +923,7 @@
 				239F8DD21E55B03900E3DF33 /* AssociatedValueSupporting.swift */,
 				D214026B1D5379AE00BCF2E7 /* Bundle+Info.swift */,
 				236407841FBB2E53003D2AF0 /* Data+Utils.swift */,
+				23374AC220F8A63B00768B5D /* Date+Utils.swift */,
 				238E5B161FB5C40F00331C85 /* Dictionary+FoundationUtils.swift */,
 				12B956391D880B5200F75DD5 /* FileManager+Utils.swift */,
 				23F6A1621EC8DBD400D20502 /* FoundationUtils.swift */,
@@ -936,9 +937,8 @@
 				237E6FA11FC81C530025F5CD /* Stat+Utils.swift */,
 				D2234A611E002D2600252551 /* String+FoundationUtils.swift */,
 				D220818C1E07FEB700BE4268 /* URL+Utils.swift */,
-				23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */,
 				2377E1B5207943E200F8F10C /* URLRequest+Utils.swift */,
-				23374AC220F8A63B00768B5D /* Date+Utils.swift */,
+				23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";

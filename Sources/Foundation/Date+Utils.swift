@@ -26,6 +26,8 @@ import Foundation
 
 public extension Date {
 
+  // MARK: - Components
+
   /// **Mechanica**
   ///
   /// Returns the Era.
@@ -188,21 +190,21 @@ public extension Date {
   /// **Mechanica**
   ///
   /// Checks if date is the in the future.
-  public var isInFuture: Bool {
+  public var isFuture: Bool {
     return self > Date()
   }
 
   /// **Mechanica**
   ///
   /// Checks if date is the in the past.
-  public var isInPast: Bool {
+  public var isPast: Bool {
     return self < Date()
   }
 
   /// **Mechanica**
   ///
   /// Checks if date is is within today.
-  public func isInToday(usingCalendar calendar: Calendar = .current) -> Bool {
+  public func isToday(usingCalendar calendar: Calendar = .current) -> Bool {
     return calendar.isDateInToday(self)
   }
 
@@ -212,9 +214,9 @@ public extension Date {
   ///
   /// Example:
   ///
-  ///     Date().isInYesterday() -> false
+  ///     Date().isYesterday() -> false
   ///
-  public func isInYesterday(usingCalendar calendar: Calendar = .current) -> Bool {
+  public func isYesterday(usingCalendar calendar: Calendar = .current) -> Bool {
     return calendar.isDateInYesterday(self)
   }
 
@@ -222,7 +224,7 @@ public extension Date {
   ///
   /// Checks if date is is within tomorrow.
   ///
-  public func isInTomorrow(usingCalendar calendar: Calendar = .current) -> Bool {
+  public func isTomorrow(usingCalendar calendar: Calendar = .current) -> Bool {
     return calendar.isDateInTomorrow(self)
   }
 
@@ -230,7 +232,7 @@ public extension Date {
   ///
   /// Checks if date is is within a weekend period.
   ///
-  public func isInWeekend(usingCalendar calendar: Calendar = .current) -> Bool {
+  public func isWeekend(usingCalendar calendar: Calendar = .current) -> Bool {
     return calendar.isDateInWeekend(self)
   }
 
@@ -266,6 +268,8 @@ public extension Date {
     return calendar.isDate(self, equalTo: Date(), toGranularity: .year)
   }
 
+  // MARK: - Utilities
+
   /// **Mechanica**
   ///
   /// Returns the ISO8601 string representation (yyyy-MM-dd'T'HH:mm:ss.SSS) from `self`.
@@ -295,14 +299,51 @@ public extension Date {
     return timeIntervalSince1970
   }
 
-}
-
-// MARK: - Methods
-public extension Date {
+  /// **Mechanica**
+  ///
+  /// Returns the number of seconds between two date.
+  ///
+  /// - Parameter date: date to compate self to.
+  /// - Returns: number of seconds between self and given date.
+  public func secondsSince(_ date: Date) -> Double {
+    return timeIntervalSince(date)
+  }
 
   /// **Mechanica**
   ///
-  /// Returns a `new` Date by adding `Calendar` components.
+  /// Returns the number of minutes between two date.
+  ///
+  /// - Parameter date: date to compate self to.
+  /// - Returns: number of minutes between self and given date.
+  public func minutesSince(_ date: Date) -> Double {
+    return timeIntervalSince(date) / 60
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns the number of hours between two date.
+  ///
+  /// - Parameter date: date to compate self to.
+  /// - Returns: number of hours between self and given date.
+  public func hoursSince(_ date: Date) -> Double {
+    return timeIntervalSince(date) / 3600
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns the number of days between two date.
+  ///
+  /// - Parameter date: date to compare self to.
+  /// - Returns: number of days between self and given date.
+  public func daysSince(_ date: Date) -> Double {
+    return timeIntervalSince(date) / (3600 * 24)
+  }
+
+// MARK: - Methods
+
+  /// **Mechanica**
+  ///
+  /// Returns a `new` Date by adding a `Calendar` component.
   ///
   /// Example:
   ///
@@ -315,9 +356,9 @@ public extension Date {
   /// - Parameters:
   ///   - component: component type.
   ///   - value: multiples of components to add.
-  /// - Returns: original date + multiples of component added.
-  public func adding(_ component: Calendar.Component, value: Int, usingCalendar calendar: Calendar = .current) -> Date {
-    return calendar.date(byAdding: component, value: value, to: self)!
+  /// - Returns: A new date, or nil if a date could not be calculated.
+  public func adding(_ component: Calendar.Component, value: Int, usingCalendar calendar: Calendar = .current) -> Date? {
+    return calendar.date(byAdding: component, value: value, to: self)
   }
 
   /// **Mechanica**
@@ -471,46 +512,6 @@ public extension Date {
 
   /// **Mechanica**
   ///
-  /// Returns the number of seconds between two date.
-  ///
-  /// - Parameter date: date to compate self to.
-  /// - Returns: number of seconds between self and given date.
-  public func secondsSince(_ date: Date) -> Double {
-    return timeIntervalSince(date)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns the number of minutes between two date.
-  ///
-  /// - Parameter date: date to compate self to.
-  /// - Returns: number of minutes between self and given date.
-  public func minutesSince(_ date: Date) -> Double {
-    return timeIntervalSince(date) / 60
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns the number of hours between two date.
-  ///
-  /// - Parameter date: date to compate self to.
-  /// - Returns: number of hours between self and given date.
-  public func hoursSince(_ date: Date) -> Double {
-    return timeIntervalSince(date) / 3600
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns the number of days between two date.
-  ///
-  /// - Parameter date: date to compate self to.
-  /// - Returns: number of days between self and given date.
-  public func daysSince(_ date: Date) -> Double {
-    return timeIntervalSince(date) / (3600 * 24)
-  }
-
-  /// **Mechanica**
-  ///
   /// Checks if a date is between two other dates.
   ///
   /// - Parameters:
@@ -525,16 +526,15 @@ public extension Date {
     return startDate.compare(self).rawValue * compare(endDate).rawValue > 0
   }
 
-  // TODO?
   /// **Mechanica**
   ///
-  /// Checks if a date is a number of date components of another date
+  /// Checks if date is within a component of another date.
   ///
   /// - Parameters:
   ///   - value: number of times component is used in creating range
   ///   - component: Calendar.Component to use.
   ///   - date: Date to compare self to.
-  /// - Returns: true if the date is within a number of components of another date
+  /// - Returns: true if the date is within a component of another date.
   public func isWithin(_ value: UInt, _ component: Calendar.Component, of date: Date, usingCalendar calendar: Calendar = .current) -> Bool {
     let components = calendar.dateComponents([component], from: self, to: date)
     let componentValue = components.value(for: component)!
@@ -609,3 +609,46 @@ public extension Date {
 
 }
 #endif
+
+// TODO
+/*
+extension DispatchTimeInterval {
+
+  /// **Mechanica**
+  ///
+  /// Returns a dispatch time interval in nanoseconds from a `Double` number of seconds
+  ///
+  /// Example:
+  ///
+  ///    let timeInEightAndHalf: DispatchTime = .now() + .seconds(8.5)
+  public static func seconds(_ amount: Double) -> DispatchTimeInterval {
+    // http://ericasadun.com/2017/05/23/5-easy-dispatch-tricks/
+    let delay = Double(NSEC_PER_SEC) * amount
+    return DispatchTimeInterval.nanoseconds(Int(delay))
+  }
+}
+
+extension DispatchTime {
+  /// Returns a dispatch time offset by `duration` seconds from `now`
+  ///
+  /// Example:
+  ///
+  ///    DispatchQueue.main.asyncAfter(deadline: .secondsFromNow($0)) {...}
+  ///
+  public static func secondsFromNow(_ duration: Double) -> DispatchTime {
+    // http://ericasadun.com/2017/05/23/5-easy-dispatch-tricks/
+    return DispatchTime.now() + duration
+  }
+}
+
+extension DateComponents {
+  /// **Mechanica**
+  ///
+  /// Returns a DispatchTime that's been component offset from now
+  public var dispatchTime: DispatchTime? {
+    guard let offsetDate = Calendar.autoupdatingCurrent.date(byAdding: self, to: Date()) else { return nil }
+    let seconds = offsetDate.timeIntervalSinceNow
+    return DispatchTime.now() + seconds
+  }
+}
+ */
