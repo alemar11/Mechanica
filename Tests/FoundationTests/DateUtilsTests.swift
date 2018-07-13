@@ -532,17 +532,17 @@ final class DateUtilsTests: XCTestCase {
     XCTAssertFalse(date1.isWithin(1, .second, of: date2), "\(date1) isn't withing 1 second of \(date2)")
     XCTAssertFalse(date1.isWithin(1, .minute, of: date2), "\(date1) isn't withing 1 minute of \(date2)")
     XCTAssert(date1.isWithin(1, .hour, of: date2), "\(date1) isn't withing 1 hour of \(date2)")
-    XCTAssert(date1.isWithin(1, .day, of: date2), "\(date1) isn't withing 1 second of \(date2)")
+    XCTAssert(date1.isWithin(1, .day, of: date2), "\(date1) isn't withing 1 day of \(date2)")
 
-    XCTAssertFalse(date2.isWithin(1, .second, of: date1))
-    XCTAssertFalse(date2.isWithin(1, .minute, of: date1))
-    XCTAssert(date2.isWithin(1, .hour, of: date1))
-    XCTAssert(date2.isWithin(1, .day, of: date1))
+    XCTAssertFalse(date2.isWithin(1, .second, of: date1), "\(date2) isn't withing 1 second of \(date1)")
+    XCTAssertFalse(date2.isWithin(1, .minute, of: date1), "\(date2) isn't withing 1 minute of \(date1)")
+    XCTAssert(date2.isWithin(1, .hour, of: date1), "\(date2) isn't withing 1 hour of \(date1)")
+    XCTAssert(date2.isWithin(1, .day, of: date1), "\(date2) isn't withing 1 day of \(date1)")
 
-    XCTAssert(date1.isWithin(1, .second, of: date1))
-    XCTAssert(date1.isWithin(1, .minute, of: date1))
-    XCTAssert(date1.isWithin(1, .hour, of: date1))
-    XCTAssert(date1.isWithin(1, .day, of: date1))
+    XCTAssert(date1.isWithin(1, .second, of: date1), "\(date1) isn't withing 1 second of \(date1)")
+    XCTAssert(date1.isWithin(1, .minute, of: date1), "\(date1) isn't withing 1 minute of \(date1)")
+    XCTAssert(date1.isWithin(1, .hour, of: date1), "\(date1) isn't withing 1 hour of \(date1)")
+    XCTAssert(date1.isWithin(1, .day, of: date1), "\(date1) isn't withing 1 day of \(date1)")
 
     var dateComponents = DateComponents()
     dateComponents.year = 1983
