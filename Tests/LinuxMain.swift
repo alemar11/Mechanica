@@ -23,6 +23,7 @@ XCTMain([
 
   // Foundation
   testCase(DataUtilsTests.allTests),
+  testCase(DateUtilsTests.allTests),
   testCase(DictionaryFoundationUtilsTests.allTests),
   testCase(FileManagerUtilsTests.allTests),
   testCase(FoundationUtilsTests.allTests),

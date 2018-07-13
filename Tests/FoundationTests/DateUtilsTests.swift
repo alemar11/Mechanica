@@ -24,6 +24,50 @@
 import XCTest
 @testable import Mechanica
 
+extension DateUtilsTests {
+  static var allTests = [
+    ("testEra", testEra),
+    ("testQuarter", testQuarter),
+    ("testWeekOfYear", testWeekOfYear),
+    ("testWeekOfMonth", testWeekOfMonth),
+    ("testYear", testYear),
+    ("testMonth", testMonth),
+    ("testDay", testDay),
+    ("testWeekday", testWeekday),
+    ("testHour", testHour),
+    ("testMinute", testMinute),
+    ("testSecond", testSecond),
+    ("testNanosecond", testNanosecond),
+    ("testMillisecond", testMillisecond),
+    ("testIsInFuture", testIsInFuture),
+    ("testIsInPast", testIsInPast),
+    ("testIsInToday", testIsInToday),
+    ("testIsInYesterday", testIsInYesterday),
+    ("testIsInTomorrow", testIsInTomorrow),
+    ("testIsInWeekend", testIsInWeekend),
+    ("testIsWorkday", testIsWorkday),
+    ("testIsInCurrentWeek", testIsInCurrentWeek),
+    ("testIsInCurrentMonth", testIsInCurrentMonth),
+    ("testIsInCurrentYear", testIsInCurrentYear),
+    ("testiso8601Representation", testiso8601Representation),
+    ("testUnixTimestamp", testUnixTimestamp),
+    ("testAdding", testAdding),
+    ("testAdd", testAdd),
+    ("testChanging", testChanging),
+    ("testDateString", testDateString),
+    ("testIsInCurrent", testIsInCurrent),
+    ("testSecondsSince", testSecondsSince),
+    ("testMinutesSince", testMinutesSince),
+    ("testHoursSince", testHoursSince),
+    ("testDaysSince", testDaysSince),
+    ("testIsBetween", testIsBetween),
+    ("testIsWithin", testIsWithin),
+    ("testNewDateFromIso8601String", testNewDateFromIso8601String),
+    ("testNewDateFromUnixTimestamp", testNewDateFromUnixTimestamp),
+    ("testRandom", testRandom)
+  ]
+}
+
 final class DateUtilsTests: XCTestCase {
 
   override func setUp() {
