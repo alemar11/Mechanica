@@ -560,8 +560,7 @@ public extension Date {
     guard fromDate != toDate else { return fromDate }
 
     let diff = llabs(Int64(toDate.timeIntervalSinceReferenceDate - fromDate.timeIntervalSinceReferenceDate))
-    var randomValue: Int64 = 0
-    arc4random_buf(&randomValue, MemoryLayout<Int64>.size)
+    var randomValue = Int64.random()
     randomValue = llabs(randomValue % diff)
 
     let startReferenceDate = toDate > fromDate ? fromDate : toDate
