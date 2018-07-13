@@ -400,65 +400,66 @@ public extension Date {
   ///   - value: new value of compnenet to change.
   /// - Returns: original date after changing given component to given value.
   public func changing(_ component: Calendar.Component, value: Int, usingCalendar calendar: Calendar = .current) -> Date? {
-    switch component {
-    case .nanosecond:
-      guard let allowedRange = calendar.range(of: .nanosecond, in: .second, for: self) else { return nil }
-      guard allowedRange.contains(value) else { return nil }
-
-      let currentNanoseconds = calendar.component(.nanosecond, from: self)
-      let nanosecondsToAdd = value - currentNanoseconds
-      return calendar.date(byAdding: .nanosecond, value: nanosecondsToAdd, to: self)
-
-    case .second:
-      guard let allowedRange = calendar.range(of: .second, in: .minute, for: self) else { return nil }
-      guard allowedRange.contains(value) else { return nil }
-
-      let currentSeconds = calendar.component(.second, from: self)
-      let secondsToAdd = value - currentSeconds
-      return calendar.date(byAdding: .second, value: secondsToAdd, to: self)
-
-    case .minute:
-      guard let allowedRange = calendar.range(of: .minute, in: .hour, for: self) else { return nil }
-      guard allowedRange.contains(value) else { return nil }
-
-      let currentMinutes = calendar.component(.minute, from: self)
-      let minutesToAdd = value - currentMinutes
-      return calendar.date(byAdding: .minute, value: minutesToAdd, to: self)
-
-    case .hour:
-      guard let allowedRange = calendar.range(of: .hour, in: .day, for: self) else { return nil }
-      guard allowedRange.contains(value) else { return nil }
-
-      let currentHour = calendar.component(.hour, from: self)
-      let hoursToAdd = value - currentHour
-      return calendar.date(byAdding: .hour, value: hoursToAdd, to: self)
-
-    case .day:
-      guard let allowedRange = calendar.range(of: .day, in: .month, for: self) else { return nil }
-      guard allowedRange.contains(value) else { return nil }
-
-      let currentDay = calendar.component(.day, from: self)
-      let daysToAdd = value - currentDay
-      return calendar.date(byAdding: .day, value: daysToAdd, to: self)
-
-    case .month:
-      guard let allowedRange = calendar.range(of: .month, in: .year, for: self) else { return nil }
-      guard allowedRange.contains(value) else { return nil }
-
-      let currentMonth = calendar.component(.month, from: self)
-      let monthsToAdd = value - currentMonth
-      return calendar.date(byAdding: .month, value: monthsToAdd, to: self)
-
-    case .year:
-      guard value > 0 else { return nil }
-
-      let currentYear = calendar.component(.year, from: self)
-      let yearsToAdd = value - currentYear
-      return calendar.date(byAdding: .year, value: yearsToAdd, to: self)
-
-    default:
-      return calendar.date(bySetting: component, value: value, of: self)
-    }
+    return calendar.date(bySetting: component, value: value, of: self)
+//    switch component {
+//    case .nanosecond:
+//      guard let allowedRange = calendar.range(of: .nanosecond, in: .second, for: self) else { return nil }
+//      guard allowedRange.contains(value) else { return nil }
+//
+//      let currentNanoseconds = calendar.component(.nanosecond, from: self)
+//      let nanosecondsToAdd = value - currentNanoseconds
+//      return calendar.date(byAdding: .nanosecond, value: nanosecondsToAdd, to: self)
+//
+//    case .second:
+//      guard let allowedRange = calendar.range(of: .second, in: .minute, for: self) else { return nil }
+//      guard allowedRange.contains(value) else { return nil }
+//
+//      let currentSeconds = calendar.component(.second, from: self)
+//      let secondsToAdd = value - currentSeconds
+//      return calendar.date(byAdding: .second, value: secondsToAdd, to: self)
+//
+//    case .minute:
+//      guard let allowedRange = calendar.range(of: .minute, in: .hour, for: self) else { return nil }
+//      guard allowedRange.contains(value) else { return nil }
+//
+//      let currentMinutes = calendar.component(.minute, from: self)
+//      let minutesToAdd = value - currentMinutes
+//      return calendar.date(byAdding: .minute, value: minutesToAdd, to: self)
+//
+//    case .hour:
+//      guard let allowedRange = calendar.range(of: .hour, in: .day, for: self) else { return nil }
+//      guard allowedRange.contains(value) else { return nil }
+//
+//      let currentHour = calendar.component(.hour, from: self)
+//      let hoursToAdd = value - currentHour
+//      return calendar.date(byAdding: .hour, value: hoursToAdd, to: self)
+//
+//    case .day:
+//      guard let allowedRange = calendar.range(of: .day, in: .month, for: self) else { return nil }
+//      guard allowedRange.contains(value) else { return nil }
+//
+//      let currentDay = calendar.component(.day, from: self)
+//      let daysToAdd = value - currentDay
+//      return calendar.date(byAdding: .day, value: daysToAdd, to: self)
+//
+//    case .month:
+//      guard let allowedRange = calendar.range(of: .month, in: .year, for: self) else { return nil }
+//      guard allowedRange.contains(value) else { return nil }
+//
+//      let currentMonth = calendar.component(.month, from: self)
+//      let monthsToAdd = value - currentMonth
+//      return calendar.date(byAdding: .month, value: monthsToAdd, to: self)
+//
+//    case .year:
+//      guard value > 0 else { return nil }
+//
+//      let currentYear = calendar.component(.year, from: self)
+//      let yearsToAdd = value - currentYear
+//      return calendar.date(byAdding: .year, value: yearsToAdd, to: self)
+//
+//    default:
+//      return calendar.date(bySetting: component, value: value, of: self)
+//    }
   }
   // swiftlint:enable cyclomatic_complexity
 
