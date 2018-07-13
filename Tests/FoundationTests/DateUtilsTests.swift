@@ -27,7 +27,7 @@ import XCTest
 extension DateUtilsTests {
   static var allTests = [
     ("testEra", testEra),
-    ("testQuarter", testQuarter),
+    //("testQuarter", testQuarter),
     ("testWeekOfYear", testWeekOfYear),
     ("testWeekOfMonth", testWeekOfMonth),
     ("testYear", testYear),
