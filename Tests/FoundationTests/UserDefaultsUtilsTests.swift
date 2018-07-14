@@ -62,7 +62,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalInteger() {
     let userDefaults = testDefaults!
-    let key = "\(#function)\(#line)"
+    let key = "\(#function)-\(#line)-\(UUID().uuidString)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10, forKey: key)
@@ -85,7 +85,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalDouble() {
     let userDefaults = testDefaults!
-    let key = "\(#function)\(#line)"
+    let key = "\(#function)-\(#line)-\(UUID().uuidString)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(Double(10), forKey: key)
@@ -104,7 +104,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalFloat() {
     let userDefaults = testDefaults!
-    let key = "\(#function)\(#line)"
+    let key = "\(#function)\(#line)-\(UUID().uuidString)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10.1, forKey: key)
@@ -123,7 +123,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   func testOptionalBool() {
     let userDefaults = testDefaults!
-    let key = "\(#function)\(#line)"
+    let key = "\(#function)-\(#line)-\(UUID().uuidString)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(true, forKey: key)
@@ -147,7 +147,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   func testRemoveAll() {
     let userDefaults = testDefaults!
-    let key = "\(#function)\(#line)"
+    let key = "\(#function)-\(#line)-\(UUID().uuidString)"
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10, forKey: key)
