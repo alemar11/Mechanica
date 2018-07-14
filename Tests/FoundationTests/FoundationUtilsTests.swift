@@ -95,8 +95,73 @@ final class FoundationUtilsTests: XCTestCase {
 
     XCTAssertEqual(typeName(of: DemoEnum.self), "DemoEnum")
     XCTAssertEqual(typeName(of: DemoEnum2.self), "DemoEnum2")
+  }
+
+  // MARK: - Objective-C Associated Values
+  #if !os(Linux)
+  func testValueAssociation() {
+
+    class Demo {
+      let var1: String
+      let var2: Int
+
+      init(var1: String, var2: Int) {
+        self.var1 = var1
+        self.var2 = var2
+      }
+    }
+
+    do {
+      let demo  = Demo(var1: "demo", var2: 1)
+      var key   = UInt8(1)
+      let value = "value"
+      Mechanica.setAssociatedValue(value, forObject: demo, usingKey: &key)
+      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == value)
+    }
+
+    do {
+      let demo  = Demo(var1: "demo", var2: 1)
+      var key   = UInt8(1)
+      let value = UInt32(100_000_000)
+      Mechanica.setAssociatedValue(value, forObject: demo, usingKey: &key)
+      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == value)
+      Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
+      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
+    }
+
+    do {
+      let demo  = Demo(var1: "demo", var2: 1)
+      var key   = UInt8(1)
+      let value = "value"
+      Mechanica.setAssociatedValue(value, forObject: demo, usingKey: &key)
+      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == value)
+      Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
+      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
+    }
+
+    do {
+      let demo  = Demo(var1: "demo", var2: 1)
+      var key   = Demo(var1: "key", var2: 2)
+      let value = Demo(var1: "value", var2: 3)
+      Mechanica.setAssociatedValue(value, forObject: demo, usingKey: &key)
+      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) === value)
+      Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
+      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
+    }
+
+    do {
+      struct DemoStruct { var var1: String }
+      let demo = Demo(var1: "demo", var2: 1)
+      var key = DemoStruct(var1: "key").var1
+      let value = Demo(var1: "value", var2: 3)
+      Mechanica.setAssociatedValue(value, forObject: demo, usingKey: &key)
+      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) === value)
+      Mechanica.removeAssociatedValue(forObject: demo, usingKey: &key)
+      XCTAssert(Mechanica.getAssociatedValue(forObject: demo, usingKey: &key) == nil)
+    }
 
   }
+  #endif
 
 }
 
