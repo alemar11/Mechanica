@@ -42,7 +42,7 @@ final class CharacterUtilsTests: XCTestCase {
     XCTAssertFalse(Character("🏴").isEmojiCountryFlag)
     XCTAssertFalse(Character("🏁").isEmojiCountryFlag)
     XCTAssertFalse(Character("🏳️").isEmojiCountryFlag)
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     XCTAssertFalse(Character("🏳️‍🌈").isEmojiCountryFlag) // it crashes on Linux
     #endif
 

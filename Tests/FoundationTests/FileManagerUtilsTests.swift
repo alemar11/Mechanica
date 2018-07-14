@@ -33,7 +33,7 @@ extension FileManagerUtilsTests {
 
 extension FileManager {
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // Not implemented on Linux: url(for:in:appropriateFor:create:)
 
   /// **Mechanica**

@@ -28,7 +28,7 @@ import Foundation
 
 extension Bundle {
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
   ///

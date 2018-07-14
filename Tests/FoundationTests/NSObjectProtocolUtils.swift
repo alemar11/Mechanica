@@ -39,7 +39,7 @@ final class NSObjectProtocolUtils: XCTestCase {
 
   // MARK: - Associated Values
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   func testAssociatedValue() {
 
     class Demo: NSObject {
@@ -120,7 +120,7 @@ final class NSObjectProtocolUtils: XCTestCase {
 
 // MARK: - Method Swizzling
 
-#if !os(Linux)
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 class Test : NSObject {
   @objc dynamic func methodOne() -> Int { return 1 }
   @objc dynamic func methodThree() -> String { return "three" }

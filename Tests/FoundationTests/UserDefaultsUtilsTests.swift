@@ -46,7 +46,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     testDefaults = UserDefaults(suiteName: "UserDefaultsUtilsTests")!
     #else
     testDefaults = UserDefaults(suiteName: UUID().uuidString)! //TODO: Linux doesn't support `removePersistentDomain` (Swift 4.1.2)
@@ -54,7 +54,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
   }
 
   override func tearDown() {
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     UserDefaults().removePersistentDomain(forName: "UserDefaultsUtilsTests")
     #endif
     super.tearDown()
@@ -70,7 +70,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertNotNil(userDefaults.optionalInteger(forKey: key))
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), 10)
 
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalInteger(forKey: key), .none)
     #endif
@@ -93,7 +93,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertNotNil(userDefaults.optionalDouble(forKey: key))
     XCTAssertEqual(userDefaults.optionalDouble(forKey: key), Double(10))
 
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalDouble(forKey: key), .none)
     #endif
@@ -112,7 +112,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertNotNil(userDefaults.optionalFloat(forKey: key))
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), 10.1)
 
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
     #endif
@@ -133,7 +133,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertNotNil(userDefaults.optionalBool(forKey: key))
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), true)
 
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
     #endif
@@ -143,7 +143,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   func testRemoveAll() {
     let userDefaults = testDefaults!
@@ -151,7 +151,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(10, forKey: key)
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     XCTAssertNotNil(userDefaults.value(forKey: key))
     #endif
     XCTAssertNotNil(userDefaults.integer(forKey: key))
@@ -160,7 +160,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key2))
 
     userDefaults.set(Double(10), forKey: key2)
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     XCTAssertNotNil(userDefaults.value(forKey: key2))
     #endif
     XCTAssertNotNil(userDefaults.double(forKey: key))
@@ -169,14 +169,14 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key3))
 
     userDefaults.set(10.0, forKey: key3)
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     XCTAssertNotNil(userDefaults.value(forKey: key3))
     #endif
     XCTAssertNotNil(userDefaults.double(forKey: key3))
 
     userDefaults.removeAll()
 
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     XCTAssertNil(userDefaults.value(forKey: key))
     XCTAssertNil(userDefaults.value(forKey: key2))
     XCTAssertNil(userDefaults.value(forKey: key3))

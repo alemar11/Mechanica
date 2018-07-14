@@ -37,7 +37,7 @@ extension FileManager {
   /// - Throws:  throws an error in cases of failure.
   public final func cleanDirectory(atPath path: String) throws {
 
-//    #if !os(Linux)
+//    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 //      var isDirectory: ObjCBool = false
 //      guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
 //      guard isDirectory.boolValue == true else { return }

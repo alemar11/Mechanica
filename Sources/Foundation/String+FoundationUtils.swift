@@ -297,7 +297,7 @@ extension String {
     // swiftlint:disable:next line_length
     let emailPattern = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
 
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
       return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
     #else
       let ranges = self.lowercased().ranges(matching: emailPattern)
@@ -307,7 +307,7 @@ extension String {
     #endif
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   // swiftlint:disable identifier_name
@@ -427,7 +427,7 @@ extension String {
     return random(length: randomlength, charachters: base)
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
   ///
@@ -715,7 +715,7 @@ extension String {
   }
 
   // MARK: - NSString
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
   ///

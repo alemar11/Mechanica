@@ -62,7 +62,7 @@ final class NSPredicateUtilsTests: XCTestCase {
     }
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // Not implemented on Linux:
   //    "NSPredicate.init(format:_:) is not yet implemented."
 

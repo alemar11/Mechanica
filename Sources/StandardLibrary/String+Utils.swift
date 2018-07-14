@@ -275,7 +275,7 @@ extension String {
     return String(dropFirst(upToPosition))
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**
@@ -313,7 +313,7 @@ extension String {
     return String(dropLast(fromPosition))
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**

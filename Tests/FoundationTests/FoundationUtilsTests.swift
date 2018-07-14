@@ -98,7 +98,7 @@ final class FoundationUtilsTests: XCTestCase {
   }
 
   // MARK: - Objective-C Associated Values
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   func testValueAssociation() {
 
     class Demo {

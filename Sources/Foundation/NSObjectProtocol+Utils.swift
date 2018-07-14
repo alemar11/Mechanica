@@ -45,7 +45,7 @@ extension NSObjectProtocol {
 
 // MARK: - Associated Objects
 
-#if !os(Linux)
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 extension NSObjectProtocol {
 
   /// **Mechanica**
@@ -95,7 +95,7 @@ extension NSObjectProtocol {
 
 // MARK: - Method Swizzling
 
-#if !os(Linux)
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 extension NSObjectProtocol {
 
   /// **Mechanica**

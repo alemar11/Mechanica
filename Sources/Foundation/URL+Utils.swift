@@ -77,7 +77,7 @@ extension URL {
   ///
   /// Returns true if the URL is a directory.
   var isDirectory: Bool {
-    //    #if os(iOS) || os(watchOS) || os(tvOS) || os(macOS)
+    //    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     //      guard let resourceMap = try? self.resourceValues(forKeys: [.isDirectoryKey]) else { return false }
     //      return resourceMap.isDirectory ?? false
     //    #elseif os(Linux)

@@ -43,7 +43,7 @@ public func typeName(of some: Any) -> String {
 
 // MARK: - Objective-C Associated Objects
 
-#if !os(Linux)
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 /// **Mechanica**
 ///
 /// Sets an associated value for a given object using a given key and association policy.

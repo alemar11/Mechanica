@@ -26,7 +26,7 @@ import Foundation
 
 extension Calendar {
 
-  #if os(iOS) || os(tvOS) || os(watchOS) || os(macOS)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   /// **Mechanica**
   ///
   /// Returns the quarter for a given date.

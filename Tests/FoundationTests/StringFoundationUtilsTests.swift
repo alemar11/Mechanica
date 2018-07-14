@@ -327,7 +327,7 @@ final class StringFoundationUtilsTests: XCTestCase {
 
     /// tests for the internal _isValidEmail
 
-    #if !os(Linux)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
     //valid emails
     XCTAssertTrue("test@tinrobots.org"._isValidEmail)
@@ -595,7 +595,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("".semanticVersion == (0,0,0))
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   func testLastPathComponent() {
     XCTAssert("/tmp/scratch.tiff".lastPathComponent == "scratch.tiff")
@@ -805,7 +805,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue(s10.decapitalizedFirstCharacter() == s10)
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
   func testRemovingAccentsOrDiacritics() {

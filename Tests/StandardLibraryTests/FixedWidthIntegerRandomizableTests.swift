@@ -86,7 +86,7 @@ final class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   func testSignedIntegerRandom() {
     /// Int
     XCTAssertTrue(Int.min...Int.max ~= Int.random())
@@ -137,7 +137,7 @@ final class FixedWidthIntegerIntervalRandomizableTests: XCTestCase {
 
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   func testUnsignedIntegerRandom() {
     /// UInt
     XCTAssertTrue(UInt.min...UInt.max ~= UInt.random())
