@@ -26,7 +26,7 @@ import XCTest
 
 extension CalendarUtilsTests {
   static var allTests = [
-    ("testQuarter", testQuarter),
+    // ("testQuarter", testQuarter),
     ("testIsDateInCurrentWeek", testIsDateInCurrentWeek),
     ("testIsDateInWorkDay", testIsDateInWorkDay),
     ("testIsDateInCurrentMonth", testIsDateInCurrentMonth),

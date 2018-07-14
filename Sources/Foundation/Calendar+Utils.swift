@@ -26,6 +26,7 @@ import Foundation
 
 extension Calendar {
 
+  #if os(iOS) || os(tvOS) || os(watchOS) || os(macOS)
   /// **Mechanica**
   ///
   /// Returns the quarter for a given date.
@@ -41,6 +42,7 @@ extension Calendar {
 
     return Int(ceil(month / numberOfMonthsInQuarter))
   }
+  #endif
 
   /// **Mechanica**
   ///
