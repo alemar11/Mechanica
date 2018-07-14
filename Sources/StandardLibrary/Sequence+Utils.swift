@@ -71,15 +71,6 @@ extension Sequence {
 
   /// **Mechanica**
   ///
-  /// Returns an array with the contents the sequence shuffled.
-  func shuffled() -> [Element] {
-    var result = Array(self)
-    result.shuffle()
-    return result
-  }
-
-  /// **Mechanica**
-  ///
   /// Splits `self` into partitions of a given `length`.
   ///
   /// Example:

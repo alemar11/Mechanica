@@ -55,6 +55,9 @@
                 <a href="../Extensions/CGSize.html">CGSize</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/Calendar.html">Calendar</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/Character.html">Character</a>
               </li>
               <li class="nav-group-task">
@@ -65,6 +68,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Dictionary.html">Dictionary</a>
@@ -206,9 +212,6 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/AssociatedValueSupporting.html">AssociatedValueSupporting</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Protocols/FixedWidthIntegerRandomizable.html">FixedWidthIntegerRandomizable</a>
               </li>
             </ul>
@@ -277,7 +280,7 @@
 <p>Returns a <code>new</code> rounded <code>FloatingPoint</code> to specified number of decimal <code>places</code>.</p>
 
 <p>Example:</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="kt">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="nf">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
 
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">rounded</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mf">3.0</span>
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">rounded</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mf">3.1415927</span>
@@ -313,7 +316,7 @@
 <p>Rounds <code>self</code> to specified number of decimal <code>places</code>.</p>
 
 <p>Example:</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="kt">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="nf">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
 
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">round</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">piFloat</span> <span class="k">is</span> <span class="mf">3.142</span>
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">round</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">piFloat</span> <span class="k">is</span> <span class="mf">3.1415927</span>
@@ -349,7 +352,7 @@
 <p>Returns a <code>new</code> ceiled <code>FloatingPoint</code> to specified number of decimal <code>places</code>.</p>
 
 <p>Example:</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="kt">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="nf">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
 
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">ceiled</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mf">4.0</span>
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">ceiled</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mf">3.1416</span>
@@ -385,7 +388,7 @@
 <p>Ceils <code>self</code> to specified number of decimal <code>places</code>.</p>
 
 <p>Example:</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="kt">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="nf">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
 
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">ceil</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">piFloat</span> <span class="k">is</span> <span class="mf">4.0</span>
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">ceil</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">piFloat</span> <span class="k">is</span> <span class="mf">3.1416</span>
@@ -421,7 +424,7 @@
 <p>Returns a <code>new</code> floored <code>FloatingPoint</code> to specified number of decimal <code>places</code>.</p>
 
 <p>Example:</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="kt">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="nf">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
 
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">floored</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mf">3.0</span>
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">floored</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mf">3.14159</span>
@@ -457,7 +460,7 @@
 <p>Floors <code>self</code> to specified number of decimal <code>places</code>.</p>
 
 <p>Example:</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="kt">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">piFloat</span> <span class="o">=</span> <span class="nf">Float</span><span class="p">(</span><span class="mf">3.141</span><span class="n">_592_653_589_793_238_46</span><span class="p">)</span>
 
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">floor</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">piFloat</span> <span class="k">is</span> <span class="mf">3.0</span>
 <span class="n">piFloat</span><span class="o">.</span><span class="nf">floor</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">piFloat</span> <span class="k">is</span> <span class="mf">3.14159</span>
@@ -480,7 +483,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-07-10)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-07-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
