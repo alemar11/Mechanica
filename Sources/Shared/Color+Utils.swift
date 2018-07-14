@@ -178,7 +178,7 @@ extension Color {
     case 6: // rrggbb
       formattedHexString.append("ff")
     case 8: // rrggbbaa
-      do {}
+      break
     default:
       return nil // invalid format
     }

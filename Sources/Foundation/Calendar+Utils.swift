@@ -21,17 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if canImport(Glibc)
-import Glibc
-#elseif canImport(Darwin)
-import Darwin.C
-#endif
-
 #if canImport(Foundation)
 import Foundation
 
 extension Calendar {
 
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   /// **Mechanica**
   ///
   /// Returns the quarter for a given date.
@@ -47,6 +42,7 @@ extension Calendar {
 
     return Int(ceil(month / numberOfMonthsInQuarter))
   }
+  #endif
 
   /// **Mechanica**
   ///

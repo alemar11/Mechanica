@@ -819,24 +819,6 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Returns a range equivalent to the given `NSRange` or `nil` if the range can't be converted.
-  @available(*, deprecated, message: "Swift 4 supports conversion between NSRange and Range ( Range.init?(_:in) )")
-  private func range(from nsRange: NSRange) -> Range<Index>? {
-    guard let range = Range(nsRange) else { return nil }
-
-    let utf16Start = UTF16Index(encodedOffset: range.lowerBound)
-    let utf16End = UTF16Index(encodedOffset: range.upperBound)
-
-    guard
-      let start = Index(utf16Start, within: self),
-      let end = Index(utf16End, within: self)
-      else { return nil }
-
-    return start..<end
-  }
-
-  /// **Mechanica**
-  ///
   /// - Parameters:
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
