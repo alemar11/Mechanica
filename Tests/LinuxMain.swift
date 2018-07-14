@@ -22,6 +22,7 @@ XCTMain([
   testCase(UnsignedIntegerUtilsTests.allTests),
 
   // Foundation
+  testCase(CalendarUtilsTests.allTests),
   testCase(DataUtilsTests.allTests),
   testCase(DateUtilsTests.allTests),
   testCase(DictionaryFoundationUtilsTests.allTests),
