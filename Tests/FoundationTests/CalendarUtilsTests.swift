@@ -38,8 +38,8 @@ final class CalendarUtilsTests: XCTestCase {
 
   let calendar = Calendar.current
 
+  #if os(iOS) || os(tvOS) || os(watchOS) || os(macOS)
   func testQuarter() {
-
     let date1 = Date(timeIntervalSince1970: 0)
     XCTAssertEqual(calendar.quarter(from: date1), 1)
 
@@ -52,6 +52,7 @@ final class CalendarUtilsTests: XCTestCase {
     let date4 = Calendar.current.date(byAdding: .month, value: 11, to: date1)!
     XCTAssertEqual(calendar.quarter(from: date4), 4)
   }
+  #endif
 
   func testIsDateInCurrentWeek() {
     let date = Date()
