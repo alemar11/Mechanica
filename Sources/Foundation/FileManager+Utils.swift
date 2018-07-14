@@ -24,6 +24,7 @@
 // File System Basics: https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html
 // Migrating an App to a Sandbox: https://developer.apple.com/library/content/documentation/Security/Conceptual/AppSandboxDesignGuide/MigratingALegacyApp/MigratingAnAppToASandbox.html
 
+#if canImport(Foundation)
 import Foundation
 
 extension FileManager {
@@ -70,3 +71,4 @@ extension FileManager {
   }
 
 }
+#endif

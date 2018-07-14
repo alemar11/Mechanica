@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if canImport(Foundation)
 import Foundation
 
 /// **Mechanica**
@@ -39,3 +40,4 @@ public func typeName(of some: Any) -> String {
 
   return value
 }
+#endif
