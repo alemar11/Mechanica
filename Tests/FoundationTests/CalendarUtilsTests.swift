@@ -30,7 +30,7 @@ extension CalendarUtilsTests {
     ("testIsDateInCurrentWeek", testIsDateInCurrentWeek),
     ("testIsDateInWorkDay", testIsDateInWorkDay),
     ("testIsDateInCurrentMonth", testIsDateInCurrentMonth),
-    ("testIsDateInCurrentYear", testIsDateInCurrentYear)
+    // ("testIsDateInCurrentYear", testIsDateInCurrentYear) //TODO enumerateDates(startingAfter:matching:options:using:) is not yet implemented (Swift 4.1.2)
   ]
 }
 
