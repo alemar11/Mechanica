@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.8.0
+- Added Date and Calendar utils. 📆
+
 ### 1.7.0
 - Added cURL representation.
 - Added UIImage utils (rounding and scaling).
