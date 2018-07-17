@@ -72,33 +72,6 @@ final class DateUtilsTests: XCTestCase {
     XCTAssertEqual(date2.unixTimestamp, 100)
   }
 
-//  func testIsInCurrent() {
-//    let date = Date()
-//    let oldDate = Date(timeIntervalSince1970: 512) // 1970-01-01T00:08:32.000Z
-//    XCTAssert(date.isInCurrent(.second))
-//    XCTAssertFalse(oldDate.isInCurrent(.second))
-//
-//    XCTAssert(date.isInCurrent(.minute))
-//    XCTAssertFalse(oldDate.isInCurrent(.minute))
-//
-//    XCTAssert(date.isInCurrent(.hour))
-//    XCTAssertFalse(oldDate.isInCurrent(.hour))
-//
-//    XCTAssert(date.isInCurrent(.day))
-//    XCTAssertFalse(oldDate.isInCurrent(.day))
-//
-//    XCTAssert(date.isInCurrent(.weekOfMonth))
-//    XCTAssertFalse(oldDate.isInCurrent(.weekOfMonth))
-//
-//    XCTAssert(date.isInCurrent(.month))
-//    XCTAssertFalse(oldDate.isInCurrent(.month))
-//
-//    XCTAssert(date.isInCurrent(.year))
-//    XCTAssertFalse(oldDate.isInCurrent(.year))
-//
-//    XCTAssert(date.isInCurrent(.era))
-//  }
-
   func testSecondsSince() {
     let date1 = Date(timeIntervalSince1970: 100)
     let date2 = Date(timeIntervalSince1970: 180)
