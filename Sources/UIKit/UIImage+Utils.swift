@@ -76,11 +76,26 @@ extension UIImage {
   ///   - size: The size to use when scaling the new image.
   ///   - scale scaleFactor: The display scale of the image renderer context (defaults to the scale of the main screen).
   ///
-  /// - returns: A `new` scaled UIImage.
+  /// - Returns: A `new` scaled UIImage.
+  /// - Note: The opaqueness is the same of the initial images.
   public func scaled(to size: CGSize, scale scaleFactor: CGFloat = 0.0) -> UIImage {
+    return scaled(to: size, opaque: isOpaque, scale: scale)
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a new version of the image scaled to the specified size.
+  ///
+  /// - Parameters:
+  ///   - size: The size to use when scaling the new image.
+  ///   - scale scaleFactor: The display scale of the image renderer context (defaults to the scale of the main screen).
+  ///   - opaque: Specifying `false` means that the image will include an alpha channel.
+  ///
+  /// - Returns: A `new` scaled UIImage.
+  public func scaled(to size: CGSize, opaque: Bool = false, scale scaleFactor: CGFloat = 0.0) -> UIImage {
     assert(size.width > 0 && size.height > 0, "An image with zero width or height cannot be scaled properly.")
 
-    UIGraphicsBeginImageContextWithOptions(size, isOpaque, scaleFactor)
+    UIGraphicsBeginImageContextWithOptions(size, opaque, scaleFactor)
     draw(in: CGRect(origin: .zero, size: size))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
