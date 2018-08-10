@@ -26,9 +26,9 @@ import Foundation
 import AVFoundation
 
 public extension URL {
-
+  
   #if !os(watchOS)
-
+  
   /// Generates a thumbnail image from given url.
   ///
   ///
@@ -46,18 +46,17 @@ public extension URL {
     let imageGenerator = AVAssetImageGenerator(asset: asset)
     let time = CMTimeMakeWithSeconds(time, 1)
     var actualTime = CMTimeMake(0, 0)
-
     let cgImage = try imageGenerator.copyCGImage(at: time, actualTime: &actualTime)
-
+    
     #if canImport(UIKit)
     return Image(cgImage: cgImage)
     #elseif canImport(AppKit)
     return Image(cgImage: cgImage, size: NSZeroSize)
     #endif
   }
-
+  
   #endif
-
+  
 }
 
 #endif
