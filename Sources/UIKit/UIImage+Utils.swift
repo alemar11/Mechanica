@@ -49,7 +49,7 @@ extension UIImage {
 
     self.init(cgImage: cgImage)
 
-    // left only for reference
+    /// left only for reference
     /*
      UIGraphicsBeginImageContextWithOptions(size, false, scale)
      defer { UIGraphicsEndImageContext() }
@@ -76,7 +76,7 @@ extension UIImage {
   ///   - size: The size to use when scaling the new image.
   ///   - scale scaleFactor: The display scale of the image renderer context (defaults to the scale of the main screen).
   ///
-  /// - returns: A new image object.
+  /// - returns: A `new` scaled UIImage.
   public func scaled(to size: CGSize, scale scaleFactor: CGFloat = 0.0) -> UIImage {
     assert(size.width > 0 && size.height > 0, "An image with zero width or height cannot be scaled properly.")
 
