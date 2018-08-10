@@ -270,8 +270,6 @@ extension String {
   public func droppingPrefix(upToPosition: Int = 1) -> String {
     guard upToPosition >= 0 && upToPosition <= length else { return "" }
 
-    // let startIndex = index(self.startIndex, offsetBy: upToPosition)
-    // return String(self[startIndex...])
     return String(dropFirst(upToPosition))
   }
 
@@ -308,8 +306,6 @@ extension String {
   public func droppingSuffix(fromPosition: Int = 1) -> String {
     guard fromPosition >= 0 && fromPosition <= length else { return "" }
 
-    // let startIndex = index(endIndex, offsetBy: -fromPosition)
-    // return String(self[..<startIndex])
     return String(dropLast(fromPosition))
   }
 
