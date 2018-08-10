@@ -146,9 +146,11 @@ extension RangeReplaceableCollection where Element: Equatable {
   /// - Parameter element: The element to remove the last occurrence.
   @discardableResult
   public mutating func removeFirstOccurrence(of element: Element) -> Element? {
-    guard let idx = index(of: element) else { return nil }
+    if let idx = index(of: element) {
+      return remove(at: idx)
+    }
 
-    return remove(at: idx)
+    return nil
   }
 
   /// **Mechanica**
@@ -158,7 +160,9 @@ extension RangeReplaceableCollection where Element: Equatable {
   /// - Parameter element: The element to remove the collection occurrence.
   @discardableResult
   public mutating func removeLastOccurrence(of element: Element) -> Element? {
-    if let idx = lastIndex(of: element) { return remove(at: idx) }
+    if let idx = lastIndex(of: element) {
+      return remove(at: idx)
+    }
 
     return nil
   }
