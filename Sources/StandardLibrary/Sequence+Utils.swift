@@ -54,12 +54,9 @@ extension Sequence {
   /// Returns the elements count matching a predicate.
   /// - Parameter where: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.
   public func count(where predicate: (Element) -> Bool) -> Int {
-    var count = 0
+    let filteredSelf = self.filter { predicate($0) }
 
-    for element in self {
-      if predicate(element) { count += 1 }
-    }
-    return count
+    return filteredSelf.count
   }
 
   /// **Mechanica**
@@ -102,7 +99,7 @@ extension Sequence where Element: Equatable {
   /// **Mechanica**
   ///
   /// Returns a collection of unique elements preserving their original order.
-  func uniqueElements() -> [Element] {
+  func uniqueOrderedElements() -> [Element] {
     var result: [Element] = []
 
     for element in self {

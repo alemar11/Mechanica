@@ -304,35 +304,35 @@ final class SequenceUtilsTests: XCTestCase {
 
     do {
       let array = [2, 1, 3, 4, 7, 1, 5, 4, 4, 1]
-      let uniqueElements = array.uniqueElements()
+      let uniqueElements = array.uniqueOrderedElements()
       XCTAssertEqual(uniqueElements.count, 6)
       XCTAssertEqual(uniqueElements, [2, 1, 3, 4, 7, 5])
     }
 
     do {
       let array = [1, 2, 3, 4, 5, 3, 6, 1]
-      let uniqueElements = array.uniqueElements()
+      let uniqueElements = array.uniqueOrderedElements()
       XCTAssertEqual(uniqueElements.count, 6)
       XCTAssertEqual(uniqueElements, [1, 2, 3, 4, 5, 6])
     }
 
     do {
       let array = [Int]()
-      let uniqueElements = array.uniqueElements()
+      let uniqueElements = array.uniqueOrderedElements()
       XCTAssertEqual(uniqueElements.count, 0)
       XCTAssertEqual(uniqueElements, [])
     }
 
     do {
       let array = [1, 1, 1, 1, 1, 1, 1]
-      let uniqueElements = array.uniqueElements()
+      let uniqueElements = array.uniqueOrderedElements()
       XCTAssertEqual(uniqueElements.count, 1)
       XCTAssertEqual(uniqueElements, [1])
     }
 
     do {
       let array = [Sample(value: "1"), Sample(value: "1"), Sample(value: "1"), Sample(value: "3"), Sample(value: "2")]
-      let uniqueElements = array.uniqueElements()
+      let uniqueElements = array.uniqueOrderedElements()
       XCTAssertEqual(uniqueElements.count, 3)
       XCTAssertEqual(uniqueElements, [Sample(value: "1"), Sample(value: "3"), Sample(value: "2")])
     }
