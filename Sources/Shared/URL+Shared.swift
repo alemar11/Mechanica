@@ -27,7 +27,7 @@ import AVFoundation
 
 public extension URL {
 
-  #if !os(tvOS)
+  #if !os(watchOS)
 
   /// Generates a thumbnail image from given url.
   ///
