@@ -27,22 +27,23 @@ import AVFoundation
 
 public extension URL {
 
-  /// Generates a thumbnail image from given url. Returns nil if no thumbnail could be created.
+  #if !os(tvOS)
+
+  /// Generates a thumbnail image from given url.
   ///
-  ///     var url = URL(string: "https://link/to/video.mp4")!
-  ///     var thumbnail = url.thumbnail()
-  ///     thumbnail = url.thumbnail(fromTime: 5)
   ///
-  ///     DisptachQueue.main.async {
-  ///         someImageView.image = url.thumbnail()
-  ///     }
+  /// Example:
+  ///
+  ///     let url = URL(string: "https://link/to/video.mp4")!
+  ///     let thumbnail = url.thumbnail(fromTime: 5)
   ///
   /// - Parameter time: Seconds into the video where the image should be generated.
   /// - Returns: The UIImage result of the AVAssetImageGenerator.
   /// - Throws: Throws an error if no thumbnail could be created.
-  /// - Note: This function may take some time to complete. It's recommended to dispatch the call on another queue if the thumbnail is not generated from a local resource.
+  /// - Note: This function may take some time to complete: it's recommended to dispatch the call on another queue if the thumbnail is not generated from a local resource.
   public func thumbnail(fromTime time: Float64 = 0) throws -> Image {
-    let imageGenerator = AVAssetImageGenerator(asset: AVAsset(url: self))
+    let asset = AVAsset(url: self)
+    let imageGenerator = AVAssetImageGenerator(asset: asset)
     let time = CMTimeMakeWithSeconds(time, 1)
     var actualTime = CMTimeMake(0, 0)
 
@@ -54,6 +55,8 @@ public extension URL {
     return Image(cgImage: cgImage, size: NSZeroSize)
     #endif
   }
+
+  #endif
 
 }
 
