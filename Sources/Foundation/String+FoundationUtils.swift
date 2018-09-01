@@ -404,10 +404,9 @@ extension String {
     guard !base.isEmpty else { return "" }
     var randomString: String = ""
 
-    let range = Int32(0)..<Int32(base.count)
     for _ in 0..<length {
-      let randomValue = Int32.random(in: range)
-      randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
+      let randomCharacter = base.randomElement()!
+      randomString += "\(randomCharacter)"
     }
 
     return randomString
