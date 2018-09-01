@@ -52,13 +52,8 @@ final class BoolUtilsTests: XCTestCase {
   }
 
   func testToggle() {
-    #if !swift(>=4.2)
     let b1 = true
     XCTAssertTrue(b1.toggled == false)
-    var b2 = false
-    b2.toggle()
-    XCTAssertTrue(b2)
-    #endif
   }
 
   // MARK:- BinaryConvertible

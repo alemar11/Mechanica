@@ -2,8 +2,11 @@
 
 ### 1.8.0
 
+- - Mechanica is now completely migrated to **Swift 4.2**.
 - Added Date and Calendar utils. 📆
-- Refactor NSObjectProtocol Utilities
+- Refactor NSObjectProtocol Utilities.
+- Removed all the Random utils.
+- Removed shuffle utils.
 
 ### 1.7.0
 

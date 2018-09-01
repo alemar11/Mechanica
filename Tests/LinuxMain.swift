@@ -10,7 +10,6 @@ XCTMain([
   testCase(CharacterUtilsTests.allTests),
   testCase(CollectionUtilsTests.allTests),
   testCase(DictionaryUtilsTests.allTests),
-  testCase(FixedWidthIntegerIntervalRandomizableTests.allTests),
   testCase(FloatingPointUtilsTests.allTests),
   testCase(MutableCollectionUtilsTests.allTests),
   testCase(OperatorsTests.allTests),

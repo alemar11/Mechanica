@@ -404,8 +404,9 @@ extension String {
     guard !base.isEmpty else { return "" }
     var randomString: String = ""
 
+    let range = Int32(0)..<Int32(base.count)
     for _ in 0..<length {
-      let randomValue = mechanica_arc4random_uniform(UInt32(base.count))
+      let randomValue = Int32.random(in: range)
       randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
     }
 
@@ -422,9 +423,9 @@ extension String {
   /// - Returns: A `new` random alphanumeric `String`.
   public static func random(length between: CountableClosedRange<UInt32>, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
-    let randomlength = UInt32.random(lowerBound: between.lowerBound, upperBound: between.upperBound)
+    let randomLength = UInt32.random(in: between.lowerBound...between.upperBound)
 
-    return random(length: randomlength, charachters: base)
+    return random(length: randomLength, charachters: base)
   }
 
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)

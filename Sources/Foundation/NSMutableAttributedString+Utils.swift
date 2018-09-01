@@ -30,7 +30,7 @@ extension NSMutableAttributedString {
   // Not implemented on Linux:
   //    "mutableCopy(with:) is not yet implemented"
   //    "append is not yet implemented"
-  //    NSAttributedStringKey
+  //    NSAttributedString.Key
 
   // MARK: - Attributes
 

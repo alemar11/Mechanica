@@ -36,6 +36,7 @@ extension Data {
   /// **Mechanica**
   ///
   /// Returns an hexadecimal string representation of the content.
+  #warning ("work in progress")
   public var hexEncodedString: String {
     // https://stackoverflow.com/questions/39075043/how-to-convert-data-to-hex-string-in-swift
     return reduce("") {$0 + String(format: "%02x", $1)}

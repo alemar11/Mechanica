@@ -294,7 +294,7 @@ extension UIImage {
    - returns: The PNG representation image.
    */
   func imageWithPNGRepresentation() -> UIImage {
-    let data = UIImagePNGRepresentation(self)! //TODO: Swift 4.2 .pngData
+    let data = self.pngData()!
     let image = UIImage(data: data, scale: UIScreen.main.scale)!
 
     return image

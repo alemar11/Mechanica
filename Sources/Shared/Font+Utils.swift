@@ -31,7 +31,7 @@
   /// **Mechanica**
   ///
   /// Alias for UIFontDescriptorSymbolicTraits.
-  public typealias FontDescriptorSymbolicTraits = UIKit.UIFontDescriptorSymbolicTraits
+public typealias FontDescriptorSymbolicTraits = UIKit.UIFontDescriptor.SymbolicTraits
 #elseif canImport(AppKit)
   import AppKit
   /// **Mechanica**

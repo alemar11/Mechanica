@@ -44,8 +44,8 @@ public extension URL {
   public func thumbnail(fromTime time: Float64 = 0) throws -> Image {
     let asset = AVAsset(url: self)
     let imageGenerator = AVAssetImageGenerator(asset: asset)
-    let time = CMTimeMakeWithSeconds(time, 1)
-    var actualTime = CMTimeMake(0, 0)
+    let time = CMTimeMakeWithSeconds(time, preferredTimescale: 1)
+    var actualTime = CMTimeMake(value: 0, timescale: 0)
     let cgImage = try imageGenerator.copyCGImage(at: time, actualTime: &actualTime)
 
     #if canImport(UIKit)
