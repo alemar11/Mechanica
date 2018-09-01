@@ -96,7 +96,7 @@ extension RangeReplaceableCollection where Self: MutableCollection {
   @discardableResult
   public mutating func remove(where condition: (Element) -> Bool) -> [Element] {
     var removed: [Element] = []
-    
+
     guard var idx = index(where: condition) else { return [] }
     removed.append(self[idx])
 

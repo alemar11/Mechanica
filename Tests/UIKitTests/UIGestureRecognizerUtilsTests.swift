@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -34,7 +34,7 @@ class UIGestureRecognizerUtilsTests: XCTestCase {
       recognizer.cancel()
       XCTAssertTrue(recognizer.isEnabled)
     }
-    
+
 }
 
 #endif
