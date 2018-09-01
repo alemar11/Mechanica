@@ -27,9 +27,9 @@ import Foundation
 // TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md (Swift 4.2?)
 
 extension String {
-
+  
   // MARK: - Foundation
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` string decoded from base64.
@@ -39,7 +39,7 @@ extension String {
     }
     return String(data: decodedData, encoding: .utf8)
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` string encoded in base64.
@@ -47,7 +47,7 @@ extension String {
     let plainData = self.data(using: .utf8)
     return plainData?.base64EncodedString()
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a Bool value by parsing `self`.
@@ -67,19 +67,19 @@ extension String {
       return nil
     }
   }
-
+  
   /// **Mechanica**
   ///
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
   public func capitalizedFirstCharacter() -> String {
     guard !isEmpty else { return self }
-
+    
     let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
     let result = capitalizedFirstCharacher + String(dropFirst())
-
+    
     return result
   }
-
+  
   /// **Mechanica**
   ///
   ///  Condenses all white spaces repetitions in a single white space.
@@ -95,10 +95,10 @@ extension String {
   public func condensingExcessiveSpaces() -> String {
     let components = self.components(separatedBy: .whitespaces)
     let filtered = components.filter { !$0.isEmpty }
-
+    
     return filtered.joined(separator: " ")
   }
-
+  
   /// **Mechanica**
   ///
   ///  Condenses all white spaces and new lines repetitions in a single white space.
@@ -108,10 +108,10 @@ extension String {
   public func condensingExcessiveSpacesAndNewlines() -> String {
     let components = self.components(separatedBy: .whitespacesAndNewlines)
     let filtered = components.filter { !$0.isBlank }
-
+    
     return filtered.joined(separator: " ")
   }
-
+  
   /// **Mechanica**
   ///
   ///  Checks if `self` contains a `String`.
@@ -128,7 +128,7 @@ extension String {
       return range(of: string, options: .caseInsensitive) != nil
     }
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if if all the characters in the string belong to a specific `CharacterSet`.
@@ -137,27 +137,27 @@ extension String {
   /// - Returns: *true* if all the characters in the string belong to the `CharacterSet`, otherwise false.
   public func containsCharacters(in characterSet: CharacterSet) -> Bool {
     guard !isEmpty else { return false }
-
+    
     for scalar in unicodeScalars {
       guard characterSet.contains(scalar) else { return false }
-
+      
     }
-
+    
     return true
   }
-
+  
   /// **Mechanica**
   ///
   /// Produces a `new` string with the first character of the first word changed to the corresponding uppercase value.
   public func decapitalizedFirstCharacter() -> String {
     guard !isEmpty else { return self }
-
+    
     let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
     let result = capitalizedFirstCharacher + String(dropFirst())
-
+    
     return result
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns *true* if `self` ends with a given suffix.
@@ -165,52 +165,52 @@ extension String {
     if !caseSensitive {
       return lowercased().hasSuffix(suffix.lowercased())
     }
-
+    
     return hasSuffix(suffix)
   }
-
+  
   /// **Mechanica**
   ///
   /// Makes sure that we always have a semantic version in the form MAJOR.MINOR.PATCH
   public func ensureSemanticVersionCorrectness() -> String {
     if self.isEmpty { return "0.0.0" }
-
+    
     var copy = self
-
+    
     let versionComponents = components(separatedBy: ".")
     guard 1 ... 3 ~= versionComponents.count else { fatalError("Invalid number of semantic version components (\(versionComponents.count)).") }
-
+    
     let notNumericComponents = versionComponents.filter { !$0.isNumeric }
     guard notNumericComponents.isEmpty else { fatalError("Each semantic version component should have a numeric value.") }
-
+    
     for _ in versionComponents.count..<3 {
       copy += ".0"
     }
-
+    
     return copy
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a list containing the first character of each word contained in `self`.
   public func firstCharacterOfEachWord() -> [String] {
     return components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.map { String($0.prefix(1)) }
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns true if the `String` contains one or more letters.
   public var hasLetters: Bool {
     return !isEmpty && rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns true if the `String` contains one or more numbers.
   public var hasNumbers: Bool {
     return !isEmpty && rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns true if the `String` contains only letters.
@@ -218,21 +218,21 @@ extension String {
     // TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md (Swift 4.2?)
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns true if the `String` contains at least one letter and one number.
   public var isAlphaNumeric: Bool {
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if the `String` is **blank** (a string that is either empty or contains only space/newline characters).
   public var isBlank: Bool {
     return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns `true` if `self` is a country emoji flag.
@@ -241,75 +241,76 @@ extension String {
   /// - Note: to extrapolate the flags in a string use: `self.filter { $0.isFlag }`
   public var isEmojiCountryFlag: Bool {
     guard count == 1 else { return false }
-
+    
     return first!.isEmojiCountryFlag
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if the `String` contains only numbers.
   public var isNumeric: Bool {
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if `self` is a semantic version with a value equal to a given `version`.
   public func isSemanticVersionEqual(to version: String) -> Bool {
     return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedSame
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if `self` is a semantic version with a value greater than given `version`.
   public func isSemanticVersionGreater(than version: String) -> Bool {
     return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedDescending
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if `self` is a semantic version with a value greater or equal to a given `version`.
   public func isSemanticVersionGreaterOrEqual(to version: String) -> Bool {
     return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedAscending
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if `self` is a semantic version with a value lesser than a given `version`.
   public func isSemanticVersionLesser(than version: String) -> Bool {
     return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) == .orderedAscending
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if `self` is a semantic version with a value lesser or equal to a given `version`.
   public func isSemanticVersionLesserOrEqual(to version: String) -> Bool {
     return ensureSemanticVersionCorrectness().compare(version.ensureSemanticVersionCorrectness(), options: .numeric) != .orderedDescending
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns true if the `String` is a valid email.
   public var isValidEmail: Bool {
     // https://medium.com/@darthpelo/email-validation-in-swift-3-0-acfebe4d879a
     // http://www.cocoawithlove.com/2009/06/verifying-that-string-is-email-address.html
-
+    // https://www.bignerdranch.com/blog/pro-pattern-matching-in-swift/
+    
     // swiftlint:disable:next line_length
     let emailPattern = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
-
+    
     #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
+    return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
     #else
-      let ranges = self.lowercased().ranges(matching: emailPattern)
-      guard ranges.count == 1 else { return false }
-
-      return ranges.first! == self.startIndex..<self.endIndex
+    let ranges = self.lowercased().ranges(matching: emailPattern)
+    guard ranges.count == 1 else { return false }
+    
+    return ranges.first! == self.startIndex..<self.endIndex
     #endif
   }
-
+  
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
-
+  
   // swiftlint:disable identifier_name
   /// **Mechanica**
   ///
@@ -317,17 +318,17 @@ extension String {
   internal var _isValidEmail: Bool {
     guard !self.lowercased().hasPrefix("mailto:") else { return false }
     guard let emailDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return false }
-
+    
     let matches = emailDetector.matches(in: self, options: NSRegularExpression.MatchingOptions.anchored, range: NSRange(location: 0, length: length))
-
+    
     guard matches.count == 1 else { return false }
-
+    
     return matches[0].url?.absoluteString == "mailto:\(self)"
   }
   // swiftlint:enable identifier_name
-
+  
   #endif
-
+  
   /// **Mechanica**
   ///
   /// Checks if string is a valid file URL.
@@ -339,7 +340,7 @@ extension String {
   public var isValidFileUrl: Bool {
     return URL(string: self)?.isFileURL ?? false
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if string is a valid http URL.
@@ -352,7 +353,7 @@ extension String {
     guard let url = URL(string: self) else { return false }
     return url.scheme == "http"
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if string is a valid https URL.
@@ -365,7 +366,7 @@ extension String {
     guard let url = URL(string: self) else { return false }
     return url.scheme == "https"
   }
-
+  
   /// **Mechanica**
   ///
   /// Check if the `String` is a valid schemed URL.
@@ -379,7 +380,7 @@ extension String {
     guard let url = URL(string: self) else { return false }
     return url.scheme != nil
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if string is a valid URL.
@@ -391,7 +392,7 @@ extension String {
   public var isValidUrl: Bool {
     return URL(string: self) != nil
   }
-
+  
   /// **Mechanica**
   ///
   /// Generates a `new` random `String`.
@@ -403,15 +404,15 @@ extension String {
   public static func random(length: UInt32 = 8, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
     var randomString: String = ""
-
+    
     for _ in 0..<length {
       let randomCharacter = base.randomElement()!
       randomString += "\(randomCharacter)"
     }
-
+    
     return randomString
   }
-
+  
   /// **Mechanica**
   ///
   /// Generates a `new` random `String`.
@@ -423,12 +424,12 @@ extension String {
   public static func random(length between: CountableClosedRange<UInt32>, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
     let randomLength = UInt32.random(in: between.lowerBound...between.upperBound)
-
+    
     return random(length: randomLength, charachters: base)
   }
-
+  
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` String stripped of all accents and diacritics.
@@ -442,9 +443,9 @@ extension String {
   public func removingAccentsOrDiacritics() -> String {
     return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
   }
-
+  
   #endif
-
+  
   /// **Mechanica**
   ///
   ///  Remove the characters in the given set.
@@ -454,19 +455,19 @@ extension String {
         remove(at: idx)
       }
     }
-
+    
   }
-
+  
   /// **Mechanica**
   ///
   ///  Returns a new `String` removing the characters in the given set.
   public func removingCharacters(in set: CharacterSet) -> String {
     var copy = self
     copy.removeCharacters(in: set)
-
+    
     return copy
   }
-
+  
   /// **Mechanica**
   ///
   ///  Returns a `new` string in which all occurrences of a target are replaced by another given string.
@@ -477,30 +478,30 @@ extension String {
   ///   - caseSensitive:  `*true*` (default) for a case-sensitive replacemente
   public func replace(_ target: String, with replacement: String, caseSensitive: Bool = true) -> String {
     let compareOptions: String.CompareOptions = (caseSensitive == true) ? [.literal] : [.literal, .caseInsensitive]
-
+    
     return replacingOccurrences(of: target, with: replacement, options: compareOptions, range: nil)
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` string in which the characters in a specified `CountableClosedRange` range of the String are replaced by a given string.
   public func replacingCharacters(in range: CountableClosedRange<Int>, with replacement: String) -> String {
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(start, offsetBy: range.count)
-
+    
     return replacingCharacters(in: start ..< end, with: replacement)
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` string in which the characters in a specified `CountableRange` range of the String are replaced by a given string.
   public func replacingCharacters(in range: CountableRange<Int>, with replacement: String) -> String {
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(start, offsetBy: range.count)
-
+    
     return replacingCharacters(in: start ..< end, with: replacement)
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` string in which the first occurrence of a target is replaced by another given string.
@@ -508,7 +509,7 @@ extension String {
     guard let range = self.range(of: string) else { return self }
     return replacingCharacters(in: range, with: replacement)
   }
-
+  
   /// **Mechanica**
   ///
   /// If `self` is a semantic version, returns a tuple with major, minor and patch components.
@@ -517,10 +518,10 @@ extension String {
     let major = Int(versionComponents[0]) ?? 0
     let minor = Int(versionComponents[1]) ?? 0
     let patch = Int(versionComponents[2]) ?? 0
-
+    
     return (major, minor, patch)
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns *true* if `self` starts with a given prefix.
@@ -528,24 +529,24 @@ extension String {
     if !caseSensitive {
       return lowercased().hasPrefix(prefix.lowercased())
     }
-
+    
     return hasPrefix(prefix)
   }
-
+  
   /// **Mechanica**
   ///
   /// Removes spaces and new lines from both ends of `self.
   public mutating func trim() {
     self = trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
   }
-
+  
   /// **Mechanica**
   ///
   ///  Returns a `new` String made by removing spaces and new lines from both ends.
   public func trimmed() -> String {
     return trimmingCharacters(in: .whitespacesAndNewlines)
   }
-
+  
   /// **Mechanica**
   ///
   ///  Strips the specified characters from the end of `self`.
@@ -557,10 +558,10 @@ extension String {
     if let range = rangeOfCharacter(from: set.inverted, options: .backwards) {
       return String(self[..<range.upperBound])
     }
-
+    
     return ""
   }
-
+  
   /// **Mechanica**
   ///
   ///  Strips the specified characters from the beginning of `self`.
@@ -572,19 +573,19 @@ extension String {
     if let range = rangeOfCharacter(from: set.inverted) {
       return String(self[range.lowerBound..<endIndex])
     }
-
+    
     return ""
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a percent-escaped string following RFC 3986 for a query string key or value.
   public var urlEscaped: String? {
     return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
   }
-
+  
   // MARK: - Subscript with NSRange
-
+  
   /// **Mechanica**
   ///
   ///  Returns a substring for a given `NSRange`.
@@ -594,16 +595,16 @@ extension String {
   ///  - Returns: Substring in NSRange or nil.
   public subscript (nsRange: NSRange) -> Substring? {
     guard let range = Range(nsRange) else { return nil }
-
+    
     guard 0...count ~= range.lowerBound else { return nil }
     guard 0...count ~= range.upperBound else { return nil }
-
+    
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(startIndex, offsetBy: range.upperBound)
-
+    
     return self[Range(uncheckedBounds: (lower: start, upper: end))]
   }
-
+  
   /// **Mechanica**
   ///
   ///  Returns the range of the first occurrence of a given string in the `String`.
@@ -613,23 +614,23 @@ extension String {
   ///  - Returns: The range of the first occurrence or nil.
   public subscript (substring: String) -> Range<String.Index>? {
     let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex) )
-
+    
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
-
+  
   // MARK: - CharacterSet
-
+  
   /// **Mechanica**
   ///
   /// Returns the `NSRange` of `self`.
   public var nsRange: NSRange {
     let range = self.startIndex...
-
+    
     return NSRange(range, in: self)
   }
-
+  
   // MARK: - Case Operators
-
+  
   /// **Mechanica**
   ///
   /// Produces a camel cased version of the `String`.
@@ -643,7 +644,7 @@ extension String {
   public func camelCased() -> String {
     return pascalCased().decapitalizedFirstCharacter()
   }
-
+  
   /// **Mechanica**
   ///
   /// Produces the kebab cased version of the `String`.
@@ -657,7 +658,7 @@ extension String {
   public func kebabCased() -> String {
     return "-" + slugCased() + "-"
   }
-
+  
   /// **Mechanica**
   ///
   /// Produces a pascal cased version of the `String`.
@@ -671,7 +672,7 @@ extension String {
   public func pascalCased() -> String {
     return replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: "-", with: " ").components(separatedBy: .whitespaces).joined()
   }
-
+  
   /// **Mechanica**
   ///
   /// Produces the slug version of the `String`.
@@ -685,7 +686,7 @@ extension String {
   public func slugCased() -> String {
     return replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: "-", with: " ").condensingExcessiveSpaces().replacingOccurrences(of: " ", with: "-").lowercased()
   }
-
+  
   /// **Mechanica**
   ///
   /// Produces the snake cased version of the `String`.
@@ -699,7 +700,7 @@ extension String {
   public func snakeCased() -> String {
     return replacingOccurrences(of: "_", with: " ").replacingOccurrences(of: "-", with: " ").condensingExcessiveSpaces().replacingOccurrences(of: " ", with: "_")
   }
-
+  
   /// **Mechanica**
   ///
   /// Produces the swap cased version of the `String`.
@@ -713,10 +714,10 @@ extension String {
   public func swapCased() -> String {
     return map({ String($0).isLowercased ? String($0).uppercased() : String($0).lowercased() }).joined()
   }
-
+  
   // MARK: - NSString
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-
+  
   /// **Mechanica**
   ///
   /// Returns a new string made by appending to the receiver a given string.
@@ -724,7 +725,7 @@ extension String {
     let nsString = NSString(string: self)
     return nsString.appendingPathComponent(path)
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a new string made by appending to the receiver an extension separator followed by a given extension.
@@ -732,7 +733,7 @@ extension String {
     let nsString = NSString(string: self)
     return nsString.appendingPathExtension(ext)
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` string made by deleting the last path component from the receiver, along with any final path separator.
@@ -740,14 +741,14 @@ extension String {
   public var deletingLastPathComponent: String {
     return NSString(string: self).deletingLastPathComponent
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` string made by deleting the extension (if any, and only the last) from the receiver.
   public var deletingPathExtension: String {
     return NSString(string: self).deletingPathExtension
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns the last path component of the receiver.
@@ -755,14 +756,14 @@ extension String {
   public var lastPathComponent: String {
     return NSString(string: self).lastPathComponent
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns the file-system path components of the receiver.
   public var pathComponents: [String] {
     return NSString(string: self).pathComponents
   }
-
+  
   /// **Mechanica**
   ///
   /// Return the path extension, if any, of the string as interpreted as a path.
@@ -770,11 +771,11 @@ extension String {
   public var pathExtension: String {
     return NSString(string: self).pathExtension
   }
-
+  
   #endif
-
+  
   // MARK: - Regular Expression
-
+  
   /// **Mechanica**
   ///
   /// - Parameters:
@@ -783,10 +784,10 @@ extension String {
   /// - Returns: The first match of the regular expression within `self`.
   public func firstMatch(for pattern: String, options: NSRegularExpression.Options = []) -> String? {
     guard let range = firstRange(matching: pattern) else { return nil }
-
+    
     return String(self[range])
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameters:
@@ -795,12 +796,12 @@ extension String {
   /// - Returns: The first match's range of the regular expression within `self`.
   public func firstRange(matching pattern: String, options: NSRegularExpression.Options = []) -> Range<String.Index>? {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return nil }
-
+    
     let range = regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)).flatMap { Range($0.range, in: self) }
-
+    
     return range
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameters:
@@ -809,14 +810,14 @@ extension String {
   /// - Returns: A list of matches of the regular expression within `self`.
   public func matches(for pattern: String, options: NSRegularExpression.Options = []) -> [String] {
     var matches = [String]()
-
+    
     for range in ranges(matching: pattern, options: options) {
       matches.append(String(self[range]))
     }
-
+    
     return matches
   }
-
+  
   /// **Mechanica**
   ///
   /// - Parameters:
@@ -827,9 +828,9 @@ extension String {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return [] }
     let matches = regex.matches(in: self, options: [], range: NSRange(startIndex..<endIndex, in: self))
     let ranges = matches.compactMap { Range($0.range, in: self) }
-
+    
     return ranges
   }
-
+  
 }
 #endif
