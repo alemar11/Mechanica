@@ -33,5 +33,34 @@ extension Data {
     return [UInt8](self)
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns an hexadecimal string representation of the content.
+  public var hexEncodedString: String {
+    // https://stackoverflow.com/questions/39075043/how-to-convert-data-to-hex-string-in-swift
+    return reduce("") {$0 + String(format: "%02x", $1)}
+  }
+
+// TODO
+//  func hexEncodedString(uppercase: Bool = false) -> String {
+//    let hexDigits = Array((uppercase ? "0123456789ABCDEF" : "0123456789abcdef").utf16)
+//    var chars: [unichar] = []
+//    chars.reserveCapacity(2 * count)
+//    for byte in self {
+//      chars.append(hexDigits[Int(byte / 16)])
+//      chars.append(hexDigits[Int(byte % 16)])
+//    }
+//    return String(utf16CodeUnits: chars, count: chars.count)
+//  }
+//
+//  private static let hexAlphabet = "0123456789abcdef".unicodeScalars.map { $0 }
+//
+//  public func hexEncodedString2() -> String {
+//    return String(self.reduce(into: "".unicodeScalars) { (result, value) in
+//      result.append(Data.hexAlphabet[Int(value/16)])
+//      result.append(Data.hexAlphabet[Int(value%16)])
+//    })
+//  }
+
 }
 #endif

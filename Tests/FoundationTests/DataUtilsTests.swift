@@ -25,7 +25,10 @@ import XCTest
 @testable import Mechanica
 
 extension DataUtilsTests {
-  static var allTests = [("testBytes", testBytes)]
+  static var allTests = [
+    ("testBytes", testBytes),
+    ("testHexEncodedString", testHexEncodedString)
+  ]
 }
 
 final class DataUtilsTests: XCTestCase {
@@ -36,5 +39,12 @@ final class DataUtilsTests: XCTestCase {
     XCTAssertNotNil(bytes)
     XCTAssertEqual(bytes?.count, 9)
   }
+
+  func testHexEncodedString() {
+    let data = Data(bytes: [0, 1, 127, 128, 255])
+    XCTAssertEqual(data.hexEncodedString(), "00017f80ff")
+    XCTAssertEqual(data.hexEncodedString(uppercase: true), "00017F80FF")
+  }
+
 
 }

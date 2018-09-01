@@ -161,12 +161,12 @@
       if #available(iOS 10, *) {
         return UIGraphicsImageRenderer(bounds: bounds).image { layer.render(in: $0.cgContext) }
       }
-      
+
       let format = UIGraphicsImageRendererFormat()
       format.opaque = isOpaque
       format.scale = scale
       let renderer = UIGraphicsImageRenderer(size: frame.size, format: format)
-      
+
       return renderer.image { _ in
         drawHierarchy(in: frame, afterScreenUpdates: true)
       }
