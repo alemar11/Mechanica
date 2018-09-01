@@ -11,7 +11,6 @@ XCTMain([
   testCase(CollectionUtilsTests.allTests),
   testCase(DictionaryUtilsTests.allTests),
   testCase(FloatingPointUtilsTests.allTests),
-  testCase(MutableCollectionUtilsTests.allTests),
   testCase(OperatorsTests.allTests),
   testCase(OptionalUtilsTests.allTests),
   testCase(RangeReplaceableCollectionUtilsTests.allTests),
