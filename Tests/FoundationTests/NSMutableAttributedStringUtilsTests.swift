@@ -27,9 +27,9 @@ import XCTest
 extension NSMutableAttributedStringUtilsTests {
   static var allTests = [
     ("testRemovingAttributes", testRemovingAttributes),
-    ("testRemoveAttributes", testRemoveAttributes),
-    ("testAddition", testAddition),
-    ("testCompoundAddition", testCompoundAddition),
+    //("testRemoveAttributes", testRemoveAttributes),
+    //("testAddition", testAddition),
+    //("testCompoundAddition", testCompoundAddition),
   ]
 }
 
@@ -37,6 +37,7 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
 
   func testRemovingAttributes() {
 
+    #if !os(Linux)
       do {
         // Given
         let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedString.Key.foregroundColor: Color.red])
@@ -87,6 +88,9 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
       XCTAssertTrue(attributesCount != attributesCount2)
       XCTAssertTrue(attributesCount2 == 0)
     }
+    #else
+    let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedString.Key(rawValue: "TestKey"): "A"])
+    #endif
   }
 
   func testRemoveAttributes() {
