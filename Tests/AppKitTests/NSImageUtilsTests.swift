@@ -38,7 +38,7 @@ import XCTest
         // Not implemented (SPM): https://bugs.swift.org/browse/SR-2866
         XCTAssertNotNil(image)
         XCTAssertNil(notExistingImage)
-        XCTAssertEqual(image!.name(), "glasses")
+        XCTAssertEqual(image!.name(), NSImage.Name("glasses"))
       }
 
     }
