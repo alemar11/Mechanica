@@ -100,9 +100,9 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
 
     func testRemoveAttributes() {
       // Given
-      let attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedString.Key.foregroundColor: Color.red])
+      let attributedString = NSMutableAttributedString(string: "Hello", attributes: attributes1)
       attributedString += " "
-      attributedString += NSAttributedString(string: "World", attributes: [NSAttributedString.Key.backgroundColor: Color.yellow])
+      attributedString += NSAttributedString(string: "World", attributes: attributes2)
       let range = NSRange(location: 0, length: attributedString.length)
 
       var attributesCount = 0
