@@ -31,6 +31,7 @@ extension NSMutableAttributedString {
   //    "mutableCopy(with:) is not yet implemented"
   //    "append is not yet implemented"
   //    NSAttributedString.Key
+  // https://github.com/apple/swift-corelibs-foundation/blob/a61b058ed53b00621e7acba4c53959e3ae01a254/Foundation/NSAttributedString.swift
 
   // MARK: - Attributes
 
