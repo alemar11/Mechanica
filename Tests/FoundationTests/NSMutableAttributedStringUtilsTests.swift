@@ -47,7 +47,7 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
     }
     let attributedString = NSMutableAttributedString(string: "Hello", attributes: [Key.key1: "A"])
     let attributedString2 = NSMutableAttributedString(string: "World", attributes: [Key.key2: "B"])
-    let _attributedString3 = NSMutableAttributedString(string: "Hello", attributes: [Key.key1, Key.key3: "C"])
+    let _attributedString3 = NSMutableAttributedString(string: "Hello", attributes: [Key.key1: "A", Key.key3: "C"])
     #endif
 
     do {
