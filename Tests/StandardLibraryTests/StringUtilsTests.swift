@@ -79,7 +79,7 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertTrue("🇮🇹".length == 1)
 
     #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue("👍🏻".length == 1) //2
       XCTAssertTrue("👍🏽".length == 1) //2
       XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
@@ -97,7 +97,7 @@ final class StringUtilsTests: XCTestCase {
       XCTAssertTrue(s.prefix(maxLength: 5) == "Hello")
       XCTAssertTrue(s.prefix(maxLength: 6) == "Hello ")
       #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World 🖖🏽")
       XCTAssertTrue(s.prefix(maxLength: 14) == "Hello World 🖖🏽")
       XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World 🖖🏽")
@@ -117,7 +117,7 @@ final class StringUtilsTests: XCTestCase {
     do {
       let s = "Hello World 🖖🏽"
       #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue(s.suffix(maxLength: 0) == "")
       XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
       XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
@@ -202,7 +202,7 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s4.truncate(at: 4) == "a🇮🇹bb…")
 
     #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹…")
       XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹…")
     #endif
@@ -225,7 +225,7 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s8.truncate(at: 1) == "👍…")
 
     #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue(s8.truncate(at: 2) == "👍👍🏻…")
       XCTAssertTrue(s8.truncate(at: 3) == "👍👍🏻👍🏼…")
       XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍🏼👍🏾")

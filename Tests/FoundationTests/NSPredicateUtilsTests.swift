@@ -30,7 +30,7 @@ extension NSPredicateUtilsTests {
 
 final class NSPredicateUtilsTests: XCTestCase {
 
-  // Not implemented on Linux:
+  // TODO: - Not implemented on Linux:
   //    "NSPredicate.init(format:_:) is not yet implemented."
 
   func testPredicateComposition() {
@@ -63,7 +63,7 @@ final class NSPredicateUtilsTests: XCTestCase {
   }
 
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-  // Not implemented on Linux:
+  // TODO: - Not implemented on Linux:
   //    "NSPredicate.init(format:_:) is not yet implemented."
 
   func testOperatorsExcludingLinux() {
