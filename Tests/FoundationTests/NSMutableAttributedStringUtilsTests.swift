@@ -38,7 +38,7 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
   #if os(Linux)
   let attributes1 = [NSAttributedStringKey("key1"): "A"]
   let attributes2 = [NSAttributedStringKey("key2"): "B"]
-  let attributes2 = [NSAttributedStringKey("key1"): "A", NSAttributedStringKey("key3"): "C"]
+  let attributes3 = [NSAttributedStringKey("key1"): "A", NSAttributedStringKey("key3"): "C"]
   #else
   let attributes1 = [NSAttributedString.Key.foregroundColor: Color.red]
   let attributes2 = [NSAttributedString.Key.backgroundColor: Color.yellow]
