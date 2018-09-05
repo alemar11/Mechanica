@@ -24,6 +24,15 @@
 import XCTest
 @testable import Mechanica
 
+extension NSMutableAttributedStringUtilsTests {
+  static var allTests = [
+    ("testRemovingAttributes", testRemovingAttributes),
+    ("testRemoveAttributes", testRemoveAttributes),
+    ("testAddition", testAddition),
+    ("testCompoundAddition", testCompoundAddition),
+  ]
+}
+
 final class NSMutableAttributedStringUtilsTests: XCTestCase {
 
   func testRemovingAttributes() {

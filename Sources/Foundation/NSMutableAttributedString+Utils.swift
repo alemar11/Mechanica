@@ -26,7 +26,7 @@ import Foundation
 
 extension NSMutableAttributedString {
 
-  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // TODO: - Not implemented on Linux:
   //    "mutableCopy(with:) is not yet implemented"
   //    "append is not yet implemented"
@@ -123,7 +123,7 @@ extension NSMutableAttributedString {
     lhs.append(NSAttributedString(string: rhs))
   }
 
-  #endif
+  //#endif
 
 }
 #endif

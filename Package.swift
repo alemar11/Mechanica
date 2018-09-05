@@ -31,7 +31,6 @@ package.targets = [
               dependencies: ["Mechanica"],
               exclude: ["BundleInfoTests.swift",
                         "NSAttributedStringUtilsTests.swift",
-                        "NSMutableAttributedStringUtilsTests.swift"
     ]
   )
 ]

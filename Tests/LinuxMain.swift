@@ -29,6 +29,7 @@ XCTMain([
   testCase(LocaleUtilsTests.allTests),
   testCase(NSObjectProtocolUtils.allTests),
   testCase(NSPredicateUtilsTests.allTests),
+  testCase(NSMutableAttributedStringUtilsTests.allTests),
   testCase(ProcessInfoTests.allTests),
   testCase(StatUtilsTests.allTests),
   testCase(StringFoundationUtilsTests.allTests),
