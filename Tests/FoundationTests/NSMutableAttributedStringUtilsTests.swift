@@ -42,12 +42,10 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
     let _attributedString2 = NSAttributedString(string: "World", attributes: [NSAttributedString.Key.backgroundColor: Color.yellow])
     let _attributedString3 = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedString.Key.foregroundColor: Color.red, NSAttributedString.Key.strikethroughColor: Color.blue])
     #else
-    enum Key: String, Equatable, Hashable {
-      case key1, key2, Key3
-    }
-    let attributedString = NSMutableAttributedString(string: "Hello", attributes: [Key.key1: "A"])
-    let attributedString2 = NSMutableAttributedString(string: "World", attributes: [Key.key2: "B"])
-    let _attributedString3 = NSMutableAttributedString(string: "Hello", attributes: [Key.key1: "A", Key.key3: "C"])
+
+    let _attributedString = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey("key1"): "A"])
+    let _attributedString2 = NSMutableAttributedString(string: "World", attributes: [NSAttributedStringKey("key2"): "B"])
+    let _attributedString3 = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey("key1"): "A", NSAttributedStringKey("key3"): "C"])
     #endif
 
     do {
