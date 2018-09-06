@@ -39,8 +39,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   // TODO: add test for URL -> https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/UserDefaults.swift
   // on Linux will be set to nil
-  // TODO: set a boolean it's not working on Linux (Swift 4.1)
-  // TODO: set nil to remove an object is not working on Linux (Swift 4.1)
+  // TODO: set nil to remove an object is not working on Linux (Swift 4.2)
 
   var testDefaults: UserDefaults!
 
@@ -127,13 +126,10 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
     #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), 1)
-    #endif
-
-    print(userDefaults.object(forKey: key))
-    userDefaults.set(nil, forKey: key)
-    print(userDefaults.object(forKey: key))
+    userDefaults.set(nil, forKey: key) // setting a value to nil crash on Linux (Swift 4.2)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
+    #endif
 
     userDefaults.set("hello world", forKey: key)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
