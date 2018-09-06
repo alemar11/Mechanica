@@ -191,7 +191,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("a1🤔".ends(with:"🤔"), "It should end with '🤔'")
 
     #if !os(Linux)
-    XCTAssertTrue("a1🖖🏽".ends(with:"🖖🏽"))
+    XCTAssertTrue("a1🖖🏽".ends(with:"🏽"))
     #else
     XCTAssertTrue("a1🖖🏽".ends(with:"🖖"))
     print("a1🖖🏽".last)
