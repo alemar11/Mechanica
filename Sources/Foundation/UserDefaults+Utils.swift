@@ -69,7 +69,7 @@ public extension UserDefaults {
     return (object(forKey: defaultName) as? NSNumber)?.intValue
   }
 
-  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
   ///
@@ -83,7 +83,7 @@ public extension UserDefaults {
     }
   }
 
-  #endif
+  //#endif
 
 }
 #endif
