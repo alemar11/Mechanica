@@ -128,11 +128,11 @@ final class UserDefaultsUtilsTests: XCTestCase {
     #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), 1)
     #endif
-    
+
     userDefaults.set(nil, forKey: key)
+    print(userDefaults.object(forKey: key))
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
-
 
     userDefaults.set("hello world", forKey: key)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
