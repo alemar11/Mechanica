@@ -58,7 +58,6 @@ public extension UserDefaults {
   /// - Parameter defaultName: A key in the current user's defaults database.
   /// - Returns: The floating-point value associated with the specified key. If the key does not exist, this method returns nil.
   public final func optionalFloat(forKey defaultName: String) -> Float? {
-    print(" -- \(object(forKey: defaultName)) --")
     return (object(forKey: defaultName) as? NSNumber)?.floatValue
   }
 
