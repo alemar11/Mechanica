@@ -269,22 +269,16 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
         let s = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey("key1"): "A"])
         s += " "
         s += NSAttributedString(string: "World", attributes: [NSAttributedStringKey("key2"): "B"])
-        let attributes = s.attributes(at: 9, effectiveRange: nil)
-        print(attributes)
-
 
         let firstCharAttributes = s.attributes(at: 0, effectiveRange: nil)
         let lastCharAttributes = s.attributes(at: 9, effectiveRange: nil)
-
-
-          //print(lastCharAttributes)
         let a = firstCharAttributes[NSAttributedStringKey("key1")] as? String
-//        let b = lastCharAttributes[NSAttributedStringKey("key2")] //as? String
-//
+        let b = lastCharAttributes[NSAttributedStringKey("key2")] as? String
+
         XCTAssertNotNil(a)
-//        XCTAssertNotNil(b)
+        XCTAssertNotNil(b)
         XCTAssertEqual(a, "A")
-        //XCTAssertEqual(b, "B")
+        XCTAssertEqual(b, "B")
         XCTAssertTrue(s.string == "Hello World")
       }
 
