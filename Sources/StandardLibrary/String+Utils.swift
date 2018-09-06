@@ -273,8 +273,8 @@ extension String {
     return String(dropFirst(upToPosition))
   }
 
-  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-  // TODO: - Not implemented on Linux:: https://bugs.swift.org/browse/SR-5627
+//  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+//  // TODO: - Not implemented on Linux:: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**
   ///
@@ -291,7 +291,7 @@ extension String {
     return droppingPrefix(upToPosition: prefix.length)
   }
 
-  #endif
+//  #endif
 
   /// **Mechanica**
   ///
