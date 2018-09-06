@@ -129,6 +129,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), 1)
     #endif
 
+    print(userDefaults.object(forKey: key))
     userDefaults.set(nil, forKey: key)
     print(userDefaults.object(forKey: key))
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
