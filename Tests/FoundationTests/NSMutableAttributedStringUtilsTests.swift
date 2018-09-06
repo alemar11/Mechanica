@@ -272,14 +272,14 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
         let firstCharAttributes = s.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
         //let lastCharAttributes = s.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
 
-        print(firstCharAttributes)
+
           //print(lastCharAttributes)
-//        let a = firstCharAttributes[NSAttributedStringKey("key1")] //as? String
+        let a = firstCharAttributes[NSAttributedStringKey("key1")] as? String
 //        let b = lastCharAttributes[NSAttributedStringKey("key2")] //as? String
 //
-//        XCTAssertNotNil(a)
+        XCTAssertNotNil(a)
 //        XCTAssertNotNil(b)
-        //XCTAssertEqual(a, "a")
+        XCTAssertEqual(a, "a")
         //XCTAssertEqual(b, "b")
         XCTAssertTrue(s.string == "Hello World")
       }
