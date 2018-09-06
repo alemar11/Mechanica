@@ -37,19 +37,16 @@ extension UserDefaultsUtilsTests {
 
 final class UserDefaultsUtilsTests: XCTestCase {
 
-  // TODO: add test for URL -> https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/UserDefaults.swift
-  // on Linux will be set to nil
-  // TODO: set nil to remove an object is not working on Linux (Swift 4.2)
-
+  let suiteName = "UserDefaultsUtilsTests"
   var testDefaults: UserDefaults!
 
   override func setUp() {
     super.setUp()
-    testDefaults = UserDefaults(suiteName: "UserDefaultsUtilsTests")!
+    testDefaults = UserDefaults(suiteName: suiteName)!
   }
 
   override func tearDown() {
-    UserDefaults().removePersistentDomain(forName: "UserDefaultsUtilsTests")
+    UserDefaults().removePersistentDomain(forName: suiteName)
     super.tearDown()
   }
 
@@ -126,7 +123,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
     #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), 1)
-    userDefaults.set(nil, forKey: key) // setting a value to nil crash on Linux (Swift 4.2)
+    userDefaults.set(nil, forKey: key) // TODO: setting a value to nil crash on Linux (Swift 4.2)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
     #endif
