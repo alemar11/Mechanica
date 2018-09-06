@@ -2,12 +2,14 @@
 
 ### 1.8.0
 
-- - Mechanica is now completely migrated to **Swift 4.2**.
+- Mechanica is now completely migrated to **Swift 4.2**.
 - Added Date and Calendar utils. 📆
 - Refactor NSObjectProtocol Utilities.
 - Removed all the Random utils.
 - Removed shuffle utils.
 - NSAttributedString and NSMutableAttributedString utils now works on Linux.
+- UserDefaults utils now works on Linux.
+- Added Linux tests for Ubuntu 16.04.
 
 ### 1.7.0
 
