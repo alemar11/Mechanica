@@ -17,7 +17,7 @@ matrix:
 
     # Ubuntu Trusty 14.04: Swift Tests
     - os: linux
-      dist: trusty
+      dist: xenial
       sudo: required
       language: generic
       before_install:
