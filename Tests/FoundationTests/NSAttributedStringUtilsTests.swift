@@ -24,8 +24,15 @@
 import XCTest
 @testable import Mechanica
 
+extension NSAttributedStringUtilsTests {
+  static var allTests = [
+    ("testAddition", testAddition)
+    ]
+}
+
 final class NSAttributedStringUtilsTests: XCTestCase {
 
+  #if !os(Linux)
   func testInitHTML(){
     do {
       // Given, When
@@ -68,6 +75,7 @@ final class NSAttributedStringUtilsTests: XCTestCase {
     }
 
   }
+  #endif
 
   func testAddition() {
 

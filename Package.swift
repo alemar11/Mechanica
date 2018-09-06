@@ -29,9 +29,7 @@ package.targets = [
   .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
   .testTarget(name: "FoundationTests",
               dependencies: ["Mechanica"],
-              exclude: ["BundleInfoTests.swift",
-                        "NSAttributedStringUtilsTests.swift",
-    ]
+              exclude: ["BundleInfoTests.swift"]
   )
 ]
 
