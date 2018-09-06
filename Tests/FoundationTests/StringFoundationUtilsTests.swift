@@ -155,8 +155,11 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("a".starts(with:"a"))
     XCTAssertFalse("a".starts(with:"A"))
     XCTAssertTrue("🤔a1".starts(with:"🤔"))
+    #if !os(Linux)
     XCTAssertTrue("🖖🏽a1".starts(with:"🖖🏽"))
-    print("🖖🏽a1".first)
+    #else
+    XCTAssertTrue("🖖🏽a1".starts(with:"🖖"))
+    #endif
     XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹"))
 
     //case insensitive
@@ -171,7 +174,11 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("a".ends(with:"a"))
     XCTAssertFalse("a".ends(with:"A"))
     XCTAssertTrue("a1🤔".ends(with:"🤔"))
+    #if !os(Linux)
     XCTAssertTrue("a1🖖🏽".ends(with:"🖖🏽"))
+    #else
+    XCTAssertTrue("a1🖖🏽".ends(with:"🖖"))
+    #endif
     XCTAssertTrue(" 🖖🏽🇮🇹🇮🇹".ends(with:"🇮🇹"))
 
     //case insensitive
