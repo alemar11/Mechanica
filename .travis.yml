@@ -15,6 +15,24 @@ env:
 matrix:
   include:
 
+    # Ubuntu 14.04: Swift Tests
+    - os: linux
+      dist: trusty
+      sudo: required
+      language: generic
+      before_install:
+        - sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
+        - wget https://swift.org/builds/swift-4.2-branch/ubuntu1404/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-08-25-a/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-08-25-a-ubuntu14.04.tar.gz
+        - tar zxf swift-4.2*.tar.gz && rm -rf swift-4.2*.tar.gz
+        - sudo mv swift-4.2* /swift-4.2
+        - echo "export PATH=/swift-4.2/usr/bin:\"\${PATH}\"" >> ~/.bashrc
+        - source ~/.bashrc
+      script:
+        - set -o pipefail  
+        - swift --version
+        - swift build
+        - swift test
+
     # Ubuntu 16.04: Swift Tests
     - os: linux
       dist: xenial
