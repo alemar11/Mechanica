@@ -36,6 +36,8 @@ extension NSMutableAttributedStringUtilsTests {
 final class NSMutableAttributedStringUtilsTests: XCTestCase {
 
   #if os(Linux)
+  // NSAttributedStringKey
+  // https://github.com/apple/swift-corelibs-foundation/blob/a61b058ed53b00621e7acba4c53959e3ae01a254/Foundation/NSAttributedString.swift
   let attributes1 = [NSAttributedStringKey("key1"): "A"]
   let attributes2 = [NSAttributedStringKey("key2"): "B"]
   let attributes3 = [NSAttributedStringKey("key1"): "A", NSAttributedStringKey("key3"): "C"]

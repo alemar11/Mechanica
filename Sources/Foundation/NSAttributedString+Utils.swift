@@ -26,10 +26,10 @@ import Foundation
 
 extension NSAttributedString {
 
-  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-  // TODO: - Not implemented on Linux:
-  //    "mutableCopy(with:) is not yet implemented"
-  //    "append is not yet implemented"
+//  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+//  // TODO: - Not implemented on Linux:
+//  //    "mutableCopy(with:) is not yet implemented"
+//  //    "append is not yet implemented"
 
   // MARK: - Initializers
 
@@ -82,7 +82,7 @@ extension NSAttributedString {
     return (attributedString + rhs).copy() as! NSAttributedString
   }
 
-  #endif
+  //#endif
 
 }
 #endif
