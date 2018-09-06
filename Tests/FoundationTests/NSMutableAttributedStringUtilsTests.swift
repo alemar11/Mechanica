@@ -268,11 +268,12 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
         let s = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey("key1"): "A"])
         s += " "
         s += NSAttributedString(string: "World", attributes: [NSAttributedStringKey("key2"): "B"])
-        print("-")
-        let range = NSMakeRange(0, 0)
-        print("--")
+
         let firstCharAttributes = s.attributes(at: 0, longestEffectiveRange: nil, in: NSMakeRange(0, 0))
-//        let lastCharAttributes = s.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
+        let lastCharAttributes = s.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
+
+        print(firstCharAttributes)
+          print(lastCharAttributes)
 //        let a = firstCharAttributes[NSAttributedStringKey("key1")] //as? String
 //        let b = lastCharAttributes[NSAttributedStringKey("key2")] //as? String
 //
