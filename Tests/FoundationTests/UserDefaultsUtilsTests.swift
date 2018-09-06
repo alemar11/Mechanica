@@ -127,8 +127,8 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(true, forKey: key)
-    // print(userDefaults.object(forKey: key)) // print nil on Linux (Swift 4.1 dev)
-    // print(userDefaults.bool(forKey: key)) // prints false on Linux (Swift 4.1 dev)
+    print(userDefaults.object(forKey: key)) // print nil on Linux (Swift 4.1 dev)
+    print(userDefaults.bool(forKey: key)) // prints false on Linux (Swift 4.1 dev)
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalBool(forKey: key))
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), true)
