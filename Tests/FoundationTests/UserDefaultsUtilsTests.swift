@@ -143,7 +143,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
   }
 
-  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   func testRemoveAll() {
     let userDefaults = testDefaults!
@@ -191,6 +191,6 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key3))
   }
 
-  #endif
+  //#endif
 
 }
