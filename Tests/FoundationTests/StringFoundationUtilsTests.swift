@@ -156,6 +156,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("a".starts(with:"A"))
     XCTAssertTrue("🤔a1".starts(with:"🤔"))
     XCTAssertTrue("🖖🏽a1".starts(with:"🖖🏽"))
+    print("🖖🏽a1".first)
     XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹"))
 
     //case insensitive
