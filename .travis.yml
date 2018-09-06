@@ -21,8 +21,8 @@ matrix:
       sudo: required
       language: generic
       before_install:
-        #- sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
-        - sudo apt-get install clang libicu-dev wget unzip -y
+        - sudo systemctl stop apt-daily.service && sudo systemctl kill --kill-who=all apt-daily.service && while ! (systemctl list-units --all apt-daily.service | fgrep -q dead) ; do sleep 1 done
+        - sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
         - wget https://swift.org/builds/swift-4.2-branch/ubuntu1404/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-08-25-a/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-08-25-a-ubuntu16.04.tar.gz
         - tar zxf swift-4.2*.tar.gz && rm -rf swift-4.2*.tar.gz
         - sudo mv swift-4.2* /swift-4.2
