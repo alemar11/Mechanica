@@ -273,9 +273,6 @@ extension String {
     return String(dropFirst(upToPosition))
   }
 
-//  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-//  // TODO: - Not implemented on Linux:: https://bugs.swift.org/browse/SR-5627
-
   /// **Mechanica**
   ///
   ///  Returns a new `String` removing the spcified prefix (if the string has it).
@@ -290,8 +287,6 @@ extension String {
 
     return droppingPrefix(upToPosition: prefix.length)
   }
-
-//  #endif
 
   /// **Mechanica**
   ///
@@ -309,9 +304,6 @@ extension String {
     return String(dropLast(fromPosition))
   }
 
-  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-  // TODO: - Not implemented on Linux:: https://bugs.swift.org/browse/SR-5627
-
   /// **Mechanica**
   ///
   /// Returns a new `String` removing the spcified suffix (if the string has it).
@@ -326,8 +318,6 @@ extension String {
 
     return droppingSuffix(fromPosition: suffix.length)
   }
-
-  //#endif
 
   /// **Mechanica**
   ///

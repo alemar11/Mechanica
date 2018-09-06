@@ -32,6 +32,7 @@ final class NSPredicateUtilsTests: XCTestCase {
 
   // TODO: - Not implemented on Linux:
   //    "NSPredicate.init(format:_:) is not yet implemented."
+  // https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/NSPredicate.swift
 
   func testPredicateComposition() {
     do {
