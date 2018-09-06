@@ -170,7 +170,7 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
       XCTAssertNotNil(b)
       XCTAssertEqual(a, "A")
       XCTAssertEqual(b, "B")
-      XCTAssertTrue(s.string == "Hello World")
+      XCTAssertTrue(s4.string == "Hello World")
       #endif
     }
 
