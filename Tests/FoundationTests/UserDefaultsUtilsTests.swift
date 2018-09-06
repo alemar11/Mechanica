@@ -46,17 +46,11 @@ final class UserDefaultsUtilsTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-//    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     testDefaults = UserDefaults(suiteName: "UserDefaultsUtilsTests")!
-//    #else
-//    testDefaults = UserDefaults(suiteName: UUID().uuidString)! //TODO: Linux doesn't support `removePersistentDomain` (Swift 4.1.2)
-//    #endif
   }
 
   override func tearDown() {
-//    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     UserDefaults().removePersistentDomain(forName: "UserDefaultsUtilsTests")
-//    #endif
     super.tearDown()
   }
 
@@ -127,23 +121,19 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key))
 
     userDefaults.set(true, forKey: key)
-    print(userDefaults.object(forKey: key)) // print nil on Linux (Swift 4.1 dev)
-    print(userDefaults.bool(forKey: key)) // prints false on Linux (Swift 4.1 dev)
     XCTAssertTrue(userDefaults.hasKey(key))
     XCTAssertNotNil(userDefaults.optionalBool(forKey: key))
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), true)
 
-    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+    //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
-    #endif
+    //#endif
 
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
     userDefaults.set("hello world", forKey: key)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)
   }
-
-  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   func testRemoveAll() {
     let userDefaults = testDefaults!
@@ -190,7 +180,5 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertFalse(userDefaults.hasKey(key2))
     XCTAssertFalse(userDefaults.hasKey(key3))
   }
-
-  //#endif
 
 }
