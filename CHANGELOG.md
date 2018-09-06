@@ -7,6 +7,7 @@
 - Refactor NSObjectProtocol Utilities.
 - Removed all the Random utils.
 - Removed shuffle utils.
+- NSAttributedString and NSMutableAttributedString utils now works on Linux.
 
 ### 1.7.0
 
