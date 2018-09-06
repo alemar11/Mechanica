@@ -50,7 +50,9 @@ extension StringUtilsTests {
     ("testMultiply", testMultiply),
     ("testOptionalStringCoalescingOperator", testOptionalStringCoalescingOperator),
     ("testPrefix", testPrefix),
-    ("testSuffix", testSuffix)
+    ("testSuffix", testSuffix),
+    ("testdroppingPrefix", testdroppingPrefix),
+    ("testdroppingSuffix", testdroppingSuffix)
   ]
 }
 
@@ -620,7 +622,7 @@ final class StringUtilsTests: XCTestCase {
     XCTAssert(stringValue2 == "unknown")
   }
 
-  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   func testdroppingPrefix() {
 
@@ -660,7 +662,7 @@ final class StringUtilsTests: XCTestCase {
 
   }
 
-  #endif
+  //#endif
 
 }
 

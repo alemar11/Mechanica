@@ -309,7 +309,7 @@ extension String {
     return String(dropLast(fromPosition))
   }
 
-  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // TODO: - Not implemented on Linux:: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**
@@ -327,7 +327,7 @@ extension String {
     return droppingSuffix(fromPosition: suffix.length)
   }
 
-  #endif
+  //#endif
 
   /// **Mechanica**
   ///
