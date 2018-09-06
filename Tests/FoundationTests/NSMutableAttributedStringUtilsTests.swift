@@ -148,12 +148,29 @@ final class NSMutableAttributedStringUtilsTests: XCTestCase {
       let lastCharAttributes = s4.attributes(at: 10, longestEffectiveRange: nil, in: NSMakeRange(9, 10))
       let redColor = firstCharAttributes[NSAttributedString.Key.foregroundColor] as? Color
       let yellowColor = lastCharAttributes[NSAttributedString.Key.backgroundColor] as? Color
+
       XCTAssertTrue(s1 !== s4)
       XCTAssertNotNil(redColor)
       XCTAssertNotNil(yellowColor)
       XCTAssertTrue(redColor! == .red)
       XCTAssertTrue(yellowColor! == .yellow)
       XCTAssertTrue(s4.string == "Hello World")
+      #else
+      let s1 = NSMutableAttributedString(string: "Hello", attributes: [NSAttributedStringKey("key1"): "A"])
+      let s2 = NSMutableAttributedString(string: " ")
+      let s3 = NSMutableAttributedString(string: "World", attributes: [NSAttributedStringKey("key2"): "B"])
+
+      let s4 = s1 + s2 + s3
+      let firstCharAttributes = s4 .attributes(at: 0, effectiveRange: nil)
+      let lastCharAttributes = s4 .attributes(at: 9, effectiveRange: nil)
+      let a = firstCharAttributes[NSAttributedStringKey("key1")] as? String
+      let b = lastCharAttributes[NSAttributedStringKey("key2")] as? String
+
+      XCTAssertNotNil(a)
+      XCTAssertNotNil(b)
+      XCTAssertEqual(a, "A")
+      XCTAssertEqual(b, "B")
+      XCTAssertTrue(s.string == "Hello World")
       #endif
     }
 
