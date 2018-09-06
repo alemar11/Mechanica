@@ -126,6 +126,7 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), true)
 
     //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+    XCTAssertEqual(userDefaults.optionalFloat(forKey: key), 1)
     userDefaults.set(nil, forKey: key)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
     //#endif
