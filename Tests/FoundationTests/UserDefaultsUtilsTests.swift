@@ -30,8 +30,8 @@ extension UserDefaultsUtilsTests {
     ("testOptionalInteger", testOptionalInteger),
     ("testOptionalDouble", testOptionalDouble),
     ("testOptionalFloat", testOptionalFloat),
-    //("testOptionalBool", testOptionalBool),
-    //("testRemoveAll", testRemoveAll),
+    ("testOptionalBool", testOptionalBool),
+    ("testRemoveAll", testRemoveAll),
   ]
 }
 
