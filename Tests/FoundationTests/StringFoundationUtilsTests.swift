@@ -164,6 +164,7 @@ final class StringFoundationUtilsTests: XCTestCase {
 
     //case insensitive
     XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹", caseSensitive: false))
+    print("🇮🇹🇮🇹🖖🏽 ".first)
     XCTAssertTrue("a".starts(with:"A", caseSensitive: false))
     XCTAssertTrue("Hello".starts(with:"hello", caseSensitive: false))
     XCTAssertFalse("Hello".starts(with:"helloo", caseSensitive: false))
