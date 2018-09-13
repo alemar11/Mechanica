@@ -14,7 +14,7 @@
     <a title="Extensions  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Mechanica Docs</a> (99% documented)</p>
+        <p><a href="index.html">Mechanica Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -159,16 +159,16 @@
             <a href="Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Functions.html#/s:9Mechanica1roPS2dF">%(_:)</a>
+                <a href="Functions.html#/s:9Mechanica1roPyS2dF">%(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:9Mechanica1roPS2fF">%(_:)</a>
+                <a href="Functions.html#/s:9Mechanica1roPyS2fF">%(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:9Mechanica3qqqoiSSxSg_SSyXKtlF">???(_:_:)</a>
+                <a href="Functions.html#/s:9Mechanica3qqqoiySSxSg_SSyXKtlF">???(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:9Mechanica8typeNameSSyp2of_tF">typeName(of:)</a>
+                <a href="Functions.html#/s:9Mechanica8typeName2ofSSyp_tF">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -464,9 +464,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s10DictionaryV"></a>
+                    <a name="/s:SD"></a>
                     <a name="//apple_ref/swift/Extension/Dictionary" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s10DictionaryV">Dictionary</a>
+                    <a class="token" href="#/s:SD">Dictionary</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -905,9 +905,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s19BinaryFloatingPointP"></a>
+                    <a name="/s:SB"></a>
                     <a name="//apple_ref/swift/Extension/BinaryFloatingPoint" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s19BinaryFloatingPointP">BinaryFloatingPoint</a>
+                    <a class="token" href="#/s:SB">BinaryFloatingPoint</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -936,9 +936,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s13BinaryIntegerP"></a>
+                    <a name="/s:Sz"></a>
                     <a name="//apple_ref/swift/Extension/BinaryInteger" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s13BinaryIntegerP">BinaryInteger</a>
+                    <a class="token" href="#/s:Sz">BinaryInteger</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -998,9 +998,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s9CharacterV"></a>
+                    <a name="/s:SJ"></a>
                     <a name="//apple_ref/swift/Extension/Character" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s9CharacterV">Character</a>
+                    <a class="token" href="#/s:SJ">Character</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1029,9 +1029,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s10CollectionP"></a>
+                    <a name="/s:Sl"></a>
                     <a name="//apple_ref/swift/Extension/Collection" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s10CollectionP">Collection</a>
+                    <a class="token" href="#/s:Sl">Collection</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1060,9 +1060,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s13FloatingPointP"></a>
+                    <a name="/s:SF"></a>
                     <a name="//apple_ref/swift/Extension/FloatingPoint" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s13FloatingPointP">FloatingPoint</a>
+                    <a class="token" href="#/s:SF">FloatingPoint</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1077,7 +1077,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FloatingPoint</span> <span class="p">:</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">SignedNumeric</span><span class="p">,</span> <span class="kt">Strideable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FloatingPoint</span> <span class="p">:</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">SignedNumeric</span><span class="p">,</span> <span class="kt">Strideable</span> <span class="k">where</span> <span class="k">Self</span> <span class="o">==</span> <span class="k">Self</span><span class="o">.</span><span class="kt">Magnitude</span></code></pre>
 
                         </div>
                       </div>
@@ -1108,7 +1108,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Optional</span><span class="o">&lt;</span><span class="kt">Wrapped</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">ExpressibleByNilLiteral</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@_frozen</span>
+<span class="kd">enum</span> <span class="kt">Optional</span><span class="o">&lt;</span><span class="kt">Wrapped</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">ExpressibleByNilLiteral</span></code></pre>
 
                         </div>
                       </div>
@@ -1122,9 +1123,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s26RangeReplaceableCollectionP"></a>
+                    <a name="/s:Sm"></a>
                     <a name="//apple_ref/swift/Extension/RangeReplaceableCollection" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s26RangeReplaceableCollectionP">RangeReplaceableCollection</a>
+                    <a class="token" href="#/s:Sm">RangeReplaceableCollection</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1153,9 +1154,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s8SequenceP"></a>
+                    <a name="/s:ST"></a>
                     <a name="//apple_ref/swift/Extension/Sequence" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s8SequenceP">Sequence</a>
+                    <a class="token" href="#/s:ST">Sequence</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1184,9 +1185,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:s13SignedIntegerP"></a>
+                    <a name="/s:SZ"></a>
                     <a name="//apple_ref/swift/Extension/SignedInteger" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s13SignedIntegerP">SignedInteger</a>
+                    <a class="token" href="#/s:SZ">SignedInteger</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1379,7 +1380,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">UIView</span> <span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="kt">NSCoding</span><span class="p">,</span> <span class="kt">UIAppearance</span><span class="p">,</span> <span class="kt">UIAppearanceContainer</span><span class="p">,</span> <span class="kt">UIDynamicItem</span><span class="p">,</span> <span class="kt">UITraitEnvironment</span><span class="p">,</span> <span class="kt">UICoordinateSpace</span><span class="p">,</span> <span class="kt">UIFocusItem</span><span class="p">,</span> <span class="kt">CALayerDelegate</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">UIView</span> <span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="kt">NSCoding</span><span class="p">,</span> <span class="kt">UIAppearance</span><span class="p">,</span> <span class="kt">UIAppearanceContainer</span><span class="p">,</span> <span class="kt">UIDynamicItem</span><span class="p">,</span> <span class="kt">UITraitEnvironment</span><span class="p">,</span> <span class="kt">UICoordinateSpace</span><span class="p">,</span> <span class="kt">UIFocusItem</span><span class="p">,</span> <span class="kt">UIFocusItemContainer</span><span class="p">,</span> <span class="kt">CALayerDelegate</span></code></pre>
 
                         </div>
                       </div>
@@ -1453,7 +1454,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-09-06)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-09-13)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
