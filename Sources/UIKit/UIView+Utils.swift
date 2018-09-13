@@ -158,18 +158,19 @@
     ///
     /// - Parameter scale: The scale factor to apply; if you specify a value of 0.0, the scale factor is set to the scale factor of the device’s main screen.
     public func screenshot(scale: CGFloat = 0.0) -> UIImage {
-      if #available(iOS 10, *) {
+      if #available(iOS 11, *) { // iOS 11+
+        let format = UIGraphicsImageRendererFormat()
+        format.opaque = isOpaque
+        format.scale = scale
+        let renderer = UIGraphicsImageRenderer(size: frame.size, format: format)
+
+        return renderer.image { _ in
+          drawHierarchy(in: frame, afterScreenUpdates: true)
+        }
+      } else { // iOS 10
         return UIGraphicsImageRenderer(bounds: bounds).image { layer.render(in: $0.cgContext) }
       }
 
-      let format = UIGraphicsImageRendererFormat()
-      format.opaque = isOpaque
-      format.scale = scale
-      let renderer = UIGraphicsImageRenderer(size: frame.size, format: format)
-
-      return renderer.image { _ in
-        drawHierarchy(in: frame, afterScreenUpdates: true)
-      }
     }
 
   }
