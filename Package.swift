@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:4.2
 
 import PackageDescription
 
@@ -15,7 +15,7 @@ let package = Package(
     .testTarget(name: "UIKitTests", dependencies: ["Mechanica"]),
     .testTarget(name: "AppKitTests", dependencies: ["Mechanica"])
   ],
-  swiftLanguageVersions: [4]
+  swiftLanguageVersions: [.v4_2]
 )
 
 #if os(Linux)
