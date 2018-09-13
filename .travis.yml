@@ -104,24 +104,24 @@ matrix:
 
     # iOS watchOS 3.2
     - os: osx
-      osx_image: xcode10.3
+      osx_image: xcode10
       language: objective-c
       env: 
-        - DESTINATION="OS=3.2,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos3"       
+        - DESTINATION="OS=3.2,name=Apple Watch Series 2 - 38mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos3"       
 
     #watchOS 4.3
     - os: osx
       osx_image: xcode10
       language: objective-c
       env: 
-        - DESTINATION="OS=4.3,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos4"
+        - DESTINATION="OS=4.3,name=Apple Watch Series 3 - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos4"
 
     #watchOS 5.0
     - os: osx
       osx_image: xcode10
       language: objective-c
       env: 
-        - DESTINATION="OS=5.0,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos"    
+        - DESTINATION="OS=5.0,name=Apple Watch Series 4 - 44mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos"    
 
     # tvOS 10.2
     - os: osx
