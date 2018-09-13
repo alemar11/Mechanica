@@ -218,6 +218,9 @@
 		23839F821E93C70F002D757B /* UserDefaults+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */; };
 		238493331FEBB35100307263 /* UIImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238493321FEBB35100307263 /* UIImageUtilsTests.swift */; };
 		238493341FEBB35100307263 /* UIImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238493321FEBB35100307263 /* UIImageUtilsTests.swift */; };
+		23899A59214A9B9C00924AA8 /* URLSharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23899A58214A9B9C00924AA8 /* URLSharedTests.swift */; };
+		23899A5A214A9B9C00924AA8 /* URLSharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23899A58214A9B9C00924AA8 /* URLSharedTests.swift */; };
+		23899A5B214A9B9C00924AA8 /* URLSharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23899A58214A9B9C00924AA8 /* URLSharedTests.swift */; };
 		238E5B0E1FB5B2D200331C85 /* Color+Flat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E5B091FB5B2CC00331C85 /* Color+Flat.swift */; };
 		238E5B0F1FB5B2D300331C85 /* Color+Flat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E5B091FB5B2CC00331C85 /* Color+Flat.swift */; };
 		238E5B101FB5B2D300331C85 /* Color+Flat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238E5B091FB5B2CC00331C85 /* Color+Flat.swift */; };
@@ -593,6 +596,7 @@
 		237F175E1E90000800726553 /* URLUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = URLUtilsTests.swift; sourceTree = "<group>"; };
 		23839F7E1E93C70F002D757B /* UserDefaults+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Utils.swift"; sourceTree = "<group>"; };
 		238493321FEBB35100307263 /* UIImageUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageUtilsTests.swift; sourceTree = "<group>"; };
+		23899A58214A9B9C00924AA8 /* URLSharedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSharedTests.swift; sourceTree = "<group>"; };
 		238E5B091FB5B2CC00331C85 /* Color+Flat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Flat.swift"; sourceTree = "<group>"; };
 		238E5B161FB5C40F00331C85 /* Dictionary+FoundationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+FoundationUtils.swift"; sourceTree = "<group>"; };
 		238E5B1B1FB5C6EC00331C85 /* DictionaryFoundationUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryFoundationUtilsTests.swift; sourceTree = "<group>"; };
@@ -834,6 +838,7 @@
 				237F173D1E90000800726553 /* ColorUtilsTests.swift */,
 				23CC6B281FA72051004D062B /* ImageUtilsTests.swift */,
 				23B5C7F82026131F00E070D7 /* FontUtilsTests.swift */,
+				23899A58214A9B9C00924AA8 /* URLSharedTests.swift */,
 			);
 			path = SharedTests;
 			sourceTree = "<group>";
@@ -1761,6 +1766,7 @@
 				237F177D1E90000900726553 /* DictionaryUtilsTests.swift in Sources */,
 				236407821FBB11EE003D2AF0 /* UIViewUtilsTests.swift in Sources */,
 				237F17C81E90000900726553 /* StringUtilsTests.swift in Sources */,
+				23899A59214A9B9C00924AA8 /* URLSharedTests.swift in Sources */,
 				233D622D203384EA005E580C /* UIViewControllerUtilsTests.swift in Sources */,
 				237F176B1E90000900726553 /* BundleInfoTests.swift in Sources */,
 				231874C11FA78EF600FA797F /* UIWindowUtilsTests.swift in Sources */,
@@ -1817,6 +1823,7 @@
 				237F177E1E90000900726553 /* DictionaryUtilsTests.swift in Sources */,
 				236407831FBB11EF003D2AF0 /* UIViewUtilsTests.swift in Sources */,
 				237F17C91E90000900726553 /* StringUtilsTests.swift in Sources */,
+				23899A5A214A9B9C00924AA8 /* URLSharedTests.swift in Sources */,
 				233D622E203384EA005E580C /* UIViewControllerUtilsTests.swift in Sources */,
 				237F176C1E90000900726553 /* BundleInfoTests.swift in Sources */,
 				2307D0701F8FA35D00FDBA2A /* LocaleUtilsTests.swift in Sources */,
@@ -1856,6 +1863,7 @@
 				238E5B101FB5B2D300331C85 /* Color+Flat.swift in Sources */,
 				2307D0711F8FA35D00FDBA2A /* LocaleUtilsTests.swift in Sources */,
 				237F17BB1E90000900726553 /* SignedIntegerUtilsTests.swift in Sources */,
+				23899A5B214A9B9C00924AA8 /* URLSharedTests.swift in Sources */,
 				23078BEE1F20E1480074D955 /* OperatorsTests.swift in Sources */,
 				237F17881E90000900726553 /* FloatingPointUtilsTests.swift in Sources */,
 				23C27C3A1E9E5BAB006C235E /* UserDefaultsUtilsTests.swift in Sources */,
