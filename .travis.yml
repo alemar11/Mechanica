@@ -57,22 +57,22 @@ matrix:
         - swift build
         - swift test
 
-    # # macOS: Swift Tests, CocoaPods and SwiftLint
-    # - os: osx
-    #   osx_image: xcode10
-    #   language: objective-c
-    #   before_install:
-    #     - gem install cocoapods -no-rdoc --no-ri --no-document --quiet
-    #     - brew outdated swiftlint || brew upgrade swiftlint
-    #   before_script:
-    #     - swiftlint --reporter "emoji"  
-    #   script:
-    #     - set -o pipefail
-    #     - swiftlint version
-    #     - swift --version
-    #     - swift build
-    #     - swift test
-    #     - pod lib lint    
+    # macOS: Swift Tests, CocoaPods and SwiftLint
+    - os: osx
+      osx_image: xcode10
+      language: objective-c
+      before_install:
+        - gem install cocoapods -no-rdoc --no-ri --no-document --quiet
+        - brew outdated swiftlint || brew upgrade swiftlint
+      before_script:
+        - swiftlint --reporter "emoji"  
+      script:
+        - set -o pipefail
+        - swiftlint version
+        - swift --version
+        - swift build
+        - swift test
+        - pod lib lint    
 
     # iOS 10.3.1 (32bit)
     - os: osx
