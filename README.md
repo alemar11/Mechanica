@@ -24,7 +24,7 @@ A library of Swift utils to ease your iOS, macOS, watchOS, tvOS and Linux develo
 
 ## Requirements
 
-- iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+
+- iOS 10+ / macOS 10.12+ / tvOS 10+ / watchOS 3+ / Ubuntu 14.04+
 - Xcode 10
 - Swift 4.2
 
