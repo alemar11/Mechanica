@@ -3,7 +3,7 @@ jobs:
 
   linux_swift_4_2:
     docker:
-      - image: norionomura/swift-4.2-branch
+      - image: norionomura/swift:4220180825a
     steps:
       - checkout
       - run: 
