@@ -24,10 +24,6 @@
 import XCTest
 @testable import Mechanica
 
-extension URLSharedTests {
-  static var allTests = [ ("testThumbnailFromVideoURL", testThumbnailFromVideoURL)]
-}
-
 class URLSharedTests: XCTestCase {
 
   func testThumbnailFromVideoURL() throws {

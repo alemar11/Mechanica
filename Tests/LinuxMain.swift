@@ -35,7 +35,6 @@ XCTMain([
   testCase(StatUtilsTests.allTests),
   testCase(StringFoundationUtilsTests.allTests),
   testCase(URLRequestUtilsTests.allTests),
-  testCase(URLSharedTests.allTests),
   testCase(URLUtilsTests.allTests),
   testCase(UserDefaultsUtilsTests.allTests)
   ])
