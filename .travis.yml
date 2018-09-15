@@ -72,7 +72,7 @@ matrix:
         - swift --version
         - swift build
         - swift test
-        #- pod lib lint    
+        - pod lib lint    
 
     # iOS 10.3.1 (32bit)
     - os: osx
