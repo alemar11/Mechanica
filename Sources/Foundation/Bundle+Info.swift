@@ -23,11 +23,12 @@
 
 //  Core Foundation Keys: https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
+#if canImport(Foundation)
 import Foundation
 
 extension Bundle {
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
   ///
@@ -72,3 +73,4 @@ extension Bundle {
   #endif
 
 }
+#endif

@@ -43,6 +43,7 @@ final class FloatingPointUtilsTests: XCTestCase {
     var randomFloat    = Float32(199.959019)                    //  199.959015
     var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
 
+    XCTAssertEqual(0.5.rounded(to: 0), 1)
     XCTAssertEqual(piFloat.rounded(to: 0), 3.0)
     XCTAssertEqual(piFloat.rounded(to: -1), 3.14159274)
     XCTAssertTrue((piFloat.rounded(to: 1000)).isNaN)

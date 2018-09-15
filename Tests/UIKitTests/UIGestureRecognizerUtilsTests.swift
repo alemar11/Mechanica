@@ -21,37 +21,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-extension MutableCollection {
+#if os(iOS) || os(tvOS)
 
-  #if !swift(>=4.2)
+import XCTest
+import UIKit
+@testable import Mechanica
 
-  /// **Mechanica**
-  ///
-  /// Shuffles the collection contents using the Fisher-Yates (fast an uniform) algorithm.
-  public mutating func shuffle() {
-    // TODO: deprecated in Swift 4.2
-    let elementsCount = count
-    guard elementsCount > 1 else { return }
+class UIGestureRecognizerUtilsTests: XCTestCase {
 
-    for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: elementsCount, to: 1, by: -1)) {
-      let distance: Int = numericCast(mechanica_arc4random_uniform(numericCast(unshuffledCount)))
-      let indexToSwap = index(firstUnshuffled, offsetBy: distance)
-
-      swapAt(firstUnshuffled, indexToSwap)
+    func testCancel() {
+      let recognizer = UITapGestureRecognizer()
+      recognizer.cancel()
+      XCTAssertTrue(recognizer.isEnabled)
     }
 
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns a new collection with all the elements shuffled using the Fisher-Yates (fast an uniform) algorithm.
-  public func shuffled() -> Self {
-    var copy = self
-    copy.shuffle()
-
-    return copy
-  }
-
-  #endif
-
 }
+
+#endif

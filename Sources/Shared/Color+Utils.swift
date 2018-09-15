@@ -50,7 +50,9 @@ extension Color {
   ///
   /// Initializes and returns a **random** color object in the sRGB space.
   public class func random(randomAlpha: Bool = false) -> Self {
+    // TODO: use the new Swift 4.2 random API , ie Bool.random() ? 1 : 0
     // drand48() generates a random number between 0 to 1
+
     let red = CGFloat(drand48()), green = CGFloat(drand48()), blue = CGFloat(drand48()), alpha = randomAlpha ? CGFloat(drand48()) : 1.0
 
     #if canImport(UIKit)
@@ -178,7 +180,7 @@ extension Color {
     case 6: // rrggbb
       formattedHexString.append("ff")
     case 8: // rrggbbaa
-      do {}
+      break
     default:
       return nil // invalid format
     }

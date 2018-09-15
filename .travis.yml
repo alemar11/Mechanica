@@ -6,26 +6,50 @@ env:
     - MACOS_FRAMEWORK_SCHEME="Mechanica macOS"
     - TVOS_FRAMEWORK_SCHEME="Mechanica tvOS"
     - WATCHOS_FRAMEWORK_SCHEME="Mechanica watchOS"
-    - IOS_SDK=iphonesimulator11.4
-    - MACOS_SDK=macosx10.13
-    - TVOS_SDK=appletvsimulator11.4
-    - WATCHOS_SDK=watchsimulator4.3
+    - IOS_SDK=iphonesimulator12.0
+    - MACOS_SDK=macosx10.14
+    - TVOS_SDK=appletvsimulator12.0
+    - WATCHOS_SDK=watchsimulator5.0
     - XCODE_RUN_TESTS="NO"
 
 matrix:
   include:
 
-    # Ubuntu Trusty 14.04: Swift Tests
+    # Ubuntu 14.04: Swift Tests
     - os: linux
       dist: trusty
       sudo: required
       language: generic
       before_install:
         - sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
-        - wget https://swift.org/builds/swift-4.1.2-release/ubuntu1404/swift-4.1.2-RELEASE/swift-4.1.2-RELEASE-ubuntu14.04.tar.gz
-        - tar zxf swift-4.1*.tar.gz && rm -rf swift-4.1*.tar.gz
-        - sudo mv swift-4.1* /swift-4.1
-        - echo "export PATH=/swift-4.1/usr/bin:\"\${PATH}\"" >> ~/.bashrc
+        - wget https://swift.org/builds/swift-4.2-branch/ubuntu1404/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-08-25-a/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-08-25-a-ubuntu14.04.tar.gz
+        - tar zxf swift-4.2*.tar.gz && rm -rf swift-4.2*.tar.gz
+        - sudo mv swift-4.2* /swift-4.2
+        - echo "export PATH=/swift-4.2/usr/bin:\"\${PATH}\"" >> ~/.bashrc
+        - source ~/.bashrc
+      script:
+        - set -o pipefail  
+        - swift --version
+        - swift build
+        - swift test
+
+    # Ubuntu 16.04: Swift Tests
+    - os: linux
+      dist: xenial
+      sudo: required
+      language: generic
+      before_install:
+        # Fix for Ubuntu Xenial apt-daily.service triggering
+        # https://unix.stackexchange.com/questions/315502/how-to-disable-apt-daily-service-on-ubuntu-cloud-vm-image
+        - |
+          while sudo fuser /var/{lib/{dpkg,apt/lists},cache/apt/archives}/lock >/dev/null 2>&1; do
+            sleep 1
+          done
+        - sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
+        - wget https://swift.org/builds/swift-4.2-branch/ubuntu1604/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-08-25-a/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-08-25-a-ubuntu16.04.tar.gz
+        - tar zxf swift-4.2*.tar.gz && rm -rf swift-4.2*.tar.gz
+        - sudo mv swift-4.2* /swift-4.2
+        - echo "export PATH=/swift-4.2/usr/bin:\"\${PATH}\"" >> ~/.bashrc
         - source ~/.bashrc
       script:
         - set -o pipefail  
@@ -35,7 +59,7 @@ matrix:
 
     # macOS: Swift Tests, CocoaPods and SwiftLint
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode10
       language: objective-c
       before_install:
         - gem install cocoapods -no-rdoc --no-ri --no-document --quiet
@@ -48,60 +72,81 @@ matrix:
         - swift --version
         - swift build
         - swift test
-        - pod lib lint    
+        #- pod lib lint    
 
     # iOS 10.3.1 (32bit)
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode10
       language: objective-c
       env: 
         - DESTINATION="OS=10.3.1,name=iPhone 5" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios10-32bit"   
 
     # iOS 10.3.1
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode10
       language: objective-c
       env: 
         - DESTINATION="OS=10.3.1,name=iPhone 7 Plus" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios10"      
 
-    # iOS watchOS 3.2
-    - os: osx
-      osx_image: xcode9.3
-      language: objective-c
-      env: 
-        - DESTINATION="OS=3.2,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos3"              
-
-    # tvOS 10.2
-    - os: osx
-      osx_image: xcode9.3
-      language: objective-c
-      env: 
-        - DESTINATION="OS=10.2,name=Apple TV 1080p" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="appletvsimulator11.3" XCODE_RUN_TESTS="YES" CODECOV_FLAG="tvos10" 
-
     # iOS 11.4
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode10
       language: objective-c
       env: 
         - DESTINATION="OS=11.4,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios"
 
-    #watchOS 4.3
+    # iOS 12.0
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode10
       language: objective-c
       env: 
-        - DESTINATION="OS=4.3,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos"
+        - DESTINATION="OS=12.0,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios"
+
+    # iOS watchOS 3.2
+    - os: osx
+      osx_image: xcode10
+      language: objective-c
+      env: 
+        - DESTINATION="OS=3.2,name=Apple Watch Series 2 - 38mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos3"       
+
+    #watchOS 4.2
+    - os: osx
+      osx_image: xcode10
+      language: objective-c
+      env: 
+        - DESTINATION="OS=4.2,name=Apple Watch Series 2 - 38mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos4" 
+
+    #watchOS 5.0
+    - os: osx
+      osx_image: xcode10
+      language: objective-c
+      env: 
+        - DESTINATION="OS=5.0,name=Apple Watch Series 4 - 44mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos"    
+
+    # tvOS 10.2
+    - os: osx
+      osx_image: xcode10
+      language: objective-c
+      env: 
+        - DESTINATION="OS=10.2,name=Apple TV 1080p" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="tvos10" 
 
     # tvOS 11.4
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode10
       language: objective-c
       env: 
-        - DESTINATION="OS=11.4,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="tvos" 
+        - DESTINATION="OS=11.4,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="tvos11" 
 
-    # macOS
+    # tvOS 12.0
     - os: osx
-      osx_image: xcode9.4
+      osx_image: xcode10
+      language: objective-c
+      env: 
+        - DESTINATION="OS=12.0,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="tvos"     
+
+    # macOS 10.14
+    - os: osx
+      osx_image: xcode10
       language: objective-c
       env: 
        - DESTINATION="arch=x86_64" SCHEME="$MACOS_FRAMEWORK_SCHEME" SDK="$MACOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="macos"     

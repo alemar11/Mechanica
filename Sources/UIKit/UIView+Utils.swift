@@ -153,12 +153,24 @@
 
     /// **Mechanica**
     ///
-    /// Take sceenshot with the current device's screen scale.
+    /// Takes a screenshot with the current device's screen scale.
     /// If an animation is running it captures the final frame of the animation.
-    public func screenshot() -> UIImage {
-      /// https://stackoverflow.com/questions/19066717/how-to-render-view-into-image-faster
-      // by default UIGraphicsImageRenderer sets the scale to the device's screen scale.
-      return UIGraphicsImageRenderer(bounds: bounds).image { layer.render(in: $0.cgContext) }
+    ///
+    /// - Parameter scale: The scale factor to apply; if you specify a value of 0.0, the scale factor is set to the scale factor of the device’s main screen.
+    public func screenshot(scale: CGFloat = 0.0) -> UIImage {
+      if #available(iOS 11, tvOS 11, *) { // iOS 11+
+        let format = UIGraphicsImageRendererFormat()
+        format.opaque = isOpaque
+        format.scale = scale
+        let renderer = UIGraphicsImageRenderer(size: frame.size, format: format)
+
+        return renderer.image { _ in
+          drawHierarchy(in: frame, afterScreenUpdates: true)
+        }
+      } else { // iOS 10
+        return UIGraphicsImageRenderer(bounds: bounds).image { layer.render(in: $0.cgContext) }
+      }
+
     }
 
   }

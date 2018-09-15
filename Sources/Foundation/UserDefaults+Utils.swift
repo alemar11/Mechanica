@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if canImport(Foundation)
 import Foundation
 
 public extension UserDefaults {
@@ -68,7 +69,7 @@ public extension UserDefaults {
     return (object(forKey: defaultName) as? NSNumber)?.intValue
   }
 
-  #if !os(Linux)
+  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
   ///
@@ -82,6 +83,7 @@ public extension UserDefaults {
     }
   }
 
-  #endif
+  //#endif
 
 }
+#endif

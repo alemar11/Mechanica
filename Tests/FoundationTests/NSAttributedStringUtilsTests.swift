@@ -24,8 +24,15 @@
 import XCTest
 @testable import Mechanica
 
+extension NSAttributedStringUtilsTests {
+  static var allTests = [
+    ("testAddition", testAddition)
+    ]
+}
+
 final class NSAttributedStringUtilsTests: XCTestCase {
 
+  #if !os(Linux)
   func testInitHTML(){
     do {
       // Given, When
@@ -40,7 +47,7 @@ final class NSAttributedStringUtilsTests: XCTestCase {
       XCTAssertNotNil(s)
 
       XCTAssertTrue(s!.string == "Hello World")
-      guard let font = s!.attribute(NSAttributedStringKey.font, at: 0, effectiveRange: nil) as? Font else {
+      guard let font = s!.attribute(NSAttributedString.Key.font, at: 0, effectiveRange: nil) as? Font else {
         XCTAssert(false, "No Avenir-Roman font name found.")
         return
       }
@@ -48,13 +55,13 @@ final class NSAttributedStringUtilsTests: XCTestCase {
       XCTAssertTrue(font.fontName == "Avenir-Roman")
       XCTAssertTrue(font.pointSize == 15.00)
 
-      guard let color = s!.attribute(NSAttributedStringKey.backgroundColor, at: 0, effectiveRange: nil) as? Color else {
+      guard let color = s!.attribute(NSAttributedString.Key.backgroundColor, at: 0, effectiveRange: nil) as? Color else {
         XCTAssert(false, "No text backgroud-color found.")
         return
       }
       XCTAssertTrue(color.hexString == "#9999ff".uppercased())
 
-      guard let _ = s!.attribute(NSAttributedStringKey.paragraphStyle, at: 0, effectiveRange: nil) as? NSParagraphStyle else {
+      guard let _ = s!.attribute(NSAttributedString.Key.paragraphStyle, at: 0, effectiveRange: nil) as? NSParagraphStyle else {
         XCTAssert(false, "No NSParagraphStyle found.")
         return
       }
@@ -68,6 +75,7 @@ final class NSAttributedStringUtilsTests: XCTestCase {
     }
 
   }
+  #endif
 
   func testAddition() {
 

@@ -21,14 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if canImport(Foundation)
 import Foundation
 
 extension NSAttributedString {
 
-  #if !os(Linux)
-  // Not implemented on Linux:
-  //    "mutableCopy(with:) is not yet implemented"
-  //    "append is not yet implemented"
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   // MARK: - Initializers
 
@@ -49,6 +47,8 @@ extension NSAttributedString {
                    options: [.documentType: NSAttributedString.DocumentType.html],
                    documentAttributes: nil)
   }
+
+  #endif
 
   // MARK: - Operators
 
@@ -81,6 +81,7 @@ extension NSAttributedString {
     return (attributedString + rhs).copy() as! NSAttributedString
   }
 
-  #endif
+  //#endif
 
 }
+#endif

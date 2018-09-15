@@ -33,8 +33,9 @@ extension FileManagerUtilsTests {
 
 extension FileManager {
 
-  #if !os(Linux)
-  // Not implemented on Linux: url(for:in:appropriateFor:create:)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  // TODO: - Not implemented on Linux: url(for:in:appropriateFor:create:)
+  // https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/FileManager.swift
 
   /// **Mechanica**
   ///

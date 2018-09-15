@@ -48,7 +48,7 @@ final class DictionaryFoundationUtilsTests: XCTestCase {
         XCTAssertTrue(dictionary["val"] is Int)
         XCTAssertTrue(dictionary["val"] as? Int == 1)
 
-        #if !os(Linux)
+        #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
           let expectedDictionary: Dictionary<String, Any> = ["foo": "bar", "val": 1]
           XCTAssertTrue(NSDictionary(dictionary: dictionary).isEqual(to: expectedDictionary))
 
@@ -82,7 +82,7 @@ final class DictionaryFoundationUtilsTests: XCTestCase {
       if let dictionary = dictionary {
         XCTAssertTrue(dictionary["val"] is NSNull?)
 
-        #if !os(Linux)
+        #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
           XCTAssertTrue(dictionary["val"]! == nil)
         #endif
       } else {

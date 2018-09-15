@@ -21,7 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if canImport(Foundation)
 import Foundation
+
+// TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md (Swift 4.2?)
 
 extension String {
 
@@ -212,6 +215,7 @@ extension String {
   ///
   /// Returns true if the `String` contains only letters.
   public var isAlphabetic: Bool {
+    // TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md (Swift 4.2?)
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
   }
 
@@ -289,22 +293,23 @@ extension String {
   public var isValidEmail: Bool {
     // https://medium.com/@darthpelo/email-validation-in-swift-3-0-acfebe4d879a
     // http://www.cocoawithlove.com/2009/06/verifying-that-string-is-email-address.html
+    // https://www.bignerdranch.com/blog/pro-pattern-matching-in-swift/
 
     // swiftlint:disable:next line_length
     let emailPattern = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
 
-    #if !os(Linux)
-      return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+    return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
     #else
-      let ranges = self.lowercased().ranges(matching: emailPattern)
-      guard ranges.count == 1 else { return false }
+    let ranges = self.lowercased().ranges(matching: emailPattern)
+    guard ranges.count == 1 else { return false }
 
-      return ranges.first! == self.startIndex..<self.endIndex
+    return ranges.first! == self.startIndex..<self.endIndex
     #endif
   }
 
-  #if !os(Linux)
-  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   // swiftlint:disable identifier_name
   /// **Mechanica**
@@ -401,8 +406,8 @@ extension String {
     var randomString: String = ""
 
     for _ in 0..<length {
-      let randomValue = mechanica_arc4random_uniform(UInt32(base.count))
-      randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
+      let randomCharacter = base.randomElement()!
+      randomString += "\(randomCharacter)"
     }
 
     return randomString
@@ -418,12 +423,12 @@ extension String {
   /// - Returns: A `new` random alphanumeric `String`.
   public static func random(length between: CountableClosedRange<UInt32>, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
-    let randomlength = UInt32.random(lowerBound: between.lowerBound, upperBound: between.upperBound)
+    let randomLength = UInt32.random(in: between.lowerBound...between.upperBound)
 
-    return random(length: randomlength, charachters: base)
+    return random(length: randomLength, charachters: base)
   }
 
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
   ///
@@ -711,7 +716,7 @@ extension String {
   }
 
   // MARK: - NSString
-  #if !os(Linux)
+  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
   ///
@@ -815,24 +820,6 @@ extension String {
 
   /// **Mechanica**
   ///
-  /// Returns a range equivalent to the given `NSRange` or `nil` if the range can't be converted.
-  @available(*, deprecated, message: "Swift 4 supports conversion between NSRange and Range ( Range.init?(_:in) )")
-  private func range(from nsRange: NSRange) -> Range<Index>? {
-    guard let range = Range(nsRange) else { return nil }
-
-    let utf16Start = UTF16Index(encodedOffset: range.lowerBound)
-    let utf16End = UTF16Index(encodedOffset: range.upperBound)
-
-    guard
-      let start = Index(utf16Start, within: self),
-      let end = Index(utf16End, within: self)
-      else { return nil }
-
-    return start..<end
-  }
-
-  /// **Mechanica**
-  ///
   /// - Parameters:
   ///   - pattern: a regular expression pattern.
   ///   - options: a list of `NSRegularExpression.Options`.
@@ -846,3 +833,4 @@ extension String {
   }
 
 }
+#endif

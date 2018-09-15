@@ -30,13 +30,17 @@ import XCTest
 
     func testImageNamed() {
       let bundle = Bundle(for: NSImageUtilsTests.self)
+
       let image = NSImage.imageNamed(name: "glasses", in: bundle)
+      let notExistingImage = NSImage.imageNamed(name: "not-existing-glasses", in: bundle)
 
       if !ProcessInfo.isRunningSwiftPackageTests {
-        // Not implemented (SPM): https://bugs.swift.org/browse/SR-2866
+        // TODO: - Not implemented on Linux: (SPM): https://bugs.swift.org/browse/SR-2866
         XCTAssertNotNil(image)
-        XCTAssertEqual(image!.name()?.rawValue, "glasses")
+        XCTAssertNil(notExistingImage)
+        XCTAssertEqual(image!.name(), NSImage.Name("glasses"))
       }
+
     }
 
     func testCGImage() throws {

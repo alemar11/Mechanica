@@ -31,6 +31,9 @@
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Extensions/AVAsset.html">AVAsset</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/BinaryFloatingPoint.html">BinaryFloatingPoint</a>
               </li>
               <li class="nav-group-task">
@@ -55,6 +58,9 @@
                 <a href="../Extensions/CGSize.html">CGSize</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/Calendar.html">Calendar</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/Character.html">Character</a>
               </li>
               <li class="nav-group-task">
@@ -67,10 +73,10 @@
                 <a href="../Extensions/Data.html">Data</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Dictionary.html">Dictionary</a>
+                <a href="../Extensions/Date.html">Date</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/ExpressibleByIntegerLiteral.html">ExpressibleByIntegerLiteral</a>
+                <a href="../Extensions/Dictionary.html">Dictionary</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/FileManager.html">FileManager</a>
@@ -85,25 +91,7 @@
                 <a href="../Extensions/Image.html">Image</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Int.html">Int</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Int16.html">Int16</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Int32.html">Int32</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Int64.html">Int64</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Int8.html">Int8</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Extensions/Locale.html">Locale</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/MutableCollection.html">MutableCollection</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/NSAttributedString.html">NSAttributedString</a>
@@ -157,21 +145,6 @@
                 <a href="../Extensions/UIWindow.html">UIWindow</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/UInt.html">UInt</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/UInt16.html">UInt16</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/UInt32.html">UInt32</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/UInt64.html">UInt64</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/UInt8.html">UInt8</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Extensions/URL.html">URL</a>
               </li>
               <li class="nav-group-task">
@@ -189,27 +162,16 @@
             <a href="../Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:9Mechanica1roPS2dF">%(_:)</a>
+                <a href="../Functions.html#/s:9Mechanica1roPyS2dF">%(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:9Mechanica1roPS2fF">%(_:)</a>
+                <a href="../Functions.html#/s:9Mechanica1roPyS2fF">%(_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:9Mechanica3qqqoiSSxSg_SSyXKtlF">???(_:_:)</a>
+                <a href="../Functions.html#/s:9Mechanica3qqqoiySSxSg_SSyXKtlF">???(_:_:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:9Mechanica8typeNameSSyp2of_tF">typeName(of:)</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Protocols.html">Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Protocols/AssociatedValueSupporting.html">AssociatedValueSupporting</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/FixedWidthIntegerRandomizable.html">FixedWidthIntegerRandomizable</a>
+                <a href="../Functions.html#/s:9Mechanica8typeName2ofSSyp_tF">typeName(of:)</a>
               </li>
             </ul>
           </li>
@@ -262,9 +224,291 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So16NSObjectProtocolP9MechanicaE18SwizzlingSelectorsa"></a>
+                    <a name="/s:So8NSObjectP9MechanicaE4typeSSvp"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So8NSObjectP9MechanicaE4typeSSvp">type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the type of an object conforming to <code>NSObjectProtocol</code> as <code>String</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="nf">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So8NSObjectP9MechanicaE4typeSSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So8NSObjectP9MechanicaE4typeSSvpZ">type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the type of an object instance conforming to <code>NSObjectProtocol</code> as <code>String</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="nf">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So8NSObjectP9MechanicaE18setAssociatedValue_6forKey9andPolicyyqd__SgyXK_SVSo016objc_AssociationI0VtlF"></a>
+                    <a name="//apple_ref/swift/Method/setAssociatedValue(_:forKey:andPolicy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So8NSObjectP9MechanicaE18setAssociatedValue_6forKey9andPolicyyqd__SgyXK_SVSo016objc_AssociationI0VtlF">setAssociatedValue(_:forKey:andPolicy:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Sets an associated value using a given key and association policy.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">setAssociatedValue</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kd">@autoclosure</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?,</span>
+                                  <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">UnsafeRawPointer</span><span class="p">,</span>
+                                  <span class="n">andPolicy</span> <span class="nv">policy</span><span class="p">:</span> <span class="n">objc_AssociationPolicy</span> <span class="o">=</span> <span class="o">.</span><span class="kt">OBJC_ASSOCIATION_RETAIN_NONATOMIC</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value to associate with the key key for object. Pass nil to clear an existing association.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key for the association.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>policy</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The policy for the association.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So8NSObjectP9MechanicaE18getAssociatedValue6forKeyqd__SgSV_tlF"></a>
+                    <a name="//apple_ref/swift/Method/getAssociatedValue(forKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So8NSObjectP9MechanicaE18getAssociatedValue6forKeyqd__SgSV_tlF">getAssociatedValue(forKey:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the value associated for a given key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">getAssociatedValue</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">UnsafeRawPointer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key for the association.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The value associated with the key for object.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So8NSObjectP9MechanicaE21removeAssociatedValue6forKey9andPolicyySV_So016objc_AssociationI0VtF"></a>
+                    <a name="//apple_ref/swift/Method/removeAssociatedValue(forKey:andPolicy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So8NSObjectP9MechanicaE21removeAssociatedValue6forKey9andPolicyySV_So016objc_AssociationI0VtF">removeAssociatedValue(forKey:andPolicy:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Removes an associated value using a given key and association policy.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeAssociatedValue</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">UnsafeRawPointer</span><span class="p">,</span>
+                                  <span class="n">andPolicy</span> <span class="nv">policy</span><span class="p">:</span> <span class="n">objc_AssociationPolicy</span> <span class="o">=</span> <span class="o">.</span><span class="kt">OBJC_ASSOCIATION_RETAIN_NONATOMIC</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key for the association.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>policy</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The policy for the association.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So8NSObjectP9MechanicaE25removeAllAssociatedValuesyyF"></a>
+                    <a name="//apple_ref/swift/Method/removeAllAssociatedValues()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So8NSObjectP9MechanicaE25removeAllAssociatedValuesyyF">removeAllAssociatedValues()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Removes all the associated values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeAllAssociatedValues</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So8NSObjectP9MechanicaE18SwizzlingSelectorsa"></a>
                     <a name="//apple_ref/swift/Alias/SwizzlingSelectors" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16NSObjectProtocolP9MechanicaE18SwizzlingSelectorsa">SwizzlingSelectors</a>
+                    <a class="token" href="#/s:So8NSObjectP9MechanicaE18SwizzlingSelectorsa">SwizzlingSelectors</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -291,9 +535,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So16NSObjectProtocolP9MechanicaE7swizzley10ObjectiveC8SelectorV6method_AG4withtFZ"></a>
+                    <a name="/s:So8NSObjectP9MechanicaE7swizzle6method4withy10ObjectiveC8SelectorV_AItFZ"></a>
                     <a name="//apple_ref/swift/Method/swizzle(method:with:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16NSObjectProtocolP9MechanicaE7swizzley10ObjectiveC8SelectorV6method_AG4withtFZ">swizzle(method:with:)</a>
+                    <a class="token" href="#/s:So8NSObjectP9MechanicaE7swizzle6method4withy10ObjectiveC8SelectorV_AItFZ">swizzle(method:with:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -370,9 +614,9 @@ The next best place to perform the swizzling is in initialize, a method called r
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So16NSObjectProtocolP9MechanicaE7swizzleySay10ObjectiveC8SelectorV08originalF0_AG08swizzledF0tGFZ"></a>
+                    <a name="/s:So8NSObjectP9MechanicaE7swizzleyySay10ObjectiveC8SelectorV08originalE0_AG08swizzledE0tGFZ"></a>
                     <a name="//apple_ref/swift/Method/swizzle(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16NSObjectProtocolP9MechanicaE7swizzleySay10ObjectiveC8SelectorV08originalF0_AG08swizzledF0tGFZ">swizzle(_:)</a>
+                    <a class="token" href="#/s:So8NSObjectP9MechanicaE7swizzleyySay10ObjectiveC8SelectorV08originalE0_AG08swizzledE0tGFZ">swizzle(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -385,7 +629,7 @@ The next best place to perform the swizzling is in initialize, a method called r
 <p>Exchanges the implementations of each couple of Selectors.</p>
 <div class="aside aside-see-also">
     <p class="aside-title">See also</p>
-    <code><a href="../Extensions/NSObjectProtocol.html#/s:So16NSObjectProtocolP9MechanicaE7swizzley10ObjectiveC8SelectorV6method_AG4withtFZ">swizzle(method:with:)</a></code>
+    <code><a href="../Extensions/NSObjectProtocol.html#/s:So8NSObjectP9MechanicaE7swizzle6method4withy10ObjectiveC8SelectorV_AItFZ">swizzle(method:with:)</a></code>
 
 </div>
 
@@ -394,69 +638,7 @@ The next best place to perform the swizzling is in initialize, a method called r
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">swizzle</span><span class="p">(</span><span class="n">_</span> <span class="nv">selectors</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Extensions/NSObjectProtocol.html#/s:So16NSObjectProtocolP9MechanicaE18SwizzlingSelectorsa">SwizzlingSelectors</a></span><span class="p">])</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So16NSObjectProtocolP9MechanicaE4typeSSvp"></a>
-                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16NSObjectProtocolP9MechanicaE4typeSSvp">type</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-<p>Returns the type of an object conforming to <code>NSObjectProtocol</code> as <code>String</code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So16NSObjectProtocolP9MechanicaE4typeSSvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/type" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16NSObjectProtocolP9MechanicaE4typeSSvpZ">type</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-<p>Returns the type of an object instance conforming to <code>NSObjectProtocol</code> as <code>String</code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">swizzle</span><span class="p">(</span><span class="n">_</span> <span class="nv">selectors</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Extensions/NSObjectProtocol.html#/s:So8NSObjectP9MechanicaE18SwizzlingSelectorsa">SwizzlingSelectors</a></span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
@@ -468,7 +650,7 @@ The next best place to perform the swizzling is in initialize, a method called r
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-07-10)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-09-15)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

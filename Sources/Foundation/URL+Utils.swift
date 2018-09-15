@@ -21,6 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if canImport(Foundation)
 import Foundation
 
 extension URL {
@@ -76,7 +77,7 @@ extension URL {
   ///
   /// Returns true if the URL is a directory.
   var isDirectory: Bool {
-    //    #if os(iOS) || os(watchOS) || os(tvOS) || os(macOS)
+    //    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     //      guard let resourceMap = try? self.resourceValues(forKeys: [.isDirectoryKey]) else { return false }
     //      return resourceMap.isDirectory ?? false
     //    #elseif os(Linux)
@@ -106,3 +107,4 @@ extension URL {
   }
 
 }
+#endif

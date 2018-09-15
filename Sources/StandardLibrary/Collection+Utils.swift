@@ -44,17 +44,6 @@ extension Collection where Element: Equatable {
 
   /// **Mechanica**
   ///
-  ///  Returns the first index where the specified value appears in the collection.
-  ///  After using firstIndex(of:) to find the last position of a particular element in a collection, you can use it to access the element by subscripting.
-  /// - Parameter element: Index of the first element found (if any).
-  /// - Note: Same as `index(of:)`.
-  /// - SeeAlso: `index(of:)`
-  public func firstIndex(of element: Element) -> Self.Index? {
-    return index(of: element)
-  }
-
-  /// **Mechanica**
-  ///
   ///  Returns the last index where the specified value appears in the collection.
   ///  After using lastIndex(of:) to find the last position of a particular element in a collection, you can use it to access the element by subscripting.
   /// - Parameter element: Index of the last element found (if any).
@@ -64,18 +53,6 @@ extension Collection where Element: Equatable {
       return idx
     }
     return nil
-  }
-
-}
-
-extension Collection where Self.Index == Int {
-
-  /// **Mechanica**
-  ///
-  /// Returns a random element from `self`.
-  public func random() -> Element {
-    let index = Int.random(lowerBound: startIndex, upperBound: endIndex)
-    return self[index]
   }
 
 }

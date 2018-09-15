@@ -30,31 +30,11 @@ extension Bool {
     return self ? 1 : 0
   }
 
-  #if !swift(>=4.2)
-
   /// **Mechanica**
   ///
   /// Returns a `new` Bool with the inverted value of `self`.
   public var toggled: Bool {
-    // TODO: to be deprecated once implemented:
-    // https://github.com/apple/swift-evolution/blob/master/proposals/0199-bool-toggle.md (Swift 4.2)
     return !self
-  }
-
-  #endif
-
-  /// **Mechanica**
-  ///
-  /// Inverts the value of `self`.
-  public mutating func toggle() {
-    self = !self
-  }
-
-  /// **Mechanica**
-  ///
-  /// Returns `true` or `false` randomly.
-  static public func random() -> Bool {
-    return mechanica_arc4random_uniform(2) == 0
   }
 
   /// **Mechanica**

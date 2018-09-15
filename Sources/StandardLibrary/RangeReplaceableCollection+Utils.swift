@@ -87,8 +87,6 @@ extension RangeReplaceableCollection where Self: MutableCollection {
     return (copy, removed)
   }
 
-  #if !swift(>=4.2)
-
   /// **Mechanica**
   ///
   /// Removes all the elements that matches the given `condition` and returns all the removed element (if any).
@@ -97,9 +95,8 @@ extension RangeReplaceableCollection where Self: MutableCollection {
   /// - Note: use `filter` if you don't need the removed element.
   @discardableResult
   public mutating func remove(where condition: (Element) -> Bool) -> [Element] {
-    // TODO: to be deprecated once implemented: (Swift 4.2)
-    // https://github.com/apple/swift-evolution/blob/master/proposals/0197-remove-where.md
     var removed: [Element] = []
+
     guard var idx = index(where: condition) else { return [] }
     removed.append(self[idx])
 
@@ -119,8 +116,6 @@ extension RangeReplaceableCollection where Self: MutableCollection {
 
     return removed
   }
-
-  #endif
 
   /// **Mechanica**
   ///
@@ -146,9 +141,11 @@ extension RangeReplaceableCollection where Element: Equatable {
   /// - Parameter element: The element to remove the last occurrence.
   @discardableResult
   public mutating func removeFirstOccurrence(of element: Element) -> Element? {
-    guard let idx = index(of: element) else { return nil }
+    if let idx = index(of: element) {
+      return remove(at: idx)
+    }
 
-    return remove(at: idx)
+    return nil
   }
 
   /// **Mechanica**
@@ -158,7 +155,9 @@ extension RangeReplaceableCollection where Element: Equatable {
   /// - Parameter element: The element to remove the collection occurrence.
   @discardableResult
   public mutating func removeLastOccurrence(of element: Element) -> Element? {
-    if let idx = lastIndex(of: element) { return remove(at: idx) }
+    if let idx = lastIndex(of: element) {
+      return remove(at: idx)
+    }
 
     return nil
   }

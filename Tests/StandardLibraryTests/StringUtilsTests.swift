@@ -50,7 +50,9 @@ extension StringUtilsTests {
     ("testMultiply", testMultiply),
     ("testOptionalStringCoalescingOperator", testOptionalStringCoalescingOperator),
     ("testPrefix", testPrefix),
-    ("testSuffix", testSuffix)
+    ("testSuffix", testSuffix),
+    ("testdroppingPrefix", testdroppingPrefix),
+    ("testdroppingSuffix", testdroppingSuffix)
   ]
 }
 
@@ -78,8 +80,8 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertTrue("cafè".length == 4)
     XCTAssertTrue("🇮🇹".length == 1)
 
-    #if !os(Linux)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue("👍🏻".length == 1) //2
       XCTAssertTrue("👍🏽".length == 1) //2
       XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
@@ -96,8 +98,8 @@ final class StringUtilsTests: XCTestCase {
       XCTAssertTrue(s.prefix(maxLength: 4) == "Hell")
       XCTAssertTrue(s.prefix(maxLength: 5) == "Hello")
       XCTAssertTrue(s.prefix(maxLength: 6) == "Hello ")
-      #if !os(Linux)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+      #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World 🖖🏽")
       XCTAssertTrue(s.prefix(maxLength: 14) == "Hello World 🖖🏽")
       XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World 🖖🏽")
@@ -116,8 +118,8 @@ final class StringUtilsTests: XCTestCase {
   func testSuffix() {
     do {
       let s = "Hello World 🖖🏽"
-      #if !os(Linux)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+      #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue(s.suffix(maxLength: 0) == "")
       XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
       XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
@@ -201,8 +203,8 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s4.truncate(at: 3) == "a🇮🇹b…")
     XCTAssertTrue(s4.truncate(at: 4) == "a🇮🇹bb…")
 
-    #if !os(Linux)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹…")
       XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹…")
     #endif
@@ -224,8 +226,8 @@ final class StringUtilsTests: XCTestCase {
     let s8 = "👍👍🏻👍🏼👍🏾"
     XCTAssertTrue(s8.truncate(at: 1) == "👍…")
 
-    #if !os(Linux)
-      // Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue(s8.truncate(at: 2) == "👍👍🏻…")
       XCTAssertTrue(s8.truncate(at: 3) == "👍👍🏻👍🏼…")
       XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍🏼👍🏾")
@@ -620,7 +622,7 @@ final class StringUtilsTests: XCTestCase {
     XCTAssert(stringValue2 == "unknown")
   }
 
-  #if !os(Linux)
+  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   func testdroppingPrefix() {
 
@@ -660,7 +662,7 @@ final class StringUtilsTests: XCTestCase {
 
   }
 
-  #endif
+  //#endif
 
 }
 

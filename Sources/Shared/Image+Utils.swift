@@ -92,7 +92,7 @@ extension Image {
   /// Convert the image to data.
   public var data: Data? {
     #if canImport(UIKit)
-    return hasAlpha ? UIImagePNGRepresentation(self) : UIImageJPEGRepresentation(self, 1.0)
+    return hasAlpha ? pngData() : jpegData(compressionQuality: 1.0)
 
     #elseif canImport(AppKit)
     guard let data = tiffRepresentation else { return nil }

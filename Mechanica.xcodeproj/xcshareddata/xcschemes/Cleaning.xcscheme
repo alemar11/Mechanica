@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2ED4AD01DF85BAD0042F012"
-               BuildableName = "Cleanup Whitespace"
-               BlueprintName = "Cleanup Whitespace"
+               BlueprintIdentifier = "2334048D1EF7C889006DA3A9"
+               BuildableName = "Cleaning"
+               BlueprintName = "Cleaning"
                ReferencedContainer = "container:Mechanica.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2ED4AD01DF85BAD0042F012"
-            BuildableName = "Cleanup Whitespace"
-            BlueprintName = "Cleanup Whitespace"
+            BlueprintIdentifier = "2334048D1EF7C889006DA3A9"
+            BuildableName = "Cleaning"
+            BlueprintName = "Cleaning"
             ReferencedContainer = "container:Mechanica.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2ED4AD01DF85BAD0042F012"
-            BuildableName = "Cleanup Whitespace"
-            BlueprintName = "Cleanup Whitespace"
+            BlueprintIdentifier = "2334048D1EF7C889006DA3A9"
+            BuildableName = "Cleaning"
+            BlueprintName = "Cleaning"
             ReferencedContainer = "container:Mechanica.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

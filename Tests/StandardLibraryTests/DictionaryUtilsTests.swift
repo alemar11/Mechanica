@@ -27,8 +27,7 @@ import XCTest
 extension DictionaryUtilsTests {
   static var allTests = [
     ("testHasKey", testHasKey),
-    ("testRemoveAll", testRemoveAll),
-    ("testRandom", testRandom)
+    ("testRemoveAll", testRemoveAll)
   ]
 }
 
@@ -83,55 +82,6 @@ final class DictionaryUtilsTests: XCTestCase {
       XCTAssert(dictionary.isEmpty)
     }
 
-  }
-
-  func testRandom() {
-
-    do {
-      let dictionary = ["a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "l": 9, "m": 10]
-
-      for _ in 1...100 {
-        let randomElement = dictionary.random()
-        let randomValue = randomElement.value
-        let dictionaryValue = dictionary[randomElement.key]
-        if let dictionaryValue = dictionaryValue {
-          XCTAssertTrue(randomValue == dictionaryValue)
-        } else {
-          XCTAssertNotNil(dictionaryValue)
-        }
-
-      }
-    }
-
-    do {
-      let dictionary = ["a": 0]
-      for _ in 1...100 {
-        let randomElement = dictionary.random()
-        XCTAssertTrue(randomElement.key == "a")
-        XCTAssertTrue(randomElement.value == 0)
-      }
-    }
-
-    do {
-      let dictionary = ["a": 0, "b": 1, "c": 2]
-      var foundFirst = false
-      var foundSecond = false
-      var foundThird = false
-
-      repeat {
-        let randomElement = dictionary.random()
-
-        if randomElement.key == "a" {
-          foundFirst = true
-
-        } else if randomElement.key == "b" {
-          foundSecond = true
-        } else if randomElement.key == "c" {
-          foundThird = true
-        }
-
-      } while foundFirst == false || foundSecond == false || foundThird == false
-    }
   }
 
 }

@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:4.2
 
 import PackageDescription
 
@@ -13,9 +13,10 @@ let package = Package(
     .testTarget(name: "SharedTests", dependencies: ["Mechanica"]),
     .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
     .testTarget(name: "UIKitTests", dependencies: ["Mechanica"]),
-    .testTarget(name: "AppKitTests", dependencies: ["Mechanica"])
+    .testTarget(name: "AppKitTests", dependencies: ["Mechanica"]),
+    .testTarget(name: "AVFoundationTests", dependencies: ["Mechanica"])
   ],
-  swiftLanguageVersions: [4]
+  swiftLanguageVersions: [.v4_2]
 )
 
 #if os(Linux)
@@ -23,18 +24,13 @@ let package = Package(
 package.targets = [
   .target(name: "Mechanica",
           path: "Sources",
-          exclude: ["AssociatedValueSupporting.swift", "BundleInfoTests.swift", "NSObjectProtocol+Swizzling.swift"],
+          exclude: ["BundleInfoTests.swift"],
           sources: ["StandardLibrary", "Foundation"]
   ),
   .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
   .testTarget(name: "FoundationTests",
               dependencies: ["Mechanica"],
-              exclude: ["AssociatedValueSupportingTests.swift",
-                        "BundleInfoTests.swift",
-                        "NSAttributedStringUtilsTests.swift",
-                        "NSMutableAttributedStringUtilsTests.swift",
-                        "NSObjectProtocolSwizzlingTests.swift"
-    ]
+              exclude: ["BundleInfoTests.swift"]
   )
 ]
 

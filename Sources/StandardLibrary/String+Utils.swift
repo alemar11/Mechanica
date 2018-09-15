@@ -21,12 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if canImport(Glibc)
-  import Glibc
-#elseif canImport(Darwin)
-  import Darwin.C
-#endif
-
 extension String {
 
   // MARK: - Standard Library
@@ -111,8 +105,11 @@ extension String {
   public func padding(length: Int, with token: String = " ") -> String {
     guard count < length else { return self }
 
-    let delta = Int(ceil(Double(length - count) / 2))
-    return paddingStart(length: length - delta, with: token).paddingEnd(length: length, with: token)
+    let padLength = length - count
+    let halfPadLength = Double(padLength) / 2
+    let roundedStartingPadLength = Int(halfPadLength.rounded(.toNearestOrAwayFromZero))
+
+    return paddingStart(length: length - roundedStartingPadLength, with: token).paddingEnd(length: length, with: token)
   }
 
   /// **Mechanica**
@@ -270,13 +267,8 @@ extension String {
   public func droppingPrefix(upToPosition: Int = 1) -> String {
     guard upToPosition >= 0 && upToPosition <= length else { return "" }
 
-    // let startIndex = index(self.startIndex, offsetBy: upToPosition)
-    // return String(self[startIndex...])
     return String(dropFirst(upToPosition))
   }
-
-  #if !os(Linux)
-  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**
   ///
@@ -293,8 +285,6 @@ extension String {
     return droppingPrefix(upToPosition: prefix.length)
   }
 
-  #endif
-
   /// **Mechanica**
   ///
   ///  Returns a new `String` containing the characters of the String up to, but not including, the one at a given position.
@@ -308,13 +298,8 @@ extension String {
   public func droppingSuffix(fromPosition: Int = 1) -> String {
     guard fromPosition >= 0 && fromPosition <= length else { return "" }
 
-    // let startIndex = index(endIndex, offsetBy: -fromPosition)
-    // return String(self[..<startIndex])
     return String(dropLast(fromPosition))
   }
-
-  #if !os(Linux)
-  // Not implemented on Linux: https://bugs.swift.org/browse/SR-5627
 
   /// **Mechanica**
   ///
@@ -330,8 +315,6 @@ extension String {
 
     return droppingSuffix(fromPosition: suffix.length)
   }
-
-  #endif
 
   /// **Mechanica**
   ///

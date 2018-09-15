@@ -197,8 +197,9 @@ final class URLRequestUtilsTests: XCTestCase {
 
     // When, Then
     let cURL = request.cURLRepresentation(session: session, prettyPrinted: false)!
-    let expectedValue = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
-    XCTAssertTrue(cURL == expectedValue)
+    let expectedValue1 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
+    let expectedValue2 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Test: Mechanica\" -H \"Content-Type: application/json\" \"http://example.com\""
+    XCTAssertTrue(expectedValue1 == cURL || expectedValue2 == cURL)
   }
 
   class MockHTTPCookieStorage: HTTPCookieStorage {
