@@ -21,12 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if canImport(AVFoundation)
+#if canImport(AVAsset)
 import AVFoundation
 
 public extension AVAsset {
-
-  #if !os(watchOS)
 
   /// **Mechanica**
   ///
@@ -60,7 +58,6 @@ public extension AVAsset {
     #endif
   }
 
-  #endif
 }
 
 #endif
