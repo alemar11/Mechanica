@@ -21,8 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if canImport(AVAsset)
+
 import XCTest
-import AVFoundation
+import AVAsset
 @testable import Mechanica
 
 class AVAssetUtils: XCTestCase {
@@ -34,8 +36,8 @@ class AVAssetUtils: XCTestCase {
 
     XCTAssertEqual(image.size.width, 720)
     XCTAssertEqual(image.size.height, 404)
-
-    //TODO move this util as AVAsset util?
   }
 
 }
+
+#endif
