@@ -62,7 +62,7 @@ matrix:
       osx_image: xcode10
       language: objective-c
       before_install:
-        - gem install cocoapods -no-rdoc --no-ri --no-document --quiet
+        - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
         - brew outdated swiftlint || brew upgrade swiftlint
       before_script:
         - swiftlint --reporter "emoji"  
