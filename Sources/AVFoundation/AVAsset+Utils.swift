@@ -21,31 +21,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if canImport(AVFoundation) && canImport(Foundation)
+#if canImport(AVFoundation)
 import AVFoundation
-import Foundation
 
-public extension URL {
+public extension AVAsset {
 
   #if !os(watchOS)
 
   /// **Mechanica**
   ///
-  /// Generates a thumbnail image from given url.
+  /// Generates a thumbnail image.
   ///
   ///
   /// Example:
   ///
   ///     let url = URL(string: "https://link/to/video.mp4")!
-  ///     let thumbnail = url.thumbnail(fromTime: 5)
+  ///     let asset = AVAsset(url: url)
+  ///     let thumbnail = asset.thumbnail(fromTime: 5)
   ///
   /// - Parameter time: Seconds into the video where the image should be generated.
-  /// - Returns: The UIImage result of the AVAssetImageGenerator.
+  /// - Returns: A thumbnail image.
   /// - Throws: Throws an error if no thumbnail could be created.
   /// - Note: This function may take some time to complete: it's recommended to dispatch the call on another queue if the thumbnail is not generated from a local resource.
   public func thumbnail(fromTime time: Float64 = 0) throws -> Image {
-    let asset = AVAsset(url: self)
-    let imageGenerator = AVAssetImageGenerator(asset: asset)
+    let imageGenerator = AVAssetImageGenerator(asset: self)
     imageGenerator.appliesPreferredTrackTransform = true
     imageGenerator.requestedTimeToleranceAfter = .zero
     imageGenerator.requestedTimeToleranceBefore = .zero

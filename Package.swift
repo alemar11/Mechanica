@@ -13,7 +13,8 @@ let package = Package(
     .testTarget(name: "SharedTests", dependencies: ["Mechanica"]),
     .testTarget(name: "StandardLibraryTests", dependencies: ["Mechanica"]),
     .testTarget(name: "UIKitTests", dependencies: ["Mechanica"]),
-    .testTarget(name: "AppKitTests", dependencies: ["Mechanica"])
+    .testTarget(name: "AppKitTests", dependencies: ["Mechanica"]),
+    .testTarget(name: "AVFoundationTests", dependencies: ["Mechanica"])
   ],
   swiftLanguageVersions: [.v4_2]
 )

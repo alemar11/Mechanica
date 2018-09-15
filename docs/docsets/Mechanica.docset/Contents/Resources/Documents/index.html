@@ -30,6 +30,9 @@
             <a href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Extensions/AVAsset.html">AVAsset</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Extensions/BinaryFloatingPoint.html">BinaryFloatingPoint</a>
               </li>
               <li class="nav-group-task">
@@ -208,7 +211,7 @@
             
             <p><img src="https://raw.githubusercontent.com/tinrobots/Mechanica/assets/mechanica.png" alt="Mechanica: Swift Utils"></p>
 
-<p><a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat" alt="Swift 4.1"></a>
+<p><a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat" alt="Swift 4.2"></a>
 <img src="https://img.shields.io/badge/Platform-iOS%2010%2B%20%7C%20macOS%2010.12+%20%7C%20tvOS%2010+%20%7C%20watchOS%203+%7C%20Ubuntu%20Linux-blue.svg" alt="Platforms"> </p>
 
 <p><a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a>
@@ -251,9 +254,9 @@
 <h2 id='requirements' class='heading'>Requirements</h2>
 
 <ul>
-<li>iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+</li>
-<li>Xcode 9.4</li>
-<li>Swift 4.1</li>
+<li>iOS 10+ / macOS 10.12+ / tvOS 10+ / watchOS 3+ / Ubuntu 14.04+</li>
+<li>Xcode 10</li>
+<li>Swift 4.2</li>
 </ul>
 <h2 id='documentation' class='heading'>Documentation</h2>
 
@@ -266,7 +269,7 @@
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
 
 <p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. You can install it with the following command:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>gem install cocoapods
+<pre class="highlight shell"><code><span class="nv">$ </span>gem <span class="nb">install </span>cocoapods
 </code></pre>
 
 <blockquote>
@@ -284,15 +287,15 @@
 </code></pre>
 
 <p>Then, run the following command:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>pod install
+<pre class="highlight shell"><code><span class="nv">$ </span>pod <span class="nb">install</span>
 </code></pre>
 <h3 id='carthage' class='heading'>Carthage</h3>
 
 <p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.</p>
 
 <p>You can install Carthage with <a href="http://brew.sh/">Homebrew</a> using the following command:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>brew update
-<span class="gp">$ </span>brew install carthage
+<pre class="highlight shell"><code><span class="nv">$ </span>brew update
+<span class="nv">$ </span>brew <span class="nb">install </span>carthage
 </code></pre>
 
 <p>To integrate Mechanica into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</p>
@@ -316,13 +319,13 @@ Once you have your Swift package set up, adding Mechanica as a dependency is as 
 <ul>
 <li>Open up Terminal, <code>cd</code> into your top-level project directory, and run the following command <q>if</q> your project is not initialized as a git repository:</li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>git init
+<pre class="highlight shell"><code><span class="nv">$ </span>git init
 </code></pre>
 
 <ul>
 <li>Add Mechanica as a git <a href="http://git-scm.com/docs/git-submodule">submodule</a> by running the following command:</li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>git submodule add https://github.com/tinrobots/Mechanica.git
+<pre class="highlight shell"><code><span class="nv">$ </span>git submodule add https://github.com/tinrobots/Mechanica.git
 </code></pre>
 
 <ul>
@@ -348,7 +351,7 @@ Once you have your Swift package set up, adding Mechanica as a dependency is as 
 </ul>
 <h2 id='license' class='heading'>License</h2>
 
-<p><a href="https://github.com/tinrobots/Mechanica/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat" alt="License MIT"></a>)</p>
+<p><a href="https://github.com/tinrobots/Mechanica/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat" alt="License MIT"></a></p>
 
 <p>Mechanica is released under the MIT license. See <a href="./LICENSE.md">LICENSE</a> for details.</p>
 <h2 id='contributing' class='heading'>Contributing</h2>
@@ -359,7 +362,7 @@ Once you have your Swift package set up, adding Mechanica as a dependency is as 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-09-13)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-09-15)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

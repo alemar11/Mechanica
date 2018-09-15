@@ -21,12 +21,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if canImport(Glibc)
-  import Glibc
-#elseif canImport(Darwin)
-  import Darwin.C
-#endif
-
 extension String {
 
   // MARK: - Standard Library
@@ -111,8 +105,11 @@ extension String {
   public func padding(length: Int, with token: String = " ") -> String {
     guard count < length else { return self }
 
-    let delta = Int(ceil(Double(length - count) / 2))
-    return paddingStart(length: length - delta, with: token).paddingEnd(length: length, with: token)
+    let padLength = length - count
+    let halfPadLength = Double(padLength) / 2
+    let roundedStartingPadLength = Int(halfPadLength.rounded(.toNearestOrAwayFromZero))
+
+    return paddingStart(length: length - roundedStartingPadLength, with: token).paddingEnd(length: length, with: token)
   }
 
   /// **Mechanica**
