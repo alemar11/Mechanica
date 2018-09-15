@@ -45,7 +45,7 @@ matrix:
           while sudo fuser /var/{lib/{dpkg,apt/lists},cache/apt/archives}/lock >/dev/null 2>&1; do
             sleep 1
           done
-        - sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
+        - sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y --allow-unauthenticated
         - wget https://swift.org/builds/swift-4.2-branch/ubuntu1604/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-08-25-a/swift-4.2-DEVELOPMENT-SNAPSHOT-2018-08-25-a-ubuntu16.04.tar.gz
         - tar zxf swift-4.2*.tar.gz && rm -rf swift-4.2*.tar.gz
         - sudo mv swift-4.2* /swift-4.2
