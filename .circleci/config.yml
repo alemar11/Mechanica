@@ -11,12 +11,24 @@ jobs:
           command: swift test
       - run:
           name: Swift build Release
-          command: swift build -c release -Xswiftc -static-stdlib       
+          command: swift build -c release -Xswiftc -static-stdlib
+
+  linux_swift_4_2_1:
+    docker:
+      - image: norionomura/swift:421
+    steps:
+      - checkout
+      - run: 
+          name: Swift Test
+          command: swift test
+      - run:
+          name: Swift build Release
+          command: swift build -c release -Xswiftc -static-stdlib     
 workflows:
   version: 2
   workflow:
     jobs:
       - linux_swift_4_2
-      #- linux_swift_4_1
+      - linux_swift_4_2_1
 
 #docker: https://github.com/realm/SwiftLint/blob/master/circle.yml
