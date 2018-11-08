@@ -30,8 +30,11 @@ extension OptionalUtilsTests {
     ("testOr", testOr),
     ("testOrWithAutoclosure", testOrWithAutoclosure),
     ("testOrWithClosure", testOrWithClosure),
-    ("testOrThrowException", testOrThrowException)
-  ]
+    ("testOrThrowException", testOrThrowException),
+    ("testCollectionIsNilOrEmpty", testCollectionIsNilOrEmpty),
+    ("testStringIsNilOrEmpty", testStringIsNilOrEmpty),
+    ("isNilOrBlank", testIsNilOrBlank),
+    ]
 }
 
 final class OptionalUtilsTests: XCTestCase {
@@ -78,6 +81,63 @@ final class OptionalUtilsTests: XCTestCase {
 
     let value2: String? = nil
     XCTAssertThrowsError(try value2.or(throw: DemoError.test))
+  }
+
+  func testCollectionIsNilOrEmpty() {
+    do {
+      let collection: [Int]? = [1, 2, 3]
+      XCTAssertFalse(collection.isNilOrEmpty)
+    }
+    do {
+      let collection: [Int]? = nil
+      XCTAssertTrue(collection.isNilOrEmpty)
+    }
+    do {
+      let collection: [Int]? = []
+      XCTAssertTrue(collection.isNilOrEmpty)
+    }
+  }
+
+  func testStringIsNilOrEmpty() {
+    do {
+      let text: String? = "mechanica"
+      XCTAssertFalse(text.isNilOrEmpty)
+    }
+    do {
+      let text: String? = " "
+      XCTAssertFalse(text.isNilOrEmpty)
+    }
+    do {
+      let text: String? = ""
+      XCTAssertTrue(text.isNilOrEmpty)
+    }
+    do {
+       let text: String? = nil
+      XCTAssertTrue(text.isNilOrEmpty)
+    }
+  }
+
+  func testIsNilOrBlank() {
+    do {
+      let text: String? = "mechanica"
+      XCTAssertFalse(text.isNilOrBlank)
+    }
+    do {
+      let text: String? = " "
+      XCTAssertTrue(text.isNilOrBlank)
+    }
+    do {
+      let text: String? = "  "
+      XCTAssertTrue(text.isNilOrBlank)
+    }
+    do {
+      let text: String? = ""
+      XCTAssertTrue(text.isNilOrBlank)
+    }
+    do {
+      let text: String? = nil
+      XCTAssertTrue(text.isNilOrBlank)
+    }
   }
 
 }

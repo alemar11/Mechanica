@@ -3,6 +3,7 @@
 ### 2.1.0
 
 - Added more Sequence utils.
+- Added more Optional utils.
 
 ### 2.0.0 ⭐
 
