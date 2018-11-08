@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.1.0
+
+- Added more Sequence utils.
+
 ### 2.0.0 ⭐
 
 - Mechanica is now completely migrated to **Swift 4.2**.

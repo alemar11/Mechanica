@@ -26,7 +26,11 @@ import XCTest
 
 extension SequenceUtilsTests {
   static var allTests = [
-    ("testHasSome", testHasSome),
+    ("testAll", testAll),
+    ("testNone", testNone),
+    ("testAny", testAny),
+    ("testLast", testLast),
+    ("testHasAny", testHasAny),
     ("testHasAll", testHasAll),
     ("testContains", testContains),
     ("testContatinsObjectIdentical", testContatinsObjectIdentical),
@@ -35,7 +39,9 @@ extension SequenceUtilsTests {
     ("testFrequencies", testFrequencies),
     ("testShuffled", testShuffled),
     ("testSplit", testSplit),
-    ("testUniqueElements", testUniqueElements)
+    ("testUniqueElements", testUniqueElements),
+    ("hasDuplicates", testHasDuplicates),
+    ("testSum", testSum)
   ]
 }
 
@@ -56,6 +62,26 @@ final class SequenceUtilsTests: XCTestCase {
     }
   }
 
+  struct TestSequence<T>: Sequence {
+    let elements: [T]
+
+    public func makeIterator() -> AnyIterator<T> {
+      var index = 0
+
+      return AnyIterator {
+        guard index < self.elements.count else {
+          return nil
+        }
+
+        let element = self.elements[index]
+        index = self.elements.index(after: index)
+
+        return element
+      }
+
+    }
+  }
+
   private let list = [Demo(value1: "demo1",value2: 1),
                       Demo(value1: "demo2",value2: 2),
                       Demo(value1: "demo3",value2: 3),
@@ -73,22 +99,42 @@ final class SequenceUtilsTests: XCTestCase {
 
   private let list3 = ["a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "l": 9, "m": 10]
 
-  func testHasSome() {
-    XCTAssertTrue(list.hasSomeElements(where: {$0.value1 == "demo5"}))
-    XCTAssertTrue(list.hasSomeElements(where: {$0.value2 == 1}))
-    XCTAssertTrue(list2.hasSomeElements(where: {$0.value1 == "demo1"}))
-    XCTAssertFalse(list.hasSomeElements(where: {$0.value1 == "demo11"}))
-    XCTAssertFalse(list.hasSomeElements(where: { $0.value1 == "demo1" && $0.value2 == 4}))
+  func testAll() {
+    XCTAssertTrue([2, 2, 4, 4].all(matching: {$0 % 2 == 0}))
+    XCTAssertFalse([1, 2, 2, 4].all(matching: {$0 % 2 == 0}))
+  }
+
+  func testAny() {
+    XCTAssertTrue([2, 2, 4].any(matching: {$0 % 2 == 0}))
+    XCTAssertFalse([1, 3, 5, 7].any(matching: {$0 % 2 == 0}))
+  }
+
+  func testNone() {
+    XCTAssertFalse([2, 2, 4].none(matching: {$0 % 2 == 0}))
+    XCTAssertTrue([1, 3, 5].none(matching: {$0 % 2 == 0}))
+  }
+
+  func testLast() {
+    let sequence = TestSequence(elements: [2, 2, 4, 7])
+     XCTAssertEqual(sequence.last(where: {$0 % 2 == 0}), 4)
+  }
+
+  func testHasAny() {
+    XCTAssertTrue(list.hasAny(where: {$0.value1 == "demo5"}))
+    XCTAssertTrue(list.hasAny(where: {$0.value2 == 1}))
+    XCTAssertTrue(list2.hasAny(where: {$0.value1 == "demo1"}))
+    XCTAssertFalse(list.hasAny(where: {$0.value1 == "demo11"}))
+    XCTAssertFalse(list.hasAny(where: { $0.value1 == "demo1" && $0.value2 == 4}))
   }
 
   func testHasAll() {
-    XCTAssertTrue(list2.hasAllElements { $0.value1 == "demo1" })
-    XCTAssertFalse(list2.hasAllElements { $0.value1 == "demo11" })
-    XCTAssertFalse(list.hasAllElements { $0.value1 == "demo12" })
-    XCTAssertTrue("aaaaaa".hasAllElements { $0 == Character("a") })
-    XCTAssertFalse("aaaaab".hasAllElements { $0 == Character("a") })
-    XCTAssertFalse("aaaaaa".hasAllElements { $0 == Character("c") })
-    XCTAssertTrue([0, 2, 4, 6].hasAllElements { $0.isEven } )
+    XCTAssertTrue(list2.hasAll { $0.value1 == "demo1" })
+    XCTAssertFalse(list2.hasAll { $0.value1 == "demo11" })
+    XCTAssertFalse(list.hasAll { $0.value1 == "demo12" })
+    XCTAssertTrue("aaaaaa".hasAll { $0 == Character("a") })
+    XCTAssertFalse("aaaaab".hasAll { $0 == Character("a") })
+    XCTAssertFalse("aaaaaa".hasAll { $0 == Character("c") })
+    XCTAssertTrue([0, 2, 4, 6].hasAll { $0.isEven } )
   }
 
   func testContains() {
@@ -337,6 +383,16 @@ final class SequenceUtilsTests: XCTestCase {
       XCTAssertEqual(uniqueElements, [Sample(value: "1"), Sample(value: "3"), Sample(value: "2")])
     }
 
+  }
+
+  func testHasDuplicates() {
+    XCTAssertFalse([1, 2, 3, 4, 5].hasDuplicates())
+    XCTAssertTrue([1, 2, 3, 4, 1].hasDuplicates())
+  }
+
+  func testSum() {
+    XCTAssertEqual([1, 2, 3, 4].sum(), 10)
+    XCTAssertEqual([1.1, 2.2, 3, 4].sum(), 10.3)
   }
 
 }
