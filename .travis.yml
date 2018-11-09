@@ -175,5 +175,8 @@ script:
       fi
     fi
 
-after_success:
-  - sleep 5      
+after_failure:
+  - cat ~/Library/Developer/Xcode/DerivedData/Mechanica-*/Logs/Test/*/*/*/Mechanica*/*/Session-Mechanica*.log
+
+#after_success:
+  #- sleep 5      
