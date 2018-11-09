@@ -21,20 +21,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// MARK: Properties
+
 extension SignedInteger {
 
   /// **Mechanica**
   ///
-  /// Determine if self is positive (equivalent to `self > 0`).
+  /// Determines if self is positive (equivalent to `self > 0`).
   public var isPositive: Bool {
     return self > 0
   }
 
   /// **Mechanica**
   ///
-  /// Determine if self is negative (equivalent to `self < 0`).
+  /// Determines if self is negative (equivalent to `self < 0`).
   public var isNegative: Bool {
     return self < 0
+  }
+
+  /// **Mechanica**
+  ///
+  /// Determines if self is even.
+  public var isEven: Bool {
+    return (self % 2) == 0
+  }
+
+  /// **Mechanica**
+  ///
+  /// Determines if self is is odd.
+  public var isOdd: Bool {
+    return (self % 2) != 0
   }
 
 }

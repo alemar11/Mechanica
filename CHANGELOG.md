@@ -6,6 +6,8 @@
 - Added more Sequence utils.
 - Added more Optional utils.
 - Added more Color utils.
+- Added more SignedInteger utils.
+- Added more NSPredicate utils
 
 ### 2.0.0 ⭐
 
