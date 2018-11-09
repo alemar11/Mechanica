@@ -24,6 +24,24 @@
 #if canImport(Foundation)
 import Foundation
 
+// MARK: Properties
+
+extension NSPredicate {
+
+  /// **Mechanica**
+  ///
+  /// An always `true` NSPredicate.
+  public static let `true` = NSPredicate(value: true)
+
+  /// **Mechanica**
+  ///
+  /// An always `false` NSPredicate.
+  public static let `false` = NSPredicate(value: false)
+  
+}
+
+// MARK: Methods
+
 extension NSPredicate {
 
   /// **Mechanica**
@@ -46,9 +64,9 @@ extension NSPredicate {
 
 }
 
-extension NSPredicate {
+// MARK: Operators
 
-  // MARK: Operators
+extension NSPredicate {
 
   /// **Mechanica**
   ///
