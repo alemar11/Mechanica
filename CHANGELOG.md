@@ -4,6 +4,7 @@
 
 - Added more Sequence utils.
 - Added more Optional utils.
+- Added more Color utils.
 
 ### 2.0.0 ⭐
 
