@@ -24,6 +24,7 @@ XCTMain([
   testCase(DataUtilsTests.allTests),
   testCase(DateUtilsTests.allTests),
   testCase(DictionaryFoundationUtilsTests.allTests),
+  testCase(DispatchQueueUtilsTests.allTests),
   testCase(FileManagerUtilsTests.allTests),
   testCase(FoundationUtilsTests.allTests),
   testCase(LocaleUtilsTests.allTests),

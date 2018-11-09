@@ -2,6 +2,7 @@
 
 ### 2.1.0
 
+- Added DispatchQueue utils.
 - Added more Sequence utils.
 - Added more Optional utils.
 - Added more Color utils.
