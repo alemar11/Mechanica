@@ -255,8 +255,7 @@ public extension Sequence where Element: Numeric {
   ///     [1, 2, 3, 4].sum() -> 10
   ///
   public func sum() -> Element {
-    return reduce(0, {$0 + $1})
+    return reduce(0, { $0 + $1 })
   }
 
 }
-

@@ -1,4 +1,4 @@
-// 
+//
 // Mechanica
 //
 // Copyright © 2016-2018 Tinrobots.
@@ -46,11 +46,11 @@ final class DispatchQueueUtilsTests: XCTestCase {
     DispatchQueue.main.async(group: group) {
       XCTAssertTrue(DispatchQueue.isMainQueue)
     }
-    
+
     DispatchQueue.global().async(group: group) {
       XCTAssertFalse(DispatchQueue.isMainQueue)
     }
-    
+
     group.notify(queue: .main) {
       expect.fulfill()
     }
