@@ -401,7 +401,7 @@ extension String {
   ///   - length: The length (defaults to 8) of the generated string.
   ///   - base: The characters to be used to generate the new string (the default characters are the alphanumeric ones).
   /// - Returns: A `new` random alphanumeric `String`.
-  public static func random(length: UInt32 = 8, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
+  public static func random(length: UInt32 = 8, characters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
     var randomString: String = ""
 
@@ -421,11 +421,11 @@ extension String {
   ///   - between: The range of possible lengths for the new string.
   ///   - base: The characters to be used to generate the new string (the default characters are the alphanumeric ones).
   /// - Returns: A `new` random alphanumeric `String`.
-  public static func random(length between: CountableClosedRange<UInt32>, charachters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
+  public static func random(length between: CountableClosedRange<UInt32>, characters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
     let randomLength = UInt32.random(in: between.lowerBound...between.upperBound)
 
-    return random(length: randomLength, charachters: base)
+    return random(length: randomLength, characters: base)
   }
 
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
