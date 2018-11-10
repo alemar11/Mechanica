@@ -39,18 +39,4 @@ extension SignedInteger {
     return self < 0
   }
 
-  /// **Mechanica**
-  ///
-  /// Determines if self is even.
-  public var isEven: Bool {
-    return (self % 2) == 0
-  }
-
-  /// **Mechanica**
-  ///
-  /// Determines if self is is odd.
-  public var isOdd: Bool {
-    return (self % 2) != 0
-  }
-
 }

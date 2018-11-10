@@ -116,6 +116,7 @@ extension Sequence {
   /// - Parameter predicate: predicate to evaluate each element against.
   /// - Returns: number of times the condition evaluated to true.
   public func count(where predicate: (Element) throws -> Bool) rethrows -> Int {
+    // TODO: Swift 5 - https://github.com/apple/swift-evolution/blob/master/proposals/0220-count-where.md
     var count = 0
     for element in self where try predicate(element) {
       count += 1

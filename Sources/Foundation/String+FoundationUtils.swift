@@ -21,10 +21,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// TODO: Swift 5
+//  https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md
+//  https://github.com/apple/swift-evolution/blob/master/proposals/0221-character-properties.md
+
 #if canImport(Foundation)
 import Foundation
-
-// TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md (Swift 4.2?)
 
 extension String {
 
@@ -215,7 +217,6 @@ extension String {
   ///
   /// Returns true if the `String` contains only letters.
   public var isAlphabetic: Bool {
-    // TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md (Swift 4.2?)
     return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
   }
 

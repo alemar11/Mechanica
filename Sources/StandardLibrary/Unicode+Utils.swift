@@ -27,6 +27,7 @@ extension Unicode.Scalar {
   ///
   /// Returns `true` if `self` is a regional indicator.
   public var isRegionalIndicator: Bool {
+    // TODO: Swift 5 - https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md
     return ("🇦"..."🇿").contains(self)
   }
 
