@@ -36,7 +36,7 @@ public typealias Image = AppKit.NSImage
 #endif
 
 extension Image {
-
+  
   /// **Mechanica**
   ///
   /// Initializes a `new` image object from a Base-64 encoded String.
@@ -49,31 +49,31 @@ extension Image {
       else {
         return nil
     }
-
+    
     self.init(data: data)
   }
-
+  
   /// **Mechanica**
   ///
   /// Checks if the image has alpha component.
   public var hasAlpha: Bool {
     #if canImport(UIKit)
     guard let alphaInfo = cgImage?.alphaInfo else { return false }
-
+    
     #elseif canImport(AppKit)
     var imageRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
     guard let imageRef = cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return false }
-
+    
     let alphaInfo = imageRef.alphaInfo
     #endif
-
+    
     //    switch alphaInfo {
     //    case .none, .noneSkipFirst, .noneSkipLast:
     //      return false
     //    default:
     //      return true
     //    }
-
+    
     return (
       alphaInfo == .first ||
         alphaInfo == .last ||
@@ -81,36 +81,36 @@ extension Image {
         alphaInfo == .premultipliedLast
     )
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns whether the image is opaque.
   public var isOpaque: Bool { return !hasAlpha }
-
+  
   /// **Mechanica**
   ///
   /// Convert the image to data.
   public var data: Data? {
     #if canImport(UIKit)
     return hasAlpha ? pngData() : jpegData(compressionQuality: 1.0)
-
+    
     #elseif canImport(AppKit)
     guard let data = tiffRepresentation else { return nil }
-
+    
     let imageFileType: NSBitmapImageRep.FileType = hasAlpha ? .png : .jpeg
-
+    
     return NSBitmapImageRep(data: data)? .representation(using: imageFileType, properties: [:])
     #endif
   }
-
+  
 }
 
 extension Image {
-
+  
   private struct AssociatedKey {
-    static var isInflated = "\(associatedKeyPrefix).UIImage.isInflated"
+    static var isInflated = "\(associatedKeyPrefix).Shared.Image.isInflated"
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns whether the image is inflated.
@@ -125,7 +125,7 @@ extension Image {
       objc_setAssociatedObject(self, &AssociatedKey.isInflated, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
   }
-
+  
   /// **Mechanica**
   ///
   /// Inflates the underlying compressed image data to be backed by an uncompressed bitmap representation.
@@ -135,9 +135,67 @@ extension Image {
   /// - Note: Inflating compressed image formats (such as PNG or JPEG) in a background queue can significantly improve drawing performance on the main thread.
   public func inflate() {
     guard !isInflated else { return }
-
+    
     isInflated = true
     _ = cgImage?.dataProvider?.data
   }
+  
+}
 
+extension Image {
+  
+  /// Downsample an image at given URL for display at smaller size.
+  ///
+  /// - Parameters:
+  ///   - imageURL: <#imageURL description#>
+  ///   - pointSize: <#pointSize description#>
+  ///   - scale: <#scale description#>
+  /// - Returns: <#return value description#>
+  /// - See: https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/CoreImaging/ci_performance/ci_performance.html#//apple_ref/doc/uid/TP30001185-CH10-SW1
+  /// - See: https://developer.apple.com/videos/play/wwdc2018/219/
+  /// - See: https://www.cocoanetics.com/2011/10/avoiding-image-decompression-sickness/
+  class func downsampleImage(at imageURL: URL, to pointSize: CGSize, scale: CGFloat) -> Image? {
+    let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
+    guard let imageSource = CGImageSourceCreateWithURL(imageURL as CFURL, imageSourceOptions) else { return nil }
+    let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scale
+    let downsampleOptions =
+      [kCGImageSourceCreateThumbnailFromImageAlways: true,
+       kCGImageSourceShouldCacheImmediately: true,
+       kCGImageSourceCreateThumbnailWithTransform: true,
+       kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels] as CFDictionary
+    guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else { return nil }
+    
+    #if canImport(UIKit)
+    return Image(cgImage: downsampledImage)
+    #elseif canImport(AppKit)
+    return Image(cgImage: downsampledImage, size: pointSize) //TODO
+    #else
+    return nil
+    #endif
+  }
+
+  // https://gist.github.com/steipete/1144242
+  // http://www.tekramer.com/downloading-caching-and-decoding-images-asynchronously-with-alamofire-part-2-swift-4
+  // http://www.lukeparham.com/blog/2018/3/14/decoding-jpegs-with-the-best
+
+  class func downsampleImage(data: Data, to pointSize: CGSize, scale: CGFloat) -> Image? {
+    let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
+    guard let imageSource = CGImageSourceCreateWithData(data as CFData, imageSourceOptions) else { return nil }
+    let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scale
+    let downsampleOptions =
+      [kCGImageSourceCreateThumbnailFromImageAlways: true,
+       kCGImageSourceShouldCacheImmediately: true,
+       kCGImageSourceCreateThumbnailWithTransform: true,
+       kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels] as CFDictionary
+    guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else { return nil }
+    
+    #if canImport(UIKit)
+    return Image(cgImage: downsampledImage)
+    #elseif canImport(AppKit)
+    return Image(cgImage: downsampledImage, size: pointSize) //TODO
+    #else
+    return nil
+    #endif
+  }
+  
 }
