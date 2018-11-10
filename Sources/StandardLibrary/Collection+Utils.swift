@@ -21,12 +21,40 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// MARK: - Subscripts
+
+extension Collection {
+
+  /// **Mechanica**
+  ///
+  /// Returns the element at the specified index or nil if not exists.
+  ///
+  /// Example:
+  ///
+  ///     let array = [1, 2, 3]
+  ///     array[100] -> crash
+  ///     array[safe: 100] -> nil
+  ///
+  /// - Parameter index: the index of the desired element.
+  public subscript(safe index: Index) -> Element? {
+    guard index >= startIndex && index < endIndex else {
+      return nil
+    }
+
+    return self[index]
+  }
+
+}
+
+// MARK: - Methods
+
 extension Collection {
 
   /// **Mechanica**
   ///
   /// - Parameter index: the index of the desired element.
   /// - Returns: The element at a given index or nil if not exists.
+  ///
   /// Example:
   ///
   ///     let array = [1, 2, 3]
@@ -34,25 +62,6 @@ extension Collection {
   ///     array.at(100) -> nil
   ///
   public func at(_ index: Index) -> Element? {
-    return (index < endIndex) ? self[index] : nil
+    return self[safe: index]
   }
-}
-
-extension Collection where Element: Equatable {
-
-  // MARK: - Equatable
-
-  /// **Mechanica**
-  ///
-  ///  Returns the last index where the specified value appears in the collection.
-  ///  After using lastIndex(of:) to find the last position of a particular element in a collection, you can use it to access the element by subscripting.
-  /// - Parameter element: Index of the last element found (if any).
-  public func lastIndex(of element: Element) -> Self.Index? {
-    for idx in indices.reversed() {
-      guard element == self[idx] else { continue }
-      return idx
-    }
-    return nil
-  }
-
 }

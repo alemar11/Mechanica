@@ -26,8 +26,7 @@ import XCTest
 
 extension CollectionUtilsTests {
   static var allTests = [
-    ("testAtIndex", testAtIndex),
-    ("testLastIndex", testLastIndex),
+    ("testAtIndex", testAtIndex)
   ]
 }
 
@@ -42,21 +41,6 @@ final class CollectionUtilsTests: XCTestCase {
     XCTAssertNil(array.at(5))
     XCTAssertNil(array.at(10))
     XCTAssertNil(array.at(100))
-  }
-
-  func testLastIndex() {
-    // Given
-    let array = [1, 1, 1, 2, 3, 4, 4, 5, 8]
-
-    // When, Then
-    let index1 = array.lastIndex(of: 1)
-    XCTAssertTrue(index1 == 2)
-    let index2 = array.lastIndex(of: 8)
-    XCTAssertTrue(index2 == 8)
-    let index3 = array.lastIndex(of: 4)
-    XCTAssertTrue(index3 == 6)
-    let index4 = array.lastIndex(of: 11)
-    XCTAssertTrue(index4 == nil)
   }
 
 }

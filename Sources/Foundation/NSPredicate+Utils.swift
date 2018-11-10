@@ -37,7 +37,7 @@ extension NSPredicate {
   ///
   /// An always `false` NSPredicate.
   public static let `false` = NSPredicate(value: false)
-  
+
 }
 
 // MARK: Methods

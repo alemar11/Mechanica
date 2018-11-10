@@ -110,6 +110,9 @@ final class SequenceUtilsTests: XCTestCase {
   }
 
   func testNone() {
+    let sequence = TestSequence(elements: [2, 2, 4, 7])
+    XCTAssertTrue(sequence.none(matching: {$0 == 1}))
+    XCTAssertFalse(sequence.none(matching: {$0 == 2}))
     XCTAssertFalse([2, 2, 4].none(matching: {$0 % 2 == 0}))
     XCTAssertTrue([1, 3, 5].none(matching: {$0 % 2 == 0}))
   }
