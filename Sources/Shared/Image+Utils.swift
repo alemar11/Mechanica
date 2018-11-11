@@ -147,13 +147,11 @@ extension Image {
   /// Downsample an image at given URL for display at smaller size.
   ///
   /// - Parameters:
-  ///   - imageURL: <#imageURL description#>
-  ///   - pointSize: <#pointSize description#>
-  ///   - scale: <#scale description#>
-  /// - Returns: <#return value description#>
-  /// - See: https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/CoreImaging/ci_performance/ci_performance.html#//apple_ref/doc/uid/TP30001185-CH10-SW1
-  /// - See: https://developer.apple.com/videos/play/wwdc2018/219/
-  /// - See: https://www.cocoanetics.com/2011/10/avoiding-image-decompression-sickness/
+  ///   - imageURL: TODO
+  ///   - pointSize: TODO
+  ///   - scale: TODO
+  /// - Returns: TODO
+  /// - SeeAlso: [Image and Graphics Best Practices](https://developer.apple.com/videos/play/wwdc2018/219/)
   class func downsampleImage(at imageURL: URL, to pointSize: CGSize, scale: CGFloat) -> Image? {
     let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
     guard let imageSource = CGImageSourceCreateWithURL(imageURL as CFURL, imageSourceOptions) else { return nil }
@@ -177,6 +175,8 @@ extension Image {
   // https://gist.github.com/steipete/1144242
   // http://www.tekramer.com/downloading-caching-and-decoding-images-asynchronously-with-alamofire-part-2-swift-4
   // http://www.lukeparham.com/blog/2018/3/14/decoding-jpegs-with-the-best
+  // https://www.cocoanetics.com/2011/10/avoiding-image-decompression-sickness/
+  // https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/CoreImaging/ci_performance/ci_performance.html#//apple_ref/doc/uid/TP30001185-CH10-SW1
 
   class func downsampleImage(data: Data, to pointSize: CGSize, scale: CGFloat) -> Image? {
     let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary

@@ -110,13 +110,24 @@ final class ImageUtilsTests: XCTestCase {
     XCTAssertTrue(image1.isInflated)
   }
 
-  func testDownsample() {
+  func testDownsample() throws {
     let url = Resource.robot.url
-    //let data = try! Data(contentsOf: url)
-    //let image = Image(data: data)
-    let image = Image.downsampleImage(at: url, to: CGSize(width: 30, height: 30), scale: 2.0)
-    //let view = NSImageView(image: image!)
-    print(image)
+    let data = try Data(contentsOf: url)
+    let image = Image(data: data)!
+    let imageSize = CGSize(width: 30, height: 30)
+    let downsampledImage = Image.downsampleImage(at: url, to: imageSize, scale: 2.0)
+
+    XCTAssertNotNil(downsampledImage)
+    XCTAssertNotNil(downsampledImage?.cgImage)
+
+    let size = image.cgImage!.height * image.cgImage!.bytesPerRow
+    let downsampledSize = downsampledImage!.cgImage!.height * downsampledImage!.cgImage!.bytesPerRow
+
+//    print(image.scale)
+//    print(downsampledImage!.scale)
+//    print(downsampledImage)
+//    XCTAssertTrue(size > downsampledSize)
+//    XCTAssertEqual(downsampledImage!.size, imageSize)
   }
 
 }
