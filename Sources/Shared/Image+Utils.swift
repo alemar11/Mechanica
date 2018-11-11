@@ -177,6 +177,7 @@ extension Image {
   // http://www.lukeparham.com/blog/2018/3/14/decoding-jpegs-with-the-best
   // https://www.cocoanetics.com/2011/10/avoiding-image-decompression-sickness/
   // https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/CoreImaging/ci_performance/ci_performance.html#//apple_ref/doc/uid/TP30001185-CH10-SW1
+  // https://developer.apple.com/videos/play/wwdc2014/419/
 
   class func downsampleImage(data: Data, to pointSize: CGSize, scale: CGFloat) -> Image? {
     let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
