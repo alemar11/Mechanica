@@ -45,5 +45,4 @@ final class DataUtilsTests: XCTestCase {
     XCTAssertEqual(data.hexEncodedString, "00017f80ff")
   }
 
-
 }
