@@ -111,24 +111,28 @@ final class ImageUtilsTests: XCTestCase {
   }
 
   #if os(iOS) || os(tvOS) || os(macOS)
-  func testDownsample() throws {
+  func testDownsampledImage() throws {
     let url = Resource.robot.url
     let data = try Data(contentsOf: url)
     let image = Image(data: data)!
     let imageSize = CGSize(width: 30, height: 30)
-    let downsampledImage = Image.downsampleImage(at: url, to: imageSize, scale: 2.0)
+    let downsampledImage = Image.downsampleImage(at: url, to: imageSize, scaleFactor: 2.0)
 
     XCTAssertNotNil(downsampledImage)
     XCTAssertNotNil(downsampledImage?.cgImage)
 
+    #if os(macOS)
+    // NSImage size method returns size information that is screen resolution dependent.
+    print(NSScreen.main?.backingScaleFactor ?? "scale unavailable")
+    let representation = NSBitmapImageRep(cgImage: downsampledImage!.cgImage!)
+    XCTAssertEqual(representation.size, imageSize * 2)
+    #else
+    XCTAssertEqual(downsampledImage!.size, imageSize * 2)
+    #endif
+
     let size = image.cgImage!.height * image.cgImage!.bytesPerRow
     let downsampledSize = downsampledImage!.cgImage!.height * downsampledImage!.cgImage!.bytesPerRow
-
-//    print(image.scale)
-//    print(downsampledImage!.scale)
-//    print(downsampledImage)
-//    XCTAssertTrue(size > downsampledSize)
-//    XCTAssertEqual(downsampledImage!.size, imageSize)
+    XCTAssertTrue(size > downsampledSize)
   }
   #endif
 

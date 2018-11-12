@@ -156,26 +156,11 @@ extension Image {
   ///   - scale: TODO
   /// - Returns: TODO
   /// - SeeAlso: [Image and Graphics Best Practices](https://developer.apple.com/videos/play/wwdc2018/219/)
-  class func downsampleImage(at imageURL: URL, to pointSize: CGSize, scale: CGFloat) -> Image? {
+  class func downsampleImage(at imageURL: URL, to pointSize: CGSize, scaleFactor: CGFloat) -> Image? {
     let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
     guard let imageSource = CGImageSourceCreateWithURL(imageURL as CFURL, imageSourceOptions) else { return nil }
 
-    let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scale
-    let downsampleOptions =
-      [kCGImageSourceCreateThumbnailFromImageAlways: true,
-       kCGImageSourceShouldCacheImmediately: true,
-       kCGImageSourceCreateThumbnailWithTransform: true,
-       kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels] as CFDictionary
-
-    guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else { return nil }
-    
-    #if canImport(UIKit)
-    return Image(cgImage: downsampledImage)
-    #elseif canImport(AppKit)
-    return Image(cgImage: downsampledImage, size: pointSize) //TODO
-    #else
-    return nil
-    #endif
+    return downsampledImage(imageSource: imageSource, to: pointSize, scaleFactor: scaleFactor)
   }
 
   // https://gist.github.com/steipete/1144242
@@ -185,17 +170,23 @@ extension Image {
   // https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/CoreImaging/ci_performance/ci_performance.html#//apple_ref/doc/uid/TP30001185-CH10-SW1
   // https://developer.apple.com/videos/play/wwdc2014/419/
 
-  class func downsampleImage(data: Data, to pointSize: CGSize, scale: CGFloat) -> Image? {
+  class func downsampleImage(data: Data, to pointSize: CGSize, scaleFactor: CGFloat) -> Image? {
     let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
     guard let imageSource = CGImageSourceCreateWithData(data as CFData, imageSourceOptions) else { return nil }
-    let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scale
+
+   return downsampledImage(imageSource: imageSource, to: pointSize, scaleFactor: scaleFactor)
+  }
+
+  private class func downsampledImage(imageSource: CGImageSource, to pointSize: CGSize, scaleFactor: CGFloat) -> Image? {
+    let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scaleFactor
     let downsampleOptions =
       [kCGImageSourceCreateThumbnailFromImageAlways: true,
        kCGImageSourceShouldCacheImmediately: true,
        kCGImageSourceCreateThumbnailWithTransform: true,
        kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels] as CFDictionary
+
     guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else { return nil }
-    
+
     #if canImport(UIKit)
     return Image(cgImage: downsampledImage)
     #elseif canImport(AppKit)
