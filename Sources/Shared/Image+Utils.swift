@@ -90,7 +90,7 @@ extension Image {
   /// **Mechanica**
   ///
   /// Convert the image to data.
-  public var data: Data? {
+  public var data: Data? { //TODO: remove this extension
     #if canImport(UIKit)
     return hasAlpha ? pngData() : jpegData(compressionQuality: 1.0)
     
@@ -104,6 +104,8 @@ extension Image {
   }
   
 }
+
+#if canImport(CoreGraphics)
 
 extension Image {
   
@@ -142,6 +144,8 @@ extension Image {
   
 }
 
+#if os(iOS) || os(tvOS) || os(macOS)
+
 extension Image {
   
   /// Downsample an image at given URL for display at smaller size.
@@ -155,12 +159,14 @@ extension Image {
   class func downsampleImage(at imageURL: URL, to pointSize: CGSize, scale: CGFloat) -> Image? {
     let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
     guard let imageSource = CGImageSourceCreateWithURL(imageURL as CFURL, imageSourceOptions) else { return nil }
+
     let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scale
     let downsampleOptions =
       [kCGImageSourceCreateThumbnailFromImageAlways: true,
        kCGImageSourceShouldCacheImmediately: true,
        kCGImageSourceCreateThumbnailWithTransform: true,
        kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels] as CFDictionary
+
     guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else { return nil }
     
     #if canImport(UIKit)
@@ -200,3 +206,7 @@ extension Image {
   }
   
 }
+
+#endif
+
+#endif
