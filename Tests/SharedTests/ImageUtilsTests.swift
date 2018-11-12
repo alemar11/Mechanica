@@ -110,6 +110,7 @@ final class ImageUtilsTests: XCTestCase {
     XCTAssertTrue(image1.isInflated)
   }
 
+  #if os(iOS) || os(tvOS) || os(macOS)
   func testDownsample() throws {
     let url = Resource.robot.url
     let data = try Data(contentsOf: url)
@@ -129,5 +130,6 @@ final class ImageUtilsTests: XCTestCase {
 //    XCTAssertTrue(size > downsampledSize)
 //    XCTAssertEqual(downsampledImage!.size, imageSize)
   }
+  #endif
 
 }
