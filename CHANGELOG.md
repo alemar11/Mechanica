@@ -8,6 +8,8 @@
 - Added more Color utils.
 - Added more SignedInteger utils.
 - Added more NSPredicate utils
+- Added more Image utils
+- More tests.
 
 ### 2.0.0 ⭐
 
