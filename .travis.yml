@@ -100,7 +100,7 @@ matrix:
       osx_image: xcode10.1
       language: objective-c
       env: 
-        - DESTINATION="OS=12.1,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios"
+        - DESTINATION="OS=12.1,name=iPhone Xs Max" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios"
 
     # iOS watchOS 3.2
     - os: osx
