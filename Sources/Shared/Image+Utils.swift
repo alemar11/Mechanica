@@ -66,14 +66,7 @@ extension Image {
     
     let alphaInfo = imageRef.alphaInfo
     #endif
-    
-    //    switch alphaInfo {
-    //    case .none, .noneSkipFirst, .noneSkipLast:
-    //      return false
-    //    default:
-    //      return true
-    //    }
-    
+
     return (
       alphaInfo == .first ||
         alphaInfo == .last ||
@@ -90,7 +83,8 @@ extension Image {
   /// **Mechanica**
   ///
   /// Convert the image to data.
-  public var data: Data? { //TODO: remove this extension
+  /// - Note: If the image has an alpha component, the PNG format will be used, otherwise the JPEG without compression.
+  public var data: Data? {
     #if canImport(UIKit)
     return hasAlpha ? pngData() : jpegData(compressionQuality: 1.0)
     
@@ -141,63 +135,62 @@ extension Image {
     isInflated = true
     _ = cgImage?.dataProvider?.data
   }
-  
-}
 
-#if os(iOS) || os(tvOS) || os(macOS)
+  #if os(iOS) || os(tvOS) || os(macOS)
 
-extension Image {
-  
-  /// Downsample an image at given URL for display at smaller size.
+  /// **Mechanica**
+  ///
+  /// Downsamples an image at given URL for display at smaller size.
   ///
   /// - Parameters:
-  ///   - imageURL: TODO
-  ///   - pointSize: TODO
-  ///   - scale: TODO
-  /// - Returns: TODO
+  ///   - imageURL: The image URL to read from.
+  ///   - pointSize: The size of the new image.
+  ///   - scale: The scale factor to apply
+  /// - Returns: A downsampled image.
   /// - SeeAlso: [Image and Graphics Best Practices](https://developer.apple.com/videos/play/wwdc2018/219/)
-  class func downsampleImage(at imageURL: URL, to pointSize: CGSize, scaleFactor: CGFloat) -> Image? {
+  public class func downsampledImage(at imageURL: URL, to pointSize: CGSize, scaleFactor: CGFloat) -> Image? {
     let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
     guard let imageSource = CGImageSourceCreateWithURL(imageURL as CFURL, imageSourceOptions) else { return nil }
 
     return downsampledImage(imageSource: imageSource, to: pointSize, scaleFactor: scaleFactor)
   }
 
-  // https://gist.github.com/steipete/1144242
-  // http://www.tekramer.com/downloading-caching-and-decoding-images-asynchronously-with-alamofire-part-2-swift-4
-  // http://www.lukeparham.com/blog/2018/3/14/decoding-jpegs-with-the-best
-  // https://www.cocoanetics.com/2011/10/avoiding-image-decompression-sickness/
-  // https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/CoreImaging/ci_performance/ci_performance.html#//apple_ref/doc/uid/TP30001185-CH10-SW1
-  // https://developer.apple.com/videos/play/wwdc2014/419/
-
-  class func downsampleImage(data: Data, to pointSize: CGSize, scaleFactor: CGFloat) -> Image? {
+  /// **Mechanica**
+  ///
+  /// Downsamples an image with a givend Data for display at smaller size.
+  ///
+  /// - Parameters:
+  ///   - imageData: The image data to read from.
+  ///   - pointSize: The size of the new image.
+  ///   - scale: The scale factor to apply
+  /// - Returns: A downsampled image.
+  /// - SeeAlso: [Image and Graphics Best Practices](https://developer.apple.com/videos/play/wwdc2018/219/)
+  public class func downsampledImage(with imageData: Data, to pointSize: CGSize, scaleFactor: CGFloat) -> Image? {
     let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
-    guard let imageSource = CGImageSourceCreateWithData(data as CFData, imageSourceOptions) else { return nil }
+    guard let imageSource = CGImageSourceCreateWithData(imageData as CFData, imageSourceOptions) else { return nil }
 
-   return downsampledImage(imageSource: imageSource, to: pointSize, scaleFactor: scaleFactor)
+    return downsampledImage(imageSource: imageSource, to: pointSize, scaleFactor: scaleFactor)
   }
 
   private class func downsampledImage(imageSource: CGImageSource, to pointSize: CGSize, scaleFactor: CGFloat) -> Image? {
     let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scaleFactor
-    let downsampleOptions =
-      [kCGImageSourceCreateThumbnailFromImageAlways: true,
-       kCGImageSourceShouldCacheImmediately: true,
-       kCGImageSourceCreateThumbnailWithTransform: true,
-       kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels] as CFDictionary
+    let downsampleOptions = [kCGImageSourceCreateThumbnailFromImageAlways: true,
+                             kCGImageSourceShouldCacheImmediately: true,
+                             kCGImageSourceCreateThumbnailWithTransform: true,
+                             kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels] as CFDictionary
 
     guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else { return nil }
 
     #if canImport(UIKit)
     return Image(cgImage: downsampledImage)
     #elseif canImport(AppKit)
-    return Image(cgImage: downsampledImage, size: pointSize) //TODO
+    return Image(cgImage: downsampledImage, size: pointSize)
     #else
     return nil
     #endif
   }
-  
-}
 
-#endif
+  #endif
+}
 
 #endif
