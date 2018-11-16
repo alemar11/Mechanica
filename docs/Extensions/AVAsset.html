@@ -79,6 +79,9 @@
                 <a href="../Extensions/Dictionary.html">Dictionary</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/DispatchQueue.html">DispatchQueue</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/FileManager.html">FileManager</a>
               </li>
               <li class="nav-group-task">
@@ -210,12 +213,6 @@
         <section>
           <section class="section">
             <h1>AVAsset</h1>
-              <div class="declaration">
-                <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">AVAsset</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCopying</span><span class="p">,</span> <span class="kt">AVAsynchronousKeyValueLoading</span></code></pre>
-
-                </div>
-              </div>
             
           </section>
           <section class="section task-group-section">
@@ -224,9 +221,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So7AVAssetC9MechanicaE9thumbnail8fromTimeSo7UIImageCSd_tKF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/thumbnail(fromTime:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So7AVAssetC9MechanicaE9thumbnail8fromTimeSo7UIImageCSd_tKF">thumbnail(fromTime:)</a>
+                    <a class="token" href="#/">thumbnail(fromTime:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -239,8 +236,8 @@
 <p>Generates a thumbnail image.</p>
 
 <p>Example:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="nf">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://link/to/video.mp4"</span><span class="p">)</span><span class="o">!</span>
-<span class="k">let</span> <span class="nv">asset</span> <span class="o">=</span> <span class="nf">AVAsset</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://link/to/video.mp4"</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">asset</span> <span class="o">=</span> <span class="kt">AVAsset</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">thumbnail</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="nf">thumbnail</span><span class="p">(</span><span class="nv">fromTime</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre>
 <div class="aside aside-throws">
@@ -255,37 +252,6 @@
 </div>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">thumbnail</span><span class="p">(</span><span class="n">fromTime</span> <span class="nv">time</span><span class="p">:</span> <span class="kt">Float64</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:9Mechanica5Imagea">Image</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>time</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Seconds into the video where the image should be generated.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>A thumbnail image.</p>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -294,7 +260,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-09-15)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-11-16)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -79,6 +79,9 @@
                 <a href="../Extensions/Dictionary.html">Dictionary</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/DispatchQueue.html">DispatchQueue</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/FileManager.html">FileManager</a>
               </li>
               <li class="nav-group-task">
@@ -238,12 +241,19 @@
 
 <p>Returns the hexadecimal string representation of <code>self</code> in the sRGB space.</p>
 
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="kt">Color</span><span class="o">.</span><span class="n">red</span><span class="o">.</span><span class="n">hexString</span> <span class="o">-&gt;</span><span class="s">"#FF0000"</span>
+<span class="kt">Color</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">hexString</span> <span class="o">-&gt;</span> <span class="s">"#000000"</span>
+<span class="kt">Color</span><span class="o">.</span><span class="n">gray</span><span class="o">.</span><span class="n">hexString</span> <span class="o">-&gt;</span> <span class="s">"#7F7F7F"</span>
+<span class="kt">Color</span><span class="o">.</span><span class="n">green</span><span class="o">.</span><span class="n">hexString</span> <span class="o">-&gt;</span> <span class="s">"#00FF00"</span>
+</code></pre>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">var</span> <span class="nv">hexString</span><span class="p">:</span> <span class="nf">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">var</span> <span class="nv">hexString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -282,13 +292,6 @@
               </ul>
             </div>
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/sRGBA"></a>
-                <a name="//apple_ref/swift/Section/sRGBA" class="dashAnchor"></a>
-                <a href="#/sRGBA">
-                  <h3 class="section-name">sRGBA</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -370,7 +373,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">var</span> <span class="nv">rgba</span><span class="p">:</span> <span class="nf">RGBA</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">var</span> <span class="nv">rgba</span><span class="p">:</span> <span class="kt"><a href="../Extensions/Color.html#/s:So7UIColorC9MechanicaE4RGBAa">RGBA</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -415,13 +418,6 @@ Although the new color might have different component values, it looks the same 
               </ul>
             </div>
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Initializers"></a>
-                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
-                <a href="#/Initializers">
-                  <h3 class="section-name">Initializers</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -441,8 +437,8 @@ Although the new color might have different component values, it looks the same 
 <p>Returns a sRGB color from a hexadecimal integer.</p>
 
 <p>Example:</p>
-<pre class="highlight swift"><code><span class="nf">Color</span><span class="p">(</span><span class="nv">hex</span><span class="p">:</span> <span class="mh">0xFF0000</span><span class="p">)</span>
-<span class="nf">Color</span><span class="p">(</span><span class="nv">hex</span><span class="p">:</span> <span class="mh">0xFF0000</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="kt">Color</span><span class="p">(</span><span class="nv">hex</span><span class="p">:</span> <span class="mh">0xFF0000</span><span class="p">)</span>
+<span class="kt">Color</span><span class="p">(</span><span class="nv">hex</span><span class="p">:</span> <span class="mh">0xFF0000</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span>
 </code></pre>
 
                       </div>
@@ -544,13 +540,6 @@ Although the new color might have different component values, it looks the same 
               </ul>
             </div>
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/HSBA"></a>
-                <a name="//apple_ref/swift/Section/HSBA" class="dashAnchor"></a>
-                <a href="#/HSBA">
-                  <h3 class="section-name">HSBA</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -603,7 +592,7 @@ Although the new color might have different component values, it looks the same 
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">var</span> <span class="nv">hsba</span><span class="p">:</span> <span class="nf">HSBA</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="k">var</span> <span class="nv">hsba</span><span class="p">:</span> <span class="kt"><a href="../Extensions/Color.html#/s:So7UIColorC9MechanicaE4HSBAa">HSBA</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -613,13 +602,6 @@ Although the new color might have different component values, it looks the same 
               </ul>
             </div>
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Editing"></a>
-                <a name="//apple_ref/swift/Section/Editing" class="dashAnchor"></a>
-                <a href="#/Editing">
-                  <h3 class="section-name">Editing</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -716,10 +698,259 @@ Although the new color might have different component values, it looks the same 
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC9MechanicaE12redComponent12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/redComponent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC9MechanicaE12redComponent12CoreGraphics7CGFloatVvp">redComponent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the receiver’s RGB red component.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method works only with objects representing colors in the <strong>calibratedRGB</strong> or <strong>deviceRGB</strong> color space.
+Sending it to other objects raises an exception.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">redComponent</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC9MechanicaE14greenComponent12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/greenComponent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC9MechanicaE14greenComponent12CoreGraphics7CGFloatVvp">greenComponent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the receiver’s RGB green component.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method works only with objects representing colors in the <strong>calibratedRGB</strong> or <strong>deviceRGB</strong> color space.
+Sending it to other objects raises an exception.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">greenComponent</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC9MechanicaE13blueComponent12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/blueComponent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC9MechanicaE13blueComponent12CoreGraphics7CGFloatVvp">blueComponent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the receiver’s RGB blue component.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method works only with objects representing colors in the <strong>calibratedRGB</strong> or <strong>deviceRGB</strong> color space.
+Sending it to other objects raises an exception.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">blueComponent</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC9MechanicaE14alphaComponent12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/alphaComponent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC9MechanicaE14alphaComponent12CoreGraphics7CGFloatVvp">alphaComponent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the receiver’s RGB alpha component.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method works only with objects representing colors in the <strong>calibratedRGB</strong> or <strong>deviceRGB</strong> color space.
+Sending it to other objects raises an exception.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">alphaComponent</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC9MechanicaE12hueComponent12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/hueComponent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC9MechanicaE12hueComponent12CoreGraphics7CGFloatVvp">hueComponent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the receiver’s RGB hue component.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method works only with objects representing colors in the <strong>calibratedRGB</strong> or <strong>deviceRGB</strong> color space.
+Sending it to other objects raises an exception.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">hueComponent</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC9MechanicaE19saturationComponent12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/saturationComponent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC9MechanicaE19saturationComponent12CoreGraphics7CGFloatVvp">saturationComponent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the receiver’s RGB saturation component.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method works only with objects representing colors in the <strong>calibratedRGB</strong> or <strong>deviceRGB</strong> color space.
+Sending it to other objects raises an exception.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">saturationComponent</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC9MechanicaE19brightnessComponent12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/brightnessComponent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC9MechanicaE19brightnessComponent12CoreGraphics7CGFloatVvp">brightnessComponent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns the receiver’s RGB brightness component.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This method works only with objects representing colors in the <strong>calibratedRGB</strong> or <strong>deviceRGB</strong> color space.
+Sending it to other objects raises an exception.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">brightnessComponent</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-09-15)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-11-16)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

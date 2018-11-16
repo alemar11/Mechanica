@@ -140,7 +140,7 @@ extension Image {
 
   /// **Mechanica**
   ///
-  /// Downsamples an image at given URL for display at smaller size.
+  /// Creates a `new` image downsampling an image at given URL for display at smaller size.
   ///
   /// - Parameters:
   ///   - imageURL: The image URL to read from.
@@ -157,7 +157,7 @@ extension Image {
 
   /// **Mechanica**
   ///
-  /// Downsamples an image with a givend Data for display at smaller size.
+  /// Creates a `new` image downsampling an image with a given data for display at smaller size.
   ///
   /// - Parameters:
   ///   - imageData: The image data to read from.
