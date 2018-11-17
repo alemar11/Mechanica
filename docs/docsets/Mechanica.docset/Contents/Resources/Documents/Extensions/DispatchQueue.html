@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>UserDefaults Extension Reference</title>
+    <title>DispatchQueue Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Extension/UserDefaults" class="dashAnchor"></a>
-    <a title="UserDefaults Extension Reference"></a>
+    <a name="//apple_ref/swift/Extension/DispatchQueue" class="dashAnchor"></a>
+    <a title="DispatchQueue Extension Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Mechanica Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">Mechanica Reference</a>
         <img id="carat" src="../img/carat.png" />
-        UserDefaults Extension Reference
+        DispatchQueue Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -212,10 +212,10 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>UserDefaults</h1>
+            <h1>DispatchQueue</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">UserDefaults</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">DispatchQueue</span> <span class="p">:</span> <span class="kt">DispatchObject</span></code></pre>
 
                 </div>
               </div>
@@ -227,9 +227,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So14NSUserDefaultsC9MechanicaE6hasKeyySbSSF"></a>
-                    <a name="//apple_ref/swift/Method/hasKey(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So14NSUserDefaultsC9MechanicaE6hasKeyySbSSF">hasKey(_:)</a>
+                    <a name="/s:So17OS_dispatch_queueC9MechanicaE11isMainQueueSbvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/isMainQueue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So17OS_dispatch_queueC9MechanicaE11isMainQueueSbvpZ">isMainQueue</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -239,26 +239,30 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns <code>true</code> if <code>key</code> exists.</p>
+<p>Returns a Boolean value indicating whether the current dispatch queue is the main queue.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">hasKey</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">isMainQueue</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So14NSUserDefaultsC9MechanicaE12optionalBool6forKeySbSgSS_tF"></a>
-                    <a name="//apple_ref/swift/Method/optionalBool(forKey:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So14NSUserDefaultsC9MechanicaE12optionalBool6forKeySbSgSS_tF">optionalBool(forKey:)</a>
+                    <a name="/s:So17OS_dispatch_queueC9MechanicaE9isCurrentySbABFZ"></a>
+                    <a name="//apple_ref/swift/Method/isCurrent(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So17OS_dispatch_queueC9MechanicaE9isCurrentySbABFZ">isCurrent(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -268,12 +272,14 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
+<p>Returns a Boolean value indicating whether the current dispatch queue is the specified queue.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">optionalBool</span><span class="p">(</span><span class="n">forKey</span> <span class="n">defaultName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">isCurrent</span><span class="p">(</span><span class="n">_</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -284,12 +290,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>defaultName</em>
+                                <em>queue</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>A key in the current user&rsquo;s defaults database.</p>
+                                  <p>The queue to compare against.</p>
                                 </div>
                               </td>
                             </tr>
@@ -298,193 +304,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The bool value associated with the specified key. If the specified key does not exist, this method returns nil.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So14NSUserDefaultsC9MechanicaE14optionalDouble6forKeySdSgSS_tF"></a>
-                    <a name="//apple_ref/swift/Method/optionalDouble(forKey:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So14NSUserDefaultsC9MechanicaE14optionalDouble6forKeySdSgSS_tF">optionalDouble(forKey:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">optionalDouble</span><span class="p">(</span><span class="n">forKey</span> <span class="n">defaultName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>defaultName</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A key in the current user&rsquo;s defaults database.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The double value associated with the specified key. If the specified key does not exist, this method returns nil.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So14NSUserDefaultsC9MechanicaE13optionalFloat6forKeySfSgSS_tF"></a>
-                    <a name="//apple_ref/swift/Method/optionalFloat(forKey:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So14NSUserDefaultsC9MechanicaE13optionalFloat6forKeySfSgSS_tF">optionalFloat(forKey:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">optionalFloat</span><span class="p">(</span><span class="n">forKey</span> <span class="n">defaultName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>defaultName</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A key in the current user&rsquo;s defaults database.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The floating-point value associated with the specified key. If the key does not exist, this method returns nil.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So14NSUserDefaultsC9MechanicaE15optionalInteger6forKeySiSgSS_tF"></a>
-                    <a name="//apple_ref/swift/Method/optionalInteger(forKey:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So14NSUserDefaultsC9MechanicaE15optionalInteger6forKeySiSgSS_tF">optionalInteger(forKey:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">optionalInteger</span><span class="p">(</span><span class="n">forKey</span> <span class="n">defaultName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>defaultName</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A key in the current user&rsquo;s defaults database.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The integer value associated with the specified key. If the specified key does not exist, this method returns nil.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:So14NSUserDefaultsC9MechanicaE9removeAllyyF"></a>
-                    <a name="//apple_ref/swift/Method/removeAll()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So14NSUserDefaultsC9MechanicaE9removeAllyyF">removeAll()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p><strong>Mechanica</strong></p>
-
-<p>Removes all keys and values from user defaults.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    This method only removes keys on the receiver <code>UserDefaults</code> object.
-    System-defined keys will still be present afterwards.
-    <code>resetStandardUserDefaults</code> simply resets the in-memory user defaults object.
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="nf">removeAll</span><span class="p">()</span></code></pre>
-
-                        </div>
+                        <p><code>true</code> if the current queue is the specified queue, otherwise <code>false</code>.</p>
                       </div>
                     </section>
                   </div>

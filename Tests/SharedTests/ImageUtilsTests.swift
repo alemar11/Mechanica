@@ -90,7 +90,6 @@ final class ImageUtilsTests: XCTestCase {
 
   func testInflate() {
     let url1 = Resource.glasses.url
-
     let image1: Image
 
     #if os(macOS)
@@ -109,5 +108,55 @@ final class ImageUtilsTests: XCTestCase {
     image1.inflate()
     XCTAssertTrue(image1.isInflated)
   }
+
+  #if os(iOS) || os(tvOS) || os(macOS)
+  func testDownsampledImageFromURL() throws {
+    let url = Resource.robot.url
+    let data = try Data(contentsOf: url)
+    let image = Image(data: data)!
+    let imageSize = CGSize(width: 30, height: 30)
+    let downsampledImage = Image.downsampledImage(at: url, to: imageSize, scaleFactor: 2.0)
+
+    XCTAssertNotNil(downsampledImage)
+    XCTAssertNotNil(downsampledImage?.cgImage)
+
+    #if os(macOS)
+    // NSImage size method returns size information that is screen resolution dependent.
+    print(NSScreen.main?.backingScaleFactor ?? "scale unavailable")
+    let representation = NSBitmapImageRep(cgImage: downsampledImage!.cgImage!)
+    XCTAssertEqual(representation.size, imageSize * 2)
+    #else
+    XCTAssertEqual(downsampledImage!.size, imageSize * 2)
+    #endif
+
+    let size = image.cgImage!.height * image.cgImage!.bytesPerRow
+    let downsampledSize = downsampledImage!.cgImage!.height * downsampledImage!.cgImage!.bytesPerRow
+    XCTAssertTrue(size > downsampledSize)
+  }
+
+  func testDownsampledImageWithData() throws {
+    let url = Resource.robot.url
+    let data = try Data(contentsOf: url)
+    let image = Image(data: data)!
+    let imageSize = CGSize(width: 30, height: 30)
+    let downsampledImage = Image.downsampledImage(with: data, to: imageSize, scaleFactor: 2.0)
+
+    XCTAssertNotNil(downsampledImage)
+    XCTAssertNotNil(downsampledImage?.cgImage)
+
+    #if os(macOS)
+    // NSImage size method returns size information that is screen resolution dependent.
+    print(NSScreen.main?.backingScaleFactor ?? "Scale Factor unavailable")
+    let representation = NSBitmapImageRep(cgImage: downsampledImage!.cgImage!)
+    XCTAssertEqual(representation.size, imageSize * 2)
+    #else
+    XCTAssertEqual(downsampledImage!.size, imageSize * 2)
+    #endif
+
+    let size = image.cgImage!.height * image.cgImage!.bytesPerRow
+    let downsampledSize = downsampledImage!.cgImage!.height * downsampledImage!.cgImage!.bytesPerRow
+    XCTAssertTrue(size > downsampledSize)
+  }
+  #endif
 
 }

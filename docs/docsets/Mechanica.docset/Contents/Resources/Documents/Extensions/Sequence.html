@@ -79,6 +79,9 @@
                 <a href="../Extensions/Dictionary.html">Dictionary</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/DispatchQueue.html">DispatchQueue</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/FileManager.html">FileManager</a>
               </li>
               <li class="nav-group-task">
@@ -216,7 +219,8 @@
 
                 </div>
               </div>
-            
+            <p>A Sequence can be either finite or infinite.</p>
+
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -224,9 +228,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ST9MechanicaE15hasSomeElements5whereS2b7ElementQzXE_tF"></a>
-                    <a name="//apple_ref/swift/Method/hasSomeElements(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ST9MechanicaE15hasSomeElements5whereS2b7ElementQzXE_tF">hasSomeElements(where:)</a>
+                    <a name="/s:ST9MechanicaE3all8matchingS2b7ElementQzKXE_tKF"></a>
+                    <a name="//apple_ref/swift/Method/all(matching:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ST9MechanicaE3all8matchingS2b7ElementQzKXE_tKF">all(matching:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -236,14 +240,205 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns true if there is at least one element <code>matching</code> the predicate.</p>
+<p>Checks if all the elements in collection satisfiy the given predicate.</p>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="nf">all</span><span class="p">(</span><span class="nv">matching</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kc">true</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="nf">all</span><span class="p">(</span><span class="nv">matching</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kc">false</span>
+</code></pre>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hasSomeElements</span><span class="p">(</span><span class="k">where</span> <span class="nv">predicate</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">all</span><span class="p">(</span><span class="n">matching</span> <span class="nv">predicate</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">rethrows</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>predicate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>condition to evaluate each element against.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true when all elements in the array match the specified condition.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ST9MechanicaE4none8matchingS2b7ElementQzKXE_tKF"></a>
+                    <a name="//apple_ref/swift/Method/none(matching:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ST9MechanicaE4none8matchingS2b7ElementQzKXE_tKF">none(matching:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Checks if no elements in collection satisfiy the given predicate.</p>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="nf">none</span><span class="p">(</span><span class="nv">matching</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kc">false</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="nf">none</span><span class="p">(</span><span class="nv">matching</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kc">true</span>
+</code></pre>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">none</span><span class="p">(</span><span class="n">matching</span> <span class="nv">predicate</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">rethrows</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>predicate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>condition to evaluate each element against.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true when no elements satisfy the specified condition.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ST9MechanicaE3any8matchingS2b7ElementQzKXE_tKF"></a>
+                    <a name="//apple_ref/swift/Method/any(matching:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ST9MechanicaE3any8matchingS2b7ElementQzKXE_tKF">any(matching:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Checks if any elements in collection satisfiy the given predicate.</p>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="nf">any</span><span class="p">(</span><span class="nv">matching</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kc">false</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="nf">any</span><span class="p">(</span><span class="nv">matching</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="kc">true</span>
+</code></pre>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">any</span><span class="p">(</span><span class="n">matching</span> <span class="nv">predicate</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">rethrows</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>predicate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>condition to evaluate each element against.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true when no elements satisfy the specified condition.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ST9MechanicaE6hasAny5whereS2b7ElementQzXE_tF"></a>
+                    <a name="//apple_ref/swift/Method/hasAny(where:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ST9MechanicaE6hasAny5whereS2b7ElementQzXE_tF">hasAny(where:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns true if there is at least one element satisfying the given predicate.</p>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hasAny</span><span class="p">(</span><span class="k">where</span> <span class="nv">predicate</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -272,9 +467,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ST9MechanicaE14hasAllElements5whereS2b7ElementQzXE_tF"></a>
-                    <a name="//apple_ref/swift/Method/hasAllElements(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ST9MechanicaE14hasAllElements5whereS2b7ElementQzXE_tF">hasAllElements(where:)</a>
+                    <a name="/s:ST9MechanicaE6hasAll5whereS2b7ElementQzXE_tF"></a>
+                    <a name="//apple_ref/swift/Method/hasAll(where:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ST9MechanicaE6hasAll5whereS2b7ElementQzXE_tF">hasAll(where:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -284,14 +479,19 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns true if all the elements <code>match</code> the predicate.</p>
+<p>Returns true if all the elements satisfy the predicate.</p>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hasAllElements</span><span class="p">(</span><span class="k">where</span> <span class="nv">predicate</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hasAll</span><span class="p">(</span><span class="k">where</span> <span class="nv">predicate</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -331,6 +531,11 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -370,9 +575,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ST9MechanicaE5count5whereSiSb7ElementQzXE_tF"></a>
+                    <a name="/s:ST9MechanicaE5count5whereSiSb7ElementQzKXE_tKF"></a>
                     <a name="//apple_ref/swift/Method/count(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ST9MechanicaE5count5whereSiSb7ElementQzXE_tF">count(where:)</a>
+                    <a class="token" href="#/s:ST9MechanicaE5count5whereSiSb7ElementQzKXE_tKF">count(where:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -382,14 +587,21 @@
                       <div class="abstract">
                         <p><strong>Mechanica</strong></p>
 
-<p>Returns the elements count matching a predicate.</p>
+<p>Returns the count of the elements satisfying the given predicate.</p>
+<pre class="highlight swift"><code><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="nf">count</span><span class="p">(</span><span class="nv">where</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">})</span> <span class="o">-&gt;</span> <span class="mi">3</span>
+</code></pre>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">count</span><span class="p">(</span><span class="k">where</span> <span class="nv">predicate</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">count</span><span class="p">(</span><span class="k">where</span> <span class="nv">predicate</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">rethrows</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -400,17 +612,21 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>where</em>
+                                <em>predicate</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element should be counted or not.</p>
+                                  <p>predicate to evaluate each element against.</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>number of times the condition evaluated to true.</p>
                       </div>
                     </section>
                   </div>
@@ -436,6 +652,11 @@
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">string</span> <span class="o">=</span> <span class="s">"Hello"</span>
 <span class="n">string</span><span class="o">.</span><span class="nf">split</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="s">"He"</span><span class="p">,</span> <span class="s">"ll"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">]</span>
 </code></pre>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -452,13 +673,6 @@
               </ul>
             </div>
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Hashable"></a>
-                <a name="//apple_ref/swift/Section/Hashable" class="dashAnchor"></a>
-                <a href="#/Hashable">
-                  <h3 class="section-name">Hashable</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -476,6 +690,16 @@
                         <p><strong>Mechanica</strong></p>
 
 <p>Returns true if the <code>Sequence</code> contains all the given elements.</p>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="nf">contains</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">true</span>
+<span class="p">[</span><span class="s">"h"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">,</span> <span class="s">"l"</span><span class="p">,</span> <span class="s">"l"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">]</span><span class="o">.</span><span class="nf">contains</span><span class="p">([</span><span class="s">"l"</span><span class="p">,</span> <span class="s">"o"</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">true</span>
+</code></pre>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -505,6 +729,11 @@
                         <p><strong>Mechanica</strong></p>
 
 <p>Returns a collection of tuples where it&rsquo;s indicated the frequencies of the elements in the sequence.</p>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -518,16 +747,45 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ST9MechanicaSH7ElementRpzrlE13hasDuplicatesSbyF"></a>
+                    <a name="//apple_ref/swift/Method/hasDuplicates()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ST9MechanicaSH7ElementRpzrlE13hasDuplicatesSbyF">hasDuplicates()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hasDuplicates</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns true if the <code>Sequence</code> contains duplicates</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/AnyObject"></a>
-                <a name="//apple_ref/swift/Section/AnyObject" class="dashAnchor"></a>
-                <a href="#/AnyObject">
-                  <h3 class="section-name">AnyObject</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -545,6 +803,11 @@
                         <p><strong>Mechanica</strong></p>
 
 <p>Returns true if the <code>Sequence</code> contains an element identical (referential equality) to an <code>object</code>.</p>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -560,10 +823,52 @@
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ST9MechanicaSj7ElementRpzrlE3sumACyF"></a>
+                    <a name="//apple_ref/swift/Method/sum()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ST9MechanicaSj7ElementRpzrlE3sumACyF">sum()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Sums of all elements in array.</p>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="nf">sum</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="mi">10</span>
+</code></pre>
+<div class="aside aside-attention">
+    <p class="aside-title">Attention</p>
+    the sequence must be finite.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sum</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Element</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-09-15)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-11-16)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

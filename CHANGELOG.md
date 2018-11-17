@@ -1,5 +1,16 @@
 # Changelog
 
+### 2.1.0
+
+- Added DispatchQueue utils.
+- Added more Sequence utils.
+- Added more Optional utils.
+- Added more Color utils.
+- Added more SignedInteger utils.
+- Added more NSPredicate utils
+- Added more Image utils
+- More tests.
+
 ### 2.0.0 ⭐
 
 - Mechanica is now completely migrated to **Swift 4.2**.

@@ -100,7 +100,7 @@ matrix:
       osx_image: xcode10.1
       language: objective-c
       env: 
-        - DESTINATION="OS=12.1,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios"
+        - DESTINATION="OS=12.1,name=iPhone Xs Max" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios"
 
     # iOS watchOS 3.2
     - os: osx
@@ -175,5 +175,8 @@ script:
       fi
     fi
 
-after_success:
-  - sleep 5      
+after_failure:
+  - cat ~/Library/Developer/Xcode/DerivedData/Mechanica-*/Logs/Test/*/*/*/Mechanica*/*/Session-Mechanica*.log
+
+#after_success:
+  #- sleep 5      

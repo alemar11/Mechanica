@@ -41,6 +41,13 @@ final class ColorUtilsTests: XCTestCase {
     XCTAssertTrue(Color.black.rgbaComponents! == (0, 0, 0, 255))
   }
 
+  func testHextString() {
+    XCTAssertEqual(Color.red.hexString, "#FF0000")
+    XCTAssertEqual(Color.black.hexString, "#000000")
+    XCTAssertEqual(Color.gray.hexString, "#7F7F7F")
+    XCTAssertEqual(Color.green.hexString, "#00FF00")
+  }
+
   func testHex() {
 
     do {
@@ -196,9 +203,9 @@ final class ColorUtilsTests: XCTestCase {
     XCTAssertNotNil(colorSpaceName)
 
     #if os(iOS) || os(tvOS) || os(watchOS)
-      XCTAssert(colorSpaceName! == CGColorSpace.extendedSRGB)
+    XCTAssert(colorSpaceName! == CGColorSpace.extendedSRGB)
     #else
-      XCTAssert(colorSpaceName! == CGColorSpace.sRGB)
+    XCTAssert(colorSpaceName! == CGColorSpace.sRGB)
     #endif
   }
 
@@ -299,6 +306,45 @@ final class ColorUtilsTests: XCTestCase {
     XCTAssertTrue(Color.blend(.red, percentage: 0, with: .yellow, percentage: 1.0) == Color.yellow)
     XCTAssertTrue(Color.blend(.red, percentage: 1.0, with: .yellow, percentage: 0) == Color.red)
   }
+
+  // MARK - UIKit Components
+
+  #if canImport(UIKit)
+
+  func testComponents() {
+    let blue = Color.blue
+    let green = Color.green
+    let red = Color.red
+    let black = Color.black
+    let white = Color.white
+
+    XCTAssertEqual(blue.redComponent, 0.0)
+    XCTAssertEqual(blue.greenComponent, 0.0)
+    XCTAssertEqual(blue.blueComponent, 1.0)
+    XCTAssertEqual(blue.alphaComponent, 1.0)
+
+    XCTAssertEqual(red.redComponent, 1.0)
+    XCTAssertEqual(red.greenComponent, 0.0)
+    XCTAssertEqual(red.blueComponent, 0.0)
+    XCTAssertEqual(red.alphaComponent, 1.0)
+
+    XCTAssertEqual(green.redComponent, 0.0)
+    XCTAssertEqual(green.greenComponent, 1.0)
+    XCTAssertEqual(green.blueComponent, 0.0)
+    XCTAssertEqual(green.alphaComponent, 1.0)
+
+    XCTAssertEqual(black.redComponent, 0.0)
+    XCTAssertEqual(black.greenComponent, 0.0)
+    XCTAssertEqual(black.blueComponent, 0.0)
+    XCTAssertEqual(black.alphaComponent, 1.0)
+
+    XCTAssertEqual(white.redComponent, 1.0)
+    XCTAssertEqual(white.greenComponent, 1.0)
+    XCTAssertEqual(white.blueComponent, 1.0)
+    XCTAssertEqual(white.alphaComponent, 1.0)
+  }
+
+  #endif
 
 }
 

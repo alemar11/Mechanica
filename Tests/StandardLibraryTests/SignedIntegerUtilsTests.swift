@@ -25,10 +25,20 @@ import XCTest
 @testable import Mechanica
 
 extension SignedIntegerTests {
-  static var allTests = [ ("testBinaryString", testBinaryString) ]
+  static var allTests = [
+    ("testPositiveOrNegativeValue", testPositiveOrNegativeValue),
+    ("testBinaryString", testBinaryString)
+  ]
 }
 
 final class SignedIntegerTests: XCTestCase {
+
+  func testPositiveOrNegativeValue() {
+    XCTAssertTrue(10.isPositive)
+    XCTAssertFalse(10.isNegative)
+    XCTAssertFalse((-10).isPositive)
+    XCTAssertTrue((-10).isNegative)
+  }
 
   // MARK: - BinaryConvertible
 

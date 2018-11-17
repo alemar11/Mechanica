@@ -92,3 +92,32 @@ extension Optional {
   }
 
 }
+
+extension Optional where Wrapped: Collection {
+
+  /// **Mechanica**
+  ///
+  /// Returns true if `self` is nil or empty.
+  var isNilOrEmpty: Bool {
+    return self?.isEmpty ?? true
+  }
+
+}
+
+extension Optional where Wrapped == String {
+
+  /// **Mechanica**
+  ///
+  /// Returns true if `self` is nil or empty.
+  var isNilOrEmpty: Bool {
+    return self?.isEmpty ?? true
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns true if `self` is nil or blank (a string that is either empty or contains only space/newline characters).
+  var isNilOrBlank: Bool {
+    return self?.isBlank ?? true
+  }
+
+}

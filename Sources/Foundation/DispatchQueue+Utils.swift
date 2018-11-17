@@ -21,22 +21,49 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// MARK: Properties
+#if canImport(Dispatch)
 
-extension SignedInteger {
+import Dispatch
 
-  /// **Mechanica**
-  ///
-  /// Determines if self is positive (equivalent to `self > 0`).
-  public var isPositive: Bool {
-    return self > 0
-  }
+// MARK: - Properties
+
+public extension DispatchQueue {
 
   /// **Mechanica**
   ///
-  /// Determines if self is negative (equivalent to `self < 0`).
-  public var isNegative: Bool {
-    return self < 0
+  /// Returns a Boolean value indicating whether the current dispatch queue is the main queue.
+  public static var isMainQueue: Bool {
+    enum Static {
+      static var key: DispatchSpecificKey<Void> = {
+        let key = DispatchSpecificKey<Void>()
+        DispatchQueue.main.setSpecific(key: key, value: ())
+        return key
+      }()
+    }
+    return DispatchQueue.getSpecific(key: Static.key) != nil
   }
 
 }
+
+// MARK: - Methods
+
+public extension DispatchQueue {
+
+  /// **Mechanica**
+  ///
+  /// Returns a Boolean value indicating whether the current dispatch queue is the specified queue.
+  ///
+  /// - Parameter queue: The queue to compare against.
+  /// - Returns: `true` if the current queue is the specified queue, otherwise `false`.
+  public static func isCurrent(_ queue: DispatchQueue) -> Bool {
+    let key = DispatchSpecificKey<Void>()
+
+    queue.setSpecific(key: key, value: ())
+    defer { queue.setSpecific(key: key, value: nil) }
+
+    return DispatchQueue.getSpecific(key: key) != nil
+  }
+
+}
+
+#endif

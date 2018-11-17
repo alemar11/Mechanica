@@ -1054,33 +1054,33 @@ final class StringFoundationUtilsTests: XCTestCase {
     }
 
     do {
-      let randomString = String.random(length: 1, charachters: "a")
+      let randomString = String.random(length: 1, characters: "a")
       XCTAssertEqual(randomString.length, 1)
       XCTAssertTrue(randomString.isAlphaNumeric)
       XCTAssertEqual(randomString, "a")
     }
 
     do {
-      let randomString = String.random(length: 3, charachters: "aaaaa")
+      let randomString = String.random(length: 3, characters: "aaaaa")
       XCTAssertEqual(randomString.length, 3)
       XCTAssertTrue(randomString.isAlphaNumeric)
       XCTAssertEqual(randomString, "aaa")
     }
 
     do {
-      let randomString = String.random(length: 1, charachters: "a0bc123")
+      let randomString = String.random(length: 1, characters: "a0bc123")
       XCTAssertEqual(randomString.length, 1)
       XCTAssertTrue(randomString.isAlphaNumeric)
       XCTAssertTrue("a0bc123".contains(randomString, caseSensitive: false))
     }
 
     do {
-      let randomString = String.random(length: 1000, charachters: "a0bc?123")
+      let randomString = String.random(length: 1000, characters: "a0bc?123")
       XCTAssertEqual(randomString.length, 1000)
     }
 
     do {
-      let randomString = String.random(length: 1000, charachters: "")
+      let randomString = String.random(length: 1000, characters: "")
       XCTAssertEqual(randomString.length, 0)
       XCTAssertEqual(randomString, "")
     }
@@ -1090,7 +1090,7 @@ final class StringFoundationUtilsTests: XCTestCase {
   func testRandomWithRangelength() {
     do {
       let range = UInt32(1)...UInt32(2)
-      let randomString = String.random(length: range, charachters: "a")
+      let randomString = String.random(length: range, characters: "a")
       XCTAssertTrue(randomString.length == 1 || randomString.length == 2)
       XCTAssertTrue(randomString.isAlphaNumeric)
       XCTAssertTrue(randomString == "a" || randomString == "aa")
@@ -1098,7 +1098,7 @@ final class StringFoundationUtilsTests: XCTestCase {
 
     do {
       let range = UInt32(1)...UInt32(1)
-      let randomString = String.random(length: range, charachters: "ab")
+      let randomString = String.random(length: range, characters: "ab")
       XCTAssertTrue(randomString.length == 1)
       XCTAssertTrue(randomString.isAlphaNumeric)
       XCTAssertTrue(randomString == "a" || randomString == "b")
@@ -1113,7 +1113,7 @@ final class StringFoundationUtilsTests: XCTestCase {
 
     do {
       let range = UInt32(1)...UInt32(100)
-      let randomString = String.random(length: range, charachters: "")
+      let randomString = String.random(length: range, characters: "")
       XCTAssertTrue(randomString.length == 0)
       XCTAssertTrue(randomString == "")
     }

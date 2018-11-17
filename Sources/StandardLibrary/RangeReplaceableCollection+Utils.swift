@@ -21,7 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-extension RangeReplaceableCollection where Self: MutableCollection {
+// MARK: - Methods
+
+extension RangeReplaceableCollection {
 
   /// **Mechanica**
   ///
@@ -86,6 +88,11 @@ extension RangeReplaceableCollection where Self: MutableCollection {
 
     return (copy, removed)
   }
+}
+
+// MARK: - Methods (MutableCollection)
+
+extension RangeReplaceableCollection where Self: MutableCollection {
 
   /// **Mechanica**
   ///
@@ -133,6 +140,8 @@ extension RangeReplaceableCollection where Self: MutableCollection {
 
 }
 
+// MARK: Methods (Equatable)
+
 extension RangeReplaceableCollection where Element: Equatable {
 
   /// **Mechanica**
@@ -147,6 +156,11 @@ extension RangeReplaceableCollection where Element: Equatable {
 
     return nil
   }
+}
+
+// MARK: - Methods (BidirectionalCollection)
+
+extension RangeReplaceableCollection where Self: BidirectionalCollection, Element: Equatable {
 
   /// **Mechanica**
   ///

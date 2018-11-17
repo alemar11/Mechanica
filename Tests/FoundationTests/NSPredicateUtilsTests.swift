@@ -25,10 +25,18 @@ import XCTest
 @testable import Mechanica
 
 extension NSPredicateUtilsTests {
-  static var allTests = [ ("testOperators", testOperators)]
+  static var allTests = [
+    ("testAlwaysTrueAndFalsePredicates", testAlwaysTrueAndFalsePredicates),
+    ("testOperators", testOperators)
+  ]
 }
 
 final class NSPredicateUtilsTests: XCTestCase {
+
+  func testAlwaysTrueAndFalsePredicates() {
+    XCTAssertEqual(NSPredicate.true.predicateFormat, "TRUEPREDICATE")
+    XCTAssertEqual(NSPredicate.false.predicateFormat, "FALSEPREDICATE")
+  }
 
   // TODO: - Not implemented on Linux:
   //    "NSPredicate.init(format:_:) is not yet implemented."

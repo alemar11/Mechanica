@@ -22,17 +22,17 @@
 // SOFTWARE.
 
 #if canImport(UIKit)
-  import UIKit
-  /// **Mechanica**
-  ///
-  /// Alias for UIColor.
-  public typealias Color = UIKit.UIColor
+import UIKit
+/// **Mechanica**
+///
+/// Alias for UIColor.
+public typealias Color = UIKit.UIColor
 #elseif canImport(AppKit)
-  import AppKit
-  /// **Mechanica**
-  ///
-  /// Alias for NSColor.
-  public typealias Color = AppKit.NSColor
+import AppKit
+/// **Mechanica**
+///
+/// Alias for NSColor.
+public typealias Color = AppKit.NSColor
 #endif
 
 extension Color {
@@ -40,6 +40,13 @@ extension Color {
   /// **Mechanica**
   ///
   /// Returns the hexadecimal string representation of `self` in the sRGB space.
+  ///
+  /// Example:
+  ///
+  ///     Color.red.hexString ->"#FF0000"
+  ///     Color.black.hexString -> "#000000"
+  ///     Color.gray.hexString -> "#7F7F7F"
+  ///     Color.green.hexString -> "#00FF00"
   public final var hexString: String? {
     guard let components = rgba else { return nil }
 
@@ -50,23 +57,21 @@ extension Color {
   ///
   /// Initializes and returns a **random** color object in the sRGB space.
   public class func random(randomAlpha: Bool = false) -> Self {
-    // TODO: use the new Swift 4.2 random API , ie Bool.random() ? 1 : 0
-    // drand48() generates a random number between 0 to 1
-
+    // drand48() generates a random number between 0.0 to 1.0
     let red = CGFloat(drand48()), green = CGFloat(drand48()), blue = CGFloat(drand48()), alpha = randomAlpha ? CGFloat(drand48()) : 1.0
 
     #if canImport(UIKit)
-      return self.init(red: red, green: green, blue: blue, alpha: alpha)
+    return self.init(red: red, green: green, blue: blue, alpha: alpha)
     #else
-      return self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
+    return self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
     #endif
   }
 
 }
 
-extension Color {
+// MARK: - sRGBA
 
-  // MARK: - sRGBA
+extension Color {
 
   /// **Mechanica**
   ///
@@ -92,9 +97,9 @@ extension Color {
     guard let color = compatibleSRGBColor else { return nil }
 
     #if canImport(UIKit)
-      guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else { return nil }
+    guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else { return nil }
     #elseif os(macOS)
-      color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+    color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
     #endif
 
     return (red, green, blue, alpha)
@@ -109,18 +114,18 @@ extension Color {
     let convertedColor: Color?
 
     #if canImport(UIKit)
-      guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) else { return nil }
-      if cgColor.colorSpace == colorSpace {
-        convertedColor = self
-      } else {
-        guard let compatibleSRGBColor = cgColor.converted(to: colorSpace, intent: .defaultIntent, options: nil) else { return nil }
-         convertedColor = Color(cgColor: compatibleSRGBColor)
-      }
+    guard let colorSpace = CGColorSpace(name: CGColorSpace.sRGB) else { return nil }
+    if cgColor.colorSpace == colorSpace {
+      convertedColor = self
+    } else {
+      guard let compatibleSRGBColor = cgColor.converted(to: colorSpace, intent: .defaultIntent, options: nil) else { return nil }
+      convertedColor = Color(cgColor: compatibleSRGBColor)
+    }
 
     #elseif os(macOS)
-      let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
-      let compatibleSRGBColor = rgbColorSpaces.contains(colorSpace) ? self : usingColorSpace(.sRGB)
-      convertedColor = compatibleSRGBColor
+    let rgbColorSpaces: [NSColorSpace] = [.sRGB, .deviceRGB, .genericRGB]
+    let compatibleSRGBColor = rgbColorSpaces.contains(colorSpace) ? self : usingColorSpace(.sRGB)
+    convertedColor = compatibleSRGBColor
 
     #endif
 
@@ -129,9 +134,9 @@ extension Color {
 
 }
 
-extension Color {
+// MARK: - Initializers
 
-  // MARK: - Initializers
+extension Color {
 
   /// **Mechanica**
   ///
@@ -151,10 +156,10 @@ extension Color {
     let blue = CGFloat(hex & 0x0000FF) / 255
 
     #if canImport(UIKit)
-      self.init(red: red, green: green, blue: blue, alpha: alpha)
+    self.init(red: red, green: green, blue: blue, alpha: alpha)
 
     #else
-      self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
+    self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
 
     #endif
   }
@@ -197,9 +202,9 @@ extension Color {
 
 }
 
-extension Color {
+// MARK: - HSBA
 
-  // MARK: - HSBA
+extension Color {
 
   /// **Mechanica**
   ///
@@ -213,10 +218,10 @@ extension Color {
     var hue: CGFloat = .nan, saturation: CGFloat = .nan, brightness: CGFloat = .nan, alpha: CGFloat = .nan
 
     #if canImport(UIKit)
-      guard self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) else { return nil }
+    guard self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) else { return nil }
 
     #else
-      self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+    self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
 
     #endif
 
@@ -225,9 +230,9 @@ extension Color {
 
 }
 
-extension Color {
+// MARK: - Editing
 
-  // MARK: - Editing
+extension Color {
 
   /// **Mechanica**
   ///
@@ -278,3 +283,89 @@ extension Color {
   }
 
 }
+
+// MARK: - UIKit Components
+
+#if canImport(UIKit)
+
+public extension Color {
+
+  /// **Mechanica**
+  ///
+  /// Returns the receiver’s RGB red component.
+  /// - Note: This method works only with objects representing colors in the **calibratedRGB** or **deviceRGB** color space.
+  /// Sending it to other objects raises an exception.
+  var redComponent: CGFloat {
+    var red: CGFloat = 0
+    getRed(&red, green: nil, blue: nil, alpha: nil)
+    return red
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns the receiver’s RGB green component.
+  /// - Note: This method works only with objects representing colors in the **calibratedRGB** or **deviceRGB** color space.
+  /// Sending it to other objects raises an exception.
+  var greenComponent: CGFloat {
+    var green: CGFloat = 0
+    getRed(nil, green: &green, blue: nil, alpha: nil)
+    return green
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns the receiver’s RGB blue component.
+  /// - Note: This method works only with objects representing colors in the **calibratedRGB** or **deviceRGB** color space.
+  /// Sending it to other objects raises an exception.
+  var blueComponent: CGFloat {
+    var blue: CGFloat = 0
+    getRed(nil, green: nil, blue: &blue, alpha: nil)
+    return blue
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns the receiver’s RGB alpha component.
+  /// - Note: This method works only with objects representing colors in the **calibratedRGB** or **deviceRGB** color space.
+  /// Sending it to other objects raises an exception.
+  var alphaComponent: CGFloat {
+    var alpha: CGFloat = 0
+    getRed(nil, green: nil, blue: nil, alpha: &alpha)
+    return alpha
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns the receiver’s RGB hue component.
+  /// - Note: This method works only with objects representing colors in the **calibratedRGB** or **deviceRGB** color space.
+  /// Sending it to other objects raises an exception.
+  var hueComponent: CGFloat {
+    var hue: CGFloat = 0
+    getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
+    return hue
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns the receiver’s RGB saturation component.
+  /// - Note: This method works only with objects representing colors in the **calibratedRGB** or **deviceRGB** color space.
+  /// Sending it to other objects raises an exception.
+  var saturationComponent: CGFloat {
+    var saturation: CGFloat = 0
+    getHue(nil, saturation: &saturation, brightness: nil, alpha: nil)
+    return saturation
+  }
+  /// **Mechanica**
+  ///
+  /// Returns the receiver’s RGB brightness component.
+  /// - Note: This method works only with objects representing colors in the **calibratedRGB** or **deviceRGB** color space.
+  /// Sending it to other objects raises an exception.
+  var brightnessComponent: CGFloat {
+    var brightness: CGFloat = 0
+    getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
+    return brightness
+  }
+
+}
+
+#endif
