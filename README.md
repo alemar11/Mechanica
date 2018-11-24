@@ -6,6 +6,8 @@
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Mechanica.svg)](https://cocoapods.org/pods/Mechanica)
 
+[![codebeat badge](https://codebeat.co/badges/5516a391-7085-43a9-a674-3be4b1ad1154)](https://codebeat.co/projects/github-com-tinrobots-mechanica-master)
+
 |Branch|TravisCI Build Status (all os)|CircleCI Build Status (linux)|Code Coverage
 |----|----|----|----|
 |Master|[![TravisCI](https://travis-ci.org/tinrobots/Mechanica.svg?branch=master)](https://travis-ci.org/tinrobots/Mechanica)|![CircleCI](https://circleci.com/gh/tinrobots/Mechanica/tree/master.svg?style=shield)|[![codecov](https://codecov.io/gh/tinrobots/Mechanica/branch/master/graph/badge.svg)](https://codecov.io/gh/tinrobots/Mechanica)
