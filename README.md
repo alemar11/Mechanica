@@ -11,7 +11,6 @@
 |Branch|TravisCI Build Status (all os)|CircleCI Build Status (linux)|Code Coverage
 |----|----|----|----|
 |Master|[![TravisCI](https://travis-ci.org/tinrobots/Mechanica.svg?branch=master)](https://travis-ci.org/tinrobots/Mechanica)|![CircleCI](https://circleci.com/gh/tinrobots/Mechanica/tree/master.svg?style=shield)|[![codecov](https://codecov.io/gh/tinrobots/Mechanica/branch/master/graph/badge.svg)](https://codecov.io/gh/tinrobots/Mechanica)
-|Develop|![TravisCI](https://travis-ci.org/tinrobots/Mechanica.svg?branch=develop)|![CircleCI](https://circleci.com/gh/tinrobots/Mechanica/tree/develop.svg?style=shield)|[![codecov](https://codecov.io/gh/tinrobots/Mechanica/branch/develop/graph/badge.svg)](https://codecov.io/gh/tinrobots/Mechanica)
 
 ## Mechanica
 [![GitHub release](https://img.shields.io/github/release/tinrobots/Mechanica.svg)](https://github.com/tinrobots/Mechanica/releases) 
