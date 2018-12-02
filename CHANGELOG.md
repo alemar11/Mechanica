@@ -1,5 +1,9 @@
 # Changelog
 
+### 2.2.0
+
+- Added UIImage decoded() method.
+
 ### 2.1.0
 
 - Added DispatchQueue utils.
