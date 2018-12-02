@@ -249,6 +249,8 @@ extension UIImage {
   ///
   /// Returns a new decoded version of the image.
   ///
+  /// It allows a bitmap representation to be decoded in the background rather than on the main thread.
+  ///
   /// - returns: A new decoded `UIImage` object.
   public func decoded() -> UIImage? {
     // Do not attempt to render animated images
