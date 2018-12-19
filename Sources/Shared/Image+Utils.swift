@@ -36,7 +36,7 @@ public typealias Image = AppKit.NSImage
 #endif
 
 extension Image {
-  
+
   /// **Mechanica**
   ///
   /// Initializes a `new` image object from a Base-64 encoded String.
@@ -49,21 +49,21 @@ extension Image {
       else {
         return nil
     }
-    
+
     self.init(data: data)
   }
-  
+
   /// **Mechanica**
   ///
   /// Checks if the image has alpha component.
   public var hasAlpha: Bool {
     #if canImport(UIKit)
     guard let alphaInfo = cgImage?.alphaInfo else { return false }
-    
+
     #elseif canImport(AppKit)
     var imageRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
     guard let imageRef = cgImage(forProposedRect: &imageRect, context: nil, hints: nil) else { return false }
-    
+
     let alphaInfo = imageRef.alphaInfo
     #endif
 
@@ -74,12 +74,12 @@ extension Image {
         alphaInfo == .premultipliedLast
     )
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns whether the image is opaque.
   public var isOpaque: Bool { return !hasAlpha }
-  
+
   /// **Mechanica**
   ///
   /// Convert the image to data.
@@ -87,26 +87,26 @@ extension Image {
   public var data: Data? {
     #if canImport(UIKit)
     return hasAlpha ? pngData() : jpegData(compressionQuality: 1.0)
-    
+
     #elseif canImport(AppKit)
     guard let data = tiffRepresentation else { return nil }
-    
+
     let imageFileType: NSBitmapImageRep.FileType = hasAlpha ? .png : .jpeg
-    
+
     return NSBitmapImageRep(data: data)? .representation(using: imageFileType, properties: [:])
     #endif
   }
-  
+
 }
 
 #if canImport(CoreGraphics)
 
 extension Image {
-  
+
   private struct AssociatedKey {
     static var isInflated = "\(associatedKeyPrefix).Shared.Image.isInflated"
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns whether the image is inflated.
@@ -121,7 +121,7 @@ extension Image {
       objc_setAssociatedObject(self, &AssociatedKey.isInflated, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
   }
-  
+
   /// **Mechanica**
   ///
   /// Inflates the underlying compressed image data to be backed by an uncompressed bitmap representation.
@@ -131,7 +131,7 @@ extension Image {
   /// - Note: Inflating compressed image formats (such as PNG or JPEG) in a background queue can significantly improve drawing performance on the main thread.
   public func inflate() {
     guard !isInflated else { return }
-    
+
     isInflated = true
     _ = cgImage?.dataProvider?.data
   }

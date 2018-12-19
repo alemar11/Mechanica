@@ -118,6 +118,8 @@
 		234A3B0E207BB63D001CBD51 /* URLRequestUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */; };
 		234A3B0F207BB63D001CBD51 /* URLRequestUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */; };
 		234A3B10207BB63D001CBD51 /* URLRequestUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */; };
+		234FEF6921CA6AAE00AD5417 /* UIStackView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234FEF6821CA6AAE00AD5417 /* UIStackView+Utils.swift */; };
+		234FEF6B21CA6AAE00AD5417 /* UIStackView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234FEF6821CA6AAE00AD5417 /* UIStackView+Utils.swift */; };
 		235DCB8B1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
 		235DCB8C1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
 		235DCB8D1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */; };
@@ -560,6 +562,7 @@
 		233D6229203378E5005E580C /* UIButtonUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonUtilsTests.swift; sourceTree = "<group>"; };
 		233D622C203384EA005E580C /* UIViewControllerUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerUtilsTests.swift; sourceTree = "<group>"; };
 		234A3B0D207BB63D001CBD51 /* URLRequestUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestUtilsTests.swift; sourceTree = "<group>"; };
+		234FEF6821CA6AAE00AD5417 /* UIStackView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Utils.swift"; sourceTree = "<group>"; };
 		235DCB8A1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "BinaryFloatingPoint+Utils.swift"; sourceTree = "<group>"; };
 		2363FED41F6E76EC0067257A /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		2364077E1FBB11E2003D2AF0 /* UIViewUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewUtilsTests.swift; sourceTree = "<group>"; };
@@ -975,6 +978,7 @@
 				230949061F9236FF00CA5895 /* UIDevice+Utils.swift */,
 				23D6A8511F9B72DF00AEC35A /* UIGestureRecognizer+Utils.swift */,
 				23D6A8561F9B73BD00AEC35A /* UIViewController+Utils.swift */,
+				234FEF6821CA6AAE00AD5417 /* UIStackView+Utils.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1557,6 +1561,7 @@
 				23690FE51F836F4A008C0B7E /* UILayoutPriority+Utils.swift in Sources */,
 				12B9563A1D880B5200F75DD5 /* FileManager+Utils.swift in Sources */,
 				D205B0601DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */,
+				234FEF6921CA6AAE00AD5417 /* UIStackView+Utils.swift in Sources */,
 				2302A2D21F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */,
 				23374AC320F8A63B00768B5D /* Date+Utils.swift in Sources */,
 				230949071F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */,
@@ -1667,6 +1672,7 @@
 				2302A2D41F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */,
 				230949091F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */,
 				23374AC520F8A63B00768B5D /* Date+Utils.swift in Sources */,
+				234FEF6B21CA6AAE00AD5417 /* UIStackView+Utils.swift in Sources */,
 				D2234A641E002D2600252551 /* String+FoundationUtils.swift in Sources */,
 				2307D06C1F8FA15500FDBA2A /* Locale.swift in Sources */,
 				23C7966E1FB44920006766FD /* FixedWidthInteger+Utils.swift in Sources */,
