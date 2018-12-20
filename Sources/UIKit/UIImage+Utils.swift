@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS) || watchOS
+#if canImport(UIKit) && (os(iOS) || os(tvOS) || watchOS)
 
 import UIKit
 
