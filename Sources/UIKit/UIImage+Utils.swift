@@ -251,8 +251,11 @@ extension UIImage {
   ///
   /// It allows a bitmap representation to be decoded in the background rather than on the main thread.
   ///
+  /// - Parameters:
+  ///   - scale: The scale factor to assume when interpreting the image data (defaults to `self.scale`); the decoded image will have its size divided by this scale parameter.
+  ///   - allowedMaxSize: The allowed max size, if the image is too large the decoding operation will return nil.
   /// - returns: A new decoded `UIImage` object.
-  public func decoded() -> UIImage? {
+  public func decoded(scale: CGFloat? = .none, allowedMaxSize: Int = 4096 * 4096) -> UIImage? {
     // Do not attempt to render animated images
     guard images == nil else { return nil }
 
@@ -264,7 +267,7 @@ extension UIImage {
     let bitsPerComponent = image.bitsPerComponent
 
     // Do not attempt to render if too large or has more than 8-bit components
-    guard width * height <= 4096 * 4096 && bitsPerComponent <= 8 else { return nil } //TODO: remove this condition?
+    guard width * height <= allowedMaxSize && bitsPerComponent <= 8 else { return nil } //TODO: remove this condition?
 
     let bytesPerRow: Int = 0
     let colorSpace = CGColorSpaceCreateDeviceRGB()
@@ -296,8 +299,8 @@ extension UIImage {
 
     // Make sure the inflation was successful
     guard let renderedImage = context?.makeImage() else { return nil }
-
-    return UIImage(cgImage: renderedImage, scale: self.scale, orientation: imageOrientation) // TODO: self.scale as parmater?
+    let imageScale = scale ?? self.scale
+    return UIImage(cgImage: renderedImage, scale: imageScale, orientation: imageOrientation)
   }
 
 }

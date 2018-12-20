@@ -34,6 +34,45 @@ let verticalRectangularSize = CGSize(width: 30, height: 60)
 
 final class UIImageUtilsTests: XCTestCase {
 
+  func testDecodedImageWithAlphaComponent() {
+    // Given
+    let data = Resource.glasses.data
+    let image = UIImage(data: data)!
+    let scale = CGFloat(3.0)
+    
+    // When, Then
+    let newDecodedImage = image.decoded(scale: scale)
+    guard let decodedImage = newDecodedImage else {
+      XCTAssertNotNil(newDecodedImage)
+      return
+    }
+    
+    XCTAssertEqual(image.size.width/decodedImage.size.width, scale)
+    XCTAssertEqual(image.size.height/decodedImage.size.height, scale)
+    
+    let failedDecodedImage = image.decoded(allowedMaxSize: 2)
+    XCTAssertNil(failedDecodedImage)
+  }
+  
+  func testDecodedImageWithoutAlphaComponent() {
+    // Given
+    let data = Resource.glassesWithoutAlpha.data
+    let image = UIImage(data: data)!
+    
+    // When, Then
+    let newDecodedImage = image.decoded()
+    guard let decodedImage = newDecodedImage else {
+      XCTAssertNotNil(newDecodedImage)
+      return
+    }
+    
+    XCTAssertEqual(image.size.width, decodedImage.size.width)
+    XCTAssertEqual(image.size.height, decodedImage.size.height)
+    
+    let failedDecodedImage = image.decoded(allowedMaxSize: 2)
+    XCTAssertNil(failedDecodedImage)
+  }
+  
   func testInitWithColorAndSize() {
     let scale = UIScreen.main.scale
 
