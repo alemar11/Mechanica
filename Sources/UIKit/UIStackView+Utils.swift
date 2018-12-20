@@ -27,6 +27,8 @@ import UIKit
 
 public extension UIStackView {
 
+  /// **Mechanica**
+  ///
   /// Adds a background color.
   ///
   /// - Parameters:
@@ -37,6 +39,8 @@ public extension UIStackView {
     return addUnarrangedView(color: color, cornerRadius: 0, at: 0)
   }
 
+  /// **Mechanica**
+  ///
   /// Adds a foreground color.
   ///
   /// - Parameters:
@@ -48,6 +52,8 @@ public extension UIStackView {
     return addUnarrangedView(color: color, cornerRadius: 0, at: index)
   }
 
+  /// **Mechanica**
+  ///
   /// Adds a `new` *unarranged* subview.
   ///
   /// - Parameters:

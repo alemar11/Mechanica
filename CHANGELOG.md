@@ -4,6 +4,7 @@
 
 - Added more UIImage utils.
 - Added UIStackView utils.
+- Added UIEdgeInsets utils.
 
 ### 2.1.0
 

@@ -298,7 +298,10 @@ extension UIImage {
     context?.draw(image, in: CGRect(x: 0.0, y: 0.0, width: CGFloat(width), height: CGFloat(height)))
 
     // Make sure the inflation was successful
-    guard let renderedImage = context?.makeImage() else { return nil }
+    guard let renderedImage = context?.makeImage() else {
+      return nil
+    }
+
     let imageScale = scale ?? self.scale
     return UIImage(cgImage: renderedImage, scale: imageScale, orientation: imageOrientation)
   }
