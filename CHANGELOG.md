@@ -1,8 +1,8 @@
 # Changelog
 
-### 2.2.0
+### 2.2.0 (Work in Progress)
 
-- Added UIImage decoded() method.
+- Added more UIImage utils.
 - Added UIStackView utils.
 
 ### 2.1.0
