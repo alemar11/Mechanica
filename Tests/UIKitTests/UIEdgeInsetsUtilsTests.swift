@@ -30,7 +30,7 @@ import UIKit
 final class UIEdgeInsetsUtilsTests: XCTestCase {
 
   func testHorizontal() {
-    let inset = UIEdgeInsets(top: 50.0, left: 5.0, bottom: 5.0, right: 10.0)
+    let inset = UIEdgeInsets(top: 70.0, left: 15.0, bottom: 5.0, right: 10.0)
     XCTAssertEqual(inset.horizontal, 25.0)
   }
 
