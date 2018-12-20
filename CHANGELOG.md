@@ -3,6 +3,7 @@
 ### 2.2.0
 
 - Added UIImage decoded() method.
+- Added UIStackView utils.
 
 ### 2.1.0
 
