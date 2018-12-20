@@ -85,7 +85,7 @@ extension Sequence {
   /// - Returns: the last element satisfying the given predicate. (optional)
   /// - Attention: the sequence must be finite.
   func last(where predicate: (Element) throws -> Bool) rethrows -> Element? {
-    var result: Element? = nil
+    var result: Element?
     for element in self {
       if try predicate(element) {
         result = element

@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS) || watchOS
+#if canImport(UIKit) && (os(iOS) || os(tvOS) || watchOS)
 
 import UIKit
 
@@ -243,6 +243,67 @@ extension UIImage {
     UIGraphicsEndImageContext()
 
     return roundedImage
+  }
+
+  /// **Mechanica**
+  ///
+  /// Returns a new decoded version of the image.
+  ///
+  /// It allows a bitmap representation to be decoded in the background rather than on the main thread.
+  ///
+  /// - Parameters:
+  ///   - scale: The scale factor to assume when interpreting the image data (defaults to `self.scale`); the decoded image will have its size divided by this scale parameter.
+  ///   - allowedMaxSize: The allowed max size, if the image is too large the decoding operation will return nil.
+  /// - returns: A new decoded `UIImage` object.
+  public func decoded(scale: CGFloat? = .none, allowedMaxSize: Int = 4096 * 4096) -> UIImage? {
+    // Do not attempt to render animated images
+    guard images == nil else { return nil }
+
+    // Do not attempt to render if not backed by a CGImage
+    guard let image = cgImage?.copy() else { return nil }
+
+    let width = image.width
+    let height = image.height
+    let bitsPerComponent = image.bitsPerComponent
+
+    // Do not attempt to render if too large or has more than 8-bit components
+    guard width * height <= allowedMaxSize && bitsPerComponent <= 8 else { return nil } //TODO: remove this condition?
+
+    let bytesPerRow: Int = 0
+    let colorSpace = CGColorSpaceCreateDeviceRGB()
+    var bitmapInfo = image.bitmapInfo
+
+    // Fix alpha channel issues if necessary
+    let alpha = (bitmapInfo.rawValue & CGBitmapInfo.alphaInfoMask.rawValue)
+
+    if alpha == CGImageAlphaInfo.none.rawValue {
+      bitmapInfo.remove(.alphaInfoMask)
+      bitmapInfo = CGBitmapInfo(rawValue: bitmapInfo.rawValue | CGImageAlphaInfo.noneSkipFirst.rawValue)
+    } else if !(alpha == CGImageAlphaInfo.noneSkipFirst.rawValue) || !(alpha == CGImageAlphaInfo.noneSkipLast.rawValue) {
+      bitmapInfo.remove(.alphaInfoMask)
+      bitmapInfo = CGBitmapInfo(rawValue: bitmapInfo.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
+    }
+
+    // Render the image
+    let context = CGContext(
+      data: nil,
+      width: width,
+      height: height,
+      bitsPerComponent: bitsPerComponent,
+      bytesPerRow: bytesPerRow,
+      space: colorSpace,
+      bitmapInfo: bitmapInfo.rawValue
+    )
+
+    context?.draw(image, in: CGRect(x: 0.0, y: 0.0, width: CGFloat(width), height: CGFloat(height)))
+
+    // Make sure the inflation was successful
+    guard let renderedImage = context?.makeImage() else {
+      return nil
+    }
+
+    let imageScale = scale ?? self.scale
+    return UIImage(cgImage: renderedImage, scale: imageScale, orientation: imageOrientation)
   }
 
 }

@@ -34,6 +34,45 @@ let verticalRectangularSize = CGSize(width: 30, height: 60)
 
 final class UIImageUtilsTests: XCTestCase {
 
+  func testDecodedImageWithAlphaComponent() {
+    // Given
+    let data = Resource.glasses.data
+    let image = UIImage(data: data)!
+    let scale = CGFloat(3.0)
+
+    // When, Then
+    let newDecodedImage = image.decoded(scale: scale)
+    guard let decodedImage = newDecodedImage else {
+      XCTAssertNotNil(newDecodedImage)
+      return
+    }
+
+    XCTAssertEqual(image.size.width/decodedImage.size.width, scale)
+    XCTAssertEqual(image.size.height/decodedImage.size.height, scale)
+
+    let failedDecodedImage = image.decoded(allowedMaxSize: 2)
+    XCTAssertNil(failedDecodedImage)
+  }
+
+  func testDecodedImageWithoutAlphaComponent() {
+    // Given
+    let data = Resource.glassesWithoutAlpha.data
+    let image = UIImage(data: data)!
+
+    // When, Then
+    let newDecodedImage = image.decoded()
+    guard let decodedImage = newDecodedImage else {
+      XCTAssertNotNil(newDecodedImage)
+      return
+    }
+
+    XCTAssertEqual(image.size.width, decodedImage.size.width)
+    XCTAssertEqual(image.size.height, decodedImage.size.height)
+
+    let failedDecodedImage = image.decoded(allowedMaxSize: 2)
+    XCTAssertNil(failedDecodedImage)
+  }
+
   func testInitWithColorAndSize() {
     let scale = UIScreen.main.scale
 
@@ -212,8 +251,8 @@ extension UIImage {
       return false
     }
 
-    let image1 = imageWithPNGRepresentation().renderedImage()
-    let image2 = image.imageWithPNGRepresentation().renderedImage()
+    let image1 = imageWithPNGRepresentation().decoded()
+    let image2 = image.imageWithPNGRepresentation().decoded()
 
     guard let rendered1 = image1, let rendered2 = image2 else {
       return false
@@ -243,54 +282,6 @@ extension UIImage {
     }
 
     return true
-  }
-
-  public func renderedImage() -> UIImage? {
-    // Do not attempt to render animated images
-    guard images == nil else { return nil }
-
-    // Do not attempt to render if not backed by a CGImage
-    guard let image = cgImage?.copy() else { return nil }
-
-    let width = image.width
-    let height = image.height
-    let bitsPerComponent = image.bitsPerComponent
-
-    // Do not attempt to render if too large or has more than 8-bit components
-    guard width * height <= 4096 * 4096 && bitsPerComponent <= 8 else { return nil }
-
-    let bytesPerRow: Int = 0
-    let colorSpace = CGColorSpaceCreateDeviceRGB()
-    var bitmapInfo = image.bitmapInfo
-
-    // Fix alpha channel issues if necessary
-    let alpha = (bitmapInfo.rawValue & CGBitmapInfo.alphaInfoMask.rawValue)
-
-    if alpha == CGImageAlphaInfo.none.rawValue {
-      bitmapInfo.remove(.alphaInfoMask)
-      bitmapInfo = CGBitmapInfo(rawValue: bitmapInfo.rawValue | CGImageAlphaInfo.noneSkipFirst.rawValue)
-    } else if !(alpha == CGImageAlphaInfo.noneSkipFirst.rawValue) || !(alpha == CGImageAlphaInfo.noneSkipLast.rawValue) {
-      bitmapInfo.remove(.alphaInfoMask)
-      bitmapInfo = CGBitmapInfo(rawValue: bitmapInfo.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
-    }
-
-    // Render the image
-    let context = CGContext(
-      data: nil,
-      width: width,
-      height: height,
-      bitsPerComponent: bitsPerComponent,
-      bytesPerRow: bytesPerRow,
-      space: colorSpace,
-      bitmapInfo: bitmapInfo.rawValue
-    )
-
-    context?.draw(image, in: CGRect(x: 0.0, y: 0.0, width: CGFloat(width), height: CGFloat(height)))
-
-    // Make sure the inflation was successful
-    guard let renderedImage = context?.makeImage() else { return nil }
-
-    return UIImage(cgImage: renderedImage, scale: self.scale, orientation: imageOrientation)
   }
 
   /**

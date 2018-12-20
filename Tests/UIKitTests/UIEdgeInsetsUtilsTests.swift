@@ -21,40 +21,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if canImport(UIKit) && (os(iOS) || os(tvOS))
+#if canImport(UIKit)
 
+import XCTest
 import UIKit
+@testable import Mechanica
 
-extension UIDevice {
+final class UIEdgeInsetsUtilsTests: XCTestCase {
 
-  // MARK: - Device Interface Type
-
-  /// **Mechanica**
-  ///
-  /// Returns `true` if the interface is designed for iPhone or iPod.
-  public var hasPhoneInterface: Bool {
-    return userInterfaceIdiom == .phone
+  func testHorizontal() {
+    let inset = UIEdgeInsets(top: 70.0, left: 15.0, bottom: 5.0, right: 10.0)
+    XCTAssertEqual(inset.horizontal, 25.0)
   }
 
-  /// **Mechanica**
-  ///
-  /// Returns `true` if the interface is designed for iPad.
-  public var hasPadInterface: Bool {
-    return userInterfaceIdiom == .pad
+  func testVertical() {
+    let inset = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 5.0, right: 10.0)
+    XCTAssertEqual(inset.vertical, 25.0)
   }
 
-  /// **Mechanica**
-  ///
-  /// Returns `true` if the interface is designed for Apple TV.
-  public var hasTVInterface: Bool {
-    return userInterfaceIdiom == .tv
+  func testInitInset() {
+    let inset = UIEdgeInsets(inset: 15.5)
+    XCTAssertEqual(inset.top, 15.5)
+    XCTAssertEqual(inset.bottom, 15.5)
+    XCTAssertEqual(inset.right, 15.5)
+    XCTAssertEqual(inset.left, 15.5)
   }
 
-  /// **Mechanica**
-  ///
-  /// Returns `true` if the interface is designed for Apple CarPlay.
-  public var hasCarPlayInterface: Bool {
-    return userInterfaceIdiom == .carPlay
+  func testInitVerticalHorizontal() {
+    let inset = UIEdgeInsets(horizontal: 20.0, vertical: 20.0)
+    XCTAssertEqual(inset.top, 10.0)
+    XCTAssertEqual(inset.bottom, 10.0)
+    XCTAssertEqual(inset.right, 10.0)
+    XCTAssertEqual(inset.left, 10.0)
   }
 
 }

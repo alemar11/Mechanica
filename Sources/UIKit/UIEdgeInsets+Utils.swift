@@ -21,40 +21,49 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if canImport(UIKit) && (os(iOS) || os(tvOS))
+#if canImport(UIKit)
 
 import UIKit
 
-extension UIDevice {
+// MARK: - Properties
 
-  // MARK: - Device Interface Type
+extension UIEdgeInsets {
 
   /// **Mechanica**
   ///
-  /// Returns `true` if the interface is designed for iPhone or iPod.
-  public var hasPhoneInterface: Bool {
-    return userInterfaceIdiom == .phone
+  /// Returns the vertical insets (composed by top + bottom).
+  public var vertical: CGFloat {
+    return top + bottom
   }
 
   /// **Mechanica**
   ///
-  /// Returns `true` if the interface is designed for iPad.
-  public var hasPadInterface: Bool {
-    return userInterfaceIdiom == .pad
+  /// Returns the horizontal insets (composed by  left + right).
+  public var horizontal: CGFloat {
+    return left + right
+  }
+
+}
+
+// MARK: - Methods
+
+extension UIEdgeInsets {
+
+  /// **Mechanica**
+  ///
+  /// Creates an `UIEdgeInsets` with the same inset value applied to all (top, bottom, right, left)
+  public init(inset: CGFloat) {
+    self.init(top: inset, left: inset, bottom: inset, right: inset)
   }
 
   /// **Mechanica**
   ///
-  /// Returns `true` if the interface is designed for Apple TV.
-  public var hasTVInterface: Bool {
-    return userInterfaceIdiom == .tv
-  }
-
-  /// **Mechanica**
+  /// Creates an `UIEdgeInsets` with the horizontal value equally divided and applied to right and left and the vertical value equally divided and applied to top and bottom.
   ///
-  /// Returns `true` if the interface is designed for Apple CarPlay.
-  public var hasCarPlayInterface: Bool {
-    return userInterfaceIdiom == .carPlay
+  /// - Parameter horizontal: Inset to be applied to right and left.
+  /// - Parameter vertical: Inset to be applied to top and bottom.
+  public init(horizontal: CGFloat, vertical: CGFloat) {
+    self.init(top: vertical / 2, left: horizontal / 2, bottom: vertical / 2, right: horizontal / 2)
   }
 
 }

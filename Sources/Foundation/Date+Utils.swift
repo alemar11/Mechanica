@@ -46,7 +46,7 @@ public extension Date {
   ///
   /// Example:
   ///
-  ///     Date().unixTimestamp -> 1484233862.826291 //TODO
+  ///     Date().unixTimestamp -> 1484233862.826291
   ///
   public var unixTimestamp: Double {
     return timeIntervalSince1970
