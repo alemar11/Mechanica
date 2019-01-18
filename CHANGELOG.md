@@ -2,6 +2,7 @@
 
 ### 2.2.0 (Work in Progress)
 
+- Added more Sequence utils.
 - Added more UIImage utils.
 - Added UIStackView utils.
 - Added UIEdgeInsets utils.

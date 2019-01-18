@@ -172,6 +172,17 @@ extension Sequence {
     return result
   }
 
+  /// **Mechanica**
+  ///
+  /// Returns a sequence that contains no duplicates according to the generic hash and equality comparisons on the keys reuteruned by the given key generating block.
+  /// If an element occurs multiple times, the later occurrences are discarded
+  ///
+  /// - Parameter keyGenerator: The key generating block.
+  public func distinct<Key: Hashable>(by keyGenerator: (Element) -> Key) -> [Element] {
+    var seen =  [Key: Bool]()
+    return filter { seen.updateValue(true, forKey: keyGenerator($0)) == nil }
+  }
+
 }
 
 // MARK: - Equatable

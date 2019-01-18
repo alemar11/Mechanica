@@ -41,7 +41,8 @@ extension SequenceUtilsTests {
     ("testSplit", testSplit),
     ("testUniqueElements", testUniqueElements),
     ("hasDuplicates", testHasDuplicates),
-    ("testSum", testSum)
+    ("testSum", testSum),
+    ("testDistinctBy", testDistinctBy)
   ]
 }
 
@@ -396,6 +397,19 @@ final class SequenceUtilsTests: XCTestCase {
   func testSum() {
     XCTAssertEqual([1, 2, 3, 4].sum(), 10)
     XCTAssertEqual([1.1, 2.2, 3, 4].sum(), 10.3)
+  }
+
+  func testDistinctBy() {
+    struct Value: Equatable {
+      let id: Int
+    }
+
+    let values: [Value] = [1, 2, 3, 4, 5, 1, 1, 1, 2, 10].map { Value(id: $0) }
+    let distinctValues = values.distinct { $0.id }
+    XCTAssertEqual(distinctValues.count, 6)
+
+    let expectedValues: [Value] = [1, 2, 3, 4, 5, 10].map { Value(id: $0) }
+    XCTAssertTrue(distinctValues == expectedValues)
   }
 
 }
