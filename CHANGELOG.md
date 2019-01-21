@@ -4,6 +4,7 @@
 
 - Added more Sequence utils.
 - Added more UIImage utils.
+- Added more Collection utils.
 - Added UIStackView utils.
 - Added UIEdgeInsets utils.
 

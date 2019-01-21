@@ -26,12 +26,13 @@ import XCTest
 
 extension CollectionUtilsTests {
   static var allTests = [
-    ("testAtIndex", testAtIndex)
+    ("testAtIndex", testAtIndex),
+    ("testIndices", testIndices)
   ]
 }
 
 final class CollectionUtilsTests: XCTestCase {
-
+  
   func testAtIndex() {
     let array: [Any] = [1, 2, "3", "4", 0]
     XCTAssertEqual(array.at(0)! as! Int, 1)
@@ -42,7 +43,21 @@ final class CollectionUtilsTests: XCTestCase {
     XCTAssertNil(array.at(10))
     XCTAssertNil(array.at(100))
   }
-
+  
+  func testIndices() {
+    do {
+      let phrase = "tin robots"
+      XCTAssertEqual(phrase.indices(of: "t"), [phrase.startIndex, phrase.index(phrase.startIndex, offsetBy: 8)])
+      XCTAssertTrue(phrase.indices(of: "T").isEmpty)
+    }
+    
+    do {
+      let list = [1, 2, 1, 2, 3, 4, 5, 1]
+      XCTAssertEqual(list.indices(of: 1), [0, 2, 7])
+      XCTAssertTrue(list.indices(of: 0).isEmpty)
+    }
+  }
+  
 }
 
 

@@ -64,4 +64,33 @@ extension Collection {
   public func at(_ index: Index) -> Element? {
     return self[safe: index]
   }
+
+}
+
+// MARK: - Equatable
+
+extension Collection where Element: Equatable {
+
+  /// **Mechanica**
+  ///
+  /// Returns all the indices of a specified item.
+  ///
+  /// Example:
+  ///
+  ///      [1, 2, 1, 2, 3, 4, 5, 1].indices(of: 1) -> [0, 2, 7])
+  ///
+  /// - Parameter item: item to verify.
+  /// - Returns: all the indices of the given item.
+  public func indices(of item: Element) -> [Index] {
+    var indices = [Index]()
+    var index = startIndex
+    while index < endIndex {
+      if self[index] == item {
+        indices.append(index)
+      }
+      formIndex(after: &index)
+    }
+    return indices
+  }
+
 }
