@@ -405,7 +405,7 @@ final class SequenceUtilsTests: XCTestCase {
     }
 
     let values: [Value] = [1, 2, 3, 4, 5, 1, 1, 1, 2, 10].map { Value(id: $0) }
-    let distinctValues = values.distinct { $0.id }
+    let distinctValues = values.distinctElements { $0.id }
     XCTAssertEqual(distinctValues.count, 6)
 
     let expectedValues: [Value] = [1, 2, 3, 4, 5, 10].map { Value(id: $0) }

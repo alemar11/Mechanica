@@ -178,7 +178,7 @@ extension Sequence {
   /// If an element occurs multiple times, the later occurrences are discarded
   ///
   /// - Parameter keyGenerator: The key generating block.
-  public func distinct<Key: Hashable>(by keyGenerator: (Element) -> Key) -> [Element] {
+  public func distinctElements<Key: Hashable>(by keyGenerator: (Element) -> Key) -> [Element] {
     var seen =  [Key: Bool]()
     return filter { seen.updateValue(true, forKey: keyGenerator($0)) == nil }
   }
