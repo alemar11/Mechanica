@@ -25,7 +25,7 @@
 
 import UIKit
 
-public extension UIStackView {
+extension UIStackView {
 
   /// **Mechanica**
   ///

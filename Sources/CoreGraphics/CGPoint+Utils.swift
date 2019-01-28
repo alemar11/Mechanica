@@ -25,7 +25,7 @@
 
   import CoreGraphics.CGGeometry
 
-  public extension CGPoint {
+   extension CGPoint {
 
     /// **Mechanica**
     ///

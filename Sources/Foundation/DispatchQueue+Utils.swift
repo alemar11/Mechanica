@@ -27,12 +27,12 @@ import Dispatch
 
 // MARK: - Properties
 
-public extension DispatchQueue {
-
+extension DispatchQueue {
+  
   /// **Mechanica**
   ///
   /// Returns a Boolean value indicating whether the current dispatch queue is the main queue.
-  public static var isMainQueue: Bool {
+  static var isMainQueue: Bool {
     enum Static {
       static var key: DispatchSpecificKey<Void> = {
         let key = DispatchSpecificKey<Void>()
@@ -42,13 +42,13 @@ public extension DispatchQueue {
     }
     return DispatchQueue.getSpecific(key: Static.key) != nil
   }
-
+  
 }
 
 // MARK: - Methods
 
-public extension DispatchQueue {
-
+extension DispatchQueue {
+  
   /// **Mechanica**
   ///
   /// Returns a Boolean value indicating whether the current dispatch queue is the specified queue.
@@ -57,13 +57,13 @@ public extension DispatchQueue {
   /// - Returns: `true` if the current queue is the specified queue, otherwise `false`.
   public static func isCurrent(_ queue: DispatchQueue) -> Bool {
     let key = DispatchSpecificKey<Void>()
-
+    
     queue.setSpecific(key: key, value: ())
     defer { queue.setSpecific(key: key, value: nil) }
-
+    
     return DispatchQueue.getSpecific(key: key) != nil
   }
-
+  
 }
 
 #endif

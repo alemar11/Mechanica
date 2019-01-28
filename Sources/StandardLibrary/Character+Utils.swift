@@ -32,16 +32,4 @@ extension Character {
     return scalars.count == 2 && scalars.first!.isRegionalIndicator && scalars.last!.isRegionalIndicator
   }
 
-  /// **Mechanica**
-  ///
-  /// Returns `true` if `self` is a a white space.
-  public var isWhitespace: Bool {
-    switch self {
-    case " ", "\t", "\n", "\r":
-      return true
-    default:
-      return false
-    }
-  }
-
 }

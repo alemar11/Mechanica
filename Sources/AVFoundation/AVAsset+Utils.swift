@@ -24,7 +24,7 @@
 #if canImport(AVAsset)
 import AVFoundation
 
-public extension AVAsset {
+extension AVAsset {
 
   /// **Mechanica**
   ///

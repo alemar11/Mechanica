@@ -55,7 +55,7 @@ final class BundleInfoTests: XCTestCase {
     } else {
       XCTAssertEqual(Mechanica.bundle.appIdentifier, "org.tinrobots.Mechanica")
     }
-    XCTAssertEqual(Bundle.main.appIdentifier, "xctest")
+    XCTAssertEqual(Bundle.main.appIdentifier, "com.apple.dt.xctest.tool")
   }
 
 }

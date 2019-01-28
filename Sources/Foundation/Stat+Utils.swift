@@ -26,9 +26,9 @@
 // https://www.gnu.org/software/libc/manual/html_node/Testing-File-Type.html
 
 #if canImport(Glibc)
-  import Glibc
+import Glibc
 #elseif canImport(Darwin)
-  import Darwin.C
+import Darwin.C
 #endif
 
 /// **Mechanica**
@@ -36,29 +36,29 @@
 /// The structure of the data returned by the functions `fstat()`, `lstat()`, and `stat()`.
 typealias Stat = stat
 
-internal extension Stat {
-
+extension Stat {
+  
   /// **Mechanica**
   ///
   /// Returns `true` if the file is a symbolik link.
   internal var isLink: Bool {
     return S_ISLNK(Int(st_mode))
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns `true` if the file is a directory.
   internal var isDirectory: Bool {
     return S_ISDIR(Int(st_mode))
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns `true` if the file is a regular file.
   internal var isFile: Bool {
     return S_ISREG(Int(st_mode))
   }
-
+  
 }
 
 // MARK: - Symbols in <sys/stat.h> that are not defined in Foundation
@@ -141,7 +141,7 @@ internal func S_ISFIFO(_ m: Int) -> Bool {
 /// Returns `true` if the file is a regular file.
 internal func S_ISREG(_ m: Int) -> Bool {
   return (((m) & S_IFMT) == S_IFREG)
-  }
+}
 
 /// **Mechanica**
 ///

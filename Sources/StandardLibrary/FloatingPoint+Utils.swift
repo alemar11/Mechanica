@@ -34,6 +34,11 @@ extension FloatingPoint {
   ///     piFloat.rounded(to: 0) -> 3.0
   ///     piFloat.rounded(to: 7) -> 3.1415927
   ///
+  ///     var piFloat80       = Float80(3.14159_26535_89793_23846)
+  ///
+  ///     piFloat80.rounded(to: 16, rule: .down) -> 3.141_592_653_589_793_2
+  ///     piFloat80.rounded(to: 16, rule: .up) -> 3.141_592_653_589_793_3
+  ///
   public func rounded(to decimalPlaces: Int, rule: FloatingPointRoundingRule = .toNearestOrAwayFromZero) -> Self {
     guard decimalPlaces >= 0 else { return self }
 
@@ -53,6 +58,11 @@ extension FloatingPoint {
   ///
   ///     piFloat.round(to: 3) -> piFloat is 3.142
   ///     piFloat.round(to: 7) -> piFloat is 3.1415927
+  ///
+  ///     var piFloat80       = Float80(3.14159_26535_89793_23846)
+  ///
+  ///     piFloat80.round(to: 16, rule: .down) -> piFloat80 is 3.141_592_653_589_793_2
+  ///     piFloat80.round(to: 16, rule: .up) -> piFloat80 is 3.141_592_653_589_793_3
   ///
   public mutating func round(to decimalPlaces: Int, rule: FloatingPointRoundingRule = .toNearestOrAwayFromZero) {
     self = rounded(to: decimalPlaces, rule: rule)

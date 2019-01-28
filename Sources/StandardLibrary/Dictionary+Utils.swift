@@ -21,15 +21,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-public extension Dictionary {
-
+extension Dictionary {
+  
   /// **Mechanica**
   ///
   /// Returns true if the `key` exists in the dictionary.
   public func hasKey(_ key: Key) -> Bool {
     return index(forKey: key) != nil
   }
-
+  
   /// **Mechanica**
   ///
   /// Removes the given kesy and theris associated values from the dictionary.
@@ -46,13 +46,13 @@ public extension Dictionary {
     }
     return removedElements
   }
-
+  
 }
 
-public extension Dictionary where Key: ExpressibleByStringLiteral {
-
+extension Dictionary where Key: ExpressibleByStringLiteral {
+  
   // MARK: - ExpressibleByStringLiteral
-
+  
   /// **Mechanica**
   ///
   /// Lowercase all keys in dictionary.
@@ -63,5 +63,5 @@ public extension Dictionary where Key: ExpressibleByStringLiteral {
       }
     }
   }
-
+  
 }

@@ -288,7 +288,7 @@ extension Color {
 
 #if canImport(UIKit)
 
-public extension Color {
+extension Color {
 
   /// **Mechanica**
   ///

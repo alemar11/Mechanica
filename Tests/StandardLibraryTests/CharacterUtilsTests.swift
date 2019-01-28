@@ -26,9 +26,7 @@ import XCTest
 
 extension CharacterUtilsTests {
   static var allTests = [
-    ("testIsEmojiCountryFlag", testIsEmojiCountryFlag),
-    ("testIsWhitespace", testIsWhitespace)
-
+    ("testIsEmojiCountryFlag", testIsEmojiCountryFlag)
   ]
 }
 
@@ -51,18 +49,6 @@ final class CharacterUtilsTests: XCTestCase {
     XCTAssertFalse(Character("🚩").isEmojiCountryFlag)
     XCTAssertFalse(Character("\\").isEmojiCountryFlag)
     XCTAssertFalse(Character("😇").isEmojiCountryFlag)
-  }
-
-  func testIsWhitespace() {
-    XCTAssertTrue(Character(" ").isWhitespace)
-    XCTAssertTrue(Character("\n").isWhitespace)
-    XCTAssertTrue(Character("\r").isWhitespace)
-    XCTAssertTrue(Character("\t").isWhitespace)
-
-    XCTAssertFalse(Character("a").isWhitespace)
-    XCTAssertFalse(Character(".").isWhitespace)
-    XCTAssertFalse(Character("\\").isWhitespace)
-    XCTAssertFalse(Character("😇").isWhitespace)
   }
 
 }
