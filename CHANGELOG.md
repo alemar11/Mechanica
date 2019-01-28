@@ -1,6 +1,6 @@
 # Changelog
 
-### 2.2.0 (Work in Progress)
+### 2.2.0
 
 - Added more Sequence utils.
 - Added more UIImage utils.
