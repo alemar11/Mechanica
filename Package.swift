@@ -16,7 +16,7 @@ let package = Package(
     .testTarget(name: "AppKitTests", dependencies: ["Mechanica"]),
     .testTarget(name: "AVFoundationTests", dependencies: ["Mechanica"])
   ],
-  swiftLanguageVersions: [.v4_2]
+  swiftLanguageVersions: [.v5]
 )
 
 #if os(Linux)
