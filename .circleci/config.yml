@@ -1,21 +1,9 @@
 version: 2
 jobs:
 
-  linux_swift_4_2:
+  linux_swift_5:
     docker:
-      - image: swift:4.2
-    steps:
-      - checkout
-      - run: 
-          name: Swift Test
-          command: swift test
-      - run:
-          name: Swift build Release
-          command: swift build -c release -Xswiftc -static-stdlib
-
-  linux_swift_4_2_1:
-    docker:
-      - image: norionomura/swift:421
+      - image: norionomura/swift:swift-5.0-branch 
     steps:
       - checkout
       - run: 
@@ -28,7 +16,6 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - linux_swift_4_2
-      - linux_swift_4_2_1
+      - linux_swift_5
 
 #docker: https://github.com/realm/SwiftLint/blob/master/circle.yml
