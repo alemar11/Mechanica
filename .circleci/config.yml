@@ -3,7 +3,7 @@ jobs:
 
   linux_swift_5:
     docker:
-      - image: norionomura/swift:swift-5.0-branch 
+      - image: norionomura/swift-5.0-branch 
     steps:
       - checkout
       - run: 
