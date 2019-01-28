@@ -17,5 +17,3 @@ workflows:
   workflow:
     jobs:
       - linux_swift_5
-
-#docker: https://github.com/realm/SwiftLint/blob/master/circle.yml
