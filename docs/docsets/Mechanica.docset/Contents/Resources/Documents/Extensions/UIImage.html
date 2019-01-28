@@ -133,10 +133,16 @@
                 <a href="../Extensions/UIDevice.html">UIDevice</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/UIEdgeInsets.html">UIEdgeInsets</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/UIGestureRecognizer.html">UIGestureRecognizer</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UIImage.html">UIImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIStackView.html">UIStackView</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UIView.html">UIView</a>
@@ -692,13 +698,79 @@ specified size. Any pixels that fall outside the specified size are clipped.</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIImageC9MechanicaE7decoded5scale14allowedMaxSizeABSg12CoreGraphics7CGFloatVSg_SitF"></a>
+                    <a name="//apple_ref/swift/Method/decoded(scale:allowedMaxSize:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIImageC9MechanicaE7decoded5scale14allowedMaxSizeABSg12CoreGraphics7CGFloatVSg_SitF">decoded(scale:allowedMaxSize:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><strong>Mechanica</strong></p>
+
+<p>Returns a new decoded version of the image.</p>
+
+<p>It allows a bitmap representation to be decoded in the background rather than on the main thread.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">decoded</span><span class="p">(</span><span class="nv">scale</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="o">.</span><span class="k">none</span><span class="p">,</span> <span class="nv">allowedMaxSize</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">4096</span> <span class="o">*</span> <span class="mi">4096</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>scale</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The scale factor to assume when interpreting the image data (defaults to <code>self.scale</code>); the decoded image will have its size divided by this scale parameter.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>allowedMaxSize</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The allowed max size, if the image is too large the decoding operation will return nil.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new decoded <code>UIImage</code> object.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2018-11-16)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/tinrobots/Mechanica" target="_blank" rel="external">Alessandro Marzoli</a>. All rights reserved. (Last updated: 2019-01-28)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

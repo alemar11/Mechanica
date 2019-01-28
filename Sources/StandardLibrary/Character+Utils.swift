@@ -27,7 +27,7 @@ extension Character {
   ///
   /// Returns `true` if `self` is an emoji country flag.
   public var isEmojiCountryFlag: Bool {
-    // TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md (Swift 4.2?)
+    // TODO: https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md (Swift 5)
     let scalars = unicodeScalars
     return scalars.count == 2 && scalars.first!.isRegionalIndicator && scalars.last!.isRegionalIndicator
   }
