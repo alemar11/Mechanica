@@ -41,7 +41,7 @@ final class DataUtilsTests: XCTestCase {
   }
 
   func testHexEncodedString() {
-    let data = Data(bytes: [0, 1, 127, 128, 255])
+    let data = Data([0, 1, 127, 128, 255])
     XCTAssertEqual(data.hexEncodedString, "00017f80ff")
   }
 
