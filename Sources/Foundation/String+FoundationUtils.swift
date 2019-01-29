@@ -204,7 +204,7 @@ extension String {
   /// Returns true if the `String` contains one or more letters.
   public var hasLetters: Bool {
     return !isEmpty && first { $0.isLetter } != nil
-    //return !isEmpty && rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
+    // return !isEmpty && rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
   }
 
   /// **Mechanica**
@@ -212,7 +212,7 @@ extension String {
   /// Returns true if the `String` contains one or more numbers.
   public var hasNumbers: Bool {
     return !isEmpty && first { $0.isNumber } != nil
-    //return !isEmpty && rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
+    // return !isEmpty && rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
   }
 
   /// **Mechanica**
@@ -220,7 +220,7 @@ extension String {
   /// Returns true if the `String` contains only letters.
   public var isAlphabetic: Bool {
     return !isEmpty && first { !$0.isLetter } == nil
-    //return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
+    // return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
   }
 
   /// **Mechanica**
@@ -228,14 +228,14 @@ extension String {
   /// Returns true if the `String` contains only letters, number.
   public var isAlphaNumeric: Bool {
     return !isEmpty && first { !$0.isNumber && !$0.isLetter } == nil
-    //return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
+    // return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
   }
 
   /// **Mechanica**
   ///
   /// Checks if the `String` is **blank** (a string that is either empty or contains only space/newline characters).
   public var isBlank: Bool {
-    return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
+    return trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
   }
 
   /// **Mechanica**
