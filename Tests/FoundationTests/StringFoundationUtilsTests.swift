@@ -264,19 +264,28 @@ final class StringFoundationUtilsTests: XCTestCase {
   }
   
   func testIsAlphaNumeric() {
+    XCTAssertFalse("".isAlphaNumeric)
     XCTAssertTrue("123".isAlphaNumeric)
     XCTAssertTrue("0001".isAlphaNumeric)
     XCTAssertTrue("abcd".isAlphaNumeric)
     XCTAssertTrue("èéò".isAlphaNumeric)
     XCTAssertTrue("tinrobots12345".isAlphaNumeric)
+    XCTAssertTrue("Poüet".isAlphaNumeric)
+    XCTAssertTrue("abc".isAlphaNumeric)
+    XCTAssertTrue("123".isAlphaNumeric)
+    XCTAssertTrue("ABC123".isAlphaNumeric)
     
     XCTAssertFalse("tinrobots.org".isAlphaNumeric)
     XCTAssertFalse("✓".isAlphaNumeric)
     XCTAssertFalse("#".isAlphaNumeric)
     XCTAssertFalse("🚀".isAlphaNumeric)
     XCTAssertFalse("abc✓".isAlphaNumeric)
+    XCTAssertFalse("ab.cd".isAlphaNumeric)
     XCTAssertFalse("#123ad".isAlphaNumeric)
     XCTAssertFalse("🚀".isAlphaNumeric)
+    XCTAssertFalse("iOS 11".isAlphaNumeric)
+    XCTAssertFalse("".isAlphaNumeric)
+    XCTAssertFalse("climate change".isAlphaNumeric)
   }
   
   func testIsNumeric() {

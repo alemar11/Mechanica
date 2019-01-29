@@ -203,28 +203,32 @@ extension String {
   ///
   /// Returns true if the `String` contains one or more letters.
   public var hasLetters: Bool {
-    return !isEmpty && rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
+    return !isEmpty && first { $0.isLetter } != nil
+    //return !isEmpty && rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
   }
 
   /// **Mechanica**
   ///
   /// Returns true if the `String` contains one or more numbers.
   public var hasNumbers: Bool {
-    return !isEmpty && rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
+    return !isEmpty && first { $0.isNumber } != nil
+    //return !isEmpty && rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
   }
 
   /// **Mechanica**
   ///
   /// Returns true if the `String` contains only letters.
   public var isAlphabetic: Bool {
-    return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
+    return !isEmpty && first { !$0.isLetter } == nil
+    //return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
   }
 
   /// **Mechanica**
   ///
-  /// Returns true if the `String` contains at least one letter and one number.
+  /// Returns true if the `String` contains only letters, number.
   public var isAlphaNumeric: Bool {
-    return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
+    return !isEmpty && first { !$0.isNumber && !$0.isLetter } == nil
+    //return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
   }
 
   /// **Mechanica**
@@ -250,7 +254,8 @@ extension String {
   ///
   /// Checks if the `String` contains only numbers.
   public var isNumeric: Bool {
-    return !isEmpty && rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
+    return !isEmpty && first { !$0.isNumber } == nil
+    //return !isEmpty && rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
   }
 
   /// **Mechanica**
