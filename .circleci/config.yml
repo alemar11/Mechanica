@@ -1,9 +1,12 @@
-version: 2
-jobs:
+version: 2.1
 
-  linux_swift_5:
+jobs:
+  build_with_image:
+    parameters:
+      image:
+        type: string
     docker:
-      - image: norionomura/swift:5020190127a
+      - image: << parameters.image >>
     steps:
       - checkout
       - run: 
@@ -12,8 +15,12 @@ jobs:
       - run:
           name: Swift build Release
           command: swift build -c release -Xswiftc -static-stdlib     
+
 workflows:
-  version: 2
   workflow:
     jobs:
-      - linux_swift_5
+      - build_with_image:
+          name: swift-5.0-branch
+          image: norionomura/swift:swift-5.0-branch
+
+# https://github.com/norio-nomura/SwiftBacktrace/blob/master/.circleci/config.yml
