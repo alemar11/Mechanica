@@ -937,6 +937,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertEqual("HelloWorld".swapCased(), "hELLOwORLD")
     XCTAssertEqual("-Hello_World-".swapCased(), "-hELLO_wORLD-")
     XCTAssertEqual("Hell0W0rld".swapCased(), "hELL0w0RLD")
+    XCTAssertEqual("🇮🇹🇮🇹Hell0W👨🏻‍💻0rld".swapCased(), "🇮🇹🇮🇹hELL0w👨🏻‍💻0RLD")
   }
   
   func testNSRange() {

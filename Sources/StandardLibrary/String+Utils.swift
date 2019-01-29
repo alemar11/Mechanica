@@ -56,14 +56,14 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns true if all the characters are lowercased.
-  public var isLowercased: Bool {
+  public var isLowercase: Bool {
     return self == lowercased()
   }
 
   /// **Mechanica**
   ///
   /// Returns true, if all characters are uppercased. Otherwise, false.
-  public var isUppercased: Bool {
+  public var isUppercase: Bool {
     return self == uppercased()
   }
 

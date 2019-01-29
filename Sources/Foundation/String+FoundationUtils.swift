@@ -76,8 +76,8 @@ extension String {
   public func capitalizedFirstCharacter() -> String {
     guard !isEmpty else { return self }
 
-    let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
-    let result = capitalizedFirstCharacher + String(dropFirst())
+    let capitalizedFirstCharacher = self[startIndex].uppercased() //capitalized
+    let result = capitalizedFirstCharacher + dropFirst()
 
     return result
   }
@@ -154,8 +154,8 @@ extension String {
   public func decapitalizedFirstCharacter() -> String {
     guard !isEmpty else { return self }
 
-    let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
-    let result = capitalizedFirstCharacher + String(dropFirst())
+    let capitalizedFirstCharacher = self[startIndex].lowercased()
+    let result = capitalizedFirstCharacher + dropFirst()
 
     return result
   }
@@ -452,7 +452,7 @@ extension String {
   ///  Remove the characters in the given set.
   public mutating func removeCharacters(in set: CharacterSet) {
     for idx in indices.reversed() {
-      if set.contains(String(self[idx]).unicodeScalars.first!) {
+      if set.contains(self[idx].unicodeScalars.first!) {
         remove(at: idx)
       }
     }
@@ -713,7 +713,7 @@ extension String {
   ///
   /// - Returns: The swap cased copy of the `String`.
   public func swapCased() -> String {
-    return map({ String($0).isLowercased ? String($0).uppercased() : String($0).lowercased() }).joined()
+    return self.map { $0.isLowercase ? $0.uppercased() : $0.lowercased() }.joined()
   }
 
   // MARK: - NSString

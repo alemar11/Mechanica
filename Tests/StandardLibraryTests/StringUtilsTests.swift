@@ -45,8 +45,8 @@ extension StringUtilsTests {
     ("testSubscriptWithPartialRangeThrough", testSubscriptWithPartialRangeThrough),
     ("testSubscriptWithCountablePartialRangeFrom", testSubscriptWithCountablePartialRangeFrom),
     ("testIsHomogeneous", testIsHomogeneous),
-    ("testIsLowercased", testIsLowercased),
-    ("testIsUppercased", testIsUppercased),
+    ("testIsLowercase", testIsLowercase),
+    ("testIsUppercase", testIsUppercase),
     ("testMultiply", testMultiply),
     ("testOptionalStringCoalescingOperator", testOptionalStringCoalescingOperator),
     ("testPrefix", testPrefix),
@@ -581,23 +581,23 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertFalse(" ~~~".isHomogeneous)
   }
 
-  func testIsLowercased() {
-    XCTAssertTrue("123".isLowercased)
-    XCTAssertTrue("abcd123".isLowercased)
-    XCTAssertTrue("123!?)".isLowercased)
+  func testIsLowercase() {
+    XCTAssertTrue("123".isLowercase)
+    XCTAssertTrue("abcd123".isLowercase)
+    XCTAssertTrue("123!?)".isLowercase)
 
-    XCTAssertFalse("12A3".isLowercased)
-    XCTAssertFalse("abcdE123".isLowercased)
-    XCTAssertFalse("123!C?)".isLowercased)
+    XCTAssertFalse("12A3".isLowercase)
+    XCTAssertFalse("abcdE123".isLowercase)
+    XCTAssertFalse("123!C?)".isLowercase)
   }
 
-  func testIsUppercased() {
-    XCTAssertTrue("123".isUppercased)
-    XCTAssertTrue("ABC123".isUppercased)
-    XCTAssertTrue("ABC...!?".isUppercased)
+  func testIsUppercase() {
+    XCTAssertTrue("123".isUppercase)
+    XCTAssertTrue("ABC123".isUppercase)
+    XCTAssertTrue("ABC...!?".isUppercase)
 
-    XCTAssertFalse("abcdE123".isLowercased)
-    XCTAssertFalse("123A!?)".isLowercased)
+    XCTAssertFalse("abcdE123".isLowercase)
+    XCTAssertFalse("123A!?)".isLowercase)
   }
 
   // MARK: - Operators
