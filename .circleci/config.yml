@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run: 
+          name: Swift Version
+          command: swift -v
+      - run: 
           name: Swift Test
           command: swift test
       - run:
