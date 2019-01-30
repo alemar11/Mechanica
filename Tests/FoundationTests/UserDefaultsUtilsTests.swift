@@ -121,12 +121,12 @@ final class UserDefaultsUtilsTests: XCTestCase {
     XCTAssertNotNil(userDefaults.optionalBool(forKey: key))
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), true)
 
-    //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), 1)
-    userDefaults.set(nil, forKey: key) // TODO: setting a value to nil crash on Linux (Swift 4.2)
+    userDefaults.set(nil, forKey: key) // TODO: setting a value to nil crash on Linux (Swift 4.2 and Swift 5)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), nil)
     XCTAssertEqual(userDefaults.optionalFloat(forKey: key), .none)
-    //#endif
+    #endif
 
     userDefaults.set("hello world", forKey: key)
     XCTAssertEqual(userDefaults.optionalBool(forKey: key), .none)

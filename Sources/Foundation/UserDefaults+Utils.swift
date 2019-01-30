@@ -30,11 +30,11 @@ extension UserDefaults {
   ///
   /// Returns `true` if `key` exists.
   public final func hasKey(_ key: String) -> Bool {
-    #if os(Linux)
-    return object(forKey: key) != nil
-    #else
+//    #if os(Linux)
+//    return object(forKey: key) != nil
+//    #else
     return dictionaryRepresentation().hasKey(key) // it seems implemented on Linux (Swift 4.1) but it's not working
-    #endif
+//    #endif
   }
   
   /// **Mechanica**
