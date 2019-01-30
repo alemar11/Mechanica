@@ -54,7 +54,7 @@ extension StringFoundationUtilsTests {
     ("testFirstRange", testFirstRange),
     ("testMatches", testMatches),
     ("testTrim", testTrim),
-    //("testTrimmed", testTrimmed), //TODO not working on Swift 5
+    ("testTrimmed", testTrimmed),
     ("testCapitalizedFirstCharacter", testCapitalizedFirstCharacter),
     ("testDecapitalizedFirstCharacter", testDecapitalizedFirstCharacter),
     ("testRemovingCharacters", testRemovingCharacters),
@@ -158,11 +158,11 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("a".starts(with:"A"))
     XCTAssertTrue("🤔a1".starts(with:"🤔"))
     
-    #if !os(Linux)
+//    #if !os(Linux)
     XCTAssertTrue("🖖🏽a1".starts(with:"🖖🏽"))
-    #else
-    XCTAssertTrue("🖖🏽a1".starts(with:"🖖"))
-    #endif
+//    #else
+//    XCTAssertTrue("🖖🏽a1".starts(with:"🖖")) //FAIL on Swift 5
+//    #endif
     
     #if !os(Linux)
     XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹"))
@@ -190,11 +190,11 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("a".ends(with:"A"), "It should end with 'A'")
     XCTAssertTrue("a1🤔".ends(with:"🤔"), "It should end with '🤔'")
     
-    #if !os(Linux)
+//    #if !os(Linux)
     XCTAssertTrue("a1🖖🏽".ends(with:"🖖🏽"))
-    #else
-    XCTAssertTrue("a1🖖🏽".ends(with:"🏽"))
-    #endif
+//    #else
+//    XCTAssertTrue("a1🖖🏽".ends(with:"🏽")) // FAIL on SWift 5
+//    #endif
     
     #if !os(Linux)
     XCTAssertTrue(" 🖖🏽🇮🇹🇮🇹".ends(with:"🇮🇹"))
@@ -782,9 +782,11 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue(s1.trimmedEnd() == "   Hello World")
     XCTAssertTrue(s1.trimmed() == "Hello World")
     
+    #if !os(Linux)
     let s2 = "   \u{200B} Hello World   "
     XCTAssertTrue(s2.trimmedStart() == "Hello World   ")
     XCTAssertTrue(s2.trimmed() == "Hello World")
+    #endif
     
     let s3 = "Hello World\n\n   "
     XCTAssertTrue(s3.trimmedEnd() == "Hello World")
