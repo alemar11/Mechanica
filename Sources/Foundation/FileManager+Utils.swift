@@ -69,6 +69,20 @@ extension FileManager {
 
     try removeItem(atPath: path)
   }
+  
+  /// **Mechanica**
+  ///
+  /// Creates and returns always a `new` directory in Library/Caches in the user's home directory for discardable cache files.
+  public final func newCachesSubDirectory(in domain: FileManager.SearchPathDomainMask = .userDomainMask, withName name: String = UUID().uuidString) throws -> URL {
+    let cachesDirectoryURL = try url(for: .cachesDirectory, in: domain, appropriateFor: nil, create: true)
+    let subdirectoryURL = cachesDirectoryURL.appendingPathComponent(name)
+    
+    if !fileExists(atPath: subdirectoryURL.path) {
+      try createDirectory(at: subdirectoryURL, withIntermediateDirectories: false, attributes: nil)
+    }
+    
+    return subdirectoryURL
+  }
 
 }
 #endif
