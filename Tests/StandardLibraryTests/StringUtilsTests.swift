@@ -80,12 +80,12 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertTrue("cafè".length == 4)
     XCTAssertTrue("🇮🇹".length == 1)
 
-    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+    //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
       // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue("👍🏻".length == 1) //2
       XCTAssertTrue("👍🏽".length == 1) //2
       XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
-    #endif
+    //#endif
   }
 
   func testPrefix() {
