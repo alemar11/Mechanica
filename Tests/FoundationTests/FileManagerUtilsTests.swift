@@ -33,7 +33,7 @@ extension FileManagerUtilsTests {
 }
 
 final class FileManagerUtilsTests: XCTestCase {
-  
+
   func testNewCachedSubDirectory() throws {
     let url = try FileManager.default.newCachesSubDirectory(withName: "SubFolder")
     XCTAssertTrue(FileManager.default.fileExists(atPath: url.path))

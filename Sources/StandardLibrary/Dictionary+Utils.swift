@@ -22,14 +22,14 @@
 // SOFTWARE.
 
 extension Dictionary {
-  
+
   /// **Mechanica**
   ///
   /// Returns true if the `key` exists in the dictionary.
   public func hasKey(_ key: Key) -> Bool {
     return index(forKey: key) != nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Removes the given kesy and theris associated values from the dictionary.
@@ -46,13 +46,13 @@ extension Dictionary {
     }
     return removedElements
   }
-  
+
 }
 
 extension Dictionary where Key: ExpressibleByStringLiteral {
-  
+
   // MARK: - ExpressibleByStringLiteral
-  
+
   /// **Mechanica**
   ///
   /// Lowercase all keys in dictionary.
@@ -63,5 +63,5 @@ extension Dictionary where Key: ExpressibleByStringLiteral {
       }
     }
   }
-  
+
 }

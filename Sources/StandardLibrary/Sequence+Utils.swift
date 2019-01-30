@@ -24,7 +24,7 @@
 /// A Sequence can be either finite or infinite.
 
 extension Sequence {
-  
+
   /// **Mechanica**
   ///
   /// Checks if all the elements in collection satisfiy the given predicate.
@@ -40,7 +40,7 @@ extension Sequence {
   public func all(matching predicate: (Element) throws -> Bool) rethrows -> Bool {
     return try !contains { try !predicate($0) }
   }
-  
+
   /// **Mechanica**
   ///
   /// Checks if no elements in collection satisfiy the given predicate.
@@ -56,7 +56,7 @@ extension Sequence {
   public func none(matching predicate: (Element) throws -> Bool) rethrows -> Bool {
     return try !contains { try predicate($0) }
   }
-  
+
   /// **Mechanica**
   ///
   /// Checks if any elements in collection satisfiy the given predicate.
@@ -72,7 +72,7 @@ extension Sequence {
   public func any(matching predicate: (Element) throws -> Bool) rethrows -> Bool {
     return try contains { try predicate($0) }
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns the last element that satisfies the given predicate, or `nil` if no element does.
@@ -93,7 +93,7 @@ extension Sequence {
     }
     return result
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns true if there is at least one element satisfying the given predicate.
@@ -103,7 +103,7 @@ extension Sequence {
   public func hasAny(where predicate: (Element) -> Bool) -> Bool {
     return first { predicate($0) } != nil
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns true if all the elements satisfy the predicate.
@@ -112,7 +112,7 @@ extension Sequence {
   public func hasAll(where predicate: (Element) -> Bool) -> Bool {
     return first { !predicate($0) } == nil
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter criteria: The criteria closure takes an `Element` and returns its classification.
@@ -121,7 +121,7 @@ extension Sequence {
   public func grouped<Key>(by criteria: (Element) -> (Key)) -> [Key: [Element]] {
     return Dictionary(grouping: self, by: { return criteria($0) })
   }
-  
+
   /// **Mechanica**
   ///
   /// Splits `self` into partitions of a given `length`.
@@ -134,26 +134,26 @@ extension Sequence {
   /// - Attention: the sequence must be finite.
   public func split(by length: Int) -> [[Element]] {
     guard length != 0 else { return [] }
-    
+
     var result: [[Element]] = []
     var batch: [Element] = []
-    
+
     for element in self {
       batch.append(element)
-      
+
       if batch.count == length {
         result.append(batch)
         batch = []
       }
     }
-    
+
     if !batch.isEmpty {
       result.append(batch)
     }
-    
+
     return result
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a sequence that contains no duplicates according to the generic hash and equality comparisons on the keys reuteruned by the given key generating block.
@@ -164,33 +164,33 @@ extension Sequence {
     var seen =  [Key: Bool]()
     return filter { seen.updateValue(true, forKey: keyGenerator($0)) == nil }
   }
-  
+
 }
 
 // MARK: - Equatable
 
 extension Sequence where Element: Equatable {
-  
+
   /// **Mechanica**
   ///
   /// Returns a collection of unique elements preserving their original order.
   /// - Attention: the sequence must be finite.
   func uniqueOrderedElements() -> [Element] {
     var result: [Element] = []
-    
+
     for element in self {
       if !result.contains(where: { $0 == element }) { result.append(element) }
     }
-    
+
     return result
   }
-  
+
 }
 
 // MARK: - Hashable
 
 extension Sequence where Element: Hashable {
-  
+
   /// **Mechanica**
   ///
   /// Returns true if the `Sequence` contains all the given elements.
@@ -213,21 +213,21 @@ extension Sequence where Element: Hashable {
     }
     return true
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a collection of tuples where it's indicated the frequencies of the elements in the sequence.
   /// - Attention: the sequence must be finite.
   public var frequencies: [(Element, Int)] {
     var result = [Element: Int]()
-    
+
     for element in self {
       result[element] = (result[element] ?? 0) + 1
     }
-    
+
     return result.sorted { $0.1 > $1.1 }
   }
-  
+
   /// **Mechanica**
   ///
   /// - Returns: Returns true if the `Sequence` contains duplicates
@@ -241,13 +241,13 @@ extension Sequence where Element: Hashable {
     }
     return false
   }
-  
+
 }
 
 // MARK: - AnyObject
 
 extension Sequence where Element: AnyObject {
-  
+
   /// **Mechanica**
   ///
   /// Returns true if the `Sequence` contains an element identical (referential equality) to an `object`.
@@ -255,13 +255,13 @@ extension Sequence where Element: AnyObject {
   public func containsObjectIdentical(to object: AnyObject) -> Bool {
     return contains { $0 === object }
   }
-  
+
 }
 
 // MARK: - Numeric
 
 extension Sequence where Element: Numeric {
-  
+
   /// **Mechanica**
   ///
   /// Sums of all elements in array.
@@ -274,5 +274,5 @@ extension Sequence where Element: Numeric {
   public func sum() -> Element {
     return reduce(0, { $0 + $1 })
   }
-  
+
 }

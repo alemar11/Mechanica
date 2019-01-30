@@ -37,28 +37,28 @@ import Darwin.C
 typealias Stat = stat
 
 extension Stat {
-  
+
   /// **Mechanica**
   ///
   /// Returns `true` if the file is a symbolik link.
   internal var isLink: Bool {
     return S_ISLNK(Int(st_mode))
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns `true` if the file is a directory.
   internal var isDirectory: Bool {
     return S_ISDIR(Int(st_mode))
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns `true` if the file is a regular file.
   internal var isFile: Bool {
     return S_ISREG(Int(st_mode))
   }
-  
+
 }
 
 // MARK: - Symbols in <sys/stat.h> that are not defined in Foundation
