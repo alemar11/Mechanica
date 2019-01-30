@@ -747,8 +747,8 @@ final class StringFoundationUtilsTests: XCTestCase {
     
     do {
       let text = "Hello World - Tin Robots 🤖😀🤖"
-      XCTAssertEqual(text.matches(for: String.Pattern.firstAlphaNumericCharacter),["H", "W", "T", "R"])
-      XCTAssertEqual(text.matches(for: String.Pattern.lastAlphaNumericCharacter),["o", "d", "n", "s"])
+      XCTAssertEqual(text.matches(for: String.Pattern.firstAlphaNumericCharacter), ["H", "W", "T", "R"])
+      XCTAssertEqual(text.matches(for: String.Pattern.lastAlphaNumericCharacter), ["o", "d", "n", "s"])
       let invalidPattern = "//⛏"
       XCTAssertTrue(text.matches(for: invalidPattern).isEmpty)
       XCTAssertNil(text.firstMatch(for: invalidPattern))
@@ -953,8 +953,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     let string = "Hello World 👩🏽‍🌾👨🏼‍🚒💃🏾"
     let range = string.startIndex...
     
-    XCTAssert(string.nsRange.length == string[range].utf16.count)
-    
+    XCTAssert(string.nsRange.length == string[range].utf16.count, "\(string.nsRange.length) should be equal to \(string[range].utf16.count)")
   }
   
   func testContainsCaseSensitive() {
