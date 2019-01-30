@@ -65,8 +65,6 @@ extension UserDefaults {
     return (object(forKey: defaultName) as? NSNumber)?.intValue
   }
   
-  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-  
   /// **Mechanica**
   ///
   /// Removes all keys and values from user defaults.
@@ -78,8 +76,6 @@ extension UserDefaults {
       removeObject(forKey: key)
     }
   }
-  
-  //#endif
   
 }
 #endif
