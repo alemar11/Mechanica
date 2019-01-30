@@ -157,12 +157,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("a".starts(with:"a"))
     XCTAssertFalse("a".starts(with:"A"))
     XCTAssertTrue("🤔a1".starts(with:"🤔"))
-    
-//    #if !os(Linux)
     XCTAssertTrue("🖖🏽a1".starts(with:"🖖🏽"))
-//    #else
-//    XCTAssertTrue("🖖🏽a1".starts(with:"🖖")) //FAIL on Swift 5
-//    #endif
     
     #if !os(Linux)
     XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹"))
@@ -189,12 +184,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("a".ends(with:"a"), "It should end with 'a'")
     XCTAssertFalse("a".ends(with:"A"), "It should end with 'A'")
     XCTAssertTrue("a1🤔".ends(with:"🤔"), "It should end with '🤔'")
-    
-//    #if !os(Linux)
     XCTAssertTrue("a1🖖🏽".ends(with:"🖖🏽"))
-//    #else
-//    XCTAssertTrue("a1🖖🏽".ends(with:"🏽")) // FAIL on SWift 5
-//    #endif
     
     #if !os(Linux)
     XCTAssertTrue(" 🖖🏽🇮🇹🇮🇹".ends(with:"🇮🇹"))
