@@ -35,7 +35,7 @@ import XCTest
       let notExistingImage = NSImage.imageNamed(name: "not-existing-glasses", in: bundle)
 
       if !ProcessInfo.isRunningSwiftPackageTests {
-        // TODO: - Not implemented on Linux: (SPM): https://bugs.swift.org/browse/SR-2866
+        // TODO: - see https://bugs.swift.org/browse/SR-2866
         XCTAssertNotNil(image)
         XCTAssertNil(notExistingImage)
         XCTAssertEqual(image!.name(), NSImage.Name("glasses"))
