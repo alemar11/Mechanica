@@ -27,13 +27,14 @@ import XCTest
 extension FileManagerUtilsTests {
   static var allTests = [
     ("testDestroyFileOrDirectory", testDestroyFileOrDirectory),
-    ("testCleanDirectory", testCleanDirectory)
+    ("testCleanDirectory", testCleanDirectory),
+    ("testNewCachedSubDirectory", testNewCachedSubDirectory)
   ]
 }
 
 extension FileManager {
 
-  #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+  //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   // TODO: - Not implemented on Linux: url(for:in:appropriateFor:create:)
   // https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/FileManager.swift
 
@@ -51,11 +52,16 @@ extension FileManager {
     return subdirectoryURL
   }
 
-  #endif
+  //#endif
 
 }
 
 final class FileManagerUtilsTests: XCTestCase {
+  
+  func testNewCachedSubDirectory() throws {
+    let url = try FileManager.default.newCachesSubDirectory(withName: "SubFolder")
+    XCTAssertTrue(FileManager.default.fileExists(atPath: url.path))
+  }
 
   func testDestroyFileOrDirectory() throws {
     // Given
