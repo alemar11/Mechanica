@@ -1,5 +1,7 @@
 # Changelog
 
+### 3.0.0 (WIP)
+
 ### 2.2.0
 
 - Added more Sequence utils.
