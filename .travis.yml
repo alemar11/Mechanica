@@ -22,7 +22,7 @@ matrix:
       language: generic
       before_install:
         - sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
-        - wget https://swift.org/builds/swift-5.0-branch/ubuntu1404/swift-5.0-DEVELOPMENT-SNAPSHOT-2019-01-28-a/swift-5.0-DEVELOPMENT-SNAPSHOT-2019-01-28-a-ubuntu14.04.tar.gz
+        - wget https://swift.org/builds/swift-5.0-branch/ubuntu1404/swift-5.0-DEVELOPMENT-SNAPSHOT-2019-02-03-a/swift-5.0-DEVELOPMENT-SNAPSHOT-2019-02-03-a-ubuntu14.04.tar.gz
         - tar zxf swift-5.0*.tar.gz && rm -rf swift-5.0*.tar.gz
         - sudo mv swift-5.0* /swift-5.0
         - echo "export PATH=/swift-5.0/usr/bin:\"\${PATH}\"" >> ~/.bashrc
@@ -46,7 +46,7 @@ matrix:
             sleep 1
           done
         - sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y --allow-unauthenticated
-        - wget https://swift.org/builds/swift-5.0-branch/ubuntu1604/swift-5.0-DEVELOPMENT-SNAPSHOT-2019-01-28-a/swift-5.0-DEVELOPMENT-SNAPSHOT-2019-01-28-a-ubuntu16.04.tar.gz
+        - wget https://swift.org/builds/swift-5.0-branch/ubuntu1604/swift-5.0-DEVELOPMENT-SNAPSHOT-2019-02-03-a/swift-5.0-DEVELOPMENT-SNAPSHOT-2019-02-03-a-ubuntu16.04.tar.gz
         - tar zxf swift-5.0*.tar.gz && rm -rf swift-5.0*.tar.gz
         - sudo mv swift-5.0* /swift-5.0
         - echo "export PATH=/swift-5.0/usr/bin:\"\${PATH}\"" >> ~/.bashrc
