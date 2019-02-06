@@ -157,16 +157,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("a".starts(with:"a"))
     XCTAssertFalse("a".starts(with:"A"))
     XCTAssertTrue("🤔a1".starts(with:"🤔"))
-
-
-//    #if !os(Linux)
-//    XCTAssertTrue("🖖🏽a1".starts(with:"🖖🏽"))
-//    #else
-//    XCTAssertTrue("🖖🏽a1".starts(with:"🖖"))
-//    #endif
-
     XCTAssertTrue("🖖🏽a1".starts(with:"🖖🏽"))
-
 
     #if !os(Linux)
     XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹"))
@@ -193,13 +184,6 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("a".ends(with:"a"), "It should end with 'a'")
     XCTAssertFalse("a".ends(with:"A"), "It should end with 'A'")
     XCTAssertTrue("a1🤔".ends(with:"🤔"), "It should end with '🤔'")
-
-//    #if !os(Linux)
-//    XCTAssertTrue("a1🖖🏽".ends(with:"🖖🏽"))
-//    #else
-//    XCTAssertTrue("a1🖖🏽".ends(with:"🏽"))
-//    #endif
-
     XCTAssertTrue("a1🖖🏽".ends(with:"🖖🏽"))
 
     #if !os(Linux)
@@ -252,8 +236,6 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("a ".isBlank)
     XCTAssertFalse("a \r\n ".isBlank)
   }
-
-
 
   func testIsAlphabetic() {
     XCTAssertTrue("abcd".isAlphabetic)
@@ -791,13 +773,6 @@ final class StringFoundationUtilsTests: XCTestCase {
     let s2 = "   \u{200B} Hello World   "
     XCTAssertTrue(s2.trimmedStart() == "Hello World   ")
     XCTAssertTrue(s2.trimmed() == "Hello World")
-
-//    #if !os(Linux)
-//    let s2 = "   \u{200B} Hello World   "
-//    XCTAssertTrue(s2.trimmedStart() == "Hello World   ")
-//    XCTAssertTrue(s2.trimmed() == "Hello World")
-//    #endif
-
 
     let s3 = "Hello World\n\n   "
     XCTAssertTrue(s3.trimmedEnd() == "Hello World")
