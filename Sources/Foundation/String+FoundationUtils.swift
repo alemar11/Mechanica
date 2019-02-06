@@ -832,6 +832,7 @@ extension String {
   /// - Returns: A list of matched ranges for `self`.
   public func ranges(matching pattern: String, options: NSRegularExpression.Options = []) -> [Range<String.Index>] {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return [] }
+
     let matches = regex.matches(in: self, options: [], range: NSRange(startIndex..<endIndex, in: self))
     let ranges = matches.compactMap { Range($0.range, in: self) }
 
