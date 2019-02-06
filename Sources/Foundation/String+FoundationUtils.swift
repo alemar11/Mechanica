@@ -255,7 +255,7 @@ extension String {
   /// Checks if the `String` contains only numbers.
   public var isNumeric: Bool {
     return !isEmpty && first { !$0.isNumber } == nil
-    //return !isEmpty && rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
+    // return !isEmpty && rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
   }
 
   /// **Mechanica**

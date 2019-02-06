@@ -26,7 +26,7 @@
 import CoreGraphics.CGGeometry
 
 extension CGSize {
-  
+
   /// **Mechanica**
   ///
   ///  Returns the scale to fit `self` into a different `size`.
@@ -36,7 +36,7 @@ extension CGSize {
   public func scaleToFit(boundingSize size: CGSize) -> CGFloat {
     return fmin(size.width / width, size.height / height)
   }
-  
+
   /// **Mechanica**
   ///
   /// Returns a `CGSize` to fit `self` into the `size` by maintaining the aspect ratio.
@@ -50,16 +50,16 @@ extension CGSize {
   ///
   public func aspectFit(boundingSize size: CGSize) -> CGSize {
     let minRatio = scaleToFit(boundingSize: size)
-    
+
     return CGSize(width: width * minRatio, height: height * minRatio)
   }
-  
+
 }
 
 // MARK: - Operators
 
 extension CGSize {
-  
+
   /// **Mechanica**
   ///
   /// Adds two `CGSize`.
@@ -71,7 +71,7 @@ extension CGSize {
   public static func + (lhs: CGSize, rhs: CGSize) -> CGSize {
     return CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
   }
-  
+
   /// **Mechanica**
   ///
   /// Adds a `CGSize` to `self`.
@@ -84,7 +84,7 @@ extension CGSize {
   public static func += (lhs: inout CGSize, rhs: CGSize) {
     lhs = CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
   }
-  
+
   /// **Mechanica**
   ///
   /// Subtracts two `CGSize`.
@@ -96,7 +96,7 @@ extension CGSize {
   public static func - (lhs: CGSize, rhs: CGSize) -> CGSize {
     return CGSize(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
   }
-  
+
   /// **Mechanica**
   ///
   /// Subtracts a CGSize from `self`.
@@ -109,7 +109,7 @@ extension CGSize {
   public static func -= (lhs: inout CGSize, rhs: CGSize) {
     lhs = CGSize(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
   }
-  
+
   /// **Mechanica**
   ///
   /// Multiplies a `CGPoint` with a scalar.
@@ -121,7 +121,7 @@ extension CGSize {
   public static func * (size: CGSize, scalar: CGFloat) -> CGSize {
     return CGSize(width: size.width * scalar, height: size.height * scalar)
   }
-  
+
   /// **Mechanica**
   ///
   /// Multiply `self` with a scalar.
@@ -134,7 +134,7 @@ extension CGSize {
   public static func *= (size: inout CGSize, scalar: CGFloat) {
     size = CGSize(width: size.width * scalar, height: size.height * scalar)
   }
-  
+
 }
 
 #endif

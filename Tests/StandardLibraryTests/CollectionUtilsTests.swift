@@ -27,12 +27,13 @@ import XCTest
 extension CollectionUtilsTests {
   static var allTests = [
     ("testAtIndex", testAtIndex),
-    ("testIndices", testIndices)
+    ("testIndices", testIndices),
+    ("testScan", testScan),
   ]
 }
 
 final class CollectionUtilsTests: XCTestCase {
-  
+
   func testAtIndex() {
     let array: [Any] = [1, 2, "3", "4", 0]
     XCTAssertEqual(array.at(0)! as! Int, 1)
@@ -43,21 +44,84 @@ final class CollectionUtilsTests: XCTestCase {
     XCTAssertNil(array.at(10))
     XCTAssertNil(array.at(100))
   }
-  
+
   func testIndices() {
     do {
       let phrase = "tin robots"
       XCTAssertEqual(phrase.indices(of: "t"), [phrase.startIndex, phrase.index(phrase.startIndex, offsetBy: 8)])
       XCTAssertTrue(phrase.indices(of: "T").isEmpty)
     }
-    
+
     do {
       let list = [1, 2, 1, 2, 3, 4, 5, 1]
       XCTAssertEqual(list.indices(of: 1), [0, 2, 7])
       XCTAssertTrue(list.indices(of: 0).isEmpty)
     }
   }
-  
+
+  func testScan() {
+    var phrase = "tin robots"[...]
+    XCTAssertEqual(phrase.scan(count: 4), "tin ")
+    XCTAssertFalse(phrase.scan(prefix: "s"))
+    XCTAssertTrue(phrase.scan(prefix: "r"))
+    XCTAssertTrue(phrase.scan(prefix: "ob"))
+    XCTAssertNil(phrase.scan({ $0 == Character("b") }))
+    XCTAssertEqual(phrase.scan({ $0 == Character("o") }), Character("o"))
+
+    var phrase2 = "🇮🇹🇮🇹🇮🇹"[...]
+    XCTAssertEqual(phrase2.scan({ $0 == Character("🇮🇹") }), Character("🇮🇹"))
+
+    var phrase3 = "tin robots"[...]
+    var buffer: String = "" // = [Character]()
+    phrase3.scan(upTo: { $0 == Character("o")}, into: &buffer)
+    //print(phrase3)
+
+//    do {
+//      let scanner = Scanner(string: "tin robots")
+//      var x: NSString?
+//      let y = scanner.scanUpTo("obox", into: &x)
+//      print(x)
+//    }
+
+    //print(buffer.reduce("") { $0 + String($1) })
+
+
+    do {
+      var phrase4 = "tin robots"[...]
+      var buffer: String?
+      phrase4.scan2(upTo: "obox", into: &buffer)
+
+    }
+
+    do {
+      var list = [1, 2, 3, 4, 5][...]
+      var buffer: [Int]? = []
+      list.scan2(upTo: [3, 4], into: &buffer)
+
+      XCTAssertEqual(list, [3, 4, 5])
+      XCTAssertEqual(buffer, [1, 2])
+    }
+
+    do {
+      var list = [1, 2, 3, 4, 5][...]
+      var buffer: [Int]?
+      list.scan2(upTo: [100, 1003], into: &buffer)
+
+      XCTAssertEqual(list, [])
+      XCTAssertEqual(buffer, [1, 2, 3, 4, 5])
+    }
+
+    do {
+      var list = [Int]()[...]
+      var buffer: [Int]?
+      list.scan2(upTo: [3, 4], into: &buffer)
+
+      XCTAssertEqual(list, [])
+      XCTAssertEqual(buffer, nil)
+    }
+
+  }
+
 }
 
 

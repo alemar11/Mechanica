@@ -25,7 +25,7 @@
 import Foundation
 
 extension UserDefaults {
-  
+
   /// **Mechanica**
   ///
   /// Returns `true` if `key` exists.
@@ -36,7 +36,7 @@ extension UserDefaults {
     return dictionaryRepresentation().hasKey(key) // it seems implemented on Linux (Swift 4.1) but it's not working
     #endif
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -44,7 +44,7 @@ extension UserDefaults {
   public final func optionalBool(forKey defaultName: String) -> Bool? {
     return (object(forKey: defaultName) as? NSNumber)?.boolValue
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -52,7 +52,7 @@ extension UserDefaults {
   public final func optionalDouble(forKey defaultName: String) -> Double? {
     return (object(forKey: defaultName) as? NSNumber)?.doubleValue
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -60,7 +60,7 @@ extension UserDefaults {
   public final func optionalFloat(forKey defaultName: String) -> Float? {
     return (object(forKey: defaultName) as? NSNumber)?.floatValue
   }
-  
+
   /// **Mechanica**
   ///
   /// - Parameter defaultName: A key in the current user's defaults database.
@@ -68,9 +68,9 @@ extension UserDefaults {
   public final func optionalInteger(forKey defaultName: String) -> Int? {
     return (object(forKey: defaultName) as? NSNumber)?.intValue
   }
-  
+
   //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-  
+
   /// **Mechanica**
   ///
   /// Removes all keys and values from user defaults.
@@ -82,8 +82,8 @@ extension UserDefaults {
       removeObject(forKey: key)
     }
   }
-  
+
   //#endif
-  
+
 }
 #endif
