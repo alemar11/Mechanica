@@ -11,7 +11,7 @@ jobs:
           command: swift --version
       - run: 
           name: Swift Test
-          command: swift test
+          command: swift test -v
       - run:
           name: Swift build Release
           command: swift build -c release -Xswiftc -static-stdlib     
