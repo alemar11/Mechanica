@@ -498,12 +498,12 @@ final class StringUtilsTests: XCTestCase {
   func testSubscriptWithCountableClosedRange() {
     let string = "∆Test😗🇮🇹"
 
-    XCTAssertEqual(string[0 ... 2], "∆Te")
-    XCTAssertEqual(string[3 ... 3], "s")
-    XCTAssertEqual(string[3 ... 5], "st😗")
-    XCTAssertEqual(string[0 ... string.length-1], "∆Test😗🇮🇹")
+    XCTAssertEqual(string[0...2], "∆Te")
+    XCTAssertEqual(string[3...3], "s")
+    XCTAssertEqual(string[3...5], "st😗")
+    XCTAssertEqual(string[0...string.length-1], "∆Test😗🇮🇹")
 
-    XCTAssertNil(string[string.length ... string.length])
+    XCTAssertNil(string[string.length...string.length])
     XCTAssertEqual(string[string.length ..< string.length], "")
 
     XCTAssertNil(string[1 ..< 100])

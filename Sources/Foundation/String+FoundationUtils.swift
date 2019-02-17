@@ -180,7 +180,7 @@ extension String {
     var copy = self
 
     let versionComponents = components(separatedBy: ".")
-    guard 1 ... 3 ~= versionComponents.count else { fatalError("Invalid number of semantic version components (\(versionComponents.count)).") }
+    guard 1...3 ~= versionComponents.count else { fatalError("Invalid number of semantic version components (\(versionComponents.count)).") }
 
     let notNumericComponents = versionComponents.filter { !$0.isNumeric }
     guard notNumericComponents.isEmpty else { fatalError("Each semantic version component should have a numeric value.") }
@@ -495,7 +495,7 @@ extension String {
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(start, offsetBy: range.count)
 
-    return replacingCharacters(in: start ..< end, with: replacement)
+    return replacingCharacters(in: start..<end, with: replacement)
   }
 
   /// **Mechanica**
@@ -505,7 +505,7 @@ extension String {
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(start, offsetBy: range.count)
 
-    return replacingCharacters(in: start ..< end, with: replacement)
+    return replacingCharacters(in: start..<end, with: replacement)
   }
 
   /// **Mechanica**
