@@ -52,7 +52,7 @@ extension StringFoundationUtilsTests {
     ("testSemanticVersionComparison", testSemanticVersionComparison),
     ("testSemanticVersion", testSemanticVersion),
     ("testFirstRange", testFirstRange),
-    ("testRegex", testRegex), // Test only regex behaviour
+    ("testRegex", testRegex), // TODO: Test only regex behaviour
     ("testMatches", testMatches),
     ("testTrim", testTrim),
     ("testTrimmed", testTrimmed),
@@ -66,7 +66,6 @@ extension StringFoundationUtilsTests {
     ("testSlugCased", testSlugCased),
     ("testSnakeCased", testSnakeCased),
     ("testSwapCased", testSwapCased),
-    ("testNSRange", testNSRange),
     ("testContainsCaseSensitive", testContainsCaseSensitive),
     //("testSubscript", testSubscript), //TODO not working on Swift 5
     ("testReplacingCharacters", testReplacingCharacters),
@@ -962,32 +961,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertEqual("Hell0W0rld".swapCased(), "hELL0w0RLD")
     XCTAssertEqual("🇮🇹🇮🇹Hell0W👨🏻‍💻0rld".swapCased(), "🇮🇹🇮🇹hELL0w👨🏻‍💻0RLD")
   }
-  
-  func testNSRange() {
-    do {
-      let string = "Hello World"
-      let range = string.startIndex...
-      
-      XCTAssert(string.nsRange.length == string[range].utf16.count, "\(string.nsRange.length) should be equal to \(string[range].utf16.count)") // TODO fails on Swift 5 (Linux)
-      
-    }
-    
-    do {
-      let string = "Hello World 🤔"
-      let range = string.startIndex...
-      
-      XCTAssert(string.nsRange.length == string[range].utf16.count, "\(string.nsRange.length) should be equal to \(string[range].utf16.count)") // TODO fails on Swift 5 (Linux)
-      
-    }
-    
-    do {
-      let string = "Hello World 👩🏽‍🌾👨🏼‍🚒💃🏾"
-      let range = string.startIndex...
-      
-      XCTAssert(string.nsRange.length == string[range].utf16.count, "\(string.nsRange.length) should be equal to \(string[range].utf16.count)") // TODO fails on Swift 5 (Linux)
-    }
-  }
-  
+
   func testContainsCaseSensitive() {
     XCTAssertTrue("AaBbCc".contains("a", caseSensitive: true))
     XCTAssertTrue("AaBbCc".contains("Aa", caseSensitive: true))

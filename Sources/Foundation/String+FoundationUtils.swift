@@ -624,15 +624,6 @@ extension String {
     return self.range(of: substring, options: .literal, range: range, locale: .current)
   }
 
-  // MARK: - CharacterSet
-
-  /// **Mechanica**
-  ///
-  /// Returns the `NSRange` of `self`.
-  public var nsRange: NSRange {
-    return NSRange(startIndex..<endIndex, in: self)
-  }
-
   // MARK: - Case Operators
 
   /// **Mechanica**
