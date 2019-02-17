@@ -95,12 +95,12 @@ matrix:
       env: 
         - DESTINATION="OS=11.4,name=iPhone X" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios11"
 
-    # iOS 12.1
+    # iOS 12.2
     - os: osx
       osx_image: xcode10.2
       language: objective-c
       env: 
-        - DESTINATION="OS=12.1,name=iPhone Xs Max" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios"
+        - DESTINATION="OS=12.2,name=iPhone Xs Max" SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="ios"
 
     # iOS watchOS 3.2
     - os: osx
@@ -116,12 +116,12 @@ matrix:
       env: 
         - DESTINATION="OS=4.2,name=Apple Watch Series 2 - 38mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos4" 
 
-    #watchOS 5.1
+    #watchOS 5.2
     - os: osx
       osx_image: xcode10.2
       language: objective-c
       env: 
-        - DESTINATION="OS=5.1,name=Apple Watch Series 4 - 44mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos"    
+        - DESTINATION="OS=5.2,name=Apple Watch Series 4 - 44mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" XCODE_RUN_TESTS="NO" CODECOV_FLAG="watchos"    
 
     # tvOS 10.2
     - os: osx
@@ -137,12 +137,12 @@ matrix:
       env: 
         - DESTINATION="OS=11.4,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="tvos11" 
 
-    # tvOS 12.1
+    # tvOS 12.2
     - os: osx
       osx_image: xcode10.2
       language: objective-c
       env: 
-        - DESTINATION="OS=12.1,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="tvos"     
+        - DESTINATION="OS=12.2,name=Apple TV 4K (at 1080p)" SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" XCODE_RUN_TESTS="YES" CODECOV_FLAG="tvos"     
 
     # macOS 10.14
     - os: osx
