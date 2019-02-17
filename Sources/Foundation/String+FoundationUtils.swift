@@ -630,9 +630,7 @@ extension String {
   ///
   /// Returns the `NSRange` of `self`.
   public var nsRange: NSRange {
-    let range = self.startIndex...
-
-    return NSRange(range, in: self)
+    return NSRange(startIndex..<endIndex, in: self)
   }
 
   // MARK: - Case Operators
