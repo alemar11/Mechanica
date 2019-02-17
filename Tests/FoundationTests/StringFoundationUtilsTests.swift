@@ -579,7 +579,6 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("".isSemanticVersionGreaterOrEqual(to: "0.0.1"))
     XCTAssertFalse("\(Int.max)".isSemanticVersionGreaterOrEqual(to: "\(UInt.max)"))
     
-    
     // Lesser or Equal
     
     /// true
@@ -615,7 +614,6 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("0.0.1".isSemanticVersionLesserOrEqual(to: ""))
     XCTAssertFalse("\(Int.max)".isSemanticVersionLesserOrEqual(to: ""))
     XCTAssertFalse("\(UInt.max)".isSemanticVersionLesserOrEqual(to: ""))
-    
   }
   
   func testSemanticVersion() {
