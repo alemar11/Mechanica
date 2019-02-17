@@ -176,13 +176,21 @@ final class NSPredicateUtilsTests: XCTestCase {
 
     let nameEqualToAlessandro = NSPredicate { (contact, _) -> Bool in
       guard let contact = contact else { return false }
-      guard contact is Contact else { XCTFail(); fatalError() }
+      guard contact is Contact else {
+        XCTFail()
+        fatalError()
+      }
+      
       return (contact as! Contact).name.first == "Alessandro"
     }
 
     let emailEqualToApple = NSPredicate { (contact, _) -> Bool in
       guard let contact = contact else { return false }
-      guard contact is Contact else { XCTFail(); fatalError() }
+      guard contact is Contact else {
+        XCTFail()
+        fatalError()
+      }
+      
       return (contact as! Contact).email.hasSuffix("apple.com")
     }
 
