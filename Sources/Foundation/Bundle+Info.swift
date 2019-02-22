@@ -70,6 +70,30 @@ extension Bundle {
     return infoDictionary?["CFBundleVersion"] as? String
   }
 
+  /// Returns all the defines URL schemes.
+  /// - Note: The URL scheme is a useful little feature in iOS that allows unrelated applications to communicate with each other in a controlled way. One application can use a custom URL scheme registered by another to pass control to it, supplying arguments as required.
+  public var urlSchemes: [String] {
+    guard let infoDictionary = self.infoDictionary,
+      let urlTypes = infoDictionary["CFBundleURLTypes"] as? [AnyObject],
+      let urlType = urlTypes.first as? [String: AnyObject],
+      let urlSchemes = urlType["CFBundleURLSchemes"] as? [String] else {
+        return []
+    }
+    return urlSchemes
+  }
+
+  #endif
+
+  #if os(iOS) || os(tvOS) || os(watchOS)
+
+  /// **Mechanica**
+  ///
+  /// Returns true if the app is running through TestFlight.
+  /// - Note: For an application installed through TestFlight, the receipt file is named StoreKit\sandboxReceipt vs the usual StoreKit\receipt
+  public var isAppRunningThroughTestFlight: Bool {
+    return appStoreReceiptURL?.path.contains("sandboxReceipt") == true
+  }
+
   #endif
 
 }

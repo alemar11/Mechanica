@@ -2,6 +2,9 @@
 
 ### 3.0.0 (WIP)
 
+- Mechanica is now completely migrated to **Swift 5**. 🎉
+- Added more Bundle utils.
+
 ### 2.2.0
 
 - Added more Sequence utils.
