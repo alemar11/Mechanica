@@ -190,7 +190,7 @@ final class UIImageUtilsTests: XCTestCase {
 
     // Then
     let expectedAppleImage = UIImage(data: appleScaledData, scale: CGFloat(scale))!
-    // TODO: fails on tvOS, fixed for now increasing the tolerance to 188.
+    // TODO: fails on tvOS, fixed for now increasing the tolerance from 4 up to 188.
     var tolerance: UInt8 = 4
     #if os(tvOS)
       tolerance = 188
@@ -214,7 +214,7 @@ final class UIImageUtilsTests: XCTestCase {
 
     // Then
     let expectedAppleImage = UIImage(data: appleScaledToFitData, scale: CGFloat(scale))!
-    // TODO: fails with 3X scale on iOS, fixed for now increasing the tolerance to 53.
+    // TODO: fails with 3X scale on iOS, fixed for now increasing the tolerance from 4 up to 53.
     XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
     XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 53), "The scaled apple image pixels do not match.")
   }
