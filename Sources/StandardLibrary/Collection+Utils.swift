@@ -37,9 +37,7 @@ extension Collection {
   ///
   /// - Parameter index: the index of the desired element.
   public subscript(safe index: Index) -> Element? {
-    guard index >= startIndex && index < endIndex else {
-      return nil
-    }
+    guard index >= startIndex && index < endIndex else { return nil }
 
     return self[index]
   }
@@ -164,9 +162,7 @@ extension Collection where SubSequence == Self, Element: Equatable {
   /// - Parameter prefix: <#prefix description#>
   /// - Returns: <#return value description#>
   public mutating func scan<C>(prefix: C) -> Bool where C: Collection, C.Element == Element {
-    guard starts(with: prefix) else {
-      return false
-    }
+    guard starts(with: prefix) else { return false }
 
     removeFirst(prefix.count)
 
@@ -174,9 +170,7 @@ extension Collection where SubSequence == Self, Element: Equatable {
   }
 
   public mutating func scan<C>(upTo condition: ((Element) -> Bool), into: inout C) where C: RangeReplaceableCollection, C.Element == Element {
-    guard let firstElement = first, !condition(firstElement) else {
-        return
-    }
+    guard let firstElement = first, !condition(firstElement) else { return }
 
     let element = removeFirst()
     into.append(element)
@@ -186,13 +180,9 @@ extension Collection where SubSequence == Self, Element: Equatable {
 
   /// Scans `self` until a given collection is encountered, removing all the scanned elements from `self` and accumulating them into a given buffer.
   public mutating func scan2<C>(upTo collection: Self, into buffer: inout C?) where C: RangeReplaceableCollection, C.Element == Element {
-    guard !isEmpty else {
-      return
-    }
+    guard !isEmpty else { return }
 
-    guard !starts(with: collection) else {
-      return
-    }
+    guard !starts(with: collection) else { return }
 
     let element = removeFirst()
 

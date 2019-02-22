@@ -51,7 +51,9 @@ extension NSImage {
   /// Returns a CGImage object for the associated image data.
   public var cgImage: CGImage? {
     let imageData = self.tiffRepresentation
+
     guard let source = CGImageSourceCreateWithData(imageData! as CFData, nil) else { return nil }
+
     return CGImageSourceCreateImageAtIndex(source, 0, nil)
   }
 

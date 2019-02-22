@@ -36,9 +36,8 @@ extension String {
   ///
   /// Returns a `new` string decoded from base64.
   public var base64Decoded: String? {
-    guard let decodedData = Data(base64Encoded: self) else {
-      return nil
-    }
+    guard let decodedData = Data(base64Encoded: self) else { return nil }
+
     return String(data: decodedData, encoding: .utf8)
   }
 
@@ -409,6 +408,7 @@ extension String {
   /// - Returns: A `new` random alphanumeric `String`.
   public static func random(length: UInt32 = 8, characters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
+
     var randomString: String = ""
 
     for _ in 0..<length {
@@ -429,6 +429,7 @@ extension String {
   /// - Returns: A `new` random alphanumeric `String`.
   public static func random(length between: CountableClosedRange<UInt32>, characters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
+
     let randomLength = UInt32.random(in: between.lowerBound...between.upperBound)
 
     return random(length: randomLength, characters: base)
@@ -601,7 +602,6 @@ extension String {
   ///  - Returns: Substring in NSRange or nil.
   public subscript (nsRange: NSRange) -> Substring? {
     guard let range = Range(nsRange) else { return nil }
-
     guard 0...count ~= range.lowerBound else { return nil }
     guard 0...count ~= range.upperBound else { return nil }
 
