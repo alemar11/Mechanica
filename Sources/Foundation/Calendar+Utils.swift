@@ -78,22 +78,3 @@ extension Calendar {
 }
 
 #endif
-
-// TODO
-/*
- extension DispatchTimeInterval {
-
- /// **Mechanica**
- ///
- /// Returns a dispatch time interval in nanoseconds from a `Double` number of seconds
- ///
- /// Example:
- ///
- ///    let timeInEightAndHalf: DispatchTime = .now() + .seconds(8.5)
- public static func seconds(_ amount: Double) -> DispatchTimeInterval {
- // http://ericasadun.com/2017/05/23/5-easy-dispatch-tricks/
- let delay = Double(NSEC_PER_SEC) * amount
- return DispatchTimeInterval.nanoseconds(Int(delay))
- }
- }
- */
