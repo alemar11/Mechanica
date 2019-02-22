@@ -68,12 +68,14 @@ extension UIStackView {
     view.backgroundColor = color
     view.layer.cornerRadius = cornerRadius
     insertSubview(view, at: index)
+
     NSLayoutConstraint.activate([
       view.leadingAnchor.constraint(equalTo: leadingAnchor),
       view.trailingAnchor.constraint(equalTo: trailingAnchor),
       view.topAnchor.constraint(equalTo: topAnchor),
       view.bottomAnchor.constraint(equalTo: bottomAnchor)
       ])
+    
     return view
   }
 }
