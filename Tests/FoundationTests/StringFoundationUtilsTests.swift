@@ -46,7 +46,7 @@ extension StringFoundationUtilsTests {
     ("testIsValidEmail", testIsValidEmail),
     ("testIsEmojiCountryFlag", testIsEmojiCountryFlag),
     ("testContainsCharacters", testContainsCharacters),
-    //("testReplace", testReplace), //TODO not working on Swift 5 (exit with error 4)
+    ("testReplace", testReplace), //TODO not working on Swift 5 (exit with error 4)
     ("testCondensingExcessiveSpaces", testCondensingExcessiveSpaces),
     ("testCondensingExcessiveSpacesAndNewLines", testCondensingExcessiveSpacesAndNewLines),
     ("testSemanticVersionComparison", testSemanticVersionComparison),
@@ -67,7 +67,7 @@ extension StringFoundationUtilsTests {
     ("testSnakeCased", testSnakeCased),
     ("testSwapCased", testSwapCased),
     ("testContainsCaseSensitive", testContainsCaseSensitive),
-    //("testSubscript", testSubscript), //TODO not working on Swift 5
+    ("testSubscript", testSubscript), //TODO not working on Swift 5
     ("testReplacingCharacters", testReplacingCharacters),
     ("testReplacingFirstOccurrence", testReplacingFirstOccurrence),
     ("testRandom", testRandom),
