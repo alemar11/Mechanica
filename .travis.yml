@@ -63,7 +63,7 @@ matrix:
       language: objective-c
       before_install:
         #- gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
-        - gem install cocoapods --pre --no-ri --no-document --quiet
+        - gem install cocoapods --pre --no-document --quiet
         - brew outdated swiftlint || brew upgrade swiftlint
       before_script:
         - swiftlint --reporter "emoji"  
