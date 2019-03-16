@@ -52,7 +52,7 @@ extension StringFoundationUtilsTests {
     ("testSemanticVersionComparison", testSemanticVersionComparison),
     ("testSemanticVersion", testSemanticVersion),
     ("testFirstRange", testFirstRange),
-    ("testRegex", testRegex), // TODO: Test only regex behaviour
+    ("testRegex", testRegex), // TODO: Tests only the "default" regex behaviour (and not an extension)
     ("testMatches", testMatches),
     ("testTrim", testTrim),
     ("testTrimmed", testTrimmed),
