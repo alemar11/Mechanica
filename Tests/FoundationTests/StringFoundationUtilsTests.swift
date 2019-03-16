@@ -758,8 +758,8 @@ final class StringFoundationUtilsTests: XCTestCase {
     
     do {
       let text = "Hello World - Tin Robots 🤖😀🤖"
-      XCTAssertEqual(text.matches(for: String.Pattern.firstAlphaNumericCharacter), ["H", "W", "T", "R"]) // TODO fails on Swift 5 (Linux)
-      XCTAssertEqual(text.matches(for: String.Pattern.lastAlphaNumericCharacter), ["o", "d", "n", "s"]) // TODO fails on Swift 5 (Linux)
+      XCTAssertEqual(text.matches(for: String.Pattern.firstAlphaNumericCharacter), ["H", "W", "T", "R"])
+      XCTAssertEqual(text.matches(for: String.Pattern.lastAlphaNumericCharacter), ["o", "d", "n", "s"])
       let invalidPattern = "//⛏"
       XCTAssertTrue(text.matches(for: invalidPattern).isEmpty)
       XCTAssertNil(text.firstMatch(for: invalidPattern))

@@ -711,6 +711,7 @@ extension String {
   }
 
   // MARK: - NSString
+    
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
