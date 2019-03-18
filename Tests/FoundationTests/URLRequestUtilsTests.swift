@@ -29,7 +29,7 @@ extension URLRequestUtilsTests {
   static var allTests = [
     ("testCURLRepresentation", testCURLRepresentation),
     ("testCURLRepresentationWithBodyStream", testCURLRepresentationWithBodyStream),
-    ("testCURLRepresentationWithURLSession", testCURLRepresentationWithURLSession), //TODO: it's not compiling on Linux
+    ("testCURLRepresentationWithURLSession", testCURLRepresentationWithURLSession),
   ]
 }
 
@@ -207,6 +207,5 @@ final class URLRequestUtilsTests: XCTestCase {
 
     XCTAssertTrue(expectedValue1 == cURL || expectedValue2 == cURL)
   }
-
 
 }
