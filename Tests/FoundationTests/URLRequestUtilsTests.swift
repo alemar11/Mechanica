@@ -179,14 +179,15 @@ final class URLRequestUtilsTests: XCTestCase {
     var cookieProperties = [HTTPCookiePropertyKey: Any]()
     cookieProperties[.name] = "cookiename"
     cookieProperties[.value] = "cookievalue"
-    cookieProperties[.domain] = urlString
+    cookieProperties[.domain] = "example.com"
     cookieProperties[.path] = "/"
     cookieProperties[.version] = NSNumber(value: 11)
     cookieProperties[.expires] = date
+
     let cookie = HTTPCookie(properties: cookieProperties)!
 
-    let storage = MockHTTPCookieStorage.shared
-    storage.setCookies([cookie], for: url, mainDocumentURL: nil)
+    let storage = HTTPCookieStorage.shared
+    storage.setCookie(cookie)
     configuration.httpCookieStorage = storage
 
     let session = URLSession(configuration: configuration)
@@ -200,23 +201,6 @@ final class URLRequestUtilsTests: XCTestCase {
     let expectedValue1 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
     let expectedValue2 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Test: Mechanica\" -H \"Content-Type: application/json\" \"http://example.com\""
     XCTAssertTrue(expectedValue1 == cURL || expectedValue2 == cURL)
-  }
-
-  class MockHTTPCookieStorage: HTTPCookieStorage {
-    var _cookies = [URL: [HTTPCookie]]()
-
-//    override init() {
-//      super.init() // TODO: not compiling on Linux
-//    }
-
-    override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
-      guard let url = URL else { return }
-      _cookies[url] = cookies
-    }
-
-    override func cookies(for URL: URL) -> [HTTPCookie]? {
-      return _cookies[URL]
-    }
   }
   //#endif
 
