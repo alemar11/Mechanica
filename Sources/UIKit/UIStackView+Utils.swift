@@ -75,7 +75,7 @@ extension UIStackView {
       view.topAnchor.constraint(equalTo: topAnchor),
       view.bottomAnchor.constraint(equalTo: bottomAnchor)
       ])
-    
+
     return view
   }
 }

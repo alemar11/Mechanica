@@ -180,7 +180,7 @@ final class NSPredicateUtilsTests: XCTestCase {
         XCTFail()
         fatalError()
       }
-      
+
       return (contact as! Contact).name.first == "Alessandro"
     }
 
@@ -190,7 +190,7 @@ final class NSPredicateUtilsTests: XCTestCase {
         XCTFail()
         fatalError()
       }
-      
+
       return (contact as! Contact).email.hasSuffix("apple.com")
     }
 
