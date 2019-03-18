@@ -29,7 +29,7 @@ extension URLRequestUtilsTests {
   static var allTests = [
     ("testCURLRepresentation", testCURLRepresentation),
     ("testCURLRepresentationWithBodyStream", testCURLRepresentationWithBodyStream),
-    //("testCURLRepresentationWithURLSession", testCURLRepresentationWithURLSession), //TODO: it's not compiling on Linux
+    ("testCURLRepresentationWithURLSession", testCURLRepresentationWithURLSession), //TODO: it's not compiling on Linux
   ]
 }
 
