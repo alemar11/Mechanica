@@ -185,7 +185,7 @@ final class URLRequestUtilsTests: XCTestCase {
     cookieProperties[.expires] = date
     let cookie = HTTPCookie(properties: cookieProperties)!
 
-    let storage = MockHTTPCookieStorage()
+    let storage = MockHTTPCookieStorage.shared
     storage.setCookies([cookie], for: url, mainDocumentURL: nil)
     configuration.httpCookieStorage = storage
 
