@@ -194,6 +194,7 @@ final class URLRequestUtilsTests: XCTestCase {
     let expectedValue1 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
     let expectedValue2 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Test: Mechanica\" -H \"Content-Type: application/json\" \"http://example.com\""
     #else
+    // TODO: URLCredentialStorage not implemented on Linux (https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/URLCredentialStorage.swift)
     let expectedValue1 = "curl -i -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
     let expectedValue2 = "curl -i -b \"cookiename=cookievalue\" -H \"Test: Mechanica\" -H \"Content-Type: application/json\" \"http://example.com\""
     #endif
