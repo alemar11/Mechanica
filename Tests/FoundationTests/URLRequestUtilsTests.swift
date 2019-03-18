@@ -154,8 +154,6 @@ final class URLRequestUtilsTests: XCTestCase {
     XCTAssertTrue(prettyCURL == valuePretty)
   }
 
-  //#if os(iOS) || os(tvOS) || os(macOS)
-
   func testCURLRepresentationWithURLSession() throws {
     // Given
     var urlString = "http://example.com"
@@ -191,17 +189,23 @@ final class URLRequestUtilsTests: XCTestCase {
     configuration.httpCookieStorage = storage
 
     let session = URLSession(configuration: configuration)
+    #if os(iOS) || os(tvOS) || os(macOS)
     URLCredentialStorage.shared.setDefaultCredential(credential, for: protectionSpace)
+    let expectedValue1 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
+    let expectedValue2 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Test: Mechanica\" -H \"Content-Type: application/json\" \"http://example.com\""
+    #else
+    let expectedValue1 = "curl -i -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
+    let expectedValue2 = "curl -i -b \"cookiename=cookievalue\" -H \"Test: Mechanica\" -H \"Content-Type: application/json\" \"http://example.com\""
+    #endif
 
     // CredStore - performQuery - Error copying matching creds.  Error=-25300 ...
     // https://github.com/Alamofire/Alamofire/issues/2467
 
     // When, Then
     let cURL = request.cURLRepresentation(session: session, prettyPrinted: false)!
-    let expectedValue1 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
-    let expectedValue2 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Test: Mechanica\" -H \"Content-Type: application/json\" \"http://example.com\""
+
     XCTAssertTrue(expectedValue1 == cURL || expectedValue2 == cURL)
   }
-  //#endif
+
 
 }
