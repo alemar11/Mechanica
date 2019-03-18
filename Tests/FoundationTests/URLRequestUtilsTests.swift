@@ -154,7 +154,7 @@ final class URLRequestUtilsTests: XCTestCase {
     XCTAssertTrue(prettyCURL == valuePretty)
   }
 
-  #if os(iOS) || os(tvOS) || os(macOS)
+  //#if os(iOS) || os(tvOS) || os(macOS)
 
   func testCURLRepresentationWithURLSession() throws {
     // Given
@@ -206,7 +206,7 @@ final class URLRequestUtilsTests: XCTestCase {
     var _cookies = [URL: [HTTPCookie]]()
 
     override init() {
-      super.init() // not compiling on Linux
+      super.init() // TODO: not compiling on Linux
     }
 
     override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
@@ -218,6 +218,6 @@ final class URLRequestUtilsTests: XCTestCase {
       return _cookies[URL]
     }
   }
-  #endif
+  //#endif
 
 }
