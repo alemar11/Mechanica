@@ -25,7 +25,6 @@
 import Foundation
 
 extension Calendar {
-
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   /// **Mechanica**
   ///
@@ -53,16 +52,6 @@ extension Calendar {
 
   /// **Mechanica**
   ///
-  /// Checks if date is is within a weekday period.
-  ///
-  public func isDateInWorkDay(_ date: Date) -> Bool {
-    return !isDateInWeekend(date)
-  }
-
-  #endif
-
-  /// **Mechanica**
-  ///
   /// Checks if date is is within the current month.
   ///
   public func isDateInCurrentMonth(_ date: Date) -> Bool {
@@ -75,6 +64,15 @@ extension Calendar {
   ///
   public func isDateInCurrentYear(_ date: Date) -> Bool {
     return isDate(date, equalTo: Date(), toGranularity: .year)
+  }
+  #endif
+
+  /// **Mechanica**
+  ///
+  /// Checks if date is is within a weekday period.
+  ///
+  public func isDateInWorkDay(_ date: Date) -> Bool {
+    return !isDateInWeekend(date)
   }
 }
 
