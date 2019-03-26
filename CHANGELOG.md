@@ -1,6 +1,6 @@
 # Changelog
 
-### 3.0.0 (WIP)
+### 3.0.0
 
 - Mechanica is now completely migrated to **Swift 5**. 🎉
 - Added more Bundle utils.
