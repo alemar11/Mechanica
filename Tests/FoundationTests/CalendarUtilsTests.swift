@@ -52,7 +52,6 @@ final class CalendarUtilsTests: XCTestCase {
     let date4 = Calendar.current.date(byAdding: .month, value: 11, to: date1)!
     XCTAssertEqual(calendar.quarter(from: date4), 4)
   }
-  #endif
 
   func testIsDateInCurrentWeek() {
     let date = Date()
@@ -75,6 +74,7 @@ final class CalendarUtilsTests: XCTestCase {
     let newDate = calendar.date(byAdding: .day, value: 2, to: date)!
     XCTAssertTrue(calendar.isDateInWorkDay(newDate))
   }
+  #endif
 
   func testIsDateInCurrentMonth() {
     let date = Date()
