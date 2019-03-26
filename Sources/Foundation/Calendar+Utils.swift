@@ -42,7 +42,6 @@ extension Calendar {
 
     return Int(ceil(month / numberOfMonthsInQuarter))
   }
-  #endif
 
   /// **Mechanica**
   ///
@@ -59,6 +58,8 @@ extension Calendar {
   public func isDateInWorkDay(_ date: Date) -> Bool {
     return !isDateInWeekend(date)
   }
+
+  #endif
 
   /// **Mechanica**
   ///

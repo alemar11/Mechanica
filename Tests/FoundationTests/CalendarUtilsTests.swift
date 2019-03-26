@@ -27,8 +27,8 @@ import XCTest
 extension CalendarUtilsTests {
   static var allTests = [
     // ("testQuarter", testQuarter),
-    ("testIsDateInCurrentWeek", testIsDateInCurrentWeek), // TODO: crash on Swift 5
-    ("testIsDateInWorkDay", testIsDateInWorkDay),
+    // ("testIsDateInCurrentWeek", testIsDateInCurrentWeek), // TODO: crash on Swift 5
+    // ("testIsDateInWorkDay", testIsDateInWorkDay),
     ("testIsDateInCurrentMonth", testIsDateInCurrentMonth), // TODO: crash on Swift 5
     // ("testIsDateInCurrentYear", testIsDateInCurrentYear) //TODO enumerateDates(startingAfter:matching:options:using:) is not yet implemented (Swift 4.1.2)
   ]
