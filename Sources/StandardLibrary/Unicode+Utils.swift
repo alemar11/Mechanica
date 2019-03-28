@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension Unicode.Scalar {
-
   /// **Mechanica**
   ///
   /// Returns `true` if `self` is a regional indicator.
@@ -31,5 +30,4 @@ extension Unicode.Scalar {
     // see https://github.com/apple/swift/blob/swift-5.0-branch/stdlib/public/core/UnicodeScalarProperties.swift
     return ("🇦"..."🇿").contains(self)
   }
-
 }

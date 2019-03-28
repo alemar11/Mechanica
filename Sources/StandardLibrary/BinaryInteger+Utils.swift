@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension BinaryInteger {
-
   /// **Mechanica**
   ///
   /// Determine if self is even (equivalent to `self % 2 == 0` or to `isMultiple(of: 2)`).
@@ -36,5 +35,4 @@ extension BinaryInteger {
   public var isOdd: Bool {
     return !isEven
   }
-
 }

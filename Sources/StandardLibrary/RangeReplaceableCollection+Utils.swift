@@ -93,7 +93,6 @@ extension RangeReplaceableCollection {
 // MARK: - Methods (MutableCollection)
 
 extension RangeReplaceableCollection where Self: MutableCollection {
-
   /// **Mechanica**
   ///
   /// Removes all the elements that matches the given `condition` and returns all the removed element (if any).
@@ -137,13 +136,11 @@ extension RangeReplaceableCollection where Self: MutableCollection {
 
     return (copy, removed)
   }
-
 }
 
 // MARK: Methods (Equatable)
 
 extension RangeReplaceableCollection where Element: Equatable {
-
   /// **Mechanica**
   /// Removes the first specified element from the collection (if exists).
   /// - Returns: The element removed (if any).
@@ -161,7 +158,6 @@ extension RangeReplaceableCollection where Element: Equatable {
 // MARK: - Methods (BidirectionalCollection)
 
 extension RangeReplaceableCollection where Self: BidirectionalCollection, Element: Equatable {
-
   /// **Mechanica**
   ///
   /// Removes the last specified element from the array (if exists).
@@ -175,5 +171,4 @@ extension RangeReplaceableCollection where Self: BidirectionalCollection, Elemen
 
     return nil
   }
-
 }

@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension FixedWidthInteger {
-
   /// **Mechanica**
   ///
   /// Creates a string representing the given value in the binary base.
@@ -55,5 +54,4 @@ extension FixedWidthInteger {
     // return "0b" + result.reversed().joined(separator: "_")
      return result.reversed().joined(separator: "")
   }
-
 }

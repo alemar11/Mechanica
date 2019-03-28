@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension BinaryFloatingPoint {
-
   /// **Mechanica**
   ///
   /// Creates a string representing the given value in the binary base.
@@ -48,5 +47,4 @@ extension BinaryFloatingPoint {
 
     return "\(floatingPointSign)\(exponent)\(mantissa)"
   }
-
 }

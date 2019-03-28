@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension Dictionary {
-
   /// **Mechanica**
   ///
   /// Returns true if the `key` exists in the dictionary.
@@ -46,11 +45,9 @@ extension Dictionary {
     }
     return removedElements
   }
-
 }
 
 extension Dictionary where Key: ExpressibleByStringLiteral {
-
   // MARK: - ExpressibleByStringLiteral
 
   /// **Mechanica**
@@ -63,5 +60,4 @@ extension Dictionary where Key: ExpressibleByStringLiteral {
       }
     }
   }
-
 }

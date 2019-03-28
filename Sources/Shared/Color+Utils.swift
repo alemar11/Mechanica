@@ -205,7 +205,6 @@ extension Color {
 // MARK: - HSBA
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Alias for HSBA color space components
@@ -227,13 +226,11 @@ extension Color {
 
     return (hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
   }
-
 }
 
 // MARK: - Editing
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Blends two colors together.
@@ -281,7 +278,6 @@ extension Color {
 
     return Color(red: red, green: green, blue: blue, alpha: alpha)
   }
-
 }
 
 // MARK: - UIKit Components
@@ -289,7 +285,6 @@ extension Color {
 #if canImport(UIKit)
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Returns the receiver’s RGB red component.
@@ -365,7 +360,6 @@ extension Color {
     getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
     return brightness
   }
-
 }
 
 #endif

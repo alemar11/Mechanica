@@ -24,7 +24,6 @@
 // MARK: Properties
 
 extension SignedInteger {
-
   /// **Mechanica**
   ///
   /// Determines if self is positive (equivalent to `self > 0`).
@@ -38,5 +37,4 @@ extension SignedInteger {
   public var isNegative: Bool {
     return self < 0
   }
-
 }

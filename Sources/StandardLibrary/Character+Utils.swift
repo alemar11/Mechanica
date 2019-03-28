@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension Character {
-
   /// **Mechanica**
   ///
   /// Returns `true` if `self` is an emoji country flag.
@@ -32,5 +31,4 @@ extension Character {
     let scalars = unicodeScalars
     return scalars.count == 2 && scalars.first!.isRegionalIndicator && scalars.last!.isRegionalIndicator
   }
-
 }

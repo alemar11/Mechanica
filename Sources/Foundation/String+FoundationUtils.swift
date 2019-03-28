@@ -29,7 +29,6 @@
 import Foundation
 
 extension String {
-
   // MARK: - Foundation
 
   /// **Mechanica**
@@ -140,8 +139,8 @@ extension String {
     guard !isEmpty else { return false }
 
     for scalar in unicodeScalars {
+      // swiftlint:diable empty_line_after_guard
       guard characterSet.contains(scalar) else { return false }
-
     }
 
     return true

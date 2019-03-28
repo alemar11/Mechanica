@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension FloatingPoint {
-
   /// **Mechanica**
   ///
   /// Returns a `new` rounded `FloatingPoint` to specified number of decimal `places`.
@@ -137,5 +136,4 @@ extension FloatingPoint {
   public mutating func floor(to decimalPlaces: Int) {
     self = floored(to: decimalPlaces)
   }
-
 }
