@@ -26,7 +26,6 @@
   import UIKit
 
   extension UIView {
-
     /// **Mechanica**
     ///
     /// The radius to use when drawing rounded corners.
@@ -134,7 +133,6 @@
         }
       }
     }
-
   }
 
 #endif
@@ -142,7 +140,6 @@
 #if os(iOS) || os(tvOS)
 
   extension UIView {
-
     /// **Mechanica**
     ///
     /// A Boolean value that determines whether the view’s autoresizing mask is translated into Auto Layout constraints.
@@ -170,9 +167,7 @@
       } else { // iOS 10
         return UIGraphicsImageRenderer(bounds: bounds).image { layer.render(in: $0.cgContext) }
       }
-
     }
-
   }
 
 #endif

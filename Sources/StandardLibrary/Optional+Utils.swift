@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension Optional {
-
   /// **Mechanica**
   ///
   /// Returns `true` if `self` has a value.

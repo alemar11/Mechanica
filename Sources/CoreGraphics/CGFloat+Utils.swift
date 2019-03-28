@@ -26,7 +26,6 @@
   import CoreGraphics
 
   extension CGFloat {
-
     /// **Mechanica**
     ///
     /// Example:

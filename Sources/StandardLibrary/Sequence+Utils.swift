@@ -24,7 +24,6 @@
 /// A Sequence can be either finite or infinite.
 
 extension Sequence {
-
   /// **Mechanica**
   ///
   /// Checks if all the elements in collection satisfiy the given predicate.
@@ -164,13 +163,11 @@ extension Sequence {
     var seen =  [Key: Bool]()
     return filter { seen.updateValue(true, forKey: keyGenerator($0)) == nil }
   }
-
 }
 
 // MARK: - Equatable
 
 extension Sequence where Element: Equatable {
-
   /// **Mechanica**
   ///
   /// Returns a collection of unique elements preserving their original order.
@@ -184,13 +181,11 @@ extension Sequence where Element: Equatable {
 
     return result
   }
-
 }
 
 // MARK: - Hashable
 
 extension Sequence where Element: Hashable {
-
   /// **Mechanica**
   ///
   /// Returns true if the `Sequence` contains all the given elements.
@@ -241,13 +236,11 @@ extension Sequence where Element: Hashable {
     }
     return false
   }
-
 }
 
 // MARK: - AnyObject
 
 extension Sequence where Element: AnyObject {
-
   /// **Mechanica**
   ///
   /// Returns true if the `Sequence` contains an element identical (referential equality) to an `object`.
@@ -255,13 +248,11 @@ extension Sequence where Element: AnyObject {
   public func containsObjectIdentical(to object: AnyObject) -> Bool {
     return contains { $0 === object }
   }
-
 }
 
 // MARK: - Numeric
 
 extension Sequence where Element: Numeric {
-
   /// **Mechanica**
   ///
   /// Sums of all elements in array.
@@ -274,5 +265,4 @@ extension Sequence where Element: Numeric {
   public func sum() -> Element {
     return reduce(0, { $0 + $1 })
   }
-
 }

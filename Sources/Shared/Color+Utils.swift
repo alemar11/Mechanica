@@ -36,7 +36,6 @@ public typealias Color = AppKit.NSColor
 #endif
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Returns the hexadecimal string representation of `self` in the sRGB space.
@@ -66,13 +65,11 @@ extension Color {
     return self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
     #endif
   }
-
 }
 
 // MARK: - sRGBA
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Alias for RGBA color space components
@@ -131,13 +128,11 @@ extension Color {
 
     return convertedColor
   }
-
 }
 
 // MARK: - Initializers
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Returns a sRGB color from a hexadecimal integer.
@@ -199,7 +194,6 @@ extension Color {
 
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
-
 }
 
 // MARK: - HSBA

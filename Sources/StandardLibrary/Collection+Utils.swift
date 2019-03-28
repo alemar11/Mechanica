@@ -24,7 +24,6 @@
 // MARK: - Subscripts
 
 extension Collection {
-
   /// **Mechanica**
   ///
   /// Returns the element at the specified index or nil if not exists.
@@ -41,13 +40,11 @@ extension Collection {
 
     return self[index]
   }
-
 }
 
 // MARK: - Methods
 
 extension Collection {
-
   /// **Mechanica**
   ///
   /// - Parameter index: the index of the desired element.
@@ -62,13 +59,11 @@ extension Collection {
   public func at(_ index: Index) -> Element? {
     return self[safe: index]
   }
-
 }
 
 // MARK: - Equatable
 
 extension Collection where Element: Equatable {
-
   /// **Mechanica**
   ///
   /// Returns all the indices of a specified item.
@@ -92,11 +87,9 @@ extension Collection where Element: Equatable {
 
     return indices
   }
-
 }
 
 extension Collection where SubSequence == Self {
-
   /// **Mechanica**
   ///
   /// Scans `self` exactly for a given count of elements, removing all the scanned elements from `self`.
@@ -162,11 +155,9 @@ extension Collection where SubSequence == Self {
 
     scan(upToCondition: condition, into: &buffer)
   }
-
 }
 
 extension Collection where SubSequence == Self, Element: Equatable {
-
   /// **Mechanica**
   ///
   /// Scans `self` for a specific index, removing all the scanned elements from `self`.
@@ -235,5 +226,4 @@ extension Collection where SubSequence == Self, Element: Equatable {
 
     scan(upToCollection: collection)
   }
-
 }

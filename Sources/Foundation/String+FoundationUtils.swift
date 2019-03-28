@@ -29,8 +29,6 @@
 import Foundation
 
 extension String {
-  // MARK: - Foundation
-
   /// **Mechanica**
   ///
   /// Returns a `new` string decoded from base64.
@@ -139,7 +137,7 @@ extension String {
     guard !isEmpty else { return false }
 
     for scalar in unicodeScalars {
-      // swiftlint:diable empty_line_after_guard
+      // swiftlint:disable empty_line_after_guard
       guard characterSet.contains(scalar) else { return false }
     }
 
@@ -461,7 +459,6 @@ extension String {
         remove(at: idx)
       }
     }
-
   }
 
   /// **Mechanica**
@@ -827,6 +824,5 @@ extension String {
 
     return ranges
   }
-
 }
 #endif

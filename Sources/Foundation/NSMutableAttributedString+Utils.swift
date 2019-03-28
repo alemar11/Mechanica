@@ -25,7 +25,6 @@
 import Foundation
 
 extension NSMutableAttributedString {
-
   // MARK: - Attributes
 
   /// **Mechanica**
@@ -115,6 +114,5 @@ extension NSMutableAttributedString {
   public static func += (lhs: NSMutableAttributedString, rhs: String) {
     lhs.append(NSAttributedString(string: rhs))
   }
-
 }
 #endif

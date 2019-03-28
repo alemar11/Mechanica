@@ -28,7 +28,6 @@ import Dispatch
 // MARK: - Properties
 
 extension DispatchQueue {
-
   /// **Mechanica**
   ///
   /// Returns a Boolean value indicating whether the current dispatch queue is the main queue.
@@ -42,13 +41,11 @@ extension DispatchQueue {
     }
     return DispatchQueue.getSpecific(key: Static.key) != nil
   }
-
 }
 
 // MARK: - Methods
 
 extension DispatchQueue {
-
   /// **Mechanica**
   ///
   /// Returns a Boolean value indicating whether the current dispatch queue is the specified queue.
@@ -63,7 +60,6 @@ extension DispatchQueue {
 
     return DispatchQueue.getSpecific(key: key) != nil
   }
-
 }
 
 #endif

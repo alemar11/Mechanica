@@ -24,7 +24,6 @@
 // MARK: - Methods
 
 extension RangeReplaceableCollection {
-
   /// **Mechanica**
   ///
   /// Appends a new `element`.

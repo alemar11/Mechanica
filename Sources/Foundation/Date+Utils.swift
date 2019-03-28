@@ -25,7 +25,6 @@
 import Foundation
 
 extension Date {
-
   /// **Mechanica**
   ///
   /// Checks if date is the in the future.
@@ -134,13 +133,11 @@ extension Date {
     let startReferenceDate = toDate > fromDate ? fromDate : toDate
     return startReferenceDate.addingTimeInterval(TimeInterval(randomValue))
   }
-
 }
 
 // MARK: - Initializers
 
 extension Date {
-
   /// **Mechanica**
   ///
   /// Creates a new `Date` instance from an UNIX timestamp.
@@ -153,6 +150,5 @@ extension Date {
   public init(unixTimestamp: Double) {
     self.init(timeIntervalSince1970: unixTimestamp)
   }
-
 }
 #endif

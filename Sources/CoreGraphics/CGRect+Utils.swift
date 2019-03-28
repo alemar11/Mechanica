@@ -26,7 +26,6 @@
   import CoreGraphics
 
   extension CGRect {
-
     /// **Mechanica**
     ///
     /// Returns a `CGRect` value initialized with an origin at (0,0) and the provided width and height.
@@ -80,7 +79,6 @@
         height: size.height.rounded(rule)
       )
     }
-
   }
 
 #endif

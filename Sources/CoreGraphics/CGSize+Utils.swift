@@ -26,7 +26,6 @@
 import CoreGraphics.CGGeometry
 
 extension CGSize {
-
   /// **Mechanica**
   ///
   ///  Returns the scale to fit `self` into a different `size`.
@@ -53,13 +52,11 @@ extension CGSize {
 
     return CGSize(width: width * minRatio, height: height * minRatio)
   }
-
 }
 
 // MARK: - Operators
 
 extension CGSize {
-
   /// **Mechanica**
   ///
   /// Adds two `CGSize`.
@@ -134,7 +131,5 @@ extension CGSize {
   public static func *= (size: inout CGSize, scalar: CGFloat) {
     size = CGSize(width: size.width * scalar, height: size.height * scalar)
   }
-
 }
-
 #endif

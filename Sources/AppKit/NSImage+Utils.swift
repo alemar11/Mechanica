@@ -26,7 +26,6 @@
 import AppKit
 
 extension NSImage {
-
   /// **Mechanica**
   ///
   /// - Parameters:
@@ -56,7 +55,6 @@ extension NSImage {
 
     return CGImageSourceCreateImageAtIndex(source, 0, nil)
   }
-
 }
 
 #endif

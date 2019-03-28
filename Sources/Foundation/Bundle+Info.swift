@@ -27,7 +27,6 @@
 import Foundation
 
 extension Bundle {
-
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
@@ -86,7 +85,6 @@ extension Bundle {
   #endif
 
   #if os(iOS) || os(tvOS) || os(watchOS)
-
   /// **Mechanica**
   ///
   /// Returns true if the app is running through TestFlight.
@@ -94,8 +92,6 @@ extension Bundle {
   public var isAppRunningThroughTestFlight: Bool {
     return appStoreReceiptURL?.path.contains("sandboxReceipt") == true
   }
-
   #endif
-
 }
 #endif

@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension Bool {
-
   /// **Mechanica**
   ///
   /// Returns 1 if true, or 0 if false.
@@ -48,5 +47,4 @@ extension Bool {
   public var binaryString: String {
     return self ? "1" : "0"
   }
-
 }

@@ -25,7 +25,6 @@
 import Foundation
 
 extension NSAttributedString {
-
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   // MARK: - Initializers
@@ -82,6 +81,5 @@ extension NSAttributedString {
   }
 
   //#endif
-
 }
 #endif

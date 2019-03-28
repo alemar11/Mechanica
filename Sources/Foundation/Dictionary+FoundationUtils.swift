@@ -25,7 +25,6 @@
 import Foundation
 
 extension Dictionary {
-
   // MARK: - JSON
 
   /// **Mechanica**
@@ -67,6 +66,5 @@ extension Dictionary {
 
     return String(data: jsonData, encoding: .utf8)
   }
-
 }
 #endif

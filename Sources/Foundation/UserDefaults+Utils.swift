@@ -25,7 +25,6 @@
 import Foundation
 
 extension UserDefaults {
-
   /// **Mechanica**
   ///
   /// Returns `true` if `key` exists.
@@ -78,6 +77,5 @@ extension UserDefaults {
     }
   }
   //#endif
-
 }
 #endif

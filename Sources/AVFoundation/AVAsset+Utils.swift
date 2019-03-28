@@ -25,7 +25,6 @@
 import AVFoundation
 
 extension AVAsset {
-
   /// **Mechanica**
   ///
   /// Generates a thumbnail image.
@@ -57,7 +56,6 @@ extension AVAsset {
       return Image(cgImage: cgImage, size: .zero)
     #endif
   }
-
 }
 
 #endif

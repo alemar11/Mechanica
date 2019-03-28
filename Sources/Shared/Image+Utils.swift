@@ -36,7 +36,6 @@ public typealias Image = AppKit.NSImage
 #endif
 
 extension Image {
-
   /// **Mechanica**
   ///
   /// Initializes a `new` image object from a Base-64 encoded String.
@@ -96,13 +95,11 @@ extension Image {
     return NSBitmapImageRep(data: data)? .representation(using: imageFileType, properties: [:])
     #endif
   }
-
 }
 
 #if canImport(CoreGraphics)
 
 extension Image {
-
   private struct AssociatedKey {
     static var isInflated = "\(associatedKeyPrefix).Shared.Image.isInflated"
   }
