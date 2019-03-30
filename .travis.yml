@@ -73,7 +73,8 @@ matrix:
         - swift --version
         - swift build
         - swift test
-        - pod lib lint    
+        - pod lib lint
+        - instruments -s devices    
 
     # iOS 10.3.1 (32bit)
     - os: osx
