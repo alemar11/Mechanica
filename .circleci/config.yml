@@ -11,12 +11,12 @@ jobs:
       - run: 
           name: Swift Version
           command: swift --version
-      # - run: 
-      #     name: Swift Test
-      #     command: swift test
       - run:
           name: Swift build Release
-          command: swift build -c release -Xswiftc -static-stdlib     
+          command: swift build -c release -Xswiftc -static-stdlib   
+      - run: 
+          name: Swift Test
+          command: swift test -v
 workflows:
   version: 2
   workflow:
