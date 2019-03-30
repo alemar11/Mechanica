@@ -21,7 +21,7 @@ jobs:
       - run: apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
       - run: swift --version
       - run: swift package --version
-      - run: swift build
+      - run: swift build -c release -Xswiftc -static-stdlib
       - run: swift test
 
 workflows:
