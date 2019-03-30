@@ -24,7 +24,8 @@ jobs:
       - run: sudo mv swift-5.0* /swift-5.0
       - run: echo "export PATH=/swift-5.0/usr/bin:\"\${PATH}\"" >> ~/.bashrc
       - run: source ~/.bashrc
-      # - run: apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
+      - run: echo $PATH
+      - run: set -o pipefail  
       - run: swift --version
       # - run: swift package --version
       # - run: swift build -c release -Xswiftc -static-stdlib
