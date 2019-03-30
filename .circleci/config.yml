@@ -15,8 +15,6 @@ jobs:
         type: string
     docker:
       - image: << parameters.image >>
-    environment:
-      BASH_ENV: ~/.bashrc
     steps:
       - checkout
       - run: apt-get update
@@ -26,7 +24,6 @@ jobs:
       - run: sudo mv swift-5.0* /swift-5.0
       - run: |
           echo "export PATH=/swift-5.0/usr/bin:\"\${PATH}\"" >> $BASH_ENV
-          source $BASH_ENV
       - run: echo $PATH
       - run: set -o pipefail  
       - run: swift --version
