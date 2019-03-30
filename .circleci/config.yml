@@ -26,7 +26,7 @@ jobs:
       - run: source ~/.bashrc
       - run: echo $PATH
       - run: set -o pipefail  
-      - run: swift --version
+      - run: /swift-5.0/swift --version
       # - run: swift package --version
       # - run: swift build -c release -Xswiftc -static-stdlib
       # - run: swift test
