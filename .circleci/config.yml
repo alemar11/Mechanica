@@ -10,6 +10,8 @@ commands:
 
 jobs:
   build_with_image:
+    environment:
+      BASH_ENV: ~/.bashrc
     parameters:
       image:
         type: string
@@ -17,7 +19,6 @@ jobs:
       - image: << parameters.image >>
     steps:
       - checkout
-      # - run: bash
       # - run: apt-get update
       # - run: sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y --allow-unauthenticated
       # - run: wget https://swift.org/builds/swift-5.0-release/ubuntu1404/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu14.04.tar.gz
@@ -30,7 +31,7 @@ jobs:
       - run: swift --version
       - run: swift package --version
       - run: swift build -c release -Xswiftc -static-stdlib
-      - run: swift test
+      - run: swift test -v
 
 workflows:
   workflow:
@@ -39,10 +40,10 @@ workflows:
           name: swift-5.0-RELEASE
           image: ibmcom/swift-ubuntu:5.0
           post-steps: [swiftlint]
-      # - build_with_image:
-      #     name: swift-5.0-RELEASE
-      #     image: ubuntu:14.04
-      #     post-steps: [swiftlint]
+      - build_with_image:
+          name: swift-5.0-RELEASE
+          image: ubuntu:14.04
+          post-steps: [swiftlint]
 
 
 #version: 2.1
