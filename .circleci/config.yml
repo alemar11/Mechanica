@@ -2,9 +2,6 @@ version: 2.1
 
 jobs:
   build_with_image:
-    parameters:
-      image:
-        type: string
     docker:
       - image: norionomura/swift:swift-5.0-branch #codevapor/swift:5.0
     steps:
