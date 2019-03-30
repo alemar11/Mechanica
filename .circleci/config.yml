@@ -17,6 +17,7 @@ jobs:
       - image: << parameters.image >>
     steps:
       - checkout
+      - run: bash
       - run: apt-get update
       - run: sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y --allow-unauthenticated
       - run: wget https://swift.org/builds/swift-5.0-release/ubuntu1404/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu14.04.tar.gz
@@ -26,7 +27,7 @@ jobs:
       - run: source ~/.bashrc
       - run: echo $PATH
       - run: set -o pipefail  
-      - run: /swift-5.0/swift --version
+      - run: swift --version
       # - run: swift package --version
       # - run: swift build -c release -Xswiftc -static-stdlib
       # - run: swift test
