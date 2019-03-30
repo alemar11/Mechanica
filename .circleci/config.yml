@@ -2,14 +2,25 @@ version: 2.1
 
 jobs:
   build_with_image:
+    parameters:
+      image:
+        type: string
     docker:
-      - image: norionomura/swift:swift-5.0-branch #codevapor/swift:5.0
+      - image: << parameters.image >>
     steps:
       - checkout
       - run: apt-get update
       - run: apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
       - run: swift build
       - run: swift test
+
+workflows:
+  workflow:
+    jobs:
+      - build_with_image:
+          name: RELEASE
+          image: norionomura/swift:swift-5.0
+
 
 # version: 2
 # jobs:
