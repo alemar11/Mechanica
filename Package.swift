@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(name: "Mechanica")
-package.swiftLanguageVersions = [.v5]
+//package.swiftLanguageVersions = [.v5]
 package.products = [.library(name: "Mechanica", targets: ["Mechanica"])]
 
 package.targets = [
