@@ -21,7 +21,7 @@ jobs:
           while sudo fuser /var/{lib/{dpkg,apt/lists},cache/apt/archives}/lock >/dev/null 2>&1; do
             sleep 1
           done
-      - run: sudo apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y --allow-unauthenticated
+      - run: apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y --allow-unauthenticated
       - run: wget https://swift.org/builds/swift-5.0-release/ubuntu1604/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu16.04.tar.gz
       - run: tar zxf swift-5.0*.tar.gz && rm -rf swift-5.0*.tar.gz
       - run: sudo mv swift-5.0* /swift-5.0
