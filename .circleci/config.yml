@@ -21,6 +21,7 @@ workflows:
           name: Swift 5.0 RELEASE
           image: norionomura/swift:5.0
 
+# https://discuss.circleci.com/t/circleci-2-1-config-overview/26057
 
 # version: 2
 # jobs:
