@@ -22,8 +22,7 @@ jobs:
       - run: wget https://swift.org/builds/swift-5.0-release/ubuntu1404/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu14.04.tar.gz
       - run: tar zxf swift-5.0*.tar.gz && rm -rf swift-5.0*.tar.gz
       - run: mv swift-5.0* /swift-5.0
-      - run: |
-          echo "export PATH=/swift-5.0/usr/bin:\"\${PATH}\"" >> $BASH_ENV
+      - run: echo "export PATH=/swift-5.0/usr/bin:\"\${PATH}\"" >> $BASH_ENV
       - run: echo $PATH
       - run: set -o pipefail  
       - run: swift --version
