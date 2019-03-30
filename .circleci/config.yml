@@ -8,7 +8,8 @@ jobs:
       - checkout
       - run: 
           name: Swift Version
-          command: swift --version
+          command: echo $SWIFT_EXEC
+          #command: swift --version
       - run: 
           name: Swift Test
           command: swift test -v
