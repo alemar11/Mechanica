@@ -3,7 +3,7 @@ jobs:
 
   linux_swift_5:
     docker:
-      - image: norionomura/swift:5.0 #codevapor/swift:5.0 #swift:5.0-xenial
+      - image: codevapor/swift:5.0 #norionomura/swift:5.0 #codevapor/swift:5.0 #swift:5.0-xenial
     steps:
       - checkout
       - run: 
