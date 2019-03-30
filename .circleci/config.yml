@@ -18,8 +18,8 @@ workflows:
   workflow:
     jobs:
       - build_with_image:
-          name: RELEASE
-          image: norionomura/swift:swift-5.0
+          name: Swift 5.0 RELEASE
+          image: norionomura/swift:5.0
 
 
 # version: 2
