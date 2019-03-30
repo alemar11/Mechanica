@@ -1,9 +1,8 @@
 // swift-tools-version:5.0
-
 import PackageDescription
 
 let package = Package(name: "Mechanica")
-package.swiftLanguageVersions = [.v5]
+//package.swiftLanguageVersions = [.v5]
 package.products = [.library(name: "Mechanica", targets: ["Mechanica"])]
 
 package.targets = [
