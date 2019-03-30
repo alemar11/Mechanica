@@ -7,6 +7,7 @@ jobs:
     steps:
       - checkout
       - run: apt-get update
+      - run: apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
       - run: 
           name: Swift Version
           command: swift --version
