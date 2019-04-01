@@ -219,6 +219,7 @@ final class URLRequestUtilsTests: XCTestCase {
     XCTAssertTrue(expectedValue1 == cURL || expectedValue2 == cURL)
   }
 
+  #if os(iOS) || os(tvOS) || os(macOS)
   private class MockHTTPCookieStorage: HTTPCookieStorage {
     var _cookiesForUrls = [URL: [HTTPCookie]]()
     var _cookies = [HTTPCookie]()
@@ -244,5 +245,6 @@ final class URLRequestUtilsTests: XCTestCase {
       return _cookies
     }
   }
+  #endif
 
 }
