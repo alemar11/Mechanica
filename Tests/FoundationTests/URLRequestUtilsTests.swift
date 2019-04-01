@@ -168,7 +168,7 @@ final class URLRequestUtilsTests: XCTestCase {
     let host = url.host!
     let protectionSpace = URLProtectionSpace(host: host, port: url.port ?? 0, protocol: url.scheme, realm: host, authenticationMethod: NSURLAuthenticationMethodHTTPBasic)
 
-    let configuration = URLSessionConfiguration.default
+    let configuration = URLSessionConfiguration.default //background(withIdentifier: "123")
     configuration.httpCookieAcceptPolicy = .always
     configuration.httpShouldSetCookies = true
     configuration.httpAdditionalHeaders = ["Content-Type": "application/json", "Test": "Mechanica"]
@@ -183,9 +183,14 @@ final class URLRequestUtilsTests: XCTestCase {
     cookieProperties[.expires] = date
 
     let cookie = HTTPCookie(properties: cookieProperties)!
-
-    let storage = HTTPCookieStorage.shared
-    storage.setCookie(cookie)
+    var storage: HTTPCookieStorage = MockHTTPCookieStorage()
+    
+    if #available(iOS 11.0, tvOS 12.0, watchOS 11.0, macOS 10.13, *) {
+      storage = HTTPCookieStorage.shared
+      storage.cookies?.forEach { storage.deleteCookie($0) }
+    }
+    storage.cookieAcceptPolicy = .always
+    storage.setCookies([cookie], for: url, mainDocumentURL: nil)
     configuration.httpCookieStorage = storage
 
     let session = URLSession(configuration: configuration)
@@ -207,5 +212,33 @@ final class URLRequestUtilsTests: XCTestCase {
 
     XCTAssertTrue(expectedValue1 == cURL || expectedValue2 == cURL)
   }
+
+  #if !os(Linux)
+  private class MockHTTPCookieStorage: HTTPCookieStorage {
+    var _cookiesForUrls = [URL: [HTTPCookie]]()
+    var _cookies = [HTTPCookie]()
+
+    override init() {
+      super.init() // not compiling on Linux
+    }
+
+    override func setCookie(_ cookie: HTTPCookie) {
+      _cookies.append(cookie)
+    }
+
+    override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
+      guard let url = URL else { return }
+      _cookiesForUrls[url] = cookies
+    }
+
+    override func cookies(for URL: URL) -> [HTTPCookie]? {
+      return _cookiesForUrls[URL]
+    }
+
+    override var cookies: [HTTPCookie]? {
+      return _cookies
+    }
+  }
+  #endif
 
 }
