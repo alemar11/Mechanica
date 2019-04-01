@@ -183,15 +183,16 @@ final class URLRequestUtilsTests: XCTestCase {
     cookieProperties[.expires] = date
 
     let cookie = HTTPCookie(properties: cookieProperties)!
-
-    var storage: HTTPCookieStorage = MockHTTPCookieStorage()
+    
+    var storage: HTTPCookieStorage
     #if os(iOS) || os(tvOS) || os(macOS)
+    storage = MockHTTPCookieStorage()
     if #available(iOS 11.0, tvOS 12.0, watchOS 11.0, macOS 10.13, *) {
       storage = HTTPCookieStorage.shared
       storage.cookies?.forEach { storage.deleteCookie($0) }
     }
     #else
-      storage = HTTPCookieStorage.shared
+    storage = HTTPCookieStorage.shared
     #endif
 
     storage.cookieAcceptPolicy = .always
