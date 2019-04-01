@@ -183,12 +183,17 @@ final class URLRequestUtilsTests: XCTestCase {
     cookieProperties[.expires] = date
 
     let cookie = HTTPCookie(properties: cookieProperties)!
+
     var storage: HTTPCookieStorage = MockHTTPCookieStorage()
-    
+    #if os(iOS) || os(tvOS) || os(macOS)
     if #available(iOS 11.0, tvOS 12.0, watchOS 11.0, macOS 10.13, *) {
       storage = HTTPCookieStorage.shared
       storage.cookies?.forEach { storage.deleteCookie($0) }
     }
+    #else
+      storage = HTTPCookieStorage.shared
+    #endif
+
     storage.cookieAcceptPolicy = .always
     storage.setCookies([cookie], for: url, mainDocumentURL: nil)
     configuration.httpCookieStorage = storage
@@ -213,7 +218,6 @@ final class URLRequestUtilsTests: XCTestCase {
     XCTAssertTrue(expectedValue1 == cURL || expectedValue2 == cURL)
   }
 
-  #if !os(Linux)
   private class MockHTTPCookieStorage: HTTPCookieStorage {
     var _cookiesForUrls = [URL: [HTTPCookie]]()
     var _cookies = [HTTPCookie]()
@@ -239,6 +243,5 @@ final class URLRequestUtilsTests: XCTestCase {
       return _cookies
     }
   }
-  #endif
 
 }
