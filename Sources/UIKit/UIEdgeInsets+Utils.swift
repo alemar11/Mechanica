@@ -28,7 +28,6 @@ import UIKit
 // MARK: - Properties
 
 extension UIEdgeInsets {
-
   /// **Mechanica**
   ///
   /// Returns the vertical insets (composed by top + bottom).
@@ -42,13 +41,11 @@ extension UIEdgeInsets {
   public var horizontal: CGFloat {
     return left + right
   }
-
 }
 
 // MARK: - Methods
 
 extension UIEdgeInsets {
-
   /// **Mechanica**
   ///
   /// Creates an `UIEdgeInsets` with the same inset value applied to all (top, bottom, right, left)
@@ -65,7 +62,6 @@ extension UIEdgeInsets {
   public init(horizontal: CGFloat, vertical: CGFloat) {
     self.init(top: vertical / 2, left: horizontal / 2, bottom: vertical / 2, right: horizontal / 2)
   }
-
 }
 
 #endif

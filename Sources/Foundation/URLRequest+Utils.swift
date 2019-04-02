@@ -25,7 +25,6 @@
 import Foundation
 
 extension URLRequest {
-
   /// **Mechanica**
   ///
   /// Returns a cURL command representation of `self`.
@@ -173,6 +172,5 @@ extension URLRequest {
 
     return nil
   }
-
 }
 #endif

@@ -25,7 +25,6 @@
 import Foundation
 
 extension URL {
-
   /// **Mechanica**
   ///
   /// Returns a Dictionary containing the query parameters (is any).
@@ -105,6 +104,5 @@ extension URL {
   func isParent(of child: URL) -> Bool {
     return child.path.hasPrefix(path)
   }
-
 }
 #endif

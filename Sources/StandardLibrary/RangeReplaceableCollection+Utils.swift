@@ -24,7 +24,6 @@
 // MARK: - Methods
 
 extension RangeReplaceableCollection {
-
   /// **Mechanica**
   ///
   /// Appends a new `element`.
@@ -43,7 +42,7 @@ extension RangeReplaceableCollection {
   ///   - condition: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
   @discardableResult
   public mutating func removeFirst(where condition: (Element) -> Bool) -> Element? {
-    guard let idx = index(where: condition) else { return nil }
+    guard let idx = firstIndex(where: condition) else { return nil }
 
     return remove(at: idx)
   }
@@ -93,7 +92,6 @@ extension RangeReplaceableCollection {
 // MARK: - Methods (MutableCollection)
 
 extension RangeReplaceableCollection where Self: MutableCollection {
-
   /// **Mechanica**
   ///
   /// Removes all the elements that matches the given `condition` and returns all the removed element (if any).
@@ -104,7 +102,7 @@ extension RangeReplaceableCollection where Self: MutableCollection {
   public mutating func remove(where condition: (Element) -> Bool) -> [Element] {
     var removed: [Element] = []
 
-    guard var idx = index(where: condition) else { return [] }
+    guard var idx = firstIndex(where: condition) else { return [] }
     removed.append(self[idx])
 
     var jdx = index(after: idx)
@@ -137,20 +135,18 @@ extension RangeReplaceableCollection where Self: MutableCollection {
 
     return (copy, removed)
   }
-
 }
 
 // MARK: Methods (Equatable)
 
 extension RangeReplaceableCollection where Element: Equatable {
-
   /// **Mechanica**
   /// Removes the first specified element from the collection (if exists).
   /// - Returns: The element removed (if any).
   /// - Parameter element: The element to remove the last occurrence.
   @discardableResult
   public mutating func removeFirstOccurrence(of element: Element) -> Element? {
-    if let idx = index(of: element) {
+    if let idx = firstIndex(of: element) {
       return remove(at: idx)
     }
 
@@ -161,7 +157,6 @@ extension RangeReplaceableCollection where Element: Equatable {
 // MARK: - Methods (BidirectionalCollection)
 
 extension RangeReplaceableCollection where Self: BidirectionalCollection, Element: Equatable {
-
   /// **Mechanica**
   ///
   /// Removes the last specified element from the array (if exists).
@@ -175,5 +170,4 @@ extension RangeReplaceableCollection where Self: BidirectionalCollection, Elemen
 
     return nil
   }
-
 }

@@ -162,7 +162,7 @@ final class DictionaryFoundationUtilsTests: XCTestCase {
     dictionary.lowercaseAllKeys()
     dictionary.keys.enumerated().forEach { (arg) in
       let (_, k) = arg
-      XCTAssertTrue(k.isLowercased)
+      XCTAssertTrue(k.isLowercase)
     }
   }
 

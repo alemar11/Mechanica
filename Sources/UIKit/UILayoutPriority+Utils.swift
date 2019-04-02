@@ -56,7 +56,6 @@ extension UILayoutPriority {
   static func - (lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
     return UILayoutPriority(lhs.rawValue - rhs)
   }
-
 }
 
 #endif

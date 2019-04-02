@@ -34,7 +34,6 @@ extension SequenceUtilsTests {
     ("testHasAll", testHasAll),
     ("testContains", testContains),
     ("testContatinsObjectIdentical", testContatinsObjectIdentical),
-    ("testCount", testCount),
     ("testGroupedBy", testGroupedBy),
     ("testFrequencies", testFrequencies),
     ("testShuffled", testShuffled),
@@ -183,19 +182,6 @@ final class SequenceUtilsTests: XCTestCase {
     list.append(demoObject)
     // Then
     XCTAssertTrue(list.containsObjectIdentical(to: demoObject))
-  }
-
-  func testCount() {
-    XCTAssertEqual(list.count{ $0.value2 == 1 }, 2)
-    XCTAssertEqual(list.count{ $0.value2 == 3 }, 2)
-    XCTAssertEqual(list.count{ $0.value2 == 4 }, 0)
-    XCTAssertEqual(list.count{ $0.value1 == "demo1" }, 1)
-    XCTAssertEqual(list3.count { $0.0 == "a" }, 1)
-    XCTAssertEqual(list3.count { $0.0 == "z" }, 0)
-    XCTAssertEqual(list3.count { $0.0 == "a" &&  $0.1 == 0 }, 1)
-    XCTAssertEqual(list3.count { $0.0 == "a" &&  $0.1 == 1 }, 0)
-    XCTAssertEqual(list3.count { $0.1 % 2 == 0 }, 6)
-    XCTAssertEqual(list3.count { $0.1 % 2 != 0 }, 5)
   }
 
   func testGroupedBy() {

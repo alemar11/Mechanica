@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension Optional {
-
   /// **Mechanica**
   ///
   /// Returns `true` if `self` has a value.
@@ -90,22 +89,18 @@ extension Optional {
     guard let unwrapped = self else { throw exception }
     return unwrapped
   }
-
 }
 
 extension Optional where Wrapped: Collection {
-
   /// **Mechanica**
   ///
   /// Returns true if `self` is nil or empty.
   var isNilOrEmpty: Bool {
     return self?.isEmpty ?? true
   }
-
 }
 
 extension Optional where Wrapped == String {
-
   /// **Mechanica**
   ///
   /// Returns true if `self` is nil or empty.
@@ -119,5 +114,4 @@ extension Optional where Wrapped == String {
   var isNilOrBlank: Bool {
     return self?.isBlank ?? true
   }
-
 }

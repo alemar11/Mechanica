@@ -21,8 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-public extension Dictionary {
-
+extension Dictionary {
   /// **Mechanica**
   ///
   /// Returns true if the `key` exists in the dictionary.
@@ -46,11 +45,9 @@ public extension Dictionary {
     }
     return removedElements
   }
-
 }
 
-public extension Dictionary where Key: ExpressibleByStringLiteral {
-
+extension Dictionary where Key: ExpressibleByStringLiteral {
   // MARK: - ExpressibleByStringLiteral
 
   /// **Mechanica**
@@ -63,5 +60,4 @@ public extension Dictionary where Key: ExpressibleByStringLiteral {
       }
     }
   }
-
 }

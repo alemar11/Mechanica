@@ -1,34 +1,142 @@
-version: 2
+version: 2.1
+
+commands:
+  swiftlint:
+    steps:
+      - run: mkdir -p build/reports/
+      - run: swiftlint lint --strict --reporter junit > build/reports/junit.xml
+      - store_test_results:
+          path: build/reports/
+
 jobs:
-
-  linux_swift_4_2:
+  build_with_image:
+    parameters:
+      image:
+        type: string
     docker:
-      - image: swift:4.2
+      - image: << parameters.image >>
     steps:
       - checkout
-      - run: 
-          name: Swift Test
-          command: swift test
-      - run:
-          name: Swift build Release
-          command: swift build -c release -Xswiftc -static-stdlib
+      - run: apt-get update
+      - run: apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y --allow-unauthenticated
+      - run: wget https://swift.org/builds/swift-5.0-release/ubuntu1404/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu14.04.tar.gz
+      - run: tar zxf swift-5.0*.tar.gz && rm -rf swift-5.0*.tar.gz
+      - run: mv swift-5.0* /swift-5.0
+      - run: echo "export PATH=/swift-5.0/usr/bin:\"\${PATH}\"" >> $BASH_ENV
+      - run: echo $PATH
+      - run: set -o pipefail  
+      - run: swift --version
+      - run: swift package --version
+      - run: swift build -c release -Xswiftc -static-stdlib
+      - run: swift test -v
 
-  linux_swift_4_2_1:
-    docker:
-      - image: norionomura/swift:421
-    steps:
-      - checkout
-      - run: 
-          name: Swift Test
-          command: swift test
-      - run:
-          name: Swift build Release
-          command: swift build -c release -Xswiftc -static-stdlib     
 workflows:
-  version: 2
   workflow:
     jobs:
-      - linux_swift_4_2
-      - linux_swift_4_2_1
+      - build_with_image:
+          name: swift-5.0-RELEASE
+          image: ubuntu:14.04
+          post-steps: [swiftlint]
+      # - build_with_image:
+      #     name: swift-5.0-RELEASE
+      #     image: ubuntu:16.04
+      #     post-steps: [swiftlint]
 
-#docker: https://github.com/realm/SwiftLint/blob/master/circle.yml
+
+#version: 2.1
+
+# jobs:
+#   build_with_image:
+#     parameters:
+#       image:
+#         type: string
+#     docker:
+#       - image: << parameters.image >>
+#     steps:
+#       - checkout
+#       - run: apt-get update
+#       - run: apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
+#       - run: swift build
+#       - run: swift test
+
+# workflows:
+#   workflow:
+#     jobs:
+#       - build_with_image:
+#           name: Swift 5.0 RELEASE
+#           image: norionomura/swift:5.0
+
+# https://discuss.circleci.com/t/circleci-2-1-config-overview/26057
+
+# version: 2
+# jobs:
+
+#   linux_swift_5:
+#     docker:
+#       - image: norionomura/swift:swift-5.0-branch #codevapor/swift:5.0
+#     steps:
+#       - checkout
+#       - run: apt-get update
+#       - run: apt-get install clang libicu-dev libcurl4-openssl-dev wget unzip -y
+#       - run: 
+#           name: Swift Version
+#           command: swift --version
+#       - run:
+#           name: Swift build Release
+#           command: swift build -c release -Xswiftc -static-stdlib   
+#       - run: 
+#           name: Swift Test
+#           command: swift test -v
+# workflows:
+#   version: 2
+#   workflow:
+#     jobs:
+#       - linux_swift_5
+
+
+# version: 2.1
+
+# commands:
+#   swiftlint:
+#     steps:
+#       - run: mkdir -p build/reports/
+#       - run: swiftlint lint --strict --reporter junit > build/reports/junit.xml
+#       - store_test_results:
+#           path: build/reports/
+
+# jobs:
+#   build_with_image:
+#     parameters:
+#       image:
+#         type: string
+#     docker:
+#       - image: << parameters.image >>
+#     steps:
+#       - checkout
+#       - run: apt-get update
+#       - run: swift test
+
+# workflows:
+#   workflow:
+#     jobs:
+#       - build_with_image:
+#           name: swift-4.0.3-RELEASE
+#           image: norionomura/swiftlint:swift-4.0.3
+#           post-steps: [swiftlint]
+#       - build_with_image:
+#           name: swift-4.1.3-RELEASE
+#           image: norionomura/swiftlint:swift-4.1.3
+#           post-steps: [swiftlint]
+#       - build_with_image:
+#           name: swift-4.2.1-RELEASE
+#           image: norionomura/swiftlint:swift-4.2.1
+#           post-steps: [swiftlint]
+#       - build_with_image:
+#           name: swift-5.0-branch
+#           image: norionomura/swift:swift-5.0-branch
+#       - build_with_image:
+#           name: swift-nightly
+#           image: norionomura/swift:nightly
+#       - build_with_image:
+#           name: swift-tensorflow
+#           image: norionomura/swift-tensorflow

@@ -22,7 +22,6 @@
 // SOFTWARE.
 
 extension String {
-
   // MARK: - Standard Library
 
   /// Creates a string containing the given 'StaticString'.
@@ -56,14 +55,14 @@ extension String {
   /// **Mechanica**
   ///
   /// Returns true if all the characters are lowercased.
-  public var isLowercased: Bool {
+  public var isLowercase: Bool {
     return self == lowercased()
   }
 
   /// **Mechanica**
   ///
   /// Returns true, if all characters are uppercased. Otherwise, false.
-  public var isUppercased: Bool {
+  public var isUppercase: Bool {
     return self == uppercased()
   }
 
@@ -508,5 +507,4 @@ extension String {
   public static func * (lhs: Int, rhs: String) -> String {
     return String(repeating: rhs, count: lhs)
   }
-
 }

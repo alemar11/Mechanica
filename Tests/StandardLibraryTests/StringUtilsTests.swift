@@ -45,8 +45,8 @@ extension StringUtilsTests {
     ("testSubscriptWithPartialRangeThrough", testSubscriptWithPartialRangeThrough),
     ("testSubscriptWithCountablePartialRangeFrom", testSubscriptWithCountablePartialRangeFrom),
     ("testIsHomogeneous", testIsHomogeneous),
-    ("testIsLowercased", testIsLowercased),
-    ("testIsUppercased", testIsUppercased),
+    ("testIsLowercase", testIsLowercase),
+    ("testIsUppercase", testIsUppercase),
     ("testMultiply", testMultiply),
     ("testOptionalStringCoalescingOperator", testOptionalStringCoalescingOperator),
     ("testPrefix", testPrefix),
@@ -79,13 +79,9 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertTrue("cafe".length == 4)
     XCTAssertTrue("cafè".length == 4)
     XCTAssertTrue("🇮🇹".length == 1)
-
-    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
-      XCTAssertTrue("👍🏻".length == 1) //2
-      XCTAssertTrue("👍🏽".length == 1) //2
-      XCTAssertTrue("👨‍👨‍👧‍👦".length == 1) //4
-    #endif
+    XCTAssertTrue("👍🏻".length == 1)
+    XCTAssertTrue("👍🏽".length == 1)
+    XCTAssertTrue("👨‍👨‍👧‍👦".length == 1)
   }
 
   func testPrefix() {
@@ -98,12 +94,9 @@ final class StringUtilsTests: XCTestCase {
       XCTAssertTrue(s.prefix(maxLength: 4) == "Hell")
       XCTAssertTrue(s.prefix(maxLength: 5) == "Hello")
       XCTAssertTrue(s.prefix(maxLength: 6) == "Hello ")
-      #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue(s.prefix(maxLength: 13) == "Hello World 🖖🏽")
       XCTAssertTrue(s.prefix(maxLength: 14) == "Hello World 🖖🏽")
       XCTAssertTrue(s.prefix(maxLength: 100) == "Hello World 🖖🏽")
-      #endif
     }
 
     do {
@@ -118,8 +111,6 @@ final class StringUtilsTests: XCTestCase {
   func testSuffix() {
     do {
       let s = "Hello World 🖖🏽"
-      #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
       XCTAssertTrue(s.suffix(maxLength: 0) == "")
       XCTAssertTrue(s.suffix(maxLength: 1) == "🖖🏽")
       XCTAssertTrue(s.suffix(maxLength: 2) == " 🖖🏽")
@@ -128,7 +119,6 @@ final class StringUtilsTests: XCTestCase {
       XCTAssertTrue(s.suffix(maxLength: 5) == "rld 🖖🏽")
       XCTAssertTrue(s.suffix(maxLength: 13) == "Hello World 🖖🏽")
       XCTAssertTrue(s.suffix(maxLength: 100) == "Hello World 🖖🏽")
-      #endif
     }
 
     do {
@@ -202,12 +192,8 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertTrue(s4.truncate(at: 2) == "a🇮🇹…")
     XCTAssertTrue(s4.truncate(at: 3) == "a🇮🇹b…")
     XCTAssertTrue(s4.truncate(at: 4) == "a🇮🇹bb…")
-
-    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
-      XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹…")
-      XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹…")
-    #endif
+    XCTAssertTrue(s4.truncate(at: 5) == "a🇮🇹bb🇮🇹…")
+    XCTAssertTrue(s4.truncate(at: 6) == "a🇮🇹bb🇮🇹🇮🇹…")
 
     let s5 = "\u{2126}"
     XCTAssertTrue(s5.truncate(at: 0) == "…")
@@ -225,14 +211,10 @@ final class StringUtilsTests: XCTestCase {
 
     let s8 = "👍👍🏻👍🏼👍🏾"
     XCTAssertTrue(s8.truncate(at: 1) == "👍…")
-
-    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-      // TODO: - Not implemented on Linux: https://bugs.swift.org/browse/SR-6076
-      XCTAssertTrue(s8.truncate(at: 2) == "👍👍🏻…")
-      XCTAssertTrue(s8.truncate(at: 3) == "👍👍🏻👍🏼…")
-      XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍🏼👍🏾")
-      XCTAssertTrue(s8.truncate(at: 5) == "👍👍🏻👍🏼👍🏾")
-    #endif
+    XCTAssertTrue(s8.truncate(at: 2) == "👍👍🏻…")
+    XCTAssertTrue(s8.truncate(at: 3) == "👍👍🏻👍🏼…")
+    XCTAssertTrue(s8.truncate(at: 4) == "👍👍🏻👍🏼👍🏾")
+    XCTAssertTrue(s8.truncate(at: 5) == "👍👍🏻👍🏼👍🏾")
 
     //flags sperated by a ZERO WIDTH SPACE
     let s9 = "🇮🇹\u{200B}🇮🇹\u{200B}🇮🇹"
@@ -516,12 +498,12 @@ final class StringUtilsTests: XCTestCase {
   func testSubscriptWithCountableClosedRange() {
     let string = "∆Test😗🇮🇹"
 
-    XCTAssertEqual(string[0 ... 2], "∆Te")
-    XCTAssertEqual(string[3 ... 3], "s")
-    XCTAssertEqual(string[3 ... 5], "st😗")
-    XCTAssertEqual(string[0 ... string.length-1], "∆Test😗🇮🇹")
+    XCTAssertEqual(string[0...2], "∆Te")
+    XCTAssertEqual(string[3...3], "s")
+    XCTAssertEqual(string[3...5], "st😗")
+    XCTAssertEqual(string[0...string.length-1], "∆Test😗🇮🇹")
 
-    XCTAssertNil(string[string.length ... string.length])
+    XCTAssertNil(string[string.length...string.length])
     XCTAssertEqual(string[string.length ..< string.length], "")
 
     XCTAssertNil(string[1 ..< 100])
@@ -581,23 +563,23 @@ final class StringUtilsTests: XCTestCase {
     XCTAssertFalse(" ~~~".isHomogeneous)
   }
 
-  func testIsLowercased() {
-    XCTAssertTrue("123".isLowercased)
-    XCTAssertTrue("abcd123".isLowercased)
-    XCTAssertTrue("123!?)".isLowercased)
+  func testIsLowercase() {
+    XCTAssertTrue("123".isLowercase)
+    XCTAssertTrue("abcd123".isLowercase)
+    XCTAssertTrue("123!?)".isLowercase)
 
-    XCTAssertFalse("12A3".isLowercased)
-    XCTAssertFalse("abcdE123".isLowercased)
-    XCTAssertFalse("123!C?)".isLowercased)
+    XCTAssertFalse("12A3".isLowercase)
+    XCTAssertFalse("abcdE123".isLowercase)
+    XCTAssertFalse("123!C?)".isLowercase)
   }
 
-  func testIsUppercased() {
-    XCTAssertTrue("123".isUppercased)
-    XCTAssertTrue("ABC123".isUppercased)
-    XCTAssertTrue("ABC...!?".isUppercased)
+  func testIsUppercase() {
+    XCTAssertTrue("123".isUppercase)
+    XCTAssertTrue("ABC123".isUppercase)
+    XCTAssertTrue("ABC...!?".isUppercase)
 
-    XCTAssertFalse("abcdE123".isLowercased)
-    XCTAssertFalse("123A!?)".isLowercased)
+    XCTAssertFalse("abcdE123".isLowercase)
+    XCTAssertFalse("123A!?)".isLowercase)
   }
 
   // MARK: - Operators

@@ -26,7 +26,6 @@
 import UIKit
 
 extension UIImage {
-
   /// **Mechanica**
   ///
   /// Returns an image with a background `color`, `size` and `scale`.
@@ -61,13 +60,11 @@ extension UIImage {
      self.init(cgImage: cgImage)
      */
   }
-
 }
 
 // MARK: - Scaling
 
 extension UIImage {
-
   /// **Mechanica**
   ///
   /// Returns a new version of the image scaled to the specified size.
@@ -181,7 +178,6 @@ extension UIImage {
 // MARK: - Rounding
 
 extension UIImage {
-
   /// **Mechanica**
   ///
   /// Returns a new version of the image with the corners rounded to the specified radius.
@@ -305,7 +301,6 @@ extension UIImage {
     let imageScale = scale ?? self.scale
     return UIImage(cgImage: renderedImage, scale: imageScale, orientation: imageOrientation)
   }
-
 }
 
 #endif

@@ -52,6 +52,7 @@ extension StringFoundationUtilsTests {
     ("testSemanticVersionComparison", testSemanticVersionComparison),
     ("testSemanticVersion", testSemanticVersion),
     ("testFirstRange", testFirstRange),
+    ("testRegex", testRegex), // TODO: Tests only the "default" regex behaviour (and not an extension)
     ("testMatches", testMatches),
     ("testTrim", testTrim),
     ("testTrimmed", testTrimmed),
@@ -65,7 +66,6 @@ extension StringFoundationUtilsTests {
     ("testSlugCased", testSlugCased),
     ("testSnakeCased", testSnakeCased),
     ("testSwapCased", testSwapCased),
-    ("testNSRange", testNSRange),
     ("testContainsCaseSensitive", testContainsCaseSensitive),
     ("testSubscript", testSubscript),
     ("testReplacingCharacters", testReplacingCharacters),
@@ -157,12 +157,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("a".starts(with:"a"))
     XCTAssertFalse("a".starts(with:"A"))
     XCTAssertTrue("🤔a1".starts(with:"🤔"))
-
-    #if !os(Linux)
     XCTAssertTrue("🖖🏽a1".starts(with:"🖖🏽"))
-    #else
-    XCTAssertTrue("🖖🏽a1".starts(with:"🖖"))
-    #endif
 
     #if !os(Linux)
     XCTAssertTrue("🇮🇹🇮🇹🖖🏽 ".starts(with:"🇮🇹"))
@@ -189,12 +184,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertTrue("a".ends(with:"a"), "It should end with 'a'")
     XCTAssertFalse("a".ends(with:"A"), "It should end with 'A'")
     XCTAssertTrue("a1🤔".ends(with:"🤔"), "It should end with '🤔'")
-
-    #if !os(Linux)
     XCTAssertTrue("a1🖖🏽".ends(with:"🖖🏽"))
-    #else
-    XCTAssertTrue("a1🖖🏽".ends(with:"🏽"))
-    #endif
 
     #if !os(Linux)
     XCTAssertTrue(" 🖖🏽🇮🇹🇮🇹".ends(with:"🇮🇹"))
@@ -247,8 +237,6 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("a \r\n ".isBlank)
   }
 
-
-
   func testIsAlphabetic() {
     XCTAssertTrue("abcd".isAlphabetic)
     XCTAssertTrue("abCd".isAlphabetic)
@@ -264,19 +252,28 @@ final class StringFoundationUtilsTests: XCTestCase {
   }
 
   func testIsAlphaNumeric() {
+    XCTAssertFalse("".isAlphaNumeric)
     XCTAssertTrue("123".isAlphaNumeric)
     XCTAssertTrue("0001".isAlphaNumeric)
     XCTAssertTrue("abcd".isAlphaNumeric)
     XCTAssertTrue("èéò".isAlphaNumeric)
     XCTAssertTrue("tinrobots12345".isAlphaNumeric)
+    XCTAssertTrue("Poüet".isAlphaNumeric)
+    XCTAssertTrue("abc".isAlphaNumeric)
+    XCTAssertTrue("123".isAlphaNumeric)
+    XCTAssertTrue("ABC123".isAlphaNumeric)
 
     XCTAssertFalse("tinrobots.org".isAlphaNumeric)
     XCTAssertFalse("✓".isAlphaNumeric)
     XCTAssertFalse("#".isAlphaNumeric)
     XCTAssertFalse("🚀".isAlphaNumeric)
     XCTAssertFalse("abc✓".isAlphaNumeric)
+    XCTAssertFalse("ab.cd".isAlphaNumeric)
     XCTAssertFalse("#123ad".isAlphaNumeric)
     XCTAssertFalse("🚀".isAlphaNumeric)
+    XCTAssertFalse("iOS 11".isAlphaNumeric)
+    XCTAssertFalse("".isAlphaNumeric)
+    XCTAssertFalse("climate change".isAlphaNumeric)
   }
 
   func testIsNumeric() {
@@ -582,7 +579,6 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("".isSemanticVersionGreaterOrEqual(to: "0.0.1"))
     XCTAssertFalse("\(Int.max)".isSemanticVersionGreaterOrEqual(to: "\(UInt.max)"))
 
-
     // Lesser or Equal
 
     /// true
@@ -618,7 +614,6 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertFalse("0.0.1".isSemanticVersionLesserOrEqual(to: ""))
     XCTAssertFalse("\(Int.max)".isSemanticVersionLesserOrEqual(to: ""))
     XCTAssertFalse("\(UInt.max)".isSemanticVersionLesserOrEqual(to: ""))
-
   }
 
   func testSemanticVersion() {
@@ -726,6 +721,31 @@ final class StringFoundationUtilsTests: XCTestCase {
 
   }
 
+  func testRegex() throws {
+    let description = "Cluedo is a game of skill for 2-6 players."
+    let pattern = #"(\d+)[ \p{Pd}](\d+) players"#
+    let regex = try NSRegularExpression(pattern: pattern, options: [])
+    var playerRange: ClosedRange<Int>?
+
+    let nsrange = NSRange(description.startIndex..<description.endIndex, in: description)
+    regex.enumerateMatches(in: description, options: [], range: nsrange) { (match, _, stop) in
+      guard let match = match else { return }
+
+      if match.numberOfRanges == 3,
+        let firstCaptureRange = Range(match.range(at: 1), in: description),
+        let secondCaptureRange = Range(match.range(at: 2), in: description),
+        let lowerBound = Int(description[firstCaptureRange]),
+        let upperBound = Int(description[secondCaptureRange]),
+        lowerBound > 0 && lowerBound < upperBound
+      {
+        playerRange = lowerBound...upperBound
+        stop.pointee = true
+      }
+    }
+
+    XCTAssertEqual(playerRange, 2...6)
+  }
+
   func testMatches() {
 
     do {
@@ -738,8 +758,8 @@ final class StringFoundationUtilsTests: XCTestCase {
 
     do {
       let text = "Hello World - Tin Robots 🤖😀🤖"
-      XCTAssertEqual(text.matches(for: String.Pattern.firstAlphaNumericCharacter),["H", "W", "T", "R"])
-      XCTAssertEqual(text.matches(for: String.Pattern.lastAlphaNumericCharacter),["o", "d", "n", "s"])
+      XCTAssertEqual(text.matches(for: String.Pattern.firstAlphaNumericCharacter), ["H", "W", "T", "R"])
+      XCTAssertEqual(text.matches(for: String.Pattern.lastAlphaNumericCharacter), ["o", "d", "n", "s"])
       let invalidPattern = "//⛏"
       XCTAssertTrue(text.matches(for: invalidPattern).isEmpty)
       XCTAssertNil(text.firstMatch(for: invalidPattern))
@@ -937,14 +957,7 @@ final class StringFoundationUtilsTests: XCTestCase {
     XCTAssertEqual("HelloWorld".swapCased(), "hELLOwORLD")
     XCTAssertEqual("-Hello_World-".swapCased(), "-hELLO_wORLD-")
     XCTAssertEqual("Hell0W0rld".swapCased(), "hELL0w0RLD")
-  }
-
-  func testNSRange() {
-    let string = "Hello World 👩🏽‍🌾👨🏼‍🚒💃🏾"
-    let range = string.startIndex...
-
-    XCTAssert(string.nsRange.length == string[range].utf16.count)
-
+    XCTAssertEqual("🇮🇹🇮🇹Hell0W👨🏻‍💻0rld".swapCased(), "🇮🇹🇮🇹hELL0w👨🏻‍💻0RLD")
   }
 
   func testContainsCaseSensitive() {
@@ -1124,7 +1137,7 @@ final class StringFoundationUtilsTests: XCTestCase {
 
 // MARK: - Fixtures
 
-fileprivate extension String {
+extension String {
 
   // MARK: - Regular Expression Commons Patterns
 

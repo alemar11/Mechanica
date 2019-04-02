@@ -27,7 +27,6 @@ import Foundation
 // MARK: Properties
 
 extension NSPredicate {
-
   /// **Mechanica**
   ///
   /// An always `true` NSPredicate.
@@ -37,13 +36,11 @@ extension NSPredicate {
   ///
   /// An always `false` NSPredicate.
   public static let `false` = NSPredicate(value: false)
-
 }
 
 // MARK: Methods
 
 extension NSPredicate {
-
   /// **Mechanica**
   ///
   ///
@@ -61,13 +58,11 @@ extension NSPredicate {
   public func or(_ predicate: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(orPredicateWithSubpredicates: [self, predicate])
   }
-
 }
 
 // MARK: Operators
 
 extension NSPredicate {
-
   /// **Mechanica**
   ///
   /// Returns a `new` predicate formed by **AND-ing** the two predicates.
@@ -95,6 +90,5 @@ extension NSPredicate {
   public static prefix func ! (predicate: NSPredicate) -> NSPredicate {
     return NSCompoundPredicate(notPredicateWithSubpredicate: predicate)
   }
-
 }
 #endif

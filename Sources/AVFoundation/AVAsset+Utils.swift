@@ -24,8 +24,7 @@
 #if canImport(AVAsset)
 import AVFoundation
 
-public extension AVAsset {
-
+extension AVAsset {
   /// **Mechanica**
   ///
   /// Generates a thumbnail image.
@@ -57,7 +56,6 @@ public extension AVAsset {
       return Image(cgImage: cgImage, size: .zero)
     #endif
   }
-
 }
 
 #endif

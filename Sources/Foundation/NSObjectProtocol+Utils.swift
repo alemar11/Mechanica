@@ -27,7 +27,6 @@ import Foundation
 // MARK: - Utilities
 
 extension NSObjectProtocol {
-
   /// **Mechanica**
   ///
   /// Returns the type of an object conforming to `NSObjectProtocol` as `String`.
@@ -47,7 +46,6 @@ extension NSObjectProtocol {
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 extension NSObjectProtocol {
-
   /// **Mechanica**
   ///
   /// Sets an associated value using a given key and association policy.
@@ -97,7 +95,6 @@ extension NSObjectProtocol {
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 extension NSObjectProtocol {
-
   /// **Mechanica**
   ///
   /// Couple of `Selector` where the method corresponding to the first one needs to be exchanged with the second one.
@@ -138,7 +135,6 @@ extension NSObjectProtocol {
   public static func swizzle(_ selectors: [SwizzlingSelectors]) {
     selectors.forEach { swizzle(method: $0.0, with: $0.1) }
   }
-
 }
 #endif
 

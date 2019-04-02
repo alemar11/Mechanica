@@ -24,17 +24,12 @@
 #if canImport(Foundation)
 import Foundation
 
-public extension UserDefaults {
-
+extension UserDefaults {
   /// **Mechanica**
   ///
   /// Returns `true` if `key` exists.
   public final func hasKey(_ key: String) -> Bool {
-    #if os(Linux)
-    return object(forKey: key) != nil
-    #else
-    return dictionaryRepresentation().hasKey(key) // it seems implemented on Linux (Swift 4.1) but it's not working
-    #endif
+    return dictionaryRepresentation().hasKey(key)
   }
 
   /// **Mechanica**
@@ -70,7 +65,6 @@ public extension UserDefaults {
   }
 
   //#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-
   /// **Mechanica**
   ///
   /// Removes all keys and values from user defaults.
@@ -82,8 +76,6 @@ public extension UserDefaults {
       removeObject(forKey: key)
     }
   }
-
   //#endif
-
 }
 #endif

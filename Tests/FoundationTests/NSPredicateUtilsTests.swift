@@ -41,6 +41,7 @@ final class NSPredicateUtilsTests: XCTestCase {
   // TODO: - Not implemented on Linux:
   //    "NSPredicate.init(format:_:) is not yet implemented."
   // https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/NSPredicate.swift
+  // Not implemented on Swift 5
 
   func testPredicateComposition() {
     do {
@@ -75,6 +76,7 @@ final class NSPredicateUtilsTests: XCTestCase {
   // TODO: - Not implemented on Linux:
   //    "NSPredicate.init(format:_:) is not yet implemented."
   // https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/NSPredicate.swift
+  // Not implemented on Swift 5
 
   func testOperatorsExcludingLinux() {
 
@@ -127,7 +129,6 @@ final class NSPredicateUtilsTests: XCTestCase {
     XCTAssert(NSArray(array: tests).filtered(using: textEqualToOne && idGreaterThanFive).count == 0)
 
     /// || Operator
-
     XCTAssert(NSArray(array: tests).filtered(using: !textsStartWithF || idGreaterThanFive).count == 8)
     XCTAssert(NSArray(array: tests).filtered(using: textsStartWithF || !idGreaterThanFive).count == 5)
     XCTAssert(NSArray(array: tests).filtered(using: textEqualToOne || textEndsWithE).count == 4)
@@ -175,13 +176,21 @@ final class NSPredicateUtilsTests: XCTestCase {
 
     let nameEqualToAlessandro = NSPredicate { (contact, _) -> Bool in
       guard let contact = contact else { return false }
-      guard contact is Contact else { XCTFail(); fatalError() }
+      guard contact is Contact else {
+        XCTFail()
+        fatalError()
+      }
+
       return (contact as! Contact).name.first == "Alessandro"
     }
 
     let emailEqualToApple = NSPredicate { (contact, _) -> Bool in
       guard let contact = contact else { return false }
-      guard contact is Contact else { XCTFail(); fatalError() }
+      guard contact is Contact else {
+        XCTFail()
+        fatalError()
+      }
+
       return (contact as! Contact).email.hasSuffix("apple.com")
     }
 

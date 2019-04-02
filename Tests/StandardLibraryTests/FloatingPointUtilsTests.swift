@@ -40,7 +40,7 @@ final class FloatingPointUtilsTests: XCTestCase {
     var piFloat80       = Float80(3.14159_26535_89793_23846)    //  3.141592653589793116
 
     var negativeDouble  = -147.956455                           //  -147.95645500000001
-    var randomFloat    = Float32(199.959019)                    //  199.959015
+    var randomFloat     = Float32(199.959019)                    //  199.959015
     var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
 
     XCTAssertEqual(0.5.rounded(to: 0), 1)
@@ -52,6 +52,10 @@ final class FloatingPointUtilsTests: XCTestCase {
     XCTAssertEqual(piDouble.rounded(to: 7), 3.1415927)
     XCTAssertEqual(piFloat80.rounded(to: 7), 3.1415927)
 
+    piFloat80.round(to: 16, rule: .down)
+    XCTAssertEqual(piFloat80, 3.141_592_653_589_793_2)
+    piFloat80.round(to: 15, rule: .up)
+    XCTAssertEqual(piFloat80, 3.141_592_653_589_794)
     piFloat.round(to: 3)
     XCTAssertEqual(piFloat, 3.142)
     piDouble.round(to: 2)
@@ -82,11 +86,9 @@ final class FloatingPointUtilsTests: XCTestCase {
     XCTAssertEqual(bigFloat.rounded(to: 0), 1)
     XCTAssertEqual(bigFloat.rounded(to: 10), 0.9278766112)
 
-    bigFloat.round(to: 16)
+    bigFloat.round(to: 16, rule: .up)
     XCTAssertEqual(bigFloat, 0.9278766111959093)
     bigFloat.round(to: -1)
-    XCTAssertEqual(bigFloat, 0.9278766111959093)
-    bigFloat.round(to: 16)
     XCTAssertEqual(bigFloat, 0.9278766111959093)
     bigFloat.round(to: 3)
     XCTAssertEqual(bigFloat, 0.928)
@@ -99,7 +101,7 @@ final class FloatingPointUtilsTests: XCTestCase {
     var piFloat80       = Float80(3.14159_26535_89793_23846)    //  3.141592653589793116
 
     var negativeDouble  = -147.956455                           //  -147.95645500000001
-    var randomFloat    = Float32(199.959019)                    //  199.959015
+    var randomFloat     = Float32(199.959019)                    //  199.959015
     var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
 
     XCTAssertEqual(piFloat.ceiled(to: 0), 4.0)
@@ -144,8 +146,6 @@ final class FloatingPointUtilsTests: XCTestCase {
     XCTAssertEqual(bigFloat, 0.9278766111959093)
     bigFloat.ceil(to: -1)
     XCTAssertEqual(bigFloat, 0.9278766111959093)
-    bigFloat.ceil(to: 16)
-    XCTAssertEqual(bigFloat, 0.9278766111959093)
     bigFloat.ceil(to: 3)
     XCTAssertEqual(bigFloat, 0.928)
 
@@ -156,7 +156,7 @@ final class FloatingPointUtilsTests: XCTestCase {
     var piDouble        = 3.14159_26535_89793_23846             //  3.1415926535897931
     var piFloat80       = Float80(3.14159_26535_89793_23846)    //  3.141592653589793116
 
-    var randomFloat    = Float32(199.959019)                    //  199.959015
+    var randomFloat     = Float32(199.959019)                    //  199.959015
     var bigFloat        = Float80(0.9278766111959092165201989)  //  0.927876611195909251073
 
     XCTAssertEqual(piFloat.floored(to: 0), 3.0)

@@ -91,5 +91,8 @@ custom_rules:
     regex: '[ a-zA-Z0-9]*(?:let|var) [ a-zA-Z0-9]*: ([a-zA-Z0-9]*)[ ]*= \1'
     message: "Type Definition Not Needed"
     severity: warning
+  no_line_around_parentheses: # from https://github.com/realm/SwiftLint/issues/2213
+    regex:  '\{\h*\R\h*\R|\R\h*\R\h*\}'
+    message: No scope should begin or end with an empty line.
 
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)

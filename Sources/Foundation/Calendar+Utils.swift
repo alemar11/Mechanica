@@ -25,7 +25,6 @@
 import Foundation
 
 extension Calendar {
-
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
   /// **Mechanica**
   ///
@@ -42,7 +41,6 @@ extension Calendar {
 
     return Int(ceil(month / numberOfMonthsInQuarter))
   }
-  #endif
 
   /// **Mechanica**
   ///
@@ -50,14 +48,6 @@ extension Calendar {
   ///
   public func isDateInCurrentWeek(_ date: Date) -> Bool {
     return isDate(date, equalTo: Date(), toGranularity: .weekOfYear)
-  }
-
-  /// **Mechanica**
-  ///
-  /// Checks if date is is within a weekday period.
-  ///
-  public func isDateInWorkDay(_ date: Date) -> Bool {
-    return !isDateInWeekend(date)
   }
 
   /// **Mechanica**
@@ -75,25 +65,15 @@ extension Calendar {
   public func isDateInCurrentYear(_ date: Date) -> Bool {
     return isDate(date, equalTo: Date(), toGranularity: .year)
   }
+  #endif
+
+  /// **Mechanica**
+  ///
+  /// Checks if date is is within a weekday period.
+  ///
+  public func isDateInWorkDay(_ date: Date) -> Bool {
+    return !isDateInWeekend(date)
+  }
 }
 
 #endif
-
-// TODO
-/*
- extension DispatchTimeInterval {
-
- /// **Mechanica**
- ///
- /// Returns a dispatch time interval in nanoseconds from a `Double` number of seconds
- ///
- /// Example:
- ///
- ///    let timeInEightAndHalf: DispatchTime = .now() + .seconds(8.5)
- public static func seconds(_ amount: Double) -> DispatchTimeInterval {
- // http://ericasadun.com/2017/05/23/5-easy-dispatch-tricks/
- let delay = Double(NSEC_PER_SEC) * amount
- return DispatchTimeInterval.nanoseconds(Int(delay))
- }
- }
- */

@@ -24,7 +24,6 @@
 /// A Sequence can be either finite or infinite.
 
 extension Sequence {
-
   /// **Mechanica**
   ///
   /// Checks if all the elements in collection satisfiy the given predicate.
@@ -124,24 +123,6 @@ extension Sequence {
 
   /// **Mechanica**
   ///
-  /// Returns the count of the elements satisfying the given predicate.
-  ///
-  ///     [2, 2, 4, 7].count(where: {$0 % 2 == 0}) -> 3
-  ///
-  /// - Parameter predicate: predicate to evaluate each element against.
-  /// - Returns: number of times the condition evaluated to true.
-  /// - Attention: the sequence must be finite.
-  public func count(where predicate: (Element) throws -> Bool) rethrows -> Int {
-    // TODO: Swift 5 - https://github.com/apple/swift-evolution/blob/master/proposals/0220-count-where.md
-    var count = 0
-    for element in self where try predicate(element) {
-      count += 1
-    }
-    return count
-  }
-
-  /// **Mechanica**
-  ///
   /// Splits `self` into partitions of a given `length`.
   ///
   /// Example:
@@ -182,13 +163,11 @@ extension Sequence {
     var seen =  [Key: Bool]()
     return filter { seen.updateValue(true, forKey: keyGenerator($0)) == nil }
   }
-
 }
 
 // MARK: - Equatable
 
 extension Sequence where Element: Equatable {
-
   /// **Mechanica**
   ///
   /// Returns a collection of unique elements preserving their original order.
@@ -202,13 +181,11 @@ extension Sequence where Element: Equatable {
 
     return result
   }
-
 }
 
 // MARK: - Hashable
 
 extension Sequence where Element: Hashable {
-
   /// **Mechanica**
   ///
   /// Returns true if the `Sequence` contains all the given elements.
@@ -259,13 +236,11 @@ extension Sequence where Element: Hashable {
     }
     return false
   }
-
 }
 
 // MARK: - AnyObject
 
 extension Sequence where Element: AnyObject {
-
   /// **Mechanica**
   ///
   /// Returns true if the `Sequence` contains an element identical (referential equality) to an `object`.
@@ -273,13 +248,11 @@ extension Sequence where Element: AnyObject {
   public func containsObjectIdentical(to object: AnyObject) -> Bool {
     return contains { $0 === object }
   }
-
 }
 
 // MARK: - Numeric
 
-public extension Sequence where Element: Numeric {
-
+extension Sequence where Element: Numeric {
   /// **Mechanica**
   ///
   /// Sums of all elements in array.
@@ -292,5 +265,4 @@ public extension Sequence where Element: Numeric {
   public func sum() -> Element {
     return reduce(0, { $0 + $1 })
   }
-
 }

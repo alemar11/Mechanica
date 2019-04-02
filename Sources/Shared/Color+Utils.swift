@@ -36,7 +36,6 @@ public typealias Color = AppKit.NSColor
 #endif
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Returns the hexadecimal string representation of `self` in the sRGB space.
@@ -66,13 +65,11 @@ extension Color {
     return self.init(srgbRed: red, green: green, blue: blue, alpha: alpha)
     #endif
   }
-
 }
 
 // MARK: - sRGBA
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Alias for RGBA color space components
@@ -131,13 +128,11 @@ extension Color {
 
     return convertedColor
   }
-
 }
 
 // MARK: - Initializers
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Returns a sRGB color from a hexadecimal integer.
@@ -199,13 +194,11 @@ extension Color {
 
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
-
 }
 
 // MARK: - HSBA
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Alias for HSBA color space components
@@ -227,13 +220,11 @@ extension Color {
 
     return (hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
   }
-
 }
 
 // MARK: - Editing
 
 extension Color {
-
   /// **Mechanica**
   ///
   /// Blends two colors together.
@@ -281,15 +272,13 @@ extension Color {
 
     return Color(red: red, green: green, blue: blue, alpha: alpha)
   }
-
 }
 
 // MARK: - UIKit Components
 
 #if canImport(UIKit)
 
-public extension Color {
-
+extension Color {
   /// **Mechanica**
   ///
   /// Returns the receiver’s RGB red component.
@@ -365,7 +354,6 @@ public extension Color {
     getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
     return brightness
   }
-
 }
 
 #endif

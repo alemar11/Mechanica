@@ -29,16 +29,12 @@
 import Foundation
 
 extension String {
-
-  // MARK: - Foundation
-
   /// **Mechanica**
   ///
   /// Returns a `new` string decoded from base64.
   public var base64Decoded: String? {
-    guard let decodedData = Data(base64Encoded: self) else {
-      return nil
-    }
+    guard let decodedData = Data(base64Encoded: self) else { return nil }
+
     return String(data: decodedData, encoding: .utf8)
   }
 
@@ -76,8 +72,8 @@ extension String {
   public func capitalizedFirstCharacter() -> String {
     guard !isEmpty else { return self }
 
-    let capitalizedFirstCharacher = String(self[startIndex]).uppercased() //capitalized
-    let result = capitalizedFirstCharacher + String(dropFirst())
+    let capitalizedFirstCharacher = self[startIndex].uppercased() //capitalized
+    let result = capitalizedFirstCharacher + dropFirst()
 
     return result
   }
@@ -141,8 +137,8 @@ extension String {
     guard !isEmpty else { return false }
 
     for scalar in unicodeScalars {
+      // swiftlint:disable empty_line_after_guard
       guard characterSet.contains(scalar) else { return false }
-
     }
 
     return true
@@ -154,8 +150,8 @@ extension String {
   public func decapitalizedFirstCharacter() -> String {
     guard !isEmpty else { return self }
 
-    let capitalizedFirstCharacher = String(self[startIndex]).lowercased()
-    let result = capitalizedFirstCharacher + String(dropFirst())
+    let capitalizedFirstCharacher = self[startIndex].lowercased()
+    let result = capitalizedFirstCharacher + dropFirst()
 
     return result
   }
@@ -180,7 +176,7 @@ extension String {
     var copy = self
 
     let versionComponents = components(separatedBy: ".")
-    guard 1 ... 3 ~= versionComponents.count else { fatalError("Invalid number of semantic version components (\(versionComponents.count)).") }
+    guard 1...3 ~= versionComponents.count else { fatalError("Invalid number of semantic version components (\(versionComponents.count)).") }
 
     let notNumericComponents = versionComponents.filter { !$0.isNumeric }
     guard notNumericComponents.isEmpty else { fatalError("Each semantic version component should have a numeric value.") }
@@ -203,35 +199,39 @@ extension String {
   ///
   /// Returns true if the `String` contains one or more letters.
   public var hasLetters: Bool {
-    return !isEmpty && rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
+    return !isEmpty && first { $0.isLetter } != nil
+    // return !isEmpty && rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
   }
 
   /// **Mechanica**
   ///
   /// Returns true if the `String` contains one or more numbers.
   public var hasNumbers: Bool {
-    return !isEmpty && rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
+    return !isEmpty && first { $0.isNumber } != nil
+    // return !isEmpty && rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
   }
 
   /// **Mechanica**
   ///
   /// Returns true if the `String` contains only letters.
   public var isAlphabetic: Bool {
-    return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
+    return !isEmpty && first { !$0.isLetter } == nil
+    // return !isEmpty && rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
   }
 
   /// **Mechanica**
   ///
-  /// Returns true if the `String` contains at least one letter and one number.
+  /// Returns true if the `String` contains only letters, number.
   public var isAlphaNumeric: Bool {
-    return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
+    return !isEmpty && first { !$0.isNumber && !$0.isLetter } == nil
+    // return !isEmpty && rangeOfCharacter(from: NSCharacterSet.alphanumerics.inverted) == nil
   }
 
   /// **Mechanica**
   ///
   /// Checks if the `String` is **blank** (a string that is either empty or contains only space/newline characters).
   public var isBlank: Bool {
-    return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
+    return trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
   }
 
   /// **Mechanica**
@@ -250,7 +250,8 @@ extension String {
   ///
   /// Checks if the `String` contains only numbers.
   public var isNumeric: Bool {
-    return !isEmpty && rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
+    return !isEmpty && first { !$0.isNumber } == nil
+    // return !isEmpty && rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
   }
 
   /// **Mechanica**
@@ -297,7 +298,7 @@ extension String {
     // https://www.bignerdranch.com/blog/pro-pattern-matching-in-swift/
 
     // swiftlint:disable:next line_length
-    let emailPattern = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"+"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"+"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"+"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"+"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"+"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"+"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+    let emailPattern = #"(?:[a-z0-9!#$%\&'*+/=?\^_`{|}~-]+(?:\.[a-z0-9!#$%\&'*+/=?\^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"#
 
     #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     return NSPredicate(format: "SELF MATCHES[c] %@", emailPattern).evaluate(with: self)
@@ -404,6 +405,7 @@ extension String {
   /// - Returns: A `new` random alphanumeric `String`.
   public static func random(length: UInt32 = 8, characters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
+
     var randomString: String = ""
 
     for _ in 0..<length {
@@ -424,6 +426,7 @@ extension String {
   /// - Returns: A `new` random alphanumeric `String`.
   public static func random(length between: CountableClosedRange<UInt32>, characters base: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
     guard !base.isEmpty else { return "" }
+
     let randomLength = UInt32.random(in: between.lowerBound...between.upperBound)
 
     return random(length: randomLength, characters: base)
@@ -452,11 +455,10 @@ extension String {
   ///  Remove the characters in the given set.
   public mutating func removeCharacters(in set: CharacterSet) {
     for idx in indices.reversed() {
-      if set.contains(String(self[idx]).unicodeScalars.first!) {
+      if set.contains(self[idx].unicodeScalars.first!) {
         remove(at: idx)
       }
     }
-
   }
 
   /// **Mechanica**
@@ -490,7 +492,7 @@ extension String {
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(start, offsetBy: range.count)
 
-    return replacingCharacters(in: start ..< end, with: replacement)
+    return replacingCharacters(in: start..<end, with: replacement)
   }
 
   /// **Mechanica**
@@ -500,7 +502,7 @@ extension String {
     let start = index(startIndex, offsetBy: range.lowerBound)
     let end = index(start, offsetBy: range.count)
 
-    return replacingCharacters(in: start ..< end, with: replacement)
+    return replacingCharacters(in: start..<end, with: replacement)
   }
 
   /// **Mechanica**
@@ -596,7 +598,6 @@ extension String {
   ///  - Returns: Substring in NSRange or nil.
   public subscript (nsRange: NSRange) -> Substring? {
     guard let range = Range(nsRange) else { return nil }
-
     guard 0...count ~= range.lowerBound else { return nil }
     guard 0...count ~= range.upperBound else { return nil }
 
@@ -617,17 +618,6 @@ extension String {
     let range = Range(uncheckedBounds: (lower: startIndex, upper: endIndex) )
 
     return self.range(of: substring, options: .literal, range: range, locale: .current)
-  }
-
-  // MARK: - CharacterSet
-
-  /// **Mechanica**
-  ///
-  /// Returns the `NSRange` of `self`.
-  public var nsRange: NSRange {
-    let range = self.startIndex...
-
-    return NSRange(range, in: self)
   }
 
   // MARK: - Case Operators
@@ -713,10 +703,11 @@ extension String {
   ///
   /// - Returns: The swap cased copy of the `String`.
   public func swapCased() -> String {
-    return map({ String($0).isLowercased ? String($0).uppercased() : String($0).lowercased() }).joined()
+    return self.map { $0.isLowercase ? $0.uppercased() : $0.lowercased() }.joined()
   }
 
   // MARK: - NSString
+
   #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
   /// **Mechanica**
@@ -827,11 +818,11 @@ extension String {
   /// - Returns: A list of matched ranges for `self`.
   public func ranges(matching pattern: String, options: NSRegularExpression.Options = []) -> [Range<String.Index>] {
     guard let regex = try? NSRegularExpression(pattern: pattern, options: options) else { return [] }
+
     let matches = regex.matches(in: self, options: [], range: NSRange(startIndex..<endIndex, in: self))
     let ranges = matches.compactMap { Range($0.range, in: self) }
 
     return ranges
   }
-
 }
 #endif

@@ -22,20 +22,17 @@
 // SOFTWARE.
 
 extension BinaryInteger {
-
   /// **Mechanica**
   ///
-  /// Determine if self is even (equivalent to `self % 2 == 0`).
+  /// Determine if self is even (equivalent to `self % 2 == 0` or to `isMultiple(of: 2)`).
   public var isEven: Bool {
-    // TODO: Swift 5 - https://github.com/apple/swift-evolution/blob/master/proposals/0225-binaryinteger-iseven-isodd-ismultiple.md (use isMultiple(of:)
-    return self % 2 == 0
+    return isMultiple(of: 2)
   }
 
   /// **Mechanica**
   ///
-  /// Determine if self is odd (equivalent to `self % 2 != 0`).
+  /// Determine if self is odd (equivalent to `self % 2 != 0` or to `isMultiple(of: 2)` negated).
   public var isOdd: Bool {
-    return self % 2 != 0
+    return !isEven
   }
-
 }

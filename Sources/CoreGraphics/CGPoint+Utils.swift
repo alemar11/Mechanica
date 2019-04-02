@@ -25,8 +25,7 @@
 
   import CoreGraphics.CGGeometry
 
-  public extension CGPoint {
-
+   extension CGPoint {
     /// **Mechanica**
     ///
     /// Returns the distance between two points.
@@ -65,7 +64,6 @@
   // MARK: - Operators
 
   extension CGPoint {
-
     /// **Mechanica**
     ///
     /// Adds two `CGPoints`.
@@ -140,7 +138,5 @@
     public static func *= (point: inout CGPoint, scalar: CGFloat) {
       point = CGPoint(x: point.x * scalar, y: point.y * scalar)
     }
-
   }
-
 #endif

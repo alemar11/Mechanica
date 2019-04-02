@@ -29,7 +29,7 @@ extension URLRequestUtilsTests {
   static var allTests = [
     ("testCURLRepresentation", testCURLRepresentation),
     ("testCURLRepresentationWithBodyStream", testCURLRepresentationWithBodyStream),
-    //("testCURLRepresentationWithURLSession", testCURLRepresentationWithURLSession), //TODO: it's not compiling on Linux
+    ("testCURLRepresentationWithURLSession", testCURLRepresentationWithURLSession),
   ]
 }
 
@@ -154,8 +154,6 @@ final class URLRequestUtilsTests: XCTestCase {
     XCTAssertTrue(prettyCURL == valuePretty)
   }
 
-  #if os(iOS) || os(tvOS) || os(macOS)
-
   func testCURLRepresentationWithURLSession() throws {
     // Given
     var urlString = "http://example.com"
@@ -170,7 +168,7 @@ final class URLRequestUtilsTests: XCTestCase {
     let host = url.host!
     let protectionSpace = URLProtectionSpace(host: host, port: url.port ?? 0, protocol: url.scheme, realm: host, authenticationMethod: NSURLAuthenticationMethodHTTPBasic)
 
-    let configuration = URLSessionConfiguration.default
+    let configuration = URLSessionConfiguration.default //background(withIdentifier: "123")
     configuration.httpCookieAcceptPolicy = .always
     configuration.httpShouldSetCookies = true
     configuration.httpAdditionalHeaders = ["Content-Type": "application/json", "Test": "Mechanica"]
@@ -179,43 +177,72 @@ final class URLRequestUtilsTests: XCTestCase {
     var cookieProperties = [HTTPCookiePropertyKey: Any]()
     cookieProperties[.name] = "cookiename"
     cookieProperties[.value] = "cookievalue"
-    cookieProperties[.domain] = urlString
+    cookieProperties[.domain] = "example.com"
     cookieProperties[.path] = "/"
     cookieProperties[.version] = NSNumber(value: 11)
     cookieProperties[.expires] = date
-    let cookie = HTTPCookie(properties: cookieProperties)!
 
-    let storage = MockHTTPCookieStorage()
+    let cookie = HTTPCookie(properties: cookieProperties)!
+    
+    var storage: HTTPCookieStorage
+    #if os(iOS) || os(tvOS) || os(macOS)
+    storage = MockHTTPCookieStorage()
+    if #available(iOS 11.0, tvOS 12.0, watchOS 11.0, macOS 10.13, *) {
+      storage = HTTPCookieStorage.shared
+      storage.cookies?.forEach { storage.deleteCookie($0) }
+    }
+    #else
+    storage = HTTPCookieStorage.shared
+    #endif
+
+    storage.cookieAcceptPolicy = .always
     storage.setCookies([cookie], for: url, mainDocumentURL: nil)
     configuration.httpCookieStorage = storage
 
     let session = URLSession(configuration: configuration)
+    #if os(iOS) || os(tvOS) || os(macOS)
     URLCredentialStorage.shared.setDefaultCredential(credential, for: protectionSpace)
+    let expectedValue1 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
+    let expectedValue2 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Test: Mechanica\" -H \"Content-Type: application/json\" \"http://example.com\""
+    #else
+    // TODO: URLCredentialStorage not implemented on Linux (https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/URLCredentialStorage.swift)
+    let expectedValue1 = "curl -i -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
+    let expectedValue2 = "curl -i -b \"cookiename=cookievalue\" -H \"Test: Mechanica\" -H \"Content-Type: application/json\" \"http://example.com\""
+    #endif
 
     // CredStore - performQuery - Error copying matching creds.  Error=-25300 ...
     // https://github.com/Alamofire/Alamofire/issues/2467
 
     // When, Then
     let cURL = request.cURLRepresentation(session: session, prettyPrinted: false)!
-    let expectedValue1 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Content-Type: application/json\" -H \"Test: Mechanica\" \"http://example.com\""
-    let expectedValue2 = "curl -i -u AaA:BBb -b \"cookiename=cookievalue\" -H \"Test: Mechanica\" -H \"Content-Type: application/json\" \"http://example.com\""
+
     XCTAssertTrue(expectedValue1 == cURL || expectedValue2 == cURL)
   }
 
-  class MockHTTPCookieStorage: HTTPCookieStorage {
-    var _cookies = [URL: [HTTPCookie]]()
+  #if os(iOS) || os(tvOS) || os(macOS)
+  private class MockHTTPCookieStorage: HTTPCookieStorage {
+    var _cookiesForUrls = [URL: [HTTPCookie]]()
+    var _cookies = [HTTPCookie]()
 
     override init() {
       super.init() // not compiling on Linux
     }
 
+    override func setCookie(_ cookie: HTTPCookie) {
+      _cookies.append(cookie)
+    }
+
     override func setCookies(_ cookies: [HTTPCookie], for URL: URL?, mainDocumentURL: URL?) {
       guard let url = URL else { return }
-      _cookies[url] = cookies
+      _cookiesForUrls[url] = cookies
     }
 
     override func cookies(for URL: URL) -> [HTTPCookie]? {
-      return _cookies[URL]
+      return _cookiesForUrls[URL]
+    }
+
+    override var cookies: [HTTPCookie]? {
+      return _cookies
     }
   }
   #endif

@@ -28,7 +28,6 @@
 import Foundation
 
 extension FileManager {
-
   /// **Mechanica**
   ///
   /// Cleans all contents in a directory `path`.
@@ -36,7 +35,6 @@ extension FileManager {
   /// - Parameter path: **directory** path (if it's not a directory path, nothing is done).
   /// - Throws:  throws an error in cases of failure.
   public final func cleanDirectory(atPath path: String) throws {
-
 //    #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 //      var isDirectory: ObjCBool = false
 //      guard fileExists(atPath: path, isDirectory: &isDirectory) == true else { return }
@@ -70,5 +68,18 @@ extension FileManager {
     try removeItem(atPath: path)
   }
 
+  /// **Mechanica**
+  ///
+  /// Creates and returns always a `new` directory in Library/Caches in the user's home directory for discardable cache files.
+  public final func newCachesSubDirectory(in domain: FileManager.SearchPathDomainMask = .userDomainMask, withName name: String = UUID().uuidString) throws -> URL {
+    let cachesDirectoryURL = try url(for: .cachesDirectory, in: domain, appropriateFor: nil, create: true)
+    let subdirectoryURL = cachesDirectoryURL.appendingPathComponent(name)
+
+    if !fileExists(atPath: subdirectoryURL.path) {
+      try createDirectory(at: subdirectoryURL, withIntermediateDirectories: false, attributes: nil)
+    }
+
+    return subdirectoryURL
+  }
 }
 #endif

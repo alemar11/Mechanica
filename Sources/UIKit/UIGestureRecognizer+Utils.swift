@@ -26,7 +26,6 @@
 import UIKit
 
 extension UIGestureRecognizer {
-
   /// **Mechanica**
   ///
   /// The gesture recognizer transitions to a cancelled state.
@@ -34,7 +33,6 @@ extension UIGestureRecognizer {
     isEnabled = false
     isEnabled = true
   }
-
 }
 
 #endif

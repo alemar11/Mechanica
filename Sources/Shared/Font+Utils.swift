@@ -46,7 +46,6 @@ public typealias FontDescriptorSymbolicTraits = UIKit.UIFontDescriptor.SymbolicT
 #endif
 
 extension Font {
-
   /// **Mechanica**
   ///
   /// Applies the specified traits to `self` without changing the current size.
@@ -174,5 +173,4 @@ extension Font {
       return fontDescriptor.symbolicTraits.contains(.traitItalic)
     #endif
   }
-
 }

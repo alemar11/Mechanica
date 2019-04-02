@@ -25,7 +25,6 @@
 import Foundation
 
 extension Dictionary {
-
   // MARK: - JSON
 
   /// **Mechanica**
@@ -64,8 +63,8 @@ extension Dictionary {
   /// - Returns: optional JSON String.
   public func jsonString(prettify: Bool = false) -> String? {
     guard let jsonData = jsonData(prettify: prettify) else { return nil }
+
     return String(data: jsonData, encoding: .utf8)
   }
-
 }
 #endif

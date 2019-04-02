@@ -26,7 +26,6 @@
 import UIKit
 
 extension UIButton {
-
   /// **Mechanica**
   ///
   /// Sets the background `color` to use for the specified button `state`.
@@ -39,7 +38,6 @@ extension UIButton {
 
     setBackgroundImage(colorImage, for: state)
   }
-
 }
 
 #endif
