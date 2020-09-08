@@ -26,6 +26,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0688BC9F2507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688BC9E2507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift */; };
+		0688BCA02507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688BC9E2507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift */; };
+		0688BCA12507CEA300B2B76A /* NSDirectionalEdgeInsets+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688BC9E2507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift */; };
+		0688BCA22507CED400B2B76A /* NSDirectionalEdgeInsets+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0688BC9E2507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift */; };
 		12B536F71D33ED6A005C52A7 /* Mechanica.h in Headers */ = {isa = PBXBuildFile; fileRef = 12B536ED1D33ED6A005C52A7 /* Mechanica.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12B536F81D33ED6A005C52A7 /* Mechanica.h in Headers */ = {isa = PBXBuildFile; fileRef = 12B536ED1D33ED6A005C52A7 /* Mechanica.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12B536F91D33ED6A005C52A7 /* Mechanica.h in Headers */ = {isa = PBXBuildFile; fileRef = 12B536ED1D33ED6A005C52A7 /* Mechanica.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -533,6 +537,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0688BC9E2507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDirectionalEdgeInsets+Utils.swift"; sourceTree = "<group>"; };
 		12B536B21D33ECEC005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536BF1D33ECFB005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536D51D33ED1C005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -999,6 +1004,7 @@
 		23C796681FB4479A006766FD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				0688BC9E2507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift */,
 				23928B801F5DAC5E00FB74AE /* Font+Utils.swift */,
 				D278BD951DEF1061006FAD83 /* Color+Utils.swift */,
 				23CC6B221FA71E04004D062B /* Image+Utils.swift */,
@@ -1580,6 +1586,7 @@
 				2302A2D21F8FFEF1001A92A8 /* Unicode+Utils.swift in Sources */,
 				23374AC320F8A63B00768B5D /* Date+Utils.swift in Sources */,
 				230949071F9236FF00CA5895 /* UIDevice+Utils.swift in Sources */,
+				0688BC9F2507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift in Sources */,
 				2305A87621959FD0004E6EA2 /* DispatchQueue+Utils.swift in Sources */,
 				23949C551E4B974400BD9EC8 /* NSAttributedString+Utils.swift in Sources */,
 				23C7966F1FB44920006766FD /* FixedWidthInteger+Utils.swift in Sources */,
@@ -1635,6 +1642,7 @@
 				D2ABD0081E004F8D006859B9 /* ProcessInfo+Utils.swift in Sources */,
 				D205B0611DF6F855002D78EF /* FloatingPoint+Utils.swift in Sources */,
 				235747F021CB98E0002BDE73 /* UIEdgeInsets+Utils.swift in Sources */,
+				0688BCA02507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift in Sources */,
 				23C7966D1FB44920006766FD /* FixedWidthInteger+Utils.swift in Sources */,
 				23EE9B1A1E5899C2009483E4 /* RangeReplaceableCollection+Utils.swift in Sources */,
 				235DCB8C1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
@@ -1693,6 +1701,7 @@
 				D2234A641E002D2600252551 /* String+FoundationUtils.swift in Sources */,
 				2307D06C1F8FA15500FDBA2A /* Locale.swift in Sources */,
 				23C7966E1FB44920006766FD /* FixedWidthInteger+Utils.swift in Sources */,
+				0688BCA12507CEA300B2B76A /* NSDirectionalEdgeInsets+Utils.swift in Sources */,
 				2305A87821959FD0004E6EA2 /* DispatchQueue+Utils.swift in Sources */,
 				23C796771FB44920006766FD /* BinaryInteger+Utils.swift in Sources */,
 				12D9DEFF1E085B6A000799C6 /* Bool+Utils.swift in Sources */,
@@ -1762,6 +1771,7 @@
 				235DCB8E1E89B3D9006AFEBE /* BinaryFloatingPoint+Utils.swift in Sources */,
 				2302A2D01F8FFE7A001A92A8 /* Character+Utils.swift in Sources */,
 				23C9FA54204467170090D817 /* CGPoint+Utils.swift in Sources */,
+				0688BCA22507CED400B2B76A /* NSDirectionalEdgeInsets+Utils.swift in Sources */,
 				23964A051E5B034800C8E0DF /* Collection+Utils.swift in Sources */,
 				23D12CE11F9A649400720D4F /* FixedWidthInteger+Utils.swift in Sources */,
 				23928B841F5DAC5E00FB74AE /* Font+Utils.swift in Sources */,

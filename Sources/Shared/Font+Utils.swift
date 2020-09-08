@@ -1,48 +1,27 @@
-//
-// Mechanica
-//
-// Copyright © 2016-2019 Tinrobots.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
 #if canImport(UIKit)
-  import UIKit
-  /// **Mechanica**
-  ///
-  /// Alias for UIFont.
-  public typealias Font = UIKit.UIFont
 
-  /// **Mechanica**
-  ///
-  /// Alias for UIFontDescriptorSymbolicTraits.
+import UIKit
+/// **Mechanica**
+///
+/// Alias for UIFont.
+public typealias Font = UIKit.UIFont
+
+/// **Mechanica**
+///
+/// Alias for UIFontDescriptorSymbolicTraits.
 public typealias FontDescriptorSymbolicTraits = UIKit.UIFontDescriptor.SymbolicTraits
 #elseif canImport(AppKit)
-  import AppKit
-  /// **Mechanica**
-  ///
-  /// Alias for NSFont.
-  public typealias Font = AppKit.NSFont
+import AppKit
+/// **Mechanica**
+///
+/// Alias for NSFont.
+public typealias Font = AppKit.NSFont
 
-  /// **Mechanica**
-  ///
-  /// Alias for NSFontDescriptor.SymbolicTraits.
-  public typealias FontDescriptorSymbolicTraits = AppKit.NSFontDescriptor.SymbolicTraits
+/// **Mechanica**
+///
+/// Alias for NSFontDescriptor.SymbolicTraits.
+public typealias FontDescriptorSymbolicTraits = AppKit.NSFontDescriptor.SymbolicTraits
+
 #endif
 
 extension Font {
@@ -53,15 +32,15 @@ extension Font {
     let descriptor = fontDescriptor.withSymbolicTraits(traits)
     // size 0 means keep the size as it is
     let size = CGFloat(0) // TODO: use "pointSize" instead of 0?
-
+    
     #if os(macOS)
-      return Font(descriptor: descriptor, size: size) ?? self
+    return Font(descriptor: descriptor, size: size) ?? self
     #else
-      guard let desc = descriptor else { return self }
-      return UIFont(descriptor: desc, size: size)
+    guard let desc = descriptor else { return self }
+    return UIFont(descriptor: desc, size: size)
     #endif
   }
-
+  
   /// **Mechanica**
   ///
   /// Applies the *bold* trait.
@@ -82,31 +61,31 @@ extension Font {
   public func bold(removingExistingTraits: Bool = true) -> Font {
     let traits: FontDescriptorSymbolicTraits
     #if os(macOS)
-      traits = .bold
+    traits = .bold
     #else
-      traits = .traitBold
+    traits = .traitBold
     #endif
     let finalTraits = (removingExistingTraits) ? traits : [fontDescriptor.symbolicTraits, traits]
-
+    
     return withTraits(finalTraits)
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` font removing the bold trait.
   public func removingBold() -> Font {
     guard isBold else { return self }
-
+    
     var traits = fontDescriptor.symbolicTraits
     #if os(macOS)
-     traits.remove([.bold])
+    traits.remove([.bold])
     #else
-      traits.remove([.traitBold])
+    traits.remove([.traitBold])
     #endif
-
+    
     return withTraits(traits)
   }
-
+  
   /// **Mechanica**
   ///
   /// Applies the *italic* trait.
@@ -127,50 +106,50 @@ extension Font {
   public func italic(removingExistingTraits: Bool = false) -> Font {
     let traits: FontDescriptorSymbolicTraits
     #if os(macOS)
-      traits = .italic
+    traits = .italic
     #else
-      traits = .traitItalic
+    traits = .traitItalic
     #endif
     let finalTraits = (removingExistingTraits) ? traits : [fontDescriptor.symbolicTraits, traits]
-
+    
     return withTraits(finalTraits)
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns a `new` font removing the italic trait.
   public func removingItalic() -> Font {
     guard isItalic else { return self }
-
+    
     var traits = fontDescriptor.symbolicTraits
     #if os(macOS)
-      traits.remove([.italic])
+    traits.remove([.italic])
     #else
-      traits.remove([.traitItalic])
+    traits.remove([.traitItalic])
     #endif
-
+    
     return withTraits(traits)
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns true if the font contains the bold trait.
   public var isBold: Bool {
     #if os(macOS)
-      return fontDescriptor.symbolicTraits.contains(.bold)
+    return fontDescriptor.symbolicTraits.contains(.bold)
     #else
-      return fontDescriptor.symbolicTraits.contains(.traitBold)
+    return fontDescriptor.symbolicTraits.contains(.traitBold)
     #endif
   }
-
+  
   /// **Mechanica**
   ///
   /// Returns true if the font contains the italic trait.
   public var isItalic: Bool {
     #if os(macOS)
-      return fontDescriptor.symbolicTraits.contains(.italic)
+    return fontDescriptor.symbolicTraits.contains(.italic)
     #else
-      return fontDescriptor.symbolicTraits.contains(.traitItalic)
+    return fontDescriptor.symbolicTraits.contains(.traitItalic)
     #endif
   }
 }
