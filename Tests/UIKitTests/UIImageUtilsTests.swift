@@ -190,13 +190,8 @@ final class UIImageUtilsTests: XCTestCase {
 
     // Then
     let expectedAppleImage = UIImage(data: appleScaledData, scale: CGFloat(scale))!
-    // TODO: fails on tvOS, fixed for now increasing the tolerance from 4 up to 188.
-    var tolerance: UInt8 = 4
-    #if os(tvOS)
-      tolerance = 188
-    #endif
-    print(tolerance)
-    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: tolerance), "The scaled apple image pixels do not match.")
+
+    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage), "The scaled apple image pixels do not match.")
     XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
   }
 
@@ -214,9 +209,8 @@ final class UIImageUtilsTests: XCTestCase {
 
     // Then
     let expectedAppleImage = UIImage(data: appleScaledToFitData, scale: CGFloat(scale))!
-    // TODO: fails with 3X scale on iOS, fixed for now increasing the tolerance from 4 up to 53.
     XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
-    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 53), "The scaled apple image pixels do not match.")
+    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage), "The scaled apple image pixels do not match.")
   }
 
   private func executeImageAspectScaledToFillSizeTest(_ size: CGSize) {
@@ -234,7 +228,7 @@ final class UIImageUtilsTests: XCTestCase {
     // Then
     let expectedAppleImage = UIImage(data: appleScaledToFillData, scale: CGFloat(scale))!
     XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
-    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 4), "The scaled apple image pixels do not match.")
+    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage), "The scaled apple image pixels do not match.")
   }
 
 }

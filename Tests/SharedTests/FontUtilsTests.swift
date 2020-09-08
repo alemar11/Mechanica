@@ -137,7 +137,7 @@ final class FontUtilsTests: XCTestCase {
 
         // When, Then
         let onlyBoldFont = italicAndBoldFont.bold(removingExistingTraits: true)
-        XCTAssertFalse(onlyBoldFont.isBold) // on tvOS the headline style is never bold
+        XCTAssertTrue(onlyBoldFont.isBold)
         XCTAssertFalse(onlyBoldFont.isItalic)
 
         // When, Then

@@ -30,7 +30,7 @@ extension UIWindow {
   ///
   /// Returns the topmost UIViewController.
   public var topMostViewController: UIViewController? {
-    guard var topMostViewController = rootViewController else { return nil }
+    guard let topMostViewController = rootViewController else { return nil }
 
     func visibleViewController(from viewController: UIViewController?) -> UIViewController? {
       if let tabBarController = (viewController as? UITabBarController)?.selectedViewController {

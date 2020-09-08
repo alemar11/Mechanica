@@ -42,7 +42,7 @@ extension String {
   ///
   /// Returns a `new` string encoded in base64.
   public var base64Encoded: String? {
-    let plainData = self.data(using: .utf8)
+    let plainData = data(using: .utf8)
     return plainData?.base64EncodedString()
   }
 
