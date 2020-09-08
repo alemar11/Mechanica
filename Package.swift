@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.2
 
 import PackageDescription
 
@@ -14,7 +14,7 @@ package.targets = [
   .testTarget(name: "AVFoundationTests", dependencies: ["Mechanica"])
 ]
 package.swiftLanguageVersions = [.v5]
-package.platforms = [.macOS(.v10_12), .iOS(.v10), .tvOS(.v10), .watchOS(.v3)]
+package.platforms = [.macOS(.v10_14), .iOS(.v12), .tvOS(.v12), .watchOS(.v5)]
 
 #if os(Linux)
 

@@ -55,10 +55,9 @@ extension NSAttributedString {
   ///
   /// Returns a `new` NSAttributedString appending the right NSAttributedString to the left NSAttributedString.
   static public func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
-    // swiftlint:disable force_cast
-    let attributedString = lhs.mutableCopy() as! NSMutableAttributedString
-    return (attributedString + rhs).copy() as! NSAttributedString
-    // swiftlint:enable force_cast
+    let attributedString = NSMutableAttributedString(attributedString: lhs)
+    attributedString.append(rhs)
+    return NSAttributedString(attributedString: attributedString)
   }
 
   /// **Mechanica**
