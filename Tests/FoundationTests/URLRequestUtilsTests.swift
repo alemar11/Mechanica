@@ -183,7 +183,7 @@ final class URLRequestUtilsTests: XCTestCase {
     cookieProperties[.expires] = date
 
     let cookie = HTTPCookie(properties: cookieProperties)!
-    
+
     var storage: HTTPCookieStorage
     #if os(iOS) || os(tvOS) || os(macOS)
     storage = MockHTTPCookieStorage()

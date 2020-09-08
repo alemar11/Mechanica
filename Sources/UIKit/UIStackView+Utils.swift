@@ -26,7 +26,6 @@
 import UIKit
 
 extension UIStackView {
-
   /// **Mechanica**
   ///
   /// Adds a background color.

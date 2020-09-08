@@ -26,7 +26,6 @@
 import UIKit
 
 extension UILayoutPriority {
-
   /// **Mechanica**
   ///
   /// - Parameters:

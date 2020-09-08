@@ -443,7 +443,6 @@ extension String {
   ///     let string = "äöüÄÖÜ" -> ÄÖÜ
   ///     let stripped = string.removingAccentsOrDiacritics() -> aouAOU
   ///
-  @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
   public func removingAccentsOrDiacritics() -> String {
     return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
   }

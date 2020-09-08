@@ -22,6 +22,7 @@
 // SOFTWARE.
 
 #if canImport(Foundation)
+
 import Foundation
 
 extension URLRequest {
@@ -33,7 +34,6 @@ extension URLRequest {
   ///   - session: an URLSession to use to get more headers, credentials or cookies.
   ///   - prettyPrinted: if true, the output will have a more readable format.
   /// - Returns: Returns a cURL command representation of `self`.
-  // swiftlint:disable:next cyclomatic_complexity
   func cURLRepresentation(session: URLSession? = nil, prettyPrinted: Bool = false) -> String? {
     guard let url = url else { return nil }
 
@@ -173,4 +173,5 @@ extension URLRequest {
     return nil
   }
 }
+
 #endif
