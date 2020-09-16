@@ -2,11 +2,11 @@ Pod::Spec.new do |s|
   s.name              = 'Mechanica'
   s.version           = '3.0.0'
   s.license           = 'MIT'
-  s.documentation_url = 'http://www.tinrobots.org/Mechanica'  
+  s.documentation_url = 'http://www.alessandromarzoli.com/Mechanica'  
   s.summary           = 'A library of Swift utils to ease your iOS/macOS/watchOS/tvOS development.'
-  s.homepage          = 'https://github.com/tinrobots/Mechanica'
+  s.homepage          = 'https://github.com/alemar11/Mechanica'
   s.authors           = { 'Alessandro Marzoli' => 'me@alessandromarzoli.com' }
-  s.source            = { :git => 'https://github.com/tinrobots/Mechanica.git', :tag => s.version }
+  s.source            = { :git => 'https://github.com/alemar11/Mechanica.git', :tag => s.version }
   s.requires_arc      = true
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.0'}
   
