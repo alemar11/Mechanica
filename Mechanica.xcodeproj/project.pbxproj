@@ -542,6 +542,7 @@
 /* Begin PBXFileReference section */
 		0688BC9E2507CEA200B2B76A /* NSDirectionalEdgeInsets+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDirectionalEdgeInsets+Utils.swift"; sourceTree = "<group>"; };
 		0688BCA32507D16B00B2B76A /* NSDirectionalEdgeInsetsUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsetsUtilsTests.swift; sourceTree = "<group>"; };
+		06D9CADC251255450089D8B6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		12B536B21D33ECEC005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536BF1D33ECFB005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B536D51D33ED1C005C52A7 /* Mechanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mechanica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1124,6 +1125,7 @@
 		23D922981EFA670900629E17 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				06D9CADC251255450089D8B6 /* README.md */,
 				23F97E4D20E66B4C007C4889 /* CHANGELOG.md */,
 				23280BE21F28C492008B6196 /* IDETemplateMacros.plist */,
 				23D922991EFA670900629E17 /* Info-Tests.plist */,
@@ -2149,7 +2151,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.tinrobots.Mechanica;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alessandromarzoli.Mechanica;
 				PRODUCT_NAME = Mechanica;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2176,7 +2178,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.tinrobots.Mechanica;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alessandromarzoli.Mechanica;
 				PRODUCT_NAME = Mechanica;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -2199,7 +2201,7 @@
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.tinrobots.Mechanica;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alessandromarzoli.Mechanica;
 				PRODUCT_NAME = Mechanica;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2226,7 +2228,7 @@
 				INFOPLIST_FILE = Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.tinrobots.Mechanica;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alessandromarzoli.Mechanica;
 				PRODUCT_NAME = Mechanica;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2252,7 +2254,7 @@
 				INFOPLIST_FILE = "Support/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.tinrobots.Mechanica;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alessandromarzoli.Mechanica;
 				PRODUCT_NAME = Mechanica;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -2279,7 +2281,7 @@
 				INFOPLIST_FILE = "Support/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.tinrobots.Mechanica;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alessandromarzoli.Mechanica;
 				PRODUCT_NAME = Mechanica;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -2308,7 +2310,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = org.tinrobots.Mechanica;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alessandromarzoli.Mechanica;
 				PRODUCT_NAME = Mechanica;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -2336,7 +2338,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = org.tinrobots.Mechanica;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alessandromarzoli.Mechanica;
 				PRODUCT_NAME = Mechanica;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -2354,7 +2356,7 @@
 				INFOPLIST_FILE = "Support/Info-Tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alessandromarzoli.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -2372,7 +2374,7 @@
 				INFOPLIST_FILE = "Support/Info-Tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alessandromarzoli.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
@@ -2390,7 +2392,7 @@
 				INFOPLIST_FILE = "Support/Info-Tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alessandromarzoli.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2411,7 +2413,7 @@
 				INFOPLIST_FILE = "Support/Info-Tests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alessandromarzoli.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -2434,7 +2436,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alessandromarzoli.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2457,7 +2459,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.tinrobots.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alessandromarzoli.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

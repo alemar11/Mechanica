@@ -30,7 +30,7 @@ final class BundleInfoTests: XCTestCase {
     if ProcessInfo.isRunningSwiftPackageTests {
       XCTAssertEqual(Mechanica.bundle.appIdentifier, "MechanicaPackageTests")
     } else {
-      XCTAssertEqual(Mechanica.bundle.appIdentifier, "org.tinrobots.Mechanica")
+      XCTAssertEqual(Mechanica.bundle.appIdentifier, "com.alessandromarzoli.Mechanica")
     }
     XCTAssertEqual(Bundle.main.appIdentifier, "com.apple.dt.xctest.tool")
   }

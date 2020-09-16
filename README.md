@@ -1,12 +1,10 @@
 ![Mechanica: Swift Utils](https://raw.githubusercontent.com/tinrobots/Mechanica/assets/mechanica.png)
 
-[![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://developer.apple.com/swift)
+[![Swift 5.2](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://developer.apple.com/swift)
 ![Platforms](https://img.shields.io/badge/Platform-iOS%2010%2B%20|%20macOS%2010.12+%20|%20tvOS%2010+%20|%20watchOS%203+|%20Ubuntu%20Linux-blue.svg) 
 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Mechanica.svg)](https://cocoapods.org/pods/Mechanica)
-
-[![codebeat badge](https://codebeat.co/badges/5516a391-7085-43a9-a674-3be4b1ad1154)](https://codebeat.co/projects/github-com-tinrobots-mechanica-master)
 
 |Branch|TravisCI Build Status (all os)|CircleCI Build Status (linux)|Code Coverage
 |----|----|----|----|
@@ -31,9 +29,9 @@ A library of Swift utils to ease your iOS, macOS, watchOS, tvOS and Linux develo
 
 ## Documentation
 
-Documentation is [available online](http://www.tinrobots.org/Mechanica/).
+Documentation is [available online](http://www.alessandromarzoli.com/Mechanica/).
 
-> [http://www.tinrobots.org/Mechanica/](http://www.tinrobots.org/Mechanica/)
+> [http://www.alessandromarzoli.com/Mechanica/](http://www.alessandromarzoli.com/Mechanica/)
 
 ## Installation
 

@@ -59,7 +59,7 @@ final class URLUtilsTests: XCTestCase {
 
   func testIsDirectoryOrFile() throws {
     // Given
-    let folderPath = "/tmp/org.tinrobots.Mechanica-\(UUID().uuidString)"
+    let folderPath = "/tmp/com.alessandromarzoli.Mechanica-\(UUID().uuidString)"
 
     // When, Then
     let url = URL(fileURLWithPath: folderPath)

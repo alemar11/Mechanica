@@ -20,7 +20,7 @@ final class FileManagerUtilsTests: XCTestCase {
 
   func testDestroyFileOrDirectory() throws {
     // Given
-    let tmpFolderPath = "/tmp/org.tinrobots.Mechanica-\(UUID().uuidString)"
+    let tmpFolderPath = "/tmp/com.alessandromarzoli.Mechanica-\(UUID().uuidString)"
     if !FileManager.default.fileExists(atPath: tmpFolderPath) {
       try FileManager.default.createDirectory(atPath: tmpFolderPath, withIntermediateDirectories: false, attributes: nil)
     }
@@ -43,7 +43,7 @@ final class FileManagerUtilsTests: XCTestCase {
 
   func testCleanDirectory() throws {
     // Given
-    let tmpFolderPath = "/tmp/org.tinrobots.Mechanica-\(UUID().uuidString)"
+    let tmpFolderPath = "/tmp/com.alessandromarzoli.Mechanica-\(UUID().uuidString)"
     if !FileManager.default.fileExists(atPath: tmpFolderPath) {
       try FileManager.default.createDirectory(atPath: tmpFolderPath, withIntermediateDirectories: false, attributes: nil)
     }

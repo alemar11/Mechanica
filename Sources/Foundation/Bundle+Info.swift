@@ -11,7 +11,7 @@ extension Bundle {
   ///
   /// Returns the app identifier (`bundleIdenfier` or its `executable` file name).
   public var appIdentifier: String? {
-    if let identifier = bundleIdentifier, !identifier.isBlank { //i.e. org.tinrobots.App
+    if let identifier = bundleIdentifier, !identifier.isBlank { //i.e. com.alessandromarzoli.App
       return identifier
     } else if let identifier = executableFileName, !identifier.isBlank { //i.e. AppExecutableName
       return identifier

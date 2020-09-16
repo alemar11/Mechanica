@@ -1,7 +1,7 @@
 /// **Mechanica**
 ///
 /// Mechanica Bundle Identifier
-internal let bundleIdentifier = "org.tinrobots.Mechanica"
+internal let bundleIdentifier = "com.alessandromarzoli.Mechanica"
 
 /// **Mechanica**
 ///
