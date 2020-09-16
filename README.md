@@ -1,17 +1,13 @@
-![Mechanica: Swift Utils](https://raw.githubusercontent.com/tinrobots/Mechanica/assets/mechanica.png)
+![Mechanica: Swift Utils](https://raw.githubusercontent.com/alemar11/Mechanica/assets/mechanica.png)
 
-[![Swift 5.2](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://developer.apple.com/swift)
+[![Swift 5.2](https://img.shields.io/badge/Swift-5.2-orange.svg?style=flat)](https://developer.apple.com/swift)
 ![Platforms](https://img.shields.io/badge/Platform-iOS%2010%2B%20|%20macOS%2010.12+%20|%20tvOS%2010+%20|%20watchOS%203+|%20Ubuntu%20Linux-blue.svg) 
 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Mechanica.svg)](https://cocoapods.org/pods/Mechanica)
 
-|Branch|TravisCI Build Status (all os)|CircleCI Build Status (linux)|Code Coverage
-|----|----|----|----|
-|Master|[![TravisCI](https://travis-ci.org/tinrobots/Mechanica.svg?branch=master)](https://travis-ci.org/tinrobots/Mechanica)|![CircleCI](https://circleci.com/gh/tinrobots/Mechanica/tree/master.svg?style=shield)|[![codecov](https://codecov.io/gh/tinrobots/Mechanica/branch/master/graph/badge.svg)](https://codecov.io/gh/tinrobots/Mechanica)
-
 ## Mechanica
-[![GitHub release](https://img.shields.io/github/release/tinrobots/Mechanica.svg)](https://github.com/tinrobots/Mechanica/releases) 
+[![GitHub release](https://img.shields.io/github/release/alemar11/Mechanica.svg)](https://github.com/alemar11/Mechanica/releases) 
 
 A library of Swift utils to ease your iOS, macOS, watchOS, tvOS and Linux development.
 
@@ -77,7 +73,7 @@ $ brew install carthage
 To integrate Mechanica into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "tinrobots/Mechanica" ~> 2.2.0
+github "alemar11/Mechanica" ~> 2.2.0
 ```
 
 Run `carthage update` to build the framework and drag the built `Mechanica.framework` into your Xcode project.
@@ -89,7 +85,7 @@ Once you have your Swift package set up, adding Mechanica as a dependency is as 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/tinrobots/Mechanica.git", from: "2.2.0")
+    .package(url: "https://github.com/alemar11/Mechanica.git", .upToNextMajor(from: "3.1.0"))
 ]
 ```
 
@@ -108,7 +104,7 @@ $ git init
 - Add Mechanica as a git [submodule](http://git-scm.com/docs/git-submodule) by running the following command:
 
 ```bash
-$ git submodule add https://github.com/tinrobots/Mechanica.git
+$ git submodule add https://github.com/alemar11/Mechanica.git
 ```
 
 - Open the new `Mechanica` folder, and drag the `Mechanica.xcodeproj` into the Project Navigator of your application's Xcode project.
@@ -130,7 +126,7 @@ $ git submodule add https://github.com/tinrobots/Mechanica.git
 
 ## License
 
-[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/tinrobots/Mechanica/blob/master/LICENSE.md)
+[![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/alemar11/Mechanica/blob/master/LICENSE.md)
 
 Mechanica is released under the MIT license. See [LICENSE](./LICENSE.md) for details.
 
