@@ -1,26 +1,3 @@
-//
-// Mechanica
-//
-// Copyright © 2016-2019 Tinrobots.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
 #if os(iOS) || os(tvOS)
 
 import XCTest
@@ -190,13 +167,8 @@ final class UIImageUtilsTests: XCTestCase {
 
     // Then
     let expectedAppleImage = UIImage(data: appleScaledData, scale: CGFloat(scale))!
-    // TODO: fails on tvOS, fixed for now increasing the tolerance from 4 up to 188.
-    var tolerance: UInt8 = 4
-    #if os(tvOS)
-      tolerance = 188
-    #endif
-    print(tolerance)
-    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: tolerance), "The scaled apple image pixels do not match.")
+
+    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage), "The scaled apple image pixels do not match.")
     XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
   }
 
@@ -214,9 +186,8 @@ final class UIImageUtilsTests: XCTestCase {
 
     // Then
     let expectedAppleImage = UIImage(data: appleScaledToFitData, scale: CGFloat(scale))!
-    // TODO: fails with 3X scale on iOS, fixed for now increasing the tolerance from 4 up to 53.
     XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
-    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 53), "The scaled apple image pixels do not match.")
+    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage), "The scaled apple image pixels do not match.")
   }
 
   private func executeImageAspectScaledToFillSizeTest(_ size: CGSize) {
@@ -234,7 +205,7 @@ final class UIImageUtilsTests: XCTestCase {
     // Then
     let expectedAppleImage = UIImage(data: appleScaledToFillData, scale: CGFloat(scale))!
     XCTAssertEqual(scaledAppleImage.scale, CGFloat(scale), "The image scale (\(scaledAppleImage.scale)) should be equal to screen scale (\(scale)).")
-    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage, withinTolerance: 4), "The scaled apple image pixels do not match.")
+    XCTAssertTrue(scaledAppleImage.isEqualToImage(expectedAppleImage), "The scaled apple image pixels do not match.")
   }
 
 }

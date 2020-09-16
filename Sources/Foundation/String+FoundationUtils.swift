@@ -1,26 +1,3 @@
-//
-// Mechanica
-//
-// Copyright © 2016-2019 Tinrobots.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
 // TODO: Swift 5
 //  https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md
 //  https://github.com/apple/swift-evolution/blob/master/proposals/0221-character-properties.md
@@ -42,7 +19,7 @@ extension String {
   ///
   /// Returns a `new` string encoded in base64.
   public var base64Encoded: String? {
-    let plainData = self.data(using: .utf8)
+    let plainData = data(using: .utf8)
     return plainData?.base64EncodedString()
   }
 
@@ -443,7 +420,6 @@ extension String {
   ///     let string = "äöüÄÖÜ" -> ÄÖÜ
   ///     let stripped = string.removingAccentsOrDiacritics() -> aouAOU
   ///
-  @available(iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0, *)
   public func removingAccentsOrDiacritics() -> String {
     return applyingTransform(.stripCombiningMarks, reverse: false) ?? self
   }

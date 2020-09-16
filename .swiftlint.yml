@@ -14,7 +14,11 @@ disabled_rules: # rule identifiers to exclude from running
   - large_tuple
   - todo
 
-line_length: 
+cyclomatic_complexity:
+  - 15 #warning
+  - 20 #error
+
+line_length:
   - 200 #warning
   - 250 #error
 
@@ -46,6 +50,11 @@ identifier_name:
 large_tuple:
   warning: 3
 
+colon:
+  apply_to_dictionaries: false
+
+indentation: 2
+
 opt_in_rules: # some rules are only opt-in
   - closure_end_indentation
   - closure_spacing
@@ -59,7 +68,6 @@ opt_in_rules: # some rules are only opt-in
   - first_where
   - operator_usage_whitespace
 
-
 number_separator:
   minimum_length: 7
 
@@ -68,7 +76,7 @@ custom_rules:
     name: "Avoid asserting 'false'"
     regex: '((assert|precondition)\(false)'
     message: "Use assertionFailure() or preconditionFailure() instead."
-    severity: warning  
+    severity: warning
   double_space: # from https://github.com/IBM-Swift/Package-Builder
     include: "*.swift"
     name: "Double space"
@@ -94,5 +102,10 @@ custom_rules:
   no_line_around_parentheses: # from https://github.com/realm/SwiftLint/issues/2213
     regex:  '\{\h*\R\h*\R|\R\h*\R\h*\}'
     message: No scope should begin or end with an empty line.
+  no_objcMembers: # from https://github.com/airbnb/swift/blob/master/resources/swiftlint.yml
+    name: "@objcMembers"
+    regex: "@objcMembers"
+    message: "Explicitly use @objc on each member you want to expose to Objective-C"
+    severity: error
 
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
